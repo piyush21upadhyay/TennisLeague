@@ -1,0 +1,501 @@
+@font-face {
+	font-family:Avant_Garde_Gothic_Demibold;
+	src: url(fonts/Avant_Garde_Gothic_Demibold.ttf);
+	src: local("Avant_Garde_Gothic_Demibold"), url(fonts/Avant_Garde_Gothic_Demibold.ttf);
+}
+@font-face {
+	font-family:avantgardemediumbt;
+	src: url(fonts/avantgardemediumbt.ttf);
+	src: local("avantgardemediumbt"), url(fonts/avantgardemediumbt.ttf);
+}
+
+#outer-container {
+	width: 1000px;
+	height: 800px;
+	padding: 0px 5px 5px 5px;
+	margin: auto;
+	background: none repeat scroll 0 0 #fff;
+	position: relative;
+}
+
+#main-container {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	background: #fff url(../images/bg_img_3.jpg) repeat center top;
+	margin-left: -0.5px;
+}
+
+html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+* {
+	padding: 0;
+	margin: 0;
+}
+/* tell the browser to render HTML 5 elements as block */
+article, aside, figure, footer, header, hgroup, nav, section {
+	display:block;
+}
+body {
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+	background-color: #0E0907;
+	height: 100%;
+	color: #444;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-style: normal !important;
+	-ms-zoom: 100%;
+}
+p {
+	padding: 0 0 16px 0;
+	line-height: 1.7em;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #555;
+	padding: 0 0 5px 0;
+}
+h1, h2, h4 {
+	font: normal 200% "avantgarde", arial, sans-serif;
+	text-shadow: 1px 1px #FFF;
+	margin: 0 0 15px 0;
+	padding: 15px 20px 5px 0;
+	color: #E5017D;
+}
+h2 {
+	font: normal 150% arial, sans-serif;
+}
+h4 {
+	font: normal 170% "avantgarde", arial, sans-serif;
+	padding: 5px 20px 5px 0;
+	margin: 0;
+	color: #80E804;
+}
+h3 {
+	color: #444;
+	padding: 10px 0 5px 0;
+	font: normal 170% arial;
+}
+h5 {
+	color: #888;
+	font: italic 95% arial;
+	letter-spacing: normal;
+	padding: 0 0 15px 0;
+}
+h6 {
+	padding: 5px 0 25px 0;
+}
+img {
+	border: 0;
+}
+a, a:hover {
+	outline: none;
+	color: #20BFD4;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+blockquote {
+	margin: 20px 0 20px 0;
+	padding: 10px 20px 0 20px;
+	border: 1px solid #E5E5DB;
+	background: #F5F5F1;
+}
+ul {
+	margin: 2px 0 17px 16px;
+}
+ul li {
+	list-style-type: square;
+	margin: 0 0 6px 0;
+	padding: 0 0 0 8px;
+}
+ol {
+	margin: 2px 0 0 24px;
+}
+ol li {
+	margin: 0 0 6px 0;
+}
+.left {
+	float: left;
+	width: auto;
+	margin-right: 10px;
+}
+.right {
+	float: right;
+	width: auto;
+	margin-left: 10px;
+}
+.center {
+	display: block;
+	text-align: center;
+	margin: 20px auto;
+}
+#main, header, #logo, nav, #site_content, footer {
+	margin-left: auto;
+	margin-right: auto;
+}
+#container {
+	width: 1000px;
+	height: 800px;
+	padding : 0px 5px;
+	margin: auto;
+	background: none repeat scroll 0 0 #fff;
+	padding: 0px 5px;
+}
+#main {
+	position: relative;
+	z-index: 2;
+	height: 100%;
+	margin: auto;
+	width: 960px;
+}
+header {
+	float: left;
+	height: 60px;
+	width: 100%;
+	text-align: left;
+}
+header h3 {
+	font-family: 'Arial Bold', sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	text-decoration: none;
+	display: inline;
+	letter-spacing:.2px;
+	cursor: pointer;
+	font-weight: bold;
+}
+header h3:hover {
+	color: #89C417;
+}
+header img.separator {
+	display: inline;
+	margin: 0 6px;
+}
+#logo {
+	width: 507px;
+	/*height: 165px;*/ /*20130306*/
+	height: 110px;
+	float:right
+}
+#logo a {
+	left: 60px;
+	position: relative;
+	top: 53px;
+}
+nav {
+	float:left;
+	height: 30px;
+}
+nav ul {
+	display:inline;
+	list-style-type:none
+}
+nav li {
+	background-repeat:no-repeat;
+	background-position:right top;
+	display: inline;
+	height: 30px;
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-top: 10px;
+}
+nav li:last-child {
+	background:none;
+}
+nav li a {
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+nav li a:hover {
+	color:#98cb00
+}
+#site_content {
+	width:980px;/*  margin-top: 102px;*/
+}
+.sidebar-menu {
+	float: right;
+	/*width: 487px;*/ /*20130306*/
+	width: 500px;
+}
+.flt {
+	float:left;
+}
+.menubg {
+	background:url(../images/white-bg.PNG) repeat scroll 0 0 transparent;
+	clear: left;
+	height: 100%;
+	padding-left: 4px;
+	padding-top: 10px;
+	width: 398px;
+	padding-bottom: 5px;
+}
+.menu {
+	float:left;
+	clear:left;
+	font-size:11px;
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	list-style:none;
+	background: none repeat scroll 0 0 transparent;
+	margin: 0;
+	padding: 0;
+}
+.menu a, .menu a:visited {
+	background: url(../images/box-plus-white.png) no-repeat scroll 0 0 transparent;
+	color: #98CB00 !important;
+	display: block;
+	font: 220%/32px "Avant_Garde_Gothic_Demibold", arial, sans-serif;
+	height: 40px;
+	margin: 0 0 8px 8px;
+	padding: 4px 0 0 20px;
+	position: relative;
+	text-decoration: none;
+	text-transform: none;
+	width: 373px;
+	text-align: left;
+}
+.menu a:hover, .menu a:active, .menu li.current_page_item a, .menu li.current_page_item a:visited {
+	background:url(../images/box-plus-white-hover.PNG) no-repeat;
+	text-decoration:none;
+}
+/**************Login*************/
+fieldset {
+	border:none
+}
+#login-box {
+	margin: 52px auto;
+	width: 388px;
+}
+form.signin .textbox label {
+	display: block;
+	padding-bottom: 7px;
+}
+form.signin .textbox span {
+	display: block;
+}
+form.signin p, form.signin span {
+	color: #4D4D4D;
+	font-size: 13px;
+	line-height: 18px;
+	font-family: "Arial Bold", sans-serif;
+	font-weight: bold;
+	text-align: left;
+}
+form.signin .textbox input {
+	background: none repeat scroll 0 0 #fff;
+	border-color: #fff #fff #fff #fff;
+	border-style: solid;
+	border-width: 1px;
+	color: #8F9FB0;
+	font: bold 11px "Arial Bold",sans-serif;
+    padding: 3px 6px;
+	width: 366px;
+}
+form.signin input:-moz-placeholder {
+ color: #8F9FB0;
+ text-transform: uppercase;
+}
+#error-msg{
+	padding:0px 10px;
+}
+.button {
+	cursor: pointer;
+	display: inline-block;
+	margin-top: 0;
+	width: 30px;
+	border:none;
+	background:url(../images/submit-arrow.png);
+	height:20px;
+	background-repeat:no-repeat;
+}
+.button:hover {
+	background: url(../images/submit-hover.png) no-repeat;
+	height:20px;
+}
+.login-txt {
+	background:url(../images/box-plus-white.png) no-repeat scroll 0 0 transparent;
+	color: #98CB00 !important;
+	display: block;
+	font: 170%/30px "Avant_Garde_Gothic_Demibold", arial, sans-serif;
+	height: 40px;
+	margin: 2px;
+	padding: 4px 0 0 20px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: none;
+	width: 373px;
+	cursor: pointer;
+}
+.login-txt:hover {
+	background:url(../images/box-plus-white-hover.PNG) no-repeat;
+}
+
+/*------------New----------------*/
+.box-header {background:url(../images/box-minus-white.PNG) no-repeat scroll 0 0 transparent !important;}
+.box-header :hover{background:url(../images/box-minus-white-hover.PNG) no-repeat !important;}
+/*------------// new----------------*/
+
+.textbox p {
+	padding-top: 9px;
+	padding-left: 22px;
+}
+.forgot {
+	color: #90C906 !important;
+	font-weight: bold !important;
+	text-decoration: none;
+	text-transform: lowercase !important;
+}
+.remember {
+	color: #FFFFFF;
+	float: left;
+	font-size: 19px;
+	font-weight: normal;
+	position: relative;
+	top: 3px;
+	width: 330px;
+}
+.remember input {
+	background:none !important;
+	border:none !important
+}
+.check-txt {
+	font-family: "Arial Bold", sans-serif;
+	float: right;
+	color: #4D4D4D;
+}
+/*****************Enter site sub menu*****************/
+
+.submenubg {
+	background: url("../images/opacity.png") repeat scroll 0 0 transparent;
+	clear: left;
+	height: 100%;
+	padding-left: 4px;
+	padding-top: 10px;
+	width: 398px;
+}
+.submenu {
+	float:left;
+	clear:left;
+	font-size:11px;
+	margin: 0;
+	padding: 0;
+}
+.submenu li {
+	list-style:none;
+	background: none repeat scroll 0 0 transparent;
+	margin: 0;
+	padding: 0;
+}
+.submenu a, .submenu a:visited {
+	background: url(../images/white-menu.PNG)  no-repeat scroll 0 0 transparent;
+	color:#5C6773 !important;
+	display: block;
+	font: bold 11px/16px "Arial Bold",sans-serif;
+	height: 25px;
+	margin: 0 0 -2px 2px;
+	padding: 4px 0 0 20px;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 362px;
+	text-align:left;
+}
+
+.submenu a:hover, .submenu a:active, .submenu li.current_page_item a, .submenu li.current_page_item a:visited {
+	background:url(../images/white-menu-hover.PNG) no-repeat;
+	text-decoration:none;
+	color:#f64f16 !important;
+}
+.par-txt {
+	color: #333333;
+    font-family: "Arial Bold",sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 9px 15px 15px;
+    text-align: left;
+}
+
+#enter-box {
+	margin: 0 auto;
+	width: 388px;
+}
+.enter-txt {
+	background: url(../images/box-plus-white.png) no-repeat scroll 0 0 transparent;
+	color: #98CB00 !important;
+	display: block;
+	font: 170%/30px "Avant_Garde_Gothic_Demibold", arial, sans-serif;
+	height: 40px;
+	margin: 2px;
+	padding: 4px 0 0 20px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: none;
+	width: 373px;
+	cursor: pointer;
+}
+.enter-txt:hover {
+	background:url(../images/box-plus-white-hover.PNG) no-repeat;
+}
+.submenu li:last-child {
+	margin-bottom:6px !important;
+}
+/*****************Enter site sub menu*****************/
+
+#signup-box {
+	margin: 0 auto;
+	width: 388px;
+}
+.signup-txt {
+	background:url(../images/box-plus-white.png) no-repeat scroll 0 0 transparent;
+	color: #98CB00 !important;
+	display: block;
+	font: 170%/30px "Avant_Garde_Gothic_Demibold", arial, sans-serif;
+	height: 40px;
+	margin: 2px;
+	padding: 4px 0 0 20px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: none;
+	width: 373px;
+	cursor: pointer;
+}
+.signup-txt:hover {
+	background:url(../images/box-plus-white-hover.PNG) no-repeat;
+}
+/*****************Demo video*****************/
+
+.video-container{
+	background-color: #000000;
+    bottom: 98px;
+    display: none;
+    height: 555px;
+    margin-left: 9px;
+    padding: 10px;
+    position: relative;
+    width: 920px;
+}
+
+#demo-box .btn_close {
+	background: url("../images/cross-btn.png") no-repeat scroll 0 0 transparent;
+	float: right;
+	height: 22px;
+	position: relative;
+	right: 14px;
+	width: 69px;
+	cursor:pointer;
+}
+#demo-box .btn_close:hover{ background:url(../images/cross-btn-hover.PNG) no-repeat; height:22px; }
+#sampleMovie{ height: 532px; }

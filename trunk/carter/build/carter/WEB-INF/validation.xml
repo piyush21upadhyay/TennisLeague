@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+     <global>
+      <constant>
+        <constant-name>phone</constant-name>
+        <!-- <constant-value>^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$</constant-value> -->
+        <constant-value>^([(][0-9]{3}[)])[ ]([0-9]{3})[ ]([0-9]{4})$</constant-value>
+      </constant>
+      <constant>
+        <constant-name>zip</constant-name>
+        <constant-value>^\d{5}\d*$</constant-value>
+      </constant>
+      <constant>
+        <constant-name>currency</constant-name>
+        <constant-value>^\d{1,3}(,?\d{1,3})*\.?(\d{1,2})?$</constant-value>
+      </constant>
+      <constant>
+        <constant-name>expiry</constant-name>
+        <constant-value>^(1[0-2]|0[1-9])\/[0-9]{2}$</constant-value>
+      </constant>
+   </global>
+
+  <formset>
+  <!--
+    Define form validation config in validation-forms.xml
+  -->
+
+      <form name="registrationEntry">
+              <field property="cardNumber"
+                     depends="required,minlength,maxlength,customCreditCard">
+                  <msg
+                    name="minlength"
+                    key="errors.minlength"/>
+                  <msg
+                    name="maxlength"
+                    key="errors.creditCardInfo.maxlength"/>
+                  <msg
+                    name="customCreditCard"
+                    key="errors.creditCardInfo.both"/>
+
+                  <arg0 key="registrationEntry.cardNumber"/>
+                  <arg1
+                    key="${var:minlength}"
+                  />
+                  <arg2
+                    key="${var:maxlength}"
+                  />
+                  <arg3
+                    key="registrationEntry.securityCode"
+                  />
+                  <var>
+                    <var-name>minlength</var-name>
+                    <var-value>15</var-value>
+                  </var>
+                  <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>16</var-value>
+                  </var>
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>securityCode</var-value>
+                  </var>
+              </field>
+              <field property="cardExpiration"
+                     depends="required,mask">
+                  <msg
+                    name="mask"
+                    key="errors.expiry"/>
+
+                  <arg0 key="registrationEntry.cardExpiration"/>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${expiry}</var-value>
+                  </var>
+              </field>
+              <field property="securityCode"
+                     depends="required,minlength,maxlength">
+                  <msg
+                    name="minlength"
+                    key="errors.minlength"/>
+                  <msg
+                    name="maxlength"
+                    key="errors.creditCardInfo.maxlength"/>
+
+                  <arg0 key="registrationEntry.securityCode"/>
+                  <arg1
+                    key="${var:minlength}"
+                  />
+                  <arg2
+                    key="${var:maxlength}"
+                  />
+                  <var>
+                    <var-name>minlength</var-name>
+                    <var-value>3</var-value>
+                  </var>
+                  <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>4</var-value>
+                  </var>
+              </field>
+              <field property="firstName"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.firstName"/>
+              </field>
+              <field property="lastName"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.lastName"/>
+              </field>
+              <field property="billingAddress.address"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.billingAddress.address"/>
+              </field>
+              <field property="billingAddress.city"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.billingAddress.city"/>
+              </field>
+              <field property="billingAddress.country"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.billingAddress.country"/>
+              </field>
+              <field property="billingAddress.postalCode"
+                     depends="required,mask">
+                  <msg
+                    name="mask"
+                    key="errors.zip"/>
+
+                  <arg0 key="registrationEntry.billingAddress.postalCode"/>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${zip}</var-value>
+                  </var>
+              </field>
+              <field property="billingAddress.province"
+                     depends="required">
+
+                  <arg0 key="registrationEntry.billingAddress.province"/>
+              </field>
+      </form>
+      <form name="address">
+              <field property="address"
+                     depends="required">
+
+                  <arg0 key="address.address"/>
+              </field>
+              <field property="city"
+                     depends="required">
+
+                  <arg0 key="address.city"/>
+              </field>
+              <field property="country"
+                     depends="required">
+
+                  <arg0 key="address.country"/>
+              </field>
+              <field property="postalCode"
+                     depends="required,mask">
+                  <msg
+                    name="mask"
+                    key="errors.zip"/>
+
+                  <arg0 key="address.postalCode"/>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${zip}</var-value>
+                  </var>
+              </field>
+              <field property="province"
+                     depends="required">
+
+                  <arg0 key="address.province"/>
+              </field>
+      </form>
+      <form name="publicMessage">
+              <field property="subject"
+                     depends="required">
+
+                  <arg0 key="publicMessage.subject"/>
+              </field>
+              <field property="message"
+                     depends="required">
+
+                  <arg0 key="publicMessage.message"/>
+              </field>
+      </form>
+      <form name="privateMessage">
+              <field property="subject"
+                     depends="required">
+
+                  <arg0 key="privateMessage.subject"/>
+              </field>
+              <field property="message"
+                     depends="required">
+
+                  <arg0 key="privateMessage.message"/>
+              </field>
+      </form>
+      <form name="registration">
+              <field property="displayName"
+                     depends="required">
+
+                  <arg0 key="registration.displayName"/>
+              </field>
+              <field property="city.name"
+                     depends="required">
+
+                  <arg0 key="registration.city.name"/>
+              </field>
+              <field property="city.state"
+                     depends="required">
+
+                  <arg0 key="registration.city.state"/>
+              </field>
+              <field property="regularRegistrationStart"
+                     depends="required">
+
+                  <arg0 key="registration.regularRegistrationStart"/>
+              </field>
+              <field property="registrationEnd"
+                     depends="required">
+
+                  <arg0 key="registration.registrationEnd"/>
+              </field>
+              <field property="regularRegistrationFee"
+                     depends="required">
+
+                  <arg0 key="registration.regularRegistrationFee"/>
+              </field>
+      </form>
+      <form name="city">
+              <field property="name"
+                     depends="required">
+
+                  <arg0 key="city.name"/>
+              </field>
+              <field property="state"
+                     depends="required">
+
+                  <arg0 key="city.state"/>
+              </field>
+      </form>
+      <form name="user">
+              <field property="username"
+                     depends="required">
+
+                  <arg0 key="user.username"/>
+              </field>
+              <field property="password"
+                     depends="required,twofields">
+                  <msg
+                    name="twofields"
+                    key="errors.twofields"/>
+
+                  <arg0 key="user.password"/>
+                  <arg1
+                    key="user.confirmPassword"
+                  />
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>confirmPassword</var-value>
+                  </var>
+              </field>
+              <field property="confirmPassword"
+                     depends="required">
+
+                  <arg0 key="user.confirmPassword"/>
+              </field>
+              <field property="firstName"
+                     depends="required">
+
+                  <arg0 key="user.firstName"/>
+              </field>
+              <field property="lastName"
+                     depends="required">
+
+                  <arg0 key="user.lastName"/>
+              </field>
+              <field property="address.address"
+                     depends="required">
+
+                  <arg0 key="user.address.address"/>
+              </field>
+              <field property="address.city"
+                     depends="required">
+
+                  <arg0 key="user.address.city"/>
+              </field>
+              <field property="address.country"
+                     depends="required">
+
+                  <arg0 key="user.address.country"/>
+              </field>
+              <field property="address.postalCode"
+                     depends="required,mask">
+                  <msg
+                    name="mask"
+                    key="errors.zip"/>
+
+                  <arg0 key="user.address.postalCode"/>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${zip}</var-value>
+                  </var>
+              </field>
+              <field property="address.province"
+                     depends="required">
+
+                  <arg0 key="user.address.province"/>
+              </field>
+              <field property="email"
+                     depends="required,email">
+
+                  <arg0 key="user.email"/>
+              </field>
+              <field property="homePhone"
+                     depends="onefield,mask">
+                  <msg
+                    name="onefield"
+                    key="errors.onefield"/>
+                  <msg
+                    name="mask"
+                    key="errors.phone"/>
+
+                  <arg0 key="user.homePhone"/>
+                  <arg1
+                    key="user.cellPhone"
+                  />
+                  <var>
+                    <var-name>secondProperty</var-name>
+                    <var-value>cellPhone</var-value>
+                  </var>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${phone}</var-value>
+                  </var>
+              </field>
+              <field property="cellPhone"
+                     depends="mask">
+                  <msg
+                    name="mask"
+                    key="errors.phone"/>
+
+                  <arg0 key="user.cellPhone"/>
+                  <var>
+                    <var-name>mask</var-name>
+                    <var-value>${phone}</var-value>
+                  </var>
+              </field>
+              <field property="passwordHint"
+                     depends="required">
+
+                  <arg0 key="user.passwordHint"/>
+              </field>
+              <field property="homeCourse.id"
+                     depends="required">
+
+                  <arg0 key="user.homeCourse.id"/>
+              </field>
+              <field property="referral"
+                     depends="required">
+
+                  <arg0 key="user.referral"/>
+              </field>
+              <field property="icon"
+                     depends="required">
+
+                  <arg0 key="user.icon"/>
+              </field>
+              <field property="homeCourt"
+                     depends="required">
+
+                  <arg0 key="user.homeCourt"/>
+              </field>
+              <field property="playingPreference"
+                     depends="required,checkbox">
+                  <msg
+                    name="checkbox"
+                    key="errors.checkbox"/>
+
+                  <arg0 key="user.playingPreference"/>
+              </field>
+              <field property="opponentSkillLevel"
+                     depends="required,checkbox">
+                  <msg
+                    name="checkbox"
+                    key="errors.checkbox"/>
+
+                  <arg0 key="user.opponentSkillLevel"/>
+              </field>
+      </form>
+      <form name="course">
+              <field property="id"
+                     depends="required">
+
+                  <arg0 key="course.id"/>
+              </field>
+      </form>
+  </formset>
+</form-validation>

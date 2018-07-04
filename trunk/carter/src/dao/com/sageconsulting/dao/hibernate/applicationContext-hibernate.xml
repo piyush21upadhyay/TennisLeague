@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>com/sageconsulting/model/Role.hbm.xml</value>
+                <value>com/sageconsulting/model/User.hbm.xml</value>
+                <value>com/sageconsulting/model/City.hbm.xml</value>
+                <value>com/sageconsulting/model/Course.hbm.xml</value>
+                <value>com/sageconsulting/model/Season.hbm.xml</value>
+                <value>com/sageconsulting/model/Match.hbm.xml</value>
+                <value>com/sageconsulting/model/Registration.hbm.xml</value>
+                <value>com/sageconsulting/model/RegistrationEntry.hbm.xml</value>
+                <value>com/sageconsulting/model/BracketEntry.hbm.xml</value>
+                <value>com/sageconsulting/model/PrivateMessage.hbm.xml</value>
+                <value>com/sageconsulting/model/PublicMessage.hbm.xml</value>
+                <value>com/sageconsulting/model/TickerMessage.hbm.xml</value>
+                <value>com/sageconsulting/model/Champion.hbm.xml</value>
+                <value>com/sageconsulting/model/MatchCategory.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">@HIBERNATE-DIALECT@</prop>
+                <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+                <!-- Create/update the database tables automatically when the JVM starts up
+                <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <!-- Turn batching off for better error messages under PostgreSQL 
+                <prop key="hibernate.jdbc.batch_size">0</prop> -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="dao" class="com.sageconsulting.dao.hibernate.BaseDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- LookupDao: Hibernate implementation -->
+    <bean id="lookupDao" class="com.sageconsulting.dao.hibernate.LookupDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- UserDao: Hibernate implementation -->
+    <bean id="userDao" class="com.sageconsulting.dao.hibernate.UserDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- RoleDao: Hibernate implementation -->
+    <bean id="roleDao" class="com.sageconsulting.dao.hibernate.RoleDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Add new Daos here -->
+
+    <!-- CityDao: Hibernate implementation -->
+    <bean id="cityDao" class="com.sageconsulting.dao.hibernate.CityDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- CourseDao: Hibernate implementation -->
+    <bean id="courseDao" class="com.sageconsulting.dao.hibernate.CourseDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- SeasonDao: Hibernate implementation -->
+    <bean id="seasonDao" class="com.sageconsulting.dao.hibernate.SeasonDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- MatchDao: Hibernate implementation -->
+    <bean id="matchDao" class="com.sageconsulting.dao.hibernate.MatchDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- RegistrationDao: Hibernate implementation -->
+    <bean id="registrationDao" class="com.sageconsulting.dao.hibernate.RegistrationDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- RegistrationEntryDao: Hibernate implementation -->
+    <bean id="registrationEntryDao" class="com.sageconsulting.dao.hibernate.RegistrationEntryDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- BracketEntryDao: Hibernate implementation -->
+    <bean id="bracketEntryDao" class="com.sageconsulting.dao.hibernate.BracketEntryDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+	<!-- PrivateMessageDao: Hibernate implementation -->
+	<bean id="privateMessageDao" class="com.sageconsulting.dao.hibernate.PrivateMessageDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+   
+	<!-- PublicMessageDao: Hibernate implementation -->
+    <bean id="publicMessageDao" class="com.sageconsulting.dao.hibernate.PublicMessageDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+   
+	<!-- TickerMessageDao: Hibernate implementation -->
+    <bean id="tickerMessageDao" class="com.sageconsulting.dao.hibernate.TickerMessageDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- ChampionDao: Hibernate implementaion -->
+    <bean id="championDao" class="com.sageconsulting.dao.hibernate.ChampionDaoHibernate">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- SeasonDao: Hibernate implementation -->
+    <bean id="matchCategoryDao" class="com.sageconsulting.dao.hibernate.MatchCategoryDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>

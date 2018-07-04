@@ -1,0 +1,101 @@
+This is a brief overview of the usual steps to add new features to the application.  It starts
+with defining the objects at the data layer, implementing a service layer and then building
+the UI.
+
+Data Layer
+----------
+The source code for the data layer is in the src/dao part of the code tree.
+
+1) Create the model object in com.sageconsulting.model.  Simple POJO with getters
+   and setters for the data items.  The getters for persistable elements are
+   decorated with XDoclet tags that define how Hibernate is to be used.
+   Example: RegistrationEntry.java
+   
+2) Create the DAO interface which defines which CRUD operations are implemented for
+   the model object.  Interfaces are in the package com.sageconsulting.dao
+   Example: RegistrationEntryDao.java
+   
+3) Create the Hibernate implementation of the interface in the package
+   com.sageconsulting.dao.hibernate.
+   Example: RegistrationEntryDaoHibernate.java
+   
+4) Update the Hibernate configuration which is in the package
+   com.sageconsulting.dao.hibernate.  The file is called
+   applicationContext-hibernate.xml.  You need to add the 
+   new model to the session factory list.  Then create a new
+   bean for the implementation created in step 3.  You can
+   pretty much just copy one of the other instances and
+   change the name to match the name of the class you created
+   in step 3.
+   
+5) If you want to put sample data in the database for testing
+   you can add it in the file metadata/sql/sample-data.xml.
+   There is an ant task that will load that sample data into
+   the database.
+   
+6) I've been pretty lax on creating unit tests recently.  If you
+   want to add them you can.  If not, don't worry about it for 
+   now.  The unit tests that are there are in the test/dao
+   section of the source tree.
+   
+7) At this point the data layers stuff is pretty much done.  You
+   need to run some ant tasks to update the database with your
+   new definitions and generate hibernate files.  I usually just
+   run the ant task called 'setup-db' which recreates the database
+   from scratch and puts the sample data in it.  If that task
+   (or any subtasks) fail then there is probably something wrong
+   with one of the steps above.  Also, make sure you read the
+   deployment and testing section below.
+   
+Service Layer
+-------------
+The service layer is in the src/service part of the code tree.
+
+1) Create the service interface for our new objects created above.  This
+   is usually pretty close to the same as the dao interface (but doesn't
+   have to be).  It is in com.sageconsulting.service.
+   Example: RegistrationEntryManager.java
+   
+2) Create an implementation of the interface in com.sageconsulting.service.impl.
+   This typically has a setter method to take a DAO object which is then
+   used to make requests to the data layer in the implementations of each
+   method.
+   Example: RegistrationEntryManagerImpl.java
+   
+3) Update the Spring configuration in applicationContext-service.xml in
+   the com.sageconsulting.service package.  Just add a new bean definition
+   at the bottom of the page and include any objects you need injected
+   into the bean as parameters.  Just look at all the other ones in
+   there and I think it will be obvious what to do.
+   
+UI Layer
+--------
+The UI is done as JSP pages with Spring MVC controllers.  The jsp pages are 
+in the directory web/pages.  The controllers are in the package
+com.sageconsulting.webapp.action.  The file web/WEB-INF/action-servlet.xml
+is the configuration for the pages.  It associates the controller with
+the jsp page as well as well as maps the url rewriter configuration.  I
+think if you look at the configuration objects in there, you'll be
+able to figure out how to make it work.
+
+The file web/WEB-INF/security.xml maps the roles that are allowed to view
+the page(s).  Take a look at the bean with id filterInvocationInterceptor
+and add your page(s) to the list in that bean.
+
+Deployment and Testing
+----------------------
+You will want to copy steve-build.properties in the project root directory to
+a file that has your login name instead of steve.  For example, if  your
+login account name is tim, then copy steve-build.properties to tim-build.propertes.
+Then change the information in that file to match your system.  Most likely
+you'll just change the password for root on mysql.  You can override any other
+properties you find in properties.xml (or default.properties) for your system
+too if you need to by just adding them to your personal build properties file.
+
+The ant deploy target will do a full build of the project and deploy it to the
+deployment directory specified in your personal build properties file.  There
+is an Eclipse external tool defined in the project that will do that for you.
+
+There is also a launch configuration in the project that will start Tomcat
+so you can run it with or without the debugger from the launch tool in the
+toolbar.

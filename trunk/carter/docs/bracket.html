@@ -1,0 +1,367 @@
+<html>
+<head>
+<style>
+	table {
+		border-width: 0px 0px 0px 0px;
+	}
+	td.noborder {
+		border: hidden;
+	}
+	td.bottomonly {
+		border-left: hidden;
+		border-top: hidden;
+		border-right: hidden;
+		border-bottom: hidden;
+	}
+	td.bottomright {
+		border-left: hidden;
+		border-top: hidden;
+		border-bottom: hidden;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	div.bottomonly {
+		border-bottom:1px solid black;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	div.bottomright {
+		border-bottom:1px solid black;
+		border-right:1px solid black;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	div.bottomleft {
+		border-bottom:1px solid black;
+		border-left:1px solid black;
+		position:relative;
+		left:-1px;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	div.leftonly {
+		border-left:1px solid black;
+		position:relative;
+		left:-1px;
+	}
+	div.toprightbottom
+	{
+		border-left:1px solid black;
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+	}
+	
+	td div {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
+	div.odd {
+		border-right:1px solid black;
+		border-top:1px solid black;
+	}
+	div.even {
+		border-right:1px solid black;
+		border-bottom:1px solid black;
+		position:relative;
+		bottom:-1px;
+	}
+	
+	div.oddleft {
+		border-left:1px solid black;
+		border-right:1px solid black;
+		border-top:1px solid black;
+	}
+	div.evenleft {
+		border-left:1px solid black;
+		border-right:1px solid black;
+		border-bottom:1px solid black;
+		position:relative;
+		bottom:-1px;
+	}
+	div.final {
+		border-bottom:1px solid black;
+	}
+	
+	td.bracket1 {
+		background-color: #CCCCCC;
+		border:1px solid black;
+	}
+	
+	td.bracket2 {
+		background-color: #999999;
+		border:1px solid black;
+	}
+	
+	div.winner {
+		background-color: #CCCCCC;
+		border:1px solid black;
+	}
+	
+</style>
+</head>
+<body>
+
+<table border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td class='bracket1'>
+			<div>player1</div>
+			<div>player16</div>
+		</td>
+		<td class='bracket2' rowspan='2'>
+			<div>player1</div>
+			<div>player8</div>
+		</td>
+		<td class='bracket1' rowspan='4'>
+			<div>player1</div>
+			<div>player4</div>
+		</td>
+		<td class='bracket2' rowspan='8'>
+			<div>player1</div>
+			<div>player2</div>
+		</td>
+		<td rowspan='8'>
+			<div class='winner'>player1</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player8</div>
+			<div>player9</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player5</div>
+			<div>player12</div>
+		</td>
+		<td class='bracket2' rowspan='2'>
+			<div>player5</div>
+			<div>player4</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player4</div>
+			<div>player13</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player6</div>
+			<div>player11</div>
+		</td>
+		<td class='bracket2' rowspan='2'>
+			<div>player6</div>
+			<div>player3</div>
+		</td>
+		<td class='bracket1' rowspan='4'>
+			<div>player3</div>
+			<div>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player3</div>
+			<div>player14</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player7</div>
+			<div>player10</div>
+		</td>
+		<td class='bracket2' rowspan='2'>
+			<div>player7</div>
+			<div>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td class='bracket1'>
+			<div>player2</div>
+			<div>player15</div>
+		</td>
+	</tr>
+</table>
+
+<h2> other </h2>
+
+<table border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td><div class='bottomonly'>player1</div></td>
+		<td rowspan='2'><div class='bottomonly'>player1</div></td>
+		<td rowspan='4'><div class='bottomleft'>player1</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player4</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomonly'>player3</div></td>
+		<td rowspan='2'><div class='bottomright'>player2</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player2</div></td>
+	</tr>
+</table>
+
+<h2> other </h2>
+
+<table border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td><div class='bottomonly'>player1</div></td>
+		<td rowspan='2'><div class='bottomonly'>player1</div></td>
+		<td rowspan='4'><div class='bottomleft'>player1</div></td>
+		<td style='background-color:yellow;' rowspan='8'><div class='bottomleft'>player1</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player4</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomonly'>player3</div></td>
+		<td rowspan='2'><div class='bottomright'>player2</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player2</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomonly'>player1</div></td>
+		<td rowspan='2'><div class='bottomonly'>player1</div></td>
+		<td rowspan='4'><div class='bottomleft'>player1</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player4</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomonly'>player3</div></td>
+		<td rowspan='2'><div class='bottomright'>player2</div></td>
+	</tr>
+	<tr>
+		<td><div class='bottomright'>player2</div></td>
+	</tr>
+</table>
+
+
+<h2> other </h2>
+
+<table border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td>
+			<div class='odd'>player1</div>
+			<div class='even'>player8</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player1</div>
+			<div class='even'>player4</div>
+		</td>
+		<td rowspan='4'>
+			<div class='oddleft'>player1</div>
+			<div class='evenleft'>player2</div>
+		</td>
+		<td rowspan='4'>
+			<div class='final'>player1</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player4</div>
+			<div class='even'>player5</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player3</div>
+			<div class='even'>player6</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player3</div>
+			<div class='even'>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player2</div>
+			<div class='even'>player7</div>
+		</td>
+	</tr>
+</table>
+
+<h2> other </h2>
+
+<table border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td>
+			<div class='odd'>player1</div>
+			<div class='even'>player8</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player1</div>
+			<div class='even'>player4</div>
+		</td>
+		<td rowspan='4'>
+			<div class='oddleft'>player1</div>
+			<div class='evenleft'>player2</div>
+		</td>
+		<td rowspan='8'>
+			<div class='oddleft'>player1</div>
+			<div class='evenleft'>player1</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player4</div>
+			<div class='even'>player5</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player3</div>
+			<div class='even'>player6</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player3</div>
+			<div class='even'>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player2</div>
+			<div class='even'>player7</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player1</div>
+			<div class='even'>player8</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player1</div>
+			<div class='even'>player4</div>
+		</td>
+		<td rowspan='4'>
+			<div class='odd'>player1</div>
+			<div class='even'>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player4</div>
+			<div class='even'>player5</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player3</div>
+			<div class='even'>player6</div>
+		</td>
+		<td rowspan='2'>
+			<div class='odd'>player3</div>
+			<div class='even'>player2</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class='odd'>player2</div>
+			<div class='even'>player7</div>
+		</td>
+	</tr>
+</table>

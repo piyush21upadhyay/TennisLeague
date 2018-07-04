@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" 
+	backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#080800, #080800]"
+	creationComplete="handleCreationComplete();" xmlns:cgl="com.sageconsulting.cgl.controls.*">
+	<mx:Script>
+	<![CDATA[
+		import mx.collections.XMLListCollection;
+		import mx.controls.List;
+		
+		private var currentCity:XMLList;
+		private var divisions:XMLList;
+		
+		private function handleCreationComplete():void
+		{
+			var loader:URLLoader = new URLLoader();
+			var request:URLRequest = new URLRequest("standings.html?format=xml");
+			loader.addEventListener(Event.COMPLETE, handleLoadCompleteEvent);
+			loader.load(request);
+		}
+		
+		private function handleLoadCompleteEvent(event:Event):void
+		{
+			var loader:URLLoader = URLLoader(event.target);
+			var xml:XML = new XML(loader.data);
+			currentCity = xml.child("city");
+			divisions = currentCity.children();
+			divisionChooser.dataProvider = divisions.attribute("name");
+			handleDivisionChange();
+		}
+		
+		private function handleDivisionChange():void
+		{
+			var idx:int = this.divisionChooser.selectedIndex;
+			var division:XML = divisions[idx];
+			this.standingsGrid.dataProvider = division.children();
+		}
+
+	]]>
+	</mx:Script>
+	
+	<mx:Style>
+		
+		.gridHeader {
+			header-background-skin: ClassReference("com.sageconsulting.cgl.styles.LeaderboardHeader");
+			headerBackgroundColor: #6B757B;
+			headerTextColor: #ffffff;
+		}
+		
+		LinkButton {
+			skin: ClassReference("com.sageconsulting.cgl.styles.HyperLink");
+			text-align: left;
+			text-decoration: underline;
+			text-roll-over-color: #ffffff;
+			text-selected-color: #ffffff;
+		}
+	</mx:Style>
+
+	<mx:HBox left="10" fontFamily="arial" fontSize="14" width="100%" top="10" >
+		<mx:HBox height="40" horizontalAlign="left" verticalAlign="top" >
+			<mx:Text text="Portland" id="city" color="#8DA92E"/>
+			<mx:Text text="Division One" id="division" color="#FFFFFF"/>
+			<mx:Text text="Leaderboard" id="leaderboard" color="#FFFFFF"/>
+		</mx:HBox>
+		<mx:HBox width="100%" horizontalAlign="right" right="20">
+			<mx:ComboBox id="divisionChooser" change="handleDivisionChange();"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:DataGrid id="standingsGrid" bottom="10" left="10" right="10" width="100%" height="100%" selectable="false"
+		alternatingItemColors="[0x080800,0x292021]" styleName="gridHeader" sortableColumns="false"
+		verticalGridLineColor="#080800" borderStyle="none" color="#FFFFFF" resizableColumns="false">
+		<mx:columns>
+			<mx:DataGridColumn headerText="POS" dataField="position" width="36"/>
+			<mx:DataGridColumn headerText="NAME" width="160">
+				<mx:itemRenderer>
+					<mx:Component>
+						<mx:LinkButton label="{data.name}">
+							<mx:click>
+								<![CDATA[
+									navigateToURL(new URLRequest("memberdetails.html?msg=false&id="+data.id), "_self");
+								]]>
+							</mx:click>
+						</mx:LinkButton>
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+			<mx:DataGridColumn headerText="HOME COURSE">
+				<mx:itemRenderer>
+					<mx:Component>
+						<mx:LinkButton label="{data.course}">
+							<mx:click>
+								<![CDATA[
+									navigateToURL(new URLRequest("coursedetails.html?id="+data.courseid), "_self");
+								]]>
+							</mx:click>
+						</mx:LinkButton>
+					</mx:Component>
+				</mx:itemRenderer>
+			</mx:DataGridColumn>
+			<mx:DataGridColumn headerText="POINTS" dataField="points" width="60"/>
+			<mx:DataGridColumn headerText="WINS" dataField="wins" width="50"/>
+			<mx:DataGridColumn headerText="LOSSES" dataField="losses" width="60"/>
+			<mx:DataGridColumn headerText="TIES" dataField="ties" width="40"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+</mx:Application>

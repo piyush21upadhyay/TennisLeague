@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.Registration"
+            table="registration"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <property
+            name="displayName"
+                    column="name"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="city"
+                    column="city_id"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <property
+            name="earlyRegistrationStart"
+                    column="early_start"
+        >
+
+        </property>
+
+        <property
+            name="regularRegistrationStart"
+                    column="start"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="registrationEnd"
+                    column="end"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="scheduleState"
+                    column="state"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="earlyRegistrationFee"
+                    column="early_registration_fee"
+        >
+
+        </property>
+
+        <property
+            name="regularRegistrationFee"
+                    column="regular_registration_fee"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

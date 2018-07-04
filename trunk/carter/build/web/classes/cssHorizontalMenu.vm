@@ -1,0 +1,62 @@
+#macro( displayCssMenu $menu )
+  #if ($displayer.isAllowed($menu))
+    ## set menu title
+    #set ($title = $displayer.getMessage($menu.title))
+
+    #if (!$menu.url) #set ($url="javascript:void(0)") #else #set ($url=$menu.url) #end
+
+    ## create a single menu item
+    #if ($menu.components.size() == 0)
+        #if ($menu.name == $currentMenu)
+        	#if ($menu.name == 'About')
+          		<a href="$url" class="first selected">${title}</a>
+        	#elseif ($menu.name == 'Welcome')
+          		<a href="$url" class="first selected">${title}</a>
+        	#elseif ($menu.name == 'Feedback')
+          		<a href="$url" class="first">${title}</a>
+        	#else
+          		<a href="$url" class="selected">${title}</a>
+          	#end
+        #else
+        	#if ($menu.name == 'About')
+	          <a href="$url" class="first">${title}</a>
+        	#elseif ($menu.name == 'Welcome')
+	          <a href="$url" class="first">${title}</a>
+        	#elseif ($menu.name == 'Feedback')
+	          <a href="$url" class="first">${title}</a>
+	        #else
+	          <a href="$url">${title}</a>
+	        #end
+        #end
+    #else ## create multiple menu items in a menu
+        #if ($menu.components.size() > 50)
+            #set ($hasViewableChildren = false)
+            #foreach ($menuIt in $menu.components)
+                #if ($displayer.isAllowed($menuIt))
+                    #set($hasViewableChildren = true)
+                #end
+            #end
+        #end
+		<a href="$url" #if ($menu.name == $currentMenu) class="selected" #end#if($menu.components.size()>0) rel="${title}"#end>${title}</a>
+    #end
+
+    #if ($menu.components.size() > 0)
+		<div id="$title" class="drop-menu">
+        #foreach ($menuIt in $menu.components)
+            #displayCssSubMenu($menuIt)
+        #end
+        </div>
+    #else
+    #end
+  #end
+#end
+
+#macro( displayCssSubMenu $submenu )
+  #if ($displayer.isAllowed($submenu))
+  		#set ($subtitle = $displayer.getMessage($submenu.title))
+	    <a href="$submenu.url" >${subtitle}</a>
+  #end
+#end
+  
+
+#displayCssMenu($menu)

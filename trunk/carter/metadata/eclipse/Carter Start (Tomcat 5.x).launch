@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="ANT_HOME" value="/opt/ant"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;sourceLookupDirector&gt;&#13;&#10;&lt;sourceContainers duplicates=&quot;false&quot;&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;archive detectRoot=&amp;quot;true&amp;quot; path=&amp;quot;/carter/lib/spring-2.0/src/spring-src.zip&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&quot; typeId=&quot;org.eclipse.debug.core.containerType.archive&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;javaProject name=&amp;quot;carter&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&quot; typeId=&quot;org.eclipse.jdt.launching.sourceContainer.javaProject&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;javaProject name=&amp;quot;common&amp;quot;/&amp;gt;&amp;#13;&amp;#10;&quot; typeId=&quot;org.eclipse.jdt.launching.sourceContainer.javaProject&quot;/&gt;&#13;&#10;&lt;container memento=&quot;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; standalone=&amp;quot;no&amp;quot;?&amp;gt;&amp;#13;&amp;#10;&amp;lt;default/&amp;gt;&amp;#13;&amp;#10;&quot; typeId=&quot;org.eclipse.debug.core.containerType.default&quot;/&gt;&#13;&#10;&lt;/sourceContainers&gt;&#13;&#10;&lt;/sourceLookupDirector&gt;&#13;&#10;"/>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.ui.private" value="false"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DATA_COLLECTOR" value="org.eclipse.tptp.trace.ui.jvmpiMechanism:org.eclipse.tptp.analysisType.memoryHeap,org.eclipse.tptp.analysisType.execution,org.eclipse.tptp.analysisType.methodCoverage"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_FILE" value=""/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_MONITOR" value="DefaultMonitor"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_DESTINATION_PROJECT" value="ProfileProject"/>
+<intAttribute key="org.eclipse.hyades.trace.ui.ATTR_EXEC_POLLING_FREQ" value="60"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_EXEC_POLLING_FREQ_MODE" value="true"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILE_TO_FILE" value="false"/>
+<stringAttribute key="org.eclipse.hyades.trace.ui.ATTR_PROFILING_SET" value="tptp-dummy-profiling-set-Carter Start (Tomcat 5.x)"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_SHOW_EXECUTION_FLOW" value="false"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_SHOW_EXEC_BOUNDARY_CLASS" value="false"/>
+<intAttribute key="org.eclipse.hyades.trace.ui.ATTR_SHOW_EXEC_BOUNDARY_CLASS_DEPTH" value="1"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_SHOW_EXEC_CPU_TIME" value="true"/>
+<booleanAttribute key="org.eclipse.hyades.trace.ui.ATTR_SHOW_EXEC_INSTANCES" value="false"/>
+<listAttribute key="org.eclipse.jdt.launching.CLASSPATH">
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.jdt.launching.classpathentry.variableClasspathEntry&quot;&gt;&#13;&#10;&lt;memento path=&quot;3&quot; variableString=&quot;${env_var:CATALINA_HOME}/bin/bootstrap.jar&quot;/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.jdt.launching.classpathentry.variableClasspathEntry&quot;&gt;&#13;&#10;&lt;memento path=&quot;3&quot; variableString=&quot;${env_var:JAVA_HOME}/lib/tools.jar&quot;/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;C:/Program Files/Apache Software Foundation/apache-tomcat-5.5.26/bin/tomcat-juli.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;C:/Program Files/Apache Software Foundation/apache-tomcat-5.5.26/bin/bootstrap.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#13;&#10;"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.apache.catalina.startup.Bootstrap"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-config &quot;${workspace_loc}/carter/build/tomcat-base/conf/server.xml&quot; start"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value=""/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcatalina.home=&quot;${env_var:CATALINA_HOME}&quot; -Djava.endorsed.dirs=&quot;${env_var:CATALINA_HOME}/common/endorsed&quot; -Dcatalina.base=&quot;${workspace_loc}/carter/build/tomcat-base&quot; -Djava.io.tmpdir=&quot;${workspace_loc}/carter/build&quot;"/>
+</launchConfiguration>

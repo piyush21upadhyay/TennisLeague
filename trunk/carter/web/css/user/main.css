@@ -1,0 +1,3321 @@
+@font-face {
+	font-family: "Agenda Bold";
+	src: url('Agenda-Bold.otf');
+}
+
+html, body {
+	margin:0;
+	padding:0;
+	background:#0E0907;
+	color:#fff;
+	font-size:14px;
+	font-family:Helvetica;
+}
+
+p {
+	margin-top:4px;
+	margin-bottom:6px;
+}
+
+.vspace {
+	margin:20px 0px 5px;
+	padding:0px;
+}
+
+p.vspace {
+	margin-top:12px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.right h2
+{
+	padding-top:5px;
+}
+
+.center {
+	text-align:center;
+}
+
+.justify {
+	text-align:justify;
+}
+
+#container {
+	position:relative;
+	margin:0 auto;
+	width:900px;
+	border-left:5px solid #fff;
+	border-right:5px solid #fff;
+	border-bottom:5px solid #fff;
+	font-family:Helvetica;
+	background-color:#23201F;
+}
+
+#container h2.green {
+	color:#8DA92E;
+}
+
+.yellow {
+	color:#FDFBA6;
+}
+
+select {
+	border: 1px solid #000000;
+}
+
+input[type="text"], input[type="password"] {
+	border: 1px solid #000000;
+}
+
+/*
+.txt-orange {
+	color:#ff653f;
+}
+
+.txt-yellow {
+	color:#FDFBA6;
+}
+
+.txt-green {
+	color:#8DA92E;
+}
+*/
+
+span.green, a.green {
+	color:#8DA92E;
+}
+
+h2 {
+	font-size:18px;
+	padding-bottom: 4px;
+}
+
+h3 {
+	font-size:16px;
+	padding-bottom: 4px;
+}
+
+h4 {
+	font-size:12px;
+	padding-bottom: 4px;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+a {
+	color:#fff;
+	text-decoration:underline;
+	font-weight:bold;
+	line-height:20px;
+	font-size:12px;
+	text-transform:none;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+a.msg-link {
+	color:#8DA92E;
+	text-decoration:underline;
+	font-weight:bold;
+	line-height:20px;
+	font-size:12px;
+	text-transform:none;
+}
+
+a.msg-link:hover {
+	text-decoration:none;
+}
+
+a.course-link {
+	color:#ab3213;
+	text-decoration:underline;
+	font-weight:bold;
+	line-height:20px;
+	font-size:12px;
+	text-transform:none;
+}
+
+a.course-link:hover {
+	text-decoration:none;
+}
+
+strong {
+	font-weight:bold;
+}
+
+.std-pad {
+	padding: 10px 10px;
+}
+
+div.error, div.message {
+   font-size: 16px;
+   color: #FDFBA6;
+   font-weight: bold;
+   margin: 20px 20px;
+   text-transform: none;
+   text-align: center;
+   color: #FF0000;
+}
+
+#container > div.message {
+	margin-bottom:150px;
+}
+
+div.error img.icon, div.message img.icon {
+	display: none;
+	/*
+   border: 0 !important;
+   width: 18px;
+   height: 17px;
+   vertical-align: middle;
+   margin-left: 3px;
+   background: transparent;
+   */
+}
+
+div.message a, div.error a {
+	color: #FF0000;
+	font-size: 16px;
+}
+
+div.err-space {
+	padding:0;
+	height:500px;
+}
+
+div.section {
+	clear:both;
+	padding: 20px 20px;
+}
+
+div.subsection {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+h2.page-title {
+	color:#fff;
+	font-size:20px;
+}
+
+h2.page-title span {
+	color:#8DA92E;
+}
+
+div.clear {
+	clear:both;
+}
+
+#top-nav {
+	width:100%;
+	height:40px;
+	background-color:#fff;
+}
+
+#top-nav a {
+	font-size:10px;
+	font-weight:bold;
+	color:#828f99;
+	background-color:transparent;
+	padding:0px 10px 0 10px;
+	border-left:1px solid #828f99;
+	text-decoration:none;
+}
+
+#top-nav a.first {
+	border-left:none;
+}
+
+#top-nav a:hover {
+	color:#99cc00;
+}
+
+#login-nav {
+	background-image:url(../../images/login.gif);
+	background-repeat:no-repeat;
+	width:85px;
+	height:27px;
+	padding:0;
+	float:right;
+}
+
+#login-nav:hover {
+	background-image:url(../../images/loginOver.gif);
+}
+
+#login-nav a {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}
+
+#login-nav a:hover {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}	
+
+#signup-nav {
+	background-image:url(../../images/signUp.gif);
+	background-repeat:no-repeat;
+	width:85px;
+	height:27px;
+	padding:0;
+	float:right;
+}
+
+#signup-nav:hover {
+	background-image:url(../../images/signUpOn.gif);
+}
+
+#signup-nav a {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}
+
+#signup-nav a:hover {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}	
+
+#logout-nav {
+	background-image:url(../../images/logout.gif);
+	background-repeat:no-repeat;
+	width:170px;
+	height:27px;
+	padding:0;
+	float:right;
+}
+
+#links
+{
+	display:inline-block;
+	margin-right: 5px;
+}
+
+#links img
+{
+	display:inline-block;
+}
+
+#links a
+{
+	padding:0px;
+	border:0px none;
+}
+
+#logout-nav:hover {
+	background-image:url(../../images/logoutOver.gif);
+}	
+
+#logout-nav a {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}	
+
+#logout-nav a:hover {
+	font-size:12px;
+	font-weight:bold;
+	font-variant:small-caps;
+	color:#fff;
+	line-height:25px;
+	border-left-width:0;
+	display:block;
+	text-align:center;
+	height:100%;
+}	
+
+#header {
+	height:45px;
+	background-color:#fff;
+	background-image:url(../../images/mainHeaderImage.jpg);
+	background-repeat:no-repeat;
+	background-position:bottom;
+	font-size:22px;
+	color:#8DA92E;
+	padding:30px 0 0 20px;
+}
+
+#main-nav {
+	height:25px;
+	width:100%;
+	background:url(../../images/mid-hdr-grad.gif) top left repeat-x;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #fff;
+	line-height:24px;
+	text-transform:uppercase;
+	text-align:center;
+}
+
+#main-nav a {
+	font-size:13px;
+	font-weight:bold;
+	color:#fff;
+	background-color:transparent;
+	padding:4px 9px 5px 9px;
+	line-height:25px;
+	border-left:1px solid #000;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+#main-nav a.first {
+	border-left:none;
+}
+
+#main-nav a:hover, a.selected {
+	background:url(../../images/mid-hdr-grad-ovr.gif) top left repeat-x;
+}
+
+#main-nav .drop-menu {
+	position:fixed;
+	top: 0;
+	border: 1px solid #B5E2FE;
+	border-bottom-width: 0;
+	line-height:18px;
+	z-index:100;
+	background: none;
+	background-color: white;
+	width: 300px;
+	visibility: hidden;
+}
+
+#main-nav .drop-menu a {
+	width: 100%;
+	display: block;
+	text-indent: 3px;
+	border-bottom: 1px solid #B5E2FE;
+	padding: 2px 0;
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+#main-nav .drop-menu a:hover {
+	text-align: left;
+	background: none;
+	background-color: #EBF7FF;
+}
+
+#news-ticker {
+	font-size:12px;
+	font-weight:bold;
+	padding-top:3px;
+	width:100%;
+	height:24px;
+	background-color:#23201F;
+	color:#ab3213;
+}
+
+#onecol {
+	width:100%;
+	padding:20px;
+}
+
+#twocol-left {
+	float:left;
+	width:660px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+#twocol-right {
+	float:right;
+	width:220px;
+}
+
+.threecol {
+	float:left;
+	width:253px;
+	margin:0 10px 10px 10px;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	line-height:20px;
+}
+
+.threecolw {
+	float:left;
+	width:264px;
+	margin:0 5px 10px;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	line-height:20px;
+}
+
+.threecol-frame {
+	float:left;
+	width:253px;
+	background-color:#000;
+	margin:0 10px 10px 10px;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	line-height:20px;
+}
+
+.threecol-scroll {
+	float:left;
+	width:247px;
+	background-color:#000;
+	margin:0 10px 10px 10px;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	line-height:20px;
+}
+
+.pick-available {
+	float:left;
+	width:84px;
+}
+
+.pick-buttons {
+	float:left;
+	padding-left:4px;
+	padding-right:4px;
+	width:72px;
+}
+
+.pick-buttons button {
+	width:72px;
+}
+
+.pick-selected {
+	float:left;
+	width:84px;
+}
+
+.pick-selected select {
+	width:100% !important;
+	height:100px !important;
+}
+
+.pick-available select {
+	width:100% !important;
+	height:100px !important;
+}
+
+table {
+	/*width:100%;*/
+}
+
+caption {
+	color:#828f99;
+	font-size:16px;
+	margin-top:16px;
+	margin-bottom:8px;
+}
+
+thead {
+	color:#fff;
+	background-color:#000;
+}
+
+tr.odd {
+	background:transparent none repeat scroll 0 0;
+}
+
+tr.even {
+	background:#18100D none repeat scroll 0 0;
+}
+
+th {
+	/*text-align:center;*/
+	padding:4px;
+}
+
+td {
+	/*text-align:center;*/
+	padding:4px;
+}
+
+td a {
+	color:#fff;
+}
+
+table.messages {
+	width:250px;
+	table-layout:fixed;
+}
+
+table.messages td {
+	white-space:nowrap;
+	overflow:hidden;
+}
+
+table.messages td a {
+	font-weight:normal;
+}
+
+#footer {
+	clear:both;
+	width:100%;
+	height:40px;
+	background-image:url(../../images/footer.jpg);
+}
+
+#footer a {
+	color:#fff;
+	font-size:13px;
+	font-weight:bold;
+	padding:0 10px 0 10px;
+	line-height:40px;
+	background-color:transparent;
+	border-left:1px solid #fff;
+	text-decoration:none;
+}
+
+#footer a.first {
+	border-left:none;
+}
+	
+
+#footer a:hover {
+	color:#8DA92E;
+	text-transform:none;
+}
+
+#footer span.copyright
+{
+	float:right;
+	padding:13px 40px;
+	font-weight:bolder;
+}
+
+#copyright {
+	color:#999;
+	text-align:center;
+}
+
+a.fill {
+	width:100%;
+}
+
+a.squarebutton {
+	background:transparent url('../../images/square-gray-left.gif') no-repeat top left;
+	display:block;
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	line-height:15px;
+	height:20px;
+	padding-left:9px;
+	text-decoration:none;
+}
+
+a:link.squarebutton, a:visited.squarebutton, a:active.squarebutton {
+	color:#fff;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+
+a.squarebutton span {
+	background:transparent url('../../images/square-gray-right.gif') no-repeat top right !important;
+	padding:5px 9px 4px 0 !important;
+	color:#fff !important;
+	text-decoration:none !important;
+	text-align:center;
+	display:block;
+}
+
+a.squarebutton:hover {
+	background-position:bottom left;
+	text-decoration:none;
+}
+
+a.squarebutton:hover span {
+	background-position:bottom right !important;
+	color:#fff !important;
+	text-decoration: none !important;
+	text-align:center;
+	display:block;
+}
+
+a.squarebutton-register {
+	background:transparent url('../../images/square-gray-left.gif') no-repeat top left;
+	display:block;
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	line-height:15px;
+	height:20px;
+	padding-left:9px;
+	background-position:bottom left;
+	text-decoration:none;
+}
+
+a.squarebutton-register span {
+	background:transparent url('../../images/square-gray-right.gif') no-repeat top right !important;
+	padding:5px 9px 4px 0 !important;
+	color:#fff !important;
+	text-decoration:none !important;
+	text-align:center;
+	display:block;
+	background-position:bottom right !important;
+	text-transform:uppercase;
+}
+
+.buttonwrapper {
+	overflow:hidden;
+}
+
+#profile .buttonwrapper {
+	float:right;
+}
+
+.buttons .left {
+	margin-right:10px;
+}
+
+.buttons p {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+/* ========== default.jsp =========*/
+#main {
+	width:1000px;
+	height:665px;
+	margin:4px auto;
+	background-color:#0E0907;
+	background:#000 url(../../images/defaultbg.jpg) top left no-repeat; 
+}
+
+#content {
+	position:relative;
+	left:435px;
+	top:0px;
+	width:490px;
+	height:315px;
+}
+
+#content h1 {
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+	margin:10px auto;
+}
+
+#content h2 {
+	font-size:24px;
+	font-weight:bold;
+	text-align:center;
+	margin:10px auto;
+}
+
+#content h3 {
+	font-size:18px;
+	font-weight:bold;
+	text-align:left;
+	color:#ff7f00;
+	margin:10px 80px;
+}
+
+#content p {
+	font-size:14px;
+	text-align:left;
+	margin:10px 80px;
+}
+
+#content ul {
+	font-size:12px;
+	text-align:left;
+	margin:4px 100px;
+}
+
+#content a {
+	text-decoration:none;
+}
+
+.panel {
+    position:absolute;
+    width:490px;
+    height:315px;
+    left:0;
+    top:0;
+	background:transparent url(../../images/dialogbg.jpg) top left no-repeat; 
+}
+
+#login-panel #login-section {
+	margin-top:30px;
+}
+
+.login-element {
+	width:270px;
+	margin:4px auto;
+}
+
+.login-element label {
+	display:inline-block;
+	padding-top:4px;
+	white-space:nowrap;
+	float:left;
+}
+
+.login-element input[type="text"], .login-element input[type="password"] {
+	width:160px;
+	border:solid 1px #000;
+	margin-bottom:8px;
+	float:right;
+}
+
+#remember-me-label {
+	padding-top:3px;
+	float:right;
+}
+
+#login-panel #forgot-password {
+	display:inline-block;
+	margin:20px;
+	text-decoration:none;
+}
+
+.push-button {
+	cursor:pointer;
+	background:#ff7f00;
+	color:#fff;
+	text-transform:uppercase;
+	border:solid 1px #fff;
+	width:90px;
+	margin:15px 0 0 10px;
+	font-weight:bold;
+	padding-top:3px;
+	padding-bottom:2px;
+	text-align:center;
+}
+
+.img-button {
+	cursor:pointer;
+	color:#fff;
+	margin:25px 10px 0;
+	font-weight:bold;
+}
+
+.img-button img {
+	margin-bottom:5px;
+}
+
+.img-button div {
+	text-align:center;
+}
+
+#goto-demo {
+	margin-left:50px;
+}
+
+#goto-site {
+	margin-right:50px;
+}
+
+#signup-panel button {
+	margin:40px 200px 0;
+}
+
+#enter-panel button {
+	margin:40px 200px 0;
+}
+
+#demo-panel {
+	position:relative;
+	width:900px;
+	height:450px;
+	margin:0 auto;
+	top:-200px;
+}
+
+#demo-movie {
+	width:900px;
+	height:450px;
+	border:1px solid #ff7f00;
+}
+
+a.inactive-city {
+	color:#ccc;
+}
+
+
+/* ========== home.jsp ========== */
+
+#home #twocol-left, #twocol-right {
+	margin-left:0;
+	margin-right:0;
+	padding-left:10px;
+}
+
+#home p {
+	font-size:12px;
+	line-height:16px;
+	margin-bottom:18px;
+}
+
+#header-home {
+	background-image:url(../../images/homePageHdr.jpg);
+	height:150px;
+	width:100%;
+}
+
+#header-home-none
+{
+	background-image:url(../../images/homePageHdrNone.jpg);
+	height:150px;
+	width:100%;
+}
+
+#header-home-text {
+	margin-left:700px;
+	padding-top:20px;
+	width:180px;
+	height:110px;
+	font-weight:bold;
+}
+
+.count-down {
+	text-align:center;
+}
+
+.count-down-days {
+	font-size:70px;
+	text-align:center;
+}
+
+#birdie-challenge {
+	background-image:url(../../images/homeBirdieChallenge.jpg);
+	width:623px;
+	height:162px;
+	margin-top:20px;
+	padding: 10px;
+	font-family:"Agenda Bold", sans-serif;
+}
+
+#birdie-challenge div.city-name
+{
+	margin-left:10px;
+	margin-top:26px;
+	font-weight:bold;
+	font-size:58px;
+	overflow:hidden;
+    width:420px;
+    height:63px;
+}
+
+#birdie-challenge div.left-msg
+{
+	margin-left:10px;
+	font-weight:bold;
+	font-size:35px;
+	width: 440px;
+	height: 36px;
+	overflow: hidden;
+}
+
+#birdie-challenge div.right-msg-1
+{
+	margin-top:-150px;
+	margin-right:10px;
+	font-size:35px;
+	float:right;color:#000;
+}
+
+#birdie-challenge div.right-msg-2
+{
+	margin-top:-113px;
+	margin-right:10px;
+	font-weight:bold;
+	font-size:35px;
+	float:right;
+}
+
+#birdie-challenge div.right-msg-3
+{
+	margin-top:-80px;
+	margin-right:10px;
+	font-weight:bold;
+	font-size:60px;
+	float:right;
+}
+
+#birdie-challenge div.right-msg-4
+{
+	margin-top:-20px;
+	margin-right:10px;
+	font-size:18px;
+	float:right;
+	color:#c2fc00;
+}
+
+#home-info {
+	float:left;
+	width:45%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#home-info h2 {
+	color:#FDFBA6;
+	margin-top:12px;
+}
+
+#home h3 {
+	font-size:13px;
+	font-weight:bold;
+	padding-bottom:0;
+}
+
+#home caption {
+	color:#676767;
+	font-size:13px;
+	font-weight:bold;
+	padding-bottom:0;
+}
+
+#home-info h3 {
+	padding-left:4px;
+	padding-top:10px;
+}
+
+#home-info img {
+	vertical-align:sub;
+}
+
+#home-msgbrd {
+	float:right;
+	width:50%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#home-msgbrd h3 {
+	padding-left:4px;
+	padding-top:10px;
+}
+
+#home-msgbrd img {
+	vertical-align:sub;
+}
+
+#home-msgbrd .nomessages {
+	margin-top:10px;
+}
+
+#home-msgbrd table {
+	margin-top:15px;
+}
+
+#home-leaderboard {
+	padding:20px 14px 20px 20px;
+	background:#fff url(../../images/home-leaderboard-top.jpg) top left no-repeat;
+	height:340px;
+}
+
+#home-leaderboard h2 {
+	color:#ff653f;
+}
+
+#home-leaderboard h3 {
+	color:#000;
+}
+
+#home-leaderboard table {
+	width:100%;
+	margin-bottom:10px;
+	border:1px solid #828F98;
+	font-size:11px;
+	margin-top:8px;
+}
+
+#home-leaderboard tr {
+	color:#676767;
+}
+
+#home-leaderboard tr.odd {
+	background-color:#fff;
+}
+
+#home-leaderboard tr.even {
+	background-color:#e3e3e3;
+}
+
+#home-leaderboard th {
+	text-align:center;
+	padding:2px;
+	background:#828F98 none repeat scroll 0 0;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+#home-leaderboard td {
+	text-align:center;
+	padding:3px 5px;
+}
+
+#leaderboard-form {
+	margin-top:10px;
+	text-align:center;
+}
+
+#home-sponsors {
+	padding:20px 14px 20px 20px;
+	background-color:#fff;
+	height:250px;
+}
+
+#home-weather {
+	padding:20px 14px 20px 20px;
+	background:#fff url(../../images/home-leaderboard-btm.jpg) bottom left no-repeat;
+	height:750px;
+}
+
+.ldrBrdWeatherHdr {
+	color:#ff653f;
+	font-size:18px;
+}
+
+.ldrBrdWthr{
+	margin-top:8px;
+	background-color:#EEEEEE;
+	border-style:none;
+	height:145px;
+	width:144px;
+	padding:20px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
+}
+
+.ldrBrdWthrImg{
+	text-align: center;
+}
+
+.ldrBrdWthrToday{
+	margin-bottom:5px;
+	color:#505050;
+	font-weight:bold;
+	text-align: center;
+}
+
+.ldrBrdWthrHiLow{
+	color:#909090;
+	text-align: center;
+}
+
+#leaderboard-form #division {
+	color:#676767;
+	font-size:11px;
+	margin-top:10px;
+	width:100%;
+	border:default;
+}
+
+/* ========== profile.jsp ========== */
+#profile {
+	background-color:#23201F;
+	margin-top:20px;
+	margin-left:10px;
+	margin-right:10px;
+	min-height:680px;
+}
+
+#profile .threecol {width:215px;}
+#profile .threecol + .threecol {width:291px;}
+#profile .threecol + .threecol + .threecol {width:253px;}
+
+#profile h4 {
+	color:#FDFBA6;
+}
+
+#profile p {
+	margin-top:0;
+	margin-bottom: 2px;
+}
+
+#profile .msg-link {
+	color:#ab3213;
+}
+
+.profile-caption {
+	float: left;
+	padding-left:6px;
+	margin-top: 8px;
+}
+
+#profile .birdies {
+	font-weight:bold;
+	font-size:12px;
+	margin-top:-80px;
+	width:817px;
+	float:left;
+}
+
+#profile .birdies .right {
+	position:absolute;
+	top:50px;
+	right:0px;
+}
+
+#profile .points {
+	color:#8DA92E;
+}
+
+#profile .birdies .total {
+	float:left;
+	width:85px;
+	padding-top:5px;
+	color:#FDFBA6;
+}
+
+#profile .birdies .points {
+	float:left;
+	width:60px;
+	padding-top:5px;
+}
+
+#profile .birdies .images {
+	float:left;
+	width:420px;
+	overflow:none;
+	height:auto;
+	margin:10px 0px;
+}
+
+/*.birdies .images img {
+	position:absolute;
+	top:-50px;
+	left:200px;
+}
+/* Row 1 */
+/*.birdies .images img {left:320px;}  
+.birdies .images img + img {left:355px;}
+.birdies .images img + img + img {left:390px;}
+/* Row 2 */
+/*.birdies .images img + img + img + img {top:-20px; left:305px;} 
+.birdies .images img + img + img + img + img {left:340px;}
+.birdies .images img + img + img + img + img + img {left:375px;}
+.birdies .images img + img + img + img + img + img + img {left:410px;}
+ /* Row 3 */
+/*.birdies .images img + img + img + img + img + img + img + img {top:10px; left:290px;}
+.birdies .images img + img + img + img + img + img + img + img + img {left:325px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img {left:360px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img {left:395px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img {left:430px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img {left:465px;}
+ /* Row 4 */
+/*.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img {top:40px; left:300px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:335px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:370px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:405px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:440px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:475px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:510px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:545px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:580px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:615px;}
+/* Row 5 */
+/*.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {top:70px; left:300px;} 
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:335px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:370px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:405px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:440px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:475px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:510px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:545px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:580px;}
+.birdies .images img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img + img {left:615px;}
+ 
+/* ========== profile.jsp ========== */
+.msguser {
+	margin:20px 0;
+	padding:10px;
+	background-color:#000;
+	width:280px;
+	height:170px;
+}
+
+.compose {
+	margin:20px 0;
+}
+
+.compose h3 {
+	width:480px;
+}
+
+.compose label {
+	display:block;
+	color:#8DA92E;
+	margin-bottom:4px;
+}
+
+.compose input {
+	display:block;
+	margin-bottom:10px;
+	width:230px;
+}
+
+.compose textarea {
+	display:block;
+	width:485px;
+	height:125px;
+	margin-bottom:10px;
+	overflow-y:scroll;
+	resize:none;
+}
+
+/* ========== inobox.jsp ========== */
+
+#inbox {
+	margin-bottom:20px;
+	width:460px;
+}
+
+#inbox h2 {
+	margin-left:6px;
+	padding-top:6px;
+}
+
+#inbox h3 {
+	margin-left:6px;
+	padding-top:6px;
+}
+
+#inbox table {
+	margin:10px 0;
+	width:100%;
+}
+
+#inbox td {
+	white-space:nowrap;
+}
+
+#inbox td a {
+	font-weight:normal;
+}
+
+.messages td.unread {
+    color: #FFA500  !important;
+	font-weight:bold !important;
+}
+
+.messages td.unread a {
+    color: #FFA500 !important;
+	font-weight:bold !important;
+}
+
+#inbox-message {
+	margin-bottom:20px;
+	width:360px;
+	margin-top:39px;
+}
+
+#msg-div{
+	margin:20px 0px 10px 0px;
+	width:320px;
+}
+
+#msg-div h2{
+	font-weight:bold;
+}
+
+#msg-div #msg{
+	color:#fff;
+	background-color:#000;
+	height:80px;
+	padding:10px;
+	overflow-y:auto;
+}
+
+#inbox-message #msgheader {
+	background-color:#FDFBA6;
+	padding:5px;
+	border-radius:4px;
+}
+
+#inbox-message #msgheader h2 {
+	color:#000;
+	padding:2px;
+}
+
+#inbox-message h3 {
+	color:#000;
+	padding:2px;
+	font-size:14px;
+}
+
+#inbox-message #msg {
+	background-color:#000;
+	color:#fff;
+	padding:10px;
+	height:120px;
+	overflow-y:scroll;
+}
+
+#inbox #banner {
+	margin-bottom:10px;
+}
+
+#inbox #navigator {
+	margin-bottom:10px;
+}
+
+/* ========== msgboard.jsp ===========*/
+
+.msgboard-section {
+	clear:both;
+	padding: 20px 20px;
+	min-height:660px;
+}
+
+.post {
+	margin:20px 0;
+}
+
+.post h3 {
+	width:240px;
+}
+
+.post label {
+	display:block;
+	color:#8DA92E;
+	margin-bottom:4px;
+}
+
+.post input {
+	display:block;
+	margin-bottom:10px;
+	width:342px;
+}
+
+.post textarea {
+	display:block;
+	width:340px;
+	height:100px;
+	margin-bottom:10px;
+	overflow-y:auto;
+    resize:none;
+}
+
+#sent-message{
+	font-family:inherit;
+	font-size:17px;
+	color:#fff;
+	width:350px;
+    padding-top:6px;
+}
+
+/* ========== courses.jsp ========== */
+
+.course-section {
+	margin-left:10px;
+	margin-right:10px;
+	min-height:640px;
+}
+
+.course-section h2 {
+	color:#FDFBA6;
+}
+
+/* ========== coursedetails.jsp ========== */
+.course-phones {
+	margin-right:63px;
+}
+
+.course-phones h2 {
+	text-align:right;
+	color:#FDFBA6;
+	font-weight:normal;
+}
+
+/* ========== schedule.jsp ========== */
+
+#schedule-none {
+	text-align:right;
+	color:#ff3300;
+	font-size:13px;
+	text-transform:uppercase;
+	width:600px;
+	font-weight:bold;
+}
+
+#search {
+	margin-right: 38px;
+}
+
+table.schedule {
+	margin-bottom:20px;
+}
+
+.search-row {
+	float:left;
+	height:60px;
+	padding-bottom:20px;
+}
+.search-col {
+	height:50%;
+	padding:0 5px;
+	line-height:28px;
+}
+
+.search-col h4 {
+	color:#FDFBA6;
+	padding-top:8px;
+}
+
+.search-col input[type="checkbox"]
+{
+	margin-top:7px;
+}
+
+div.member-section {
+	clear:both;
+	height:580px;
+	margin-top:20px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom:20px;
+	overflow:auto;
+	overflow-y:scroll;
+}
+
+div.champion-section {
+	clear:both;
+	min-height:620px;
+	margin-top:20px;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom:20px;
+	overflow:auto;
+}
+
+div.champion-section .threecol-frame .left img {
+	margin-bottom:11px;
+}
+
+div.champion-section div.threecol-frame {
+	position:relative;
+}
+
+div.champion-section div.threecol-frame div.buttonwrapper {
+	position:absolute;
+	margin-top:22px;
+	left:200px;
+}
+
+div.member-section p {
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+/* ========== results.jsp ========== */
+#result-members {
+	margin:13px 10px 0px;
+	height:202px;
+}
+#matchForm .buttons a.msg-link {
+	display:block;
+	width:90px;
+	margin-top:8px;
+	padding:2px 0px;
+	color:#ab3213;
+}
+
+/* Played Info Form */
+.ui-datepicker-trigger {
+	vertical-align:top;
+}
+#played-info {
+	height:30px;
+}
+#played-info input {
+	height:18px;
+}
+#played-info select#course {
+	margin-right:25px;
+}
+#played-info .ui-datepicker-trigger {
+	width:0px;
+}
+#played-info input:hover + .ui-datepicker-trigger, #played-info .ui-datepicker-trigger:hover {
+	width:26px;
+}
+
+/* Player Boxes */
+#result-members h3 {
+	color:#FDFBA6;
+	font-size:13px;
+	font-weight:bold;
+	margin-bottom:8px;
+}
+#result-members .threecol {
+	padding:0px;
+	margin:0px 10px;
+	background:none;
+	width:280px;
+}
+#result-members .player-info {
+	background:#000000;
+	padding:10px;
+	position:relative;
+	width:260px;
+}
+#result-members .player-info .right {
+	position:absolute;
+	top:28px;
+	right:10px;
+}
+/* Didn't add this HTML so this is useless */
+/*#result-members .player-info table {
+	width:200px;
+	border-collapse:collapse;
+}
+#result-members .player-info table td {
+	padding:0px;
+	vartical-align:top;
+}
+#result-members .player-info table td .buttonwrapper{
+	float:right;
+}*/
+#result-members .player-info h3 {
+	color:#feff99;
+	font-size:14px;
+	margin:0px;
+	padding:0px;
+	float:left;
+	font-weight:bold;
+	position:absolute;
+	top:35px;
+	left:60px;
+}
+#result-members .player-info img {
+	padding:0px 5px 6px 0px;
+	margin:0px;
+}
+
+/* ========== viewresults.jsp ========== */
+#view-back {
+	float:left;
+	margin-bottom:20px;
+}
+
+.left.userInfo h2 {
+	display:none;
+}
+
+/* ========== standings.jsp ========== */
+#standings-container {
+	margin: 35px 30px 35px;
+	width:620px;
+}
+
+#standings-scroller {
+	/*overflow:auto;*/
+	overflow-y:scroll;
+	height:334px;
+}
+
+#standings-container table {
+	width:600px;
+}
+
+/* Center text and give standard padding */
+#standings-container table td, #standings-container table th {
+	text-align:center;
+	padding:4px;
+}
+#standings-container table thead {
+	background:none;
+}
+/* TH tags */
+#standings-container table th {
+	padding:6px 4px 15px;
+	font-size:18px;
+	font-weight:bold;
+	color:#18100d;
+	background:none;
+	text-transform:uppercase;
+	background:url(../../images/heading_standings_column.jpg) no-repeat left top;
+}
+#standings-container table th.first {
+	background:url(../../images/heading_standings_left.jpg) no-repeat left top;
+}
+#standings-container table th.last {
+	width:57px;
+	background:url(../../images/heading_standings_right.jpg) no-repeat right top;
+}
+/* First Row, Red */
+#standings-container table .first-row, #standings-container table .first-row a, #standings-container table .first-row a:link {
+	color:#ff3300;
+}
+/* Use borders on table cells to simulate seing background */
+#standings-container table .even td, #standings-container table .odd td {
+	border-left:2px solid #23201f;
+	border-right:2px solid #23201f;
+	background:#000000;
+	padding:3px 4px;
+	height:14px;
+}
+#standings-container table .even td {
+	background:#23201f;
+}
+
+/* Column Widths */
+#standings-container td.pos {width:36px;} /* 1st */
+#standings-container td.player {width:96px;} /* 2nd */
+#standings-container td.course {width: 156px;} /* 3rd */
+#standings-container td.points {width: 63px;} /* 4th */
+#standings-container td.wins {width: 43px;} /* 5th */
+#standings-container td.losses  {width: 68px;} /* 6th */
+#standings-container td.ties {width: auto;} /* Rest */
+/*#standings-container table tr td {width:36px;} /* 1st */
+/*#standings-container table tr td + td {width:96px;} /* 2nd */
+/*#standings-container table tr td + td + td {width: 156px;} /* 3rd */
+/*#standings-container table tr td + td + td + td {width: 63px;} /* 4th */
+/*#standings-container table tr td + td + td + td + td {width: 43px;} /* 5th */
+/*#standings-container table tr td + td + td + td + td + td  {width: 68px;} /* 6th */
+/*#standings-container table tr td + td + td + td + td + td + td {width: auto;} /* Rest */
+
+#standings-container table .pos {
+	width: 40px;
+}
+#standings-container table .player {
+	width: 100px;
+}
+#standings-container table .course {
+	width: 160px;
+}
+
+/*
+#standings-container table .points {
+	width: 40px;
+}
+
+#standings-container table .wins {
+	width: 40px;
+}
+
+#standings-container table .losses {
+	width: 40px;
+}
+
+#standings-container table .ties {
+	width: 40px;
+}
+*/
+
+.playoffs-counter {
+	position:absolute;
+	right:25px;
+	top:230px;
+	width:130px;
+	height:73px;
+	padding:37px 70px 0px 0px;
+	color:#ffffff;
+	font-size:63px;
+	font-weight:bold;
+	line-height:63px;
+	text-shadow: 2px 2px 2px #222;
+	background:url(../../images/playoffs_begin.gif);
+}
+
+.playoffs-counter-number {
+	text-align:right;
+}
+
+/* ========== record.jsp ========== */
+
+div.record-section {
+	float:left;
+	padding: 20px 20px;
+	width:630px;
+	height:379px;
+	margin-bottom:20px;
+	/*overflow:auto;*/
+	overflow-y:scroll;
+}
+
+div.record-section .match {
+	padding:10px 0;
+}
+
+.userInfo .user {
+	color:#FCF9B4;
+	font-size:18px;
+}
+.userInfo .season {
+	color:#9dc227;
+	font-weight:bold;
+	font-size:12px;
+}
+.userInfo .division {
+	color:#fcf9b4;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.match p {
+	color:#FCF9B4;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+/* ========== playoffs.jsp ========== */
+
+#bracket-container {
+	background:url(../../images/rounds.gif) no-repeat left top;
+	padding-top:40px;
+	margin-top:20px;
+	margin-left:16px;
+	margin-top:30px;
+	width:860px;
+	height:600px;
+}
+
+#bracket {
+	width:860px;
+	height:400px;
+	position:absolute;
+	background:transparent url(../../images/bracket.gif) repeat scroll 0 0;
+}
+
+#bracket div {
+	position:absolute;
+}
+
+#bracket #trophy {
+	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
+	top:12px;
+	left:392px;
+	width:71px;
+	height:71px;
+}
+
+#r1m1p1 {
+	top:15px;
+	left: 8px;
+}
+
+#r1m1p2 {
+	top:65px;
+	left:8px;
+}
+
+#r1m2p1 {
+	top:105px;
+	left:8px;
+}
+
+#r1m2p2 {
+	top:155px;
+	left:8px;
+}
+
+#r1m3p1 {
+	top:195px;
+	left:8px;
+}
+
+#r1m3p2 {
+	top:245px;
+	left:8px;
+}
+
+#r1m4p1 {
+	top:285px;
+	left:8px;
+}
+
+#r1m4p2 {
+	top:335px;
+	left:8px;
+}
+
+#r1m5p1 {
+	top:15px;
+	left:768px;
+}
+
+#r1m5p2 {
+	top:65px;
+	left:768px;
+}
+
+#r1m6p1 {
+	top:105px;
+	left:768px;
+}
+
+#r1m6p2 {
+	top:155px;
+	left:768px;
+}
+
+#r1m7p1 {
+	top:195px;
+	left:768px;
+}
+
+#r1m7p2 {
+	top:245px;
+	left:768px;
+}
+
+#r1m8p1 {
+	top:285px;
+	left:768px;
+}
+
+#r1m8p2 {
+	top:335px;
+	left:768px;
+}
+
+#r2m1p1 {
+	top:42px;
+	left:118px;
+}
+
+#r2m1p2 {
+	top:132px;
+	left:118px;
+}
+
+#r2m2p1 {
+	top:222px;
+	left:118px;
+}
+
+#r2m2p2 {
+	top:312px;
+	left:118px;
+}
+
+#r2m3p1 {
+	top:42px;
+	left:644px;
+}
+
+#r2m3p2 {
+	top:132px;
+	left:644px;
+}
+
+#r2m4p1 {
+	top:222px;
+	left:644px;
+}
+
+#r2m4p2 {
+	top:312px;
+	left:644px;
+}
+
+#r3m1p1 {
+	top:88px;
+	left:228px;
+}
+
+#r3m1p2 {
+	top:268px;
+	left:228px;
+}
+
+#r3m2p1 {
+	top:88px;
+	left:534px;
+}
+
+#r3m2p2 {
+	top:268px;
+	left:534px;
+}
+
+#r4m1p1 {
+	top:142px;
+	left:338px;
+}
+
+#r4m1p2 {
+	top:192px;
+	left:422px;
+}
+
+#champion {
+	top:300px;
+	left:330px;
+	width:202px;
+}
+
+#r1m1p1 a {
+	text-decoration:none;
+}
+
+#r1m1p2 a {
+	text-decoration:none;
+}
+
+#r1m2p1 a {
+	text-decoration:none;
+}
+
+#r1m2p2 a {
+	text-decoration:none;
+}
+
+#r1m3p1 a {
+	text-decoration:none;
+}
+
+#r1m3p2 a {
+	text-decoration:none;
+}
+
+#r1m4p1 a {
+	text-decoration:none;
+}
+
+#r1m4p2 a {
+	text-decoration:none;
+}
+
+#r1m5p1 a {
+	text-decoration:none;
+}
+
+#r1m5p2 a {
+	text-decoration:none;
+}
+
+#r1m6p1 a {
+	text-decoration:none;
+}
+
+#r1m6p2 a {
+	text-decoration:none;
+}
+
+#r1m7p1 a {
+	text-decoration:none;
+}
+
+#r1m7p2 a {
+	text-decoration:none;
+}
+
+#r1m8p1 a {
+	text-decoration:none;
+}
+
+#r1m8p2 a {
+	text-decoration:none;
+}
+
+#champion div {
+	text-align:center;
+	position:relative;
+}
+
+#champion .name {
+	border-top: 1px solid #23201f;
+	border-bottom:1px solid #23201f;
+	font-size:18px;
+	font-weight:bold;
+	color:#FDFBA6;
+	padding:10px 0 10px 0;
+}
+
+#champion .label {
+	font-size:18px;
+	color:#ABBCCF;
+	padding-top:10px;
+}
+
+/* ========== champions.jsp ========== */
+
+p.champ-info {
+	font-size:12px;
+	font-weight:bold;
+	color:#7f8c9a;
+}
+
+/* ========== userForm.jsp ========== */
+
+.edituser-section {
+	margin-top:20px;
+	margin-left:10px;
+}
+
+#edituser label {
+	display:block;
+	padding-top:4px
+}
+
+#edituser label.radiolabel {
+	display:inline;
+}
+
+#edituser legend {
+	color:#FDFBA6;
+	font-size:16px;
+	text-transform:uppercase;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+
+#edituser input[type="text"] {
+	width:266px;
+}
+
+#edituser input[type="password"] {
+	width:266px;
+}
+
+#edituser img {
+	margin-left:4px;
+	margin-right:4px;
+}
+
+#edituser select {
+	width:268px;
+}
+
+
+#edituser #ghinNumber {
+	width:110px;
+}
+
+#edituser #handicap {
+	width:110px;
+}
+
+#edituser .mandatory {
+	margin-top:10px;
+	color:#FF0000;
+}
+
+#edituser .mandatory-msg {
+	margin-top:10px;
+	color:#A0B654;
+}
+
+#edituser .asterisk {
+	color:#ff0000;
+}
+
+/*=========== registration.jsp ==========*/
+
+#registrationForm {
+	margin-top:10px;
+	background-color:#000;
+	width:250px;
+}
+
+#registrationForm label {
+	display:block;
+	padding-top:4px
+}
+
+#registrationForm fieldset {
+	margin-bottom:15px;
+}
+
+#registrationForm legend {
+	color:#FDFBA6;
+	font-size:16px;
+	text-transform:uppercase;
+	padding-top:20px;
+	padding-bottom:4px;
+}
+
+#registrationForm .cost {
+	margin-left:10px;
+}
+
+#registrationForm select {
+    width: 268px;
+}
+
+.reg-msg
+{
+	margin-top: 20px;
+	width: 680px;
+}
+
+.regsection {
+	float:left;
+	width:840px;
+	padding:10px;
+	font-size:14px;
+	color:#fff;
+	line-height:20px;
+	min-height: 620px;
+}
+
+.regsection img {
+	vertical-align: top;
+	margin-left: 20px;
+}
+
+.regsection .seal
+{
+	margin-top:35px;
+	margin-left:55px;
+}
+
+.regsection .col {
+	float: left;
+	margin-right: 20px;
+}
+
+.regsection .col .buttons {
+	margin-top: 10px;
+}
+
+.regsection input {
+	width: 266px;
+}
+
+.regsection select {
+	width: 240px;
+}
+
+
+.regverify .buttons {
+	margin-top: 20px;
+}
+
+
+.regsection .col .dblrow {
+	float: left;
+}
+
+.regsection .col .dblrow label {
+	width: 130px;
+}
+
+.regsection .col .dblrow input {
+	width: 110px;
+}
+
+.regsection h3 {
+	color: #FDFBA6;
+	/*margin-bottom: 50px;*/
+	text-align: center;
+}
+
+.regsection h3.top-msg
+{
+	text-align:left;
+}
+
+.regsection .thankyou-msg
+{
+	margin-top: 20px;
+    width: 680px;
+    margin-bottom: 45px;
+}
+
+.regsection .conf-col {
+	float: left;
+	width: 350px;
+	height: 130px;
+	margin-right: 10px;
+	margin-bottom: 15px;
+}
+
+.regsection .conf-col div.header
+{
+	text-align:left;
+	font-weight:bold;
+	font-size:14px;
+	text-transform:uppercase;
+	margin-bottom: 15px;
+}
+
+.regsection .conf-col h3
+{
+	text-align:left;
+}
+
+.regsection #cglinfo div {
+	text-align: center;
+}
+
+.regsection #print {
+	margin-left: 400px;
+}
+
+.regsection #print div{
+	float:left;
+	margin-left:8px;
+}
+
+.regsection #print a {
+	text-transform: uppercase;
+	color: #e46c0a;
+}
+
+/* ========== about.jsp contact.jsp rules.jsp ========== */
+
+.about-cgl {
+	font-size:18px;
+	color:#8DA92E;
+	line-height:50px;
+	margin-top:15px;
+}
+	
+#about-content {
+	padding:20px 20px 5px 20px;;
+	width:860px;
+	min-height:660px;
+	background-color:#23201f;
+	line-height:16px;
+}
+
+#about-content li, #contact-content li {
+	line-height:20px;
+	list-style:square;
+	margin-left:20px;
+}
+
+#about-content a {
+	text-decoration:underline;
+	line-height:20px;
+	color:#fff;
+}
+
+#about-content a:hover {
+	text-decoration:none;
+}
+
+#about-content h2, #contact-content h2 {
+	font-size:15px;
+	color:#FDFBA6;
+	line-height:20px;
+	text-transform:uppercase;
+}
+
+#about-content table {
+	background-color:#000;
+	margin:15px;
+}
+
+#about-content th {
+	color:#8DA92E;
+}
+
+#about-content td {
+	color:#FDFBA6;
+}
+
+#about-content p {
+	line-height:18px;
+	margin-bottom:18px;
+}
+
+#contact-content {
+	padding:20px;
+	width:860px;
+	min-height:640px;
+	background-color:#23201f;
+	line-height:16px;
+}
+
+#contact-content a {
+	color:#ab3213;
+	text-decoration:underline;
+}
+
+#contact-content a:hover {
+	text-decoration:none;
+}
+
+#contact-content div {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#contact-content h3 {
+	color:#FDFBA6;
+}
+
+#contact-content p {
+	line-height:18px;
+	margin-bottom:18px;
+}
+
+#contact-content table td {
+	width:450px;
+}
+#contact-content table td + td {
+	width:auto;
+}
+
+.tiebreaker {
+	margin-left:40px;
+}
+
+/*#usgalink, a#usgalink:link, a#usgalink:active, a#usgalink:visited, a#usgalink:hover {
+	float:left;
+	height:2px;
+	padding-top:18px;
+	margin-right:2px;
+	width:70px;
+	font-size:1px;
+	color:#23201f;
+	text-align:right;
+	text-decoration:none;
+	background:url(../../images/usga_logo.png) no-repeat top left;
+}
+
+/* ============== home.html ============== */
+/* Scrollbar */
+.messages tbody {
+	height:140px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	display:block;
+}
+/* Get rid of current table head background */
+.messages thead {	
+	background:none;
+}
+/* Change messages table header */
+.messages th {
+	background:url(../../images/row_odd.jpg) repeat-x left top;
+	font-weight:bold;
+	vertical-align:top;
+	padding-top:6px;
+	height:25px !important;
+	text-align:left;
+}
+/* Change row background colors */
+.messages tr.even {
+	background:none;
+	height:25px !important;
+}
+.messages tr.odd {
+	/*background:#24201f;*/
+	background:#18100d;
+	height:25px !important;
+}
+
+/* Conent background */
+/*#home {
+	background:#18100d url(../../images/bg_checkered.jpg);
+}
+/* Widen messges table a bit to accomodate new date column */
+#home table.messages {
+	width:320px;
+	font-size:12px;
+	font-weight:bold;
+}
+
+/* Get font size down for table links */
+#home table.messages a {	
+	font-size:12px;
+	text-decoration:none;
+}
+/* First row green */
+#home .messages tr.selected, .messages tr.selected a {
+	color:#98cb00;
+}
+/* Message Title */
+#home .publicMessage h2 {
+	color:#98cb00;
+	font-size:16px;
+	font-weight:bold;
+}
+/* Message */
+/*#home .publicMessage div {
+	max-height:100px;
+	height: auto !important;
+	height: 100px;
+	overflow:auto;
+	font-size:12px;
+}
+/* Message */
+#home .publicMessage {
+	margin:15px 0px;
+}
+
+/* Columns */
+#home .messages td, #home .messages th {width:70px;}
+#home .messages td + td, #home .messages th + th {width:90px;}
+#home .messages td + td + td, #home .messages th + th + th {width:100px;}
+
+/* ============ members.html ============ */
+/* Justifying Search button with right side of 3rd Profile */
+#members #search {
+	margin-right:15px;
+}
+/* Shorten height of input boxes */
+#members #search input[type=text] {
+	height:13px;
+	padding:1px 2px;
+	margin-top:4px;
+}
+/* Shorten height of select boxes */
+#members #search select {
+	height:17px;
+	padding:1px;
+	margin-top:4px;
+}
+/* Move search button down a touch */
+#members #search .buttonwrapper {
+	margin:1px 0px 0px;
+	* margin:6px 0px 0px;
+}
+/* Align Profile button with bottom of icon */
+.player-info {
+	font-weight:bold;
+}
+.player-info table {
+	width:200px;
+	border-collapse:collapse;
+}
+.player-info table td {
+	padding:0px;
+	vartical-align:top;
+}
+.player-info table td .buttonwrapper{
+	float:right;
+}
+/* 'Division' text */
+.player-info h3 {
+	color:#feff99;
+	font-size:15px;
+	margin:0px;
+	padding:0px;
+	float:left;
+	font-weight:bold;
+}
+/* Padding to Right of Image */
+.player-info img {
+	padding-right:5px;
+}
+
+.regbanner {
+	margin-top:20px;
+}
+
+#profile .player-info img {
+	margin-bottom:2px;
+	vertical-align:middle;
+}
+
+#profile .player-info h4 {
+	margin-top:8px;
+}
+
+/* ============ playoffs.html ============ */
+/* Change Trophy Logo */
+#bracket #trophy {
+	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
+	top:12px;
+	left:392px;
+	width:71px;
+	height:71px;
+}
+/* This just adds 'rounds' image to background and adjusts spacing */
+#bracket-container {
+	background:url(../../images/rounds.gif) no-repeat left top;
+	padding-top:40px;
+	margin-top:20px;
+}
+
+/* ============ printcard.html =========== */
+/* Matching width of bottom div with the other */
+.card #stroke {
+	float:left;
+    padding:8px 2px 8px 600px;
+	width:255px;
+	margin-left:1px;
+}
+/* Justify Print Button to Right. Note: had to add class='printButton' around button div */
+#printcard .printButton {
+	float:right;
+	width:50px;
+	margin-bottom:20px;
+}
+/* Pink Background for Women's Par */
+#printcard .womens-par div {
+	background:#feccff;
+}
+#printcard .buttonwrapper {
+	float:right;
+	margin-bottom:20px;
+}
+#printcard .bottom-row div {
+	color:#000;
+}
+
+/***** Small Scorcard *****/
+.card-small {
+	font-size:12px;
+}
+#container > .section > .card-small {
+	float:left;
+	width:600px;
+}
+/* Rows */
+.card-small .card .row, .card-small .card .top-row {
+	height:23px;
+}
+/* Cells */
+.card-small .card .hole, .card-small .card .first, .card-small .card .nine {
+	padding:7px 2px 2px;
+	height:16px;
+	margin:0px;
+	text-align:center;
+	width:19px;
+}
+/* First Column */
+.card-small .card .first {
+	text-align:left;
+	width:135px;
+}
+.card-small span.gray {
+	float:left;
+	padding:2px 2px;
+	margin:-3px 0px 0px 7px;
+	background:#a6a6a6;
+	border:1px solid #bfbfbf;
+	text-indent:0px;
+}
+/* Note, had to add class='menspar' to all columns in first par row (even first, nine, and last) */
+.card .menspar {
+	color:#b30914;
+}
+.card .menspar.first {
+	color:#ffffff;
+}
+.card .top-row .last.stroke {
+	background:#000 url(../../images/cards/card-gr-tr.jpg) right top no-repeat;
+}
+
+.card .clear {
+	height:0px;
+	background:none;
+}
+.card .top-row {
+	height:24px;
+	background:none;
+}
+
+.left .match p {
+	color:#fcf9b4;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+/* Must be before net.. styles as often both styles are applied to net.. columns */
+.card .birdie {
+	background:#000000 url(../../images/cards/birdie2.jpg);
+}
+.card .eagle {
+	background:#000000 url(../../images/cards/eagle2.jpg);
+}	
+.card .dbleagle {
+	color:#000000;
+	background:#000000 url(../../images/cards/dbleagle2.jpg);
+}
+
+
+.card .netbirdie {
+	background:#000000 url(../../images/cards/netbirdie2.jpg);
+}
+.card .neteagle {
+	background:#000000 url(../../images/cards/neteagle2.jpg);
+}
+.card .netdbleagle {
+	color:#000000;
+	background:#000000 url(../../images/cards/netdbleagle2.jpg);
+}
+
+.card .stroke, .card .top-row .last.stroke {
+	background:#000000 url(../../images/cards/stroke2.jpg);
+}
+
+/* Legend */
+.legend {
+	background:none;
+	float:left;
+	width:140px;
+	margin-left:40px;
+}
+.legend h2 {
+	background:#feff99;
+	font-size:12px;
+	color:#000000;
+	padding:4px 6px;
+	height:auto;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+.legend div {
+	width:15px;
+	height:15px;
+	float:left;
+}
+.legend div.clear {
+	margin:0px;
+	padding:0px;
+	width:0px;
+	height:0px;
+	float:none;
+}
+.legend div.left {
+	float:none;
+	width:auto;
+	height:auto;
+}
+.legend .stroke-legend {
+	background:#999999;
+	margin:6px 6px 15px;
+}
+
+.legend .netbirdie-legend {
+	background:#fe0000;
+	margin:6px;
+}
+.legend .neteagle-legend {
+	background:#ff9900;
+	margin:6px;
+}
+.legend .netdbleagle-legend {
+	background:#ffffff;
+	color:#000000;
+	margin:6px;
+}
+.legend .birdie-legend {
+	background:#000000 url(../../images/cards/birdie-legend.jpg);
+	margin:6px;
+}
+.legend .eagle-legend {
+	background:#000000 url(../../images/cards/eagle-legend.jpg);
+	margin:6px;
+}	
+.legend .dbleagle-legend {
+	background:#000000 url(../../images/cards/dbleagle-legend.jpg);
+	margin:6px 6px 15px;
+}
+
+.legend h2 {
+	margin-bottom:10px;
+}
+.legend h4 {
+	float:left;
+	font-weight:bold;
+	padding-top:8px;
+	padding-right:4px;
+}
+
+/* ============= schedule.html ============ */
+/* Change color of background */
+#schedule {
+	background:#18100d url(../../images/bg_checkered.jpg);
+	height:600px;
+	padding-bottom:100px;
+}
+/* Change Heading Colors to Design Comp */
+#schedule-header {
+	padding:0px;
+}
+#schedule-header h4 {
+	color:#9aca02;
+	font-weight:bold;
+}
+#schedule-header h4.division {
+	color:#feff99;
+	font-weight:bold;
+}
+/* Table Width */
+.schedule {
+	width:600px;
+	margin-top:25px;
+}
+/* Table Header */
+.schedule thead {
+	background:none;
+}
+.schedule th {
+	background:url(../../images/row_yellow.jpg) repeat-x;
+	height:33px;
+	font-size:12px;
+	font-weight:bold;
+	padding:6px 10px;
+	color:#000000;
+}
+/* Row Backgrounds */
+.schedule tr.even {
+	background:none;
+}
+.schedule tr.odd {
+	background:#24201f;
+}
+/* Cell Padding */
+.schedule td {
+	padding:4px 10px;
+}
+.schedule td.opponent {
+	font-weight:bold;
+	font-size:12px;
+}
+
+/* ============== signup.html ============= */
+/* Needed to decrease space between 'section' divs.  I know you use this oe a lot, though, so I had to add the signup div around the whole of the page content */
+#signup div.section {
+	padding:8px 20px;
+}
+
+#signup .edituser-section {
+	margin:20px 0px 0px 15px;
+}
+
+#signup h2.page-title span {
+	font-weight:normal;
+	font-size:17px;
+}
+
+#signup .threecol {
+	width:281px;
+	background:none;
+	margin:0px 0px 10px;
+	padding:10px 5px;
+}
+
+/* Input Fields */
+#signup #edituser .threecol .longBox {
+	height:10px;
+	width:96%;
+	padding:1px 2px 1px;
+}
+#signup #edituser .threecol select{
+	width:99%;
+	padding:1px;
+}
+#signup #edituser .threecol input[type=text], #edituser .threecol input[type=password] {
+	height:13px;
+	width:96%;
+	padding:1px 2px 1px;
+}
+
+/* Handicap Plus */
+#signup #edituser .threecol #handicap {
+	float:left;
+	width:40px;	
+}
+#signup .handicapPlusLabel {
+	float:left;
+	width:50px;
+	margin-left:10px;
+}
+#signup #handicapPlus {
+	float:left;
+}
+
+/* Text Align Sex to Right (added div around label and radio buttons) */
+#signup #sexDiv {
+	text-align:right;
+}
+#signup #edituser #sexDiv label {
+	margin-left:167px;
+	text-align:left;
+}
+
+/* Other Information */
+#signup .otherInformation {
+	padding:0px 10px 6px;
+}
+#signup .otherInformation h2 {
+	color:#FDFBA6;
+	font-size:14px;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+/* Home Course */
+#signup #edituser .homeCourseLabel {
+	float:left;
+	width:95px;
+}
+#signup #edituser .threecol select.changeHomeCourse {
+	width:165px;
+	float:left;
+}
+
+/* Registration Code */
+#signup #edituser .registrationCodeLabel {
+	width:120px;
+	float:left;
+}
+#signup #edituser #registrationCode {
+	width:133px;
+	float:left;
+}
+
+/* Referral Source */
+#signup #edituser .referralsourceLabel {
+	margin-top:20px;
+	float:left;
+	width:110px;
+}
+#signup #edituser #referralsource {
+	float:left;
+	width:151px;
+	margin-top:20px;
+}
+
+/* Spacing Between Icons, Note: Added class to parent div*/
+#signup .appearance .left {
+	margin:10px 28px 0px 0px;
+}
+#signup .appearance .left img {
+	margin-left:5px;
+}
+
+/* Mandatory Fields Text Color */
+#signup #edituser .buttons .mandatory {
+	color:#a0b654;
+	display:block;
+	margin-top:20px;
+}
+
+.signup-icon {
+	float:left;
+	margin-right:20px;
+}
+
+
+/* ============ results.html ============ */
+/* Inherit .player-info styles from members.html page */
+
+/* Space below card */
+/*#results .card {
+	margin-bottom:10px;
+}
+
+/* Consisten row height */
+/*#results .top-row div, #results .entry-row-one div, #results .entry-row-two div {
+	padding:7px 2px 2px;
+	height:16px;
+	margin:0px;
+	text-align:center;
+	width:24px;
+}
+
+/* Wider First Column */
+/*#results .top-row .first, #results .entry-row-one .first, #results .entry-row-two .first {
+	width:135px;
+	text-align:left;
+}
+
+/* Home / Away Heading */
+/*#result-member-headings .threecol {
+	padding:0px;
+	margin:0px 10px 0px 30px;
+	background:none;
+}
+#result-member-headings h3 {
+	color:#ffff00;
+	font-size:13px;
+	font-weight:bold;
+}
+
+/* Round */
+.round {
+	background:#000000;
+	position:relative;
+	margin:8px 20px 8px;
+}
+
+.round_tl, .round_tr, .round_bl, .round_br {
+	position:absolute;
+	width:12px;
+	height:12px;
+}
+
+.round_tl {
+	top:0px;
+	left:0px;
+	background:#000000 url(../../images/cards/card-tl.jpg) no-repeat;
+}
+
+.round_tr {
+	top:0px;
+	right:0px;
+	background:#000000 url(../../images/cards/card-tr.jpg) no-repeat;
+}
+
+.round_body {
+	padding:0px 2px;
+}
+
+.round_bl {
+	bottom:0px;
+	left:0px;
+	background:#000000 url(../../images/cards/card-bl.jpg) no-repeat;
+}
+
+.round_br {
+	bottom:0px;
+	right:0px;
+	background:#000000 url(../../images/cards/card-br.jpg) no-repeat;
+}
+
+/* Messages */
+.messages-overflow .thead {
+	color:#fff;
+	font-weight:bold;
+}
+.messages-overflow .tbody {
+	max-height:84px;
+	overflow-y:scroll;
+	overflow-x:hide;
+	margin-top:5px;
+}
+.messages-overflow .td, .messages-overflow .th {
+	float:left;
+	padding:6px 8px;
+	height:16px;
+}
+.messages-overflow .th {
+	background:#000;
+}
+.messages-overflow .th1, .messages-overflow .td1 {
+	width:95px;
+}
+.messages-overflow .th2 {
+	width:126px;
+}
+.messages-overflow .td2 {
+	width:105px;
+}
+.messages-overflow .even .td {
+	background:#18100D;
+}
+
+.td-spacer
+{
+	width:50px;
+}
+
+.mr-compose{
+	width:489px;
+}
+
+#inbox table.messages tbody{
+	width:460px;
+	height:148px;
+}
+
+#inbox table.messages tr, #inbox table.messages td{
+	width:320px;
+}
+
+#home-msgbrd table.messages tbody{
+	width:320px;
+	font-size:12px;
+	font-weight:bold;
+	display:block !important;
+	height:140px !important;
+}
+
+#home-msgbrd table.messages tbody td{
+	width:100px;
+}
+
+#home-msgbrd table.messages thead th
+{
+	width:90px;
+}
+
+#inbox-message p.msg-head{
+	color: #FDFBA6;
+	padding-left: 10px;
+    padding-top: 15px;
+}
+
+#inbox-message a.reply-link{
+	color:#AB3213;
+	padding-left:10px;
+	padding-top:5px;
+}
+
+.reply-div{
+	float:left;
+	clear:left;
+	margin-top:30px;	
+}
+
+.profile-caption h4{
+	font-weight:bold;
+}
+
+#profile table.messages tbody{
+	width:250px;
+	height:80px;
+	overflow-y:scroll;
+}
+
+#profile table.messages tbody td{
+	width:108px;
+}
+
+.public-post{
+	margin-top:5px;
+}
+
+.ie-post-link
+{
+	cursor:pointer;
+}
+
+/**** Admin ****/
+#page-admin-users {
+	padding:10px 20px;
+}
+#page-admin-users table#users {
+	margin:10px 0px;
+}
+
+/*** span, font css ***/
+.span-green
+{
+	color:#AEDE1F;
+}
+
+.font-1
+{
+	font-size: 37px;
+    font-weight: bold;	
+}
+
+.font-2
+{
+	font-size: 33px;
+    font-weight: bold;
+}
+
+.font-3
+{
+	font-size: 26px;
+    font-weight: bold;
+}
+
+.span-align-right
+{
+	width:272px;
+	text-align:right;
+	float:right;
+}
+
+.span-spacer
+{
+	margin:0px;
+	padding:0px;
+	height:0px;
+	display:block;
+}
+
+/* ============== congrats.html ============= */
+#congrats {
+	background:#18100d url(../../images/bg_checkered.jpg);
+	height:472px;
+	padding: 100px 12px;
+}
+
+#congrats-msg-div{
+	background: none repeat scroll 0 0 #000000;
+	padding: 28px 28px 25px 28px;
+	color: #fff;
+	height: 75px;
+	width: 800px;
+	border-radius: 5px;
+	margin: 12px;
+}
+
+.large-txt
+{
+	font-size:35px;
+	font-weight:lighter;
+}
+
+#congrats-txt{
+	color:#a8d60f;
+	padding-left: 15px;
+}
+
+#congrats-msg{
+	color:#7d7d7d;
+	font-size: 16px;
+	width:100%;
+}
+
+#congrats-msg .msg-left{
+	float:left;
+	padding-left:15px;
+}
+
+#congrats-msg .msg-right{
+	float:right;
+	color: #f5f5b0;
+}
+
+#congrats-nav{
+	margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+    min-height: 420px;
+    width: 820px;	
+}
+
+.congrats-para-div{
+	height:16px;
+	padding-top:2px;
+	padding-bottom:2px;
+	font-weight:bolder;
+}
+
+#upper-btn{
+	margin-left:290px;
+	width:400px;
+}
+
+#lower-btn{
+	margin-left:320px;
+	width:400px;
+}
+
+#upper-msg-container
+{
+	margin-top:50px;
+	text-align:left;
+}
+
+#no-msg-div{
+	height:40px;
+	padding-top:2px;
+	padding-bottom:2px;
+	font-weight:bold;
+	line-height:20px;
+	color:#fc3200;
+}
+
+/* ========== profile.jsp ========== */
+.tee-off-img{
+	width:292px;
+	height:170px;
+}
+
+#birdie-info-div{
+	height:80px;
+	width:817px;
+}
+
+#birdie-info{
+	height:90px;
+	width:400px;
+	margin-top:40px;
+}
+
+.birdie-span{
+	height:30px;
+}
+
+.birdie-span-msg{
+	height:30px;
+	vertical-align:middle;
+}
+
+#birdie-tbl tr td{
+	padding:0px;
+	vertical-align:middle;
+}
+
+/* ========== citymanage.jsp ==========*/
+#citymanage
+{
+	padding:10px 20px;
+}
+
+#citymanage .top-msg
+{
+	margin-bottom:7px;
+}
+
+/* ========= registrationCity.jsp ========*/
+#registerCity
+{
+	padding:10px 20px;	
+}
+
+#registerCity .asterisk {
+	color:#fff;
+}
+
+#registerCity .mandatory{
+	margin-top:15px;
+}
+
+#registerCity .errors{
+	padding:5px 20px;
+	height:auto;
+	width:90%;
+}
+
+/* ========== manageCourse.jsp ==========*/
+#manageCourse
+{
+	padding:10px 20px;
+}
+
+#manageCourse .top-msg
+{
+	margin-bottom:7px;
+}
+
+#edituser label.checkboxlabel {
+	display:inline;
+}

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+	<!-- This role and user is for when we use basic authentication while testing -->
+	<role roleaname="tester"/>
+	<user username="citygolfleague" password="LetsPlayAMatch" roles="tester"/>
+</tomcat-users>

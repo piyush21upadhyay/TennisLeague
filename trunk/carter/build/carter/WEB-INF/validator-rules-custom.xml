@@ -1,0 +1,296 @@
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+   <global>
+
+      <validator name="twofields"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateTwoFields"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         depends="required"
+         msg="errors.twofields">
+         <javascript><![CDATA[
+            function validateTwoFields(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oTwoFields = new twofields();
+                for (x in oTwoFields) {
+                    var field = form[oTwoFields[x][0]];
+                    var secondField = form[oTwoFields[x][2]("secondProperty")];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value;
+                        var secondValue;
+                        // get field's value
+                        if (field.type == "select-one") {
+                            var si = field.selectedIndex;
+                            value = field.options[si].value;
+                            secondValue = secondField.options[si].value;
+                        } else {
+                            value = field.value;
+                            secondValue = secondField.value;
+                        }
+                        
+                        if (value != secondValue) {
+                        
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oTwoFields[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   cglAlert("Password Mismatch", fields.join('\n'));
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+      <validator name="ghin"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateGhin"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         depends="required"
+         msg="errors.ghinfmt">
+         <javascript><![CDATA[
+            function validateGhin(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oGhin = new ghin();
+                for (x in oGhin) {
+                    var field = form[oGhin[x][0]];
+                    
+                    if (field.type == 'text') {
+                        var value = field.value;
+                        bValid = /[0-9]+/.test(value);
+                        if (!bValid) focusField = field;
+                    }
+                }
+                if (!bValid) {
+                   focusField.focus();
+                   cglAlert("Invalid GHIN", "GHIN number must be numeric (and is usually 7 digits).");
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+      <validator name="handicap"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateHandicap"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         depends="required"
+         msg="errors.handicapfmt">
+         <javascript><![CDATA[
+            function validateHandicap(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oHandicap = new handicap();
+                for (x in oHandicap) {
+                    var field = form[oHandicap[x][0]];
+                    
+                    if (field.type == 'text') {
+                        
+                        var value = field.value;
+                        bValid = /^\+?\d+(\.\d+)?$/.test(value);
+                        if (!bValid) focusField = field;
+                    }
+                }
+                if (!bValid) {
+                   focusField.focus();
+                   cglAlert("Invalid Handicap", 'Handicap must be a decimal number.  Use a plus (+) sign to specify a "plus handicap".');
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+
+      <validator name="onefield"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateOneField"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         msg="errors.onefield">
+         <javascript><![CDATA[
+            function validateOneField(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oOneField = new onefield();
+                for (x in oOneField) {
+                    var field = form[oOneField[x][0]];
+                    var secondField = form[oOneField[x][2]("secondProperty")];
+                    
+                    if (field.type == 'text' ||
+                        field.type == 'textarea' ||
+                        field.type == 'select-one' ||
+                        field.type == 'radio' ||
+                        field.type == 'password') {
+                        
+                        var value;
+                        var secondValue;
+                        // get field's value
+                        if (field.type == "select-one") {
+                            var si = field.selectedIndex;
+                            value = field.options[si].value;
+                            secondValue = secondField.options[si].value;
+                        } else {
+                            value = field.value;
+                            secondValue = secondField.value;
+                        }
+                        
+                        if ((value.length < 1) && (secondValue.length < 1)) {
+                        
+                            if (i == 0) {
+                                focusField = field;
+                            }
+                            fields[i++] = oOneField[x][1];
+                            bValid = false;
+                        }
+                    }
+                }
+                if (fields.length > 0) {
+                   focusField.focus();
+                   cglAlert("Missing Value", fields.join('\n'));
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+       
+       <validator name="customCreditCard"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateCustomCreditCard"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         depends="required"
+         msg="errors.creditCardInfo.both">
+         <javascript><![CDATA[
+            function validateCustomCreditCard(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCustomCreditCard = new customCreditCard();
+                
+                for (x in oCustomCreditCard) {
+                    var firstField = form[oCustomCreditCard[x][0]];
+                    var secondField = form[oCustomCreditCard[x][2]("secondProperty")];
+                    
+                     if (firstField.type == 'text' && secondField.type == 'text')
+                     {
+                     	if (isAllDigits(firstField.value) && isAllDigits(secondField.value))
+                     	{
+                     		if(secondField.value.length == 3)
+							{
+								// check for Master card or Visa
+								if(firstField.value.length != 16)
+								{
+									focusField = firstField;
+									fields[i++] = oCustomCreditCard[x][1];
+									bValid = false;
+								}
+							}
+							else if(secondField.value.length == 4)
+							{
+								// check for AMEX
+								if(firstField.value.length != 15)
+								{
+									focusField = firstField;
+									fields[i++] = oCustomCreditCard[x][1];
+									bValid = false;
+								}
+							}
+                     	}
+                     	else
+                     	{
+                     		if( !(isNaN(firstField.value) && isNaN(secondField.value)) )
+                     		{
+                     			focusField = firstField;
+                     			fields[i++] = "Both Credit card and security code must be numeric.";
+                                bValid = false;
+                     		}
+                     	}
+                     }
+                }
+                if (!bValid) 
+                {
+                   focusField.focus();
+                   cglAlert("Invalid Credit Card/Security code", fields.join('<br/>') );
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+       
+        <validator name="checkbox"
+         classname="com.sageconsulting.webapp.util.ValidationUtil"
+         method="validateCheckbox"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.springframework.validation.Errors"
+         depends="required"
+         msg="errors.checkbox">
+         <javascript><![CDATA[
+            function validateCheckbox(form) {
+                var bValid = true;
+                var focusField = null;
+                var i = 0;
+                var fields = new Array();
+                oCheckBox = new checkBox();
+                for (x in oCheckBox) {
+                    var field = form[oCheckBox[x][0]];
+                    
+                    if (field.type == 'checkbox' || field.type == 'undefined') {
+                        var value = field.value;
+                        if(value.length<1)
+                        {
+                        	focusField = field;
+                        	bValid=false;
+                        }
+                        
+                        if (!bValid) focusField = field;
+                    }
+                }
+                if (!bValid) {
+                   focusField.focus();
+                   cglAlert("Missing Value", fields.join('\n'));
+                }
+                return bValid;
+            }]]>
+         </javascript>
+       </validator>
+   </global>
+
+</form-validation>

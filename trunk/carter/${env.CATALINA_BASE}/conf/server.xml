@@ -1,0 +1,22 @@
+<Server port="${server.port}" shutdown="SHUTDOWN">
+
+  <GlobalNamingResources>
+    <!-- Used by Manager webapp -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+       description="User database that can be updated and saved"
+           factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+          pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+
+  <Service name="Catalina">
+    <Connector address="${http.listenaddress}" port="9080" />
+
+    <Engine name="Catalina" defaultHost="${http.hostname}">
+      <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+             resourceName="UserDatabase" />
+      <Host name="${http.hostname}" appBase="webapps" />
+    </Engine>
+    
+  </Service>
+</Server>

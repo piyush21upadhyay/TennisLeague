@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.City"
+            table="city"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <property
+            name="name"
+                    column="name"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="state"
+        >
+
+        </property>
+
+        <property
+            name="active"
+                    column="active"
+        >
+
+        </property>
+
+        <property
+            name="inactiveMessage"
+                    column="inactive_msg"
+        >
+
+        </property>
+
+        <property
+            name="countDownDate"
+                    column="countdown_date"
+        >
+
+        </property>
+
+        <property
+            name="countDownMessage"
+                    column="countdown_msg"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

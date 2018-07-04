@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/carter/build.xml"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="ANT_HOME" value="D:\SOFTWARES\java setup\eclipse\plugins\org.apache.ant_1.10.1.v20170504-0840"/>
+<mapEntry key="CATALINA_HOME" value="C:\Program Files\Apache Software Foundation\apache-tomcat-5.5.26"/>
+<mapEntry key="TOMCAT_HOME" value="C:\Program Files\Apache Software Foundation\apache-tomcat-5.5.26"/>
+</mapAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.ui.externaltools.launchGroup"/>
+</listAttribute>
+<listAttribute key="org.eclipse.jdt.launching.CLASSPATH">
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry containerPath=&quot;org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.5.0_08&quot; path=&quot;1&quot; type=&quot;4&quot;/&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.ant.ui.classpathentry.antHome&quot;&gt;&#13;&#10;&lt;memento default=&quot;true&quot;/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.ant.ui.classpathentry.extraClasspathEntries&quot;&gt;&#13;&#10;&lt;memento/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.jdt.launching.classpathentry.variableClasspathEntry&quot;&gt;&#13;&#10;&lt;memento path=&quot;3&quot; variableString=&quot;${env_var:ANT_HOME}/lib/jdtCompilerAdapter.jar&quot;/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry id=&quot;org.eclipse.jdt.launching.classpathentry.variableClasspathEntry&quot;&gt;&#13;&#10;&lt;memento path=&quot;3&quot; variableString=&quot;${env_var:ANT_HOME}/lib/org.eclipse.jdt.core_3.2.0.v_671.jar&quot;/&gt;&#13;&#10;&lt;/runtimeClasspathEntry&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;D:/SOFTWARES/java setup/eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib/junit.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;C:/Program Files/Apache Software Foundation/apache-tomcat-5.5.26/bin/tomcat-juli.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#13;&#10;"/>
+<listEntry value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;runtimeClasspathEntry externalArchive=&quot;G:/Battles/Jars/bootstrap.jar&quot; path=&quot;3&quot; type=&quot;2&quot;/&gt;&#13;&#10;"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="carter"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_ANT_TARGETS" value="deploy,setup-tomcat,start.tomcat,install,start,ping-tomcat,refresh,"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/carter/build.xml}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-Dant.build.javac.target=1.6 -Dant.build.javac.source=1.6"/>
+<stringAttribute key="process_factory_id" value="org.eclipse.ant.ui.remoteAntProcessFactory"/>
+</launchConfiguration>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.RegistrationEntry"
+            table="regentry"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <many-to-one
+            name="registration"
+                    column="registration_id"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="user"
+                    column="user_id"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <property
+            name="promotionCode"
+                    column="promo_code"
+        >
+
+        </property>
+
+        <property
+            name="responseCode"
+                    column="response_code"
+        >
+
+        </property>
+
+        <property
+            name="responseCodeText"
+                    column="response_code_text"
+        >
+
+        </property>
+
+        <property
+            name="transactionId"
+                    column="transaction_id"
+        >
+
+        </property>
+
+        <property
+            name="approvalCode"
+                    column="approval_code"
+        >
+
+        </property>
+
+        <property
+            name="MD5HashServer"
+                    column="md5_hash_server"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

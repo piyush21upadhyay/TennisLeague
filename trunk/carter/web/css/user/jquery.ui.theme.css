@@ -1,0 +1,36 @@
+/*
+* jQuery UI CSS Framework
+* Copyright (c) 2008 AUTHORS.txt (http://ui.jquery.com/about)
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+* To view and modify this theme, visit http://themeroller.com/?tr=&ffDefault=Helvetica&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=8da92e&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=dadada&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=8da92e&bgColorHover=dadada&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=8da92e&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=8da92e&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=05_inset_soft.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
+*/
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget-header { border: 1px solid #aaaaaa; background: #8da92e url(../../images/jquery_greenbg.png) 50% 50% repeat-x; color: #222222; font-weight: bold; }
+.ui-widget-content { border: 1px solid #aaaaaa; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #d3d3d3; background: #dadada url(../../images/jquery_graybg.png) 50% 50% repeat-x; font-weight: normal; color: #ffffff; outline: none; }
+.ui-state-default a { color: #555555; text-decoration: none; outline: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #999999; background: #dadada url(../../images/jquery_greenbg.png) 50% 50% repeat-x; font-weight: normal; color: #ffffff; outline: none; }
+.ui-state-hover a { color: #212121; text-decoration: none; outline: none; }
+.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff url(../../images/jquery_greenbg.png) 50% 50% repeat-x; font-weight: normal; color: #212121; outline: none; }
+.ui-state-active a { color: #212121; outline: none; text-decoration: none; }
+
+.ui-icon { width: 16px; height: 16px; background-image: url(../../images/jquery_icons.png); }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+
+.ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; }
+.ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; }
+.ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
+.ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
+.ui-corner-top { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px;-moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px;}
+.ui-corner-bottom { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px;}
+.ui-corner-right {  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; border-bottom-right-radius: 4px; }
+.ui-corner-left { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; border-bottom-left-radius: 4px; }
+.ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;}

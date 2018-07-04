@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<standings>
+<city header="Portland">
+<division name="Division One">
+
+<winner><id>9</id><name>Fred Player</name></winner>
+
+<round id="4">
+  <match>
+    <player><id>9</id><name>Fred Player</name></player>
+    <player><id>21</id><name>Sven Player</name></player>
+  </match>
+</round>
+
+<round id="3">
+  <match>
+    <player><id>22</id><name>Todd Player</name></player>
+    <player><id>9</id><name>Fred Player</name></player>
+  </match>
+  <match>
+    <player><id>21</id><name>Sven Player</name></player>
+    <player><id>23</id><name>Vern Player</name></player>
+  </match>
+</round>
+
+<round id="2">
+  <match>
+    <player><id>4</id><name>Amy Player</name></player> <!-- winner 1 vs. 16 -->
+    <player><id>22</id><name>Todd Player</name></player> <!-- winner 8 vs. 9 -->
+  </match>
+  <match>
+    <player><id>9</id><name>Fred Player</name></player> <!-- winner 5 vs. 12 -->
+    <player><id>8</id><name>Earl Player</name></player> <!-- winner 4 vs. 13 -->
+  </match>
+  <match>
+    <player><id>21</id><name>Sven Player</name></player> <!-- winner 6 vs. 11 -->
+    <player><id>6</id><name>Chuck Player</name></player> <!-- winner 3 vs. 14 -->
+  </match>
+  <match>
+    <player><id>13</id><name>Kai Player</name></player> <!-- winner 7 vs. 10 -->
+    <player><id>23</id><name>Vern Player</name></player> <!-- winner 2 vs. 15 -->
+  </match>
+</round>
+
+<round id="1">
+  <match>
+    <player><id>4</id><name>Amy Player</name></player> <!-- seed 1 -->
+    <player><id>19</id><name>Quinn Player</name></player> <!-- seed 16 -->
+  </match>
+  <match>
+    <player><id>22</id><name>Todd Player</name></player> <!-- seed 8 -->
+    <player><id>5</id><name>Bert Player</name></player> <!-- seed 9 -->
+  </match>
+  <match>
+    <player><id>9</id><name>Fred Player</name></player> <!-- seed 5 -->
+    <player><id>20</id><name>Rob Player</name></player> <!-- seed 12 -->
+  </match>
+  <match>
+    <player><id>8</id><name>Earl Player</name></player> <!-- seed 4 -->
+    <player><id>14</id><name>Lois Player</name></player> <!-- seed 13 -->
+  </match>
+  <match>
+    <player><id>7</id><name>Darren Player</name></player> <!-- seed 6 -->
+    <player><id>21</id><name>Sven Player</name></player> <!-- seed 11 -->
+  </match>
+  <match>
+    <player><id>6</id><name>Chuck Player</name></player> <!-- seed 3 -->
+    <player><id>12</id><name>Ivan Player</name></player> <!-- seed 14 -->
+  </match>
+  <match>
+    <player><id>13</id><name>Kai Player</name></player> <!-- seed 7 -->
+    <player><id>15</id><name>Mary Player</name></player> <!-- seed 10 -->
+  </match>
+  <match>
+    <player><id>23</id><name>Vern Player</name></player> <!-- seed 2 -->
+    <player><id>16</id><name>Norm Player</name></player> <!-- seed 15 -->
+  </match>
+</round>
+
+</division>
+</city>
+</standings>

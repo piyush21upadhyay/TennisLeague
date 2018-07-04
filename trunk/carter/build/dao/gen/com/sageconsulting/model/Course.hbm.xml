@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.Course"
+            table="course"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <list
+            name="cities"
+            table="course_city"
+            lazy="true"
+            cascade="save-update"
+        >
+
+            <key
+                column="course_id"
+            >
+
+            </key>          
+
+            <list-index
+                column="idx"
+            >
+
+            </list-index>
+
+            <many-to-many
+                class="com.sageconsulting.model.City"
+                column="city_id"
+                unique="false"
+             >
+
+             </many-to-many>
+
+        </list>
+
+        <property
+            name="name"
+                    column="name"
+        >
+
+        </property>
+
+        <property
+            name="mensTeeName"
+                    column="mens_tee_name"
+        >
+
+        </property>
+
+        <property
+            name="mensPars"
+                    column="mens_pars"
+        >
+
+        </property>
+
+        <property
+            name="mensHandicaps"
+                    column="mens_handicaps"
+        >
+
+        </property>
+
+        <property
+            name="mensYardages"
+                    column="mens_yardages"
+                length="512"
+        >
+
+        </property>
+
+        <property
+            name="womensTeeName"
+                    column="womens_tee_name"
+        >
+
+        </property>
+
+        <property
+            name="womensPars"
+                    column="womens_pars"
+        >
+
+        </property>
+
+        <property
+            name="womensHandicaps"
+                    column="womens_handicaps"
+        >
+
+        </property>
+
+        <property
+            name="womensYardages"
+                    column="womens_yardages"
+                length="512"
+        >
+
+        </property>
+
+        <property
+            name="proShopPhone"
+                    column="pro_shop_phone"
+        >
+
+        </property>
+
+        <property
+            name="teeTimePhone"
+                    column="tee_time_phone"
+        >
+
+        </property>
+
+        <property
+            name="webSite"
+                    column="web_site"
+        >
+
+        </property>
+
+        <property
+            name="mensSlope"
+                    column="mens_slope"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="mensRating"
+                    column="mens_rating"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="womensSlope"
+                    column="womens_slope"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="womensRating"
+                    column="womens_rating"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

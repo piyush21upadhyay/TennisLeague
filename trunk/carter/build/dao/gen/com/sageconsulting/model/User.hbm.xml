@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.User"
+            table="user"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <property
+            name="username"
+                    column="username"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="password"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="first_name"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="last_name"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="male"
+                    column="male"
+        >
+
+        </property>
+
+        <component
+            name="address"
+        >
+
+        <property
+            name="address"
+                    column="address"
+                length="150"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="city"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="province"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="country"
+                    column="country"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="postalCode"
+                    column="postal_code"
+                length="15"
+                not-null="true"
+        >
+
+        </property>
+
+        </component>
+
+        <property
+            name="email"
+                    column="email"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="homePhone"
+                    column="home_phone"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="cellPhone"
+                    column="cell_phone"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="preferredPhone"
+                    column="preferred_phone"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="passwordHint"
+                    column="password_hint"
+                not-null="false"
+        >
+
+        </property>
+
+        <many-to-one
+            name="registeredCity"
+                    column="registered_city"
+                not-null="true"
+                cascade="none"
+                lazy="false"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="homeCourse"
+                    column="home_course"
+                not-null="true"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="referral"
+                    column="referral"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="icon"
+                    column="icon"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="firstSeason"
+                    column="first_season"
+                not-null="false"
+                cascade="all"
+        >
+
+        </many-to-one>
+
+        <property
+            name="dateJoined"
+                    column="date_joined"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="lastLogin"
+                    column="last_login"
+                not-null="false"
+        >
+
+        </property>
+
+        <set
+            name="roles"
+            table="user_role"
+            lazy="false"
+            cascade="save-update"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="user_id"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="com.sageconsulting.model.Role"
+                column="role_id"
+                outer-join="auto"
+             />
+
+        </set>
+
+        <property
+            name="enabled"
+                    type="yes_no"
+                    column="account_enabled"
+        >
+
+        </property>
+
+        <property
+            name="accountExpired"
+                    type="yes_no"
+                    column="account_expired"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="accountLocked"
+                    type="yes_no"
+                    column="account_locked"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="credentialsExpired"
+                    type="yes_no"
+                    column="credentials_expired"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="currentSeason"
+                    column="current_season"
+                not-null="false"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="currentWins"
+                    column="current_wins"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="currentLosses"
+                    column="current_losses"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="currentTies"
+                    column="current_ties"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="totalWins"
+                    column="total_wins"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="totalLosses"
+                    column="total_losses"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="totalTies"
+                    column="total_ties"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="bestResult"
+                    column="best_result"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="bestResultSeason"
+                    column="best_result_season"
+                not-null="false"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="lowScore"
+                    column="low_score"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="seasonEntered"
+                    column="seasons_entered"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="playerLevel"
+                    column="player_level"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="ratedBy"
+                    column="ratedby"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="homeCourt"
+                    column="homecourt"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="plays"
+                    column="plays"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="playingPreference"
+                    column="playing_preference"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="openToChallenges"
+                    column="opentochallenges"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="onlyOpenToSameGender"
+                    column="playwithonlysamegender"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="opponentSkillLevel"
+                    column="opponent_skilllevel"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="racquet"
+                    column="racket"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="tennisString"
+                    column="tennisstring"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shoes"
+                    column="shoes"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

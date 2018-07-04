@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.Match"
+            table="golf_match"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <many-to-one
+            name="golfer1"
+                    column="golfer1"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="golfer2"
+                    column="golfer2"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="puttoffWinner"
+                    column="puttoff_winner"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="defaultWinner"
+                    column="default_winner"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="round"
+                    column="round"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="playBy"
+                    column="play_by"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="played"
+                    column="played"
+        >
+
+        </property>
+
+        <many-to-one
+            name="course"
+                    column="course"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <component
+            name="score"
+        >
+
+        <property
+            name="golfer1Handicap"
+                    column="golfer1handicap"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="golfer2Handicap"
+                    column="golfer2handicap"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole1Par"
+                    column="p1h1par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole2Par"
+                    column="p1h2par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole3Par"
+                    column="p1h3par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole4Par"
+                    column="p1h4par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole5Par"
+                    column="p1h5par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole6Par"
+                    column="p1h6par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole7Par"
+                    column="p1h7par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole8Par"
+                    column="p1h8par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole9Par"
+                    column="p1h9par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole10Par"
+                    column="p1h10par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole11Par"
+                    column="p1h11par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole12Par"
+                    column="p1h12par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole13Par"
+                    column="p1h13par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole14Par"
+                    column="p1h14par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole15Par"
+                    column="p1h15par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole16Par"
+                    column="p1h16par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole17Par"
+                    column="p1h17par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole18Par"
+                    column="p1h18par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole1Stroke"
+                    column="p1h1stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole2Stroke"
+                    column="p1h2stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole3Stroke"
+                    column="p1h3stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole4Stroke"
+                    column="p1h4stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole5Stroke"
+                    column="p1h5stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole6Stroke"
+                    column="p1h6stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole7Stroke"
+                    column="p1h7stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole8Stroke"
+                    column="p1h8stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole9Stroke"
+                    column="p1h9stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole10Stroke"
+                    column="p1h10stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole11Stroke"
+                    column="p1h11stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole12Stroke"
+                    column="p1h12stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole13Stroke"
+                    column="p1h13stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole14Stroke"
+                    column="p1h14stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole15Stroke"
+                    column="p1h15stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole16Stroke"
+                    column="p1h16stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole17Stroke"
+                    column="p1h17stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole18Stroke"
+                    column="p1h18stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole1Score"
+                    column="p1h1score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole2Score"
+                    column="p1h2score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole3Score"
+                    column="p1h3score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole4Score"
+                    column="p1h4score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole5Score"
+                    column="p1h5score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole6Score"
+                    column="p1h6score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole7Score"
+                    column="p1h7score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole8Score"
+                    column="p1h8score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole9Score"
+                    column="p1h9score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole10Score"
+                    column="p1h10score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole11Score"
+                    column="p1h11score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole12Score"
+                    column="p1h12score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole13Score"
+                    column="p1h13score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole14Score"
+                    column="p1h14score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole15Score"
+                    column="p1h15score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole16Score"
+                    column="p1h16score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole17Score"
+                    column="p1h17score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Hole18Score"
+                    column="p1h18score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole1Par"
+                    column="p2h1par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole2Par"
+                    column="p2h2par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole3Par"
+                    column="p2h3par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole4Par"
+                    column="p2h4par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole5Par"
+                    column="p2h5par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole6Par"
+                    column="p2h6par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole7Par"
+                    column="p2h7par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole8Par"
+                    column="p2h8par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole9Par"
+                    column="p2h9par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole10Par"
+                    column="p2h10par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole11Par"
+                    column="p2h11par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole12Par"
+                    column="p2h12par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole13Par"
+                    column="p2h13par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole14Par"
+                    column="p2h14par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole15Par"
+                    column="p2h15par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole16Par"
+                    column="p2h16par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole17Par"
+                    column="p2h17par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole18Par"
+                    column="p2h18par"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole1Stroke"
+                    column="p2h1stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole2Stroke"
+                    column="p2h2stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole3Stroke"
+                    column="p2h3stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole4Stroke"
+                    column="p2h4stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole5Stroke"
+                    column="p2h5stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole6Stroke"
+                    column="p2h6stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole7Stroke"
+                    column="p2h7stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole8Stroke"
+                    column="p2h8stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole9Stroke"
+                    column="p2h9stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole10Stroke"
+                    column="p2h10stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole11Stroke"
+                    column="p2h11stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole12Stroke"
+                    column="p2h12stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole13Stroke"
+                    column="p2h13stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole14Stroke"
+                    column="p2h14stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole15Stroke"
+                    column="p2h15stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole16Stroke"
+                    column="p2h16stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole17Stroke"
+                    column="p2h17stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole18Stroke"
+                    column="p2h18stroke"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole1Score"
+                    column="p2h1score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole2Score"
+                    column="p2h2score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole3Score"
+                    column="p2h3score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole4Score"
+                    column="p2h4score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole5Score"
+                    column="p2h5score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole6Score"
+                    column="p2h6score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole7Score"
+                    column="p2h7score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole8Score"
+                    column="p2h8score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole9Score"
+                    column="p2h9score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole10Score"
+                    column="p2h10score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole11Score"
+                    column="p2h11score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole12Score"
+                    column="p2h12score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole13Score"
+                    column="p2h13score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole14Score"
+                    column="p2h14score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole15Score"
+                    column="p2h15score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole16Score"
+                    column="p2h16score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole17Score"
+                    column="p2h17score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Hole18Score"
+                    column="p2h18score"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke1"
+                    column="stroke1"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke2"
+                    column="stroke2"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke3"
+                    column="stroke3"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke4"
+                    column="stroke4"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke5"
+                    column="stroke5"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke6"
+                    column="stroke6"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke7"
+                    column="stroke7"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke8"
+                    column="stroke8"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke9"
+                    column="stroke9"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke10"
+                    column="stroke10"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke11"
+                    column="stroke11"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke12"
+                    column="stroke12"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke13"
+                    column="stroke13"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke14"
+                    column="stroke14"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke15"
+                    column="stroke15"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke16"
+                    column="stroke16"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke17"
+                    column="stroke17"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="stroke18"
+                    column="stroke18"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score1"
+                    column="score1"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score2"
+                    column="score2"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score3"
+                    column="score3"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score4"
+                    column="score4"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score5"
+                    column="score5"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score6"
+                    column="score6"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score7"
+                    column="score7"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score8"
+                    column="score8"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score9"
+                    column="score9"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score10"
+                    column="score10"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score11"
+                    column="score11"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score12"
+                    column="score12"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score13"
+                    column="score13"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score14"
+                    column="score14"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score15"
+                    column="score15"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score16"
+                    column="score16"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score17"
+                    column="score17"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="score18"
+                    column="score18"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Birdies"
+                    column="p1birdies"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1Eagles"
+                    column="p1eagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1DoubleEagles"
+                    column="p1dbleagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1NetBirdies"
+                    column="p1netbirdies"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1NetEagles"
+                    column="p1neteagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player1NetDoubleEagles"
+                    column="p1netdbleagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Birdies"
+                    column="p2birdies"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2Eagles"
+                    column="p2eagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2DoubleEagles"
+                    column="p2dbleagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2NetBirdies"
+                    column="p2netbirdies"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2NetEagles"
+                    column="p2neteagles"
+                lazy="false"
+        >
+
+        </property>
+
+        <property
+            name="player2NetDoubleEagles"
+                    column="p2netdbleagles"
+                lazy="false"
+        >
+
+        </property>
+
+        </component>
+
+        <many-to-one
+            name="bracketEntry"
+                    column="bracket_entry"
+                not-null="false"
+                unique="true"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

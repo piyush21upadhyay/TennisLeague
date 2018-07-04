@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<standings city="Portland">
+	<division name="DIV I">
+		<record>
+			<name>Earl Player</name>
+			<points>8</points>
+			<wins>4</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Fred Player</name>
+			<points>8</points>
+			<wins>4</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Chuck Player</name>
+			<points>8</points>
+			<wins>4</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Vern Player</name>
+			<points>8</points>
+			<wins>4</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Amy Player</name>
+			<points>8</points>
+			<wins>4</wins>
+			<losses>0</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Darren Player</name>
+			<points>7</points>
+			<wins>3</wins>
+			<losses>0</losses>
+			<ties>1</ties>
+		</record>
+		<record>
+			<name>Kai Player</name>
+			<points>6</points>
+			<wins>3</wins>
+			<losses>1</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Todd Player</name>
+			<points>6</points>
+			<wins>3</wins>
+			<losses>1</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Sven Player</name>
+			<points>4</points>
+			<wins>2</wins>
+			<losses>2</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Bert Player</name>
+			<points>4</points>
+			<wins>2</wins>
+			<losses>2</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Mary Player</name>
+			<points>4</points>
+			<wins>2</wins>
+			<losses>2</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Rob Player</name>
+			<points>3</points>
+			<wins>1</wins>
+			<losses>2</losses>
+			<ties>1</ties>
+		</record>
+		<record>
+			<name>Ivan Player</name>
+			<points>2</points>
+			<wins>1</wins>
+			<losses>3</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Norm Player</name>
+			<points>2</points>
+			<wins>1</wins>
+			<losses>3</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Lois Player</name>
+			<points>2</points>
+			<wins>1</wins>
+			<losses>3</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Paul Player</name>
+			<points>0</points>
+			<wins>0</wins>
+			<losses>4</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Hank Player</name>
+			<points>0</points>
+			<wins>0</wins>
+			<losses>4</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Quinn Player</name>
+			<points>0</points>
+			<wins>0</wins>
+			<losses>4</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Gary Player</name>
+			<points>0</points>
+			<wins>0</wins>
+			<losses>4</losses>
+			<ties>0</ties>
+		</record>
+		<record>
+			<name>Oscar Player</name>
+			<points>0</points>
+			<wins>0</wins>
+			<losses>4</losses>
+			<ties>0</ties>
+		</record>
+	</division>
+</standings>

@@ -1,0 +1,312 @@
+/*
+ * MembersController.java
+ * 
+ * Copyright © 2008-2009 City Golf League, LLC.  All Rights Reserved
+ * http://www.citygolfleague.com
+ * 
+ * @author Steve Paquin - Sage Software Consulting, Inc.
+ */
+package com.sageconsulting.webapp.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.acegisecurity.GrantedAuthority;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+import org.springframework.validation.BindException;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sageconsulting.Constants;
+import com.sageconsulting.model.City;
+import com.sageconsulting.model.Registration;
+import com.sageconsulting.model.RegistrationEntry;
+import com.sageconsulting.model.User;
+import com.sageconsulting.service.RegistrationEntryManager;
+import com.sageconsulting.service.RegistrationManager;
+
+public class MembersController extends BaseFormController
+{
+    private static final String CMD_NAME = "search"; //$NON-NLS-1$
+    private RegistrationManager registrationManager;
+    private RegistrationEntryManager registrationEntryManager;
+    
+    public MembersController()
+    {
+        setCommandName(CMD_NAME);
+        setCommandClass(MemberName.class);
+    }
+    
+    public void setRegistrationManager(RegistrationManager mgr)
+    {
+    	this.registrationManager = mgr;
+    }
+    
+    public void setRegistrationEntryManager(RegistrationEntryManager mgr)
+    {
+    	this.registrationEntryManager = mgr;
+    }
+    
+    @Override
+    public ModelAndView showForm(HttpServletRequest request, HttpServletResponse response, BindException errors) throws Exception
+    {
+        City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
+        ModelAndView view = new ModelAndView();
+        
+        if (null == city)
+        {
+        	String msg = getMessageSourceAccessor().getMessage("errors.noCity", request.getLocale()); //$NON-NLS-1$
+        	view.addObject("successMessages", new String[] { msg });//$NON-NLS-1$
+        	return view;
+        }
+        
+        return getModelAndView(city, (MemberName)getCommand(request), request);
+    }
+    
+    @Override
+    public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command,
+        BindException errors) throws Exception
+    {
+        City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
+        return getModelAndView(city, (MemberName)command, request);
+    }
+    
+    private ModelAndView getModelAndView(City city, MemberName command, HttpServletRequest request)
+    {
+        ModelAndView view = new ModelAndView();
+        view.addObject(CMD_NAME, command);
+        
+        if (command.isValidSearch())
+        {
+        	List<User> users = getUsers(city, command, request);
+            view.addObject("memberList", users); //$NON-NLS-1$
+            view.addObject("registeredUsers", getRegisteredUsers(users));
+        }
+        if (request.getRemoteUser() != null)
+        {
+        	User user = super.getUserManager().getUserByUsername(request.getRemoteUser());
+        	view.addObject("user",user);
+        	view.addObject("isAdministrator", checkAdminAuth(request.getRemoteUser()));
+        }
+        
+        if(request.getParameter("showDeleted") != null)
+        	view.addObject("showDeleted", true);
+        
+        return view;
+    }
+    
+    private List<User> getUsers(City city, MemberName command, HttpServletRequest request)
+    {
+    	Long cityId = (null == city) ? null : city.getId();
+        List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
+            command.getLastname(), getDouble(command.getMinHandicap()),
+            getDouble(command.getMaxHandicap()));
+        
+        // check if user has admin role and show deleted is true, skip delete check
+        boolean checkDeleted = getDeletedMembers(request);
+        List<User> userList = new ArrayList<User>();
+        
+        if(!checkDeleted)
+        {
+        	// check if user's profile is 'deleted'
+        	for (User user : users)
+            {
+                if (!user.isAccountDeleted())
+                	userList.add(user);
+            }
+        }
+        else
+        	userList = users;
+        
+        return userList;
+    }
+    
+    private Double getDouble(Integer val)
+    {
+        Double dval = null;
+        
+        if (null != val)
+        {
+            dval = Double.valueOf(val.doubleValue());
+        }
+        
+        return dval;
+    }
+    
+    @Override
+    public Object formBackingObject(HttpServletRequest request) throws Exception
+    {
+        return getMemberName(request);
+    }
+    
+    private MemberName getMemberName(HttpServletRequest request)
+    {
+        MemberName memberName = new MemberName();
+        String firstname = request.getParameter("firstname"); //$NON-NLS-1$
+        if (null != firstname)
+        {
+            memberName.setFirstname(firstname);
+        }
+        String lastname = request.getParameter("lastname"); //$NON-NLS-1$
+        if (null != lastname)
+        {
+            memberName.setLastname(lastname);
+        }
+        String strVal = request.getParameter("maxHandicap"); //$NON-NLS-1$
+        if (null != strVal)
+        {
+            memberName.setMaxHandcap(getInteger(strVal));
+        }
+        strVal = request.getParameter("minHandicap"); //$NON-NLS-1$
+        if (null != strVal)
+        {
+            memberName.setMinHandcap(getInteger(strVal));
+        }
+        return memberName;
+    }
+    
+    private Integer getInteger(String val)
+    {
+        Integer d = null;
+        try
+        {
+            d = Integer.valueOf(val);
+        }
+        catch (NumberFormatException e)
+        {
+            // ignore this and return null
+        }
+        return d;
+    }
+    
+    private Long getOpenEntryRegistrations(User user)
+    {
+    	Long registeredSeason = 0L;
+    	if (null != user)
+    	{
+    		//get list of all open seasons in user's registered city
+    		List<Registration> cityOpenSeasonList = this.registrationManager.getOpenRegistrationsForCity(user.getRegisteredCity().getId());
+    		
+    		if(cityOpenSeasonList.size() > 0)
+    		{
+    			List<RegistrationEntry> userRegistrationEntryList = this.registrationEntryManager.getRegistrationEntriesForUser(user.getId());
+    			
+    			for(int listCounter=0; listCounter<userRegistrationEntryList.size(); listCounter++)
+    			{
+    				RegistrationEntry userEntry = userRegistrationEntryList.get(listCounter);
+    				Registration registedSeason = userEntry.getRegistration();
+
+    				for(int innerCounter=0; innerCounter<cityOpenSeasonList.size(); innerCounter++)
+    				{
+    					if((registedSeason.getId() == cityOpenSeasonList.get(innerCounter).getId()) && (cityOpenSeasonList.get(innerCounter).getScheduleState().intValue() == 0))
+        				{
+    						registeredSeason = cityOpenSeasonList.get(innerCounter).getId();
+    						break;
+        				}
+    				}
+    				
+    				if(registeredSeason > 0L)
+    					break;
+    			}
+    		}
+    	}
+    	return registeredSeason;
+    }
+    
+    private Map<Long,Long> getRegisteredUsers(List<User> users)
+    {
+    	if(users.size() <= 0)
+    		return null;
+    	
+    	Map<Long,Long> userRegistrations = new HashMap<Long,Long>();
+    	
+    	for(int counter = 0; counter<users.size(); counter++)
+    	{
+    		Long registeredSeasonId = getOpenEntryRegistrations(users.get(counter));
+    		if(registeredSeasonId > 0L)
+    			userRegistrations.put(users.get(counter).getId(), registeredSeasonId);
+    	}
+    	
+    	return userRegistrations;
+    }
+    
+    private boolean checkAdminAuth(String userName)
+    {
+    	boolean isAdministrator = false;
+    	User currentUser = super.getUserManager().getUserByUsername(userName);
+    	GrantedAuthority[] userAuthorities = currentUser.getAuthorities();
+        
+        for(int counter=0; counter<userAuthorities.length; counter++)
+        {
+        	String userRole = userAuthorities[counter].toString();
+        	if(userRole.equalsIgnoreCase("admin"))
+        	{
+        		isAdministrator = true;
+        		break;
+        	}
+        }
+        
+    	return isAdministrator;
+    }
+    
+    private boolean getDeletedMembers(HttpServletRequest request)
+    {
+    	boolean response = false;
+    	if(request.getRemoteUser() != null)
+    	{
+    		response = checkAdminAuth(request.getRemoteUser());
+    		
+    		if(request.getParameter("showDeleted") != null)
+    			response = response && true;
+    		else
+    			response = response && false;
+    	}
+    	return response;
+    }
+    
+    public static final class MemberName
+    {
+        private String firstname;
+        private String lastname;
+        private Integer maxHandicap = Integer.valueOf(100);//Integer.valueOf(6);
+        private Integer minHandicap = null;
+        
+        public String getFirstname() { return this.firstname; }
+        public void setFirstname(String name) { this.firstname = name; }
+        
+        public String getLastname() { return this.lastname; }
+        public void setLastname(String name) { this.lastname = name; }
+        
+        public Integer getMaxHandicap() { return this.maxHandicap; }
+        public void setMaxHandcap(Integer d) { this.maxHandicap = d; }
+        
+        public Integer getMinHandicap() { return this.minHandicap; }
+        public void setMinHandcap(Integer d) { this.minHandicap = d; }
+        
+        public boolean isValidSearch()
+        {
+            return (null != this.firstname) ||
+                   (null != this.lastname) ||
+                   (null != this.maxHandicap) ||
+                   (null != this.minHandicap);
+//                   ((this.firstname.length() > 0) ||
+//                   (this.lastname.length() > 0));
+        }
+        
+        @Override
+        public String toString()
+        {
+            ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE);
+            sb.append("lastname", this.lastname); //$NON-NLS-1$
+            sb.append("firstname", this.firstname); //$NON-NLS-1$
+            sb.append("maxHandicap", this.maxHandicap); //$NON-NLS-1$
+            sb.append("minHandicap", this.minHandicap); //$NON-NLS-1$
+            return sb.toString();
+        }
+    }
+}

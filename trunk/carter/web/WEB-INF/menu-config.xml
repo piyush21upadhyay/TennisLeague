@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="Welcome" title="home.title" page="/home.html"/>
+        <Menu name="Profile" title="menu.profile" page="/profile.html"/>
+        <Menu name="About" title="menu.about" page="/about.html"/>
+        <Menu name="Lookup" title="menu.lookup" page="/members.html"/>
+        <Menu name="Standings" title="menu.standings" page="/standings.html"/>
+        <Menu name="Playoffs" title="menu.playoffs" page="/playoffs.html"/>
+        <Menu name="Cities" title="menu.choosecity" page="/default.jsp?page=2"/>
+        <Menu name="Rules" title="menu.rules" page="/rules.html"/>
+        <Menu name="Press" title="menu.press" page="/press.html"/>
+        <Menu name="PostResults" title="menu.results" page="/results.html"/>
+        <Menu name="Schedule" title="menu.schedule" page="/schedule.html"/>
+        <Menu name="Champions" title="menu.champions" page="/champions.html"/>
+        <Menu name="Courses" title="menu.courses" page="/courses.html"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editprofile.html" roles="admin,user"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="admin" width="120" page="/users.html">
+            <Item name="ManageRegistration" title="menu.admin.registration" page="/manageRegistration.html"/>
+            <Item name="ManageCity" title="menu.admin.manageCity" page="/citymanage.html"/>
+			<Item name="ViewUsers" title="menu.admin.users" page="/users.html"/>
+            <Item name="ActiveUsers" title="menu.active.users" page="/activeUsers.html"/>
+            <Item name="ReloadContext" title="menu.admin.reload" page="/reload.html"/>
+            <Item name="FlushCache" title="menu.flushCache" page="/flushCache.html"/>
+            <Item name="Clickstream" title="menu.clickstream" page="/clickstreams.jsp"/>
+            <Item name="AdminInbox" title="menu.admin.inbox" page="/adminInbox.html"/>
+            <item name="TestPage" title="menu.test" description="Test Page" roles="admin" page="/test.html"/>
+        	<Item name="CreateUsers" title="menu.test.createUsers" page="/testCreateUsers.html"/>
+        	<Item name="PlayRegularSeason" title="menu.test.playRegularSeason" page="/testPlayRegularSeason.html"/>
+        	<Item name="PlayPostSeason" title="menu.test.playPostSeason" page="/testPlayPostSeason.html"/>
+        </Menu>
+        <Menu name="Demo" title="menu.demo" page="/default.jsp?page=3"/>
+        <Menu name="Login" title="menu.login" page="/default.jsp?page=1"/>
+        <Menu name="Signup" title="menu.signup" page="/signup.html"/>
+        <Menu name="Logout" title="menu.logout" page="/logout.jsp" roles="admin,user"/>
+        <Menu name="Contact" title="menu.contact" page="/contact.html"/>
+        <Menu name="City" title="menu.cities" page="/default.jsp?page=2"/>
+        <Menu name="Feedback" title="menu.feedback" page="/contact.html"/>
+        <Menu name="Privacy" title="menu.privacy" page="/privacy.html"/>
+        <Menu name="Terms" title="menu.terms" page="/terms.html"/>
+    </Menus>
+</MenuConfig>

@@ -1,0 +1,413 @@
+/*** scorecard2.css ***/
+.card {
+	font-size:90%;
+}
+.card .top-row div, .card .row div, .card .standings-row div, .card .entry-row-one div, .card .entry-row-two div {
+	background-color:#000;
+	text-align:center;
+}
+
+.card .top-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	/*padding:4px 2px;*/
+    padding:8px 2px;
+}
+.card .row div {
+	font-weight:bold;
+	padding:8px 2px;
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+}
+
+.hole, .nine {
+	float:left;
+	width:26px;
+}
+
+.card .bottom-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	background-color:#ffccff;
+	color:#cc0000;
+	text-align:center;
+	font-weight:bold;
+	padding:8px 2px;
+}
+
+.card .top-row div.first {
+	background:#000 url(../../images/cards/card-tl.jpg) left top no-repeat;
+}
+
+.card .top-row div.last, .card .top-row div.last-short {
+	background:#000 url(../../images/cards/card-tr.jpg) right top no-repeat;
+}
+
+.card .bottom-row div.first {
+	background:#ffccff url(../../images/cards/card-bl-pink.jpg) left bottom no-repeat;
+}
+
+.card .bottom-row div.last {
+	background:#ffccff url(../../images/cards/card-br-pink.jpg) right bottom no-repeat;
+}
+
+.card .first {
+	float:left;
+	width:120px;
+	text-align:left !important;
+	text-indent:10px;
+	white-space:nowrap;
+	overflow:hidden;
+}
+
+.last {
+	float:left;
+	width:60px;
+	border-right:solid 1px #23201f;
+}
+
+.last-bottom {
+	float:left;
+	width:60px;
+	border-right:solid 1px #23201f;
+}
+
+.card .rating {
+	text-align:right;
+	font-weight:bold;
+	width:797px;
+	padding-top:10px;
+	margin-bottom:100px;
+}
+
+.card .rating span {
+	color:#8DA92E;
+}
+
+.coursecard input[type="text"] {
+	width:20px;
+}
+
+/* Stroke Player */
+.card .row .stroke-player {
+	padding:4px 2px;
+	height:17px;
+}	
+.card .stroke-player-name, .card .stroke-player-hdcp {
+	float:left;
+	padding:3px 0px;
+	display:block;
+}
+.card .stroke-player-hdcp {
+	background:#999999;
+	padding:2px;
+	margin-left:8px;
+	text-indent:0px;
+}
+
+/* Womens Par */
+.womens-par {
+	/*background:#feccff;*/
+	color:#b30914;
+}
+
+/* Standings Row */
+.card .standings-row div {
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	height:18px;
+}
+
+.card .standings-row .hole {
+	padding:4px 2px 0 2px;
+	border-bottom:1px solid #23201F;
+	text-align:center;
+}
+
+.card .standings-row div.first {
+	padding:2px;
+	background:#000 url(../../images/cards/card-bl.jpg) left bottom no-repeat;
+}
+
+.card .standings-row .nine {
+	padding:2px;
+}
+
+.card .standings-row .last {
+	padding:2px;
+}
+
+.card .standings-row div.last, .card .standings-row div.last-short {
+	padding:2px;
+	background:#000 url(../../images/cards/card-br.jpg) right bottom no-repeat;
+}
+
+/* Results Entry Rows */
+.card .entry-row-one, .card .entry-row-two {
+	margin:0px;
+	padding:0px;
+}
+.card .entry-row-one div, .card .entry-row-two div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	margin:0px;
+	height:20px;
+	padding:4px 2px;
+}
+.card .entry-row-one input, .card .entry-row-two input {
+	width:23px;
+	background:none;
+	border:0px;
+	text-align:center;
+	margin:0px;
+	padding:1px 2px;
+	height:17px;
+	color:#ffffff;
+}
+.card .entry-row-one input:hover , .card .entry-row-two input:hover {
+	background:#ffffff;
+	color:#000000;
+}
+.card .entry-row-one div.first, .card .entry-row-two div.first, .card .entry-row-one div.nine, .card .entry-row-two div.nine {
+	padding:8px 2px;
+	height:12px;
+}
+.card .entry-row-two div.first {
+	background:#000 url(../../images/cards/card-bl.jpg) left bottom no-repeat;
+}
+.card .entry-row-two div.last, .card .entry-row-two div.last-short {
+	background:#000 url(../../images/cards/card-br.jpg) right bottom no-repeat;
+}
+
+
+
+
+.card .rating {
+	text-align:right;
+	font-weight:bold;
+	width:800px;
+	background:transparent;
+	padding-top:10px;
+}
+
+.card .rating span {
+	color:#8DA92E;
+}
+
+.card .scorer {
+	float:left;
+	width:326px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card .attest {
+	float:left;
+	width:319px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card .date {
+	float:left;
+	width:198px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card .row .dotted, .card #stroke .dotted
+{
+	border: 2px dashed red;
+    height: 15px;
+    margin-left: 3px;
+    padding: 0px;
+    width: 17px;
+}
+.dotted2
+{
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+/*** custom css ***/
+/*#printcard {
+	height:860px;
+	position:relative;
+}
+#printcard .card {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	position:absolute;
+	top:230px;
+	left:-225px;
+	width:900px;
+}*/
+#printcard .card .top-row div.last {
+	width:60px;
+}
+#printcard .hole, #printcard .nine {
+	width:26px;
+	height:14px;
+}
+#printcard .first {
+	width:155px;
+	height:14px;
+}
+#printcard .last {
+	height:14px;
+}
+#printcard .stroke {
+	background:#000000 url(../../images/cards/stroke2.jpg) 4px 3px no-repeat;
+	border-top:1px dashed #888;
+	border-left:1px dashed #888;
+	border-bottom:1px dashed #888;
+	height:13px;
+}
+#printcard  .stroke-player-hdcp {
+	background:#999999;
+	border:1px dashed #888;
+}
+
+#printcard .stroke + div {
+	border-left:1px dashed #999;
+}
+#printcard .bottom-row div {
+	/*background:#feccff;*/
+	color:#b30914;
+}
+#stroke .stroke {
+	height:23px;
+	width:23px;
+	border-right:1px dashed #888;
+	background:#000000 url(../../images/cards/stroke2.jpg) 0px -1px no-repeat;
+}
+/*** old css ***/
+/*.card {
+	font-size:90%;
+}
+
+.card div {
+	background-color:#fff;
+	color:#000;
+}
+
+.card .top-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	padding:4px 2px;
+}
+
+.card .row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	font-weight:bold;
+	padding:8px 2px;
+}
+
+.card .bottom-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	background-color:#ffccff;
+	color:#cc0000;
+	text-align:center;
+	font-weight:bold;
+	padding:8px 2px;
+}
+
+.card .top-row div.first {
+}
+
+.card .top-row div.last {
+}
+
+.card .bottom-row div.first {
+}
+
+.card .bottom-row div.last {
+}
+
+.card .first {
+	float:left;
+	width:140px;
+	text-align:left !important;
+	text-indent:5px;
+	white-space:no-wrap;
+	overflow:none;
+}
+
+.hole {
+	float:left;
+	width:26px;
+}
+
+.stroke {
+	background-color:#999 !important;
+}
+
+.nine {
+	float:left;
+	width:40px;
+}
+
+.last {
+	float:left;
+	width:60px;
+	border-right:solid 1px #23201f;
+}
+
+.card .rating {
+	text-align:right;
+	font-weight:bold;
+	width:800px;
+	background:transparent;
+	padding-top:10px;
+}
+
+.card .rating span {
+	color:#8DA92E;
+}
+
+.card .scorer {
+	float:left;
+	width:326px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card .attest {
+	float:left;
+	width:319px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card .date {
+	float:left;
+	width:198px;
+	border-left:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	padding:8px 2px;
+}
+
+.card #stroke {
+	padding:8px 2px;
+	width:854px;
+}
+
+.card #stroke .hole {
+	padding-top:2px;
+	padding-bottom:2px;
+}*/

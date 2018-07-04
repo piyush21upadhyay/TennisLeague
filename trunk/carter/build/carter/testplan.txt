@@ -1,0 +1,212 @@
+This file is an attempt to break down the City Golf League web application
+into small chunks which can be tested thoroughly given an outline of what
+needs to be tested in each section.
+
+Main Entry Page
+---------------
+This is the page that users get to by default when they enter the site.  It
+contains links for Signup, Login, Enter Site, View Demo.  It also is where
+the user is redirected to if they are already in the site and they decide to
+login or choose a different city.
+
+Anonymous User Interaction
+--------------------------
+This is how the pages in the site react to a user that is not logged in.  This
+takes two forms.  The first is if a user gets into the site without having
+selected a city from the main entry screen.  The second is if they have chosen
+a city and are just viewing the site for that city anonymously.
+
+In the first case, there is not much a user can do.  Most of the pages you
+get to just say something like "You must login or choose a city" with links
+to allow you to do one of those actions.  A tester needs to make sure that
+every page on the site gives a reasonable message when the user is in this state.
+
+In the second case, the site is pretty usable but has limited functionality.
+For example, you can view public messages but not create new ones.  You can
+view a profile page that says "Welcome Guest" and gives you the option of 
+signing up.  Most of the other pages have pretty full functionality.
+
+Signup
+------
+This is the page that allows new users to sign up.  It should deliver
+reasonable error messages for missing or invalid data.  It should take
+the user to their profile page when they successfully sign up.
+
+Navigation
+----------
+There are several ways to navigate and these should all be available from every
+page on the site.  These are:
+  - Top left allows navigation to About, Rules and Contact pages.
+  - Top left also allows user to click "cities" to choose another city.
+  - Top right has Login/Signup if not logged in and Logout if logged in
+  - Main nav contains Home, Player Profile, Schedule, Members, Courses, 
+  	  Leaderboard, Playoffs, and Champions
+  - Bottom left contains Feedback, Terms of Use and Privacy Policy links
+  
+QUESTION: What happens if the user is logged in (so they are automatically in
+          a city and they choose the "cities" link and go to another city.  We
+          need to make sure there are no weird anomalies with that.
+
+
+About Page
+----------
+This page should be reachable from any other page (using top left nav) and
+the content should be accurate and aesthetically pleasing.
+
+Rules Page
+----------
+This page should be reachable from any other page (using top left nav) and
+the content should be accurate and aesthetically pleasing.
+
+Contact Page
+----------
+This page should be reachable from any other page (using top left nav) and
+the content should be accurate and aesthetically pleasing.
+
+Feedback Page
+-------------
+This page should be reachable from any other page (using the footer nav) and
+the page should allow the user to register feedback about the site.
+
+Privacy Policy Page
+-------------------
+This page should be reachable from any other page (using the footer nav) and
+the content should be accurate and aesthetically pleasing.
+
+Terms of Use Page
+-------------------
+This page should be reachable from any other page (using the footer nav) and
+the content should be accurate and aesthetically pleasing.
+
+Home Page
+---------
+This is the page when the user clicks home from the main nav bar.  This page
+needs to be tested to make sure it works well in all of the following cases.
+  - There are no public messages for the city.
+  - There are some public messages for the city.
+  - There are a lot of public messages for the city.
+  - There is no scheduled season for the city.
+  - There is an upcoming season for the city.
+  - There is a season going on for the city right now.
+  - There is a playoff going on for the city right now.
+  - There is a season upcoming and there is a season currently being played.
+  - Test leaderboard with one division and with multiple divisions in current season.
+  
+Player Profile
+--------------
+This page needs to be tested in all of the following scenarios
+  - User is not logged in viewing their own profile
+  - User is not logged in viewing someone elses profile
+  - User is not signed up for a season
+  - User is signed up for a season but hasn't played any matches
+  - User is signed up and has played some matches
+  - User has no private messages
+  - User has a few private messages
+  - User has a lot of private messages
+  - There are no public messages
+  - There are some public messages
+  - There are lots of public messages
+  - When the logged in user is viewing thier own profile
+  - When the logged in user is viewing someone else's profile
+  
+Record
+------
+This is the page reached by clicking on the users record on the profile page.  It
+should show the card of each of the matches that have been played. It needs to 
+be tested when no matches have been played, when some have been played and when
+all matches for a season have been played.
+
+Standings
+---------
+This is the page reached by clicking on the users current standing link from their
+profile page.  This needs to be tested in various states throughout the season.
+
+Edit Profile
+-------------
+This should look similar to the signup page but doesn't create a new user
+in the system.
+
+Course Details
+--------------
+This is the page reached by clicking on a course link from various places in the
+application.  It should show a scorecard and other information about a course.
+
+Register For Season
+-------------------
+This is the page that the user registers for a season and pays.  This needs to be
+tested in the following scenarios:
+  - User is not logged in
+  - User is logged in but no seasons are available to register for.
+  - User is logged in and there is a season available.
+  - User tries to register a second time for the same season
+  
+Private Messages
+----------------
+This is the collection of pages that allows sending and receiving private messages
+between users.
+
+Public Message Board
+--------------------
+This is the collection of pages that allow users to view public messages and for
+logged in users to leave public messages.
+
+Schedule
+--------
+This is the page reached by clicking the Schedule main navigation button and by clicking
+on the View Schedule link from the Members page.  It needs to be tested in the following
+scenarios:
+  - User is not logged in and clicks the "Schedule" nav item
+  - User is not logged in and views someone else's schedule
+  - User is logged in viewing their own schedule
+  - User is logged in and viewing someone elses schedule.
+  
+Enter Scores
+------------
+This is the series of pages that allows users to enter scores by clicking the link on their
+schedule.  It needs to be tested in the following scenarios:
+  - User is not logged in.
+  - User is logged in and tries to enters scores for a match they weren't in
+  - User enters scores for a match they were in.
+  
+View Scores
+-----------
+The page that allows the user to view the scores of a particular match.  We should test
+the following scenarios:
+  - User is not logged in
+  - User is logged in and viewing a match they weren't in.
+  - User is logged in and viewing a match they were in.
+  
+Print Scorecard
+---------------
+The page that allows the user to pring a scorecard for an upcoming match.
+
+Members
+-------
+The page that allows viewing members from the city you are in.
+
+Courses
+-------
+The page that allows viewing the courses from the city you are in.
+
+Leaderboard
+-----------
+The leaderboard page.  This needs to be tested:
+  - When there is no season currently going on
+  - When there is a season currently going on.
+  - When there is a season currently in the playoffs
+  - When there is a season currently completed
+
+
+Playoffs
+-----------
+The playoffs page.  This needs to be tested:
+  - When there is no season currently going on
+  - When there is a season currently going on.
+  - When there is a season currently in the playoffs
+  - When there is a season currently completed
+  
+Champions
+---------
+The page that shows all past champions.  Should work when there are no past
+champions, some past champions and lots of past champions.
+

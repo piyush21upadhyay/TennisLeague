@@ -1,0 +1,156 @@
+.card {
+	font-size:90%;
+}
+.card .top-row div, .card .row div, .card .standings-row div, .card .entry-row-one div, .card .entry-row-two div {
+	background-color:#000;
+	text-align:center;
+}
+
+.card .top-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	/*padding:4px 2px;*/
+    padding:8px 2px;
+}
+.card .row div {
+	font-weight:bold;
+	padding:8px 2px;
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+}
+
+.hole {
+	float:left;
+	width:26px;
+}
+
+.card .bottom-row div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	border-bottom:solid 1px #23201f;
+	background-color:#ffccff;
+	color:#cc0000;
+	text-align:center;
+	font-weight:bold;
+	padding:8px 2px;
+}
+
+.card .top-row div.first {
+	background:#000 url(../../images/cards/card-tl.jpg) left top no-repeat;
+}
+
+.card .top-row div.last {
+	background:#000 url(../../images/cards/card-tr.jpg) right top no-repeat;
+}
+
+.card .bottom-row div.first {
+	background:#ffccff url(../../images/cards/card-bl-pink.jpg) left bottom no-repeat;
+}
+
+.card .bottom-row div.last {
+	background:#ffccff url(../../images/cards/card-br-pink.jpg) right bottom no-repeat;
+}
+
+.card .first {
+	float:left;
+	width:110px;
+	text-align:left !important;
+	text-indent:10px;
+	white-space:nowrap;
+	overflow:hidden;
+}
+
+.nine {
+	float:left;
+	width:26px;
+}
+
+.last {
+	float:left;
+	width:60px;
+	border-right:solid 1px #23201f;
+}
+
+.last-bottom {
+	float:left;
+	width:60px;
+	border-right:solid 1px #23201f;
+}
+
+.card .rating {
+	text-align:right;
+	font-weight:bold;
+	width:797px;
+	padding-top:10px;
+	margin-bottom:100px;
+}
+
+.card .rating span {
+	color:#8DA92E;
+}
+
+.coursecard input[type="text"] {
+	width:20px;
+}
+
+/* Stroke Player */
+.card .row .stroke-player {
+	padding:4px 2px;
+	height:17px;
+}	
+.card .stroke-player-name, .card .stroke-player-hdcp {
+	float:left;
+	padding:3px 0px;
+	display:block;
+}
+.card .stroke-player-hdcp {
+	background:#999999;
+	padding:2px;
+	margin-left:8px;
+	text-indent:0px;
+}
+
+/* Womens Par */
+.womens-par {
+	/*background:#feccff;*/
+	color:#b30914;
+}
+
+/* Results Entry Rows */
+.card .entry-row-one, .card .entry-row-two {
+	margin:0px;
+	padding:0px;
+}
+.card .entry-row-one div, .card .entry-row-two div {
+	border-left:solid 1px #23201f;
+	border-top:solid 1px #23201f;
+	text-align:center;
+	margin:0px;
+	height:20px;
+	padding:4px 2px;
+}
+.card .entry-row-one input, .card .entry-row-two input {
+	width:23px;
+	background:none;
+	border:0px;
+	text-align:center;
+	margin:0px;
+	padding:1px 2px;
+	height:17px;
+	color:#ffffff;
+}
+.card .entry-row-one input:hover , .card .entry-row-two input:hover {
+	background:#ffffff;
+	color:#000000;
+}
+.card .entry-row-one div.first, .card .entry-row-two div.first, .card .entry-row-one div.nine, .card .entry-row-two div.nine {
+	padding:8px 2px;
+	height:12px;
+}
+.card .entry-row-two div.first {
+	background:#000 url(../../images/cards/card-bl.jpg) left bottom no-repeat;
+}
+.card .entry-row-two div.last, .card .entry-row-two div.last-short {
+	background:#000 url(../../images/cards/card-br.jpg) right bottom no-repeat;
+}

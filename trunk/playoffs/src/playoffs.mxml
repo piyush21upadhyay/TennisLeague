@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" backgroundGradientAlphas="[1.0, 1.0]"
+	creationComplete="handleCreationComplete();" backgroundGradientColors="[#080800, #080800]">
+	<mx:Style>
+	.gradientBackground {
+		backgroundImage: ClassReference("com.sageconsulting.cgl.styles.GradientBackground");
+		backgroundSize: "100%";
+		fillColors: #ADBED6, #6B757B;
+		fillAlphas: 0.5, 0.5;
+	}
+	.round1LeftUpperCell {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 24;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round1LeftLowerCell {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: right, bottom;
+		padding-top: 24;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round2LeftCell1 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 48;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round2LeftCell2 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: right, bottom;
+		padding-top: 64;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round2LeftCell3 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 72;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round2LeftCell4 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: right, bottom;
+		padding-top: 64;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round3LeftCell1 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 88;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round3LeftCell2 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: right, bottom;
+		padding-top: 156;
+		padding-left: 4;
+		padding-right: 8;
+	}
+	.round4LeftCell {
+		top: 192;
+		padding-left: 4;
+		padding-right: 8;
+		border-skin: ClassReference("com.sageconsulting.cgl.styles.FinalsBorder");
+		borderColor: #FFFF9c;
+		borderPosition: left;
+		borderLength: 100;
+	}
+	.round4RightCell {
+		top: 220;
+		padding-right: 4;
+		padding-left: 8;
+		text-align: right;
+	 	horizontal-align: right;
+		border-skin: ClassReference("com.sageconsulting.cgl.styles.FinalsBorder");
+		borderColor: #FFFF9c;
+		borderPosition: right;
+		borderLength: 100;
+	}
+	.round3RightCell1 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 88;
+		padding-left: 4;
+		padding-right: 8;
+		text-align: right;
+	}
+	.round3RightCell2 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: left, bottom;
+		padding-top: 156;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round2RightCell1 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 48;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round2RightCell2 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: left, bottom;
+		padding-top: 64;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round2RightCell3 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 72;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round2RightCell4 {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: left, bottom;
+		padding-top: 64;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round1RightUpperCell {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: bottom;
+		padding-top: 24;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.round1RightLowerCell {
+		border-color: #FFFF9c;
+		border-style: solid;
+		border-sides: left, bottom;
+		padding-top: 24;
+		padding-left: 8;
+		padding-right: 4;
+		text-align: right;
+	}
+	.gridText {
+		color: #FFFFFF;
+	}
+	</mx:Style>
+	
+	<mx:Script>
+		<![CDATA[
+
+		[Embed(source="trophy.gif")]
+		[Bindable]
+		public var imgTrophy:Class;
+		
+		//private var xml:String = '<?xml version="1.0" encoding="ISO-8859-1"?><standings><city header="Portland"><division name="Division One"><winner></winner><round id="4"><match><player></player><player></player></match></round><round id="3"><match><player></player><player></player></match><match><player></player><player></player></match></round><round id="2"><match><player></player><player></player></match><match><player></player><player></player></match><match><player></player><player></player></match><match><player></player><player></player></match></round><round id="1"><match><player><id>4</id><name>Amy Player</name></player><player><id>19</id><name>Quinn Player</name></player></match><match><player><id>22</id><name>Todd Player</name></player><player><id>5</id><name>Bert Player</name></player></match><match><player><id>9</id><name>Fred Player</name></player><player><id>20</id><name>Rob Player</name></player></match><match><player><id>8</id><name>Earl Player</name></player><player><id>14</id><name>Lois Player</name></player></match><match><player><id>7</id><name>Darren Player</name></player><player><id>21</id><name>Sven Player</name></player></match><match><player><id>6</id><name>Chuck Player</name></player><player><id>12</id><name>Ivan Player</name></player></match><match><player><id>13</id><name>Kai Player</name></player><player><id>15</id><name>Mary Player</name></player></match><match><player><id>23</id><name>Vern Player</name></player><player><id>16</id><name>Norm Player</name></player></match></round></division></city></standings>';
+		private var divisions:XMLList;	
+		
+		private function handleCreationComplete():void
+		{
+			var loader:URLLoader = new URLLoader();
+			var request:URLRequest = new URLRequest("playoffs.html?format=xml");
+			loader.addEventListener(Event.COMPLETE, handleLoadCompleteEvent);
+			loader.load(request);
+		}
+		
+		private function handleLoadCompleteEvent(event:Event):void
+		{
+			var loader:URLLoader = URLLoader(event.target);
+			var xml:XML = new XML(loader.data);
+			var currentCity:XMLList = xml.child("city");
+			if (currentCity.length() > 0)
+			{
+				divisions = currentCity.children();
+				divisionChooser.dataProvider = divisions.attribute("name");
+				handleDivisionChange();
+			}
+		}
+		
+		private function handleDivisionChange():void
+		{
+			var idx:int = this.divisionChooser.selectedIndex;
+			var division:XML = divisions[idx];
+			fillBracket(division);
+		}
+		
+		private function fillBracket(division:XML):void
+		{
+			fillBracketChampion(division.child("winner"));
+			fillBracketRounds(division.child("round"));
+		}
+		
+		private function fillBracketChampion(winner:XMLList):void
+		{
+			if (winner.length() > 0)
+			{
+				var name:XMLList = winner.child("name");
+				this.champion.text = String(name.text()).toUpperCase();
+			}
+		}
+		
+		private function fillBracketRounds(rounds:XMLList):void
+		{
+			if (rounds.length() < 1)
+				return;
+				
+				
+			var round:XML;
+			for each (round in rounds)
+			{
+				var roundNum:String = round.attribute("id");
+				if (roundNum == "1") fillBracketRoundOne(round);
+				else if (roundNum == "2") fillBracketRoundTwo(round);
+				else if (roundNum == "3") fillBracketRoundThree(round);
+				else if (roundNum == "4") fillBracketRoundFour(round);
+			}
+		}
+		
+		private function fillBracketRoundOne(round:XML):void
+		{
+			var i:int = 1;
+			var match:XML;
+			var player:XML;
+			for each (match in round.children())
+			{
+				for each (player in match.children())
+				{
+					switch (i)
+					{
+						case 1: this.round1Box1.text = player.child("name").text(); break;
+						case 2: this.round1Box2.text = player.child("name").text(); break;
+						case 3: this.round1Box3.text = player.child("name").text(); break;
+						case 4: this.round1Box4.text = player.child("name").text(); break;
+						case 5: this.round1Box5.text = player.child("name").text(); break;
+						case 6: this.round1Box6.text = player.child("name").text(); break;
+						case 7: this.round1Box7.text = player.child("name").text(); break;
+						case 8: this.round1Box8.text = player.child("name").text(); break;
+						case 9: this.round1Box9.text = player.child("name").text(); break;
+						case 10: this.round1Box10.text = player.child("name").text(); break;
+						case 11: this.round1Box11.text = player.child("name").text(); break;
+						case 12: this.round1Box12.text = player.child("name").text(); break;
+						case 13: this.round1Box13.text = player.child("name").text(); break;
+						case 14: this.round1Box14.text = player.child("name").text(); break;
+						case 15: this.round1Box15.text = player.child("name").text(); break;
+						case 16: this.round1Box16.text = player.child("name").text(); break;
+					}
+					i++;
+				}
+			}
+		}
+		
+		private function fillBracketRoundTwo(round:XML):void
+		{
+			var i:int = 1;
+			var match:XML;
+			var player:XML;
+			for each (match in round.children())
+			{
+				for each (player in match.children())
+				{
+					switch (i)
+					{
+						case 1: this.round2Box1.text = player.child("name").text(); break;
+						case 2: this.round2Box2.text = player.child("name").text(); break;
+						case 3: this.round2Box3.text = player.child("name").text(); break;
+						case 4: this.round2Box4.text = player.child("name").text(); break;
+						case 5: this.round2Box5.text = player.child("name").text(); break;
+						case 6: this.round2Box6.text = player.child("name").text(); break;
+						case 7: this.round2Box7.text = player.child("name").text(); break;
+						case 8: this.round2Box8.text = player.child("name").text(); break;
+					}
+					i++;
+				}
+			}
+		}
+		
+		private function fillBracketRoundThree(round:XML):void
+		{
+			var i:int = 1;
+			var match:XML;
+			var player:XML;
+			for each (match in round.children())
+			{
+				for each (player in match.children())
+				{
+					switch (i)
+					{
+						case 1: this.round3Box1.text = player.child("name").text(); break;
+						case 2: this.round3Box2.text = player.child("name").text(); break;
+						case 3: this.round3Box3.text = player.child("name").text(); break;
+						case 4: this.round3Box4.text = player.child("name").text(); break;
+					}
+					i++;
+				}
+			}
+		}
+		
+		private function fillBracketRoundFour(round:XML):void
+		{
+			var i:int = 1;
+			var match:XML;
+			var player:XML;
+			for each (match in round.children())
+			{
+				for each (player in match.children())
+				{
+					switch (i)
+					{
+						case 1: this.round4Box1.text = player.child("name").text(); break;
+						case 2: this.round4Box2.text = player.child("name").text(); break;
+					}
+					i++;
+				}
+			}
+		}
+			
+		]]>
+	</mx:Script>
+
+	<mx:HBox left="10" fontFamily="arial" fontSize="14" width="100%" top="10" height="40">
+		<mx:HBox height="26" horizontalAlign="left" verticalAlign="middle" >
+			<mx:Text text="Portland" id="city" color="#8DA92E"/>
+			<mx:Text text="Division One" id="division" color="#FFFFFF"/>
+			<mx:Text text="Leaderboard" id="leaderboard" color="#FFFFFF"/>
+		</mx:HBox>
+		<mx:HBox width="100%" horizontalAlign="right" right="20">
+			<mx:ComboBox id="divisionChooser" change="handleDivisionChange();"/>
+		</mx:HBox>
+	</mx:HBox>
+	<mx:HBox width="100%" cornerRadius="5" borderStyle="solid" styleName="gradientBackground"
+		borderThickness="1">
+		<mx:Label text="1ST ROUND" width="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="QRT FINALS" width="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="SEMI FINALS" width="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="FINALS" width="100%" minWidth="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="SEMI FINALS" width="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="QRT FINALS" width="100" color="#FFFFFF" textAlign="center"/>
+		<mx:VRule height="18" />
+		<mx:Label text="1ST ROUND" width="100" color="#FFFFFF" textAlign="center"/>
+	</mx:HBox>
+	<mx:Panel width="100%" height="100%" layout="horizontal" backgroundAlpha="0" headerHeight="0" borderStyle="none" paddingLeft="0" paddingRight="0" horizontalGap="0">
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box1" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box2" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box3" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box4" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box5" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box6" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box7" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1LeftLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box8" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round2LeftCell1">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box1" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2LeftCell2">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box2" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2LeftCell3">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box3" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2LeftCell4">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box4" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round3LeftCell1">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round3Box1" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round3LeftCell2">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round3Box2" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0" width="100%">
+				<mx:GridRow height="192" width="100%">
+					<mx:GridItem width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+						<mx:VBox width="100%" height="100%" horizontalAlign="center" verticalAlign="middle">
+							<mx:Image source="{imgTrophy}"/>
+							<mx:Label id="champion" text="" color="#FFFF9c" textAlign="center"/>
+							<mx:Label text="CITY CHAMPION" color="#909090" textAlign="center"/>
+						</mx:VBox>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round4LeftCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round4Box1" text="" styleName="gridText" width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round4RightCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round4Box2" text="" styleName="gridText" width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round3RightCell1">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round3Box3" text="" styleName="gridText" width="100%"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round3RightCell2">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round3Box4" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round2RightCell1">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box5" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2RightCell2">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box6" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2RightCell3">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box7" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round2RightCell4">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round2Box8" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+		<mx:VBox height="100%" paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0">
+			<mx:Grid paddingBottom="0" paddingTop="0" paddingLeft="0" paddingRight="0" verticalGap="0">
+				<mx:GridRow width="100%" height="100%" styleName="round1RightUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box9" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box10" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box11" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box12" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box13" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box14" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightUpperCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box15" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+				<mx:GridRow width="100%" height="100%" styleName="round1RightLowerCell">
+					<mx:GridItem width="100%" height="100%">
+						<mx:Label id="round1Box16" text="" styleName="gridText" width="100"/>
+					</mx:GridItem>
+				</mx:GridRow>
+			</mx:Grid>
+		</mx:VBox>
+	</mx:Panel>
+	</mx:Application>

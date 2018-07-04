@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">        
+                    dataAccessFailure
+                </prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="userController" class="com.sageconsulting.webapp.action.UserController">
+        <property name="userManager" ref="userManager"/>
+    </bean>
+
+    <bean id="passwordHintController" class="com.sageconsulting.webapp.action.PasswordHintController">
+        <property name="userManager" ref="userManager"/>
+        <property name="messageSource" ref="messageSource"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+    </bean>
+
+    <bean id="reloadController" class="com.sageconsulting.webapp.action.ReloadController"/>
+
+    <bean id="userFormController" class="com.sageconsulting.webapp.action.UserFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="userForm"/>
+        <!-- property name="successView" value="redirect:home.html"/-->
+        <!-- property name="cancelView" value="redirect:home.html"/-->
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="courseManager" ref="courseManager"/>
+        <property name="cityManager" ref="cityManager"/>
+        <property name="seasonManager" ref="seasonManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+    
+    <!-- Add additional controller beans here -->
+    
+    <bean id="homeController" class="com.sageconsulting.webapp.action.HomeController">
+    	<property name="seasonManager" ref="seasonManager"/>
+		<property name="publicMessageManager" ref="publicMessageManager"/>
+		<property name="tickerMessageManager" ref="tickerMessageManager"/>
+		<property name="userManager" ref="userManager"/>
+		<property name="registrationManager" ref="registrationManager"/>
+		<property name="matchCategoryManager" ref="matchCategoryManager"></property>
+    </bean>
+    
+    <bean id="profileController" class="com.sageconsulting.webapp.action.ProfileController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="seasonManager" ref="seasonManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+		<property name="mailManager" ref="privateMessageManager"/>
+		<property name="publicMessageManager" ref="publicMessageManager"/>
+		<property name="registrationEntryManager" ref="registrationEntryManager"/>
+    </bean>
+    
+    <bean id="membersController" class="com.sageconsulting.webapp.action.MembersController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="registrationEntryManager" ref="registrationEntryManager"/>
+    </bean>
+    
+    <bean id="standingsController" class="com.sageconsulting.webapp.action.StandingsController">
+    	<property name="seasonManager" ref="seasonManager"/>
+    </bean>
+    
+    <bean id="playoffsController" class="com.sageconsulting.webapp.action.PlayoffsController">
+    	<property name="seasonManager" ref="seasonManager"/>
+    	<property name="bracketManager" ref="bracketManager"/>
+    </bean>
+    
+    <bean id="resultsDispatcher" class="com.sageconsulting.webapp.action.ResultsDispatchController">
+    	<property name="matchManager" ref="matchManager"/>
+    	<property name="userManager" ref="userManager"/>
+    </bean>
+    
+    <bean id="resultsController" class="com.sageconsulting.webapp.action.ResultsController">
+    	<property name="cancelView" value="redirect:schedule.html"/>
+    	<property name="successView" value="redirect:schedule.html"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    	<property name="championManager" ref="championManager"/>
+    	<property name="bracketManager" ref="bracketManager"/>
+    	<property name="seasonManager" ref="seasonManager"/>
+    </bean>
+    
+    <bean id="viewResultsController" class="com.sageconsulting.webapp.action.ViewResultsController">
+    	<property name="matchManager" ref="matchManager"/>
+    </bean>
+    
+    <bean id="recordController" class="com.sageconsulting.webapp.action.RecordController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    </bean>
+    
+    <bean id="scheduleController" class="com.sageconsulting.webapp.action.ScheduleController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    	<property name="seasonManager" ref="seasonManager"/>
+    </bean>
+    
+    <bean id="championsController" class="com.sageconsulting.webapp.action.ChampionsController">
+    	<property name="championManager" ref="championManager"/>
+    </bean>
+    
+    <bean id="coursesController" class="com.sageconsulting.webapp.action.CoursesController">
+    	<property name="courseManager" ref="courseManager"/>
+    </bean>
+    
+    <bean id="courseDetailsController" class="com.sageconsulting.webapp.action.CourseDetailsController">
+    	<property name="courseManager" ref="courseManager"/>
+    </bean>
+    
+    <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
+    	<property name="loginId" value="3zxVd7Hc8UD"/>
+    	<property name="transactionKey" value="945rCA94SbeM8Xfx"/>
+    	<!-- <property name="amount" value="85.00"/> -->
+        <property name="cancelView" value="redirect:profile.html"/>
+        <property name="successView" value="redirect:profile.html"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="registrationEntryManager" ref="registrationEntryManager"/>
+        <property name="userManager" ref="userManager"/>
+    </bean>
+    
+    <bean id="manageRegistrationController" class="com.sageconsulting.webapp.action.ManageRegistrationController">
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="seasonManager" ref="seasonManager"/>
+    </bean>
+    
+    <bean id="registrationFormController" class="com.sageconsulting.webapp.action.RegistrationFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:manageRegistration.html"/>
+        <property name="successView" value="redirect:manageRegistration.html"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="registrationEntryManager" ref="registrationEntryManager"/>
+    	<property name="cityManager" ref="cityManager"/>
+    </bean>
+    
+    <bean id="scheduleSeasonController" class="com.sageconsulting.webapp.action.ScheduleSeasonController">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="cancelView" value="redirect:manageRegistration.html"/>
+        <property name="successView" value="redirect:viewSeason.html"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="registrationEntryManager" ref="registrationEntryManager"/>
+    	<property name="seasonManager" ref="seasonManager"/>
+    	<property name="bracketManager" ref="bracketManager"/>
+    	<property name="userManager" ref="userManager"/>
+    </bean>
+
+	<bean id="manageCityController" class="com.sageconsulting.webapp.action.ManageCityController">
+    	<property name="cityManager" ref="cityManager"/>
+	</bean>
+	
+    <bean id="viewSeasonController" class="com.sageconsulting.webapp.action.ViewSeasonController">
+    	<property name="seasonManager" ref="seasonManager"/>
+    </bean>
+    
+    <bean id="testController" class="com.sageconsulting.webapp.action.TestController">
+    </bean>
+    
+    <bean id="testCreateUsersController" class="com.sageconsulting.webapp.action.TestCreateUsersController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<property name="registrationEntryManager" ref="registrationEntryManager"/>
+    	<property name="cityManager" ref="cityManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    	<property name="successView" value="redirect:test.html"/>
+    </bean>
+    
+    <bean id="testPlayRegularSeasonController" class="com.sageconsulting.webapp.action.TestPlayRegularSeasonController">
+    	<property name="seasonManager" ref="seasonManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    	<property name="successView" value="redirect:test.html"/>
+    </bean>
+    
+    <bean id="testPlayPostSeasonController" class="com.sageconsulting.webapp.action.TestPlayPostSeasonController">
+    	<property name="seasonManager" ref="seasonManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    	<property name="bracketManager" ref="bracketManager"/>
+    	<property name="successView" value="redirect:test.html"/>
+    </bean>
+    
+    <bean id="courseFormController" class="com.sageconsulting.webapp.action.CourseFormController">
+        <property name="formView" value="courseForm"/>
+    	<property name="successView" value="redirect:manageCourse.html"/>
+    	<property name="cancelView" value="redirect:manageCourse.html"/>
+    	<property name="cityManager" ref="cityManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    </bean>
+    
+    <bean id="printCardController" class="com.sageconsulting.webapp.action.PrintCardController">
+    	<property name="formView" value="printcard"/>
+    	<property name="cancelView" value="redirect:schedule.html"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="courseManager" ref="courseManager"/>
+    	<property name="matchManager" ref="matchManager"/>
+    </bean>
+    
+    <bean id="underParLeaderController" class="com.sageconsulting.webapp.action.UnderParLeaderController">
+    	<property name="underParLeaderManager" ref="underParLeaderManager"/>
+		<property name="matchManager" ref="matchManager"/>
+    </bean>
+    
+    <bean id="chooseCityController" class="com.sageconsulting.webapp.action.ChooseCityController">
+    	<property name="cityManager" ref="cityManager"/>
+    	<property name="successView" value="redirect:home.html"/>
+    </bean>
+
+    <!-- Load WEB-INF/classes/ApplicationResources.properties for i18n messages using JSTL's fmt tag -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="ApplicationResources"/>
+    </bean>
+    
+    
+	<!--  MessageBoard -->
+    <bean id="messageBoardForm" class="com.sageconsulting.webapp.action.MessageBoardController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>msgboard.html</value></property>
+        <property name="publicMessageManager"><ref bean="publicMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <property name="formView"><value>msgboard</value></property>
+    </bean>
+    
+    <bean id="publicMessageBoard" class="com.sageconsulting.webapp.action.MessageBoardController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>msgContent.html</value></property>
+        <property name="publicMessageManager"><ref bean="publicMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <!-- <property name="formView"><value>msgboard</value></property> -->
+    </bean>
+
+	<bean id="publicMessagePost" class="com.sageconsulting.webapp.action.MessageBoardController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>msgPostContent.html</value></property>
+        <property name="publicMessageManager"><ref bean="publicMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <!-- <property name="formView"><value>msgboard</value></property> -->
+    </bean>
+    
+    <bean id="emailValidateController" class="com.sageconsulting.webapp.action.UserFormController">
+        <property name="validator" ref="beanValidator"/>
+        <!-- <property name="formView" value="userForm"/> -->
+        <!-- property name="successView" value="redirect:home.html"/-->
+        <!-- property name="cancelView" value="redirect:home.html"/-->
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="courseManager" ref="courseManager"/>
+        <property name="cityManager" ref="cityManager"/>
+        <property name="seasonManager" ref="seasonManager"/>
+        <!-- <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/> -->
+    </bean>
+   
+    <bean id="deleteMessageBoardForm" class="com.sageconsulting.webapp.action.DeletePublicMessageFormController">
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>msgboard.html</value></property>
+        <property name="publicMessageManager"><ref bean="publicMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <property name="formView"><value>deletemsg</value></property>
+    </bean>
+    
+    <bean id="sendMessageController" class="com.sageconsulting.webapp.action.SendMessageController">
+        <!-- property name="validator" ref="beanValidator"/-->
+        <property name="mailEngine" ref="mailEngine"/>
+         <property name="message" ref="mailMessage"/>
+        <property name="mailManager"><ref bean="privateMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <property name="successView"><value>sendMessage</value></property>
+    </bean>
+   
+    <bean id="inboxController" class="com.sageconsulting.webapp.action.InboxController">
+        <property name="mailManager"><ref bean="privateMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>inbox</value></property>
+    </bean>
+   
+    <bean id="adminInboxController" class="com.sageconsulting.webapp.action.AdminInboxController">
+        <property name="mailManager"><ref bean="privateMessageManager"/></property>
+        <property name="userManager"><ref bean="userManager"/></property>
+        <property name="sessionForm"><value>true</value></property>
+        <property name="successView"><value>adminInbox</value></property>
+    </bean>
+
+	<bean id="congratsMessageController" class="com.sageconsulting.webapp.action.CongratsMessageController">
+    	<property name="userManager" ref="userManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
+    	<!-- <property name="successView" value="redirect:registration.html"/> -->
+    </bean>
+    
+    <bean id="registrationCityController" class="com.sageconsulting.webapp.action.RegistrationCityController">
+    	<property name="validator" ref="beanValidator"/>
+        <property name="formView" value="registrationCity"/>
+		<property name="cancelView" value="redirect:citymanage.html"/>
+        <property name="successView" value="redirect:citymanage.html"/>
+		<property name="cityManager" ref="cityManager"/>
+    	<property name="userManager" ref="userManager"/>
+    	<property name="tickerMessageManager" ref="tickerMessageManager"/>
+    </bean>
+    
+    <bean id="manageCourseController" class="com.sageconsulting.webapp.action.ManageCourseController">
+    	<property name="courseManager" ref="courseManager"/>
+	</bean>
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/home.html">homeController</prop>
+                <prop key="/profile.html">profileController</prop>
+                <prop key="/passwordHint.html">passwordHintController</prop>
+                <prop key="/signup.html">userFormController</prop>
+                <prop key="/editprofile.html">userFormController</prop>
+                <prop key="/edituser.html">userFormController</prop>
+                <prop key="/about.html">filenameController</prop>
+                <prop key="/terms.html">filenameController</prop>
+                <prop key="/privacy.html">filenameController</prop>
+                <prop key="/contact.html">filenameController</prop>
+                <prop key="/members.html">membersController</prop>
+                <prop key="/standings.html">standingsController</prop>
+                <prop key="/playoffs.html">playoffsController</prop>
+                <prop key="/rules.html">filenameController</prop>
+                <prop key="/resultsdispatch.html">resultsDispatcher</prop>
+                <prop key="/results.html">resultsController</prop>
+                <prop key="/viewresults.html">viewResultsController</prop>
+                <prop key="/record.html">recordController</prop>
+                <prop key="/schedule.html">scheduleController</prop>
+                <prop key="/champions.html">championsController</prop>
+                <prop key="/courses.html">coursesController</prop>
+                <prop key="/coursedetails.html">courseDetailsController</prop>
+                <prop key="/registration.html">registrationController</prop>
+                <prop key="/printcard.html">printCardController</prop>
+                <prop key="/choosecity.html">chooseCityController</prop>
+                
+				<prop key="/msgboard.html">messageBoardForm</prop>
+				
+				<prop key="/msgContent.html">publicMessageBoard</prop>
+
+				<prop key="/msgPostContent.html">publicMessagePost</prop>
+				
+                <prop key="/deletemsg.html">deleteMessageBoardForm</prop>               
+                <prop key="/sendMessage.html">sendMessageController</prop>
+                <prop key="/inbox.html">inboxController</prop>
+                <prop key="/emailValidate.html">emailValidateController</prop>
+                <prop key="/congratsPage.html">congratsMessageController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="adminUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="adminInterceptor"/>
+            </list>
+        </property>
+        <property name="mappings">
+            <props>
+                <prop key="/activeUsers.html">filenameController</prop>
+                <prop key="/users.html">userController</prop>
+                <prop key="/flushCache.html">filenameController</prop>                
+                <prop key="/reload.html">reloadController</prop>
+                <prop key="/manageRegistration.html">manageRegistrationController</prop>
+                <prop key="/scheduleSeason.html">scheduleSeasonController</prop>
+                <prop key="/viewSeason.html">viewSeasonController</prop>
+                <prop key="/registrationForm.html">registrationFormController</prop>
+                <prop key="/editCourse.html">courseFormController</prop>
+                <prop key="/underpar.html">underParLeaderController</prop>
+                <prop key="/adminInbox.html">adminInboxController</prop>
+                <prop key="/citymanage.html">manageCityController</prop>
+                <prop key="/registrationCity.html">registrationCityController</prop>
+                <prop key="/manageCourse.html">manageCourseController</prop>
+                <prop key="/jsonState.html">registrationFormController</prop>
+				
+                <prop key="/test.html">testController</prop>
+                <prop key="/testCreateUsers.html">testCreateUsersController</prop>
+                <prop key="/testPlayRegularSeason.html">testPlayRegularSeasonController</prop>
+                <prop key="/testPlayPostSeason.html">testPlayPostSeasonController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="adminInterceptor" class="org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="admin"/>
+    </bean>
+    
+    <bean id="filenameController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+    <!-- View Resolver for JSPs -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

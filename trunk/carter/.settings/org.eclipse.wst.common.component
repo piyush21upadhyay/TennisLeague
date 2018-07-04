@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="carter">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/dao"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/service"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/web"/>
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/dao"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/web"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/service"/>
+        <property name="context-root" value="carter"/>
+        <property name="java-output-path" value="/carter/build/classes"/>
+    </wb-module>
+</project-modules>

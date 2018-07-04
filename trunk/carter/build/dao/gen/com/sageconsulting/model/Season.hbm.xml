@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.sageconsulting.model.Season"
+            table="season"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="version"
+            type="java.lang.Integer"
+        />
+
+        <many-to-one
+            name="city"
+                    column="city_id"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <property
+            name="name"
+                    column="name"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="division"
+                    column="division"
+        >
+
+        </property>
+
+        <property
+            name="postSeasonQualifyingCount"
+                    column="qualifiers"
+                not-null="true"
+        >
+
+        </property>
+
+        <set
+            name="matches"
+            table="season_match"
+            lazy="true"
+            sort="com.sageconsulting.model.MatchSorter"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="season_id"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="com.sageconsulting.model.Match"
+                column="match_id"
+                outer-join="auto"
+             />
+
+        </set>
+
+        <property
+            name="registrationId"
+                    column="registration_id"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="state"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,9 @@
+table.matchtree td { font-size:8pt; font-family:Arial,SanSerif; background-color:white; }
+.t { border-top: #000 1px solid; }
+.l { border-left: #000 1px solid; }
+.b { border-bottom: #000 1px solid; }
+.r { border-right: #000 1px solid; }
+.tr { border-top: #000 1px solid; border-right: #000 1px solid; }
+.br { border-bottom: #000 1px solid; border-right: #000 1px solid; }
+.tbr { border-top: #000 1px solid; border-bottom: #000 1px solid; border-right: #000 1px solid; }
+.tblr { border-top: #000 1px solid; border-bottom: #000 1px solid; border-left: #000 1px solid; border-right: #000 1px solid; }
