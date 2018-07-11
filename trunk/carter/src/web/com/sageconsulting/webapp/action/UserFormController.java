@@ -8,6 +8,9 @@
  */
 package com.sageconsulting.webapp.action;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -388,12 +391,16 @@ public class UserFormController extends BaseFormController
     	return (!orig.getPassword().equals(user.getPassword()));
     }
     
-    private void saveUser(User user) throws UserExistsException
+    private void saveUser(User user) throws UserExistsException, ParseException
     {
     	if (null == user.getVersion())
     	{
     		user.setEnabled(true);
-    		user.setDateJoined(new Date());
+    		/***Code added by Piyush/Akash starts**/
+    		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        	Date date = new Date();
+    		/**Code added by Piyush/Akash ends**/
+    		user.setDateJoined(dateFormat.parse(dateFormat.format(date)));
             user.addRole(this.roleManager.getRole(Constants.USER_ROLE));
     	}
         getUserManager().saveUser(user);

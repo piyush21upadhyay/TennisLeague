@@ -58,22 +58,22 @@
 			
 			<label for="playerLevel"><fmt:message key="userForm.playerLevel"/></label>
 			<form:select path="playerLevel" id="playerLevel" cssClass="preferredPhone">
-				<form:option value="1"><fmt:message key="userForm.level2_5"/></form:option>
-				<form:option value="2"><fmt:message key="userForm.level3_0"/></form:option>
-				<form:option value="3"><fmt:message key="userForm.level3_5"/></form:option>
-				<form:option value="4"><fmt:message key="userForm.level4_0"/></form:option>
-				<form:option value="5"><fmt:message key="userForm.level4_5"/></form:option>
-				<form:option value="6"><fmt:message key="userForm.level5_0"/></form:option>
+				<form:option value="2.5"><fmt:message key="userForm.level2_5"/></form:option>
+				<form:option value="3.0"><fmt:message key="userForm.level3_0"/></form:option>
+				<form:option value="3.5"><fmt:message key="userForm.level3_5"/></form:option>
+				<form:option value="4.0"><fmt:message key="userForm.level4_0"/></form:option>
+				<form:option value="4.5"><fmt:message key="userForm.level4_5"/></form:option>
+				<form:option value="5.0"><fmt:message key="userForm.level5_0"/></form:option>
 			</form:select>
 			
 			<label for="ratedBy"><fmt:message key="userForm.ratedBy"/></label>
 			<form:select path="ratedBy" id="ratedBy" cssClass="preferredPhone">
-				<form:option value="1"><fmt:message key="userForm.selfRated"/></form:option>
-				<form:option value="2"><fmt:message key="userForm.ustaRated"/></form:option>
+				<form:option value="self"><fmt:message key="userForm.selfRated"/></form:option>
+				<form:option value="usta"><fmt:message key="userForm.ustaRated"/></form:option>
 			</form:select>
 			
-			<label for="homeCourt"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-			<form:input path="homeCourt" id="homeCourt" cssClass="longBox" maxlength="30"/>
+			<%-- <label for="homeCourt"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
+			<form:input path="homeCourt" id="homeCourt" cssClass="longBox" maxlength="30"/> --%>
 			<div class="clear"></div>
 		</fieldset>
 	</div>
@@ -101,8 +101,8 @@
 			
 			<label><fmt:message key="userForm.plays"/></label>
 			<form:select path="plays" id="plays" cssClass="preferredPhone">
-				<form:option value="1"><fmt:message key="userForm.leftHandedPlay"/></form:option>
-				<form:option value="2"><fmt:message key="userForm.rightHandedPlay"/></form:option>
+				<form:option value="Left Handed"><fmt:message key="userForm.leftHandedPlay"/></form:option>
+				<form:option value="Right Handed"><fmt:message key="userForm.rightHandedPlay"/></form:option>
 			</form:select>
 			
 			<label><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
@@ -115,22 +115,22 @@
 				
 			 <label><fmt:message key="userForm.openToChallenges"/></label>
 			 <form:select path="openToChallenges" id="openToChallenges" cssClass="openToChallenges">
-				<form:option value="1"><fmt:message key="userForm.yes"/></form:option>
-				<form:option value="2"><fmt:message key="userForm.no"/></form:option>
+				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
 			</form:select>
 							
 			<label><fmt:message key="userForm.onlyOpenToSameGender"/></label>
 			 <form:select path="onlyOpenToSameGender" id="onlyOpenToSameGender" cssClass="onlyOpenToSameGender">
-				<form:option value="1"><fmt:message key="userForm.yes"/></form:option>
-				<form:option value="2"><fmt:message key="userForm.no"/></form:option>
+				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
 			</form:select>
 			
 			<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label>
-			<form:checkbox path="opponentSkillLevel" value="skillLevel1" id="skillLevel1"/>
+			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel1" id="skillLevel1"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel1"/></label>
-			<form:checkbox path="opponentSkillLevel" value="skillLevel2" id="skillLevel2"/>
+			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel2" id="skillLevel2"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel2"/></label>
-			<form:checkbox path="opponentSkillLevel" value="skillLevel3" id="skillLevel3"/>
+			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel3" id="skillLevel3"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel3"/></label>
 				
 		</fieldset>
@@ -157,8 +157,11 @@
 			<label for="address.country"><fmt:message key="userForm.country"/></label>
             <carter:country name="address.country" prompt="" default="${user.address.country}"/>
             
-            <label>Date</label>
-            <p><script> document.write(new Date().toLocaleDateString()); </script></p>
+            <!-- <label>Date</label>
+            <input type="date" id="todayDate" /> -->
+            <label for="dateJoined"><fmt:message key="userForm.joiningDate"/></label>
+            <form:input path="dateJoined" id="todayDate" />
+            
             <label><span class="mandatory">*</span>all mandatory except equipment</label><br>
             <label for="equipment"><fmt:message key="userForm.equipment"/></label>
             <label for="racquet"><fmt:message key="userForm.racquet"/></label>
@@ -175,17 +178,19 @@
 <div class="edituser-section">
 	<div class="threecolw">
 		<fieldset>
-			<legend><fmt:message key="userForm.courseSelection"/></legend>
-			<label for="homeCourse.id"><fmt:message key="userForm.homecourse"/></label>
-			<form:select path="homeCourse" id="homeCourse.id" cssClass="changeHomeCourse">
+			<legend><fmt:message key="userForm.courtSelection"/></legend>
+			<label for="homeCourt.id"><fmt:message key="userForm.homeCourt"/></label>
+			<form:select path="homeCourt" id="homeCourt.id" cssClass="changeHomeCourse">
 				<option value=''><fmt:message key="userForm.defaultOptionText"/></option>
-				<c:forEach var="course" items="${courseList}">
-					<option value="<c:out value='${course.id}'/>" <c:if test="${user.homeCourse.id == course.id}">selected</c:if>>
-						<c:out value="${course.name}"/>
+				<c:forEach var="court" items="${courseList}">
+					<option value="<c:out value='${court.id}'/>" <c:if test="${user.homeCourt.id == court.id}">selected</c:if>>
+						<c:out value="${court.name}"/>
 					</option>
 				</c:forEach>
 			</form:select>
 		</fieldset>
+		<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+			<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
 	</div>
 	<div class="threecolw">
 		<fieldset>
@@ -208,36 +213,24 @@
 		<legend><fmt:message key="userForm.appearance"/></legend>
 		<label for="firsticon"><fmt:message key="userForm.icon"/></label>
 		<div class="signup-icon">
-			<div><img src="images/teeOff-icon.gif" alt="teeOff-icon"/></div>
-			<div><form:radiobutton path="icon" value="images/teeOff-icon.gif" id="firsticon"/></div>
+			<div><img src="images/BallHoppers.gif" alt="ballHoppers"/></div>
+			<div><form:radiobutton path="icon" value="images/BallHoppers.gif" id="firsticon"/></div>
 		</div>
 		<div class="signup-icon">
-			<div><img src="images/maleGolfer-icon.gif" alt="maleGolfer" /></div>
-			<div><form:radiobutton path="icon" value="images/maleGolfer-icon.gif"/></div>
+			<div><img src="images/SinglesRacquet.gif" alt="sinleRacquet" /></div>
+			<div><form:radiobutton path="icon" value="images/SinlesRacquet.gif"/></div>
 		</div>
 		<div class="signup-icon">
-			<div><img src="images/femaleGolfer-icon.gif" alt="femaleGolfer" /></div>
-			<div><form:radiobutton path="icon" value="images/femaleGolfer-icon.gif"/></div>
+			<div><img src="images/TennisBall.gif" alt="tennisBall" /></div>
+			<div><form:radiobutton path="icon" value="images/TennisBall.gif"/></div>
 		</div>
 		<div class="signup-icon">
-			<div><img src="images/ballTee-icon.gif" alt="ballTee" /></div>
-			<div><form:radiobutton path="icon" value="images/ballTee-icon.gif"/></div>
+			<div><img src="images/Racquets.gif" alt="racquets" /></div>
+			<div><form:radiobutton path="icon" value="images/Racquets.gif"/></div>
 		</div>
 		<div class="signup-icon">
-			<div><img src="images/ball-icon.gif" alt="ball" /></div>
-			<div><form:radiobutton path="icon" value="images/ball-icon.gif"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/cart-icon.gif" alt="cart" /></div>
-			<div><form:radiobutton path="icon" value="images/cart-icon.gif"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/clubs-icon.gif" alt="clubs" /></div>
-			<div><form:radiobutton path="icon" value="images/clubs-icon.gif"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/hole-icon.gif" alt="hole" /></div>
-			<div><form:radiobutton path="icon" value="images/hole-icon.gif"/></div>
+			<div><img src="images/Footwear.gif" alt="footwear" /></div>
+			<div><form:radiobutton path="icon" value="images/Footwear.gif"/></div>
 		</div>
 		
 		<c:if test="${(isAdministrator) && userId ne adminId }">
@@ -481,6 +474,16 @@ function jqFormatPhone( obj )
    	}
 	$(obj).val(vFMPhone);
 }
+
+$(document).ready( function() {
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+    $('#todayDate').val(today);
+	$('#todayDate').attr("disabled", true) 
+ });
+ 
 </script>
 
 <v:javascript formName="user" staticJavascript="false"/>

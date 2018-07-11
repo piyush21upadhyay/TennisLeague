@@ -416,7 +416,7 @@ fgACAAABoA==]]></value>
     <column>icon</column>
     <column>player_level</column>
 	<column>ratedBy</column>
-	<column>homeCourt</column>
+	<!-- <column>homeCourt</column> -->
 	<column>plays</column>
 	<column>playing_preference</column>
 	<column>opentochallenges</column>
@@ -425,6 +425,7 @@ fgACAAABoA==]]></value>
 	<column>racket</column>
 	<column>tennisstring</column>
 	<column>shoes</column>
+	<column>court_address</column>
     <row>
       <value>1</value>
       <value>admin</value>
@@ -462,7 +463,7 @@ fgACAAABoA==]]></value>
       <value>images/maleGolfer-icon.gif</value>
       <value>2.5</value>
       <value>USTA</value>
-	  <value>Home</value>
+	  <!-- <value>Home</value> -->
 	 <value>Left Handed</value>
 	 <value>Singles</value>
 	 <value>true</value>
@@ -471,6 +472,7 @@ fgACAAABoA==]]></value>
 	 <value>Yes</value>
 	 <value>No</value>
 	 <value>Yes</value>
+	 <value>Vaishali</value>
     </row>
   </table>
   

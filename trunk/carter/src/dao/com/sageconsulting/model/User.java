@@ -49,7 +49,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     //private Double adjustedHandicap;
     private String passwordHint;
     private City registeredCity;
-    private Course homeCourse;
+    private Course homeCourt;
     private String referral;
     private String icon = "images/teeOff-icon.jpg"; //$NON-NLS-1$
     private Season firstSeason;
@@ -75,7 +75,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private boolean accountDeleted;
     private Double playerLevel=Double.valueOf(2.5);
     private String ratedBy;
-    private String homeCourt;
+    /*private String homeCourt;*/
     private String plays;
     private String[] playingPreference;
     private boolean openToChallenges = true;
@@ -84,8 +84,9 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String racquet;
     private String tennisString;
     private String shoes;
+    private String courtAddress;
     
-    public User()
+	public User()
     {
         // nothing to do
     }
@@ -94,6 +95,20 @@ public class User extends BaseObject implements Serializable, UserDetails
     {
         this.username = uname;
     }
+    
+    /**
+     * @hibernate.property column="court_address" not-null="true"
+     */
+    public String getCourtAddress() {
+		return courtAddress;
+	}
+
+    /**
+     * @spring.validator type="required"
+     */
+	public void setCourtAddress(String courtAddress) {
+		this.courtAddress = courtAddress;
+	}
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -243,9 +258,9 @@ public class User extends BaseObject implements Serializable, UserDetails
      * @return The user's home course.
      * @hibernate.many-to-one column="home_course" cascade="none" not-null="true"
      */
-    public Course getHomeCourse()
+    public Course getHomeCourt()
     {
-        return this.homeCourse;
+        return this.homeCourt;
     }
     
     /**
@@ -520,10 +535,10 @@ public class User extends BaseObject implements Serializable, UserDetails
 
 	/**
      * @hibernate.property column="homecourt" not-null="true"
-     */
+     *//*
 	public String getHomeCourt() {
 		return homeCourt;
-	}
+	}*/
 
 	/**
      * @hibernate.property column="plays" not-null="true"
@@ -713,9 +728,9 @@ public class User extends BaseObject implements Serializable, UserDetails
     /**
      * @spring.validator type="required"
      */
-    public void setHomeCourse(Course course)
+    public void setHomeCourt(Course court)
     {
-        this.homeCourse = course;
+        this.homeCourt = court;
     }
     
     /**
@@ -767,10 +782,10 @@ public class User extends BaseObject implements Serializable, UserDetails
 	
 	/**
      * @spring.validator type="required"
-     */
+     *//*
 	public void setHomeCourt(String homeCourt) {
 		this.homeCourt = homeCourt;
-	}
+	}*/
 
 	
 	public void setPlays(String plays) {
@@ -943,7 +958,7 @@ public class User extends BaseObject implements Serializable, UserDetails
             append("accountExpired", this.accountExpired). //$NON-NLS-1$
             append("credentialsExpired", this.credentialsExpired). //$NON-NLS-1$
             append("accountLocked", this.accountLocked). //$NON-NLS-1$
-            append("homeCourse", this.homeCourse).
+            append("homeCourt", this.homeCourt).
             append("referral", this.referral);
         
         /* Some properties are set for exporting user data to excel,pdf, or xml */
@@ -957,7 +972,7 @@ public class User extends BaseObject implements Serializable, UserDetails
         sb.append("cellPhone", this.cellPhone);
         sb.append("homePhone", this.homePhone);
         sb.append("playerLevel", this.playerLevel);
-        sb.append("homeCourse", this.homeCourse);
+        sb.append("homeCourt", this.homeCourt);
         sb.append("dateJoined", this.dateJoined);
         sb.append("seasonEntered", this.seasonEntered);
         sb.append("currentSeason", this.currentSeason);

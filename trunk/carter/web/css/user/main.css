@@ -2114,6 +2114,8 @@ p.champ-info {
 #edituser img {
 	margin-left:4px;
 	margin-right:4px;
+	width: 40px;
+	height: 40px;
 }
 
 #edituser select {
