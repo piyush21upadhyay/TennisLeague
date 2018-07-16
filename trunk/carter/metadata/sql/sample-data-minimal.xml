@@ -401,7 +401,7 @@ fgACAAABoA==]]></value>
     <column>account_expired</column>
     <column>account_locked</column>
     <column>credentials_expired</column>
-    <column>home_course</column>
+    <!-- <column>home_course</column> -->
     <column>date_joined</column>
     <column>registered_city</column>
     <column>current_wins</column>
@@ -426,6 +426,7 @@ fgACAAABoA==]]></value>
 	<column>tennisstring</column>
 	<column>shoes</column>
 	<column>court_address</column>
+	<column>home_court</column>
     <row>
       <value>1</value>
       <value>admin</value>
@@ -448,7 +449,7 @@ fgACAAABoA==]]></value>
       <value>N</value>
       <value>N</value>
       <value>N</value>
-      <value>1</value>
+      <!-- <value>1</value> -->
       <value>2007-03-01</value>
       <value>1</value>
       <value>0</value>
@@ -473,6 +474,7 @@ fgACAAABoA==]]></value>
 	 <value>No</value>
 	 <value>Yes</value>
 	 <value>Vaishali</value>
+	 <value>Vaishali Court</value>
     </row>
   </table>
   

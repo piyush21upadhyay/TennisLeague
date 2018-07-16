@@ -32,6 +32,7 @@ public class Champion extends BaseObject implements Serializable
     private String record;
     //private Double handicap;
     private Course homeCourse;
+    //private String homeCourt;
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -107,6 +108,16 @@ public class Champion extends BaseObject implements Serializable
     {
         return this.homeCourse;
     }
+    
+    /**
+     * Get the users chosen home course.
+     * @return The user's home course.
+     * @hibernate.many-to-one column="home_course" cascade="none" not-null="true"
+     */
+    /*public String getHomeCourt()
+    {
+        return this.homeCourse;
+    }*/
 
     public void setId(Long userId)
     {
@@ -157,6 +168,11 @@ public class Champion extends BaseObject implements Serializable
     {
         this.homeCourse = c;
     }
+    
+    /*public void setHomeCourt(String c)
+    {
+        this.homeCourse = c;
+    }*/
 
     @Override
     public boolean equals(Object o)

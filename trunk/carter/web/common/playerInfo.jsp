@@ -67,7 +67,6 @@
 							<fmt:formatDate pattern="MMMMM d" value="${player.lastLogin}" />
 						</c:otherwise>
 					</c:choose>
-					</h4>
 					</h4> --%>
 				</div>
 			</c:if>
@@ -76,7 +75,7 @@
 	<div class="clear"></div>
 	
 	<div class="subsection">
-		<p><fmt:message key="profile.homeCourse"/> <c:if test="${not empty player}"><a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${player.homeCourt.id}"/>"><c:out value="${player.homeCourt.name}"/></a></c:if></p>
+		<p><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
 		<%-- <p><fmt:message key="profile.handicap"/> <c:if test="${not empty player}">
 			<span class="green">
 			<c:choose>
@@ -88,9 +87,9 @@
 				</c:otherwise>
 			</c:choose>
 			</span></c:if></p> --%>
-		<c:if test="${param.fullPlayerInfo eq 'true'}">
+		<%-- <c:if test="${param.fullPlayerInfo eq 'true'}">
 			<p><fmt:message key="profile.division"/> <c:if test="${not empty player}"><span class="green"><c:out value="${currentDivision}"/></span></c:if></p>
-		</c:if>
+		</c:if> --%>
 		<c:if test="${not param.fullPlayerInfo eq 'true' and not empty currentRecord}">
 			<%-- <p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p> --%>
 			<c:choose>
@@ -107,6 +106,7 @@
 	<c:if test="${param.fullPlayerInfo eq 'true'}">
 	   <div class="subsection">
 			<p><fmt:message key="profile.memberSince"/> <c:if test="${not empty player}"><span class="green"><fmt:formatDate value="${player.dateJoined}" pattern="yyyy"/></span></c:if></p>
+			<p><fmt:message key="profile.rating"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.ratedBy}"/></span></c:if></p>
 			<p><fmt:message key="profile.tournamentEntered"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.seasonEntered}"/></span></c:if></p>
 	   </div>
 	   <div class="subsection">
@@ -117,8 +117,35 @@
 	   <div class="subsection">
 			<p><fmt:message key="profile.cglRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>&func=all"><c:out value="${overallRecord}"/></a></c:if></p>
 			<p><fmt:message key="profile.bestResults"/> <c:if test="${not empty player}"><span class="green">N/A<%--TODO--%></span></c:if></p>
-			<p><fmt:message key="profile.careerLow"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.lowScore}"/></span></c:if></p>
+			<%-- <p><fmt:message key="profile.careerLow"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.lowScore}"/></span></c:if></p> --%>
 		</div>
+		<!-- Added by Piyush and Akash starts -->
+		<div class="subsection">
+			<p><fmt:message key="profile.plays"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.plays}"/></span></c:if></p>
+			<p><fmt:message key="profile.matchPreference"/> <c:if test="${not empty player}">
+				<span class="green">
+					<c:forEach var="playingPref" items="${player.playingPreference}">
+					<td>
+				        <c:out value="${playingPref}" />
+				    </td>
+					</c:forEach>
+					<%-- <c:out value="${player.playingPreference}"/> --%>
+				</span></c:if>
+			</p>
+			<p><fmt:message key="profile.openToChallenges"/> <c:if test="${not empty player}">
+				<span class="green">
+				<c:choose>
+					<c:when test="${player.male eq 'true'}">
+						<c:out value="M"/>
+					</c:when>
+					<c:otherwise>
+						<c:out value="F"/>
+					</c:otherwise>
+				</c:choose>
+				</span></c:if>
+			</p>
+	   </div>
+	   <!-- Added by Piyush and Akash ends -->
 	</c:if>
 	
 	<c:if test="${param.displayScheduleLink eq 'true' and not empty player}">

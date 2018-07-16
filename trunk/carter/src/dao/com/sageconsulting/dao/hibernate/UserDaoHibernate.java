@@ -264,7 +264,7 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
             sb.append("u.lastName like '").append(lastName).append("%'"); //$NON-NLS-1$ //$NON-NLS-2$
         }
         
-        Double min = (null == minHandicap) ? Double.valueOf(MIN_HANDICAP) : minHandicap;
+        /*Double min = (null == minHandicap) ? Double.valueOf(MIN_HANDICAP) : minHandicap;
         if (sb.length() > 0)
         {
             sb.append(" and "); //$NON-NLS-1$
@@ -273,15 +273,16 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
         
         Double max = (null == maxHandicap) ? Double.valueOf(MAX_HANDICAP) : maxHandicap;
         sb.append(" and u.handicap < ").append(max); //$NON-NLS-1$
-        
+*/        
         sb.append(" and 1 not in elements(u.roles)"); //$NON-NLS-1$
         
-        if(minHandicap != null)
+        /*if(minHandicap != null)
         	sb.append(" order by u.handicap asc");
         else if((maxHandicap != null) && (maxHandicap.doubleValue() != Double.valueOf(MAX_HANDICAP)))
         	sb.append(" order by u.handicap asc");
         else
-        	sb.append(" order by u.firstName, u.lastName, u.handicap");
+        	sb.append(" order by u.firstName, u.lastName, u.handicap");*/
+        sb.append(" order by u.firstName, u.lastName");
         if (sb.length() > 0)
         {
             sb.insert(0, "where "); //$NON-NLS-1$

@@ -79,9 +79,10 @@ public class PrintCardController  extends BaseFormController
         }
         
         Course course = getCourse(request);
-        if (null == course)
+        if (null == course) 
+        	
         {
-            course = match.getGolfer1().getHomeCourt();
+            //course = match.getGolfer1().getHomeCourt();
         }
         match.setCourse(course);
         match.getScore().computeStrokes(course, match.getGolfer1(), match.getGolfer2());

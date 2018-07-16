@@ -219,6 +219,15 @@
 </div>
             
 <div class="threecol">
+	<!-- Added by Piyush/Akash starts -->
+	<div class="profile-caption"><h4><fmt:message key="profile.equipment"/></h4></div>
+	<div class="clear">&nbsp;</div>
+	<div class="subsection">
+		<p><fmt:message key="profile.racquet"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.racquet}"/></span></c:if></p>
+		<p><fmt:message key="profile.strings"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.tennisString}"/></span></c:if></p>
+		<p><fmt:message key="profile.shoes"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.shoes}"/></span></c:if></p>
+   </div>
+	<!-- Added by Piyush/Akash ends -->
 	<div class="left">
 		<c:if test="${isCurrentUser}">
 			<a href="<c:url value="inbox.html"/>">
@@ -344,7 +353,7 @@
     </div>
 </div>
 
-<div class="section birdies" <c:if test="${isAdmin}">style="margin-top:-40px;" </c:if>>
+<!-- <div class="section birdies" <c:if test="${isAdmin}">style="margin-top:-40px;" </c:if>>
 	<div class="left">
 		<img src="images/birdie-icon.jpg" alt="birdies" />
 	</div>
@@ -422,6 +431,6 @@
 	    	</c:if>
 	    </div>
 	</div>
-</div>
+</div> -->
 
 </div>

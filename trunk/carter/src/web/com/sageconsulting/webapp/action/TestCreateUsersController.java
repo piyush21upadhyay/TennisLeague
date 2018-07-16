@@ -184,7 +184,7 @@ public class TestCreateUsersController extends BaseFormController
         user.setPreferredPhone(0);
         user.setEnabled(true);
         user.setMale(true);
-        user.setHomeCourt(course);
+        //user.setHomeCourt(course);
         user.setDateJoined(dateJoined);
         user.setRegisteredCity(city);
         user.setDateJoined(new Date());

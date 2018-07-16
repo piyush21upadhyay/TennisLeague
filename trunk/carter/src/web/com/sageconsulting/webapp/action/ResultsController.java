@@ -327,7 +327,7 @@ public class ResultsController extends BaseFormController
             		//System.out.println("Rcord: "+record);
             		champion.setRecord(record.toString());
             		champion.setSeason(season.getName());
-            		champion.setHomeCourse(winner.getHomeCourt());
+            		//champion.setHomeCourt(winner.getHomeCourt());
             		//champion.setHandicap(winner.getHandicap());
             		this.championManager.saveChampion(champion);
             		winner.setIcon("images/champion.png");

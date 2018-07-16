@@ -177,9 +177,9 @@
 
 <div class="edituser-section">
 	<div class="threecolw">
-		<fieldset>
+		<%-- <fieldset>
 			<legend><fmt:message key="userForm.courtSelection"/></legend>
-			<label for="homeCourt.id"><fmt:message key="userForm.homeCourt"/></label>
+			<label for="homeCourt.id"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
 			<form:select path="homeCourt" id="homeCourt.id" cssClass="changeHomeCourse">
 				<option value=''><fmt:message key="userForm.defaultOptionText"/></option>
 				<c:forEach var="court" items="${courseList}">
@@ -188,9 +188,15 @@
 					</option>
 				</c:forEach>
 			</form:select>
+		</fieldset> --%>
+		<fieldset>
+			<legend><fmt:message key="userForm.courtSelection"/></legend>
+			<label for="homeCourtText"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
+				<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox" maxlength="30"/>
+			
+			<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+				<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
 		</fieldset>
-		<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
-			<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
 	</div>
 	<div class="threecolw">
 		<fieldset>

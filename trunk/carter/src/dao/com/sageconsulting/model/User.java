@@ -49,7 +49,8 @@ public class User extends BaseObject implements Serializable, UserDetails
     //private Double adjustedHandicap;
     private String passwordHint;
     private City registeredCity;
-    private Course homeCourt;
+    //Changing from Course type to String
+    //private Course homeCourt;
     private String referral;
     private String icon = "images/teeOff-icon.jpg"; //$NON-NLS-1$
     private Season firstSeason;
@@ -85,6 +86,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String tennisString;
     private String shoes;
     private String courtAddress;
+    private String homeCourtText; 
     
 	public User()
     {
@@ -256,12 +258,12 @@ public class User extends BaseObject implements Serializable, UserDetails
     /**
      * Get the users chosen home course.
      * @return The user's home course.
-     * @hibernate.many-to-one column="home_course" cascade="none" not-null="true"
-     */
+     * @hibernate.many-to-one column="home_course" cascade="none" 
+     *//*
     public Course getHomeCourt()
     {
         return this.homeCourt;
-    }
+    }*/
     
     /**
      * How the user initially heard about city golf league.
@@ -725,13 +727,11 @@ public class User extends BaseObject implements Serializable, UserDetails
         this.registeredCity = c;
     }
     
-    /**
-     * @spring.validator type="required"
-     */
-    public void setHomeCourt(Course court)
+    
+    /*public void setHomeCourt(Course court)
     {
         this.homeCourt = court;
-    }
+    }*/
     
     /**
      * @spring.validator type="required"
@@ -793,7 +793,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	}
 
 	/**
-     * @spring.validator type="checkbox" msgkey="errors.checkbox"
+     * @spring.validator type="required"
      */
 	public void setPlayingPreference(String[] playingPreference) {
 		this.playingPreference = playingPreference;
@@ -811,7 +811,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	
 
 	/**
-     * @spring.validator type="checkbox" msgkey="errors.checkbox"
+     * @spring.validator type="required"
      */
 	public void setOpponentSkillLevel(String[] opponentSkillLevel) {
 		this.opponentSkillLevel = opponentSkillLevel;
@@ -958,7 +958,7 @@ public class User extends BaseObject implements Serializable, UserDetails
             append("accountExpired", this.accountExpired). //$NON-NLS-1$
             append("credentialsExpired", this.credentialsExpired). //$NON-NLS-1$
             append("accountLocked", this.accountLocked). //$NON-NLS-1$
-            append("homeCourt", this.homeCourt).
+            append("homeCourt", this.homeCourtText).
             append("referral", this.referral);
         
         /* Some properties are set for exporting user data to excel,pdf, or xml */
@@ -972,7 +972,7 @@ public class User extends BaseObject implements Serializable, UserDetails
         sb.append("cellPhone", this.cellPhone);
         sb.append("homePhone", this.homePhone);
         sb.append("playerLevel", this.playerLevel);
-        sb.append("homeCourt", this.homeCourt);
+        sb.append("homeCourt", this.homeCourtText);
         sb.append("dateJoined", this.dateJoined);
         sb.append("seasonEntered", this.seasonEntered);
         sb.append("currentSeason", this.currentSeason);
@@ -999,4 +999,19 @@ public class User extends BaseObject implements Serializable, UserDetails
         }
         return sb.toString();
     }
+
+    
+    /**
+     * @hibernate.property column="home_court" not-null="true"
+     */
+	public String getHomeCourtText() {
+		return homeCourtText;
+	}
+
+	 /**
+     * @spring.validator type="required"
+     */
+	public void setHomeCourtText(String homeCourtText) {
+		this.homeCourtText = homeCourtText;
+	}
 }

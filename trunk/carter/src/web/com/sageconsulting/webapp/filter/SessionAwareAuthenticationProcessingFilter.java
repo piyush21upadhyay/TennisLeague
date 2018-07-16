@@ -9,6 +9,9 @@
 package com.sageconsulting.webapp.filter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
@@ -42,15 +45,24 @@ public class SessionAwareAuthenticationProcessingFilter extends AuthenticationPr
     {
     	User user = this.userManager.getUserByUsername(authResult.getName());
     	request.getSession().setAttribute("prevLastLogin", user.getLastLogin());
-    	user.setLastLogin(new Date());
+    	/***Code added by Piyush/Akash starts**/
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    	Date date = new Date();
+		/**Code added by Piyush/Akash ends**/
         try
         {
+        	user.setLastLogin(dateFormat.parse(dateFormat.format(date)));
+        	//user.setLastLogin(new Date());
             this.userManager.saveUser(user);
         }
         catch (UserExistsException e)
         {
             // This should never happen since we are just doing an update.
             log.error("Failed to update last login.", e); //$NON-NLS-1$
+        }
+        catch(ParseException pe)
+        {
+        	log.error("Failed to update last login.", pe); //$NON-NLS-1$
         }
         
         response.addCookie(new Cookie(Constants.CITY_TOKEN, user.getRegisteredCity().getId().toString()));
