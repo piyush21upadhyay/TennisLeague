@@ -461,8 +461,9 @@ public class UserFormController extends BaseFormController
     {
         // Send an account information e-mail
         this.message.setSubject(getText("userForm.email.subject", locale)); //$NON-NLS-1$
+        String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY GOLF LEAGUE"+"</a>";
         sendUserMessage(user, getText("newuser.email.message", user.getFullName(), locale), //$NON-NLS-1$
-            RequestUtil.getAppURL(request));
+        		url);
     }
 
     @Override

@@ -38,6 +38,7 @@
 	<form:hidden path="bestResultSeason"/>
 	<form:hidden path="lowScore"/>
 	<form:hidden path="seasonEntered"/>
+	<%-- <form:hidden path="playerLevel"/> --%>
 	<c:if test="${cookieLogin == 'true'}">
 		<form:hidden path="password"/>
 		<form:hidden path="confirmPassword"/>
@@ -57,14 +58,17 @@
 			<form:input path="email" id="email" cssClass="longBox" maxlength="30"/>
 			
 			<label for="playerLevel"><fmt:message key="userForm.playerLevel"/></label>
-			<form:select path="playerLevel" id="playerLevel" cssClass="preferredPhone">
+			 <form:select path="playerLevel" id="playerLevel" cssClass="preferredPhone">
 				<form:option value="2.5"><fmt:message key="userForm.level2_5"/></form:option>
 				<form:option value="3.0"><fmt:message key="userForm.level3_0"/></form:option>
 				<form:option value="3.5"><fmt:message key="userForm.level3_5"/></form:option>
 				<form:option value="4.0"><fmt:message key="userForm.level4_0"/></form:option>
 				<form:option value="4.5"><fmt:message key="userForm.level4_5"/></form:option>
 				<form:option value="5.0"><fmt:message key="userForm.level5_0"/></form:option>
-			</form:select>
+			</form:select> 
+			<!-- <input type="range" name="playerLevel" id="playerLevel" min="2.5" max="5" value="2.5" step="0.5" 
+				oninput="document.getElementById('playerLevel').innerHTML = this.value"><label id="playerLevel"></label>
+			<output for="playerLevel" onforminput="value = playerLevel.valueAsNumber;"></output> -->
 			
 			<label for="ratedBy"><fmt:message key="userForm.ratedBy"/></label>
 			<form:select path="ratedBy" id="ratedBy" cssClass="preferredPhone">
@@ -126,12 +130,17 @@
 			</form:select>
 			
 			<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label>
-			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel1" id="skillLevel1"/>
+			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel1"/> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label>
+			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel2"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label>
+			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel3"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label>
+			
+			<%-- <form:checkbox path="opponentSkillLevel" value="userForm.skillLevel1" id="skillLevel1"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel1"/></label>
 			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel2" id="skillLevel2"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel2"/></label>
 			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel3" id="skillLevel3"/>
-				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel3"/></label>
+				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel3"/></label> --%>
+				
 				
 		</fieldset>
 	
@@ -344,6 +353,43 @@
 </form:form>
 
 <script type="text/javascript">
+/* //DOM Ready
+$(function() {
+ var el, newPoint, newPlace, offset;
+ 
+ // Select all range inputs, watch for change
+ $("input[type='range']").change(function() {
+ 
+   // Cache this for efficiency
+   el = $(this);
+   
+   // Measure width of range input
+   width = el.width();
+   
+   // Figure out placement percentage between left and right of input
+   newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+   
+   // Janky value to get pointer to line up better
+   offset = -1;
+   
+   // Prevent bubble from going beyond left or right (unsupported browsers)
+   if (newPoint < 0) { newPlace = 0; }
+   else if (newPoint > 1) { newPlace = width; }
+   else { newPlace = width * newPoint + offset; offset -= newPoint; }
+   
+   // Move bubble
+   el
+     .next("output")
+     .css({
+       left: newPlace,
+       marginLeft: offset + "%"
+     })
+     .text(el.val());
+ })
+ // Fake a change to position bubble at page load
+ .trigger('change');
+}); */
+
 $(function(){
 	$("#username").focus();
 	jqFormatPhone($("#homePhone"));
