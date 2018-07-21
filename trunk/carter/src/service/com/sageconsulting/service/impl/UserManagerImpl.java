@@ -163,10 +163,11 @@ public class UserManagerImpl extends BaseManager implements UserManager
     }
 
 	@Override
-	public List<User> findUsers(Long cityId, String firstName, String lastName,
+	public List<User> findTotalUsers(Long cityId, String firstName, String lastName,
 			String gender, Double rating, Double minRating, Double maxRating,
 			String dexterity, String matchPreference, String tournamentEntry) {
 		
 		return this.userDao.findUsers(cityId, firstName, lastName, gender, rating,minRating,maxRating,dexterity,matchPreference,tournamentEntry);
+		//return this.userDao.findUsers(cityId, firstName, lastName, null, null);
 	}
 }

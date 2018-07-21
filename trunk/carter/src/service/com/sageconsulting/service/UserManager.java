@@ -122,7 +122,7 @@ public interface UserManager
 
     public void updateChampionIcon(User user);
 
-	public List<User> findUsers(Long cityId, String firstname, String lastname,
+	public List<User> findTotalUsers(Long cityId, String firstname, String lastname,
 			String gender, Double rating, Double minRating, Double maxRating,
 			String dexterity, String matchPreference, String tournamentEntry);
 }

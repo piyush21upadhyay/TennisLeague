@@ -346,52 +346,53 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 	@Override
 	public List<User> findUsers(Long cityId, String firstName, String lastName,
 			String gender, Double rating, Double minRating, Double maxRating,
-			String dexterity, String matchPreference, String tournamentEntry) {
+			String dexterity, String matchPreference, String tournamentEntry) 
+	{
 
-		/*if ((null == firstName) && (null == lastName) && (null == gender)
-				&& (null == rating) && (null == minRating)
-				&& (null == maxRating) && (null == dexterity)
-				&& (null == matchPreference) && (null == tournamentEntry)) {
-			return new ArrayList<User>();
-		}*/
-
-		StringBuilder sb = new StringBuilder();
-		if (null != cityId) {
-			sb.append("u.registeredCity.id=").append(cityId).append(" "); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		if (isNotEmpty(firstName)) {
-			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
-			}
-			sb.append("u.firstName like '").append(firstName).append("%' "); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		if (isNotEmpty(lastName)) {
-			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
-			}
-			sb.append("u.lastName like '").append(lastName).append("%'"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		/*if (isNotEmpty(gender)) {
+        StringBuilder sb = new StringBuilder();
+        if (null != cityId)
+        {
+        	sb.append("u.registeredCity.id=").append(cityId).append(" "); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        if ((null != firstName) && (firstName.length() > 0))
+        {
+            if (sb.length() > 0)
+            {
+                sb.append("and "); //$NON-NLS-1$
+            }
+            sb.append("u.firstName like '").append(firstName).append("%' "); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        if ((null != lastName) && (lastName.length() > 0))
+        {
+            if (sb.length() > 0)
+            {
+                sb.append("and "); //$NON-NLS-1$
+            }
+            sb.append("u.lastName like '").append(lastName).append("%'"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        
+		if (isNotEmpty(gender)) {
 			if (sb.length() > 0) {
 				sb.append("and "); //$NON-NLS-1$
 			}
 			sb.append("u.male=")
 					.append("male".equalsIgnoreCase(gender) ? 1 : 0);
-		}*/
-		/*if (isNotEmpty(dexterity)) {
+		}
+		if (isNotEmpty(dexterity)) {
 			if (sb.length() > 0) {
 				sb.append("and "); //$NON-NLS-1$
 			}
 			sb.append("u.plays='").append(dexterity).append("'");
-		}*/
-		/*if (isNotEmpty(matchPreference)) {
+		}
+        
+		if (isNotEmpty(matchPreference)) {
 			if (sb.length() > 0) {
 				sb.append("and "); //$NON-NLS-1$
 			}
 			sb.append("u.playingPreference='").append(matchPreference)
 					.append("'");
-		}*/
-		/*if (rating != null) {
+		}
+		if (rating != null) {
 			if (sb.length() > 0) {
 				sb.append("and "); //$NON-NLS-1$
 			}
@@ -407,27 +408,20 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 			Double max = (null == maxRating) ? Double.valueOf(MAX_PLAYER_LEVEL)
 					: maxRating;
 			sb.append(" and u.playerLevel <= ").append(max);
-		}*/
-
-		/*if (minRating != null)
-			sb.append(" order by u.playerLevel asc");
-		else if ((maxRating != null)
-				&& (maxRating.doubleValue() != Double.valueOf(MAX_PLAYER_LEVEL)))
-			sb.append(" order by u.playerLevel asc");
-		else*/
-			sb.append(" order by u.firstName, u.lastName");
-
-		if (sb.length() > 0) {
-			sb.insert(0, "where "); //$NON-NLS-1$
 		}
-		sb.insert(0, "from User u "); //$NON-NLS-1$
-
-		this.log.info("SQL from findUsers method is::"+sb.toString());
-		return getHibernateTemplate().find(sb.toString());
-
-	}
+        sb.append(" and 1 not in elements(u.roles)"); //$NON-NLS-1$
+        
+        sb.append(" order by u.firstName, u.lastName, u.playerLevel");
+        if (sb.length() > 0)
+        {
+            sb.insert(0, "where "); //$NON-NLS-1$
+        }
+        sb.insert(0, "from User u "); //$NON-NLS-1$
+        
+        return getHibernateTemplate().find(sb.toString());
+    }
 	
-	public boolean isNotEmpty(String input) {
-		return (input != null && input.length() > 0);
+	private boolean isNotEmpty(String input) {
+		return (null != input) && (input.length()) > 0;
 	}
 }

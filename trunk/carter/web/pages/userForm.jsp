@@ -232,8 +232,8 @@
 			<div><form:radiobutton path="icon" value="images/BallHoppers.gif" id="firsticon"/></div>
 		</div>
 		<div class="signup-icon">
-			<div><img src="images/SinglesRacquet.gif" alt="sinleRacquet" /></div>
-			<div><form:radiobutton path="icon" value="images/SinlesRacquet.gif"/></div>
+			<div><img src="images/SinglesRacquet.gif" alt="singlesRacquet" /></div>
+			<div><form:radiobutton path="icon" value="images/SinglesRacquet.gif"/></div>
 		</div>
 		<div class="signup-icon">
 			<div><img src="images/TennisBall.gif" alt="tennisBall" /></div>

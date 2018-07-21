@@ -114,13 +114,13 @@ public class MembersController extends BaseFormController
     private List<User> getUsers(City city, MemberName command, HttpServletRequest request)
     {
     	Long cityId = (null == city) ? null : city.getId();
-        List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
-            command.getLastname(), getDouble(command.getMinHandicap()),
-            getDouble(command.getMaxHandicap()));
-        
         /*List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
-                command.getLastname(), null,null,null,null,
-                null, null,null);*/
+            command.getLastname(), getDouble(command.getMinHandicap()),
+            getDouble(command.getMaxHandicap()));*/
+        
+        List<User> users = getUserManager().findTotalUsers(cityId, command.getFirstname(),
+                command.getLastname(), command.getGender(),command.getRating(),command.getMinRating(),command.getMaxRating(),
+                command.getDexterity(), command.getMatchPreference(),command.getTournamentEntry());
         
         // check if user has admin role and show deleted is true, skip delete check
         boolean checkDeleted = getDeletedMembers(request);
@@ -172,7 +172,7 @@ public class MembersController extends BaseFormController
         {
             memberName.setLastname(lastname);
         }
-        String strVal = request.getParameter("maxHandicap"); //$NON-NLS-1$
+        /*String strVal = request.getParameter("maxHandicap"); //$NON-NLS-1$
         if (null != strVal)
         {
             memberName.setMaxHandcap(getInteger(strVal));
@@ -181,9 +181,48 @@ public class MembersController extends BaseFormController
         if (null != strVal)
         {
             memberName.setMinHandcap(getInteger(strVal));
+        }*/
+        String gender = request.getParameter("gender"); //$NON-NLS-1$
+        if (null != gender)
+        {
+            memberName.setGender(gender);;
+        }
+        String dexterity = request.getParameter("dexterity"); //$NON-NLS-1$
+        if (null != dexterity)
+        {
+            memberName.setDexterity(dexterity);;
+        }
+        String matchPreference=request.getParameter("matchPreference");
+        if(null !=matchPreference)
+        {
+        	memberName.setMatchPreference(matchPreference);
+        }
+        String tournamentEntry = request.getParameter("tournamentEntry"); //$NON-NLS-1$
+        if (null != tournamentEntry)
+        {
+            memberName.setTournamentEntry(tournamentEntry);
+        }
+        String rating = request.getParameter("rating"); //$NON-NLS-1$
+        if (isNotEmpty(rating))
+        {
+            memberName.setRating(Double.valueOf(rating));
+        }
+        String minRating=request.getParameter("minRating");
+        if(isNotEmpty(minRating))
+        {
+        	memberName.setMinRating(Double.valueOf(minRating));
+        }
+        String maxRating=request.getParameter("maxRating");
+        if(isNotEmpty(maxRating))
+        {
+        	memberName.setMaxRating(Double.valueOf(maxRating));
         }
         return memberName;
     }
+    
+    private boolean isNotEmpty(String input) {
+		return (null != input) && (input.length()) > 0;
+	}
     
     private Integer getInteger(String val)
     {
@@ -299,9 +338,9 @@ public class MembersController extends BaseFormController
         /*private Double rating;
         private Double minRating=Double.valueOf(2.5);
         private Double maxRating=Double.valueOf(5.0);*/
-        private Integer rating=null;
-        private Integer minRating=null;
-        private Integer maxRating=Integer.valueOf(5);
+        private Double rating=null;
+        private Double minRating=null;
+        private Double maxRating=Double.valueOf(5.0);
         private Integer maxHandicap = Integer.valueOf(100);//Integer.valueOf(6);
         private Integer minHandicap = null;
         
@@ -332,14 +371,14 @@ public class MembersController extends BaseFormController
 		public String getTournamentEntry() {return this.tournamentEntry;}
 		public void setTournamentEntry(String tournamentEntry) {this.tournamentEntry = tournamentEntry;}
 		
-		public Integer getRating() {return this.rating;}
-		public void setRating(Integer r) {this.rating = r;}
+		public Double getRating() {return this.rating;}
+		public void setRating(Double r) {this.rating = r;}
 		
-		public Integer getMinRating() {return this.minRating;}
-		public void setMinRating(Integer minR) {this.minRating = minR;}
+		public Double getMinRating() {return this.minRating;}
+		public void setMinRating(Double minR) {this.minRating = minR;}
 		
-		public Integer getMaxRating() {return this.maxRating;}
-		public void setMaxRating(Integer maxR) {this.maxRating = maxR;}
+		public Double getMaxRating() {return this.maxRating;}
+		public void setMaxRating(Double maxR) {this.maxRating = maxR;}
         
         public boolean isValidSearch()
         {

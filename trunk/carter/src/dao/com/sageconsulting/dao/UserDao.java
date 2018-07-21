@@ -139,6 +139,19 @@ public interface UserDao extends Dao
     public boolean isGhinNumberInUse(String ghin);
     public void updateChampionIcon(User user);
 
+	/**
+	 * @param cityId
+	 * @param firstName
+	 * @param lastName
+	 * @param gender
+	 * @param rating
+	 * @param minRating
+	 * @param maxRating
+	 * @param dexterity
+	 * @param matchPreference
+	 * @param tournamentEntry
+	 * @return
+	 */
 	public List<User> findUsers(Long cityId, String firstName, String lastName,
 			String gender, Double rating, Double minRating, Double maxRating,
 			String dexterity, String matchPreference, String tournamentEntry);
