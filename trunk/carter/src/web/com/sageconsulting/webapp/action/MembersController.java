@@ -9,6 +9,7 @@
 package com.sageconsulting.webapp.action;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -86,6 +87,16 @@ public class MembersController extends BaseFormController
         	List<User> users = getUsers(city, command, request);
             view.addObject("memberList", users); //$NON-NLS-1$
             view.addObject("registeredUsers", getRegisteredUsers(users));
+            /**Added by Piyush/Akash starts***/
+            List<Double> playerRatings=Arrays.asList(new Double[]{2.5,3.0,3.5,4.0,4.5,5.0});
+            List<String> gender=Arrays.asList(new String[]{"Male","Female"});
+            List<String> dexterities=Arrays.asList(new String[]{"Left Handed","Right Handed"});
+            List<String> matchPreferences=Arrays.asList(new String[]{"Singles","Doubles","Mixed Doubles"});
+            view.addObject("playerRatings", playerRatings);
+            view.addObject("gender", gender);
+            view.addObject("dexterities", dexterities);
+            view.addObject("matchPreferences", matchPreferences);
+            /**Added by Piyush/Akash starts***/
         }
         if (request.getRemoteUser() != null)
         {
@@ -106,6 +117,10 @@ public class MembersController extends BaseFormController
         List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
             command.getLastname(), getDouble(command.getMinHandicap()),
             getDouble(command.getMaxHandicap()));
+        
+        /*List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
+                command.getLastname(), null,null,null,null,
+                null, null,null);*/
         
         // check if user has admin role and show deleted is true, skip delete check
         boolean checkDeleted = getDeletedMembers(request);
@@ -269,12 +284,29 @@ public class MembersController extends BaseFormController
     	return response;
     }
     
-    public static final class MemberName
+    public static final class MemberName implements java.io.Serializable
     {
-        private String firstname;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 3832626162173359411L;
+		private String firstname;
         private String lastname;
+        private String gender;
+        private String dexterity;
+        private String matchPreference;
+        private String tournamentEntry;
+        /*private Double rating;
+        private Double minRating=Double.valueOf(2.5);
+        private Double maxRating=Double.valueOf(5.0);*/
+        private Integer rating=null;
+        private Integer minRating=null;
+        private Integer maxRating=Integer.valueOf(5);
         private Integer maxHandicap = Integer.valueOf(100);//Integer.valueOf(6);
         private Integer minHandicap = null;
+        
+        public MemberName() {
+		}
         
         public String getFirstname() { return this.firstname; }
         public void setFirstname(String name) { this.firstname = name; }
@@ -288,25 +320,48 @@ public class MembersController extends BaseFormController
         public Integer getMinHandicap() { return this.minHandicap; }
         public void setMinHandcap(Integer d) { this.minHandicap = d; }
         
+        public String getGender() {	return this.gender;}
+		public void setGender(String gender) {this.gender = gender;}
+		
+		public String getDexterity() {return this.dexterity;}
+		public void setDexterity(String dexterity) {this.dexterity = dexterity;}
+		
+		public String getMatchPreference() {return this.matchPreference;}
+		public void setMatchPreference(String matchPreference) {this.matchPreference = matchPreference;}
+		
+		public String getTournamentEntry() {return this.tournamentEntry;}
+		public void setTournamentEntry(String tournamentEntry) {this.tournamentEntry = tournamentEntry;}
+		
+		public Integer getRating() {return this.rating;}
+		public void setRating(Integer r) {this.rating = r;}
+		
+		public Integer getMinRating() {return this.minRating;}
+		public void setMinRating(Integer minR) {this.minRating = minR;}
+		
+		public Integer getMaxRating() {return this.maxRating;}
+		public void setMaxRating(Integer maxR) {this.maxRating = maxR;}
+        
         public boolean isValidSearch()
         {
-            return (null != this.firstname) ||
-                   (null != this.lastname) ||
-                   (null != this.maxHandicap) ||
-                   (null != this.minHandicap);
-//                   ((this.firstname.length() > 0) ||
-//                   (this.lastname.length() > 0));
+        	return (null != this.firstname) ||
+                    (null != this.lastname) ||
+                    (null != this.maxRating) ||
+                    (null != this.minRating)||
+                    (null != this.rating)||
+                    (null != this.gender) ||
+                    (null != this.dexterity) ||
+                    (null != this.matchPreference)||
+                    (null != this.tournamentEntry);
         }
         
         @Override
-        public String toString()
-        {
-            ToStringBuilder sb = new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE);
-            sb.append("lastname", this.lastname); //$NON-NLS-1$
-            sb.append("firstname", this.firstname); //$NON-NLS-1$
-            sb.append("maxHandicap", this.maxHandicap); //$NON-NLS-1$
-            sb.append("minHandicap", this.minHandicap); //$NON-NLS-1$
-            return sb.toString();
-        }
+		public String toString() {
+			return "MemberName [firstname=" + firstname + ", lastname="
+					+ lastname + ", gender=" + gender + ", dexterity="
+					+ dexterity + ", matchPreference=" + matchPreference
+					+ ", tournamentEntry=" + tournamentEntry + ", rating="
+					+ rating + ", minRating=" + minRating + ", maxRating="
+					+ maxRating + "]";
+		}
     }
 }

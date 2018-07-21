@@ -11,6 +11,7 @@ package com.sageconsulting.service;
 import java.util.List;
 
 import org.acegisecurity.userdetails.UsernameNotFoundException;
+
 import com.sageconsulting.dao.UserDao;
 import com.sageconsulting.model.User;
 
@@ -120,4 +121,8 @@ public interface UserManager
     public boolean isGhinNumberInUse(String ghin);
 
     public void updateChampionIcon(User user);
+
+	public List<User> findUsers(Long cityId, String firstname, String lastname,
+			String gender, Double rating, Double minRating, Double maxRating,
+			String dexterity, String matchPreference, String tournamentEntry);
 }

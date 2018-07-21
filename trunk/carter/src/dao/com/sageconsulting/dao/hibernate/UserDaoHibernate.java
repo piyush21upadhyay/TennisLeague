@@ -14,6 +14,7 @@ import java.util.List;
 import org.acegisecurity.userdetails.UserDetails;
 import org.acegisecurity.userdetails.UserDetailsService;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
+import org.hibernate.util.StringHelper;
 import org.springframework.orm.ObjectRetrievalFailureException;
 
 import com.sageconsulting.dao.UserDao;
@@ -27,6 +28,8 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 {
 	private static final double MIN_HANDICAP = -20.0;
 	private static final double MAX_HANDICAP = 100.0;
+	private static final double MIN_PLAYER_LEVEL = 2.5;
+	private static final double MAX_PLAYER_LEVEL = 5.0;
 	
     /**
      * @see com.sageconsulting.dao.UserDao#getUser(Long)
@@ -338,4 +341,93 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
     {
     	getHibernateTemplate().saveOrUpdate(user);
     }
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findUsers(Long cityId, String firstName, String lastName,
+			String gender, Double rating, Double minRating, Double maxRating,
+			String dexterity, String matchPreference, String tournamentEntry) {
+
+		/*if ((null == firstName) && (null == lastName) && (null == gender)
+				&& (null == rating) && (null == minRating)
+				&& (null == maxRating) && (null == dexterity)
+				&& (null == matchPreference) && (null == tournamentEntry)) {
+			return new ArrayList<User>();
+		}*/
+
+		StringBuilder sb = new StringBuilder();
+		if (null != cityId) {
+			sb.append("u.registeredCity.id=").append(cityId).append(" "); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		if (isNotEmpty(firstName)) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.firstName like '").append(firstName).append("%' "); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		if (isNotEmpty(lastName)) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.lastName like '").append(lastName).append("%'"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		/*if (isNotEmpty(gender)) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.male=")
+					.append("male".equalsIgnoreCase(gender) ? 1 : 0);
+		}*/
+		/*if (isNotEmpty(dexterity)) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.plays='").append(dexterity).append("'");
+		}*/
+		/*if (isNotEmpty(matchPreference)) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.playingPreference='").append(matchPreference)
+					.append("'");
+		}*/
+		/*if (rating != null) {
+			if (sb.length() > 0) {
+				sb.append("and "); //$NON-NLS-1$
+			}
+			sb.append("u.playerLevel=").append(rating);
+		} else {
+			Double min = (null == minRating) ? Double.valueOf(MIN_PLAYER_LEVEL)
+					: minRating;
+			if (sb.length() > 0) {
+				sb.append(" and "); //$NON-NLS-1$
+			}
+			sb.append("u.playerLevel >= ").append(min); //$NON-NLS-1$
+
+			Double max = (null == maxRating) ? Double.valueOf(MAX_PLAYER_LEVEL)
+					: maxRating;
+			sb.append(" and u.playerLevel <= ").append(max);
+		}*/
+
+		/*if (minRating != null)
+			sb.append(" order by u.playerLevel asc");
+		else if ((maxRating != null)
+				&& (maxRating.doubleValue() != Double.valueOf(MAX_PLAYER_LEVEL)))
+			sb.append(" order by u.playerLevel asc");
+		else*/
+			sb.append(" order by u.firstName, u.lastName");
+
+		if (sb.length() > 0) {
+			sb.insert(0, "where "); //$NON-NLS-1$
+		}
+		sb.insert(0, "from User u "); //$NON-NLS-1$
+
+		this.log.info("SQL from findUsers method is::"+sb.toString());
+		return getHibernateTemplate().find(sb.toString());
+
+	}
+	
+	public boolean isNotEmpty(String input) {
+		return (input != null && input.length() > 0);
+	}
 }

@@ -1489,7 +1489,7 @@ table.schedule {
 
 .search-row {
 	float:left;
-	height:60px;
+	height:40px;
 	padding-bottom:20px;
 }
 .search-col {
@@ -1511,7 +1511,7 @@ table.schedule {
 div.member-section {
 	clear:both;
 	height:580px;
-	margin-top:20px;
+	margin-top:120px;
 	margin-left:10px;
 	margin-right:10px;
 	margin-bottom:20px;
@@ -3349,3 +3349,19 @@ output:after {
   margin-left: -5px;
   margin-top: -1px;
 } */
+
+.membersLeft {
+    float: left;
+    height: 53px;
+}
+
+.fourcol-scroll {
+	float:left;
+	width:175px;
+	background-color:#000;
+	margin:10px 10px 10px 10px;
+	padding:10px;
+	font-size:12px;
+	color:#fff;
+	line-height:20px;
+}

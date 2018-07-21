@@ -57,22 +57,31 @@
 --%>
 
 <div class="section">
-	<div class="left">
+	<div class="membersLeft">
 		<h2 class="page-title"><fmt:message key="members.members"/></h2>
-	</div>
-	<div class="right">
-		<form:form commandName="search" method="post" action="members.html">
 		<div class="search-row">
 			<div class="search-col">
 				<h4><fmt:message key="members.searchBy"/></h4>
 			</div>
 		</div>
+	</div>
+	<div class="right">
+		<form:form commandName="search" method="post" action="members.html">
+		<%-- <div class="search-row">
+			<div class="search-col">
+				<h4><fmt:message key="members.searchBy"/></h4>
+			</div>
+		</div> --%>
+		<!-- Search By First Name/Last Name/Gender starts -->
 		<div class="search-row">
 			<div class="search-col">
 				<fmt:message key="members.firstname"/>
 			</div>
 			<div class="search-col">
 				<fmt:message key="members.lastname"/>
+			</div>
+			<div class="search-col">
+				<fmt:message key="members.gender"/>
 			</div>
 		</div>
 		<div class="search-row">
@@ -82,8 +91,92 @@
 			<div class="search-col">
 				<form:input path="lastname" id="lastname" size="20" maxlength="30"/>
 			</div>
+			<div class="search-col">
+				<form:select path="gender" id="gender">
+					<option> </option>
+					<c:forEach var="gndr" items="${gender}">
+						<option<c:if test="${search.gender eq gndr}"> selected="true"</c:if>><c:out value="${gndr}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+		</div>
+		<!-- Search By First Name/Last Name/Gender ends -->
+		
+		<!-- Search By Dexterity/Match Preference starts -->
+		<div class="search-row">
+			<div class="search-col">
+				<fmt:message key="members.dexterity"/>
+			</div>
+			<div class="search-col">
+				<fmt:message key="members.matchPreference"/>
+			</div>
+			<div class="search-col">
+				<fmt:message key="members.tournamentEntry"/>
+			</div>
 		</div>
 		<div class="search-row">
+			<div class="search-col">
+				<form:select path="dexterity" id="dexterity">
+					<option> </option>
+					<c:forEach var="dexterity" items="${dexterities}">
+						<option<c:if test="${search.dexterity eq dexterity}"> selected="true"</c:if>><c:out value="${dexterity}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+			<div class="search-col">
+				<form:select path="matchPreference" id="matchPreference">
+					<option> </option>
+					<c:forEach var="matchPreference" items="${matchPreferences}">
+						<option<c:if test="${search.matchPreference eq matchPreference}"> selected="true"</c:if>><c:out value="${matchPreference}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+			<div class="search-col">
+				<form:input path="tournamentEntry" id="tournamentEntry" size="20" maxlength="30"/>
+			</div>
+		</div>
+		<!-- Search By Dexterity/Match Preference ends -->
+		
+		<!-- Search By Rating starts -->
+		<div class="search-row">
+			<div class="search-col">
+				<fmt:message key="members.minRating"/>
+			</div>
+			<div class="search-col">
+				<fmt:message key="members.rating"/>
+			</div>
+			<div class="search-col">
+				<fmt:message key="members.maxRating"/>
+			</div>
+		</div>
+		<div class="search-row">
+			<div class="search-col">
+				<form:select path="minRating" id="minRating">
+					<option> </option>
+					<c:forEach var="rating" items="${playerRatings}">
+						<option<c:if test="${search.minRating eq rating}"> selected="true"</c:if>><c:out value="${rating}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+			<div class="search-col">
+				<form:select path="rating" id="rating">
+					<option> </option>
+					<c:forEach var="rat" items="${playerRatings}">
+						<option<c:if test="${search.rating eq rat}"> selected="true"</c:if>><c:out value="${rat}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+			<div class="search-col">
+				<form:select path="maxRating" id="maxRating">
+					<option> </option>
+					<c:forEach var="rating" items="${playerRatings}">
+						<option<c:if test="${search.maxRating eq rating}"> selected="true"</c:if>><c:out value="${rating}"/></option>
+					</c:forEach>
+				</form:select>
+			</div>
+		</div>
+		<!-- Search By Rating ends -->
+		<%-- <div class="search-row">
 			<div class="search-col">
 				<fmt:message key="members.maxHandicap"/>
 			</div>
@@ -108,7 +201,7 @@
 					</c:forEach>
 				</form:select>
 			</div>
-		</div>
+		</div> --%>
 		<c:if test="${isAdministrator}">
 		<div class="search-row">
 			<div class="search-col">
@@ -140,7 +233,7 @@
 		<c:forEach var="member" items="${memberList}">
 			<c:set var="firstName" value="${member.firstName}"/>
 		    <c:set var="count" value="${count + 1}" scope="page"/>
-	          <div class="threecol-scroll">
+	          <div class="fourcol-scroll">
 				<c:set var="player" value="${member}" scope="request"/>
 				<c:set var="currentRecord" value="${member.currentRecord}" scope="request"/>
 				<c:set var="registeredUserList" value="${registeredUsers}" scope="request"/>
@@ -150,7 +243,7 @@
 					<c:param name="displayMessageLink" value="true"/>
 				</c:import>
 			</div>
-			<c:if test="${count%3==0}">
+			<c:if test="${count%4==0}">
 			<div style="clear:both;"></div>
 			</c:if>	
 		</c:forEach>

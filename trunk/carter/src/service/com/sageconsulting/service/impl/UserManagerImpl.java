@@ -11,10 +11,12 @@ package com.sageconsulting.service.impl;
 import java.util.List;
 
 import org.acegisecurity.userdetails.UsernameNotFoundException;
+
 import com.sageconsulting.dao.UserDao;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
+
 import org.springframework.dao.DataIntegrityViolationException;
 
 /**
@@ -159,4 +161,12 @@ public class UserManagerImpl extends BaseManager implements UserManager
     {
         this.userDao.updateChampionIcon(user);
     }
+
+	@Override
+	public List<User> findUsers(Long cityId, String firstName, String lastName,
+			String gender, Double rating, Double minRating, Double maxRating,
+			String dexterity, String matchPreference, String tournamentEntry) {
+		
+		return this.userDao.findUsers(cityId, firstName, lastName, gender, rating,minRating,maxRating,dexterity,matchPreference,tournamentEntry);
+	}
 }
