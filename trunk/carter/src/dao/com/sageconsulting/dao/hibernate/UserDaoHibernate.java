@@ -14,7 +14,6 @@ import java.util.List;
 import org.acegisecurity.userdetails.UserDetails;
 import org.acegisecurity.userdetails.UserDetailsService;
 import org.acegisecurity.userdetails.UsernameNotFoundException;
-import org.hibernate.util.StringHelper;
 import org.springframework.orm.ObjectRetrievalFailureException;
 
 import com.sageconsulting.dao.UserDao;
@@ -30,6 +29,7 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 	private static final double MAX_HANDICAP = 100.0;
 	private static final double MIN_PLAYER_LEVEL = 2.5;
 	private static final double MAX_PLAYER_LEVEL = 5.0;
+	private static final String MIXED_DOUBLES_PLAYING_PREF="Mixed Doubles";
 	
     /**
      * @see com.sageconsulting.dao.UserDao#getUser(Long)
@@ -373,28 +373,32 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
         
 		if (isNotEmpty(gender)) {
 			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
+				sb.append(" and "); //$NON-NLS-1$
 			}
 			sb.append("u.male=")
 					.append("male".equalsIgnoreCase(gender) ? 1 : 0);
 		}
 		if (isNotEmpty(dexterity)) {
 			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
+				sb.append(" and "); //$NON-NLS-1$
 			}
 			sb.append("u.plays='").append(dexterity).append("'");
 		}
         
 		if (isNotEmpty(matchPreference)) {
 			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
+				matchPreference=matchPreference.equals(MIXED_DOUBLES_PLAYING_PREF)?matchPreference.replaceAll("\\s+", ""):matchPreference;
+				matchPreference=Character.toLowerCase(matchPreference.charAt(0))+matchPreference.substring(1);
+				sb.append(" and "); //$NON-NLS-1$
 			}
-			sb.append("u.playingPreference='").append(matchPreference)
-					.append("'");
+			/*sb.append("convert(u.playingPreference using latin1) like '%").append(matchPreference)
+					.append("'");*/
+			sb.append("u.playingPreference like '%").append(matchPreference)
+			.append("%'");
 		}
 		if (rating != null) {
 			if (sb.length() > 0) {
-				sb.append("and "); //$NON-NLS-1$
+				sb.append(" and "); //$NON-NLS-1$
 			}
 			sb.append("u.playerLevel=").append(rating);
 		} else {
