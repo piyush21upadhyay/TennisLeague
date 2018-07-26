@@ -154,5 +154,5 @@ public interface UserDao extends Dao
 	 */
 	public List<User> findUsers(Long cityId, String firstName, String lastName,
 			String gender, Double rating, Double minRating, Double maxRating,
-			String dexterity, String matchPreference, String tournamentEntry);
+			String dexterity, String matchPreference, String tournamentEntry,String orderBy);
 }

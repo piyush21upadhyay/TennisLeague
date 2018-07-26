@@ -217,13 +217,13 @@ function checkUserPass()
 	
 							<div id="enter-box" style="display:none;">
 								<!--<div class="enter-txt">Enter site</div>-->
-								<p class="par-txt">To enter City Golf League, please choose the city you'd like to view from the list below:</p>
+								<p class="par-txt">To enter City Tennis League, please choose the city you'd like to view from the list below:</p>
 								<ul id="enter-city" class="submenu flt"></ul>
 							</div>
 	
 							<div id="signup-box" style="display:none;">
 								<!--<div class="signup-txt">Sign up</div>-->
-								<p class="par-txt">Welcome to City Golf League, please select your city from the bellow:</p>
+								<p class="par-txt">Welcome to City Tennis League, please select your city from the bellow:</p>
 								<ul id="signup-city" class="submenu flt"></ul>
 							</div>
 						</nav>

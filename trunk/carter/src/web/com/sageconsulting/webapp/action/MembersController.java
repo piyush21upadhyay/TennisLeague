@@ -114,13 +114,12 @@ public class MembersController extends BaseFormController
     private List<User> getUsers(City city, MemberName command, HttpServletRequest request)
     {
     	Long cityId = (null == city) ? null : city.getId();
-        /*List<User> users = getUserManager().findUsers(cityId, command.getFirstname(),
-            command.getLastname(), getDouble(command.getMinHandicap()),
-            getDouble(command.getMaxHandicap()));*/
+    	String orderBy=request.getParameter("sortingParameter");
+    	System.out.println(request.getParameterValues("sortingParameter"));
         
         List<User> users = getUserManager().findTotalUsers(cityId, command.getFirstname(),
                 command.getLastname(), command.getGender(),command.getRating(),command.getMinRating(),command.getMaxRating(),
-                command.getDexterity(), command.getMatchPreference(),command.getTournamentEntry());
+                command.getDexterity(), command.getMatchPreference(),command.getTournamentEntry(),orderBy);
         
         // check if user has admin role and show deleted is true, skip delete check
         boolean checkDeleted = getDeletedMembers(request);
@@ -403,4 +402,5 @@ public class MembersController extends BaseFormController
 					+ maxRating + "]";
 		}
     }
+    
 }

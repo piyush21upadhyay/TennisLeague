@@ -15,6 +15,17 @@
 		$.each(objSpan, function(){
 			$(this).css('width','52px');
 		});
+		
+		 $('#sortByFirstNameId').click(function(){
+				 $("#sortingParameter").val("firstName");
+				 $('input[name="sortingParameter"]').val("firstName");
+				 $('#search').submit();
+		    });
+		 
+		 $('#sortByLastNameId').click(function(){
+				 $("#sortingParameter").val("lastName");
+				 $('#search').submit();
+		    });
 	});
 
 	function checkAccess(redirectUrl){
@@ -67,18 +78,15 @@
 	</div>
 	<div class="right">
 		<form:form commandName="search" method="post" action="members.html">
-		<%-- <div class="search-row">
-			<div class="search-col">
-				<h4><fmt:message key="members.searchBy"/></h4>
-			</div>
-		</div> --%>
+		
 		<!-- Search By First Name/Last Name/Gender starts -->
+		<input type="hidden" name="sortingParameter" id="sortingParameter">
 		<div class="search-row">
 			<div class="search-col">
-				<fmt:message key="members.firstname"/>
+				<a  href="#" id="sortByFirstNameId"><fmt:message key="members.firstname"/></a>
 			</div>
 			<div class="search-col">
-				<fmt:message key="members.lastname"/>
+				<a  href="#" id="sortByLastNameId"><fmt:message key="members.lastname"/></a>
 			</div>
 			<div class="search-col">
 				<fmt:message key="members.gender"/>
@@ -176,32 +184,7 @@
 			</div>
 		</div>
 		<!-- Search By Rating ends -->
-		<%-- <div class="search-row">
-			<div class="search-col">
-				<fmt:message key="members.maxHandicap"/>
-			</div>
-			<div class="search-col">
-				<fmt:message key="members.minHandicap"/>
-			</div>
-		</div>
-		<div class="search-row">
-			<div class="search-col">
-				<form:select path="maxHandicap" id="maxHandicap">
-					<option> </option>
-					<c:forEach var="hdcp" begin="0" end="20" step="1">
-						<option<c:if test="${search.maxHandicap eq hdcp}"> selected="true"</c:if>><c:out value="${hdcp}"/></option>
-					</c:forEach>
-				</form:select>
-			</div>
-			<div class="search-col">
-				<form:select path="minHandicap" id="minHandicap">
-					<option> </option>
-					<c:forEach var="hdcp" begin="0" end="20" step="1">
-						<option<c:if test="${search.minHandicap eq hdcp}"> selected="true"</c:if>><c:out value="${hdcp}"/></option>
-					</c:forEach>
-				</form:select>
-			</div>
-		</div> --%>
+	
 		<c:if test="${isAdministrator}">
 		<div class="search-row">
 			<div class="search-col">
@@ -256,3 +239,4 @@
 </div>
 
 </c:if>
+

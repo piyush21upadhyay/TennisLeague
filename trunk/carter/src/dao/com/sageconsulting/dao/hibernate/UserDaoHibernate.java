@@ -346,7 +346,7 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 	@Override
 	public List<User> findUsers(Long cityId, String firstName, String lastName,
 			String gender, Double rating, Double minRating, Double maxRating,
-			String dexterity, String matchPreference, String tournamentEntry) 
+			String dexterity, String matchPreference, String tournamentEntry,String orderBy) 
 	{
 
         StringBuilder sb = new StringBuilder();
@@ -415,7 +415,11 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 		}
         sb.append(" and 1 not in elements(u.roles)"); //$NON-NLS-1$
         
-        sb.append(" order by u.firstName, u.lastName, u.playerLevel");
+        if(isNotEmpty(orderBy)){
+        	sb.append("order by u."+orderBy+" desc");
+        }else{
+        	sb.append(" order by u.firstName, u.lastName, u.playerLevel");
+        }
         if (sb.length() > 0)
         {
             sb.insert(0, "where "); //$NON-NLS-1$
