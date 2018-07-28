@@ -105,8 +105,8 @@
 		
 	<c:if test="${param.fullPlayerInfo eq 'true'}">
 	   <div class="subsection">
-			<p><fmt:message key="profile.memberSince"/> <c:if test="${not empty player}"><span class="green"><fmt:formatDate value="${player.dateJoined}" pattern="yyyy"/></span></c:if></p>
-			<p><fmt:message key="profile.rating"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.ratedBy}"/></span></c:if></p>
+			<p><fmt:message key="profile.memberSince"/> <c:if test="${not empty player}"><span class="green"><fmt:formatDate value="${player.dateJoined}" pattern="mm-dd-yyyy"/></span></c:if></p>
+			<p><fmt:message key="profile.rating"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.playerLevel} (${player.ratedBy})"/></span></c:if></p>
 			<p><fmt:message key="profile.tournamentEntered"/> <c:if test="${not empty player}"><span class="green"><c:out value="${player.seasonEntered}"/></span></c:if></p>
 	   </div>
 	   <div class="subsection">
@@ -134,12 +134,39 @@
 			</p>
 			<p><fmt:message key="profile.openToChallenges"/> <c:if test="${not empty player}">
 				<span class="green">
+				
 				<c:choose>
-					<c:when test="${player.male eq 'true'}">
-						<c:out value="M"/>
+					<c:when test="${player.openToChallenges eq false}">
+						<c:out value="No"/>
 					</c:when>
 					<c:otherwise>
-						<c:out value="F"/>
+					   <c:choose>
+						<c:when test="${player.onlyOpenToSameGender eq true}">
+							<c:choose>
+							<c:when test="${player.male eq true}">
+								<c:out value="M|"/><c:forEach var="playingPref" items="${player.playingPreference}">
+														<td>
+				        									<c:out value="${playingPref}" />
+				    									</td>
+													</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<c:out value="F|"/><c:forEach var="playingPref" items="${player.playingPreference}">
+														<td>
+				        									<c:out value="${playingPref}" />
+				    									</td>
+													</c:forEach>
+							</c:otherwise>
+							</c:choose>
+						</c:when>	
+						<c:otherwise>
+								<c:out value="M & F|"/><c:forEach var="playingPref" items="${player.playingPreference}">
+														<td>
+				        									<c:out value="${playingPref}" />
+				    									</td>
+													</c:forEach>
+						</c:otherwise>
+						</c:choose>
 					</c:otherwise>
 				</c:choose>
 				</span></c:if>
