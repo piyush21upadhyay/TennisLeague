@@ -231,8 +231,9 @@ public class ResultsController extends BaseFormController
         else if (isVerify(request))
         {
             Match match = (Match)command;
-            match.getScore().computeStrokes(match.getCourse(), match.getGolfer1(), match.getGolfer2());
-            match.getScore().computeMatchScore();
+            // TODO: Akash
+            //match.getScore().computeStrokes(match.getCourse(), match.getGolfer1(), match.getGolfer2());
+            //match.getScore().computeMatchScore();
 
             ModelAndView view = new ModelAndView();
             view.addObject(CMD_NAME, command);
@@ -258,7 +259,8 @@ public class ResultsController extends BaseFormController
             else
             {
                 // Need to recompute the score or the scores after the match are over will be 0 instead of null.
-                match.getScore().computeMatchScore();
+            	// TODO: Akash
+                //match.getScore().computeMatchScore();
                 
                 // If this is a post season match that was a tie, we need to update
                 // things based on the winner of the putt-off.

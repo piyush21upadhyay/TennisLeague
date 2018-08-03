@@ -37,7 +37,7 @@ public class MatchResult
     
     private void computeResults()
     {
-        Byte[] netScores = this.match.getScore().getNet();
+        /*Byte[] netScores = this.match.getScore().getNet();
         if (!anyHoleScores(netScores))
         {
             this.isPlayed = false;
@@ -75,7 +75,58 @@ public class MatchResult
             this.loser = this.match.getGolfer1();
             this.holesWon = netScores[i].intValue() * -1;
             this.holesRemaining = 17 - i;
-        }
+        }*/
+    	
+    	int player1SetWinCount = 0;
+    	int player2SetWinCount = 0;
+    	
+    	int player1set1 = this.match.getScore().getPlayer1set1();
+    	int player2set1 = this.match.getScore().getPlayer2set1();
+    	
+    	if(player1set1 > player2set1)
+    	{
+    		player1SetWinCount++;
+    	}
+    	else
+    	{
+    		player2SetWinCount++;
+    	}
+    	
+    	int player1set2 = this.match.getScore().getPlayer1set2();
+    	int player2set2 = this.match.getScore().getPlayer2set2();
+    	
+    	if(player1set2 > player2set2)
+    	{
+    		player1SetWinCount++;
+    	}
+    	else
+    	{
+    		player2SetWinCount++;
+    	}
+    	
+    	int player1set3 = this.match.getScore().getPlayer1set3();
+    	int player2set3 = this.match.getScore().getPlayer2set3();
+    	
+    	if(player1set3 > player2set3)
+    	{
+    		player1SetWinCount++;
+    	}
+    	else
+    	{
+    		player2SetWinCount++;
+    	}
+    	
+    	if(player1SetWinCount > player2SetWinCount)
+    	{
+    		this.winner = this.match.getGolfer1();
+            this.loser = this.match.getGolfer2();
+    	}
+    	else
+    	{
+    		this.winner = this.match.getGolfer2();
+            this.loser = this.match.getGolfer1();
+    	}
+    	
     }
     
     public boolean isPlayed() { return this.isPlayed; }

@@ -142,7 +142,7 @@
 <display:table name="registrantList" cellspacing="0" cellpadding="0" requestURI="" 
     defaultsort="1" id="registrantList" class="table" export="false">
     <display:column sortable="true" property="user.fullName" titleKey="registration.name" url="/profile.html" paramId="id" paramProperty="id" style="white-space: nowrap" media="html"/>
-	<display:column sortable="true" titleKey="registration.handicap" media="html" style="white-space: nowrap">
+	<%-- <display:column sortable="true" titleKey="registration.handicap" media="html" style="white-space: nowrap">
 		<c:choose>
 			<c:when test="${registrantList.user.handicap lt 0}">
 				<c:out value="+"/><c:out value="${0 - registrantList.user.handicap}"/>
@@ -151,7 +151,7 @@
 				<c:out value="${registrantList.user.handicap}"/>
 			</c:otherwise>
 		</c:choose>
-	</display:column>
+	</display:column> --%>
 	
     <display:setProperty name="paging.banner.item_name"><fmt:message key="registration.member"/></display:setProperty>
     <display:setProperty name="paging.banner.items_name"><fmt:message key="registration.members"/></display:setProperty>

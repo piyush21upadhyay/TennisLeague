@@ -81,16 +81,18 @@ public class UnderParLeaderManagerImpl implements UnderParLeaderManager
     	if (whichScore == 1)
     	{
     		User user = match.getGolfer1();
-    		upl = new UnderParLeader(user, season, match.getRound().intValue(),
+    		// TODO: Akash
+    		/*upl = new UnderParLeader(user, season, match.getRound().intValue(),
     			score.getPlayer1NetBirdies(), score.getPlayer1NetEagles(), score.getPlayer1NetDoubleEagles(),
-    			score.getPlayer1Birdies(), score.getPlayer1Eagles(), score.getPlayer1DoubleEagles());
+    			score.getPlayer1Birdies(), score.getPlayer1Eagles(), score.getPlayer1DoubleEagles());*/
     	}
     	else if (whichScore == 2)
     	{
     		User user = match.getGolfer2();
-    		upl = new UnderParLeader(user, season, match.getRound().intValue(),
+    		// TODO: Akash
+    		/*upl = new UnderParLeader(user, season, match.getRound().intValue(),
     			score.getPlayer2NetBirdies(), score.getPlayer2NetEagles(), score.getPlayer2NetDoubleEagles(),
-    			score.getPlayer2Birdies(), score.getPlayer2Eagles(), score.getPlayer2DoubleEagles());
+    			score.getPlayer2Birdies(), score.getPlayer2Eagles(), score.getPlayer2DoubleEagles());*/
     	}
     	return upl;
     }
