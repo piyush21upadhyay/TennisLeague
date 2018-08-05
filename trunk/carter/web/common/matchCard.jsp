@@ -2,7 +2,7 @@
 <c:if test="${empty match}">
 	<c:set var="match" value="${matchParam}"/>
 </c:if>
-<div class="card-small">
+<%-- <div class="card-small">
 <div class="card">
 	<div class="top-row">
 		<div class="first"><fmt:message key="results.hole"/></div>
@@ -410,4 +410,18 @@
 		</c:choose>
 	</div>
 </div>
+</div>
+ --%>
+ 
+ <div class="left">
+					<p>
+						<img src="<c:url value="${match.golfer1.icon}"/>" alt="member" width="22"/>
+							<c:out value="${match.golfer1.fullName}"/>
+							<c:out value="${match.score.player1set1} -  ${match.score.player1set2} -  ${match.score.player1set3}"/>
+					</p>
+					<p>
+						<img src="<c:url value="${match.golfer2.icon}"/>" alt="member" width="22"/>
+							<c:out value="${match.golfer2.fullName}"/>
+							<c:out value="${match.score.player2set1} -  ${match.score.player2set2} -  ${match.score.player2set3}"/>
+					</p>
 </div>

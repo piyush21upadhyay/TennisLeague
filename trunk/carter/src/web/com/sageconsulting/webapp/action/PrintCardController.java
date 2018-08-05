@@ -85,7 +85,8 @@ public class PrintCardController  extends BaseFormController
             //course = match.getGolfer1().getHomeCourt();
         }
         match.setCourse(course);
-        match.getScore().computeStrokes(course, match.getGolfer1(), match.getGolfer2());
+       // TODO: Akash
+        //match.getScore().computeStrokes(course, match.getGolfer1(), match.getGolfer2());
 
         view.addObject("courseList", getCourseList(city)); //$NON-NLS-1$
         view.addObject("match", match); //$NON-NLS-1$

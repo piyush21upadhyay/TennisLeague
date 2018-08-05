@@ -130,7 +130,8 @@ public class TestPlayRegularSeasonController extends BaseFormController
             MatchScore score = new MatchScore();
             if (null != match.getGolfer2())
             {
-                score.computeStrokes(course, match.getGolfer1(), match.getGolfer2());
+            	// TODO: Akash
+                /*score.computeStrokes(course, match.getGolfer1(), match.getGolfer2());
                 score.setPlayer1Hole1Score(Byte.valueOf((byte)4));
                 score.setPlayer1Hole2Score(Byte.valueOf((byte)4));
                 score.setPlayer1Hole3Score(Byte.valueOf((byte)4));
@@ -167,7 +168,7 @@ public class TestPlayRegularSeasonController extends BaseFormController
                 score.setPlayer2Hole16Score(Byte.valueOf((byte)4));
                 score.setPlayer2Hole17Score(Byte.valueOf((byte)4));
                 score.setPlayer2Hole18Score(Byte.valueOf((byte)4));
-                score.computeMatchScore();
+                score.computeMatchScore();*/
                 match.setScore(score);
                 match.setPlayed(match.getPlayBy());
                 match.setCourse(course);

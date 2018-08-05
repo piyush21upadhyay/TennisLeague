@@ -365,7 +365,7 @@
 
 		<carter:button page="${url}" key="home.fullLeaderboard" fill="true"/>
 
-		<div>
+		<%-- <div>
 			<form id="leaderboard-form" name="leaderboardForm" action="home.html">
 				<select id="division" name="division" onchange="document.leaderboardForm.submit()" >
 					<option value="0"><fmt:message key="home.chooseDivision"/></option>
@@ -374,7 +374,9 @@
 					</c:forEach>
 				</select>
 			</form>
-		</div>
+		</div> --%>
+		
+		<br>
 		
 		<div>
 			<select id="matchCat" name="matchCat" >

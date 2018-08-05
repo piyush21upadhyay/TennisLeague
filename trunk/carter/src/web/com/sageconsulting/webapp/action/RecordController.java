@@ -222,7 +222,8 @@ public class RecordController implements Controller
         newMatch.setRound(match.getRound());
         newMatch.setPlayed(match.getPlayed());
         MatchScore score = new MatchScore();
-        score.setGolfer1Handicap(match.getScore().getGolfer2Handicap());
+        // TODO: Akash
+        /*score.setGolfer1Handicap(match.getScore().getGolfer2Handicap());
         score.setGolfer2Handicap(match.getScore().getGolfer1Handicap());
         score.setPlayer1Pars(match.getScore().getPlayer2Pars());
         score.setPlayer1Strokes(match.getScore().getPlayer2Strokes());
@@ -245,7 +246,17 @@ public class RecordController implements Controller
             {
                 score.setScore(i, null);
             }
-        }
+        }*/
+        // Added by Piyush and Akash
+        score.setPlayer1set1(match.getScore().getPlayer1set1());
+        score.setPlayer1set2(match.getScore().getPlayer1set2());
+        score.setPlayer1set3(match.getScore().getPlayer1set3());
+        
+        score.setPlayer2set1(match.getScore().getPlayer2set1());
+        score.setPlayer2set2(match.getScore().getPlayer2set2());
+        score.setPlayer2set3(match.getScore().getPlayer2set3());
+        
+        // End
         newMatch.setScore(score);
         newMatch.getResult();
         

@@ -55,7 +55,7 @@
 	<display:table name="results" id="results" cellspacing="0" cellpadding="0" requestURI="">
 	    <display:column class="pos"><%=pageContext.getAttribute("results_rowNum")%></display:column>
 	    <display:column class="player" property="user.fullName" url="/profile.html" paramId="id" paramProperty="user.id"/>
-	    <display:column class="course" property="user.homeCourse.name" url="/coursedetails.html" paramId="id" paramProperty="user.homeCourse.id"/>
+	    <display:column class="course" property="user.homeCourtText" /><!-- url="/coursedetails.html" paramId="id" paramProperty="user.homeCourse.id"/> -->
 	    <display:column class="points" property="points" />
 	    <display:column class="wins" property="wins" />
 	    <display:column class="losses" property="losses" />

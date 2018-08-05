@@ -96,7 +96,7 @@ public class PasswordHintController implements Controller
             {
 				StringBuffer msg = new StringBuffer();
 				msg.append("Your password hint is: " +user.get(0).getPasswordHint()); //$NON-NLS-1$
-				String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY GOLF LEAGUE"+"</a>";
+				String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY TENNIS LEAGUE"+"</a>";
 				//msg.append("\n\nLogin at: " + RequestUtil.getAppURL(request)); //$NON-NLS-1$
 				msg.append("\n\nLogin at: " + url); //$NON-NLS-1$
 

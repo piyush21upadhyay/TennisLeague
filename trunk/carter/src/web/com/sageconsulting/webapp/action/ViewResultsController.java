@@ -110,7 +110,8 @@ public class ViewResultsController implements Controller
         newMatch.setRound(match.getRound());
         newMatch.setPlayed(match.getPlayed());
         MatchScore score = new MatchScore();
-        score.setGolfer1Handicap(match.getScore().getGolfer2Handicap());
+        // TODO: Akash
+        /*score.setGolfer1Handicap(match.getScore().getGolfer2Handicap());
         score.setGolfer2Handicap(match.getScore().getGolfer1Handicap());
         score.setPlayer1Pars(match.getScore().getPlayer2Pars());
         score.setPlayer1Strokes(match.getScore().getPlayer2Strokes());
@@ -133,7 +134,7 @@ public class ViewResultsController implements Controller
             {
                 score.setScore(i, null);
             }
-        }
+        }*/
         newMatch.setScore(score);
         newMatch.getResult();
         

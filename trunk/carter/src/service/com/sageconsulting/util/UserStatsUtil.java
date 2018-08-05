@@ -106,11 +106,13 @@ public class UserStatsUtil
         
         if (match.getGolfer1().equals(user))
         {
-            updateLowScore(user, match.getScore().getPlayer1Scores());
+        	// TODO: Akash
+           // updateLowScore(user, match.getScore().getPlayer1Scores());
         }
         else if (match.getGolfer2().equals(user))
         {
-            updateLowScore(user, match.getScore().getPlayer2Scores());
+        	// TODO: Akash
+            //updateLowScore(user, match.getScore().getPlayer2Scores());
         }
     }
     

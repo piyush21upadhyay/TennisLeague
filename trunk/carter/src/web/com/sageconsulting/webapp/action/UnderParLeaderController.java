@@ -208,7 +208,8 @@ public class UnderParLeaderController implements Controller
     	int eaglePoints = 0;
     	int dblEaglePoints = 0;
     	
-    	if (match.getGolfer1().equals(user))
+    	// TODO: Akash
+    	/*if (match.getGolfer1().equals(user))
     	{
     		Byte[] player1Scores = match.getScore().getPlayer1Scores();
     		Byte[] player1Pars = match.getScore().getPlayer1Pars();
@@ -249,7 +250,7 @@ public class UnderParLeaderController implements Controller
 						dblEaglePoints++;
 				}
     		}
-    	}
+    	}*/
     	
     	birdieCounts.put("birdieCount", birdiePoints);
     	birdieCounts.put("eagleCount", eaglePoints);

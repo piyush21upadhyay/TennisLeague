@@ -319,10 +319,10 @@ $("#registration").focus();
 
 function onFormSubmit(theForm) {
 	
-	if(validateRegistrationEntry(theForm))
-		return theForm.submit();
+	//if(validateRegistrationEntry(theForm))
+		//return theForm.submit();
 	
-	return false;
+	return theForm.submit();
 }
 </script>
 

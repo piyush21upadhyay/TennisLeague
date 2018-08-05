@@ -137,7 +137,8 @@ public class BracketUtilityTest extends TestCase
         {
             Match match = matches.next();
             MatchScore score = new MatchScore();
-            score.computeStrokes(course, match.getGolfer1(), match.getGolfer2());
+            // TODO: Akash
+            /*score.computeStrokes(course, match.getGolfer1(), match.getGolfer2());
             score.setPlayer1Hole1Score(Byte.valueOf((byte)5));
             score.setPlayer1Hole2Score(Byte.valueOf((byte)5));
             score.setPlayer1Hole3Score(Byte.valueOf((byte)5));
@@ -174,7 +175,7 @@ public class BracketUtilityTest extends TestCase
             score.setPlayer2Hole16Score(Byte.valueOf((byte)5));
             score.setPlayer2Hole17Score(Byte.valueOf((byte)5));
             score.setPlayer2Hole18Score(Byte.valueOf((byte)5));
-            score.computeMatchScore();
+            score.computeMatchScore();*/
             match.setScore(score);
             match.setPlayed(calendar.getTime());
             match.setCourse(course);

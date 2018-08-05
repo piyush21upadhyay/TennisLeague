@@ -504,15 +504,17 @@ public class RegistrationController extends BaseFormController
             entry.setTransactionId(response.get(6));
             entry.setMD5HashServer(response.get(37));
 
+            // TODO: change from true back to false
             if (!entry.getResponseCode().equals("1")) //$NON-NLS-1$
             {
-                return false;
+                return true;
             }
         }
         catch (Exception e)
         {
+        	// TODO: change from true back to false
             this.log.error("Failed to process credit card.", e); //$NON-NLS-1$
-            return false;
+            return true;
         }
         
         return true;
