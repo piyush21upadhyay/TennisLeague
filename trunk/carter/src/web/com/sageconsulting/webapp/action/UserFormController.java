@@ -37,11 +37,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sageconsulting.Constants;
 import com.sageconsulting.model.City;
 import com.sageconsulting.model.Course;
+import com.sageconsulting.model.Court;
 import com.sageconsulting.model.Role;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.CityManager;
 import com.sageconsulting.service.CourseManager;
+import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.RoleManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.service.UserExistsException;
@@ -63,6 +65,7 @@ public class UserFormController extends BaseFormController
     private CourseManager courseManager;
     private CityManager cityManager;
     private SeasonManager seasonManager;
+    private CourtManager courtManager;
     User user = null;
     private static final String REGISTER_PAGE = "redirect:registration.html";
 
@@ -89,8 +92,12 @@ public class UserFormController extends BaseFormController
     {
         this.seasonManager = mgr;
     }
+    
+    public void setCourtManager(CourtManager mgr) {
+		this.courtManager = mgr;
+	}
 
-    public UserFormController()
+	public UserFormController()
     {
         setCommandName("user"); //$NON-NLS-1$
         setCommandClass(User.class);
@@ -404,9 +411,24 @@ public class UserFormController extends BaseFormController
             user.addRole(this.roleManager.getRole(Constants.USER_ROLE));
     	}
         getUserManager().saveUser(user);
+        saveCourt(user);
     }
     
-    /**
+    private void saveCourt(User user) {
+    	Court court=new Court();
+    	court.setName(user.getHomeCourtText());
+    	court.setCourtAddress(user.getCourtAddress());
+    	
+    	City city=user.getRegisteredCity();
+    	List<City> cityList=new ArrayList<City>();
+    	cityList.add(city);
+    	
+    	court.setCities(cityList);
+    	
+    	this.courtManager.saveCourt(court);
+	}
+
+	/**
      * Get the message to display on a successful save.
      * @param request The current request.
      * @param user The user that was saved.

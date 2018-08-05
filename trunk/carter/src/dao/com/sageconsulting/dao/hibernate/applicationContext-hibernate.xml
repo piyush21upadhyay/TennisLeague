@@ -11,6 +11,7 @@
                 <value>com/sageconsulting/model/User.hbm.xml</value>
                 <value>com/sageconsulting/model/City.hbm.xml</value>
                 <value>com/sageconsulting/model/Course.hbm.xml</value>
+                <value>com/sageconsulting/model/Court.hbm.xml</value>
                 <value>com/sageconsulting/model/Season.hbm.xml</value>
                 <value>com/sageconsulting/model/Match.hbm.xml</value>
                 <value>com/sageconsulting/model/Registration.hbm.xml</value>
@@ -117,8 +118,13 @@
     	<property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-    <!-- SeasonDao: Hibernate implementation -->
+    <!-- MatchCategoryDao: Hibernate implementation -->
     <bean id="matchCategoryDao" class="com.sageconsulting.dao.hibernate.MatchCategoryDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+     <!-- SeasonDao: Hibernate implementation -->
+    <bean id="courtDao" class="com.sageconsulting.dao.hibernate.CourtDaoHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>

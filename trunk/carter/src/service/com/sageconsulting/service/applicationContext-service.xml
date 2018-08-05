@@ -141,4 +141,8 @@
 	<bean id="matchCategoryManager" class="com.sageconsulting.service.impl.MatchCategoryManagerImpl">
 		<property name="matchCategoryDao" ref="matchCategoryDao"></property>
 	</bean>
+	
+	<bean id="courtManager" class="com.sageconsulting.service.impl.CourtManagerImpl">
+        <property name="courtDao" ref="courtDao"/>
+    </bean>
 </beans>

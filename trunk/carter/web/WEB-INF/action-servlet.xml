@@ -38,6 +38,7 @@
         <property name="mailEngine" ref="mailEngine"/>
         <property name="message" ref="mailMessage"/>
         <property name="templateName" value="accountCreated.vm"/>
+        <property name="courtManager" ref="courtManager"></property>
     </bean>
     
     <!-- Add additional controller beans here -->
@@ -117,6 +118,10 @@
     
     <bean id="courseDetailsController" class="com.sageconsulting.webapp.action.CourseDetailsController">
     	<property name="courseManager" ref="courseManager"/>
+    </bean>
+    
+    <bean id="courtsController" class="com.sageconsulting.webapp.action.CourtsController">
+    	<property name="courtManager" ref="courtManager"/>
     </bean>
     
     <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
@@ -355,6 +360,7 @@
                 <prop key="/inbox.html">inboxController</prop>
                 <prop key="/emailValidate.html">emailValidateController</prop>
                 <prop key="/congratsPage.html">congratsMessageController</prop>
+                <prop key="/courts.html">courtsController</prop>
             </props>
         </property>
     </bean>

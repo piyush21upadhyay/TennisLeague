@@ -5,7 +5,7 @@
 <menu:displayMenu name="Profile"/>
 <menu:displayMenu name="Schedule"/>
 <menu:displayMenu name="Lookup"/>
-<menu:displayMenu name="Courses"/>
+<menu:displayMenu name="Courts"/>
 <menu:displayMenu name="Standings"/>
 <menu:displayMenu name="Playoffs"/>
 <menu:displayMenu name="Champions"/>

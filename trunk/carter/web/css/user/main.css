@@ -3365,3 +3365,13 @@ output:after {
 	color:#fff;
 	line-height:20px;
 }
+
+.court-section {
+	margin-left:10px;
+	margin-right:10px;
+	min-height:640px;
+}
+
+.court-section h2 {
+	color:#FDFBA6;
+}

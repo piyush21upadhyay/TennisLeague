@@ -402,16 +402,21 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 			}
 			sb.append("u.playerLevel=").append(rating);
 		} else {
-			Double min = (null == minRating) ? Double.valueOf(MIN_PLAYER_LEVEL)
-					: minRating;
 			if (sb.length() > 0) {
 				sb.append(" and "); //$NON-NLS-1$
 			}
-			sb.append("u.playerLevel >= ").append(min); //$NON-NLS-1$
+			if(null == minRating){
+				sb.append("u.playerLevel >= ").append(Double.valueOf(MIN_PLAYER_LEVEL)); //$NON-NLS-1$
+			}else{
+				sb.append("u.playerLevel > ").append(minRating); //$NON-NLS-1$
+			}
+			
+			if(null == maxRating){
+				sb.append(" and u.playerLevel <= ").append(Double.valueOf(MAX_PLAYER_LEVEL));
+			}else{
+				sb.append(" and u.playerLevel < ").append(maxRating);
+			}
 
-			Double max = (null == maxRating) ? Double.valueOf(MAX_PLAYER_LEVEL)
-					: maxRating;
-			sb.append(" and u.playerLevel <= ").append(max);
 		}
         sb.append(" and 1 not in elements(u.roles)"); //$NON-NLS-1$
         
