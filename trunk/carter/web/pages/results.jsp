@@ -101,7 +101,7 @@
 				<form:hidden path="version"/>
 
 			<div class="section">
-				<div id="played-info">
+				<%-- <div id="played-info">
 					<label for="course"><fmt:message key="results.course"/></label>
 			        <form:select path="course" id="course">
 			       		<c:choose>
@@ -113,6 +113,7 @@
                             </option>
                             </c:forEach>
 							</c:when>
+							<!-- TODO: Akash -->
 							<c:otherwise>
 								<c:forEach var="course" items="${courseList}">
 									<option value="<c:out value='${course.id}'/>"
@@ -125,7 +126,7 @@
 					<label for="played"><fmt:message key="results.datePlayed"/></label>
 					<input type="text" id="played" name="played" maxlength="12"
 						value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/>
-				</div>
+				</div> --%>
 			</div>
 			<div class="section">
 				<div class="card">
@@ -206,16 +207,16 @@
 						</div>
 						<div style="clear:both">
 							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourse.id}"/>"><c:out value="${match.golfer1.homeCourse.name}"/></a></p>
+							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							<p><fmt:message key="members.handicap"/>
-							<c:choose>
+							<%-- <c:choose>
 								<c:when test="${match.golfer1.handicap lt 0}">
 									<c:out value="+"/><c:out value="${0 - match.golfer1.handicap}"/>
 								</c:when>
 								<c:otherwise>
 									<c:out value="${match.golfer1.handicap}"/>
 								</c:otherwise>
-							</c:choose>
+							</c:choose> --%>
 							</p>
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/>-<c:out value="${match.golfer1.currentTies}"/></a></p>
 							<p>
@@ -241,16 +242,16 @@
 						</div>
 						<div style="clear:both">
 							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourse.id}"/>"><c:out value="${match.golfer2.homeCourse.name}"/></a></p>
+							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							<p><fmt:message key="members.handicap"/>
-							<c:choose>
+							<%-- <c:choose>
 								<c:when test="${match.golfer2.handicap lt 0}">
 									<c:out value="+"/><c:out value="${0 - match.golfer2.handicap}"/>
 								</c:when>
 								<c:otherwise>
 									<c:out value="${match.golfer2.handicap}"/>
 								</c:otherwise>
-							</c:choose>
+							</c:choose> --%>
 							</p>
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/>-<c:out value="${match.golfer2.currentTies}"/></a></p>
 							<p>

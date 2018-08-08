@@ -44,11 +44,11 @@
 		<div class="left">
 			<c:import url="/common/matchCard.jsp"/>
 		</div>
-		<div class="right">
+		<%-- <div class="right">
 			<c:import url="/common/legend.jsp">
 				<c:param name="layout" value="vertical"/>
 			</c:import>
-		</div>
+		</div> --%>
 	</div>
 	<div class="clear"></div>
 </c:if>

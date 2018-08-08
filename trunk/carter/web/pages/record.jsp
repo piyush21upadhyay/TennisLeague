@@ -31,9 +31,9 @@
 	<c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/><c:out value="${user.currentTies} Ties"/>
 </c:when>
 </c:choose>
-<p style="text-transform: uppercase;"><c:out value="${user.firstName}"/><br><c:out value="${user.lastName}"/></p>
+<%-- <p style="text-transform: uppercase;"><c:out value="${user.firstName}"/><br><c:out value="${user.lastName}"/></p>
 
-<div class="square" style="width:27px;height: 27px;Background-color: #9dc227;">7</div>
+<div class="square" style="width:27px;height: 27px;Background-color: #9dc227;">7</div> --%>
 
 </div>
 
@@ -108,11 +108,11 @@
   </div>
 </div>
 
-<div class="legend-section">	
+<%-- <div class="legend-section">	
 <c:import url="/common/legend.jsp">
 	<c:param name="layout" value="vertical"/>
 </c:import>
-</div>
+</div> --%>
 
 <%--
 </c:if>

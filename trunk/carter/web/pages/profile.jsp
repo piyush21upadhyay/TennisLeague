@@ -133,7 +133,7 @@
 			<c:when test="${not empty opponent}">
 				<div>
 					<a class="green" href="<c:url value="/profile.html?id="/><c:out value="${opponent.id}"/>"><c:out value="${opponent.fullName}"/></a> <fmt:message key="profile.at"/> 
-					<a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${opponent.homeCourse.id}"/>"><c:out value="${opponent.homeCourse.name}"/></a>
+					<a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${opponent.homeCourtText}"/>"><c:out value="${opponent.homeCourtText}"/></a>
 				</div>
 			</c:when>
 			<c:otherwise>
