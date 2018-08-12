@@ -408,13 +408,13 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 			if(null == minRating){
 				sb.append("u.playerLevel >= ").append(Double.valueOf(MIN_PLAYER_LEVEL)); //$NON-NLS-1$
 			}else{
-				sb.append("u.playerLevel > ").append(minRating); //$NON-NLS-1$
+				sb.append("u.playerLevel >= ").append(minRating); //$NON-NLS-1$
 			}
 			
-			if(null == maxRating){
+			if(null == maxRating || maxRating.compareTo(Double.valueOf(MAX_PLAYER_LEVEL))==0){
 				sb.append(" and u.playerLevel <= ").append(Double.valueOf(MAX_PLAYER_LEVEL));
 			}else{
-				sb.append(" and u.playerLevel < ").append(maxRating);
+				sb.append(" and u.playerLevel <= ").append(maxRating);
 			}
 
 		}
