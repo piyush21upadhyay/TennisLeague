@@ -48,6 +48,87 @@
 	}
 	</script>
 </c:if>
+
+<style type="text/css">
+				body{
+					background: #eee
+				}
+				.container{
+					font-family:Arial, Helvetica, sans-serif;
+					 background: #fff;
+				}
+				.component-page{
+					  width: 100%;
+					padding: 10px 0px;
+					overflow: hidden;
+				}
+	 
+				table.entering td {
+					border: none;
+					font-weight: 700;
+					text-align: left;
+				}
+
+				table.entering td.firstChild {
+					text-align: left;
+					text-transform: uppercase
+				} 
+				.column-3 {
+					width: 31%;
+					float: left;
+					margin-right: 20px;
+				}
+				.column-3:last-child {
+					margin-right: 0px;
+				}
+				.entering-details{
+					 margin: 20px 0px;   
+				}
+				 .entering-details th{
+					 margin: 20px 0px;
+				 }
+				  .entering-details td{
+					 padding: 10px;
+				 }
+				  .entering-details  input[type="text"], .entering-details input[type="date"] {
+					padding: 6px;
+					border: 1px solid #d7d7d7;
+					color: #474747;
+				}
+				.entering {
+					margin: 20px 0px;
+				}  
+				.entering tr {
+					line-height: 60px;
+				}  
+
+				 .num-input{
+					width: 40px;
+					height: 40px;
+					line-height: 14px;
+					font-size: 14px;
+					font-weight: normal;
+					text-align: center;
+					border: 1px solid #d7d7d7;
+				}
+
+				  .super-input {
+					vertical-align: super;
+					position: relative;
+					top: -10px;
+					margin-right: 10px;
+				}
+				.super-input input{
+				   width: 30px;
+				   height: 30px;
+					line-height: 14px;
+					font-size: 12px;
+					font-weight: normal;
+					text-align: center;
+					border: 1px solid #d7d7d7;
+				}
+
+</style>
 </head>
 
 <c:if test="${not empty match}">
@@ -101,8 +182,8 @@
 				<form:hidden path="version"/>
 
 			<div class="section">
-				<%-- <div id="played-info">
-					<label for="course"><fmt:message key="results.course"/></label>
+				<div id="played-info">
+					<%-- <label for="course"><fmt:message key="results.course"/></label>
 			        <form:select path="course" id="course">
 			       		<c:choose>
 							<c:when test="${isAdministrator}">
@@ -122,13 +203,13 @@
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-			        </form:select>
+			        </form:select>--%>
 					<label for="played"><fmt:message key="results.datePlayed"/></label>
 					<input type="text" id="played" name="played" maxlength="12"
 						value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/>
-				</div> --%>
+				</div> 
 			</div>
-			<div class="section">
+			<%-- <div class="section">
 				<div class="card">
 						<div class="top-row entry-row-top">
 							<div class="first"><fmt:message key="results.hole"/></div>
@@ -191,7 +272,40 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+			</div> --%>
+			<!-- Changes done by Akash & Piyush -->
+			<div class="section">
+				<div class="card">
+			<table class="centerAlign entering">
+							<tbody>
+					  
+							<tr>
+								<td class="  leftAlign strong"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></td>
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
+														<span class="super-input"><input type="number" value="Number"></span></td>
+														
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
+														<span class="super-input"><input type="number" value="Number"></span></td>
+														
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
+														<span class="super-input"><input type="number" value="13"></span></td>
+							</tr>
+							  <tr>
+								<td class="  leftAlign strong"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></td>
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
+														<span class="super-input"><input type="number" value="Number"></span></td>
+								
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/> 
+														<span class="super-input"><input type="number" value="Number"></span></td>
+														
+								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
+														<span class="super-input"><input type="number" value="11"></span></td>
+							</tr>
+						</tbody>
+					</table>
 			</div>
+			</div>
+			<!-- Changes done by Akash & Piyush Ends -->
 			<div class="clear"></div>
 			<div id="result-members">
 				<div class="threecol">

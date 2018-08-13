@@ -562,24 +562,24 @@
       <div class="component-page">
           <div class="hd-title">
               <div class="selected-country">
-              <p>PORTLAND Spring 2018 </p>
-              <p>2 Wins 1 loss </p>
+              <p><c:out value="${user.currentSeason.city.name}, ${user.currentSeason.name}"/></p>
+              <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p>
               </div>
               <div class="score-list">
                     <table class="centerAlign linescore">
                         <tbody>
                         <tr>
-                            <td class="  leftAlign strong">Ankit</td>
+                            <td class="  leftAlign strong"><c:out value="${user.firstName}"/></td>
         
-                            <td class="strong runs">7 <span class="super">7</span></td>
-                            <td>4</td>
-                            <td>6</td>
+                            <td class="strong runs"><c:out value="${match.score.player1set1} "/><span class="super">7</span></td>
+                            <td><c:out value="${match.score.player1set2} "/></td>
+                            <td><c:out value="${match.score.player1set3} "/></td>
                         </tr>
                       <tr>
-                            <td class="leftAlign strong">Tomar</td>
-                            <td>6  <span class="super">4</span></td>
-                            <td class="strong runs">6</td>
-                            <td>4</td>
+                            <td class="leftAlign strong"><c:out value="${user.lastName}"/></td>
+                            <td><c:out value="${match.score.player2set1} "/> <span class="super">4</span></td>
+                            <td class="strong runs"><c:out value="${match.score.player2set2} "/></td>
+                            <td><c:out value="${match.score.player2set3} "/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -588,63 +588,82 @@
       </div>
       <div class="component-page">
         <div class="column-3">
-          <div class="char"> W </div>
+          <div class="char"> 
+          <c:choose>
+			<c:when test="${match.score.player1set1 > match.score.player2set1}"> W </c:when>
+			<c:otherwise>	
+				L
+			</c:otherwise>
+		</c:choose>	
+          
+          </div>
                  <table class="centerAlign score-table">
                         <tbody>
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                            <td>4</td>
-                          
+                            <td><c:out value="${match.score.player1set1} "/>  </td>
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                            <td>6</td>
-                           
+                            <td><c:out value="${match.score.player2set1} "/>   </td>
+                                                       
                         </tr>
                     </tbody>
                 </table>
             </div> 
       <div class="column-3">
-          <div class="char"> W </div>
+          <div class="char"> 
+             <c:choose>
+				<c:when test="${match.score.player1set2 > match.score.player2set2}"> W </c:when>
+				<c:otherwise>	
+					L
+			  	</c:otherwise>
+			</c:choose>	
+          </div>
                  <table class="centerAlign score-table">
                         <tbody>
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                            <td>4</td>
-                          
+                            <td><c:out value="${match.score.player1set2} "/> </td>
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                            <td>6</td>
-                           
+                            <td><c:out value="${match.score.player2set2} "/> </td>
+                                                       
                         </tr>
                     </tbody>
                 </table>
             </div>  
              <div class="column-3">
-          <div class="char"> L </div>
+          <div class="char">
+	          <c:choose>
+					<c:when test="${match.score.player1set3 > match.score.player2set3}"> W </c:when>
+					<c:otherwise>	
+						L
+			  		</c:otherwise>
+			  </c:choose>	
+          </div>
                  <table class="centerAlign score-table">
                         <tbody>
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                            <td>4</td>
-                          
+                            <td><c:out value="${match.score.player1set3} "/> </td>
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                            <td>6</td>
-                           
+                            <td><c:out value="${match.score.player2set3} "/> </td>
+                                                      
                         </tr>
                     </tbody>
                 </table>
             </div> 
-      </div> 
+      </div>
+      
+      <!-- Dynamic done upto here, Need more clarity to do further -->
+       
       <div class="component-page">
           <div class="trophy">
                     <table class="centerAlign">
@@ -671,14 +690,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
@@ -690,14 +707,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
@@ -709,14 +724,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
@@ -730,14 +743,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                      
                         </tr>
                     </tbody>
                 </table>
@@ -749,14 +760,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                      
                         </tr>
                     </tbody>
                 </table>
@@ -768,14 +777,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                     
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
@@ -790,14 +797,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                    
                         </tr>
                     </tbody>
                 </table>
@@ -809,14 +814,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                     
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
@@ -828,14 +831,12 @@
                         <tr>
                             <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
                             <td>7 </td>
-                            <td>4</td>
-                          
+                                                      
                         </tr>
                       <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
                             <td>6  </td>
-                            <td>6</td>
-                           
+                                                       
                         </tr>
                     </tbody>
                 </table>
