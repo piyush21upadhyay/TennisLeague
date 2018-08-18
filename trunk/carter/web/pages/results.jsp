@@ -431,7 +431,7 @@
 			<input type="hidden" id="played" name="played"
 				value="<fmt:formatDate pattern="MM/dd/yyyy" value="${match.played}"/>"/>
 			<c:if test="${not match.defaultWin}">
-			<form:hidden path="score.player1Hole1Par"/>
+			<%-- <form:hidden path="score.player1Hole1Par"/>
 			<form:hidden path="score.player1Hole2Par"/>
 			<form:hidden path="score.player1Hole3Par"/>
 			<form:hidden path="score.player1Hole4Par"/>
@@ -584,7 +584,7 @@
 			<form:hidden path="score.score18"/>
 			
 			<form:hidden path="score.golfer1Handicap"/>
-			<form:hidden path="score.golfer2Handicap"/>
+			<form:hidden path="score.golfer2Handicap"/> --%>
 			</c:if>
 			
 			<c:if test="${match.defaultWin}">
