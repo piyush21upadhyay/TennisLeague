@@ -175,6 +175,7 @@
 		</div>
 	</div>
 	
+	<!-- Post Results Screen starts -->
 	<c:choose>
 	<c:when test="${enterScores}">
 		<form:form commandName="match" method="post" action="results.html" id="matchForm">
@@ -209,70 +210,7 @@
 						value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/>
 				</div> 
 			</div>
-			<%-- <div class="section">
-				<div class="card">
-						<div class="top-row entry-row-top">
-							<div class="first"><fmt:message key="results.hole"/></div>
-							<c:forEach var="hole" begin="1" end="9" step="1">
-								<div class="hole"><c:out value="${hole}"/></div>
-							</c:forEach>
-							<div class="nine">&nbsp;</div>
-							<c:forEach var="hole" begin="10" end="17" step="1">
-									<div class="hole"><c:out value="${hole}"/></div>
-							</c:forEach>
-							<div class="hole last-short">18</div>
-						</div>
-						<div class="clear"></div>
-	
-					<div class="entry-row-one">
-						<div class="first"><c:out value="${match.golfer1.displayName}"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole1Score" onkeyup="autotab(this,document.getElementById('score.player1Hole2Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole2Score" onkeyup="autotab(this,document.getElementById('score.player1Hole3Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole3Score" onkeyup="autotab(this,document.getElementById('score.player1Hole4Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole4Score" onkeyup="autotab(this,document.getElementById('score.player1Hole5Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole5Score" onkeyup="autotab(this,document.getElementById('score.player1Hole6Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole6Score" onkeyup="autotab(this,document.getElementById('score.player1Hole7Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole7Score" onkeyup="autotab(this,document.getElementById('score.player1Hole8Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole8Score" onkeyup="autotab(this,document.getElementById('score.player1Hole9Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole9Score" onkeyup="autotab(this,document.getElementById('score.player1Hole10Score'))"/></div>
-						<div class="nine">&nbsp;</div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole10Score" onkeyup="autotab(this,document.getElementById('score.player1Hole11Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole11Score" onkeyup="autotab(this,document.getElementById('score.player1Hole12Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole12Score" onkeyup="autotab(this,document.getElementById('score.player1Hole13Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole13Score" onkeyup="autotab(this,document.getElementById('score.player1Hole14Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole14Score" onkeyup="autotab(this,document.getElementById('score.player1Hole15Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole15Score" onkeyup="autotab(this,document.getElementById('score.player1Hole16Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole16Score" onkeyup="autotab(this,document.getElementById('score.player1Hole17Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole17Score" onkeyup="autotab(this,document.getElementById('score.player1Hole18Score'))"/></div>
-						<div class="hole last-short"><form:input maxlength="2" cssClass="holescore" path="score.player1Hole18Score" onkeyup="autotab(this,document.getElementById('score.player2Hole1Score'))"/></div>
-					</div>
-					<div class="clear"></div>
-					
-					<div class="entry-row-two">
-						<div class="first"><c:out value="${match.golfer2.displayName}"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole1Score" onkeyup="autotab(this,document.getElementById('score.player2Hole2Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole2Score" onkeyup="autotab(this,document.getElementById('score.player2Hole3Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole3Score" onkeyup="autotab(this,document.getElementById('score.player2Hole4Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole4Score" onkeyup="autotab(this,document.getElementById('score.player2Hole5Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole5Score" onkeyup="autotab(this,document.getElementById('score.player2Hole6Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole6Score" onkeyup="autotab(this,document.getElementById('score.player2Hole7Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole7Score" onkeyup="autotab(this,document.getElementById('score.player2Hole8Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole8Score" onkeyup="autotab(this,document.getElementById('score.player2Hole9Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole9Score" onkeyup="autotab(this,document.getElementById('score.player2Hole10Score'))"/></div>
-						<div class="nine">&nbsp;</div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole10Score" onkeyup="autotab(this,document.getElementById('score.player2Hole11Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole11Score" onkeyup="autotab(this,document.getElementById('score.player2Hole12Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole12Score" onkeyup="autotab(this,document.getElementById('score.player2Hole13Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole13Score" onkeyup="autotab(this,document.getElementById('score.player2Hole14Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole14Score" onkeyup="autotab(this,document.getElementById('score.player2Hole15Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole15Score" onkeyup="autotab(this,document.getElementById('score.player2Hole16Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole16Score" onkeyup="autotab(this,document.getElementById('score.player2Hole17Score'))"/></div>
-						<div class="hole"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole17Score" onkeyup="autotab(this,document.getElementById('score.player2Hole18Score'))"/></div>
-						<div class="hole last-short"><form:input maxlength="2" cssClass="holescore" path="score.player2Hole18Score" onkeyup="autotab(this,document.getElementById('postButton'))"/></div>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div> --%>
+			
 			<!-- Changes done by Akash & Piyush -->
 			<div class="section">
 				<div class="card">
@@ -281,14 +219,16 @@
 					  
 							<tr>
 								<td class="  leftAlign strong"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></td>
-								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
-														<span class="super-input"><input type="number" value="Number"></span></td>
+								<td class="strong runs">
+									<form:input cssClass="num-input" maxlength="2" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
+									<span class="super-input"><input type="number" value="Number"></span>
+								</td>
 														
 								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
 														<span class="super-input"><input type="number" value="Number"></span></td>
 														
 								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
-														<span class="super-input"><input type="number" value="13"></span></td>
+														<span class="super-input"><input type="number" value="Number"></span></td>
 							</tr>
 							  <tr>
 								<td class="  leftAlign strong"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></td>
@@ -299,7 +239,7 @@
 														<span class="super-input"><input type="number" value="Number"></span></td>
 														
 								<td class="strong runs"><form:input cssClass="num-input" maxlength="2" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
-														<span class="super-input"><input type="number" value="11"></span></td>
+														<span class="super-input"><input type="number" value="Number"></span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -321,17 +261,8 @@
 						</div>
 						<div style="clear:both">
 							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
-							<p><fmt:message key="members.handicap"/>
-							<%-- <c:choose>
-								<c:when test="${match.golfer1.handicap lt 0}">
-									<c:out value="+"/><c:out value="${0 - match.golfer1.handicap}"/>
-								</c:when>
-								<c:otherwise>
-									<c:out value="${match.golfer1.handicap}"/>
-								</c:otherwise>
-							</c:choose> --%>
-							</p>
+							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
+							
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/>-<c:out value="${match.golfer1.currentTies}"/></a></p>
 							<p>
 							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer1.id}"/>">
@@ -356,17 +287,8 @@
 						</div>
 						<div style="clear:both">
 							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
-							<p><fmt:message key="members.handicap"/>
-							<%-- <c:choose>
-								<c:when test="${match.golfer2.handicap lt 0}">
-									<c:out value="+"/><c:out value="${0 - match.golfer2.handicap}"/>
-								</c:when>
-								<c:otherwise>
-									<c:out value="${match.golfer2.handicap}"/>
-								</c:otherwise>
-							</c:choose> --%>
-							</p>
+							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
+							
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/>-<c:out value="${match.golfer2.currentTies}"/></a></p>
 							<p>
 							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
@@ -400,25 +322,17 @@
 					<div class="clear"></div>
 				</div>
 			</div>
+<!-- Post Results Screen ends -->
 		</form:form>
 			
-		<script type="text/javascript">
-			<!--
-			$("#score\\.player1Hole1Score").focus();
-		    function autotab(src,dest)
-		    {
-		    	if ((src.value.length==1 && src.value[0]!='1') || src.value.length>1) dest.focus();
-		    }
-		    -->
-		</script>
 	</c:when>
 <c:otherwise>
 	<c:if test="${not match.defaultWin}">
 	<div class="section">
 		<c:import url="/common/matchCard.jsp"/>
-		<div class="right">
+		<%-- <div class="right">
 			<c:import url="/common/legend.jsp"/>
-		</div>
+		</div> --%>
 	</div>
 	<div class="clear"></div>
 	</c:if>
@@ -427,164 +341,16 @@
 		<form:form commandName="match" method="post" action="results.html" id="matchForm">
 		<form:hidden path="id"/>
 		<form:hidden path="version"/>
-	        <input type="hidden" id="course" name="course" value="<c:out value="${match.course.id}"/>" />
+	        <%-- <input type="hidden" id="course" name="course" value="<c:out value="${match.course.id}"/>" /> --%>
 			<input type="hidden" id="played" name="played"
 				value="<fmt:formatDate pattern="MM/dd/yyyy" value="${match.played}"/>"/>
 			<c:if test="${not match.defaultWin}">
-			<form:hidden path="score.player1Hole1Par"/>
-			<form:hidden path="score.player1Hole2Par"/>
-			<form:hidden path="score.player1Hole3Par"/>
-			<form:hidden path="score.player1Hole4Par"/>
-			<form:hidden path="score.player1Hole5Par"/>
-			<form:hidden path="score.player1Hole6Par"/>
-			<form:hidden path="score.player1Hole7Par"/>
-			<form:hidden path="score.player1Hole8Par"/>
-			<form:hidden path="score.player1Hole9Par"/>
-			<form:hidden path="score.player1Hole10Par"/>
-			<form:hidden path="score.player1Hole11Par"/>
-			<form:hidden path="score.player1Hole12Par"/>
-			<form:hidden path="score.player1Hole13Par"/>
-			<form:hidden path="score.player1Hole14Par"/>
-			<form:hidden path="score.player1Hole15Par"/>
-			<form:hidden path="score.player1Hole16Par"/>
-			<form:hidden path="score.player1Hole17Par"/>
-			<form:hidden path="score.player1Hole18Par"/>
-			
-			<form:hidden path="score.player1Hole1Stroke"/>
-			<form:hidden path="score.player1Hole2Stroke"/>
-			<form:hidden path="score.player1Hole3Stroke"/>
-			<form:hidden path="score.player1Hole4Stroke"/>
-			<form:hidden path="score.player1Hole5Stroke"/>
-			<form:hidden path="score.player1Hole6Stroke"/>
-			<form:hidden path="score.player1Hole7Stroke"/>
-			<form:hidden path="score.player1Hole8Stroke"/>
-			<form:hidden path="score.player1Hole9Stroke"/>
-			<form:hidden path="score.player1Hole10Stroke"/>
-			<form:hidden path="score.player1Hole11Stroke"/>
-			<form:hidden path="score.player1Hole12Stroke"/>
-			<form:hidden path="score.player1Hole13Stroke"/>
-			<form:hidden path="score.player1Hole14Stroke"/>
-			<form:hidden path="score.player1Hole15Stroke"/>
-			<form:hidden path="score.player1Hole16Stroke"/>
-			<form:hidden path="score.player1Hole17Stroke"/>
-			<form:hidden path="score.player1Hole18Stroke"/>
-			
-			<form:hidden path="score.player1Hole1Score"/>
-			<form:hidden path="score.player1Hole2Score"/>
-			<form:hidden path="score.player1Hole3Score"/>
-			<form:hidden path="score.player1Hole4Score"/>
-			<form:hidden path="score.player1Hole5Score"/>
-			<form:hidden path="score.player1Hole6Score"/>
-			<form:hidden path="score.player1Hole7Score"/>
-			<form:hidden path="score.player1Hole8Score"/>
-			<form:hidden path="score.player1Hole9Score"/>
-			<form:hidden path="score.player1Hole10Score"/>
-			<form:hidden path="score.player1Hole11Score"/>
-			<form:hidden path="score.player1Hole12Score"/>
-			<form:hidden path="score.player1Hole13Score"/>
-			<form:hidden path="score.player1Hole14Score"/>
-			<form:hidden path="score.player1Hole15Score"/>
-			<form:hidden path="score.player1Hole16Score"/>
-			<form:hidden path="score.player1Hole17Score"/>
-			<form:hidden path="score.player1Hole18Score"/>
-			
-			<form:hidden path="score.player2Hole1Par"/>
-			<form:hidden path="score.player2Hole2Par"/>
-			<form:hidden path="score.player2Hole3Par"/>
-			<form:hidden path="score.player2Hole4Par"/>
-			<form:hidden path="score.player2Hole5Par"/>
-			<form:hidden path="score.player2Hole6Par"/>
-			<form:hidden path="score.player2Hole7Par"/>
-			<form:hidden path="score.player2Hole8Par"/>
-			<form:hidden path="score.player2Hole9Par"/>
-			<form:hidden path="score.player2Hole10Par"/>
-			<form:hidden path="score.player2Hole11Par"/>
-			<form:hidden path="score.player2Hole12Par"/>
-			<form:hidden path="score.player2Hole13Par"/>
-			<form:hidden path="score.player2Hole14Par"/>
-			<form:hidden path="score.player2Hole15Par"/>
-			<form:hidden path="score.player2Hole16Par"/>
-			<form:hidden path="score.player2Hole17Par"/>
-			<form:hidden path="score.player2Hole18Par"/>
-			
-			<form:hidden path="score.player2Hole1Stroke"/>
-			<form:hidden path="score.player2Hole2Stroke"/>
-			<form:hidden path="score.player2Hole3Stroke"/>
-			<form:hidden path="score.player2Hole4Stroke"/>
-			<form:hidden path="score.player2Hole5Stroke"/>
-			<form:hidden path="score.player2Hole6Stroke"/>
-			<form:hidden path="score.player2Hole7Stroke"/>
-			<form:hidden path="score.player2Hole8Stroke"/>
-			<form:hidden path="score.player2Hole9Stroke"/>
-			<form:hidden path="score.player2Hole10Stroke"/>
-			<form:hidden path="score.player2Hole11Stroke"/>
-			<form:hidden path="score.player2Hole12Stroke"/>
-			<form:hidden path="score.player2Hole13Stroke"/>
-			<form:hidden path="score.player2Hole14Stroke"/>
-			<form:hidden path="score.player2Hole15Stroke"/>
-			<form:hidden path="score.player2Hole16Stroke"/>
-			<form:hidden path="score.player2Hole17Stroke"/>
-			<form:hidden path="score.player2Hole18Stroke"/>
-			
-			<form:hidden path="score.player2Hole1Score"/>
-			<form:hidden path="score.player2Hole2Score"/>
-			<form:hidden path="score.player2Hole3Score"/>
-			<form:hidden path="score.player2Hole4Score"/>
-			<form:hidden path="score.player2Hole5Score"/>
-			<form:hidden path="score.player2Hole6Score"/>
-			<form:hidden path="score.player2Hole7Score"/>
-			<form:hidden path="score.player2Hole8Score"/>
-			<form:hidden path="score.player2Hole9Score"/>
-			<form:hidden path="score.player2Hole10Score"/>
-			<form:hidden path="score.player2Hole11Score"/>
-			<form:hidden path="score.player2Hole12Score"/>
-			<form:hidden path="score.player2Hole13Score"/>
-			<form:hidden path="score.player2Hole14Score"/>
-			<form:hidden path="score.player2Hole15Score"/>
-			<form:hidden path="score.player2Hole16Score"/>
-			<form:hidden path="score.player2Hole17Score"/>
-			<form:hidden path="score.player2Hole18Score"/>
-			
-			<form:hidden path="score.stroke1"/>
-			<form:hidden path="score.stroke2"/>
-			<form:hidden path="score.stroke3"/>
-			<form:hidden path="score.stroke4"/>
-			<form:hidden path="score.stroke5"/>
-			<form:hidden path="score.stroke6"/>
-			<form:hidden path="score.stroke7"/>
-			<form:hidden path="score.stroke8"/>
-			<form:hidden path="score.stroke9"/>
-			<form:hidden path="score.stroke10"/>
-			<form:hidden path="score.stroke11"/>
-			<form:hidden path="score.stroke12"/>
-			<form:hidden path="score.stroke13"/>
-			<form:hidden path="score.stroke14"/>
-			<form:hidden path="score.stroke15"/>
-			<form:hidden path="score.stroke16"/>
-			<form:hidden path="score.stroke17"/>
-			<form:hidden path="score.stroke18"/>
-			
-			<form:hidden path="score.score1"/>
-			<form:hidden path="score.score2"/>
-			<form:hidden path="score.score3"/>
-			<form:hidden path="score.score4"/>
-			<form:hidden path="score.score5"/>
-			<form:hidden path="score.score6"/>
-			<form:hidden path="score.score7"/>
-			<form:hidden path="score.score8"/>
-			<form:hidden path="score.score9"/>
-			<form:hidden path="score.score10"/>
-			<form:hidden path="score.score11"/>
-			<form:hidden path="score.score12"/>
-			<form:hidden path="score.score13"/>
-			<form:hidden path="score.score14"/>
-			<form:hidden path="score.score15"/>
-			<form:hidden path="score.score16"/>
-			<form:hidden path="score.score17"/>
-			<form:hidden path="score.score18"/>
-			
-			<form:hidden path="score.golfer1Handicap"/>
-			<form:hidden path="score.golfer2Handicap"/>
+				<form:hidden path="score.player1set1"/>
+				<form:hidden path="score.player1set2"/>
+				<form:hidden path="score.player1set3"/>
+				<form:hidden path="score.player2set1"/>
+				<form:hidden path="score.player2set2"/>
+				<form:hidden path="score.player2set3"/>
 			</c:if>
 			
 			<c:if test="${match.defaultWin}">

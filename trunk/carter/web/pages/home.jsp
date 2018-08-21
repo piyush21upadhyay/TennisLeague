@@ -341,7 +341,7 @@
 			<c:otherwise>
 				<div>
 					<display:table id="standings" name="standings" pagesize="10">
-						<display:caption><c:out value="${season.name}"/> <c:out value="${season.division}"/></display:caption>
+						<display:caption><c:out value="${season.name}"/> <%-- <c:out value="${season.division}"/> --%></display:caption>
 						<display:column titleKey="home.position"><%=pageContext.getAttribute("standings_rowNum")%></display:column>
 						<display:column property="user.fullName" titleKey="home.player"/>
 						<display:column property="points" titleKey="home.points"/>

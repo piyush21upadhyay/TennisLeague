@@ -219,7 +219,7 @@ public class TestPlayPostSeasonController extends BaseFormController
         score.computeMatchScore();*/
         match.setScore(score);
         match.setPlayed(calendar.getTime());
-        match.setCourse(course);
+       // match.setCourse(course);
         if (match.getResult().isTie())
         {
             match.setPuttoffWinner(match.getGolfer1());

@@ -171,7 +171,7 @@ public class TestPlayRegularSeasonController extends BaseFormController
                 score.computeMatchScore();*/
                 match.setScore(score);
                 match.setPlayed(match.getPlayBy());
-                match.setCourse(course);
+                //match.setCourse(course);
                 this.matchManager.saveMatch(match);
                 
                 UserStatsUtil.updateUserStats(this.getUserManager(), match);

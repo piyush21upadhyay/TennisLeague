@@ -25,6 +25,7 @@ import com.sageconsulting.model.BracketEntry;
 import com.sageconsulting.model.Champion;
 import com.sageconsulting.model.City;
 import com.sageconsulting.model.Course;
+import com.sageconsulting.model.Court;
 import com.sageconsulting.model.Match;
 import com.sageconsulting.model.MatchResult;
 import com.sageconsulting.model.MatchScore;
@@ -32,11 +33,11 @@ import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.BracketManager;
 import com.sageconsulting.service.ChampionManager;
-import com.sageconsulting.service.CourseManager;
+import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.MatchManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.util.UserStatsUtil;
-import com.sageconsulting.webapp.util.CustomCourseEditor;
+import com.sageconsulting.webapp.util.CustomCourtEditor;
 import com.sageconsulting.webapp.util.CustomHoleScoreEditor;
 import com.sageconsulting.webapp.util.CustomUserEditor;
 
@@ -45,7 +46,8 @@ public class ResultsController extends BaseFormController
     private static final String CMD_NAME = "match"; //$NON-NLS-1$
     private static final String ENTER_SCORES = "enterScores"; //$NON-NLS-1$
     
-    private CourseManager courseManager;
+    //private CourseManager courseManager;
+    private CourtManager courtManager;
     private MatchManager matchManager;
     private BracketManager bracketManager;
     private ChampionManager championManager;
@@ -53,9 +55,9 @@ public class ResultsController extends BaseFormController
   
     private transient MatchResult result = null;
     
-    public void setCourseManager(CourseManager mgr)
+    public void setCourtManager(CourtManager mgr)
     {
-        this.courseManager = mgr;
+        this.courtManager = mgr;
     }
     
     public void setBracketManager(BracketManager bracketManager) {
@@ -91,7 +93,7 @@ public class ResultsController extends BaseFormController
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
     {
         binder.registerCustomEditor(User.class, new CustomUserEditor(this.getUserManager()));
-        binder.registerCustomEditor(Course.class, null, new CustomCourseEditor(this.courseManager.getCourses()));
+        binder.registerCustomEditor(Court.class, null, new CustomCourtEditor(this.courtManager.getCourts()));
         binder.registerCustomEditor(Byte.class, new CustomHoleScoreEditor());
         super.initBinder(request, binder);
     }
@@ -197,7 +199,7 @@ public class ResultsController extends BaseFormController
         }
         else if(isAdministratorEdit(request))
         {
-            view.addObject("Allcourse", this.courseManager.getCourses());
+            view.addObject("Allcourse", this.courtManager.getCourts());
         	view.addObject("courseList", match.getCourse());
         	view.addObject("isAdministrator", true);
         }
@@ -411,7 +413,7 @@ public class ResultsController extends BaseFormController
     
     private void updateCourseInfo(ModelAndView view, User currentUser)
     {
-        view.addObject("courseList", this.courseManager.getCourses(currentUser.getRegisteredCity().getId())); //$NON-NLS-1$
+        view.addObject("courseList", this.courtManager.getCourts(currentUser.getRegisteredCity().getId())); //$NON-NLS-1$
     }
     
     @Override

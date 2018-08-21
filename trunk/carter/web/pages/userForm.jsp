@@ -72,8 +72,8 @@
 			
 			<label for="ratedBy"><fmt:message key="userForm.ratedBy"/></label>
 			<form:select path="ratedBy" id="ratedBy" cssClass="preferredPhone">
-				<form:option value="self"><fmt:message key="userForm.selfRated"/></form:option>
-				<form:option value="usta"><fmt:message key="userForm.ustaRated"/></form:option>
+				<form:option value="Self"><fmt:message key="userForm.selfRated"/></form:option>
+				<form:option value="USTA Rated"><fmt:message key="userForm.ustaRated"/></form:option>
 			</form:select>
 			
 			<%-- <label for="homeCourt"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
@@ -110,11 +110,11 @@
 			</form:select>
 			
 			<label><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
-			<form:checkbox path="playingPreference" value="singles" id="singles"/>
+			<form:checkbox path="playingPreference" value="Singles" id="singles"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.singles"/></label>
-			<form:checkbox path="playingPreference" value="doubles" id="doubles"/>
+			<form:checkbox path="playingPreference" value="Doubles" id="doubles"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.doubles"/></label>
-			<form:checkbox path="playingPreference" value="mixedDoubles" id="mixedDoubles"/>
+			<form:checkbox path="playingPreference" value="Mixed Doubles" id="mixedDoubles"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.mixedDoubles"/></label>
 				
 			 <label><fmt:message key="userForm.openToChallenges"/></label>

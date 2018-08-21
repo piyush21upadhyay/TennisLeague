@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.acegisecurity.GrantedAuthority;
 import org.acegisecurity.userdetails.UserDetails;
@@ -81,7 +82,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String[] playingPreference;
     private boolean openToChallenges = true;
     private boolean onlyOpenToSameGender = true;
-    private String[] opponentSkillLevel;
+    private String opponentSkillLevel;
     private String racquet;
     private String tennisString;
     private String shoes;
@@ -448,9 +449,61 @@ public class User extends BaseObject implements Serializable, UserDetails
     
     public int getCurrentPoints()
     {
-    	int wins = (null == getCurrentWins()) ? 0 : getCurrentWins().intValue();
+    	int seasonPoints = 0;
+    	SortedSet<Match> matches = this.currentSeason.getMatches();
+    	for(Match match : matches)
+    	{
+    		if(match.getPlayed() != null)
+    		{
+	    		boolean isStraightWin = false;
+	    		int pointsForMatch = 0;
+	    		if(match.getGolfer1().id == this.id)
+	    		{
+		    		if(match.getScore().getPlayer1set1() > match.getScore().getPlayer2set1()){
+		    			pointsForMatch += 1;
+		    			if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2())
+		    			{
+		    				pointsForMatch +=2;
+		    				isStraightWin = true;
+		    			}
+		    		}
+		    		if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2() && !isStraightWin)
+	    			{
+	    				pointsForMatch +=1;
+	    			}
+		    		if(match.getScore().getPlayer1set3() > match.getScore().getPlayer2set3() && !isStraightWin)
+		    		{
+		    			pointsForMatch += 1;
+		    		}
+	    		}
+	    		else if(match.getGolfer2().id == this.id )
+	    		{
+	    			if(match.getScore().getPlayer2set1() > match.getScore().getPlayer1set1()){
+		    			pointsForMatch += 1;
+		    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2())
+		    			{
+		    				pointsForMatch +=2;
+		    				isStraightWin = true;
+		    			}
+		    		}
+	    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2() && !isStraightWin)
+	    			{
+	    				pointsForMatch +=1;
+	    			}
+		    		if(match.getScore().getPlayer2set3() > match.getScore().getPlayer1set3() && !isStraightWin)
+		    		{
+		    			pointsForMatch += 1;
+		    		}
+	    		}
+	    			seasonPoints += pointsForMatch; 
+    		}
+    		
+    	}
+    	
+    	/*int wins = (null == getCurrentWins()) ? 0 : getCurrentWins().intValue();
     	int ties = (null == getCurrentTies()) ? 0 : getCurrentTies().intValue();
-    	return wins*2 + ties;
+    	return wins*2 + ties;*/
+    	return seasonPoints;
     }
     
     /**
@@ -550,7 +603,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	}
 
 	/**
-     * @hibernate.property column="playing_preference" not-null="true"
+     * @hibernate.property column="playing_preference" 
      */
 	public String[] getPlayingPreference() {
 		return playingPreference;
@@ -574,7 +627,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	/**
      * @hibernate.property column="opponent_skilllevel" not-null="true"
      */
-	public String[] getOpponentSkillLevel() {
+	public String getOpponentSkillLevel() {
 		return opponentSkillLevel;
 	}
 
@@ -792,9 +845,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 		this.plays = plays;
 	}
 
-	/**
-     * @spring.validator type="required"
-     */
+	
 	public void setPlayingPreference(String[] playingPreference) {
 		this.playingPreference = playingPreference;
 	}
@@ -813,7 +864,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	/**
      * @spring.validator type="required"
      */
-	public void setOpponentSkillLevel(String[] opponentSkillLevel) {
+	public void setOpponentSkillLevel(String opponentSkillLevel) {
 		this.opponentSkillLevel = opponentSkillLevel;
 	}
 

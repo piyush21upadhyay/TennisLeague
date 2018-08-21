@@ -68,7 +68,7 @@ public class RecordController implements Controller
 	            {
 	            	if ((null != match.getPlayed()) || match.isBye())
 	                {
-                		if (needsReverse(match))
+                		if (needsReverse(match,user))
                 			matches.add(reverse(match));
                         else
                         	matches.add(match);
@@ -130,7 +130,7 @@ public class RecordController implements Controller
                 if ((null != match.getPlayed()) || match.isBye())
                 {
                 	seasonMatch.add(match.getId());
-                    if (needsReverse(match))
+                    if (needsReverse(match,user))
                     {
                         matches.add(reverse(match));
                     }
@@ -154,7 +154,7 @@ public class RecordController implements Controller
         			{
         				if ((null != match.getPlayed()) || match.isBye())
     	                {
-                    		if (needsReverse(match))
+                    		if (needsReverse(match,user))
                     			matches.add(reverse(match));
                             else
                             	matches.add(match);
@@ -192,7 +192,7 @@ public class RecordController implements Controller
         return user;
     }
     
-    private boolean needsReverse(Match match)
+    private boolean needsReverse(Match match,User user)
     {
         if (match.isDefaultWin())
         {
@@ -206,9 +206,13 @@ public class RecordController implements Controller
         {
             return false;
         }
-        if ((null != match.getResult()) && !(match.getGolfer1().equals(match.getResult().getWinner())))
+        /*if ((null != match.getResult()) && !(match.getGolfer1().equals(match.getResult().getWinner())))
         {
             return true;
+        }*/
+        if((null != match.getResult()) && !(match.getGolfer1().equals(user)))
+        {
+        	return true;
         }
         return false;
     }
@@ -248,13 +252,13 @@ public class RecordController implements Controller
             }
         }*/
         // Added by Piyush and Akash
-        score.setPlayer1set1(match.getScore().getPlayer1set1());
-        score.setPlayer1set2(match.getScore().getPlayer1set2());
-        score.setPlayer1set3(match.getScore().getPlayer1set3());
+        score.setPlayer1set1(match.getScore().getPlayer2set1());
+        score.setPlayer1set2(match.getScore().getPlayer2set2());
+        score.setPlayer1set3(match.getScore().getPlayer2set3());
         
-        score.setPlayer2set1(match.getScore().getPlayer2set1());
-        score.setPlayer2set2(match.getScore().getPlayer2set2());
-        score.setPlayer2set3(match.getScore().getPlayer2set3());
+        score.setPlayer2set1(match.getScore().getPlayer1set1());
+        score.setPlayer2set2(match.getScore().getPlayer1set2());
+        score.setPlayer2set3(match.getScore().getPlayer1set3());
         
         // End
         newMatch.setScore(score);

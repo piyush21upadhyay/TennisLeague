@@ -22,7 +22,7 @@ public class MatchResult
     private User loser;
     private int holesWon;
     private int holesRemaining;
-    
+       
     public MatchResult(Match m)
     {
         this.match = m;
@@ -34,51 +34,13 @@ public class MatchResult
         	computeResults();
         }
     }
-    
+       
     private void computeResults()
     {
-        /*Byte[] netScores = this.match.getScore().getNet();
-        if (!anyHoleScores(netScores))
-        {
-            this.isPlayed = false;
-            return;
-        }
-        
-        int i = 17;
-        while (null == netScores[i])
-        {
-            i--;
-        }
-        
-        if (netScores[i].intValue() == 0)
-        {
-            this.isTie = true;
-            if (null != this.match.getPuttoffWinner())
-            {
-                this.winner = this.match.getPuttoffWinner();
-                this.loser = (this.match.getPuttoffWinner().equals(this.match.getGolfer1())) ?
-                    this.match.getGolfer2() : this.match.getGolfer1();
-                
-            }
-            return;
-        }
-        else if (netScores[i].intValue() > 0)
-        {
-            this.winner = this.match.getGolfer1();
-            this.loser = this.match.getGolfer2();
-            this.holesWon = netScores[i].intValue();
-            this.holesRemaining = 17 - i;
-        }
-        else if (netScores[i].intValue() < 0)
-        {
-            this.winner = this.match.getGolfer2();
-            this.loser = this.match.getGolfer1();
-            this.holesWon = netScores[i].intValue() * -1;
-            this.holesRemaining = 17 - i;
-        }*/
-    	
+     
     	int player1SetWinCount = 0;
     	int player2SetWinCount = 0;
+    	
     	
     	int player1set1 = this.match.getScore().getPlayer1set1();
     	int player2set1 = this.match.getScore().getPlayer2set1();

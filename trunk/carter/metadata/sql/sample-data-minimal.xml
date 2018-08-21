@@ -839,4 +839,33 @@ fgACAAABoA==]]></value>
       <value>Mixed doubles 5.0</value>
     </row>
   </table>
+  
+  <table name="court">
+    <column>id</column>
+    <column>version</column>
+    <column>name</column>
+    <column>court_phone</column>
+    <column>web_site</column>
+    <column>court_address</column>
+    <row>
+      <value>1</value>
+      <value>1</value>
+      <value>Test Court</value>
+      <value>(503) 775-2900</value>
+      <value>http://www.eastmorelandgolfcourse.com</value>
+      <value>Court Address</value>
+    </row>
+  </table>
+  
+  <table name="court_city">
+    <column>court_id</column>
+    <column>city_id</column>
+    <column>idx</column>
+    <row>
+      <value>1</value>
+      <value>1</value>
+      <value>0</value>
+    </row>
+  </table>
+  
 </dataset>

@@ -86,7 +86,8 @@
     	<property name="cancelView" value="redirect:schedule.html"/>
     	<property name="successView" value="redirect:schedule.html"/>
     	<property name="userManager" ref="userManager"/>
-    	<property name="courseManager" ref="courseManager"/>
+    	<!-- <property name="courseManager" ref="courseManager"/> -->
+    	<property name="courtManager" ref="courtManager"/>
     	<property name="matchManager" ref="matchManager"/>
     	<property name="championManager" ref="championManager"/>
     	<property name="bracketManager" ref="bracketManager"/>

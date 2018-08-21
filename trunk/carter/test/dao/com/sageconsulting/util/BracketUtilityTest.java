@@ -88,7 +88,7 @@ public class BracketUtilityTest extends TestCase
             Match match = new Match();
             match.setGolfer1(createUser("Match"+i, "Golfer1")); //$NON-NLS-1$ //$NON-NLS-2$
             match.setGolfer2(createUser("Match"+i, "Golfer2")); //$NON-NLS-1$ //$NON-NLS-2$
-            match.setCourse(course);
+            //match.setCourse(course);
             match.setPlayBy(new Date());
             matches.add(match);
         }
@@ -178,7 +178,7 @@ public class BracketUtilityTest extends TestCase
             score.computeMatchScore();*/
             match.setScore(score);
             match.setPlayed(calendar.getTime());
-            match.setCourse(course);
+            //match.setCourse(course);
         }
     }
     
