@@ -26,6 +26,13 @@ public class MatchScore implements Serializable
     private int player2set2;
     private int player2set3;
     
+    private int player1set1Sup;
+    private int player1set2Sup;
+    private int player1set3Sup;
+    private int player2set1Sup;
+    private int player2set2Sup;
+    private int player2set3Sup;
+    
     /**
      * @hibernate.property column="p1set1" lazy="false"
      */
@@ -86,5 +93,74 @@ public class MatchScore implements Serializable
 	public void setPlayer2set3(int player2set3) {
 		this.player2set3 = player2set3;
 	}
+
+	/**
+     * @hibernate.property column="p1set1sup" lazy="false"
+     */
+	public int getPlayer1set1Sup() {
+		return player1set1Sup;
+	}
+
+	public void setPlayer1set1Sup(int player1set1Sup) {
+		this.player1set1Sup = player1set1Sup;
+	}
+
+	/**
+     * @hibernate.property column="p1set2sup" lazy="false"
+     */
+	public int getPlayer1set2Sup() {
+		return player1set2Sup;
+	}
+
+	public void setPlayer1set2Sup(int player1set2Sup) {
+		this.player1set2Sup = player1set2Sup;
+	}
+
+	/**
+     * @hibernate.property column="p1set3sup" lazy="false"
+     */
+	public int getPlayer1set3Sup() {
+		return player1set3Sup;
+	}
+
+	public void setPlayer1set3Sup(int player1set3Sup) {
+		this.player1set3Sup = player1set3Sup;
+	}
+
+	/**
+     * @hibernate.property column="p2set1sup" lazy="false"
+     */
+	public int getPlayer2set1Sup() {
+		return player2set1Sup;
+	}
+
+	public void setPlayer2set1Sup(int player2set1Sup) {
+		this.player2set1Sup = player2set1Sup;
+	}
+
+	/**
+     * @hibernate.property column="p2set2sup" lazy="false"
+     */
+	public int getPlayer2set2Sup() {
+		return player2set2Sup;
+	}
+
+	public void setPlayer2set2Sup(int player2set2Sup) {
+		this.player2set2Sup = player2set2Sup;
+	}
+
+	/**
+     * @hibernate.property column="p2set3sup" lazy="false"
+     */
+	public int getPlayer2set3Sup() {
+		return player2set3Sup;
+	}
+
+	public void setPlayer2set3Sup(int player2set3Sup) {
+		this.player2set3Sup = player2set3Sup;
+	}
         
     }
+
+	
+
