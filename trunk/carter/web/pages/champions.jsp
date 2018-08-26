@@ -185,7 +185,7 @@
 					<div class="clear"></div>
 					<p class="champ-info"><fmt:message key="champions.cityChampion"/></p>
 		        	<p class="champ-info"><c:out value="${champion.season}"/> <c:out value="${champion.division}"/></p>
-					<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourse.id}"/>"><c:out value="${champion.homeCourse.name}"/></a></p>
+					<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
 					<p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p>
 					<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${champion.player.id}"/>"><c:out value="${champion.record}"/></a></p>
 				</div>

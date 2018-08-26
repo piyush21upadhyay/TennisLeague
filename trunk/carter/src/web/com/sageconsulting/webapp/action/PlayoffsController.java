@@ -9,13 +9,17 @@
 package com.sageconsulting.webapp.action;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sageconsulting.model.BracketEntry;
+import com.sageconsulting.model.City;
 import com.sageconsulting.model.Match;
+import com.sageconsulting.model.MatchCategory;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.service.BracketManager;
+import com.sageconsulting.service.MatchCategoryManager;
 import com.sageconsulting.util.BracketUtility;
 
 public class PlayoffsController extends BaseSeasonResultController
@@ -23,11 +27,17 @@ public class PlayoffsController extends BaseSeasonResultController
 	private static final String CMD_NAME = "season"; //$NON-NLS-1$
     
     private BracketManager bracketManager;
+    private MatchCategoryManager matchCategoryManager;
     
     public void setBracketManager(BracketManager mgr)
     {
         this.bracketManager = mgr;
     }
+    
+    public void setMatchCategoryManager(MatchCategoryManager matchCategoryManager) {
+		this.matchCategoryManager = matchCategoryManager;
+	}
+    
     
     public PlayoffsController()
     {
@@ -43,7 +53,18 @@ public class PlayoffsController extends BaseSeasonResultController
         	List<BracketEntry> bracket = this.bracketManager.getRoundOneBracketForSeason(currentSeason.getId());
         	generateBracketValues(bracket, view);
         }
+        
+        /**Added by Piyush&Akash for Tennis League Project starts**/
+        Map model = view.getModel();
+        City city = (City)model.get("city");
+        List<MatchCategory> matchCategories= getVariousMatchCategories(city);
+        view.addObject("matchCategories", matchCategories); //$NON-NLS-1$
+        /**Added by Piyush&Akash for Tennis League Project ends**/
     }
+    
+    private List<MatchCategory> getVariousMatchCategories(City city) {
+		return this.matchCategoryManager.getMatchCategoryForCity(city.getId());
+	}
     
     private void generateBracketValues(List<BracketEntry> bracket, ModelAndView view)
     {

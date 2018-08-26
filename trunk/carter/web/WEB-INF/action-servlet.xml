@@ -75,6 +75,7 @@
     <bean id="playoffsController" class="com.sageconsulting.webapp.action.PlayoffsController">
     	<property name="seasonManager" ref="seasonManager"/>
     	<property name="bracketManager" ref="bracketManager"/>
+    	<property name="matchCategoryManager" ref="matchCategoryManager"></property>
     </bean>
     
     <bean id="resultsDispatcher" class="com.sageconsulting.webapp.action.ResultsDispatchController">

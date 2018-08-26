@@ -20,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sageconsulting.Constants;
 import com.sageconsulting.model.City;
+import com.sageconsulting.model.MatchCategory;
 import com.sageconsulting.model.Season;
+import com.sageconsulting.service.MatchCategoryManager;
 import com.sageconsulting.service.SeasonManager;
 
 /**
@@ -30,7 +32,7 @@ import com.sageconsulting.service.SeasonManager;
 public abstract class BaseSeasonResultController extends BaseFormController
 {
     private SeasonManager seasonManager;
-    
+        
     public void setSeasonManager(SeasonManager mgr)
     {
         this.seasonManager = mgr;
@@ -84,10 +86,13 @@ public abstract class BaseSeasonResultController extends BaseFormController
         view.addObject("season", currentSeason); //$NON-NLS-1$
         
         updateModelAndView(currentSeason, view);
+        
+        
 
         return view;
     }
     
+      
     private void sortList(List<Season> seasons)
     {
     	Collections.sort(seasons, new Comparator<Season>()

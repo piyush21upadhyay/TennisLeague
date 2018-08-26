@@ -380,7 +380,7 @@
 		
 		<div>
 			<select id="matchCat" name="matchCat" >
-				<%-- <option value="0"><fmt:message key="home.chooseDivision"/></option> --%>
+				<option value="0"><fmt:message key="home.chooseCategory"/></option>
 				<c:forEach var="matchCategory" items="${matchCategories}">
 					<option value="<c:out value="${matchCategory.id}"/>"><c:out value="${matchCategory.name}"/></option>
 				</c:forEach>

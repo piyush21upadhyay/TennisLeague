@@ -22,8 +22,7 @@ public class SeasonResult
     private int wins;
     private int losses;
     private int ties;
-    private int points;
-    
+        
     public SeasonResult(User u)
     {
         this.user = u;
@@ -43,7 +42,7 @@ public class SeasonResult
     public int getPoints()
     {
     	int seasonPoints = 0;
-    	if(this.user.getCurrentSeason() != null)
+    	if(this.user != null && this.user.getCurrentSeason() != null)
     	{	
     	SortedSet<Match> matches = this.user.getCurrentSeason().getMatches();
     	if(null != matches)
@@ -102,7 +101,6 @@ public class SeasonResult
     	/*int wins = (null == getCurrentWins()) ? 0 : getCurrentWins().intValue();
     	int ties = (null == getCurrentTies()) ? 0 : getCurrentTies().intValue();
     	return wins*2 + ties;*/
-    	this.points = seasonPoints;
     	return seasonPoints;
     }
     

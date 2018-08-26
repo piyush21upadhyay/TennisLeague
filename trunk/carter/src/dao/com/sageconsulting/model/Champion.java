@@ -100,7 +100,7 @@ public class Champion extends BaseObject implements Serializable
     /**
      * Get the users chosen home court.
      * @return The user's home court.
-     * @hibernate.many-to-one column="home_court" cascade="none" not-null="true"
+     * @hibernate.many-to-one column="home_course" cascade="none" not-null="true"
      */
     public Court getHomeCourt()
     {
