@@ -260,6 +260,14 @@ public class RecordController implements Controller
         score.setPlayer2set2(match.getScore().getPlayer1set2());
         score.setPlayer2set3(match.getScore().getPlayer1set3());
         
+        score.setPlayer1set1Sup(match.getScore().getPlayer2set1Sup());
+        score.setPlayer1set2Sup(match.getScore().getPlayer2set2Sup());
+        score.setPlayer1set3Sup(match.getScore().getPlayer2set3Sup());
+        
+        score.setPlayer2set1Sup(match.getScore().getPlayer1set1Sup());
+        score.setPlayer2set2Sup(match.getScore().getPlayer1set2Sup());
+        score.setPlayer2set3Sup(match.getScore().getPlayer1set3Sup());
+        
         // End
         newMatch.setScore(score);
         newMatch.getResult();
