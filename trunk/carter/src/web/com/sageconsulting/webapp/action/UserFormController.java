@@ -575,13 +575,19 @@ public class UserFormController extends BaseFormController
     private void updateReferralInfo(ModelAndView view, HttpServletRequest request)
     {
         List<String> referrals = new ArrayList<String>(5);
+        
+        
+        /**
+         * Under Web Search: List these: Online Advertising | Poster at Tennis Court | Poster at Tennis Club | Poster elsewhere | Email Newsletter | Friend | Other 
+         * 
+         * */
         referrals.add(getText("userForm.webSearch", request.getLocale())); //$NON-NLS-1$
         referrals.add(getText("userForm.onlineAdvertising", request.getLocale())); //$NON-NLS-1$
-        referrals.add(getText("userForm.registerAtCourse", request.getLocale())); //$NON-NLS-1$
-        referrals.add(getText("userForm.golfCourseAdvertising", request.getLocale())); //$NON-NLS-1$
-        referrals.add(getText("userForm.emailNewsletter", request.getLocale())); //$NON-NLS-1$
+        referrals.add(getText("userForm.posterAtTennisCourt", request.getLocale())); //$NON-NLS-1$
+        referrals.add(getText("userForm.posterAtTennisClub", request.getLocale())); //$NON-NLS-1$
+        referrals.add(getText("userForm.posterElsewhere", request.getLocale())); //$NON-NLS-1$
+        referrals.add(getText("userForm.emailNewsletter", request.getLocale()));
         referrals.add(getText("userForm.friend", request.getLocale())); //$NON-NLS-1$
-        referrals.add(getText("userForm.poster", request.getLocale())); //$NON-NLS-1$
         referrals.add(getText("userForm.other", request.getLocale())); //$NON-NLS-1$
         view.addObject("referrals", referrals); //$NON-NLS-1$
     }

@@ -425,8 +425,10 @@ fgACAAABoA==]]></value>
 	<column>racket</column>
 	<column>tennisstring</column>
 	<column>shoes</column>
-	<column>court_address</column>
 	<column>home_court</column>
+	<column>court_address</column>
+	<column>court_city</column>
+	<column>court_state</column>
     <row>
       <value>1</value>
       <value>admin</value>
@@ -473,8 +475,10 @@ fgACAAABoA==]]></value>
 	 <value>Yes</value>
 	 <value>No</value>
 	 <value>Yes</value>
-	 <value>Vaishali</value>
 	 <value>Vaishali Court</value>
+	 <value>Vaishali</value>
+	 <value>Noida</value>
+	 <value>UP</value>
     </row>
   </table>
   

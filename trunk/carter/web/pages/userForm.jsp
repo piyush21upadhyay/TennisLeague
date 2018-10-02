@@ -66,18 +66,13 @@
 				<form:option value="4.5"><fmt:message key="userForm.level4_5"/></form:option>
 				<form:option value="5.0"><fmt:message key="userForm.level5_0"/></form:option>
 			</form:select> 
-			<!-- <input type="range" name="playerLevel" id="playerLevel" min="2.5" max="5" value="2.5" step="0.5" 
-				oninput="document.getElementById('playerLevel').innerHTML = this.value"><label id="playerLevel"></label>
-			<output for="playerLevel" onforminput="value = playerLevel.valueAsNumber;"></output> -->
 			
 			<label for="ratedBy"><fmt:message key="userForm.ratedBy"/></label>
 			<form:select path="ratedBy" id="ratedBy" cssClass="preferredPhone">
-				<form:option value="Self"><fmt:message key="userForm.selfRated"/></form:option>
 				<form:option value="USTA Rated"><fmt:message key="userForm.ustaRated"/></form:option>
+				<form:option value="Self"><fmt:message key="userForm.selfRated"/></form:option>
 			</form:select>
 			
-			<%-- <label for="homeCourt"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-			<form:input path="homeCourt" id="homeCourt" cssClass="longBox" maxlength="30"/> --%>
 			<div class="clear"></div>
 		</fieldset>
 	</div>
@@ -105,8 +100,8 @@
 			
 			<label><fmt:message key="userForm.plays"/></label>
 			<form:select path="plays" id="plays" cssClass="preferredPhone">
-				<form:option value="Left Handed"><fmt:message key="userForm.leftHandedPlay"/></form:option>
 				<form:option value="Right Handed"><fmt:message key="userForm.rightHandedPlay"/></form:option>
+				<form:option value="Left Handed"><fmt:message key="userForm.leftHandedPlay"/></form:option>
 			</form:select>
 			
 			<label><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
@@ -133,14 +128,7 @@
 			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel1"/> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label>
 			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel2"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label>
 			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel3"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label>
-			
-			<%-- <form:checkbox path="opponentSkillLevel" value="userForm.skillLevel1" id="skillLevel1"/>
-				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel1"/></label>
-			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel2" id="skillLevel2"/>
-				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel2"/></label>
-			<form:checkbox path="opponentSkillLevel" value="userForm.skillLevel3" id="skillLevel3"/>
-				<label class="checkboxlabel"><fmt:message key="userForm.skillLevel3"/></label> --%>
-				
+			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel4"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label>
 				
 		</fieldset>
 	
@@ -152,11 +140,6 @@
 			<legend><fmt:message key="userForm.address"/></legend>
 			<label for="address.address"><fmt:message key="userForm.line1"/><span class="mandatory">*</span></label>
 			<form:input path="address.address" id="address.address" cssClass="longBox" maxlength="30"/> 
-			<%--
-			<div class="longBoxName"><fmt:message key="userForm.line2"/>
-			<input id="addressLine2" name="addressLine2" type="text" class="longBox" maxlength="30"/>
-			</div>
-			--%>
 			<label for="address.city"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
 			<form:input path="address.city" id="address.city" cssClass="longBox" maxlength="30"/> 
 			<label for="address.province"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
@@ -186,18 +169,7 @@
 
 <div class="edituser-section">
 	<div class="threecolw">
-		<%-- <fieldset>
-			<legend><fmt:message key="userForm.courtSelection"/></legend>
-			<label for="homeCourt.id"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-			<form:select path="homeCourt" id="homeCourt.id" cssClass="changeHomeCourse">
-				<option value=''><fmt:message key="userForm.defaultOptionText"/></option>
-				<c:forEach var="court" items="${courseList}">
-					<option value="<c:out value='${court.id}'/>" <c:if test="${user.homeCourt.id == court.id}">selected</c:if>>
-						<c:out value="${court.name}"/>
-					</option>
-				</c:forEach>
-			</form:select>
-		</fieldset> --%>
+
 		<fieldset>
 			<legend><fmt:message key="userForm.courtSelection"/></legend>
 			<label for="homeCourtText"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
@@ -205,6 +177,13 @@
 			
 			<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
 				<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
+				
+			<label for="courtCity"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+				<form:input path="courtCity" id="courtCity" cssClass="longBox" maxlength="30"/> 
+				
+			<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
+				<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+			
 		</fieldset>
 	</div>
 	<div class="threecolw">
@@ -353,42 +332,6 @@
 </form:form>
 
 <script type="text/javascript">
-/* //DOM Ready
-$(function() {
- var el, newPoint, newPlace, offset;
- 
- // Select all range inputs, watch for change
- $("input[type='range']").change(function() {
- 
-   // Cache this for efficiency
-   el = $(this);
-   
-   // Measure width of range input
-   width = el.width();
-   
-   // Figure out placement percentage between left and right of input
-   newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
-   
-   // Janky value to get pointer to line up better
-   offset = -1;
-   
-   // Prevent bubble from going beyond left or right (unsupported browsers)
-   if (newPoint < 0) { newPlace = 0; }
-   else if (newPoint > 1) { newPlace = width; }
-   else { newPlace = width * newPoint + offset; offset -= newPoint; }
-   
-   // Move bubble
-   el
-     .next("output")
-     .css({
-       left: newPlace,
-       marginLeft: offset + "%"
-     })
-     .text(el.val());
- })
- // Fake a change to position bubble at page load
- .trigger('change');
-}); */
 
 $(function(){
 	$("#username").focus();
@@ -404,7 +347,7 @@ $(function(){
 	});
 });
 
-<!-- This is here so we can exclude the selectAll call when roles is hidden -->
+/* This is here so we can exclude the selectAll call when roles is hidden  */
 function onFormSubmit(theForm) {
 <c:if test="${isAdministrator}">
     selectAll('userRoles');

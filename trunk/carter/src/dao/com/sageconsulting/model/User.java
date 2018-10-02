@@ -45,9 +45,6 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String cellPhone;
     private int preferredPhone = 1;
     private String email; // required; unique
-    /*private String ghinNumber;
-    private Double handicap = Double.valueOf(0.0);*/
-    //private Double adjustedHandicap;
     private String passwordHint;
     private City registeredCity;
     //Changing from Course type to String
@@ -86,8 +83,10 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String racquet;
     private String tennisString;
     private String shoes;
-    private String courtAddress;
     private String homeCourtText; 
+    private String courtAddress;
+    private String courtCity;
+    private String courtState;
     
 	public User()
     {
@@ -631,7 +630,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 
 
 	/**
-     * @hibernate.property column="opponent_skilllevel" not-null="true"
+     * @hibernate.property column="opponent_skilllevel"
      */
 	public String getOpponentSkillLevel() {
 		return opponentSkillLevel;
@@ -1071,4 +1070,34 @@ public class User extends BaseObject implements Serializable, UserDetails
 	public void setHomeCourtText(String homeCourtText) {
 		this.homeCourtText = homeCourtText;
 	}
+
+	/**
+     * @hibernate.property column="court_city" not-null="true"
+     */
+	public String getCourtCity() {
+		return courtCity;
+	}
+
+	/**
+     * @spring.validator type="required"
+     */
+	public void setCourtCity(String courtCity) {
+		this.courtCity = courtCity;
+	}
+
+	/**
+     * @hibernate.property column="court_state" not-null="true"
+     */
+	public String getCourtState() {
+		return courtState;
+	}
+
+	/**
+     * @spring.validator type="required"
+     */
+	public void setCourtState(String courtState) {
+		this.courtState = courtState;
+	}
+	
+	
 }
