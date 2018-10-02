@@ -120,9 +120,10 @@
 				<div class="clear"></div>
 				<p class="champ-info">City Champion</p>
 	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
 
-				<p>USGA Handicap: 10.7</p>
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
 		</div>
@@ -141,9 +142,10 @@
 				<div class="clear"></div>
 				<p class="champ-info">City Champion</p>
 	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
 
-				<p>USGA Handicap: 10.7</p>
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
 		</div>
@@ -163,9 +165,10 @@
 				<div class="clear"></div>
 				<p class="champ-info">City Champion</p>
 	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
 
-				<p>USGA Handicap: 10.7</p>
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
 		</div>
@@ -176,7 +179,7 @@
 				<div>
 					<div class="left"><img width="42" src="<c:url value="${champion.player.icon}"/>" alt="member"/></div>
 					<div class="left">
-						<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/></strong></h2>
+						<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/><c:out value="${champion.player.playerLevel}"/></strong></h2>
 					</div>
 					<div class="right">
 						<c:set var="url"><c:url value="/profile.html"/></c:set>
@@ -185,8 +188,9 @@
 					<div class="clear"></div>
 					<p class="champ-info"><fmt:message key="champions.cityChampion"/></p>
 		        	<p class="champ-info"><c:out value="${champion.season}"/> <c:out value="${champion.division}"/></p>
-					<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
-					<p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p>
+					<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
+					<%-- <p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p> --%>
+					<p><fmt:message key="members.rating"/> <c:out value="${champion.player.playerLevel}"/></p>
 					<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${champion.player.id}"/>"><c:out value="${champion.record}"/></a></p>
 				</div>
 			</div>

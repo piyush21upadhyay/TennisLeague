@@ -23,7 +23,7 @@
 	<display:table name="registrantList" cellspacing="0" cellpadding="0" requestURI="" 
 	    defaultsort="2" id="registrantList" class="table" export="false">
 	    <display:column sortable="true" property="user.fullName" titleKey="scheduleSeason.name" url="/profile.html" paramId="id" paramProperty="id" style="white-space: nowrap" media="html"/>
-	    <display:column sortable="true" titleKey="scheduleSeason.handicap" style="white-space: nowrap" media="html">
+	    <%-- <display:column sortable="true" titleKey="scheduleSeason.handicap" style="white-space: nowrap" media="html">
 			<c:choose>
 				<c:when test="${registrantList.user.handicap lt 0}">
 					<c:out value="+"/><c:out value="${0 - registrantList.user.handicap}"/>
@@ -32,7 +32,7 @@
 					<c:out value="${registrantList.user.handicap}"/>
 				</c:otherwise>
 			</c:choose>
-		</display:column>
+		</display:column> --%>
 	
 	    <display:setProperty name="paging.banner.item_name"><fmt:message key="scheduleSeason.member"/></display:setProperty>
 	    <display:setProperty name="paging.banner.items_name"><fmt:message key="scheduleSeason.members"/></display:setProperty>
@@ -41,7 +41,7 @@
 	<form:form commandName="schedule" method="post" action="scheduleSeason.html" onsubmit="return onFormSubmit(this)" id="scheduleSeason">
 	<form:hidden path="registrationId"/>
 	<ul>
-	    <li>
+	    <%-- <li>
 	        <carter:label styleClass="desc" key="scheduleSeason.cutoff1"/>
 	        <form:errors path="groupACutoff" cssClass="fieldError"/>
 	        <form:input path="groupACutoff" id="groupACutoff" cssClass="text medium" maxlength="50"/>
@@ -65,7 +65,7 @@
 	        <carter:label styleClass="desc" key="scheduleSeason.cutoff5"/>
 	        <form:errors path="groupECutoff" cssClass="fieldError"/>
 	        <form:input path="groupECutoff" id="groupECutoff" cssClass="text medium" maxlength="50"/>
-	    </li>
+	    </li> --%>
 	    <li>
 	        <carter:label styleClass="desc" key="scheduleSeason.seasonMatches"/>
 	        <form:errors path="regularSeasonMatches" cssClass="fieldError"/>
