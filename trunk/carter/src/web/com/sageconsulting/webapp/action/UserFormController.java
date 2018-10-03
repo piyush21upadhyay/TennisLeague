@@ -576,11 +576,6 @@ public class UserFormController extends BaseFormController
     {
         List<String> referrals = new ArrayList<String>(5);
         
-        
-        /**
-         * Under Web Search: List these: Online Advertising | Poster at Tennis Court | Poster at Tennis Club | Poster elsewhere | Email Newsletter | Friend | Other 
-         * 
-         * */
         referrals.add(getText("userForm.webSearch", request.getLocale())); //$NON-NLS-1$
         referrals.add(getText("userForm.onlineAdvertising", request.getLocale())); //$NON-NLS-1$
         referrals.add(getText("userForm.posterAtTennisCourt", request.getLocale())); //$NON-NLS-1$

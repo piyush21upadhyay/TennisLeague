@@ -66,7 +66,7 @@
                     			if( field[counter].checked )
                     				isChecked = true;
                             }
-                            if( field[counter].name == 'playingPreference' || field[counter].name == 'opponentSkillLevel')
+                            if( field[counter].name == 'playingPreference' )
                     		{
                     			if( field[counter].checked )
                     			{

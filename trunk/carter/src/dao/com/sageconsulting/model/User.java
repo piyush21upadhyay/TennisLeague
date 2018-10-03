@@ -79,7 +79,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String[] playingPreference;
     private boolean openToChallenges = true;
     private boolean onlyOpenToSameGender = true;
-    private String opponentSkillLevel;
+    private String opponentSkillLevel="onlyMyRating";
     private String racquet;
     private String tennisString;
     private String shoes;
@@ -630,7 +630,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 
 
 	/**
-     * @hibernate.property column="opponent_skilllevel"
+     * @hibernate.property column="opponent_skilllevel" not-null="false"
      */
 	public String getOpponentSkillLevel() {
 		return opponentSkillLevel;
@@ -866,9 +866,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 	}
 	
 
-	/**
-     * @spring.validator type="required"
-     */
+	/**Removed the validator for now, as need to think more as how to make it dependent on Open To Challeneges**/
 	public void setOpponentSkillLevel(String opponentSkillLevel) {
 		this.opponentSkillLevel = opponentSkillLevel;
 	}
