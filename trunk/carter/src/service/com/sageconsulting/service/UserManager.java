@@ -39,6 +39,7 @@ public interface UserManager
      * @return User a populated user object
      */
     public List<User> getUserByUsername1(String username);
+    public List<User> getUserByUsernameOrEmail(String username);
     public User getUserByUsername(String username) throws UsernameNotFoundException;
 
     /**

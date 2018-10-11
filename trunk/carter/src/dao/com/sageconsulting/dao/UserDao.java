@@ -37,6 +37,7 @@ public interface UserDao extends Dao
      * @return userDetails populated userDetails object
      */
     public List<User> getUserByUsername2(String username);
+    public List<User> getUserByUsernameOrEmail(String username);
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 
     /**

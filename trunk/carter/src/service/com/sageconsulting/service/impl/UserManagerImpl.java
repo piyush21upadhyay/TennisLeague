@@ -91,6 +91,11 @@ public class UserManagerImpl extends BaseManager implements UserManager
     {
         return  this.userDao.getUserByUsername2(username);
     }
+    
+    public List<User> getUserByUsernameOrEmail(String username) 
+    {
+        return  this.userDao.getUserByUsernameOrEmail(username);
+    }
 
     public User getUserByUsername(String username) throws UsernameNotFoundException
     {

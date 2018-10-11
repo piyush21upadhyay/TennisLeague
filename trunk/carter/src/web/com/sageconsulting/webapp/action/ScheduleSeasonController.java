@@ -8,10 +8,14 @@
  */
 package com.sageconsulting.webapp.action;
 
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
@@ -338,7 +342,7 @@ public class ScheduleSeasonController extends BaseFormController
             
             Match match = new Match();
             match.setRound(Integer.valueOf(roundNumber+1));
-            match.setPlayBy(playBy.getTime());
+            match.setPlayBy(getFormattedDate(playBy.getTime()));
             if ((roundNumber % 2) == 0)
             {
                 if (null == user1)
@@ -365,6 +369,19 @@ public class ScheduleSeasonController extends BaseFormController
             }
             matches.add(match);
         }
+    }
+    
+    private Date getFormattedDate(Date now)
+    {
+    	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+    	try {
+    		String format = simpleDateFormat.format(now);
+			return simpleDateFormat.parse(format);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return null;
     }
     
     private void randomizeRegistrants(List<RegistrationEntry> registrants)

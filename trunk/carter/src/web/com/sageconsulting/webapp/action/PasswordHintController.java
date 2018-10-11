@@ -90,13 +90,13 @@ public class PasswordHintController implements Controller
         // look up the user's information
         try
         {
-            List <User> user =this.mgr.getUserByUsername1(username);
+            List <User> user =this.mgr.getUserByUsernameOrEmail(username);
             
             if(user.size()!=0)
             {
 				StringBuffer msg = new StringBuffer();
 				msg.append("Your password hint is: " +user.get(0).getPasswordHint()); //$NON-NLS-1$
-				String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY TENNIS LEAGUE"+"</a>";
+				String url=RequestUtil.getAppURL(request);
 				//msg.append("\n\nLogin at: " + RequestUtil.getAppURL(request)); //$NON-NLS-1$
 				msg.append("\n\nLogin at: " + url); //$NON-NLS-1$
 
@@ -113,7 +113,7 @@ public class PasswordHintController implements Controller
 			}
 			else
             {
-				forgotPWDmsg="No account found with that username.";
+				forgotPWDmsg="No account found with that username or email.";
             }
         }
         catch (Exception e)

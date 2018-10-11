@@ -13,8 +13,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -483,9 +485,31 @@ public class UserFormController extends BaseFormController
     {
         // Send an account information e-mail
         this.message.setSubject(getText("userForm.email.subject", locale)); //$NON-NLS-1$
-        String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY GOLF LEAGUE"+"</a>";
+        //String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY GOLF LEAGUE"+"</a>";
+        String url=RequestUtil.getAppURL(request);
         sendUserMessage(user, getText("newuser.email.message", user.getFullName(), locale), //$NON-NLS-1$
         		url);
+        sendCourtAddressDetailsToAdmin(request,user,locale);
+    }
+    
+    private void sendCourtAddressDetailsToAdmin(HttpServletRequest request, User user, Locale locale)
+    {
+        if (this.log.isDebugEnabled())
+        {
+            this.log.debug("sending e-mail to admin for court address..."); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+
+        this.message.setTo("akashyadav2219@gmail.com"); //$NON-NLS-1$ //$NON-NLS-2$
+        StringBuffer msg = new StringBuffer();
+		msg.append("Court Address Details for User: "+user.getUsername());
+		msg.append("\n\nHome Court Name: " + user.getHomeCourtText());
+		msg.append("\n\nCourt Address: " + user.getCourtAddress());
+        String subject = '[' + getText("webapp.name",locale) + "] " + //$NON-NLS-1$ //$NON-NLS-2$
+        		getText("user.courtAddressDetails",locale);
+        this.message.setSubject(subject);
+		this.message.setText(msg.toString());
+		this.mailEngine.send(this.message);
+       
     }
 
     @Override
