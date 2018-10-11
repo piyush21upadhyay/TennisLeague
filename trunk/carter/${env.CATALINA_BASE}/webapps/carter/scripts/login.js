@@ -82,7 +82,7 @@ $(document).ready(
 			var objUserName = $("#j_username");
 
 			if (objUserName.val().length == 0) {
-				$("#error-msg").html("You need to enter your username.");
+				$("#error-msg").html("You need to enter your username or email.");
 				$("#error-msg").css("display", "block");
 			} else {
 				urlTxt = "passwordHint.html?username="

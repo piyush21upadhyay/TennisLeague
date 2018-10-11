@@ -108,6 +108,29 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
     }
     
     @SuppressWarnings("unchecked")
+    public List<User> getUserByUsernameOrEmail(String username) 
+    
+    {
+    	List<User> users=null;
+    	
+    	try{
+			users = getHibernateTemplate().find("from User where username=?", username); //$NON-NLS-1$
+			if ((users == null) || users.isEmpty())
+			{
+				users = getHibernateTemplate().find("from User where email=?", username); 
+				if((users == null) || users.isEmpty())
+					throw new UsernameNotFoundException("user '" + username + "' not found..."); //$NON-NLS-1$ //$NON-NLS-2$
+			}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+		
+		return users;
+    }
+    
+    @SuppressWarnings("unchecked")
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
         List<User> users = getHibernateTemplate().find("from User where username=?", username); //$NON-NLS-1$
