@@ -113,9 +113,9 @@
 				<label class="checkboxlabel"><fmt:message key="userForm.mixedDoubles"/></label>
 				
 			 <label><fmt:message key="userForm.openToChallenges"/></label>
-			 <form:select path="openToChallenges" id="openToChallenges" cssClass="openToChallenges">
-				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+			 <form:select path="openToChallenges" id="openToChallenges" cssClass="openToChallenges" onchange="showOppSkillLevelOptions()">
 				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
 			</form:select>
 							
 			<label><fmt:message key="userForm.onlyOpenToSameGender"/></label>
@@ -124,12 +124,13 @@
 				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
 			</form:select>
 			
-			<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label>
-			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel1"/> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label>
-			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel2"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label>
-			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel3"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label>
-			<form:radiobutton path="opponentSkillLevel" value="userForm.skillLevel4"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label>
-				
+			<div id="opponentSkillLevelDiv">
+				<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label>
+				<form:radiobutton path="opponentSkillLevel" value="onlyMyRating" /> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label>
+				<form:radiobutton path="opponentSkillLevel" value="within0.5Rating"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label>
+				<form:radiobutton path="opponentSkillLevel" value="anyRating"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label>
+				<form:radiobutton path="opponentSkillLevel" value="onlyPlayUp"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label>
+			</div>
 		</fieldset>
 	
 		
@@ -470,6 +471,16 @@ function jqFormatPhone( obj )
 	$(obj).val(vFMPhone);
 }
 
+function showOppSkillLevelOptions(){
+	var openToChallenges=$('#openToChallenges').val();
+	
+	if('yes' == openToChallenges){
+		$('#opponentSkillLevelDiv').show();
+	}else{
+		$('#opponentSkillLevelDiv').hide();
+	}
+}
+
 $(document).ready( function() {
     var now = new Date();
     var day = ("0" + now.getDate()).slice(-2);
@@ -477,6 +488,8 @@ $(document).ready( function() {
     var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
     $('#todayDate').val(today);
 	$('#todayDate').attr("disabled", true) 
+	
+	$('#opponentSkillLevelDiv').hide();
  });
  
 </script>

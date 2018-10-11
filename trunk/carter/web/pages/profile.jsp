@@ -351,6 +351,11 @@
    		<fmt:message key="profile.postMessage"/>
    	  </a>
     </div>
+    
+    <c:if test="${isCurrentUser}">
+			<c:set var="url"><c:url value="/editprofile.html"/></c:set>
+			<carter:button page="${url}" key="profile.edit"/>
+	</c:if>
 </div>
 
 <!-- <div class="section birdies" <c:if test="${isAdmin}">style="margin-top:-40px;" </c:if>>
