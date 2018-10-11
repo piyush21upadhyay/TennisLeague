@@ -109,7 +109,7 @@
 				<label class="checkboxlabel"><fmt:message key="userForm.singles"/></label>
 			<form:checkbox path="playingPreference" value="Doubles" id="doubles"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.doubles"/></label>
-			<form:checkbox path="playingPreference" value="Mixed Doubles" id="mixedDoubles"/>
+			<form:checkbox path="playingPreference" value="Mixeddoubles" id="mixedDoubles"/>
 				<label class="checkboxlabel"><fmt:message key="userForm.mixedDoubles"/></label>
 				
 			 <label><fmt:message key="userForm.openToChallenges"/></label>

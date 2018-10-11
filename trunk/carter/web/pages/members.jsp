@@ -94,10 +94,10 @@
 		</div>
 		<div class="search-row">
 			<div class="search-col">
-				<form:input path="firstname" id="firstname" size="20" maxlength="30"/>
+				<form:input path="firstname" id="firstname" size="10" maxlength="10"/>
 			</div>
 			<div class="search-col">
-				<form:input path="lastname" id="lastname" size="20" maxlength="30"/>
+				<form:input path="lastname" id="lastname" size="10" maxlength="10"/>
 			</div>
 			<div class="search-col">
 				<form:select path="gender" id="gender">
@@ -132,12 +132,15 @@
 				</form:select>
 			</div>
 			<div class="search-col">
-				<form:select path="matchPreference" id="matchPreference">
-					<option> </option>
+				<%-- <form:select path="matchPreference" id="matchPreference">
+					<option> </option> --%>
 					<c:forEach var="matchPreference" items="${matchPreferences}">
-						<option<c:if test="${search.matchPreference eq matchPreference}"> selected="true"</c:if>><c:out value="${matchPreference}"/></option>
+						<%-- <option<c:if test="${search.matchPreference eq matchPreference}"> selected="true"</c:if>><c:out value="${matchPreference}"/></option> --%>
+						<form:checkbox path="matchPreference" value="${matchPreference}" /> 
+							<label class="checkboxlabel" ><c:out value="${matchPreference}"/>
+						</label>
 					</c:forEach>
-				</form:select>
+				<%-- </form:select> --%>
 			</div>
 			<div class="search-col">
 				<form:input path="tournamentEntry" id="tournamentEntry" size="20" maxlength="30"/>

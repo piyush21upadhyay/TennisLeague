@@ -29,7 +29,10 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 	private static final double MAX_HANDICAP = 100.0;
 	private static final double MIN_PLAYER_LEVEL = 2.5;
 	private static final double MAX_PLAYER_LEVEL = 5.0;
-	private static final String MIXED_DOUBLES_PLAYING_PREF="Mixed Doubles";
+	private static final String MIXED_DOUBLES="Mixed Doubles";
+	private static final String MIXEDDOUBLES="Mixeddoubles";
+	private static final String SINGLES="Singles";
+	private static final String DOUBLES="Doubles";
 	
     /**
      * @see com.sageconsulting.dao.UserDao#getUser(Long)
@@ -386,15 +389,45 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 		}
         
 		if (isNotEmpty(matchPreference)) {
+			String[] matchPrefsArr = matchPreference.split(",");
 			if (sb.length() > 0) {
-				matchPreference=matchPreference.equals(MIXED_DOUBLES_PLAYING_PREF)?matchPreference.replaceAll("\\s+", ""):matchPreference;
-				matchPreference=Character.toLowerCase(matchPreference.charAt(0))+matchPreference.substring(1);
+				//matchPreference=matchPreference.equals(MIXED_DOUBLES_PLAYING_PREF)?matchPreference.replaceAll("\\s+", ""):matchPreference;
+				//matchPreference=Character.toLowerCase(matchPreference.charAt(0))+matchPreference.substring(1);
 				sb.append(" and "); //$NON-NLS-1$
 			}
-			/*sb.append("convert(u.playingPreference using latin1) like '%").append(matchPreference)
-					.append("'");*/
-			sb.append("u.playingPreference like '%").append(matchPreference)
-			.append("%'");
+			
+			if(matchPrefsArr.length==1){
+				for(String matchPref: matchPrefsArr){
+					if(SINGLES.equals(matchPref)){
+						sb.append("u.playingPreference like '%").append(matchPref).append("%'");
+					}else if(DOUBLES.equals(matchPref)){
+						//sb.append("u.playingPreference like '%").append(matchPref).append("%' and ").append("u.playingPreference not like '%").append(MIXEDDOUBLES).append("%'");
+						sb.append("u.playingPreference like '%").append(matchPref).append("%'");
+					}else if(MIXED_DOUBLES.equals(matchPref)){
+						sb.append("u.playingPreference like '%").append(MIXEDDOUBLES).append("%'");
+					}
+				}
+			}
+			
+			if(matchPrefsArr.length==2){
+				if(isSinglesAndMixedDoublesSearched(matchPrefsArr)){
+					sb.append("u.playingPreference like '%").append(SINGLES).append("%' OR ").append("u.playingPreference like '%").append(MIXEDDOUBLES).append("%'");
+				}else if(isDoublesAndMixedDoublesSearched(matchPrefsArr)){
+					sb.append("u.playingPreference like '%").append(DOUBLES).append("%' OR ").append("u.playingPreference like '%").append(MIXEDDOUBLES).append("%'");
+				}else{
+					sb.append("u.playingPreference like '%").append(DOUBLES).append("%' OR ").append("u.playingPreference like '%").append(SINGLES).append("%' and ")
+					.append("u.playingPreference not like '%").append(MIXEDDOUBLES).append("%'");
+				}
+			}
+			
+			if(matchPrefsArr.length==3){
+				sb.append("u.playingPreference like '%").append(SINGLES).append("%'");
+				sb.append(" OR ");
+				sb.append("u.playingPreference like '%").append(DOUBLES).append("%'");
+				sb.append(" OR ");
+				sb.append("u.playingPreference like '%").append(MIXEDDOUBLES).append("%'");
+			}
+			
 		}
 		if (rating != null) {
 			if (sb.length() > 0) {
@@ -434,6 +467,28 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
         return getHibernateTemplate().find(sb.toString());
     }
 	
+	private boolean isDoublesAndMixedDoublesSearched(String[] matchPrefsArr) {
+		for(String matchPref: matchPrefsArr){
+			if(DOUBLES.equals(matchPref) || MIXED_DOUBLES.equals(matchPref)){
+				continue;
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private boolean isSinglesAndMixedDoublesSearched(String[] matchPrefsArr) {
+		for(String matchPref: matchPrefsArr){
+			if(SINGLES.equals(matchPref) || MIXED_DOUBLES.equals(matchPref)){
+				continue;
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private boolean isNotEmpty(String input) {
 		return (null != input) && (input.length()) > 0;
 	}
