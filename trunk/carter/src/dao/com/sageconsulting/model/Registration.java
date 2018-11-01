@@ -9,10 +9,12 @@
 package com.sageconsulting.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+
 import com.sageconsulting.model.City;
 
 /**
@@ -25,7 +27,13 @@ import com.sageconsulting.model.City;
  */
 public class Registration extends BaseObject implements Serializable
 {
-    private static final long serialVersionUID = 5980690192675258298L;
+	private static final long serialVersionUID = -3700845677115402748L;
+	/**
+	 * 
+	 */
+	//private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 5980690192675258298L;
+	
     
     public static final Integer STATE_UNSCHEDULED = Integer.valueOf(0);
     public static final Integer STATE_REGULAR_SEASON_SCHEDULED = Integer.valueOf(1);
@@ -42,6 +50,9 @@ public class Registration extends BaseObject implements Serializable
     private Integer scheduleState = STATE_UNSCHEDULED;
     private Float earlyRegistrationFee;
     private Float regularRegistrationFee;
+    private Double[] playerLevel;
+    private String[] playingPreference;
+    private String[] gender;
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -224,8 +235,65 @@ public class Registration extends BaseObject implements Serializable
     {
         this.regularRegistrationFee = r;
     }
+    
+    /**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="playing_preference" not-null="true"
+     */
+    public String[] getPlayingPreference() {
+		return playingPreference;
+	}
 
-    @Override
+	/**
+     * 
+     * @param name
+     * @spring.validator type="required"
+     */
+	public void setPlayingPreference(String[] playingPreference) {
+		this.playingPreference = playingPreference;
+	}
+	
+	 /**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="player_level" not-null="true"
+     */
+	public Double[] getPlayerLevel() {
+		return playerLevel;
+	}
+
+	/**
+     * 
+     * @param name
+     * @spring.validator type="required"
+     */
+	public void setPlayerLevel(Double[] playerLevel) {
+		this.playerLevel = playerLevel;
+	}
+
+	 /**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="gender" not-null="true"
+     */
+	public String[] getGender() {
+		return gender;
+	}
+
+	/**
+     * 
+     * @param name
+     * @spring.validator type="required"
+     */
+	public void setGender(String[] gender) {
+		this.gender = gender;
+	}
+
+	/*@Override
     public boolean equals(Object o)
     {
         if (this == o)
@@ -239,19 +307,56 @@ public class Registration extends BaseObject implements Serializable
 
         final Registration registration = (Registration)o;
 
-        return this.displayName.equals(registration.displayName);
+        return this.displayName.equals(registration.displayName+registration.getGender()+registration.getPlayingPreference()+registration.getPlayerLevel());
     }
 
     @Override
     public int hashCode()
     {
         return this.displayName.hashCode();
-    }
+    }*/
 
     @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((displayName == null) ? 0 : displayName.hashCode());
+		result = prime * result + Arrays.hashCode(gender);
+		result = prime * result + Arrays.hashCode(playerLevel);
+		result = prime * result + Arrays.hashCode(playingPreference);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Registration other = (Registration) obj;
+		if (displayName == null) {
+			if (other.displayName != null)
+				return false;
+		} else if (!displayName.equals(other.displayName))
+			return false;
+		if (!Arrays.equals(gender, other.gender))
+			return false;
+		if (!Arrays.equals(playerLevel, other.playerLevel))
+			return false;
+		if (!Arrays.equals(playingPreference, other.playingPreference))
+			return false;
+		return true;
+	}
+
+	@Override
     public String toString()
     {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).
             append("displayName", this.displayName).toString(); //$NON-NLS-1$
     }
+    
+    
 }

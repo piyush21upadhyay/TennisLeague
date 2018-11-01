@@ -129,6 +129,37 @@
         <form:errors path="regularRegistrationFee" cssClass="fieldError"/>
         <form:input path="regularRegistrationFee" id="regularRegistrationFee" cssClass="text medium" maxlength="20"/>
     </li>
+    <!-- New changes for registering a season by Piyush/Akash starts-->
+     <li>
+        <carter:label styleClass="desc" key="registration.playingPreference"/>
+        <form:errors path="playingPreference" cssClass="fieldError"/>
+		<form:checkbox path="playingPreference" value="Singles" id="singles"/><fmt:message key="userForm.singles"/>
+		<form:checkbox path="playingPreference" value="Doubles" id="doubles"/><fmt:message key="userForm.doubles"/>
+		<form:checkbox path="playingPreference" value="Mixed Doubles" id="mixedDoubles"/><fmt:message key="userForm.mixedDoubles"/>
+    </li>
+    <li>
+        <carter:label styleClass="desc" key="registration.playerLevel"/>
+        <form:errors path="playerLevel" cssClass="fieldError"/>
+		<form:checkbox path="playerLevel" value="2.5" id="2_5"/>
+				<fmt:message key="userForm.level2_5"/>
+		<form:checkbox path="playerLevel" value="3.0" id="3_0"/>
+				<fmt:message key="userForm.level3_0"/>
+		<form:checkbox path="playerLevel" value="3.5" id="3_5"/>
+				<fmt:message key="userForm.level3_5"/>
+		<form:checkbox path="playerLevel" value="4.0" id="4_0"/>
+				<fmt:message key="userForm.level4_0"/>
+		<form:checkbox path="playerLevel" value="4.5" id="4_5"/>
+				<fmt:message key="userForm.level4_5"/>
+		<form:checkbox path="playerLevel" value="5.0" id="5_0"/>
+				<fmt:message key="userForm.level5_0"/>
+    </li>
+    <li>
+        <carter:label styleClass="desc" key="registration.gender"/>
+        <form:errors path="gender" cssClass="fieldError"/>
+		<form:checkbox path="gender" value="male" id="male"/><fmt:message key="userForm.male"/>
+		<form:checkbox path="gender" value="female" id="female"/><fmt:message key="userForm.female"/>
+    </li>
+    <!-- New changes for registering a season by Piyush/Akash ends-->
     <li class="buttonBar bottom">
 	    <input type="button" class="button" name="save" onclick="return onFormSubmit(document.getElementById('registrationForm'));" value="<fmt:message key="button.save"/>"/>
 	    <input type="button" class="button" name="cancel" onclick="document.getElementById('bCancel').value='true'; document.getElementById('registrationForm').submit(); return false;" value="<fmt:message key="button.cancel"/>"/>

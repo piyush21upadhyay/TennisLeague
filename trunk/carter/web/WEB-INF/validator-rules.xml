@@ -74,6 +74,22 @@
                     				break;
                     			}
                             }
+                            if( field[counter].name == 'playerLevel' )
+                    		{
+                    			if( field[counter].checked )
+                    			{
+                    				isChecked = true;
+                    				break;
+                    			}
+                            }
+                            if( field[counter].name == 'gender' )
+                    		{
+                    			if( field[counter].checked )
+                    			{
+                    				isChecked = true;
+                    				break;
+                    			}
+                            }
                     	}
                     	
                     	if(!isChecked)

@@ -132,6 +132,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
         if (request.getRemoteUser() != null)
         {
         	User currentUser = this.userManager.getUserByUsername(request.getRemoteUser());
+        	updatePlayingPrefForMixedDoubles(currentUser.getPlayingPreference());
         	view.addObject("currentUser",currentUser);
         }
         if (isCurrentUser && (request.getSession().getAttribute("prevLastLogin") != null))
@@ -139,7 +140,18 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
         return view;
     }
     
-    private User getUser(HttpServletRequest request)
+    /**
+     * @param playingPreferenceArr
+     */
+    private void updatePlayingPrefForMixedDoubles(String[] playingPreferenceArr) {
+    	for(int i=0;i<playingPreferenceArr.length;i++){
+    		if("Mixeddoubles".equals(playingPreferenceArr[i])){
+    			playingPreferenceArr[i]="Mixed Doubles";
+    		}
+    	}
+	}
+
+	private User getUser(HttpServletRequest request)
     {
         User user = null;
         
