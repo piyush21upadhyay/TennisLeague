@@ -50,6 +50,8 @@ public class Registration extends BaseObject implements Serializable
     private Integer scheduleState = STATE_UNSCHEDULED;
     private Float earlyRegistrationFee;
     private Float regularRegistrationFee;
+    private Float secondEventFee;
+    private Float thirdEventFee;
     private Double[] playerLevel;
     private String[] playingPreference;
     private String[] gender;
@@ -156,8 +158,30 @@ public class Registration extends BaseObject implements Serializable
     {
         return this.regularRegistrationFee;
     }
+    
+    
+    /**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="second_event_fee"
+     */
+    public Float getSecondEventFee() {
+		return secondEventFee;
+	}
 
-    public void setId(Long i)
+	/**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="third_event_fee"
+     */
+	public Float getThirdEventFee() {
+		return thirdEventFee;
+	}
+
+
+	public void setId(Long i)
     {
         this.id = i;
     }
@@ -235,6 +259,25 @@ public class Registration extends BaseObject implements Serializable
     {
         this.regularRegistrationFee = r;
     }
+    
+    /**
+     * 
+     * @param name
+     * @spring.validator type="required"
+     */
+    public void setSecondEventFee(Float secondEventFee) {
+		this.secondEventFee = secondEventFee;
+	}
+    
+    /**
+     * 
+     * @param name
+     * @spring.validator type="required"
+     */
+    public void setThirdEventFee(Float thirdEventFee) {
+		this.thirdEventFee = thirdEventFee;
+	}
+
     
     /**
      * 
@@ -316,7 +359,19 @@ public class Registration extends BaseObject implements Serializable
         return this.displayName.hashCode();
     }*/
 
-    @Override
+    
+
+	@Override
+    public String toString()
+    {
+        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).
+            append("displayName", this.displayName).toString(); //$NON-NLS-1$
+    }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -328,13 +383,16 @@ public class Registration extends BaseObject implements Serializable
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Registration))
 			return false;
 		Registration other = (Registration) obj;
 		if (displayName == null) {
@@ -350,13 +408,8 @@ public class Registration extends BaseObject implements Serializable
 			return false;
 		return true;
 	}
-
-	@Override
-    public String toString()
-    {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).
-            append("displayName", this.displayName).toString(); //$NON-NLS-1$
-    }
+	
+	
     
     
 }

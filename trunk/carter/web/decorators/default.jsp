@@ -40,7 +40,7 @@
 
 	<div id="footer">
 		<jsp:include page="/common/footer.jsp"/>
-		<span class="copyright">City Golf League, LLC &copy; 2012</span>
+		<span class="copyright">OPEN PLAY TENNIS, LLC &copy; 2018</span>
 	</div>
 </div>
 

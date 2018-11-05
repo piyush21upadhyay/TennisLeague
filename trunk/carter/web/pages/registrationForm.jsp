@@ -130,6 +130,16 @@
         <form:input path="regularRegistrationFee" id="regularRegistrationFee" cssClass="text medium" maxlength="20"/>
     </li>
     <!-- New changes for registering a season by Piyush/Akash starts-->
+    <li>
+        <carter:label styleClass="desc" key="registration.secondEventFee"/>($)
+        <form:errors path="secondEventFee" cssClass="fieldError"/>
+        <form:input path="secondEventFee" id="secondEventFee" cssClass="text medium" maxlength="20"/>
+    </li>
+    <li>
+        <carter:label styleClass="desc" key="registration.thirdEventFee"/>($)
+        <form:errors path="thirdEventFee" cssClass="fieldError"/>
+        <form:input path="thirdEventFee" id="thirdEventFee" cssClass="text medium" maxlength="20"/>
+    </li>
      <li>
         <carter:label styleClass="desc" key="registration.playingPreference"/>
         <form:errors path="playingPreference" cssClass="fieldError"/>

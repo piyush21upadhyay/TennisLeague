@@ -149,7 +149,8 @@ function checkUserPass()
 			<c:if test="${vTagIndex eq 3}"><p class="tagline-p">We'll post your bragging rights online</p></c:if>
 			<c:if test="${vTagIndex eq 4}"><p class="tagline-p">You athletic glory days are in front of you.</p></c:if> 
 			<c:if test="${vTagIndex eq 5}"><p class="tagline-p">Prove it</p></c:if>
-			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if>
+			<%-- <c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if> --%>
+			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if>
 		</div>
 
 		<div id="main-container">
