@@ -432,13 +432,6 @@ public class RegistrationController extends BaseFormController
         	if(openRegistrationsForCity!=null && openRegistrationsForCity.size()>0){
         		totalRegBasedOnCityMatchPrefPlayerLvlAndGender=new ArrayList<Registration>();
         		for(Registration registration: openRegistrationsForCity){
-        			Registration reg=new Registration();
-        			reg.setCity(registration.getCity());
-        			reg.setEarlyRegistrationStart(registration.getEarlyRegistrationStart());
-        			reg.setRegularRegistrationStart(registration.getRegularRegistrationStart());
-        			reg.setRegistrationEnd(registration.getRegistrationEnd());
-        			reg.setEarlyRegistrationFee(registration.getEarlyRegistrationFee());
-        			reg.setRegularRegistrationFee(registration.getRegularRegistrationFee());
         			
         			String userGender=user.getMale()==true?"Male":"Female";
         			List<String> userPlayingPrefList=Arrays.asList(user.getPlayingPreference());
@@ -451,8 +444,19 @@ public class RegistrationController extends BaseFormController
         							
         							for(Double playerLevel: registration.getPlayerLevel()){
         								if(Double.compare(user.getPlayerLevel(), playerLevel)==0 || Double.compare((user.getPlayerLevel()+0.5), playerLevel)==0){
+        									Registration reg=new Registration();
+        				        			reg.setCity(registration.getCity());
+        				        			reg.setEarlyRegistrationStart(registration.getEarlyRegistrationStart());
+        				        			reg.setRegularRegistrationStart(registration.getRegularRegistrationStart());
+        				        			reg.setRegistrationEnd(registration.getRegistrationEnd());
+        				        			reg.setEarlyRegistrationFee(registration.getEarlyRegistrationFee());
+        				        			reg.setRegularRegistrationFee(registration.getRegularRegistrationFee());
+        				        			
         									gender=Character.toUpperCase(gender.charAt(0))+gender.substring(1);
         									reg.setDisplayName(registration.getDisplayName().concat(BLANK).concat(gender).concat(BLANK).concat(matchPref).concat(BLANK).concat(""+playerLevel));
+        									/*reg.setGender(new String[]{gender});
+        									reg.setPlayingPreference(new String[]{matchPref});
+        									reg.setPlayerLevel(new Double[]{playerLevel});*/
         									totalRegBasedOnCityMatchPrefPlayerLvlAndGender.add(reg);
         								}
         							}
