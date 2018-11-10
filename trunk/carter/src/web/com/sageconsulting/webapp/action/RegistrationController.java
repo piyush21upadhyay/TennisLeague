@@ -445,6 +445,8 @@ public class RegistrationController extends BaseFormController
         							for(Double playerLevel: registration.getPlayerLevel()){
         								if(Double.compare(user.getPlayerLevel(), playerLevel)==0 || Double.compare((user.getPlayerLevel()+0.5), playerLevel)==0){
         									Registration reg=new Registration();
+        									reg.setId(registration.getId());
+        									reg.setVersion(registration.getVersion());
         				        			reg.setCity(registration.getCity());
         				        			reg.setEarlyRegistrationStart(registration.getEarlyRegistrationStart());
         				        			reg.setRegularRegistrationStart(registration.getRegularRegistrationStart());
@@ -454,9 +456,9 @@ public class RegistrationController extends BaseFormController
         				        			
         									gender=Character.toUpperCase(gender.charAt(0))+gender.substring(1);
         									reg.setDisplayName(registration.getDisplayName().concat(BLANK).concat(gender).concat(BLANK).concat(matchPref).concat(BLANK).concat(""+playerLevel));
-        									/*reg.setGender(new String[]{gender});
+        									reg.setGender(new String[]{gender});
         									reg.setPlayingPreference(new String[]{matchPref});
-        									reg.setPlayerLevel(new Double[]{playerLevel});*/
+        									reg.setPlayerLevel(new Double[]{playerLevel});
         									totalRegBasedOnCityMatchPrefPlayerLvlAndGender.add(reg);
         								}
         							}
