@@ -9,7 +9,9 @@
 package com.sageconsulting.webapp.action;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +33,8 @@ public class RegistrationFormController extends BaseFormController
     private RegistrationManager registrationManager;
     private RegistrationEntryManager registrationEntryManager;
     private CityManager cityManager;
+    
+    private static final String BLANK=" ";
 
     public RegistrationFormController()
     {
@@ -155,7 +159,13 @@ public class RegistrationFormController extends BaseFormController
             		earlyRegFee = "0";
             }
             registration.setEarlyRegistrationFee(Float.parseFloat(earlyRegFee));
-            this.registrationManager.saveRegistration(registration);
+            /***Code changes by Piyush/Akash starts***/
+            List<Registration> allRegDivisions=fetchAllRegDivisions(registration);
+            for(Registration regDiv:allRegDivisions){
+            	this.registrationManager.saveRegistration(regDiv);
+            }
+            /***Code changes by Piyush/Akash ends***/
+            //this.registrationManager.saveRegistration(registration);
             
             //update count down date of the city
             City regCity = registration.getCity();
@@ -168,7 +178,34 @@ public class RegistrationFormController extends BaseFormController
         return view;
     }
     
-    private void addCities(ModelAndView view)
+    /**
+     * @param registration
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    private List<Registration> fetchAllRegDivisions(Registration registration) throws CloneNotSupportedException {
+    	List<Registration> allRegDivisions=new ArrayList<Registration>();
+    	List<String> seasonNames=new ArrayList<String>(); //mixedDblsNames was getting duplicated
+    	for(Double playerLevel:registration.getPlayerLevel()){
+    		for(String gender:registration.getGender()){
+    			for(String playingPref:registration.getPlayingPreference()){
+    				Registration regObj=(Registration) registration.clone();
+    				regObj.setPlayerLevel(new Double[]{playerLevel});
+    				regObj.setGender(new String[]{gender});
+    				regObj.setPlayingPreference(new String[]{playingPref});
+    				String genderVar="Mixed Doubles".equalsIgnoreCase(playingPref)?BLANK:BLANK.concat(gender).concat(BLANK);
+    				regObj.setDisplayName(regObj.getDisplayName().concat(genderVar).concat(playingPref).concat(BLANK).concat(""+playerLevel));
+    				if(!seasonNames.contains(regObj.getDisplayName())){
+    					seasonNames.add(regObj.getDisplayName());
+    					allRegDivisions.add(regObj);
+    				}
+    			}
+    		}
+    	}
+		return allRegDivisions;
+	}
+
+	private void addCities(ModelAndView view)
     {
         view.addObject("cityList", getCities()); //$NON-NLS-1$
     }

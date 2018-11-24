@@ -25,7 +25,7 @@ import com.sageconsulting.model.City;
  * @see Season
  * @hibernate.class table="registration"
  */
-public class Registration extends BaseObject implements Serializable
+public class Registration extends BaseObject implements Serializable,Cloneable
 {
 	private static final long serialVersionUID = -3700845677115402748L;
 	/**
@@ -409,7 +409,10 @@ public class Registration extends BaseObject implements Serializable
 		return true;
 	}
 	
-	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
     
     
 }

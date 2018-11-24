@@ -439,12 +439,12 @@ public class RegistrationController extends BaseFormController
         			for(String gender:registration.getGender()){
         				if(gender.equalsIgnoreCase(userGender)){
         					
-        					for(String matchPref:registration.getPlayingPreference()){
-        						if(userPlayingPrefList!=null && userPlayingPrefList.contains(matchPref)){
+        					/*for(String matchPref:registration.getPlayingPreference()){
+        						if(userPlayingPrefList!=null && userPlayingPrefList.contains(matchPref)){*/
         							
         							for(Double playerLevel: registration.getPlayerLevel()){
         								if(Double.compare(user.getPlayerLevel(), playerLevel)==0 || Double.compare((user.getPlayerLevel()+0.5), playerLevel)==0){
-        									Registration reg=new Registration();
+        								/*	Registration reg=new Registration();
         									reg.setId(registration.getId());
         									reg.setVersion(registration.getVersion());
         				        			reg.setCity(registration.getCity());
@@ -458,13 +458,13 @@ public class RegistrationController extends BaseFormController
         									reg.setDisplayName(registration.getDisplayName().concat(BLANK).concat(gender).concat(BLANK).concat(matchPref).concat(BLANK).concat(""+playerLevel));
         									reg.setGender(new String[]{gender});
         									reg.setPlayingPreference(new String[]{matchPref});
-        									reg.setPlayerLevel(new Double[]{playerLevel});
-        									totalRegBasedOnCityMatchPrefPlayerLvlAndGender.add(reg);
+        									reg.setPlayerLevel(new Double[]{playerLevel});*/
+        									totalRegBasedOnCityMatchPrefPlayerLvlAndGender.add(registration);
         								}
         							}
-        							
+        						/*	
         						}
-        					}
+        					}*/
         					
         				}
         			}
