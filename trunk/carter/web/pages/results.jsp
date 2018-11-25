@@ -221,19 +221,19 @@
 							<tr>
 								<td class="  leftAlign strong"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></td>
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
+									<form:input cssClass="num-input" maxlength="1" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
 									<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
 									<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
 														
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
+									<form:input cssClass="num-input" maxlength="1" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
 									<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
 														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
 														
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
+									<form:input cssClass="num-input" maxlength="1" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
 									<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
 														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
@@ -241,19 +241,19 @@
 							  <tr>
 								<td class="  leftAlign strong"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></td>
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
+									<form:input cssClass="num-input" maxlength="1" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
 									<form:input cssClass="super-input" maxlength="2" path="score.player2set1Sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
 														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
 								
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/> 
+									<form:input cssClass="num-input" maxlength="1" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/> 
 									<form:input cssClass="super-input" maxlength="2" path="score.player2set2Sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
 														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
 														
 								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="2" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
+									<form:input cssClass="num-input" maxlength="1" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
 									<form:input cssClass="super-input" maxlength="2" path="score.player2set3Sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
 														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
 								</td>
