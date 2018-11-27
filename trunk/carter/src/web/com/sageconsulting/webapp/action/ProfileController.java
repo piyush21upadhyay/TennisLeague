@@ -121,6 +121,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("registeredSeason", this.getOpenEntryRegistrations(user));
             view.addObject("seasonStarted", this.getCurrentSeasonStarted(user));
             updateBirdieCount(view, user);
+            updatePlayingPrefForMixedDoubles(user.getPlayingPreference());
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
         }
         else if(user == null)
@@ -132,7 +133,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
         if (request.getRemoteUser() != null)
         {
         	User currentUser = this.userManager.getUserByUsername(request.getRemoteUser());
-        	updatePlayingPrefForMixedDoubles(currentUser.getPlayingPreference());
+        	//updatePlayingPrefForMixedDoubles(currentUser.getPlayingPreference());
         	view.addObject("currentUser",currentUser);
         }
         if (isCurrentUser && (request.getSession().getAttribute("prevLastLogin") != null))

@@ -174,7 +174,7 @@
                             </td>
                         </tr>
                       	<tr>
-                            <td class="leftAlign strong"><%-- <c:out value="${user.lastName}"/> --%></td>
+                               <td class="  leftAlign strong"><c:out value="${match.golfer2.fullName}"/></td>
                            <c:choose>
 								<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
 									<td class="strong runs">

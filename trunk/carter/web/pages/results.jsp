@@ -5,6 +5,7 @@
     <meta name="menu" content="PostResults"/>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/${appConfig["csstheme"]}/scorecard2.css'/>" />
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/${appConfig["csstheme"]}/jquery.ui.datepicker.css'/>" />
+	<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/${appConfig["csstheme"]}/main.css'/>" />
 <c:if test="${enterScores}">
 	<script type="text/javascript">
 	$(function() {
@@ -19,6 +20,12 @@
 			});
 		}
 	});
+	
+	$(".inputs").keyup(function () {
+        if (this.value.length == this.maxLength) {
+          $(this).next('.inputs').focus();
+        }
+  });
 	
 	function checkFields()
 	{
@@ -110,6 +117,7 @@
 					font-weight: normal;
 					text-align: center;
 					border: 1px solid #d7d7d7;
+					margin: 8px;
 				}
 
 				  .super-input {
@@ -118,7 +126,9 @@
 					top: -10px;
 					margin-right: 10px;
 					width: 20px;
+					margin-top: 18px;
 				}
+				
 				.super-input input{
 				   width: 30px;
 				   height: 30px;
@@ -127,6 +137,52 @@
 					font-weight: normal;
 					text-align: center;
 					border: 1px solid #d7d7d7;
+				}
+				
+				.super-input-bottom {
+					vertical-align: super;
+					position: relative;
+					top: -10px;
+					margin-right: 10px;
+					width: 20px;
+					margin-top: 38px;
+				}
+				
+				.super-input-bottom input{
+				   width: 30px;
+				   height: 30px;
+					line-height: 14px;
+					font-size: 12px;
+					font-weight: normal;
+					text-align: center;
+					border: 1px solid #d7d7d7;
+				}
+				
+				.onecolw {
+					float:left;
+					width:30px;
+					margin:0 5px 10px;
+					padding:10px;
+					font-size:12px;
+					color:#fff;
+					line-height:20px;
+				}
+				
+				.namecolw {
+					float:left;
+					width:30px;
+					margin:0 5px 10px;
+					padding:10px;
+					font-size:12px;
+					color:#fff;
+					line-height:20px;
+				}
+				
+				.textAlign {
+					width: 70px;
+				    height: 40px;
+				    margin-top: 17px;
+				    text-align: center;
 				}
 
 </style>
@@ -156,7 +212,7 @@
 						<c:otherwise>
 							<c:out value="${match.result.winner.fullName}"/>
 							<fmt:message key="results.wins"/>
-							<c:out value="${match.result.holesWon}"/> &amp; <c:out value="${match.result.holesRemaining}"/>
+							<%-- <c:out value="${match.result.winner.currentWins}"/>-<c:out value="${match.result.winner.currentLosses}"/> --%>
 						</c:otherwise>
 					</c:choose>
 				</p>
@@ -215,51 +271,53 @@
 			<!-- Changes done by Akash & Piyush -->
 			<div class="section">
 				<div class="card">
-			<table class="centerAlign entering">
-							<tbody>
-					  
-							<tr>
-								<td class="  leftAlign strong"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></td>
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/> 
-									<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
-									<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-														
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
-									<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
-														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-														
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
-									<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
-														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-							</tr>
-							  <tr>
-								<td class="  leftAlign strong"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></td>
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
-									<form:input cssClass="super-input" maxlength="2" path="score.player2set1Sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
-														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-								
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/> 
-									<form:input cssClass="super-input" maxlength="2" path="score.player2set2Sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
-														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-														
-								<td class="strong runs">
-									<form:input cssClass="num-input" maxlength="1" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
-									<form:input cssClass="super-input" maxlength="2" path="score.player2set3Sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
-														<!-- <span class="super-input"><input type="number" value="Number"></span> -->
-								</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="edituser-section">
+					<div class="namecolw">
+						<p class="textAlign"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></p>
+						<p class="textAlign"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></p>
+	 				</div>
+	 				
+	 				
+				
+					<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
+	 					</fieldset>
+	 				</div>
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set1Sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
+	 					</fieldset>
+	 				</div>
+	 				
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/>
+	 					</fieldset>
+	 				</div>
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set2Sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
+	 					</fieldset>
+	 				</div>
+	 				
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
+	 					</fieldset>
+	 				</div>
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set3Sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
+	 					</fieldset>
+	 				</div>
+ 				</div>
 			</div>
 			</div>
 			<!-- Changes done by Akash & Piyush Ends -->
@@ -346,7 +404,7 @@
 <c:otherwise>
 	<c:if test="${not match.defaultWin}">
 	<div class="section">
-		<c:import url="/common/matchCard.jsp"/>
+		<c:import url="/common/postResultScreen.jsp"/>
 		<%-- <div class="right">
 			<c:import url="/common/legend.jsp"/>
 		</div> --%>
