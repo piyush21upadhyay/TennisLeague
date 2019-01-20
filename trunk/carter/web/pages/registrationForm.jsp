@@ -166,8 +166,8 @@
     <li>
         <carter:label styleClass="desc" key="registration.gender"/>
         <form:errors path="gender" cssClass="fieldError"/>
-		<form:checkbox path="gender" value="male" id="male"/><fmt:message key="userForm.male"/>
-		<form:checkbox path="gender" value="female" id="female"/><fmt:message key="userForm.female"/>
+		<form:checkbox path="gender" value="Men's" id="male"/><fmt:message key="userForm.male"/>
+		<form:checkbox path="gender" value="Women's" id="female"/><fmt:message key="userForm.female"/>
     </li>
     <!-- New changes for registering a season by Piyush/Akash ends-->
     <li class="buttonBar bottom">
