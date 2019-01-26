@@ -76,10 +76,11 @@
 	<c:set var="editFlow" value="${isEditSeasonRequest}"/>
     <% System.out.println("The value of editFlow var is::"+pageContext.findAttribute("editFlow") ); %>
 		<input type="hidden" name="editFlowHidden" id="editFlowHidden" value="<%=pageContext.findAttribute("editFlow")%>" />
-		<li>
+	<li>
         <carter:label styleClass="desc" key="registration.name"/>
         <form:errors path="displayName" cssClass="fieldError"/>
         <form:input path="displayName" id="displayName" cssClass="text medium" maxlength="50"/>
+        <c:if test="${not empty editFlow and editFlow eq 'true'}"><c:out value="${registration.seasonName}"></c:out></c:if>
     </li>
     <li>
         <carter:label styleClass="desc" key="registration.city"/>
@@ -184,8 +185,8 @@
         <carter:label styleClass="desc" key="registration.playingPreference"/>
         <form:errors path="playingPreference" cssClass="fieldError"/>
 		
-		<c:set var="editFlow" value="${isEditSeasonRequest}"/>
-         <% System.out.println(pageContext.findAttribute("editFlow") ); %>
+		<%-- <c:set var="editFlow" value="${isEditSeasonRequest}"/>
+         <% System.out.println(pageContext.findAttribute("editFlow") ); %> --%>
         
         <c:choose>
 			<c:when test="${not empty editFlow and editFlow eq 'true'}">

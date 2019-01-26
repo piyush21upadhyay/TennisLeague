@@ -208,6 +208,7 @@ public class RegistrationFormController extends BaseFormController
     					String genderVar=MIXED_DOUBLES.equalsIgnoreCase(playingPref)?BLANK:BLANK.concat(gender).concat(BLANK);
     					
     					String origSeasonName=splitOriginalSeasonName(regObj.getDisplayName());
+    					regObj.setSeasonName(origSeasonName);
     					regObj.setDisplayName(origSeasonName.concat(genderVar).concat(playingPref).concat(BLANK).concat(""+playerLevel));
     					
     					if(!seasonNames.contains(regObj.getDisplayName())){
@@ -221,6 +222,7 @@ public class RegistrationFormController extends BaseFormController
     		List<Registration> finalREgToeDone=fetchFinalRegObjects(allSeasonRegToBeDone,openRegistrations);
     		return finalREgToeDone;
     	}
+    	registration.setSeasonName(splitOriginalSeasonName(registration.getDisplayName()));
     	allSeasonRegToBeDone.add(registration);
     	return allSeasonRegToBeDone;
 	}

@@ -40,6 +40,7 @@ public class Registration extends BaseObject implements Serializable,Cloneable
     private Long id;
     private Integer version;
     private String displayName;
+    private String seasonName;
     private City city;
     private Date earlyRegistrationStart;
     private Date regularRegistrationStart;
@@ -79,6 +80,16 @@ public class Registration extends BaseObject implements Serializable,Cloneable
     {
         return this.displayName;
     }
+    
+    /**
+     * 
+     * @return
+     * 
+     * @hibernate.property column="season_name"
+     */
+	public String getSeasonName() {
+		return seasonName;
+	}
     
     /**
      * 
@@ -176,8 +187,7 @@ public class Registration extends BaseObject implements Serializable,Cloneable
 	public Float getThirdEventFee() {
 		return thirdEventFee;
 	}
-
-
+	
 	public void setId(Long i)
     {
         this.id = i;
@@ -274,9 +284,13 @@ public class Registration extends BaseObject implements Serializable,Cloneable
     public void setThirdEventFee(Float thirdEventFee) {
 		this.thirdEventFee = thirdEventFee;
 	}
-
     
-    /**
+    
+    public void setSeasonName(String seasonName) {
+		this.seasonName = seasonName;
+	}
+
+	/**
      * 
      * @return
      * 
