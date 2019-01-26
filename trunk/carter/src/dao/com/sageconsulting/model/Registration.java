@@ -27,15 +27,12 @@ import com.sageconsulting.model.City;
  */
 public class Registration extends BaseObject implements Serializable,Cloneable
 {
-	private static final long serialVersionUID = -3700845677115402748L;
-	/**
+    
+    /**
 	 * 
 	 */
-	//private static final long serialVersionUID = 1L;
-	//private static final long serialVersionUID = 5980690192675258298L;
-	
-    
-    public static final Integer STATE_UNSCHEDULED = Integer.valueOf(0);
+	private static final long serialVersionUID = -7276084655108954216L;
+	public static final Integer STATE_UNSCHEDULED = Integer.valueOf(0);
     public static final Integer STATE_REGULAR_SEASON_SCHEDULED = Integer.valueOf(1);
     public static final Integer STATE_POST_SEASON_SCHEDULED = Integer.valueOf(2);
     public static final Integer STATE_SEASON_CLEAR = Integer.valueOf(4);
@@ -283,17 +280,12 @@ public class Registration extends BaseObject implements Serializable,Cloneable
      * 
      * @return
      * 
-     * @hibernate.property column="playing_preference" not-null="true"
+     * @hibernate.property column="playing_preference" not-null="false"
      */
     public String[] getPlayingPreference() {
 		return playingPreference;
 	}
 
-	/**
-     * 
-     * @param name
-     * @spring.validator type="required"
-     */
 	public void setPlayingPreference(String[] playingPreference) {
 		this.playingPreference = playingPreference;
 	}
@@ -302,17 +294,12 @@ public class Registration extends BaseObject implements Serializable,Cloneable
      * 
      * @return
      * 
-     * @hibernate.property column="player_level" not-null="true"
+     * @hibernate.property column="player_level" not-null="false"
      */
 	public Double[] getPlayerLevel() {
 		return playerLevel;
 	}
 
-	/**
-     * 
-     * @param name
-     * @spring.validator type="required"
-     */
 	public void setPlayerLevel(Double[] playerLevel) {
 		this.playerLevel = playerLevel;
 	}
@@ -321,45 +308,15 @@ public class Registration extends BaseObject implements Serializable,Cloneable
      * 
      * @return
      * 
-     * @hibernate.property column="gender" not-null="true"
+     * @hibernate.property column="gender" not-null="false"
      */
 	public String[] getGender() {
 		return gender;
 	}
 
-	/**
-     * 
-     * @param name
-     * @spring.validator type="required"
-     */
 	public void setGender(String[] gender) {
 		this.gender = gender;
 	}
-
-	/*@Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-        if (!(o instanceof Registration))
-        {
-            return false;
-        }
-
-        final Registration registration = (Registration)o;
-
-        return this.displayName.equals(registration.displayName+registration.getGender()+registration.getPlayingPreference()+registration.getPlayerLevel());
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return this.displayName.hashCode();
-    }*/
-
-    
 
 	@Override
     public String toString()

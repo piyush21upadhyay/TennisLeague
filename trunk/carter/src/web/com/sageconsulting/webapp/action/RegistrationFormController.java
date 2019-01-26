@@ -1,7 +1,7 @@
 /*
  * RegistrationFormController.java
  * 
- * Copyright Â© 2008-2009 City Golf League, LLC.  All Rights Reserved
+ * Copyright © 2008-2009 City Golf League, LLC.  All Rights Reserved
  * http://www.citygolfleague.com
  * 
  * @author Steve Paquin - Sage Software Consulting, Inc.
@@ -9,9 +9,8 @@
 package com.sageconsulting.webapp.action;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +34,7 @@ public class RegistrationFormController extends BaseFormController
     private CityManager cityManager;
     
     private static final String BLANK=" ";
+    private static final String MIXED_DOUBLES="Mixed Doubles";
 
     public RegistrationFormController()
     {
@@ -117,6 +117,10 @@ public class RegistrationFormController extends BaseFormController
     		}
     		modelAndView.addObject("state", state);
     	}
+    	
+    	/***Code changes by Piyush/Akash starts to disable the Gender,Playing Pref and Player Level***/
+    	modelAndView.addObject("isEditSeasonRequest", "edit".equals(request.getParameter("func"))?"true":null);
+    	/***Code changes by Piyush/Akash starts***/
         
         return modelAndView;
     }
@@ -144,7 +148,7 @@ public class RegistrationFormController extends BaseFormController
         }
 
         Registration registration = (Registration)command;
-        //Locale locale = request.getLocale();
+        boolean isEditFlow=false;
 
         if (!isCancel(request)) //$NON-NLS-1$
         {
@@ -160,8 +164,10 @@ public class RegistrationFormController extends BaseFormController
             }
             registration.setEarlyRegistrationFee(Float.parseFloat(earlyRegFee));
             /***Code changes by Piyush/Akash starts***/
-            List<Registration> allRegDivisions=fetchAllRegDivisions(registration);
-            for(Registration regDiv:allRegDivisions){
+            isEditFlow="null".equals(request.getParameter("editFlowHidden"))?Boolean.FALSE:Boolean.TRUE;
+            	
+            List<Registration> allSeasonRegToBeDone=fetchAllRegDivisions(registration,isEditFlow);
+            for(Registration regDiv:allSeasonRegToBeDone){
             	this.registrationManager.saveRegistration(regDiv);
             }
             /***Code changes by Piyush/Akash ends***/
@@ -175,34 +181,74 @@ public class RegistrationFormController extends BaseFormController
         
         //ModelAndView view = new ModelAndView(getSuccessView());
         ModelAndView view = showForm(request, response, errors);
+		view.addObject("isEditSeasonRequest", isEditFlow?"true":null);
         return view;
     }
     
     /**
      * @param registration
+     * @param isEditFlow 
      * @return
      * @throws CloneNotSupportedException
      */
-    private List<Registration> fetchAllRegDivisions(Registration registration) throws CloneNotSupportedException {
-    	List<Registration> allRegDivisions=new ArrayList<Registration>();
-    	List<String> seasonNames=new ArrayList<String>(); //mixedDblsNames was getting duplicated
-    	for(Double playerLevel:registration.getPlayerLevel()){
-    		for(String gender:registration.getGender()){
-    			for(String playingPref:registration.getPlayingPreference()){
-    				Registration regObj=(Registration) registration.clone();
-    				regObj.setPlayerLevel(new Double[]{playerLevel});
-    				regObj.setGender(new String[]{gender});
-    				regObj.setPlayingPreference(new String[]{playingPref});
-    				String genderVar="Mixed Doubles".equalsIgnoreCase(playingPref)?BLANK:BLANK.concat(gender).concat(BLANK);
-    				regObj.setDisplayName(regObj.getDisplayName().concat(genderVar).concat(playingPref).concat(BLANK).concat(""+playerLevel));
-    				if(!seasonNames.contains(regObj.getDisplayName())){
-    					seasonNames.add(regObj.getDisplayName());
-    					allRegDivisions.add(regObj);
+    private List<Registration> fetchAllRegDivisions(Registration registration, boolean isEditFlow) throws CloneNotSupportedException {
+    	System.out.println("isEditFlow::"+isEditFlow);
+    	List<Registration> allSeasonRegToBeDone=new ArrayList<Registration>();
+    	List<String> seasonNames=new ArrayList<String>(); //mixedDblsNames were getting duplicated
+    	
+    	if(registration.getPlayerLevel()!=null && !isEditFlow){
+    		for(Double playerLevel:registration.getPlayerLevel()){
+    			for(String gender:registration.getGender()){
+    				for(String playingPref:registration.getPlayingPreference()){
+    					
+    					Registration regObj=(Registration) registration.clone();
+    					regObj.setPlayerLevel(new Double[]{playerLevel});
+    					regObj.setGender(new String[]{gender});
+    					regObj.setPlayingPreference(new String[]{playingPref});
+    					String genderVar=MIXED_DOUBLES.equalsIgnoreCase(playingPref)?BLANK:BLANK.concat(gender).concat(BLANK);
+    					
+    					String origSeasonName=splitOriginalSeasonName(regObj.getDisplayName());
+    					regObj.setDisplayName(origSeasonName.concat(genderVar).concat(playingPref).concat(BLANK).concat(""+playerLevel));
+    					
+    					if(!seasonNames.contains(regObj.getDisplayName())){
+    						seasonNames.add(regObj.getDisplayName());
+    						allSeasonRegToBeDone.add(regObj);
+    					}
     				}
     			}
     		}
+    		List<Registration> openRegistrations = this.registrationManager.getOpenRegistrations();
+    		List<Registration> finalREgToeDone=fetchFinalRegObjects(allSeasonRegToBeDone,openRegistrations);
+    		return finalREgToeDone;
     	}
-		return allRegDivisions;
+    	allSeasonRegToBeDone.add(registration);
+    	return allSeasonRegToBeDone;
+	}
+    
+
+	private List<Registration> fetchFinalRegObjects(List<Registration> allSeasonRegToBeDone,List<Registration> openRegistrations) {
+    	List<Registration> fetchFinalRegObjects=new ArrayList<Registration>();
+    	
+		if(openRegistrations==null || openRegistrations.size()==0)
+			return allSeasonRegToBeDone;
+		
+		Iterator<Registration> itr=allSeasonRegToBeDone.iterator();
+		while (itr.hasNext()) {
+			Registration registration=itr.next();
+			if(!openRegistrations.contains(registration))
+				fetchFinalRegObjects.add(registration);
+		}
+		return fetchFinalRegObjects;
+	}
+	
+	private String splitOriginalSeasonName(String seasonDisplayName) {
+		
+		if(seasonDisplayName.contains("Men's")){
+			return seasonDisplayName.split("Men's")[0].trim();
+		}else if(seasonDisplayName.contains("Women's")){
+			return seasonDisplayName.split("Women's")[0].trim();
+		}
+		return seasonDisplayName;
 	}
 
 	private void addCities(ModelAndView view)
@@ -288,4 +334,5 @@ public class RegistrationFormController extends BaseFormController
     	
     	return isNumber;
     }
+    
 }
