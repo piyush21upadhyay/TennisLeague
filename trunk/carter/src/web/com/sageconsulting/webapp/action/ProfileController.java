@@ -23,6 +23,8 @@ import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import sun.misc.Perf.GetPerfAction;
+
 import com.sageconsulting.model.Match;
 import com.sageconsulting.model.PrivateMessage;
 import com.sageconsulting.model.Registration;
@@ -120,6 +122,8 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("openRegistrations", this.getOpenRegistrations(user)); //$NON-NLS-1$
             view.addObject("registeredSeason", this.getOpenEntryRegistrations(user));
             view.addObject("seasonStarted", this.getCurrentSeasonStarted(user));
+            view.addObject("percentageGamesWon", getGamesWonPercentage(user, request.getLocale()));
+            view.addObject("percentageGamesLoss", getGamesLossPercentage(user, request.getLocale()));
             updateBirdieCount(view, user);
             updatePlayingPrefForMixedDoubles(user.getPlayingPreference());
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
@@ -305,6 +309,26 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
     	}
 
     	return "" + user.getCurrentPoints(); //$NON-NLS-1$
+    }
+    
+    private String getGamesWonPercentage(User user, Locale locale)
+    {
+    	if ((null == user.getCurrentSeason()) || (user.getCurrentSeason().getState().intValue() == Season.STATE_CLEAR))
+    	{
+        	return getMessageSourceAccessor().getMessage("profile.notApplicable", locale); //$NON-NLS-1$
+    	}
+
+    	return user.getGamesWonPercentage(); //$NON-NLS-1$
+    }
+    
+    private String getGamesLossPercentage(User user, Locale locale)
+    {
+    	if ((null == user.getCurrentSeason()) || (user.getCurrentSeason().getState().intValue() == Season.STATE_CLEAR))
+    	{
+        	return getMessageSourceAccessor().getMessage("profile.notApplicable", locale); //$NON-NLS-1$
+    	}
+
+    	return user.getGamesLossPercentage(); //$NON-NLS-1$
     }
     
     private List<Registration> getOpenRegistrations(User user)

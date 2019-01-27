@@ -511,6 +511,26 @@ public class User extends BaseObject implements Serializable, UserDetails
     	return seasonPoints;
     }
     
+    public String getGamesWonPercentage()
+    {
+    	int wins = (null == getTotalWins()) ? 0 : getTotalWins().intValue(); 
+    	int loss = (null == getTotalLosses()) ? 0 : getTotalLosses().intValue(); 
+    	int ties = (null == getTotalTies()) ? 0 : getTotalTies().intValue(); 
+    	int totalMatches = wins+loss+ties;
+    	double wonPercentage = (wins * 100)/totalMatches;
+    	return wonPercentage+" %";
+    }
+    
+    public String getGamesLossPercentage()
+    {
+    	int wins = (null == getTotalWins()) ? 0 : getTotalWins().intValue(); 
+    	int loss = (null == getTotalLosses()) ? 0 : getTotalLosses().intValue(); 
+    	int ties = (null == getTotalTies()) ? 0 : getTotalTies().intValue(); 
+    	int totalMatches = wins+loss+ties;
+    	double lossPercentage = (loss * 100)/totalMatches;
+    	return lossPercentage+" %";
+    }
+    
     /**
      * @hibernate.property column="total_wins" not-null="true"
      */

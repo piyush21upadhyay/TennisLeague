@@ -172,6 +172,10 @@
 				</span></c:if>
 			</p>
 	   </div>
+	   <div class="subsection">
+			<p><fmt:message key="profile.percentageGamesWon"/> <c:if test="${not empty player}"><span class="green"><c:out value="${percentageGamesWon}"/></span></c:if></p>
+			<p><fmt:message key="profile.percentageGamesLoss"/> <c:if test="${not empty player}"><span class="green"><c:out value="${percentageGamesLoss}"/></span></c:if></p>
+		</div>
 	   <!-- Added by Piyush and Akash ends -->
 	</c:if>
 	
