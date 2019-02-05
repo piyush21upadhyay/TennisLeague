@@ -9,6 +9,8 @@
 package com.sageconsulting.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -514,25 +516,85 @@ public class User extends BaseObject implements Serializable, UserDetails
     public String getGamesWonPercentage()
     {
     	double wonPercentage = 0.0;
-    	int wins = (null == getTotalWins()) ? 0 : getTotalWins().intValue(); 
-    	int loss = (null == getTotalLosses()) ? 0 : getTotalLosses().intValue(); 
-    	int ties = (null == getTotalTies()) ? 0 : getTotalTies().intValue(); 
-    	int totalMatches = wins+loss+ties;
-    	if(0 != totalMatches)
-    		wonPercentage = (wins * 100)/totalMatches;
-    	return wonPercentage+" %";
+    	if(null != this.currentSeason)
+    	{
+	    	SortedSet<Match> matches = this.currentSeason.getMatches();
+	    	if(null != matches)
+	    	{
+	    		int numOfWinGames = 0;
+	    		int numOfLossGames = 0;
+	    		for(Match match : matches)
+		    	{
+		    		if(match.getPlayed() != null)
+		    		{
+			    		if(match.getGolfer1().id == this.id)
+			    		{
+			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
+			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
+			    				
+			    		}
+			    		else if(match.getGolfer2().id == this.id )
+			    		{
+			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
+			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
+	    				} 
+		    		}
+		    		
+		    	}
+	    		int totalGamesPlayed = numOfWinGames + numOfLossGames;
+	    		if(totalGamesPlayed != 0)
+					wonPercentage = (double)(numOfWinGames*100)/totalGamesPlayed;
+	    	}
+    	}
+    	String wonPercentageStr = wonPercentage+"";
+    	if(wonPercentageStr.indexOf(".") > 0 && wonPercentageStr.substring(wonPercentageStr.indexOf(".")).length() > 3)
+    		return wonPercentageStr.substring(0, wonPercentageStr.indexOf(".")+3)+"%";
+    	else
+    		return wonPercentageStr+"%";
+    
     }
     
     public String getGamesLossPercentage()
     {
     	double lossPercentage = 0.0;
-    	int wins = (null == getTotalWins()) ? 0 : getTotalWins().intValue(); 
-    	int loss = (null == getTotalLosses()) ? 0 : getTotalLosses().intValue(); 
-    	int ties = (null == getTotalTies()) ? 0 : getTotalTies().intValue(); 
-    	int totalMatches = wins+loss+ties;
-    	if(0 != totalMatches)
-    		lossPercentage = (loss * 100)/totalMatches;
-    	return lossPercentage+" %";
+    	if(null != this.currentSeason)
+    	{
+	    	SortedSet<Match> matches = this.currentSeason.getMatches();
+	    	if(null != matches)
+	    	{
+	
+	    		int numOfWinGames = 0;
+	    		int numOfLossGames = 0;
+	    		for(Match match : matches)
+		    	{
+		    		if(match.getPlayed() != null)
+		    		{
+			    		if(match.getGolfer1().id == this.id)
+			    		{
+			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
+			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
+			    				
+			    		}
+			    		else if(match.getGolfer2().id == this.id )
+			    		{
+			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
+			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
+	    				} 
+		    		}
+		    		
+		    	}
+	    		int totalGamesPlayed = numOfWinGames + numOfLossGames;
+	    		if(totalGamesPlayed != 0)
+	    			lossPercentage = (double)(numOfLossGames*100)/totalGamesPlayed;
+	    	}
+    	}
+    	
+    	String lossPercentageStr = lossPercentage+"";
+    	if(lossPercentageStr.indexOf(".") > 0 && lossPercentageStr.substring(lossPercentageStr.indexOf(".")).length() > 3)
+    		return lossPercentageStr.substring(0, lossPercentageStr.indexOf(".")+3)+"%";
+    	else
+    		return lossPercentageStr+"%";
+    
     }
     
     /**

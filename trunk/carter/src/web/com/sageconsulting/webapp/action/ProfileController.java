@@ -123,7 +123,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("registeredSeason", this.getOpenEntryRegistrations(user));
             view.addObject("seasonStarted", this.getCurrentSeasonStarted(user));
             view.addObject("percentageGamesWon", getGamesWonPercentage(user, request.getLocale()));
-            view.addObject("percentageGamesLoss", getGamesLossPercentage(user, request.getLocale()));
+           // view.addObject("percentageGamesLoss", getGamesLossPercentage(user, request.getLocale()));
             updateBirdieCount(view, user);
             updatePlayingPrefForMixedDoubles(user.getPlayingPreference());
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
