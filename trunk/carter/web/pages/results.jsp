@@ -9,6 +9,7 @@
 <c:if test="${enterScores}">
 	<script type="text/javascript">
 	$(function() {
+		$("#player1set1").focus();
 		$("#played").datepicker({showOn: 'button', buttonImage: 'images/calendar-icon.jpg', buttonImageOnly: true});
 		
 		//fix for safari
@@ -43,16 +44,142 @@
 			var playedDate = new Date(yr, mon-1, dt);
 			
 			if (playedDate > currentDate)
-				cglAlert('Invalid Action',"Played date should be current or past date",300);
-			else
 			{
-				document.getElementById('bVerify').value = 'true';
-				document.getElementById('matchForm').submit();
-			}	
+				cglAlert('Invalid Action',"Played date should be current or past date",300);
+				return;
+			}
 		}
 		else
 			cglAlert('Invalid Action',"Played date should be in 'mm/dd/yyyy' format.",300);
+		
+		
+		var player1set1 = $("#player1set1").val();
+		var player2set1 = $("#player2set1").val();
+		var player1set2 = $("#player1set2").val();
+		var player2set2 = $("#player2set2").val();
+		var player1set3 = $("#player1set3").val();
+		var player2set3 = $("#player2set3").val();
+		
+		var player1set1sup = $("#player1set1sup").val();
+		var player2set1sup = $("#player2set1sup").val();
+		var player1set2sup = $("#player1set2sup").val();
+		var player2set2sup = $("#player2set2sup").val();
+		var player1set3sup = $("#player1set3sup").val();
+		var player2set3sup = $("#player2set3sup").val();
+		
+		var isValid = new Boolean(true);
+		
+		if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
+		{
+			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			return;
+		}
+		
+		// set 1 validate
+		if(player1set1 > player2set1)
+			isValid = checkValidScores(player1set1,player2set1,player1set1sup,player2set1sup);
+		else if(player2set1 > player1set1)
+			isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup);
+		else
+		{
+			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			return;
+		}
+		
+		
+		if(!isValid)
+			return;
+		
+		// set 2 validate
+		if(player1set2 > player2set2)
+			isValid = checkValidScores(player1set2,player2set2,player1set2sup,player2set2sup);
+		else if(player2set2 > player1set2)
+			isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup);
+		else
+		{
+			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			return;
+		}
+		
+		
+		if(!isValid)
+			return;
+		
+		// set 3 validate
+		if(player1set3 > player2set3)
+			isValid = checkValidScores(player1set3,player2set3,player1set3sup,player2set3sup);
+		else if(player2set3 > player1set3)
+			isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup);
+		else
+		{
+			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			return;
+		}
+		
+		if(!isValid)
+			return;
+		
+		document.getElementById('bVerify').value = 'true';
+		document.getElementById('matchForm').submit();
+		
 	}
+	
+	function checkValidScores(player1score, player2score, player1tiescore, player2tiescore)
+	{
+		if(player1score < 6)
+		{
+			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			return false;
+		}
+		
+		if(player1score == 7 && player2score == 6)
+		{
+			if(player1tiescore < 7)
+			{
+				cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
+				return false;
+			}
+			if(player1tiescore - player2tiescore < 2)
+			{
+				cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
+				return false;
+			}
+			if(player1tiescore > 7 && (player1tiescore - player2tiescore > 2))
+			{
+				cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
+				return false;
+			}
+			
+		}
+		else
+		{
+			if(player1tiescore != 0 || player2tiescore != 0)
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return false;
+			}
+		}
+		
+		if((player1score - player2score) < 2)
+		{
+			if(player1score != 7 || player2score != 6)
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return false;
+			}
+		}
+		else if((player1score - player2score) > 1)
+		{
+			if(player1score == 7 && player2score != 5)
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	</script>
 </c:if>
 
@@ -281,40 +408,40 @@
 				
 					<div class="onecolw">
 	 					<fieldset>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set1" id="player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set1" id="player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
 	 					</fieldset>
 	 				</div>
 	 				<div class="onecolw">
 	 					<fieldset>
-	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
-	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set1Sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
-	 					</fieldset>
-	 				</div>
-	 				
-	 				<div class="onecolw">
-	 					<fieldset>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/>
-	 					</fieldset>
-	 				</div>
-	 				<div class="onecolw">
-	 					<fieldset>
-	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
-	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set2Sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" id="player1set1sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set1Sup" id="player2set1sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
 	 					</fieldset>
 	 				</div>
 	 				
 	 				<div class="onecolw">
 	 					<fieldset>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
-	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set2" id="player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set2" id="player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/>
 	 					</fieldset>
 	 				</div>
 	 				<div class="onecolw">
 	 					<fieldset>
-	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
-	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set3Sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" id="player1set2sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set2Sup" id="player2set2sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
+	 					</fieldset>
+	 				</div>
+	 				
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set3" id="player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
+	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set3" id="player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
+	 					</fieldset>
+	 				</div>
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" id="player1set3sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
+	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set3Sup" id="player2set3sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
 	 					</fieldset>
 	 				</div>
  				</div>

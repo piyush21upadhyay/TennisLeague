@@ -149,10 +149,13 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
      * @param playingPreferenceArr
      */
     private void updatePlayingPrefForMixedDoubles(String[] playingPreferenceArr) {
-    	for(int i=0;i<playingPreferenceArr.length;i++){
-    		if("Mixeddoubles".equals(playingPreferenceArr[i])){
-    			playingPreferenceArr[i]="Mixed Doubles";
-    		}
+    	if(null != playingPreferenceArr)
+    	{
+	    	for(int i=0;i<playingPreferenceArr.length;i++){
+	    		if("Mixeddoubles".equals(playingPreferenceArr[i])){
+	    			playingPreferenceArr[i]="Mixed Doubles";
+	    		}
+	    	}
     	}
 	}
 

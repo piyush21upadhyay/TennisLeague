@@ -433,7 +433,7 @@ public class RegistrationController extends BaseFormController
         		totalRegBasedOnCityMatchPrefPlayerLvlAndGender=new ArrayList<Registration>();
         		for(Registration registration: openRegistrationsForCity){
         			
-        			String userGender=user.getMale()==true?"Male":"Female";
+        			String userGender=user.getMale()==true?"Men's":"Women's";
         			List<String> userPlayingPrefList=Arrays.asList(user.getPlayingPreference());
         			
         			for(String gender:registration.getGender()){
