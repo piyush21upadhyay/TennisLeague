@@ -453,63 +453,84 @@ public class User extends BaseObject implements Serializable, UserDetails
     	int seasonPoints = 0;
     	if(null != this.currentSeason)
     	{
-    	SortedSet<Match> matches = this.currentSeason.getMatches();
-    	if(null != matches)
-    	{
-    		for(Match match : matches)
+	    	SortedSet<Match> matches = this.currentSeason.getMatches();
+	    	if(null != matches)
 	    	{
-	    		if(match.getPlayed() != null)
-	    		{
-		    		boolean isStraightWin = false;
-		    		int pointsForMatch = 0;
-		    		if(match.getGolfer1().id == this.id)
+	    		for(Match match : matches)
+		    	{
+		    		if(match.getPlayed() != null)
 		    		{
-			    		if(match.getScore().getPlayer1set1() > match.getScore().getPlayer2set1()){
-			    			pointsForMatch += 1;
-			    			if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2())
-			    			{
-			    				pointsForMatch +=2;
-			    				isStraightWin = true;
-			    			}
-			    		}
-			    		if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2() && !isStraightWin)
-		    			{
-		    				pointsForMatch +=1;
-		    			}
-			    		if(match.getScore().getPlayer1set3() > match.getScore().getPlayer2set3() && !isStraightWin)
+			    		boolean isStraightWin = false;
+			    		boolean isStraightLose = false;
+			    		int numberOfSetsWon = 0;
+			    		int pointsForMatch = 0;
+			    		if(null != match.getDefaultWinner() && this.id == match.getDefaultWinner().id)
 			    		{
-			    			pointsForMatch += 1;
+			    			pointsForMatch += 2;
 			    		}
-		    		}
-		    		else if(match.getGolfer2().id == this.id )
-		    		{
-		    			if(match.getScore().getPlayer2set1() > match.getScore().getPlayer1set1()){
-			    			pointsForMatch += 1;
-			    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2())
-			    			{
-			    				pointsForMatch +=2;
-			    				isStraightWin = true;
-			    			}
-			    		}
-		    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2() && !isStraightWin)
-		    			{
-		    				pointsForMatch +=1;
-		    			}
-			    		if(match.getScore().getPlayer2set3() > match.getScore().getPlayer1set3() && !isStraightWin)
+			    		else if(match.getGolfer1().id == this.id)
 			    		{
-			    			pointsForMatch += 1;
+				    		if(match.getScore().getPlayer1set1() > match.getScore().getPlayer2set1()){
+				    			pointsForMatch += 1;
+				    			if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2())
+				    			{
+				    				pointsForMatch +=3;
+				    				isStraightWin = true;
+				    			}
+				    			numberOfSetsWon++;
+				    		}
+				    		if(match.getScore().getPlayer1set2() > match.getScore().getPlayer2set2() && !isStraightWin)
+			    			{
+			    				pointsForMatch +=1;
+			    				numberOfSetsWon++;
+			    			}
+				    		if(numberOfSetsWon == 0)
+				    		{
+				    			isStraightLose = true;
+				    		}
+				    		if(match.getScore().getPlayer1set3() > match.getScore().getPlayer2set3() && !isStraightWin && !isStraightLose)
+				    		{
+				    			pointsForMatch += 1;
+				    			numberOfSetsWon++;
+				    		}
+				    		if(numberOfSetsWon > 1)
+				    			pointsForMatch += 1;
 			    		}
+			    		else if(match.getGolfer2().id == this.id )
+			    		{
+			    			if(match.getScore().getPlayer2set1() > match.getScore().getPlayer1set1()){
+				    			pointsForMatch += 1;
+				    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2())
+				    			{
+				    				pointsForMatch +=3;
+				    				isStraightWin = true;
+				    			}
+				    			numberOfSetsWon++;
+				    		}
+			    			if(match.getScore().getPlayer2set2() > match.getScore().getPlayer1set2() && !isStraightWin)
+			    			{
+			    				pointsForMatch +=1;
+			    				numberOfSetsWon++;
+			    			}
+			    			if(numberOfSetsWon == 0)
+				    		{
+				    			isStraightLose = true;
+				    		}
+				    		if(match.getScore().getPlayer2set3() > match.getScore().getPlayer1set3() && !isStraightWin && !isStraightLose)
+				    		{
+				    			pointsForMatch += 1;
+				    			numberOfSetsWon++;
+				    		}
+				    		if(numberOfSetsWon > 1)
+				    			pointsForMatch += 1;
+			    		}
+			    			seasonPoints += pointsForMatch; 
 		    		}
-		    			seasonPoints += pointsForMatch; 
-	    		}
-	    		
+		    		
+		    	}
 	    	}
-    	}
     }
     	
-    	/*int wins = (null == getCurrentWins()) ? 0 : getCurrentWins().intValue();
-    	int ties = (null == getCurrentTies()) ? 0 : getCurrentTies().intValue();
-    	return wins*2 + ties;*/
     	return seasonPoints;
     }
     

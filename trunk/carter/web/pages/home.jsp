@@ -365,27 +365,27 @@
 
 		<carter:button page="${url}" key="home.fullLeaderboard" fill="true"/>
 
-		<%-- <div>
+		<div>
 			<form id="leaderboard-form" name="leaderboardForm" action="home.html">
 				<select id="division" name="division" onchange="document.leaderboardForm.submit()" >
-					<option value="0"><fmt:message key="home.chooseDivision"/></option>
+					<option value="0"><fmt:message key="home.choose"/></option>
 					<c:forEach var="season" items="${seasons}">
-						<option value="<c:out value="${season.id}"/>"><c:out value="${season.division}"/></option>
+						<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/></option>
 					</c:forEach>
 				</select>
 			</form>
-		</div> --%>
+		</div>
 		
 		<br>
 		
-		<div>
+		<%-- <div>
 			<select id="matchCat" name="matchCat" >
 				<option value="0"><fmt:message key="home.chooseCategory"/></option>
 				<c:forEach var="matchCategory" items="${matchCategories}">
 					<option value="<c:out value="${matchCategory.id}"/>"><c:out value="${matchCategory.name}"/></option>
 				</c:forEach>
 			</select>
-		</div>
+		</div> --%>
 	</div>
 <%-- This is out until we get sponsors
 	<div id="home-sponsors" class="orange-title">
