@@ -67,61 +67,81 @@
 		var player1set3sup = $("#player1set3sup").val();
 		var player2set3sup = $("#player2set3sup").val();
 		
-		var isValid = new Boolean(true);
+		var isOpponentRetired = $('#opponentRetired').is(':checked'); 
 		
-		if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
-		{
-			cglAlert('Invalid Action',"Please enter a valid score.",300);
-			return;
+		//alert("isOpponentRetired=="+isOpponentRetired);
+		if(isOpponentRetired){
+			// logic has to be applied when checkbox will be checked
+		}else{
+			var isValid = new Boolean(true);
+			
+			if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return;
+			}
+			
+			// set 1 validate
+			if(player1set1 > player2set1)
+				isValid = checkValidScores(player1set1,player2set1,player1set1sup,player2set1sup);
+			else if(player2set1 > player1set1)
+				isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup);
+			else
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return;
+			}
+			
+			
+			if(!isValid)
+				return;
+			
+			// set 2 validate
+			if(player1set2 > player2set2)
+				isValid = checkValidScores(player1set2,player2set2,player1set2sup,player2set2sup);
+			else if(player2set2 > player1set2)
+				isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup);
+			else
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return;
+			}
+			
+			
+			if(!isValid)
+				return;
+			
+			// set 3 validate
+			if(player1set3 > player2set3)
+				isValid = checkValidScores(player1set3,player2set3,player1set3sup,player2set3sup);
+			else if(player2set3 > player1set3)
+				isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup);
+			else
+			{
+				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				return;
+			}
+			
+			if(!isValid)
+				return;
+			
 		}
 		
-		// set 1 validate
-		if(player1set1 > player2set1)
-			isValid = checkValidScores(player1set1,player2set1,player1set1sup,player2set1sup);
-		else if(player2set1 > player1set1)
-			isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup);
-		else
-		{
-			cglAlert('Invalid Action',"Please enter a valid score.",300);
-			return;
-		}
-		
-		
-		if(!isValid)
-			return;
-		
-		// set 2 validate
-		if(player1set2 > player2set2)
-			isValid = checkValidScores(player1set2,player2set2,player1set2sup,player2set2sup);
-		else if(player2set2 > player1set2)
-			isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup);
-		else
-		{
-			cglAlert('Invalid Action',"Please enter a valid score.",300);
-			return;
-		}
-		
-		
-		if(!isValid)
-			return;
-		
-		// set 3 validate
-		if(player1set3 > player2set3)
-			isValid = checkValidScores(player1set3,player2set3,player1set3sup,player2set3sup);
-		else if(player2set3 > player1set3)
-			isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup);
-		else
-		{
-			cglAlert('Invalid Action',"Please enter a valid score.",300);
-			return;
-		}
-		
-		if(!isValid)
-			return;
 		
 		document.getElementById('bVerify').value = 'true';
 		document.getElementById('matchForm').submit();
 		
+	}
+	
+	function boxDisable(){
+		//var isOpponentRetired = $("#opponentRetired").val();
+		var isOpponentRetired = $('#opponentRetired').is(':checked'); 
+		if(isOpponentRetired){
+			$('#player1set3').attr("disabled", true);
+			$('#player2set3').attr("disabled", true);
+			$('#player1set3sup').attr("disabled", true);
+			$('#player2set3sup').attr("disabled", true); 
+		}
 	}
 	
 	function checkValidScores(player1score, player2score, player1tiescore, player2tiescore)
@@ -444,6 +464,13 @@
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set3Sup" id="player2set3sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
 	 					</fieldset>
 	 				</div>
+	 				<!-- Changes for Opponent Required -->
+	 				<div class="onecolw">
+	 					<fieldset>
+	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" onclick="boxDisable();"/> 
+	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
+	 					</fieldset>
+	 				</div>
  				</div>
 			</div>
 			</div>
@@ -560,6 +587,7 @@
 				<form:hidden path="score.player2set1Sup"/>
 				<form:hidden path="score.player2set2Sup"/>
 				<form:hidden path="score.player2set3Sup"/>
+				<form:hidden path="score.opponentRetired"/>
 			</c:if>
 			
 			<c:if test="${match.defaultWin}">

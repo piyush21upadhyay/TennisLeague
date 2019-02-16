@@ -33,6 +33,8 @@ public class MatchScore implements Serializable
     private int player2set2Sup;
     private int player2set3Sup;
     
+    private Long opponentRetired;
+    
     /**
      * @hibernate.property column="p1set1" lazy="false"
      */
@@ -159,7 +161,18 @@ public class MatchScore implements Serializable
 	public void setPlayer2set3Sup(int player2set3Sup) {
 		this.player2set3Sup = player2set3Sup;
 	}
-        
+
+	/**
+     * @hibernate.property column="opponentRetired" lazy="false"
+     */
+	public Long getOpponentRetired() {
+		return opponentRetired;
+	}
+
+	public void setOpponentRetired(Long opponentRetired) {
+		this.opponentRetired = opponentRetired;
+	}
+
     }
 
 	

@@ -340,7 +340,15 @@ public class ResultsController extends BaseFormController
             		this.getUserManager().updateChampionIcon(winner);
             	}
             }
-           
+           /***Changes for opponent retired starts*****/
+            if(1==match.getScore().getOpponentRetired()){
+            	User currUser=this.getCurrentUser(request);
+            	Long p1UserId=match.getGolfer1().getId();
+            	Long p2UserId=match.getGolfer2().getId();
+            	
+            	match.getScore().setOpponentRetired(currUser.getId().compareTo(p1UserId)==0?p2UserId:p1UserId);
+            }
+            /***Changes for opponent retired ends*****/
             
             this.matchManager.saveMatch(match);
             
