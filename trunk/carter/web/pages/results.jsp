@@ -20,6 +20,9 @@
 				height: 21
 			});
 		}
+		
+		// on page load, check for opponent retired
+		boxDisable();
 	});
 	
 	$(".inputs").keyup(function () {
@@ -68,12 +71,50 @@
 		var player2set3sup = $("#player2set3sup").val();
 		
 		var isOpponentRetired = $('#opponentRetired').is(':checked'); 
-		
+		var isValid = new Boolean(true);
 		//alert("isOpponentRetired=="+isOpponentRetired);
 		if(isOpponentRetired){
 			// logic has to be applied when checkbox will be checked
+				if(player1set1 == 0 &&  player2set1 == 0 && player1set2 == 0 && player2set2 == 0)
+				{
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
+					return;
+				}
+				if(player1set1 > 7 || player2set1 > 7 || player1set2 > 6 || player2set2 > 6 || player1set3 > 0 || player2set3 > 0)
+				{
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
+					return;
+				}
+			
+				// set 1 validate
+				if(player1set1 > player2set1 && (player1set2 > 0 || player2set2 > 0))
+					isValid = checkValidScores(player1set1,player2set1,player1set1sup,player2set1sup);
+				else if(player2set1 > player1set1 && (player1set2 > 0 || player2set2 > 0))
+					isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup);
+				else if(player1set2 > 0 || player2set2 > 0)
+				{
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
+					return;
+				}
+				
+				if(player1set2 == 6)
+				{
+					if(player1set2 - player2set2 > 1)
+						{
+						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
+						return;
+						}
+				}
+				else if(player2set2 == 6)
+				{
+					if(player2set2 - player1set2 > 1)
+					{
+						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
+						return;
+					}
+				}
+				
 		}else{
-			var isValid = new Boolean(true);
 			
 			if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
 			{
@@ -141,6 +182,12 @@
 			$('#player2set3').attr("disabled", true);
 			$('#player1set3sup').attr("disabled", true);
 			$('#player2set3sup').attr("disabled", true); 
+		}
+		else{
+			$('#player1set3').attr("disabled", false);
+			$('#player2set3').attr("disabled", false);
+			$('#player1set3sup').attr("disabled", false);
+			$('#player2set3sup').attr("disabled", false); 
 		}
 	}
 	
@@ -355,6 +402,9 @@
 						</c:when>
 						<c:when test="${match.defaultWin}">
 							<c:out value="${match.defaultWinner.fullName}"/> <fmt:message key="results.defaultWin"/>
+						</c:when>
+						<c:when test="${(null != match.score.opponentRetired)}">
+							<c:out value="${match.result.winner.fullName}"/> <fmt:message key="results.wins"/> <fmt:message key="results.opponentRetired"/>
 						</c:when>
 						<c:otherwise>
 							<c:out value="${match.result.winner.fullName}"/>

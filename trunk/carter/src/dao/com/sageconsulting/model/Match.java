@@ -151,6 +151,13 @@ public class Match extends BaseObject implements Serializable
         return (null != this.defaultWinner);
     }
     
+    public boolean isOpponentRetiredWin()
+    {
+    	if(null != this.score.getOpponentRetired())
+    		return true;
+    	return false;
+    }
+    
     public boolean isBye()
     {
         return ((null == this.golfer1) || (null == this.golfer2));

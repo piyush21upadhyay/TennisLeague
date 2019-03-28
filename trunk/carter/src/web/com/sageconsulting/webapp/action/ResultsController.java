@@ -134,6 +134,13 @@ public class ResultsController extends BaseFormController
     	return (null != cancel) && cancel.equals("true"); //$NON-NLS-1$
     }
     
+    private boolean isOpponentRetired(Match match)
+    {
+    	
+    	return null != match && null != match.getScore() && null != match.getScore().getOpponentRetired();
+    			//&& 1==match.getScore().getOpponentRetired();
+    }
+    
     /**
      * Return true if this request was created by the user pressing "Post" button on
      * the first entry screen.
@@ -235,13 +242,22 @@ public class ResultsController extends BaseFormController
             // TODO: Akash
             //match.getScore().computeStrokes(match.getCourse(), match.getGolfer1(), match.getGolfer2());
             //match.getScore().computeMatchScore();
+            
+            if(isOpponentRetired(match)){
+            	User currUser=this.getCurrentUser(request);
+            	Long p1UserId=match.getGolfer1().getId();
+            	Long p2UserId=match.getGolfer2().getId();
+            	
+            	match.getScore().setOpponentRetired(currUser.getId().compareTo(p1UserId)==0?p2UserId:p1UserId);
+            }
 
             ModelAndView view = new ModelAndView();
             view.addObject(CMD_NAME, command);
             view.addObject(ENTER_SCORES, Boolean.FALSE);
+            view.addObject("user", this.getCurrentUser(request));
             if(isAdministratorEdit(request))
             {
-            	view.addObject("user", this.getCurrentUser(request));
+            	//view.addObject("user", this.getCurrentUser(request));
             	view.addObject("isAdministrator", true);
             }
             
@@ -256,6 +272,13 @@ public class ResultsController extends BaseFormController
             {
                 User user = this.getCurrentUser(request);
                 match.setDefaultWinner(user);
+            }
+            else if(isOpponentRetired(match)){
+            	User currUser=this.getCurrentUser(request);
+            	Long p1UserId=match.getGolfer1().getId();
+            	Long p2UserId=match.getGolfer2().getId();
+            	
+            	match.getScore().setOpponentRetired(currUser.getId().compareTo(p1UserId)==0?p2UserId:p1UserId);
             }
             else
             {
@@ -341,13 +364,13 @@ public class ResultsController extends BaseFormController
             	}
             }
            /***Changes for opponent retired starts*****/
-            if(1==match.getScore().getOpponentRetired()){
+            /*if(1==match.getScore().getOpponentRetired()){
             	User currUser=this.getCurrentUser(request);
             	Long p1UserId=match.getGolfer1().getId();
             	Long p2UserId=match.getGolfer2().getId();
             	
             	match.getScore().setOpponentRetired(currUser.getId().compareTo(p1UserId)==0?p2UserId:p1UserId);
-            }
+            }*/
             /***Changes for opponent retired ends*****/
             
             this.matchManager.saveMatch(match);

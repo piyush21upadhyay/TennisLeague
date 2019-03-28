@@ -37,6 +37,22 @@ public class MatchResult
        
     private void computeResults()
     {
+    	
+    	if(match.isOpponentRetiredWin())
+    	{
+    		if(this.match.getGolfer1().getId().equals(match.getScore().getOpponentRetired()))
+    		{
+    			this.winner = this.match.getGolfer2();
+                this.loser = this.match.getGolfer1();
+                return;
+    		}
+    		else if(this.match.getGolfer2().getId().equals(match.getScore().getOpponentRetired()))
+    		{
+    			this.winner = this.match.getGolfer1();
+                this.loser = this.match.getGolfer2();
+                return;
+    		}
+    	}
      
     	int player1SetWinCount = 0;
     	int player2SetWinCount = 0;

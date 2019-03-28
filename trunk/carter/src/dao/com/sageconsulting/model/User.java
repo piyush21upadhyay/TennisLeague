@@ -468,6 +468,12 @@ public class User extends BaseObject implements Serializable, UserDetails
 			    		{
 			    			pointsForMatch += 2;
 			    		}
+			    		else if(null != match.getScore().getOpponentRetired() 
+			    				&& (this.id == match.getGolfer1().id || this.id == match.getGolfer2().id))
+			    		{
+			    			if(!this.id.equals(match.getScore().getOpponentRetired()))
+			    				pointsForMatch += 3;
+			    		}
 			    		else if(match.getGolfer1().id == this.id)
 			    		{
 				    		if(match.getScore().getPlayer1set1() > match.getScore().getPlayer2set1()){
