@@ -59,6 +59,12 @@ public class SeasonResult
 		    		{
 		    			pointsForMatch += 2;
 		    		}
+		    		else if(match.isBye())
+		    		{
+		    			if((null != match.getGolfer1() && this.user.getId() == match.getGolfer1().getId()) 
+		    					|| (null != match.getGolfer2() && this.user.getId() == match.getGolfer2().getId()))
+		    				pointsForMatch += 2;
+		    		}
 		    		else if(null != match.getScore().getOpponentRetired() 
 		    				&& (this.user.getId() == match.getGolfer1().getId() || this.user.getId() == match.getGolfer2().getId()))
 		    		{
