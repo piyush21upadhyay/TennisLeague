@@ -222,10 +222,11 @@
               </div>
           </div>
       </div>
-      <div class="component-page">
-      
+      <!-- <div class="component-page"> -->
+  
+ <!-- Code commented as per requirement given by the PPT named 'Changes 3_3_2019' ends --> 
       <!-- Match 1 Set 1 starts -->
-		<div class="column-3">
+<%-- 		<!--<div class="column-3">
 			<div class="char">
 				<c:choose>
 					<c:when test="${match.score.player1set1 > match.score.player2set1}"> W </c:when>
@@ -308,187 +309,8 @@
 				</tbody>
 			</table>
 		</div>
+	</div> --%>
 	<!-- Match 1 Set 3 ends -->
-	</div>
       
-      <!-- Dynamic done upto here, Need more clarity to do further -->
-       
-      <%-- <div class="component-page">
-          <div class="trophy">
-                    <table class="centerAlign">
-                        <tbody>
-                        <tr>
-                             <td style="text-align: right; font-weight: bold;">
-                                  <p>PORTLAND Spring 2018</p> 
-                                   <p>5 Wins 1 loss</p> 
-                                   <p>Champion </p>
-                             </td>
-                            <td class=" leftAlign strong">
-                               <img src="images/trophy.png" alt="trophy" width="60" height="60">
-                             </td>
-                        </tr>
-                    </tbody>
-                </table>
-          </div>
-      </div>   
-         <div class="component-page">
-        <div class="column-3">
-          <div class="char"> L </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div>  
-             <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      </div> 
-         <div class="component-page">
-        <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                      
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                      
-                        </tr>
-                    </tbody>
-                </table>
-            </div>  
-             <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                     
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      </div> 
-        <h3 style="text-align:center;text-transform: uppercase;font-weight: bold;">Playoffs</h3>
-         <div class="component-page">
-        <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                    
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                     
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div>  
-             <div class="column-3">
-          <div class="char"> W </div>
-                 <table class="centerAlign score-table">
-                        <tbody>
-                        <tr>
-                            <td class=" leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
-                            <td>7 </td>
-                                                      
-                        </tr>
-                      <tr>
-                            <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer2.icon}"/>" alt="flag"><c:out value="${match.golfer2.fullName}"/></td>
-                            <td>6  </td>
-                                                       
-                        </tr>
-                    </tbody>
-                </table>
-            </div> 
-      </div>  --%>
+<!-- Code commented as per requirement given by the PPT named 'Changes 3_3_2019' ends -->
   </div>

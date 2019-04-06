@@ -118,7 +118,7 @@
 			
 			if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return;
 			}
 			
@@ -129,7 +129,7 @@
 				isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup);
 			else
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2Valid scores are:\n 6 6 6 6 6 6 7 7\n0 1 2 3 4 5 6",300);
 				return;
 			}
 			
@@ -144,7 +144,7 @@
 				isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup);
 			else
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return;
 			}
 			
@@ -152,26 +152,43 @@
 			if(!isValid)
 				return;
 			
-			// set 3 validate
-			if(player1set3 > player2set3)
-				isValid = checkValidScores(player1set3,player2set3,player1set3sup,player2set3sup);
-			else if(player2set3 > player1set3)
-				isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup);
-			else
-			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
-				return;
+			var areFirstTwoSetsWon = new Boolean(false);
+			areFirstTwoSetsWon=areTheFirstTwoSetsWon(player1set1,player2set1,player1set2,player2set2);
+			alert("areFirstTwoSetsWon::"+areFirstTwoSetsWon);
+			
+			if(!areFirstTwoSetsWon){
+				// set 3 validate
+				if(player1set3 > player2set3)
+					isValid = checkValidScores(player1set3,player2set3,player1set3sup,player2set3sup);
+				else if(player2set3 > player1set3)
+					isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup);
+				else
+				{
+					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
+					return;
+				}
+				
+				if(!isValid)
+					return;
+			}else{
+				//show the error message if user enters any value>0 to third set
+				if(player1set3>0 || player2set3>0 ||player1set3sup>0 || player2set3sup>0){
+					cglAlert('Invalid Action',"The third set value should be zero as its a straight set win.",300);
+					return;
+				}
 			}
-			
-			if(!isValid)
-				return;
-			
 		}
 		
 		
 		document.getElementById('bVerify').value = 'true';
 		document.getElementById('matchForm').submit();
 		
+	}
+	
+	function areTheFirstTwoSetsWon(player1set1,player2set1,player1set2,player2set2){
+		alert("hello");
+		if((player1set1>player2set1 && player1set2>player2set2) || (player2set1>player1set1 && player2set2>player1set2))
+			return true;
 	}
 	
 	function boxDisable(){
@@ -195,7 +212,7 @@
 	{
 		if(player1score < 6)
 		{
-			cglAlert('Invalid Action',"Please enter a valid score.",300);
+			cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 			return false;
 		}
 		
@@ -222,7 +239,7 @@
 		{
 			if(player1tiescore != 0 || player2tiescore != 0)
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
@@ -231,7 +248,7 @@
 		{
 			if(player1score != 7 || player2score != 6)
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
@@ -239,7 +256,7 @@
 		{
 			if(player1score == 7 && player2score != 5)
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
@@ -542,7 +559,7 @@
 							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
 							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/>-<c:out value="${match.golfer1.currentTies}"/></a></p>
+							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
 							<p>
 							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer1.id}"/>">
 								<fmt:message key="members.schedule">
@@ -568,7 +585,7 @@
 							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
 							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/>-<c:out value="${match.golfer2.currentTies}"/></a></p>
+							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
 							<p>
 							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
 								<fmt:message key="members.schedule">
@@ -588,6 +605,7 @@
 					<div class="left">
 						<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('matchForm').submit();return false;" key="button.cancel"/>
 					</div>
+				
 					<div class="clear"></div>
 					<div>
 						<a class="msg-link" onclick="document.getElementById('bDefault').value='true';document.getElementById('matchForm').submit();return false;" href="javascript:{}"><fmt:message key="button.default"/></a>

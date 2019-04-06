@@ -10,9 +10,9 @@
 	<div class="left userInfo">
 		<p class="user"><c:out value="${user.fullName}"/>&nbsp;&nbsp;
 		<c:choose>
-			<c:when test="${user.currentSeason.state == 4 and empty matches}">0-0-0</c:when>
+			<c:when test="${user.currentSeason.state == 4 and empty matches}">0-0</c:when>
 			<c:otherwise>	
-				<c:out value="${user.currentWins}"/>-<c:out value="${user.currentLosses}"/>-<c:out value="${user.currentTies}"/>
+				<c:out value="${user.currentWins}"/>-<c:out value="${user.currentLosses}"/><%-- -<c:out value="${user.currentTies}"/> --%>
 			</c:otherwise>
 		</c:choose>	
 		</p>
@@ -28,7 +28,7 @@
 <div  class="section">
 <c:choose>
 <c:when test="${user.currentSeason.state != 4}">
-	<c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/><c:out value="${user.currentTies} Ties"/>
+	<c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/><%-- <c:out value="${user.currentTies} Ties"/> --%>
 </c:when>
 </c:choose>
 <%-- <p style="text-transform: uppercase;"><c:out value="${user.firstName}"/><br><c:out value="${user.lastName}"/></p>
