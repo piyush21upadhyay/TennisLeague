@@ -174,18 +174,18 @@ public class User extends BaseObject implements Serializable, UserDetails
     
     public String getCurrentRecord()
     {
-        return getRecord(getCurrentWins(), getCurrentLosses(), getCurrentTies());
+        return getRecord(getCurrentWins(), getCurrentLosses()/*, getCurrentTies()*/);
     }
     
     public String getOverallRecord()
     {
-        return getRecord(getTotalWins(), getTotalLosses(), getTotalTies());
+        return getRecord(getTotalWins(), getTotalLosses()/*, getTotalTies()*/);
     }
     
-    private String getRecord(Integer wins, Integer losses, Integer ties)
+    private String getRecord(Integer wins, Integer losses/*, Integer ties*/)
     {
-        StringBuilder sb = new StringBuilder(wins.toString()).append('-').append(losses).
-            append('-').append(ties);
+        StringBuilder sb = new StringBuilder(wins.toString()).append('-').append(losses)/*.
+            append('-').append(ties)*/;
         return sb.toString();
     }
     
