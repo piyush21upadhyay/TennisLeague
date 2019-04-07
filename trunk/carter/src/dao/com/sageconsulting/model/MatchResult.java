@@ -53,6 +53,21 @@ public class MatchResult
                 return;
     		}
     	}
+    	else if(match.isDefaultWin())
+    	{
+    		if(match.getGolfer1().getId().equals(match.getDefaultWinner().getId()))
+    		{
+    			this.winner = this.match.getGolfer1();
+                this.loser = this.match.getGolfer2();
+                return;
+    		}
+    		else if(match.getGolfer2().getId().equals(match.getDefaultWinner().getId()))
+    		{
+    			this.winner = this.match.getGolfer2();
+                this.loser = this.match.getGolfer1();
+                return;
+    		}
+    	}
      
     	int player1SetWinCount = 0;
     	int player2SetWinCount = 0;

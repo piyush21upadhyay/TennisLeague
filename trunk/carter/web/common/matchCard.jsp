@@ -32,6 +32,19 @@
             .score-list{
                   width: 65%;
                  float: right;
+                 margin-right: -10px;
+            }
+            .match-status{
+                  width: 5%;
+                 float: left;
+                 font-weight: bold;
+                 font-size: 30px;
+            }
+            .match-date{
+                  width: 40%;
+                 float: right;
+                 margin-right: -10px;
+                 margin-top:-27px;
             }
             .super{
                 vertical-align: super;
@@ -126,100 +139,141 @@
               <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               </div>
-              <div class="score-list">
-                    <table class="centerAlign linescore">
-                        <tbody>
-                        <tr>
-                            <td class="  leftAlign strong"><c:out value="${match.golfer1.fullName}"/></td>
-        					<c:choose>
-								<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
-									<td class="strong runs">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-                            <c:out value="${match.score.player1set1} "/>
-                            <c:if test="${(null != match.score.player1set1Sup) && match.score.player1set1Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player1set1Sup}"/></span>
-                            </c:if>
-                            </td>
+              
+              <div class="match-status">
+	              <c:choose>
+						<c:when test="${match.golfer1.id == match.result.winner.id}">
+						<%= "W" %> 
+						</c:when>
+						<c:otherwise>
+						<%= "L" %> 
+						</c:otherwise>
+					</c:choose>
+              </div>
+              
+              <c:choose>
+				<c:when test="${match.defaultWin}">
+					<div class="score-list">
+              			<p><fmt:message key="record.defaultWin"/></p>
+              		</div>
+              	</c:when>
+              	<c:when test="${match.bye}">
+					<div class="score-list">
+              			<p><fmt:message key="record.byeWin"/></p>
+              		</div>
+              	</c:when>
+              	<c:otherwise>
+              		<div class="score-list">
+                    	<table class="centerAlign linescore">
+                        	<tbody>
+                        	<tr>
+                            	<td class="  leftAlign strong"><c:out value="${match.golfer1.fullName}"/></td>
+        							<c:choose>
+										<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
+											<td class="strong runs">
+										</c:when>
+										<c:otherwise>
+											<td>
+										</c:otherwise>
+									</c:choose>
+                            				<c:out value="${match.score.player1set1} "/>
+                            			<c:if test="${(null != match.score.player1set1Sup) && match.score.player1set1Sup > 0}">
+                            				<span class="super"><c:out value="${match.score.player1set1Sup}"/></span>
+                            			</c:if>
+                            				</td>
                             
-                            <c:choose>
-								<c:when test="${match.score.player1set2 > match.score.player2set2}"> 
-									<td class="strong runs">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-                            <c:out value="${match.score.player1set2} "/>
-                            <c:if test="${(null != match.score.player1set2Sup) && match.score.player1set2Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player1set2Sup}"/></span>
-                            </c:if>
-                            </td>
+                            		<c:choose>
+										<c:when test="${match.score.player1set2 > match.score.player2set2}"> 
+											<td class="strong runs">
+										</c:when>
+										<c:otherwise>
+											<td>
+										</c:otherwise>
+									</c:choose>
+                            				<c:out value="${match.score.player1set2} "/>
+                            				<c:if test="${(null != match.score.player1set2Sup) && match.score.player1set2Sup > 0}">
+                            					<span class="super"><c:out value="${match.score.player1set2Sup}"/></span>
+                            				</c:if>
+                            				</td>
                             
-                            <c:choose>
-								<c:when test="${match.score.player1set3 > match.score.player2set3}"> 
-									<td class="strong runs">
-								</c:when>
+                            		<c:choose>
+										<c:when test="${match.score.player1set3 > match.score.player2set3}"> 
+											<td class="strong runs">
+										</c:when>
+										<c:otherwise>
+											<td>
+										</c:otherwise>
+									</c:choose>
+                            				<c:out value="${match.score.player1set3} "/>
+                            				<c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
+                            					<span class="super"><c:out value="${match.score.player1set3Sup}"/></span>
+                            				</c:if>
+                            				</td>
+                        	</tr>
+                      		<tr>
+                            	   <td class="  leftAlign strong"><c:out value="${match.golfer2.fullName}"/></td>
+                           		<c:choose>
+									<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
+										<td class="strong runs">
+									</c:when>
 								<c:otherwise>
-									<td>
+										<td>
 								</c:otherwise>
-							</c:choose>
-                            <c:out value="${match.score.player1set3} "/>
-                            <c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player1set3Sup}"/></span>
-                            </c:if>
-                            </td>
-                        </tr>
-                      	<tr>
-                               <td class="  leftAlign strong"><c:out value="${match.golfer2.fullName}"/></td>
-                           <c:choose>
-								<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
-									<td class="strong runs">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-							<c:out value="${match.score.player2set1} "/> 
-							 <c:if test="${(null != match.score.player2set1Sup) && match.score.player2set1Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player2set1Sup}"/></span>
-                            </c:if>
-							</td>
+								</c:choose>
+									<c:out value="${match.score.player2set1} "/> 
+							 			<c:if test="${(null != match.score.player2set1Sup) && match.score.player2set1Sup > 0}">
+                            			<span class="super"><c:out value="${match.score.player2set1Sup}"/></span>
+                            			</c:if>
+										</td>
 							
-                            <c:choose>
-								<c:when test="${match.score.player2set2 > match.score.player1set2}"> 
-									<td class="strong runs">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-							<c:out value="${match.score.player2set2} "/>
-							<c:if test="${(null != match.score.player2set2Sup) && match.score.player2set2Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player2set2Sup}"/></span>
-                            </c:if>
-							</td>
+                        	    <c:choose>
+									<c:when test="${match.score.player2set2 > match.score.player1set2}"> 
+										<td class="strong runs">
+									</c:when>
+									<c:otherwise>
+										<td>
+									</c:otherwise>
+								</c:choose>
+									<c:out value="${match.score.player2set2} "/>
+									<c:if test="${(null != match.score.player2set2Sup) && match.score.player2set2Sup > 0}">
+                            			<span class="super"><c:out value="${match.score.player2set2Sup}"/></span>
+                            		</c:if>
+									</td>
 							
-                            <c:choose>
-								<c:when test="${match.score.player2set3 > match.score.player1set3}"> 
-									<td class="strong runs">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-							<c:out value="${match.score.player2set3} "/>
-							<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
-                            	<span class="super"><c:out value="${match.score.player2set3Sup}"/></span>
-                            </c:if>
-							</td>
+                            	<c:choose>
+									<c:when test="${match.score.player2set3 > match.score.player1set3}"> 
+										<td class="strong runs">
+									</c:when>
+									<c:otherwise>
+										<td>
+									</c:otherwise>
+								</c:choose>
+									<c:out value="${match.score.player2set3} "/>
+									<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
+                            			<span class="super"><c:out value="${match.score.player2set3Sup}"/></span>
+                            		</c:if>
+									</td>
                         </tr>
                     </tbody>
                 </table>
               </div>
+              </c:otherwise>
+             </c:choose>
+              
+              <div class="match-date"> 
+				<c:choose>
+					<c:when test="${not empty match.played}">
+						Played on : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.played}"/>
+					</c:when>
+					<c:when test="${empty match.played and empty match.golfer2}">
+			 			Played By : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.playBy}"/>
+			 		</c:when>
+	    			<c:otherwise>
+	    				
+	    			</c:otherwise>
+	    		</c:choose>
+              </div>
+              
           </div>
       </div>
       <!-- <div class="component-page"> -->

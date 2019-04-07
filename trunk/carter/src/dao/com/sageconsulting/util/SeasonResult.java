@@ -55,16 +55,12 @@ public class SeasonResult
 		    		boolean isStraightLose = false;
 		    		int numberOfSetsWon = 0;
 		    		int pointsForMatch = 0;
+		    		
 		    		if(null != match.getDefaultWinner() && this.user.getId() == match.getDefaultWinner().getId())
 		    		{
 		    			pointsForMatch += 2;
 		    		}
-		    		else if(match.isBye())
-		    		{
-		    			if((null != match.getGolfer1() && this.user.getId() == match.getGolfer1().getId()) 
-		    					|| (null != match.getGolfer2() && this.user.getId() == match.getGolfer2().getId()))
-		    				pointsForMatch += 2;
-		    		}
+		    		
 		    		else if(null != match.getScore().getOpponentRetired() 
 		    				&& (this.user.getId() == match.getGolfer1().getId() || this.user.getId() == match.getGolfer2().getId()))
 		    		{
@@ -128,6 +124,12 @@ public class SeasonResult
 			    			pointsForMatch += 1;
 		    		}
 		    			seasonPoints += pointsForMatch; 
+	    		}
+	    		else if(match.isBye())
+	    		{
+	    			if((null != match.getGolfer1() && this.user.getId() == match.getGolfer1().getId()) 
+	    					|| (null != match.getGolfer2() && this.user.getId() == match.getGolfer2().getId()))
+	    				seasonPoints += 2;
 	    		}
 	    		
 	    	}

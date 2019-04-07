@@ -468,12 +468,6 @@ public class User extends BaseObject implements Serializable, UserDetails
 			    		{
 			    			pointsForMatch += 2;
 			    		}
-			    		else if(match.isBye())
-			    		{
-			    			if((null != match.getGolfer1() && this.id == match.getGolfer1().id) 
-			    					|| (null != match.getGolfer2() && this.id == match.getGolfer2().id))
-			    				pointsForMatch += 2;
-			    		}
 			    		else if(null != match.getScore().getOpponentRetired() 
 			    				&& (this.id == match.getGolfer1().id || this.id == match.getGolfer2().id))
 			    		{
@@ -537,6 +531,12 @@ public class User extends BaseObject implements Serializable, UserDetails
 				    			pointsForMatch += 1;
 			    		}
 			    			seasonPoints += pointsForMatch; 
+		    		}
+		    		else if(match.isBye())
+		    		{
+		    			if((null != match.getGolfer1() && this.id == match.getGolfer1().id) 
+		    					|| (null != match.getGolfer2() && this.id == match.getGolfer2().id))
+		    				seasonPoints += 2;
 		    		}
 		    		
 		    	}

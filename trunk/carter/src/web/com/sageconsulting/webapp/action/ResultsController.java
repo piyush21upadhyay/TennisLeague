@@ -564,7 +564,7 @@ public class ResultsController extends BaseFormController
 	{
     	if((user.getCurrentSeason() == null) || (user.getCurrentSeason().getState().intValue() == Season.STATE_CLEAR))
 		{
-			StringBuilder sb = new StringBuilder("0").append('-').append("0").append('-').append("0");
+			StringBuilder sb = new StringBuilder("0").append('-').append("0")/*.append('-').append("0")*/;
 			return sb.toString();
 		}
 		

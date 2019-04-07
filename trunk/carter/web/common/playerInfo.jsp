@@ -94,7 +94,7 @@
 			<%-- <p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p> --%>
 			<c:choose>
 				<c:when test="${player.currentSeason.state == 4}">
-					<p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value='/record.html'/>?id=<c:out value='${player.id}'/>">0-0-0</a></c:if></p>
+					<p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value='/record.html'/>?id=<c:out value='${player.id}'/>">0-0</a></c:if></p>
 				</c:when>
 				<c:otherwise>
 					<p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p>	
