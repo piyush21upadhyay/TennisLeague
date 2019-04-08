@@ -17,11 +17,11 @@
 		</p>
 		<p class="division">
 			<c:choose>
-				<c:when test="${match.result.tie}">
+				<%-- <c:when test="${match.result.tie}">
 					<c:if test="${not empty match.puttoffWinner}">
 						<c:out value="${match.puttoffWinner.fullName}"/> <fmt:message key="results.wonInPuttoff"/>
 					</c:if>
-				</c:when>
+				</c:when> --%>
 				<c:when test="${match.defaultWin}">
 					<c:out value="${match.defaultWinner.fullName}"/> <fmt:message key="results.defaultWin"/>
 				</c:when>

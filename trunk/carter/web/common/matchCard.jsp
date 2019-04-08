@@ -12,7 +12,7 @@
                  background: #fff;
             } */
             .component-page{
-                  width: 100%;
+                  width: 124%;
                 padding: 10px 0px;
                 overflow: hidden;
             }
@@ -29,6 +29,12 @@
                     font-size: 20px;
                     margin-right: 10px;
             }
+            .match-date{
+                    width: 30%;
+                    float: left;
+                    font-size: 15px;
+                    margin-right: 10px;
+            }
             .score-list{
                   width: 65%;
                  float: right;
@@ -40,11 +46,11 @@
                  font-weight: bold;
                  font-size: 30px;
             }
-            .match-date{
-                  width: 40%;
+            .retiredWin{
+                  width: 38%;
                  float: right;
-                 margin-right: -10px;
-                 margin-top:-27px;
+                 margin-right: -15px;
+                 margin-top:-35px;
             }
             .super{
                 vertical-align: super;
@@ -140,22 +146,45 @@
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               </div>
               
-              <div class="match-status">
+             <div class="match-status">
 	              <c:choose>
-						<c:when test="${match.golfer1.id == match.result.winner.id}">
-						<%= "W" %> 
+	              		<c:when test="${not empty user}">
+	              			<c:choose>
+								<c:when test="${user.id == match.result.winner.id}">
+								<%= "W" %> 
+								</c:when>
+								<c:otherwise>
+								<%= "L" %> 
+								</c:otherwise>
+								</c:choose>
 						</c:when>
 						<c:otherwise>
-						<%= "L" %> 
+							<c:choose>
+								<c:when test="${match.golfer1.id == match.result.winner.id}">
+									<%= "W" %> 
+								</c:when>
+								<c:otherwise>
+								<%= "L" %> 
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
               </div>
               
               <c:choose>
 				<c:when test="${match.defaultWin}">
-					<div class="score-list">
-              			<p><fmt:message key="record.defaultWin"/></p>
-              		</div>
+					<c:choose>
+						<c:when test="${user.id == match.result.winner.id}">
+							<div class="score-list">
+              					<p><fmt:message key="record.defaultWin"/></p>
+              				</div>
+              			</c:when>
+              			<c:otherwise>
+              				<div class="score-list">
+              					<p><fmt:message key="record.defaultLoss"/></p>
+              				</div>
+              			</c:otherwise>
+              		</c:choose>
               	</c:when>
               	<c:when test="${match.bye}">
 					<div class="score-list">
@@ -259,6 +288,14 @@
               </div>
               </c:otherwise>
              </c:choose>
+             
+             <div class="retiredWin">
+             
+           		<c:if test="${match.opponentRetiredWin}">
+                    <fmt:message key="results.opponentRetired"/>
+                </c:if>
+             
+             </div>
               
               <div class="match-date"> 
 				<c:choose>

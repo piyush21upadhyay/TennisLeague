@@ -12,7 +12,7 @@
                  background: #212121;
             } 
             .component-page{
-                  width: 100%;
+                  width: 124%;
                 padding: 10px 0px;
                 overflow: hidden;
             }
@@ -29,9 +29,16 @@
                     font-size: 20px;
                     margin-right: 10px;
             }
+            .retiredWin{
+                  width: 38%;
+                 float: right;
+                 margin-right: -15px;
+                 margin-top:-45px;
+            }
             .score-list{
                   width: 65%;
                  float: right;
+                 margin-right: -10px;
             }
             .super{
                 vertical-align: super;
@@ -81,6 +88,12 @@
                 font-style: italic;
                     width: 12%;            
             }  
+            .match-status{
+                  width: 5%;
+                 float: left;
+                 font-weight: bold;
+                 font-size: 30px;
+            }
             .score-table{
                 table-layout: auto;
                 float: left;
@@ -128,8 +141,8 @@
               
               </div>
               
-              <div class="score-list">
-              <div class="char">
+             
+              <div class="match-status">
           <%--     <%! 
               int player1Wins=0;
               int player2Wins=0;
@@ -181,6 +194,7 @@
 				
 
 				</div>
+				 <div class="score-list">
                     <table class="centerAlign linescore">
                         <tbody>
                         <tr>
@@ -213,11 +227,11 @@
                             </c:if>
                             </td>
                             
-                            <c:choose>
+                            <%-- <c:choose>
                             	<c:when test="${(null != match.score.opponentRetired) && match.score.opponentRetired == match.golfer2.id}">
 									 <td> <fmt:message key="results.opponentRetired"/>
 								</c:when>
-								<c:otherwise>
+								<c:otherwise> --%>
 									<c:choose>
 										<c:when test="${match.score.player1set3 > match.score.player2set3}"> 
 											<td class="strong runs">
@@ -226,14 +240,14 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-								</c:otherwise>
-							</c:choose>
-							<c:if test="${(null == match.score.opponentRetired)}">
+								<%-- </c:otherwise>
+							</c:choose> --%>
+							<%-- <c:if test="${(null == match.score.opponentRetired)}"> --%>
 	                            <c:out value="${match.score.player1set3} "/>
 	                            <c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
 	                            	<span class="super"><c:out value="${match.score.player1set3Sup}"/></span>
 	                            </c:if>
-	                        </c:if>
+	                        <%-- </c:if> --%>
                             </td>
                         </tr>
                       	<tr>
@@ -266,11 +280,11 @@
                             </c:if>
 							</td>
 							
-                            <c:choose>
+                            <%-- <c:choose>
                             	<c:when test="${(null != match.score.opponentRetired) && match.score.opponentRetired == match.golfer1.id}">
 									<td> <fmt:message key="results.opponentRetired"/>
 								</c:when>
-								<c:otherwise>
+								<c:otherwise> --%>
 									<c:choose>
 										<c:when test="${match.score.player2set3 > match.score.player1set3}"> 
 											<td class="strong runs">
@@ -279,19 +293,26 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-								</c:otherwise>
-							</c:choose>
-							<c:if test="${(null == match.score.opponentRetired)}">
+								<%-- </c:otherwise>
+							</c:choose> --%>
+							<%-- <c:if test="${(null == match.score.opponentRetired)}"> --%>
 								<c:out value="${match.score.player2set3} "/>
 								<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
 	                            	<span class="super"><c:out value="${match.score.player2set3Sup}"/></span>
 	                            </c:if>
-	                         </c:if>
+	                         <%-- </c:if> --%>
 							</td>
                         </tr>
                     </tbody>
                 </table>
               </div>
+              <div class="retiredWin">
+             
+           		<c:if test="${match.opponentRetiredWin}">
+                    <fmt:message key="results.opponentRetired"/>
+                </c:if>
+             
+             </div>
           </div>
       </div>
       

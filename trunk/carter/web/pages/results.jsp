@@ -22,7 +22,7 @@
 		}
 		
 		// on page load, check for opponent retired
-		boxDisable();
+		//boxDisable();
 	});
 	
 	$(".inputs").keyup(function () {
@@ -154,7 +154,7 @@
 			
 			var areFirstTwoSetsWon = new Boolean(false);
 			areFirstTwoSetsWon=areTheFirstTwoSetsWon(player1set1,player2set1,player1set2,player2set2);
-			alert("areFirstTwoSetsWon::"+areFirstTwoSetsWon);
+			//alert("areFirstTwoSetsWon::"+areFirstTwoSetsWon);
 			
 			if(!areFirstTwoSetsWon){
 				// set 3 validate
@@ -186,7 +186,7 @@
 	}
 	
 	function areTheFirstTwoSetsWon(player1set1,player2set1,player1set2,player2set2){
-		alert("hello");
+		//alert("hello");
 		if((player1set1>player2set1 && player1set2>player2set2) || (player2set1>player1set1 && player2set2>player1set2))
 			return true;
 	}
@@ -534,7 +534,7 @@
 	 				<!-- Changes for Opponent Required -->
 	 				<div class="onecolw">
 	 					<fieldset>
-	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" onclick="boxDisable();"/> 
+	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" /> 
 	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
 	 					</fieldset>
 	 				</div>

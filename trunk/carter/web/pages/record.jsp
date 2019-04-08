@@ -98,11 +98,11 @@
 				<c:set var="url"><c:url value="/resultsdispatch.html"/></c:set>
 				<carter:button page="${url}" param="id=${match.id}&amp;user_id=${user.id}" key="button.edit"/>
 			</c:if>
-			<c:if test="${not match.defaultWin and not match.bye}">
+			<%-- <c:if test="${not match.defaultWin and not match.bye}"> --%>
 				<c:set var="matchParam" value="${match}" scope="request"/>
 				<c:import url="/common/matchCard.jsp"/>
 				<div class="clear"></div>
-			</c:if>
+			<%-- </c:if> --%>
 		</div>
 	</c:forEach>
   </div>
