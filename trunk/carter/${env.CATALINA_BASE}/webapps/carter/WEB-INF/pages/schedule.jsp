@@ -14,7 +14,7 @@
 	<c:if test="${not empty user}">
 		<div id="schedule-header">
 			<h2 class="page-title"><c:out value="${user.fullName}"/></h2>
-			<h4><c:out value="${user.currentSeason.division}"/></h4>
+			<%-- <h4><c:out value="${user.currentSeason.division}"/></h4> --%>
 			<h4 class="division"><c:out value="${user.currentSeason.name}"/></h4>
 		</div>
 	</c:if>

@@ -137,15 +137,15 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div>TBD</div>
-				<%-- <c:choose>
+				<!-- <div>TBD</div> -->
+				 <c:choose>
 	    				<c:when test="${match.postSeason}">
 			    			<fmt:message key="schedule.tbd"/>
 	    				</c:when>
 	    				<c:otherwise>
 	    	    			<fmt:message key="schedule.bye"/>
 	    				</c:otherwise>
-	    			</c:choose> --%>
+	    			</c:choose> 
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

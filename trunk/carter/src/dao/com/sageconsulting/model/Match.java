@@ -158,6 +158,11 @@ public class Match extends BaseObject implements Serializable
     	return false;
     }
     
+    public boolean isPostSeason()
+    {
+    	return (null != this.getBracketEntry());
+    }
+    
     public boolean isBye()
     {
         return ((null == this.golfer1) || (null == this.golfer2));
