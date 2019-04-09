@@ -42,7 +42,29 @@ public class ViewResultsController implements Controller
         {
         	return new ModelAndView(new RedirectView("schedule.html")); //$NON-NLS-1$
         }
+        int winningCount=0,lossingCount=0;
+        /***Code added by Piyush and Akash starts to show winning and loosing number**/
+        if(match.getScore().getPlayer1set1()>match.getScore().getPlayer2set1())
+        	winningCount++;
+        else
+        	lossingCount++;
+        
+        if(match.getScore().getPlayer1set2()>match.getScore().getPlayer2set2())
+        	winningCount++;
+        else
+        	lossingCount++;
+        
+        if(match.getScore().getPlayer1set3() >0 || match.getScore().getPlayer2set3()>0){
+        	if(match.getScore().getPlayer1set3()>match.getScore().getPlayer2set3())
+        		winningCount++;
+        	else
+        		lossingCount++;
+        }
+        
         view.addObject(CMD_NAME, match);
+        view.addObject("winningCount", winningCount);
+        view.addObject("loosingCount", lossingCount);
+        /***Code added by Piyush and Akash starts to show winning and loosing number**/
         
         return view;
     }
