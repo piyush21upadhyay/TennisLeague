@@ -604,7 +604,7 @@
 							<carter:button page="${url}" param="id=${match.golfer1.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
-							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
+							<%-- <h3><c:out value="${match.golfer1.currentSeason.division}"/></h3> --%>
 							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
@@ -630,7 +630,7 @@
 							<carter:button page="${url}" param="id=${match.golfer2.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
-							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
+							<%-- <h3><c:out value="${match.golfer2.currentSeason.division}"/></h3> --%>
 							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							
 							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>

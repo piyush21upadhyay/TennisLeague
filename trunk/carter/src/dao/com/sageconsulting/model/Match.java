@@ -273,12 +273,14 @@ public class Match extends BaseObject implements Serializable
     @Override
     public String toString()
     {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).
+        /*return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).
             append("golfer1", this.golfer1.getFullName()). //$NON-NLS-1$
             append("golfer2", (null == this.golfer2) ? "bye" : this.golfer2.getFullName()). //$NON-NLS-1$ //$NON-NLS-2$
             append("round", this.round). //$NON-NLS-1$
             append("completeBy", this.playBy).
-            append("id", this.id).toString(); //$NON-NLS-1$
+            append("id", this.id).toString()*/; //$NON-NLS-1$
+			return null;
+            
     }
 
 }

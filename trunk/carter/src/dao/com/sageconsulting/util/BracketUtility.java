@@ -9,9 +9,12 @@
 package com.sageconsulting.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import com.sageconsulting.model.BracketEntry;
@@ -58,7 +61,7 @@ public class BracketUtility
         winner.setSeasonId(season.getId());
         winner.setNext(winner);
         winner.getMatch().setRound(Integer.valueOf(regularSeasonMatchCount+nRound+1));
-        winner.getMatch().setPlayBy(championshipDate.getTime());
+        winner.getMatch().setPlayBy(getFormattedDate(championshipDate.getTime()));
         winner.getMatch().setBracketEntry(winner);
 
         BracketEntry lastMatch = new BracketEntry();
@@ -67,7 +70,7 @@ public class BracketUtility
         lastMatch.setSeasonId(season.getId());
         lastMatch.setNext(winner);
         lastMatch.getMatch().setRound(Integer.valueOf(regularSeasonMatchCount+nRound));
-        lastMatch.getMatch().setPlayBy(championshipDate.getTime());
+        lastMatch.getMatch().setPlayBy(getFormattedDate(championshipDate.getTime()));
         lastMatch.getMatch().setBracketEntry(lastMatch);
         
         //Calendar currentRoundEnd = (Calendar)firstRoundStart.clone();
@@ -87,7 +90,7 @@ public class BracketUtility
                 thisRound[i].setSeasonId(season.getId());
                 thisRound[i].setRound(Integer.valueOf(nRound));
                 thisRound[i].getMatch().setRound(Integer.valueOf(regularSeasonMatchCount+nRound));
-                thisRound[i].getMatch().setPlayBy(playDate.getTime());
+                thisRound[i].getMatch().setPlayBy(getFormattedDate(playDate.getTime()));
                 thisRound[i].getMatch().setBracketEntry(thisRound[i]);
             }
             nMatches <<= 1;
@@ -102,6 +105,19 @@ public class BracketUtility
         Calendar playDate = (Calendar)startDate.clone();
         playDate.add(Calendar.DAY_OF_YEAR, (round-1)*7);
         return playDate;
+    }
+    
+    private static Date getFormattedDate(Date now)
+    {
+    	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+    	try {
+    		String format = simpleDateFormat.format(now);
+			return simpleDateFormat.parse(format);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return null;
     }
     
     public static void saveBracket(List<BracketEntry> bracket)

@@ -155,7 +155,7 @@ public class BracketEntry extends BaseObject implements Serializable
         sb.append("match", this.match); //$NON-NLS-1$
         sb.append("next", (null != this.next) ? this.next.getId() : "null"); //$NON-NLS-1$ //$NON-NLS-2$
         sb.append("round", this.round); //$NON-NLS-1$
-        return sb.toString();
+        return null;//sb.toString();
     }
 
 }

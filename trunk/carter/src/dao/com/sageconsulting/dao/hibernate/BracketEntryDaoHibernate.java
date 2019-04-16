@@ -60,7 +60,7 @@ public class BracketEntryDaoHibernate extends BaseDaoHibernate implements Bracke
     {
         try
         {
-            //getHibernateTemplate().saveOrUpdate(entry);
+            getHibernateTemplate().saveOrUpdate(entry);
         }
         catch (HibernateJdbcException e)
         {
