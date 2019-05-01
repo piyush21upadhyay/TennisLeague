@@ -6,7 +6,7 @@
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<c:if test="${not empty courseList}">
+<%-- <c:if test="${not empty courseList}"> --%>
 
 <div class="section">
 	<div class="left">
@@ -497,4 +497,4 @@ $(document).ready( function() {
 <v:javascript formName="user" staticJavascript="false"/>
 <script type="text/javascript" src="<c:url value="/scripts/validator.jsp"/>"></script>
 
-</c:if>
+<%-- </c:if> --%>
