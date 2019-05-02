@@ -64,6 +64,9 @@ public class ViewResultsController implements Controller
         view.addObject(CMD_NAME, match);
         view.addObject("winningCount", winningCount);
         view.addObject("loosingCount", lossingCount);
+        if(request.getParameter("currIdOfUser")!=null){
+        	view.addObject("currIdOfUser", request.getParameter("currIdOfUser"));
+        }
         /***Code added by Piyush and Akash starts to show winning and loosing number**/
         
         return view;

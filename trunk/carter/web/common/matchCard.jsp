@@ -160,7 +160,8 @@
 						</c:when>
 						<c:otherwise>
 							<c:choose>
-								<c:when test="${match.golfer1.id == match.result.winner.id}">
+								<%-- <c:when test="${match.golfer1.id == match.result.winner.id}"> --%>
+								<c:when test="${currIdOfUser == match.result.winner.id}">
 									<%= "W" %> 
 								</c:when>
 								<c:otherwise>
