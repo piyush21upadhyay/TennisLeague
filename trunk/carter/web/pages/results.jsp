@@ -73,7 +73,8 @@
 		var isOpponentRetired = $('#opponentRetired').is(':checked'); 
 		var isValid = new Boolean(true);
 		var showAlert = new Boolean(true);
-		//alert("isOpponentRetired=="+isOpponentRetired);
+		//alert("player1set1=="+player1set1);
+		//setTheScoresToZeroIfFieldsAreMadeBlank(player1set1,player2set1,player1set2,player2set2,player1set3,player2set3,player1set1sup);
 		if(isOpponentRetired){
 			// logic has to be applied when checkbox will be checked
 			//alert(isOpponentRetired);
@@ -250,6 +251,12 @@
 	
 	function checkValidScores(player1score, player2score, player1tiescore, player2tiescore, doShowAlert)
 	{
+		if(player1score=='' || player2score=='' || player1tiescore=='' ||player2tiescore==''){
+			if(doShowAlert)
+				cglAlert('Invalid Action',"The value of the score box cannot be empty.",300);
+			return false;
+		}
+		
 		if(player1score < 6)
 		{
 			if(doShowAlert)

@@ -9,6 +9,9 @@
 package com.sageconsulting.webapp.action;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -271,11 +274,19 @@ public class MessageBoardController extends BaseFormController
     	{
 	    	PublicMessage msg = (PublicMessage)command;
 	        User user = super.getUserManager().getUserByUsername(request.getRemoteUser());
+        	Date date = new Date();
+        	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
-	        msg.setDate(new Timestamp(System.currentTimeMillis()));
+	        //msg.setDate(new Timestamp(System.currentTimeMillis()));
+        	//msg.setDate(new Timestamp(date.getTime()));
+        	msg.setDate(new Timestamp(dateFormat.parse(dateFormat.format(date)).getTime()));
 	        msg.setPoster(user);
 	
-	        this.publicMessageManager.postPublicMessage(msg);
+	        try {
+				this.publicMessageManager.postPublicMessage(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	        request.getSession().setAttribute("sentMessage", super.getText("msgboard.posted", request.getLocale()));
     	}
     	else if (isDelete(request))

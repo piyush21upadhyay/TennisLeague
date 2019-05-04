@@ -69,29 +69,29 @@ public final class dataAccessFailure_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<head>\n");
-      out.write("\t<title>Data Access Error</title>\n");
-      out.write("\t<content tag=\"heading\">Data Access Failure</content>\n");
-      out.write("</head>\n");
-      out.write("\n");
-      out.write("<p>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<head>\r\n");
+      out.write("\t<title>Data Access Error</title>\r\n");
+      out.write("\t<content tag=\"heading\">Data Access Failure</content>\r\n");
+      out.write("</head>\r\n");
+      out.write("\r\n");
+      out.write("<p>\r\n");
       out.write("    ");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("</p>\n");
-      out.write("\n");
-      out.write("<!--\n");
+      out.write("\r\n");
+      out.write("</p>\r\n");
+      out.write("\r\n");
+      out.write("<!--\r\n");
  
 Exception ex = (Exception) request.getAttribute("exception");
 ex.printStackTrace(new java.io.PrintWriter(out)); 
 
-      out.write("\n");
-      out.write("-->\n");
-      out.write("\n");
-      out.write("<a href=\"home.html\" onclick=\"history.back();return false\">&#171; Back</a>\n");
+      out.write("\r\n");
+      out.write("-->\r\n");
+      out.write("\r\n");
+      out.write("<a href=\"home.html\" onclick=\"history.back();return false\">&#171; Back</a>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
