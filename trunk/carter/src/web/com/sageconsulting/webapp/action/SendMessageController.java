@@ -9,6 +9,9 @@
 package com.sageconsulting.webapp.action;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -148,7 +151,8 @@ public class SendMessageController extends BaseFormController
         		msgtype=null;
         		view = new ModelAndView("inbox"); 
         		msg.setFrom(from);
-                msg.setDateSent(new Timestamp(new Date().getTime()));
+                //msg.setDateSent(new Timestamp(new Date().getTime()));
+        		msg.setDateSent(getFormattedCurrentDateTime());
                 this.mailManager.sendPrivateMessage(msg);
                 String sentMsg = getText("sendMsg.messageSent", request.getLocale()) + //$NON-NLS-1$
                     " " + msg.getTo().getFirstName(); //$NON-NLS-1$
@@ -168,7 +172,8 @@ public class SendMessageController extends BaseFormController
         		/*for new message  */
         		view= super.showForm(request, response, errors);
         		msg.setFrom(from);
-                msg.setDateSent(new Timestamp(new Date().getTime()));
+                //msg.setDateSent(new Timestamp(new Date().getTime()));
+        		msg.setDateSent(getFormattedCurrentDateTime());
                 this.mailManager.sendPrivateMessage(msg);
                 
                 String sentMsg = getText("sendMsg.messageSent", request.getLocale()) + //$NON-NLS-1$
@@ -192,6 +197,14 @@ public class SendMessageController extends BaseFormController
         }
         
         return view;
+    }
+    
+    private Timestamp getFormattedCurrentDateTime() throws ParseException
+    {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	Date date = new Date();
+        return new Timestamp(dateFormat.parse(dateFormat.format(date)).getTime());
+
     }
 
 

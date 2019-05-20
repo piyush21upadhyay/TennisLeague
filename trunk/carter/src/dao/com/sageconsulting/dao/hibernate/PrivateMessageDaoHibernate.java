@@ -9,6 +9,9 @@
 package com.sageconsulting.dao.hibernate;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -43,9 +46,24 @@ public class PrivateMessageDaoHibernate extends BaseDaoHibernate implements Priv
     public void markPrivateMessageAsRead(Long id)
     {
         PrivateMessage message = getPrivateMessagesByID(id);
-        message.setDateRead(new Timestamp(new Date().getTime()));
+        //message.setDateRead(new Timestamp(new Date().getTime()));
+        message.setDateRead(getFormattedCurrentDateTime());
         getHibernateTemplate().saveOrUpdate(message);
         getHibernateTemplate().flush();
+    }
+    
+    private Timestamp getFormattedCurrentDateTime()
+    {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	Date date = new Date();
+        try {
+			return new Timestamp(dateFormat.parse(dateFormat.format(date)).getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return null;
+
     }
 
     public void sendPrivateMessage(PrivateMessage mail)

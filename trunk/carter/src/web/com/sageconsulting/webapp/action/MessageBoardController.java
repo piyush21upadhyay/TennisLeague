@@ -10,6 +10,7 @@ package com.sageconsulting.webapp.action;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -274,12 +275,12 @@ public class MessageBoardController extends BaseFormController
     	{
 	    	PublicMessage msg = (PublicMessage)command;
 	        User user = super.getUserManager().getUserByUsername(request.getRemoteUser());
-        	Date date = new Date();
-        	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        	//Date date = new Date();
+        	//DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	        //msg.setDate(new Timestamp(System.currentTimeMillis()));
         	//msg.setDate(new Timestamp(date.getTime()));
-        	msg.setDate(new Timestamp(dateFormat.parse(dateFormat.format(date)).getTime()));
+        	msg.setDate(getFormattedCurrentDateTime());
 	        msg.setPoster(user);
 	
 	        try {
@@ -294,6 +295,14 @@ public class MessageBoardController extends BaseFormController
     		deleteMessages(request);
     	}
         return new ModelAndView(new RedirectView(getSuccessView()));
+    }
+    
+    private Timestamp getFormattedCurrentDateTime() throws ParseException
+    {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	Date date = new Date();
+        return new Timestamp(dateFormat.parse(dateFormat.format(date)).getTime());
+
     }
     
     private boolean isNewMessage(HttpServletRequest request)
