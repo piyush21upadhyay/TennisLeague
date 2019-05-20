@@ -227,8 +227,12 @@
 		  	  		<div class="tbl-msg-div">
 						<display:table name="publicMessages" id="publicMessages" cellspacing="0" cellpadding="0" class="messages" requestURI="">
 				    	    <display:column property="poster.fullName" titleKey="home.from" url="/profile.html" paramId="id" paramProperty="poster.id" decorator="com.sageconsulting.webapp.decorators.MessageTextColumnDecorator"/>
-						    <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
-								<a href="#" class="dm-link-class" onclick="return false;"><input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
+						    <%-- <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
+								<a href="#" class="dm-link-class" onclick="return false;">
+								<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
+			    			</display:column> --%>
+			    			<display:column titleKey="home.subject" maxLength="25" url="/home.html" paramId="msg" paramProperty="id" style="whitespace: nowrap;" class="dm-link-class">
+									<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/>
 			    			</display:column>
 						    <display:column property="date" titleKey="home.date" url="/home.html" paramId="msg" paramProperty="id" decorator="com.sageconsulting.webapp.decorators.MessageDateColumnDecorator"/>
 			
