@@ -10,7 +10,7 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#player1set1").focus();
-		$("#played").datepicker({showOn: 'button', buttonImage: 'images/calendar-icon.jpg', buttonImageOnly: true});
+		$("#played").datepicker({showOn: 'button', buttonImage: 'images/calendar-icon.jpg', buttonImageOnly: true, maxDate: new Date()});
 		
 		//fix for safari
 		if(window.devicePixelRatio)

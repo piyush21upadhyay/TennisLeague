@@ -138,7 +138,6 @@ public class ResultsController extends BaseFormController
     {
     	
     	return null != match && null != match.getScore() && null != match.getScore().getOpponentRetired();
-    			//&& 1==match.getScore().getOpponentRetired();
     }
     
     /**
@@ -353,10 +352,13 @@ public class ResultsController extends BaseFormController
             		//System.out.println("Rcord: "+record);
             		champion.setRecord(record.toString());
             		champion.setSeason(season.getName());
-            		Court court=new Court();
+            		/**Code commenting on behalf of Akash and Piyush to fix last playoff match Save issue Starts***/
+            		/*Court court=new Court();
             		court.setName(winner.getHomeCourtText());
             		court.setCourtAddress(winner.getCourtAddress());
-            		champion.setHomeCourt(court);
+            		champion.setHomeCourt(court);*/
+            		champion.setHomeCourt(this.courtManager.getCourt(winner.getCourtId()));
+            		/**Code commenting on behalf of Akash and Piyush to fix last playoff match Save issue Ends***/
             		//champion.setHandicap(winner.getHandicap());
             		this.championManager.saveChampion(champion);
             		winner.setIcon("images/champion.png");

@@ -233,8 +233,13 @@ public class SeasonInfo
             {
                 if (result1.getPoints() == result2.getPoints())
                 {
-                	if(result1.getWins() == result2.getWins())
+                	if(result1.getWins() == result2.getWins()) // if both have 0 wins
                 	{
+                		if (result1.getWins() > 0 && result2.getWins() > 0) {
+                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage());
+                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage());
+                			return (percentageOfGamesWonByPlayer1.compareTo(percentageOfGamesWonByPlayer2));
+                		}
                 		
                 		// logic to handle 0 wins/points, atleast played a match
                 		if(result1.getPoints() == 0 && result2.getPoints() == 0
@@ -246,9 +251,7 @@ public class SeasonInfo
                 				return -1;
                 		}
                 		
-                		
-                		
-            			if(result1.getLosses() == result2.getLosses())
+            			if(result1.getLosses() == result2.getLosses()) //wins are equal but not 0
             			{
                            	return -1;
             			}

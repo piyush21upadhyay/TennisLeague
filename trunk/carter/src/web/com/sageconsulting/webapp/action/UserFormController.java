@@ -13,10 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -412,11 +410,11 @@ public class UserFormController extends BaseFormController
     		user.setDateJoined(dateFormat.parse(dateFormat.format(date)));
             user.addRole(this.roleManager.getRole(Constants.USER_ROLE));
     	}
+    	user.setCourtId(saveCourt(user));
         getUserManager().saveUser(user);
-        saveCourt(user);
     }
     
-    private void saveCourt(User user) {
+    private Long saveCourt(User user) {
     	Court court=new Court();
     	court.setName(user.getHomeCourtText());
     	court.setCourtAddress(user.getCourtAddress());
@@ -427,7 +425,8 @@ public class UserFormController extends BaseFormController
     	
     	court.setCities(cityList);
     	
-    	this.courtManager.saveCourt(court);
+    	//this.courtManager.saveCourt(court);
+    	return this.courtManager.saveAndReturnCourt(court);
 	}
 
 	/**

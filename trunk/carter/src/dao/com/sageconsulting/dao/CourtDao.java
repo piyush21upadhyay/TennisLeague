@@ -19,4 +19,6 @@ public interface CourtDao extends Dao
     public void saveCourt(Court Court);
 
     public void removeCourt(Long id);
+
+	public Long saveAndReturnCourt(Court court);
 }

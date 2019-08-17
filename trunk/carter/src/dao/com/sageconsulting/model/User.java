@@ -9,8 +9,6 @@
 package com.sageconsulting.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -49,8 +47,6 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String email; // required; unique
     private String passwordHint;
     private City registeredCity;
-    //Changing from Course type to String
-    //private Course homeCourt;
     private String referral;
     private String icon = "images/teeOff-icon.jpg"; //$NON-NLS-1$
     private Season firstSeason;
@@ -76,7 +72,6 @@ public class User extends BaseObject implements Serializable, UserDetails
     private boolean accountDeleted;
     private Double playerLevel=Double.valueOf(2.5);
     private String ratedBy;
-    /*private String homeCourt;*/
     private String plays;
     private String[] playingPreference;
     private boolean openToChallenges = true;
@@ -89,6 +84,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String courtAddress;
     private String courtCity;
     private String courtState;
+    private Long courtId;
     
 	public User()
     {
@@ -1215,6 +1211,16 @@ public class User extends BaseObject implements Serializable, UserDetails
 	public void setCourtState(String courtState) {
 		this.courtState = courtState;
 	}
-	
+
+	/**
+     * @hibernate.property column="court_id" not-null="true"
+     */
+	public Long getCourtId() {
+		return courtId;
+	}
+
+	public void setCourtId(Long courtId) {
+		this.courtId = courtId;
+	}
 	
 }

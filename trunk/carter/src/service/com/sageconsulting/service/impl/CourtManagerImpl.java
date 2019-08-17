@@ -53,4 +53,9 @@ public class CourtManagerImpl extends BaseManager implements CourtManager
     {
         getCourtDao().removeCourt(id);
     }
+
+	@Override
+	public Long saveAndReturnCourt(Court court) {
+		return getCourtDao().saveAndReturnCourt(court);
+	}
 }

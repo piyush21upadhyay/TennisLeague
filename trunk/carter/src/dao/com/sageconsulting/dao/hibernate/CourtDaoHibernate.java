@@ -63,4 +63,10 @@ public class CourtDaoHibernate extends BaseDaoHibernate implements CourtDao
     {
         getHibernateTemplate().delete(getCourt(id));
     }
+
+	@Override
+	public Long saveAndReturnCourt(Court court) {
+		getHibernateTemplate().saveOrUpdate(court);
+		return court.getId();
+	}
 }
