@@ -47,14 +47,18 @@
     <property name="database.jar" location="${mysql.jar}"/>
     <property name="database.type" value="mysql"/>
     <property name="database.name" value="carter"/>
-    <property name="database.host" value="localhost"/>
-    <property name="database.username" value="carterdb"/>
-    <property name="database.password" value="HestemParto"/>
+	<!--<property name="database.host" value="localhost"/>-->
+	<property name="database.host" value="ec2-100-20-83-198.us-west-2.compute.amazonaws.com:3306"/>
+    <property name="database.username" value="root"/>
+	<!--<property name="database.password" value="root"/>-->
+	<property name="database.password" value="ZGgM6vmhuzM8HjQ"/>
 
     <!-- database URL for creating other dbs - used in db-create target -->
-    <property name="database.admin.url" value="jdbc:${database.type}://${database.host}/mysql"/>
+	 <property name="database.admin.url" value="jdbc:mysql://ec2-100-20-83-198.us-west-2.compute.amazonaws.com:3306/carter"/>
+	<!--<property name="database.admin.url" value="jdbc:mysql://localhost:3306/carter"/>-->
     <property name="database.admin.username" value="root"/>
-    <property name="database.admin.password" value="Pass21#Word"/>
+	<property name="database.admin.password" value="ZGgM6vmhuzM8HjQ"/>
+	 <!--<property name="database.admin.password" value="root"/>-->
     <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
     <property name="database.driver_class" value="com.mysql.jdbc.Driver"/>
     <property name="database.url"
