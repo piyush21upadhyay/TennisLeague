@@ -15,8 +15,6 @@ import java.util.Date;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-import com.sageconsulting.model.City;
-
 /**
  * This class is used to set up registration for a season for a given city.  It sets
  * the dates during which users can register for a season.  Once the registration

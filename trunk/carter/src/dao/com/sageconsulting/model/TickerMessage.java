@@ -10,7 +10,7 @@ package com.sageconsulting.model;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
@@ -106,6 +106,6 @@ public class TickerMessage extends BaseObject implements Serializable
     @Override
     public String toString()
     {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("message", this.message).toString(); //$NON-NLS-1$
+        return new ReflectionToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("message", this.message).toString(); //$NON-NLS-1$
     }
 }

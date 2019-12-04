@@ -1,7 +1,6 @@
 package com.sageconsulting.model;
 
 import java.io.Serializable;
-import java.util.SortedSet;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

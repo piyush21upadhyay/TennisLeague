@@ -11,11 +11,6 @@ package com.sageconsulting.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
-
-import com.sageconsulting.model.BaseObject;
-
 /**
  * @hibernate.class table="golf_match"
  */

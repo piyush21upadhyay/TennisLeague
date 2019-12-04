@@ -23,9 +23,10 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.aop.support.AopUtils;
+
 import com.sageconsulting.model.BaseObject;
 import com.sageconsulting.model.LabelValue;
-import org.springframework.aop.support.AopUtils;
 
 /**
  * Utility class to convert one object to another.

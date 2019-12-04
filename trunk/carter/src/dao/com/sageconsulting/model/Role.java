@@ -14,6 +14,7 @@ import org.acegisecurity.GrantedAuthority;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+
 /**
  * This class is used to represent available roles in the database.
  * </p>

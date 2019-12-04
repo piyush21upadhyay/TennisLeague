@@ -236,8 +236,8 @@ public class SeasonInfo
                 	if(result1.getWins() == result2.getWins()) // if both have 0 wins
                 	{
                 		if (result1.getWins() > 0 && result2.getWins() > 0) {
-                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage());
-                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage());
+                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage().replace("%", ""));
+                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage().replace("%", ""));
                 			return (percentageOfGamesWonByPlayer1.compareTo(percentageOfGamesWonByPlayer2));
                 		}
                 		

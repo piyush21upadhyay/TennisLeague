@@ -23,7 +23,15 @@ public class ChampionDaoHibernate extends BaseDaoHibernate implements ChampionDa
 
     public void saveChampion(Champion champion)
     {
-        getHibernateTemplate().save(champion);
+    	try {
+    		
+    		getHibernateTemplate().save(champion);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+        
     }
 
     @SuppressWarnings("unchecked")

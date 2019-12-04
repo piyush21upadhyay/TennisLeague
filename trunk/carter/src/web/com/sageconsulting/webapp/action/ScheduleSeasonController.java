@@ -8,7 +8,6 @@
  */
 package com.sageconsulting.webapp.action;
 
-import java.text.FieldPosition;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
