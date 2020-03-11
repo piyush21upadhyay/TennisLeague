@@ -850,16 +850,28 @@ fgACAAABoA==]]></value>
     <column>id</column>
     <column>version</column>
     <column>name</column>
-    <column>court_phone</column>
-    <column>web_site</column>
     <column>court_address</column>
+    <column>court_state</column>
+    <column>court_lighted</column>
+    <column>numberOfCourts</column>
+    <column>openCourtMeridiem</column>
+    <column>openCourtHour</column>
+    <column>closeCourtMeridiem</column>
+    <column>closeCourtHour</column>
+    <column>is_court_verified</column>
     <row>
       <value>1</value>
       <value>1</value>
       <value>Test Court</value>
-      <value>(503) 775-2900</value>
       <value>http://www.eastmorelandgolfcourse.com</value>
-      <value>Court Address</value>
+      <value>LA</value>
+      <value>Yes</value>
+      <value>2</value>
+      <value>AM</value>
+      <value>11</value>
+      <value>PM</value>
+      <value>6</value>
+      <value>false</value>
     </row>
   </table>
   

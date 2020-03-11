@@ -28,9 +28,15 @@ public class Court extends BaseObject implements Serializable
     private Integer version;
     private String name;
     private List<City> cities;
-    private String courtPhone;
-    private String webSite;
     private String courtAddress;
+    private String courtState;
+    private String isCourtLighted;
+    private int numberOfCourts;
+    private String openCourtMeridiem;
+    private int openCourtHour;
+    private String closeCourtMeridiem;
+    private int closeCourtHour;
+    private boolean isCourtVerifiedByAdmin=false;
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -91,27 +97,6 @@ public class Court extends BaseObject implements Serializable
     
     
     
-    /**
-     * 
-     * @return
-     * @hibernate.property column="court_phone"
-     */
-    public String getCourtPhone()
-    {
-        return this.courtPhone;
-    }
-    
-    
-    /**
-     * 
-     * @return
-     * @hibernate.property column="web_site"
-     */
-    public String getWebSite()
-    {
-        return this.webSite;
-    }
-    
     
     /**
      * 
@@ -155,19 +140,101 @@ public class Court extends BaseObject implements Serializable
         this.name = n;
     }
 
-    public void setCourtPhone(String courtPhone)
-    {
-        this.courtPhone = courtPhone;
-    }
-
-    public void setWebSite(String site)
-    {
-        this.webSite = site;
-    }
-    
     public void setCourtAddress(String courtAddress) 
     {
 		this.courtAddress = courtAddress;
+	}
+    
+    /**
+     * 
+     * @return
+     * @hibernate.property column="court_state"
+     */
+    public String getCourtState() {
+		return courtState;
+	}
+
+	public void setCourtState(String courtState) {
+		this.courtState = courtState;
+	}
+    
+    /**
+     * 
+     * @return
+     * @hibernate.property column="court_lighted" not-null="false"
+     */
+	public String getIsCourtLighted() {
+		return isCourtLighted;
+	}
+
+	public void setIsCourtLighted(String isCourtLighted) {
+		this.isCourtLighted = isCourtLighted;
+	}
+
+    /**
+     * 
+     * @return
+     * @hibernate.property column="numberOfCourts" not-null="false"
+     */
+	public int getNumberOfCourts() {
+		return numberOfCourts;
+	}
+
+	public void setNumberOfCourts(int numberOfCourts) {
+		this.numberOfCourts = numberOfCourts;
+	}
+
+	/**
+     * @hibernate.property column="openCourtMeridiem" not-null="false"
+     */
+	public String getOpenCourtMeridiem() {
+		return openCourtMeridiem;
+	}
+	public void setOpenCourtMeridiem(String openCourtMeridiem) {
+		this.openCourtMeridiem = openCourtMeridiem;
+	}
+
+	/**
+     * @hibernate.property column="openCourtHour" not-null="false"
+     */
+	public int getOpenCourtHour() {
+		return openCourtHour;
+	}
+
+	public void setOpenCourtHour(int openCourtHour) {
+		this.openCourtHour = openCourtHour;
+	}
+
+	/**
+     * @hibernate.property column="closeCourtMeridiem" not-null="false"
+     */
+	public String getCloseCourtMeridiem() {
+		return closeCourtMeridiem;
+	}
+
+	public void setCloseCourtMeridiem(String closeCourtMeridiem) {
+		this.closeCourtMeridiem = closeCourtMeridiem;
+	}
+	/**
+     * @hibernate.property column="closeCourtHour" not-null="false"
+     */
+	public int getCloseCourtHour() {
+		return closeCourtHour;
+	}
+
+	public void setCloseCourtHour(int closeCourtHour) {
+		this.closeCourtHour = closeCourtHour;
+	}
+	
+	/**
+     * @hibernate.property column="is_court_verified" not-null="false"
+     */
+	public boolean isCourtVerifiedByAdmin() {
+		return isCourtVerifiedByAdmin;
+	}
+
+	public void setCourtVerifiedByAdmin(boolean isCourtVerifiedByAdmin) {
+		this.isCourtVerifiedByAdmin = isCourtVerifiedByAdmin;
 	}
 
 	@Override

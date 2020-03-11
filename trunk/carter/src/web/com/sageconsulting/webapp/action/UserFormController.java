@@ -414,6 +414,13 @@ public class UserFormController extends BaseFormController
     	Court court=new Court();
     	court.setName(user.getHomeCourtText());
     	court.setCourtAddress(user.getCourtAddress());
+    	court.setCourtState(user.getCourtState());
+    	court.setIsCourtLighted(user.getIsCourtLighted());
+    	court.setNumberOfCourts(user.getNumberOfCourts());
+    	court.setOpenCourtMeridiem(user.getOpenCourtMeridiem());
+    	court.setCloseCourtMeridiem(user.getCloseCourtMeridiem());
+    	court.setCloseCourtHour(user.getCloseCourtHour());
+    	court.setId(user.getCourtId());
     	
     	City city=user.getRegisteredCity();
     	List<City> cityList=new ArrayList<City>();
