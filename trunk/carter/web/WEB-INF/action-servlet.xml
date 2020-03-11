@@ -32,7 +32,7 @@
         <!-- property name="cancelView" value="redirect:home.html"/-->
         <property name="userManager" ref="userManager"/>
         <property name="roleManager" ref="roleManager"/>
-        <property name="courseManager" ref="courseManager"/>
+        <!-- <property name="courseManager" ref="courseManager"/> -->
         <property name="cityManager" ref="cityManager"/>
         <property name="seasonManager" ref="seasonManager"/>
         <property name="mailEngine" ref="mailEngine"/>
@@ -263,7 +263,7 @@
         <!-- property name="cancelView" value="redirect:home.html"/-->
         <property name="userManager" ref="userManager"/>
         <property name="roleManager" ref="roleManager"/>
-        <property name="courseManager" ref="courseManager"/>
+        <!-- <property name="courseManager" ref="courseManager"/> -->
         <property name="cityManager" ref="cityManager"/>
         <property name="seasonManager" ref="seasonManager"/>
         <!-- <property name="mailEngine" ref="mailEngine"/>

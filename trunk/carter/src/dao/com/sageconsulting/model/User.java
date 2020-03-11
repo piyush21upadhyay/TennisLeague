@@ -1,7 +1,7 @@
 /*
  * User.java
  * 
- * Copyright Â© 2008-2009 City Golf League, LLC.  All Rights Reserved
+ * Copyright © 2008-2009 City Golf League, LLC.  All Rights Reserved
  * http://www.citygolfleague.com
  * 
  * @author Steve Paquin - Sage Software Consulting, Inc.
@@ -85,6 +85,12 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String courtCity;
     private String courtState;
     private Long courtId;
+    private String isCourtLighted;
+    private int numberOfCourts;
+    private String openCourtMeridiem;
+    private int openCourtHour;
+    private String closeCourtMeridiem;
+    private int closeCourtHour;
     
 	public User()
     {
@@ -771,7 +777,6 @@ public class User extends BaseObject implements Serializable, UserDetails
 	public String getShoes() {
 		return shoes;
 	}
-
 	
 	public void setId(Long userId)
     {
@@ -1223,4 +1228,69 @@ public class User extends BaseObject implements Serializable, UserDetails
 		this.courtId = courtId;
 	}
 	
+	/**
+     * @hibernate.property column="court_lighted" not-null="false"
+     */
+	
+	public String getIsCourtLighted() {
+		return isCourtLighted;
+	}
+	
+	public void setIsCourtLighted(String isCourtLighted) {
+		this.isCourtLighted = isCourtLighted;
+	}
+
+	/**
+     * @hibernate.property column="numberOfCourts" not-null="false"
+     */
+	public int getNumberOfCourts() {
+		return numberOfCourts;
+	}
+
+
+	public void setNumberOfCourts(int numberOfCourts) {
+		this.numberOfCourts = numberOfCourts;
+	}
+
+	/**
+     * @hibernate.property column="openCourtMeridiem" not-null="false"
+     */
+	public String getOpenCourtMeridiem() {
+		return openCourtMeridiem;
+	}
+	public void setOpenCourtMeridiem(String openCourtMeridiem) {
+		this.openCourtMeridiem = openCourtMeridiem;
+	}
+
+	/**
+     * @hibernate.property column="openCourtHour" not-null="false"
+     */
+	public int getOpenCourtHour() {
+		return openCourtHour;
+	}
+
+	public void setOpenCourtHour(int openCourtHour) {
+		this.openCourtHour = openCourtHour;
+	}
+
+	/**
+     * @hibernate.property column="closeCourtMeridiem" not-null="false"
+     */
+	public String getCloseCourtMeridiem() {
+		return closeCourtMeridiem;
+	}
+
+	public void setCloseCourtMeridiem(String closeCourtMeridiem) {
+		this.closeCourtMeridiem = closeCourtMeridiem;
+	}
+	/**
+     * @hibernate.property column="closeCourtHour" not-null="false"
+     */
+	public int getCloseCourtHour() {
+		return closeCourtHour;
+	}
+
+	public void setCloseCourtHour(int closeCourtHour) {
+		this.closeCourtHour = closeCourtHour;
+	}
 }

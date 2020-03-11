@@ -36,13 +36,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sageconsulting.Constants;
 import com.sageconsulting.model.City;
-import com.sageconsulting.model.Course;
 import com.sageconsulting.model.Court;
 import com.sageconsulting.model.Role;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.CityManager;
-import com.sageconsulting.service.CourseManager;
 import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.RoleManager;
 import com.sageconsulting.service.SeasonManager;
@@ -50,7 +48,6 @@ import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
 import com.sageconsulting.util.StringUtil;
 import com.sageconsulting.webapp.util.CustomCityEditor;
-import com.sageconsulting.webapp.util.CustomCourseEditor;
 import com.sageconsulting.webapp.util.CustomHandicapEditor;
 import com.sageconsulting.webapp.util.CustomSeasonEditor;
 import com.sageconsulting.webapp.util.RequestUtil;
@@ -62,12 +59,11 @@ import com.sageconsulting.webapp.util.RequestUtil;
 public class UserFormController extends BaseFormController
 {
     private RoleManager roleManager;
-    private CourseManager courseManager;
+    //private CourseManager courseManager;
     private CityManager cityManager;
     private SeasonManager seasonManager;
     private CourtManager courtManager;
     User user = null;
-    private static final String REGISTER_PAGE = "redirect:registration.html";
 
     /**
      * @param mgr
@@ -78,10 +74,10 @@ public class UserFormController extends BaseFormController
         this.roleManager = mgr;
     }
     
-    public void setCourseManager(CourseManager mgr)
-    {
-        this.courseManager = mgr;
-    }
+//    public void setCourseManager(CourseManager mgr)
+//    {
+//        this.courseManager = mgr;
+//    }
     
     public void setCityManager(CityManager mgr)
     {
@@ -112,7 +108,7 @@ public class UserFormController extends BaseFormController
     @Override
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
     {
-        binder.registerCustomEditor(Course.class, null, new CustomCourseEditor(this.courseManager.getCourses()));
+        //binder.registerCustomEditor(Course.class, null, new CustomCourseEditor(this.courseManager.getCourses()));
         binder.registerCustomEditor(City.class, null, new CustomCityEditor(this.cityManager.getCities()));
         binder.registerCustomEditor(Season.class, null, new CustomSeasonEditor(this.seasonManager.getSeasons()));
         binder.registerCustomEditor(Double.class, "handicap", new CustomHandicapEditor()); //$NON-NLS-1$
@@ -535,7 +531,8 @@ public class UserFormController extends BaseFormController
         }
 
         ModelAndView view = super.showForm(request, response, errors);
-        updateCourseInfo(view, getCurrentCity(request, view));
+        //updateCourseInfo(view, getCurrentCity(request, view));
+        updateCourtInfo(view, getCurrentCity(request, view));
         updateReferralInfo(view, request);
         view.addObject("isAdministrator", Boolean.valueOf(isAdministratorEdit(request))); //$NON-NLS-1$
         view.addObject("isUser", Boolean.valueOf(isProfileEdit(request)));
@@ -545,6 +542,8 @@ public class UserFormController extends BaseFormController
         	Long adminId=((User)request.getSession().getAttribute("sessionLoginUser")).getId();
         	view.addObject("adminId",adminId);
         }
+		view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
+		view.addObject("hoursList", generateListOfSequentialNumber(24));
         return view;
     }
     
@@ -565,7 +564,15 @@ public class UserFormController extends BaseFormController
     }
     */
     
-    private boolean isCurrentUser(HttpServletRequest request)
+	private List<Integer> generateListOfSequentialNumber(int upperBound) {
+		List<Integer> intList = new ArrayList<Integer>();
+		for (int i = 1; i <= upperBound; i++) {
+			intList.add(i);
+		}
+		return intList;
+	}
+
+	private boolean isCurrentUser(HttpServletRequest request)
     {
     	String user = request.getParameter("username"); //$NON-NLS-1$
     	if (null == user)
@@ -586,12 +593,26 @@ public class UserFormController extends BaseFormController
     	return city;
     }
     
-    private void updateCourseInfo(ModelAndView view, City city)
+   /* private void updateCourseInfo(ModelAndView view, City city)
     {
         if (null != city)
         {
             view.addObject("courseList",  //$NON-NLS-1$
                 this.courseManager.getCourses(city.getId()));
+        }
+    }*/
+    
+    /**
+     * It can be used later to show the COurts corresponding to city selected on userForm.jsp
+     * @param view
+     * @param city
+     */
+    private void updateCourtInfo(ModelAndView view, City city)
+    {
+        if (null != city)
+        {
+            view.addObject("courtList",  //$NON-NLS-1$
+                this.courtManager.getCourts(city.getId()));
         }
     }
     

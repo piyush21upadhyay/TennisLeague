@@ -2145,6 +2145,10 @@ p.champ-info {
 	color:#ff0000;
 }
 
+#edituser .sixcol {
+	width: 132px;
+}
+
 /*=========== registration.jsp ==========*/
 
 #registrationForm {

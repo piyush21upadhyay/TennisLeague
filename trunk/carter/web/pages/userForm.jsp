@@ -184,6 +184,53 @@
 				
 			<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
 				<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+				
+			<label><fmt:message key="userForm.isCourtLighted"/></label>
+			 <form:select path="isCourtLighted" id="isCourtLighted" cssClass="sixcol">
+			 	<form:option value=""></form:option>
+				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+			</form:select>
+			
+			<label><fmt:message key="userForm.numberOfCourts"/></label>
+			 <form:select path="numberOfCourts" id="numberOfCourts" cssClass="sixcol">
+			 	<option value=''></option>
+			 	<c:forEach var="court" items="${numberOfCourts}">
+					<option value="<c:out value='${court}'/>" <c:if test="${court == user.numberOfCourts}">selected</c:if>>
+						<c:out value="${court}"/>
+					</option>
+				</c:forEach>
+			</form:select>
+			
+			<label><fmt:message key="userForm.hoursOpen"/></label>
+			 <form:select path="openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
+			 	<form:option value=""></form:option>
+				<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+				<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+			</form:select>
+			 <form:select path="openCourtHour" id="openCourtHour" cssClass="sixcol">
+			 	<option value=''></option>
+			 	<c:forEach var="hour" items="${hoursList}">
+					<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.openCourtHour}">selected</c:if>>
+						<c:out value="${hour}"/>
+					</option>
+				</c:forEach>
+			</form:select>
+			
+			<label><fmt:message key="userForm.hoursClose"/></label>
+			 <form:select path="closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
+			 	<form:option value=""></form:option>
+				<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+				<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+			</form:select>
+			 <form:select path="closeCourtHour" id="closeCourtHour" cssClass="sixcol">
+			 	<option value=''></option>
+			 	<c:forEach var="hour" items="${hoursList}">
+					<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.closeCourtHour}">selected</c:if>>
+						<c:out value="${hour}"/>
+					</option>
+				</c:forEach>
+			</form:select>
 			
 		</fieldset>
 	</div>
