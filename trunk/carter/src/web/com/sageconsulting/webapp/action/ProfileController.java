@@ -126,6 +126,8 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
            // view.addObject("percentageGamesLoss", getGamesLossPercentage(user, request.getLocale()));
             updateBirdieCount(view, user);
             updatePlayingPrefForMixedDoubles(user.getPlayingPreference());
+            String homeCourt = user.isCourtVerifiedByAdmin()?user.getHomeCourtText():"Pending Verification";
+            view.addObject("homeCourt", homeCourt);
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
         }
         else if(user == null)

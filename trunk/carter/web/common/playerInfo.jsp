@@ -58,16 +58,6 @@
 					<%-- <c:out value="${player.fullName}"/> --%>
 					</strong></h2>
 					<h4>&nbsp;<c:out value="${player.address.city},${player.address.province}"/></h4>
-					<%-- <h4>&nbsp;<fmt:message key="profile.lastlogin"/>
-					<c:choose>
-						<c:when test="${not empty lastLogin}">
-							<fmt:formatDate pattern="MMMMM d" value="${lastLogin}" />
-						</c:when>
-						<c:otherwise>
-							<fmt:formatDate pattern="MMMMM d" value="${player.lastLogin}" />
-						</c:otherwise>
-					</c:choose>
-					</h4> --%>
 				</div>
 			</c:if>
 		</c:otherwise>
@@ -75,21 +65,19 @@
 	<div class="clear"></div>
 	
 	<div class="subsection">
-		<p><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
-		<%-- <p><fmt:message key="profile.handicap"/> <c:if test="${not empty player}">
-			<span class="green">
-			<c:choose>
-				<c:when test="${player.handicap lt 0}">
-					<c:out value="+"/><c:out value="${0 - player.handicap}"/>
-				</c:when>
-				<c:otherwise>
-					<c:out value="${player.handicap}"/>
-				</c:otherwise>
-			</c:choose>
-			</span></c:if></p> --%>
-		<%-- <c:if test="${param.fullPlayerInfo eq 'true'}">
-			<p><fmt:message key="profile.division"/> <c:if test="${not empty player}"><span class="green"><c:out value="${currentDivision}"/></span></c:if></p>
-		</c:if> --%>
+		<p><fmt:message key="profile.homeCourt"/> 
+			<c:if test="${not empty player}"><%-- <c:out value="${player.homeCourtText}"/> --%> 
+			<c:out value="${homeCourt}"/>
+				<%-- <c:choose>
+					<c:when test="${player.isCourtVerifiedByAdmin eq 'false'}">
+						<c:out value="Pending Verification"/>
+					</c:when>
+					<c:otherwise>
+						<c:out value="${player.homeCourtText}"/>
+					</c:otherwise>
+				</c:choose> --%>
+			</c:if>
+		</p>
 		<c:if test="${not param.fullPlayerInfo eq 'true' and not empty currentRecord}">
 			<%-- <p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p> --%>
 			<c:choose>

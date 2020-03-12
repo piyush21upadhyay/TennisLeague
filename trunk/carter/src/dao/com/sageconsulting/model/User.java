@@ -91,6 +91,7 @@ public class User extends BaseObject implements Serializable, UserDetails
     private int openCourtHour;
     private String closeCourtMeridiem;
     private int closeCourtHour;
+	private boolean isCourtVerifiedByAdmin = false;
     
 	public User()
     {
@@ -1293,4 +1294,16 @@ public class User extends BaseObject implements Serializable, UserDetails
 	public void setCloseCourtHour(int closeCourtHour) {
 		this.closeCourtHour = closeCourtHour;
 	}
+
+	/**
+     * @hibernate.property column="isCourtVerifiedByAdmin" not-null="true"
+     */
+	public boolean isCourtVerifiedByAdmin() {
+		return isCourtVerifiedByAdmin;
+	}
+
+	public void setCourtVerifiedByAdmin(boolean isCourtVerifiedByAdmin) {
+		this.isCourtVerifiedByAdmin = isCourtVerifiedByAdmin;
+	}
+	
 }

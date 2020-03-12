@@ -498,16 +498,13 @@ public class UserFormController extends BaseFormController
     {
         if (this.log.isDebugEnabled())
         {
-            this.log.debug("sending e-mail to admin for court address..."); //$NON-NLS-1$ //$NON-NLS-2$
+            this.log.debug("sending e-mail to admin for court address...");
         }
 
-        this.message.setTo("akashyadav2219@gmail.com"); //$NON-NLS-1$ //$NON-NLS-2$
-        StringBuffer msg = new StringBuffer();
-		msg.append("Court Address Details for User: "+user.getUsername());
-		msg.append("\n\nHome Court Name: " + user.getHomeCourtText());
-		msg.append("\n\nCourt Address: " + user.getCourtAddress());
-        String subject = '[' + getText("webapp.name",locale) + "] " + //$NON-NLS-1$ //$NON-NLS-2$
-        		getText("user.courtAddressDetails",locale);
+        this.message.setTo("admin@openplaytennis.com");
+        String subject = "NEW COURT | "+user.getCourtCity().toUpperCase();
+        
+        StringBuffer msg = new StringBuffer("Please verify the new court.");
         this.message.setSubject(subject);
 		this.message.setText(msg.toString());
 		this.mailEngine.send(this.message);
