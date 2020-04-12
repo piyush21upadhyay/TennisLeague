@@ -124,6 +124,7 @@
     
     <bean id="courtsController" class="com.sageconsulting.webapp.action.CourtsController">
     	<property name="courtManager" ref="courtManager"/>
+    	<property name="userManager" ref="userManager"/>
     </bean>
     
     <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
@@ -321,6 +322,9 @@
     <bean id="manageCourseController" class="com.sageconsulting.webapp.action.ManageCourseController">
     	<property name="courseManager" ref="courseManager"/>
 	</bean>
+	
+	<bean id="courtFormController" class="com.sageconsulting.webapp.action.CourtFormController">
+	</bean>
     
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
@@ -363,6 +367,7 @@
                 <prop key="/emailValidate.html">emailValidateController</prop>
                 <prop key="/congratsPage.html">congratsMessageController</prop>
                 <prop key="/courts.html">courtsController</prop>
+                <prop key="/editCourt.html">courtFormController</prop>
             </props>
         </property>
     </bean>

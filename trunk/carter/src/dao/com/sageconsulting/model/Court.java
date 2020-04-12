@@ -31,11 +31,11 @@ public class Court extends BaseObject implements Serializable
     private String courtAddress;
     private String courtState;
     private String isCourtLighted;
-    private int numberOfCourts;
+    private String numberOfCourts;
     private String openCourtMeridiem;
-    private int openCourtHour;
+    private String openCourtHour;
     private String closeCourtMeridiem;
-    private int closeCourtHour;
+    private String closeCourtHour;
     private boolean isCourtVerifiedByAdmin=false;
 
     /**
@@ -176,11 +176,11 @@ public class Court extends BaseObject implements Serializable
      * @return
      * @hibernate.property column="numberOfCourts" not-null="false"
      */
-	public int getNumberOfCourts() {
+	public String getNumberOfCourts() {
 		return numberOfCourts;
 	}
 
-	public void setNumberOfCourts(int numberOfCourts) {
+	public void setNumberOfCourts(String numberOfCourts) {
 		this.numberOfCourts = numberOfCourts;
 	}
 
@@ -197,11 +197,11 @@ public class Court extends BaseObject implements Serializable
 	/**
      * @hibernate.property column="openCourtHour" not-null="false"
      */
-	public int getOpenCourtHour() {
+	public String getOpenCourtHour() {
 		return openCourtHour;
 	}
 
-	public void setOpenCourtHour(int openCourtHour) {
+	public void setOpenCourtHour(String openCourtHour) {
 		this.openCourtHour = openCourtHour;
 	}
 
@@ -218,11 +218,11 @@ public class Court extends BaseObject implements Serializable
 	/**
      * @hibernate.property column="closeCourtHour" not-null="false"
      */
-	public int getCloseCourtHour() {
+	public String getCloseCourtHour() {
 		return closeCourtHour;
 	}
 
-	public void setCloseCourtHour(int closeCourtHour) {
+	public void setCloseCourtHour(String closeCourtHour) {
 		this.closeCourtHour = closeCourtHour;
 	}
 	

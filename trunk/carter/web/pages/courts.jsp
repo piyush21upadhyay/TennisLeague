@@ -24,8 +24,23 @@
 	<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
 	<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
 	<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
+	<p><fmt:message key="courtDetails.verified"/> <c:out value="${court.isCourtVerifiedByAdmin}"/></p>
 </div>
 </c:forEach>
 </div>
 
+<!-- Below section is displayed when admin logs in and some courts for that city are in non verified mode--Starts -->
+<c:if test="${isAdmin}">
+<form:form commandName="editCourt" method="post" id="editCourt" action="/editCourt.html">
+	<div class="court-section">
+		<c:forEach var="court" items="${courtList}">
+			<div class="threecol-frame">
+				<label for="name"><fmt:message key="courtDetails.name"/></label><form:input path="name" id="name" cssClass="longBox" maxlength="30"/>
+			</div>
+		</c:forEach>
+	</div>
+</form:form>
+</c:if>
+
+<!-- Below section is displayed when admin logs in and some courts for that city are in non verified mode--Ends -->
 </c:if>

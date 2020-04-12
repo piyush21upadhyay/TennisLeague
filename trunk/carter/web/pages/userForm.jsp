@@ -173,65 +173,80 @@
 
 		<fieldset>
 			<legend><fmt:message key="userForm.courtSelection"/></legend>
-			<label for="homeCourtText"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-				<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox" maxlength="30"/>
 			
-			<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
-				<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
+			<c:if test="${not empty verifiedCourtList}">
+				<label><fmt:message key="userForm.selectCourt"/></label>
+				 <form:select path="selectCourt" id="selectCourt" onchange="displayFurtherSectionOfCourt()">
+					<c:forEach var="court" items="${verifiedCourtList}">
+						<option value="<c:out value='${court.id}'/>" <c:if test="${court.name == user.selectCourt}">selected</c:if>>
+							<c:out value="${court.name}"/>
+						</option>
+					</c:forEach>
+					<option value='-1'><fmt:message key="userForm.fillNewCourt"/></option>
+				</form:select>
+			</c:if>
+			
+			
+			<div id="homeCourtDiv">
+				<label for="homeCourtText"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
+					<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox" maxlength="30"/>
 				
-			<label for="courtCity"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
-				<form:input path="courtCity" id="courtCity" cssClass="longBox" maxlength="30"/> 
+				<label for="courtAddress"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+					<form:input path="courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
+					
+				<label for="courtCity"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+					<form:input path="courtCity" id="courtCity" cssClass="longBox" maxlength="30"/> 
+					
+				<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
+					<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+					
+				<label><fmt:message key="userForm.isCourtLighted"/></label>
+				 <form:select path="isCourtLighted" id="isCourtLighted" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+					<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+				</form:select>
 				
-			<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
-				<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+				<label><fmt:message key="userForm.numberOfCourts"/></label>
+				 <form:select path="numberOfCourts" id="numberOfCourts" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="court" items="${numberOfCourts}">
+						<option value="<c:out value='${court}'/>" <c:if test="${court == user.numberOfCourts}">selected</c:if>>
+							<c:out value="${court}"/>
+						</option>
+					</c:forEach>
+				</form:select>
 				
-			<label><fmt:message key="userForm.isCourtLighted"/></label>
-			 <form:select path="isCourtLighted" id="isCourtLighted" cssClass="sixcol">
-			 	<form:option value=""></form:option>
-				<form:option value="no"><fmt:message key="userForm.no"/></form:option>
-				<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
-			</form:select>
-			
-			<label><fmt:message key="userForm.numberOfCourts"/></label>
-			 <form:select path="numberOfCourts" id="numberOfCourts" cssClass="sixcol">
-			 	<option value=''></option>
-			 	<c:forEach var="court" items="${numberOfCourts}">
-					<option value="<c:out value='${court}'/>" <c:if test="${court == user.numberOfCourts}">selected</c:if>>
-						<c:out value="${court}"/>
-					</option>
-				</c:forEach>
-			</form:select>
-			
-			<label><fmt:message key="userForm.hoursOpen"/></label>
-			 <form:select path="openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
-			 	<form:option value=""></form:option>
-				<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
-				<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
-			</form:select>
-			 <form:select path="openCourtHour" id="openCourtHour" cssClass="sixcol">
-			 	<option value=''></option>
-			 	<c:forEach var="hour" items="${hoursList}">
-					<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.openCourtHour}">selected</c:if>>
-						<c:out value="${hour}"/>
-					</option>
-				</c:forEach>
-			</form:select>
-			
-			<label><fmt:message key="userForm.hoursClose"/></label>
-			 <form:select path="closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
-			 	<form:option value=""></form:option>
-				<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
-				<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
-			</form:select>
-			 <form:select path="closeCourtHour" id="closeCourtHour" cssClass="sixcol">
-			 	<option value=''></option>
-			 	<c:forEach var="hour" items="${hoursList}">
-					<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.closeCourtHour}">selected</c:if>>
-						<c:out value="${hour}"/>
-					</option>
-				</c:forEach>
-			</form:select>
-			
+				<label><fmt:message key="userForm.hoursOpen"/></label>
+				 <form:select path="openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+					<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+				</form:select>
+				 <form:select path="openCourtHour" id="openCourtHour" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="hour" items="${hoursList}">
+						<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.openCourtHour}">selected</c:if>>
+							<c:out value="${hour}"/>
+						</option>
+					</c:forEach>
+				</form:select>
+				
+				<label><fmt:message key="userForm.hoursClose"/></label>
+				 <form:select path="closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+					<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+				</form:select>
+				 <form:select path="closeCourtHour" id="closeCourtHour" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="hour" items="${hoursList}">
+						<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.closeCourtHour}">selected</c:if>>
+							<c:out value="${hour}"/>
+						</option>
+					</c:forEach>
+				</form:select>
+			</div>
 		</fieldset>
 	</div>
 	<div class="threecolw">
@@ -528,6 +543,18 @@ function showOppSkillLevelOptions(){
 	}
 }
 
+function displayFurtherSectionOfCourt(){
+	var optionChoosen=$('#homeCourtText').val();
+	alert("Court Drop Down Option Choosen=="+optionChoosen);
+	
+	if('-1' == optionChoosen){
+		$('#homeCourtDiv').show();
+	}else{
+		$('#homeCourtDiv').hide();
+		$('#showCourtDetails').show();
+	}
+}
+
 $(document).ready( function() {
     var now = new Date();
     var day = ("0" + now.getDate()).slice(-2);
@@ -537,8 +564,18 @@ $(document).ready( function() {
 	$('#todayDate').attr("disabled", true) 
 	
 	$('#opponentSkillLevelDiv').hide();
+	
+	if(anyVerifiedCourtPresent){
+		$('#homeCourtDiv').hide();
+	}else{
+		$('#homeCourtDiv').show();
+	}
  });
- 
+
+	var anyVerifiedCourtPresent;
+		<c:if test="${not empty verifiedCourtList}">
+	anyVerifiedCourtPresent = true;
+	</c:if>
 </script>
 
 <v:javascript formName="user" staticJavascript="false"/>

@@ -26,6 +26,8 @@ public interface CourtManager
     public List<Court> getCourts(String name);
     
     public List<Court> getCourts(Long cityId, String name);
+    
+    public List<Court> getVerifiedCourts(Long cityId);
 
     public void saveCourt(Court Court);
 

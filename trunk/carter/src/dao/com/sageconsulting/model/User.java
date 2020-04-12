@@ -80,18 +80,19 @@ public class User extends BaseObject implements Serializable, UserDetails
     private String racquet;
     private String tennisString;
     private String shoes;
+    private String selectCourt;
     private String homeCourtText; 
     private String courtAddress;
     private String courtCity;
     private String courtState;
     private Long courtId;
     private String isCourtLighted;
-    private int numberOfCourts;
+    private String numberOfCourts;
     private String openCourtMeridiem;
-    private int openCourtHour;
+    private String openCourtHour;
     private String closeCourtMeridiem;
-    private int closeCourtHour;
-	private boolean isCourtVerifiedByAdmin = false;
+    private String closeCourtHour;
+    private boolean courtVerified = false;
     
 	public User()
     {
@@ -1244,12 +1245,12 @@ public class User extends BaseObject implements Serializable, UserDetails
 	/**
      * @hibernate.property column="numberOfCourts" not-null="false"
      */
-	public int getNumberOfCourts() {
+	public String getNumberOfCourts() {
 		return numberOfCourts;
 	}
 
 
-	public void setNumberOfCourts(int numberOfCourts) {
+	public void setNumberOfCourts(String numberOfCourts) {
 		this.numberOfCourts = numberOfCourts;
 	}
 
@@ -1266,11 +1267,11 @@ public class User extends BaseObject implements Serializable, UserDetails
 	/**
      * @hibernate.property column="openCourtHour" not-null="false"
      */
-	public int getOpenCourtHour() {
+	public String getOpenCourtHour() {
 		return openCourtHour;
 	}
 
-	public void setOpenCourtHour(int openCourtHour) {
+	public void setOpenCourtHour(String openCourtHour) {
 		this.openCourtHour = openCourtHour;
 	}
 
@@ -1287,23 +1288,32 @@ public class User extends BaseObject implements Serializable, UserDetails
 	/**
      * @hibernate.property column="closeCourtHour" not-null="false"
      */
-	public int getCloseCourtHour() {
+	public String getCloseCourtHour() {
 		return closeCourtHour;
 	}
 
-	public void setCloseCourtHour(int closeCourtHour) {
+	public void setCloseCourtHour(String closeCourtHour) {
 		this.closeCourtHour = closeCourtHour;
 	}
 
 	/**
-     * @hibernate.property column="isCourtVerifiedByAdmin" not-null="true"
+     * @hibernate.property column="court_verified" not-null="true"
      */
-	public boolean isCourtVerifiedByAdmin() {
-		return isCourtVerifiedByAdmin;
+	public boolean isCourtVerified() {
+		return courtVerified;
 	}
 
-	public void setCourtVerifiedByAdmin(boolean isCourtVerifiedByAdmin) {
-		this.isCourtVerifiedByAdmin = isCourtVerifiedByAdmin;
+	public void setCourtVerified(boolean courtVerified) {
+		this.courtVerified = courtVerified;
 	}
+
+	public String getSelectCourt() {
+		return selectCourt;
+	}
+
+	public void setSelectCourt(String selectCourt) {
+		this.selectCourt = selectCourt;
+	}
+	
 	
 }

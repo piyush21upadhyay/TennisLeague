@@ -58,4 +58,9 @@ public class CourtManagerImpl extends BaseManager implements CourtManager
 	public Long saveAndReturnCourt(Court court) {
 		return getCourtDao().saveAndReturnCourt(court);
 	}
+
+	@Override
+	public List<Court> getVerifiedCourts(Long cityId) {
+		return getCourtDao().getVerifiedCourts(cityId);
+	}
 }

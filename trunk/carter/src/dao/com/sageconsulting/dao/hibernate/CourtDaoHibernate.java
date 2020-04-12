@@ -69,4 +69,12 @@ public class CourtDaoHibernate extends BaseDaoHibernate implements CourtDao
 		getHibernateTemplate().saveOrUpdate(court);
 		return court.getId();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Court> getVerifiedCourts(Long cityId) {
+		StringBuilder sb = new StringBuilder("from Court c where ").append(cityId)
+				.append(" in elements(cities) and c.isCourtVerifiedByAdmin=1 ").append(" order by c.name");
+		return getHibernateTemplate().find(sb.toString());
+	}
 }

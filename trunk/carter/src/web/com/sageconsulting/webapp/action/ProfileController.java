@@ -10,9 +10,9 @@ package com.sageconsulting.webapp.action;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.HashMap;
 import java.util.SortedSet;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,26 +23,23 @@ import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import sun.misc.Perf.GetPerfAction;
-
+import com.sageconsulting.Constants;
+import com.sageconsulting.model.City;
 import com.sageconsulting.model.Match;
-import com.sageconsulting.model.PrivateMessage;
+import com.sageconsulting.model.PublicMessage;
 import com.sageconsulting.model.Registration;
+import com.sageconsulting.model.RegistrationEntry;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
-import com.sageconsulting.service.PrivatemessageManager;
 import com.sageconsulting.service.MatchManager;
+import com.sageconsulting.service.PrivatemessageManager;
 import com.sageconsulting.service.PublicMessageManager;
+import com.sageconsulting.service.RegistrationEntryManager;
 import com.sageconsulting.service.RegistrationManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.service.UserManager;
 import com.sageconsulting.util.SeasonInfo;
 import com.sageconsulting.util.SeasonResult;
-import com.sageconsulting.Constants;
-import com.sageconsulting.model.City;
-import com.sageconsulting.model.PublicMessage;
-import com.sageconsulting.service.RegistrationEntryManager;
-import com.sageconsulting.model.RegistrationEntry;
 
 /**
  * Controller class for the main user home page.
@@ -126,7 +123,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
            // view.addObject("percentageGamesLoss", getGamesLossPercentage(user, request.getLocale()));
             updateBirdieCount(view, user);
             updatePlayingPrefForMixedDoubles(user.getPlayingPreference());
-            String homeCourt = user.isCourtVerifiedByAdmin()?user.getHomeCourtText():"Pending Verification";
+            String homeCourt = user.isCourtVerified()?user.getHomeCourtText():"Pending Verification";
             view.addObject("homeCourt", homeCourt);
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
         }
