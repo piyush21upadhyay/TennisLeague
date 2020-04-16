@@ -173,8 +173,9 @@
 
 		<fieldset>
 			<legend><fmt:message key="userForm.courtSelection"/></legend>
-			
+			<c:set var="verifiedCourtList" value="${verifiedCourtList}" scope="request"/>
 			<c:if test="${not empty verifiedCourtList}">
+				<%-- <c:set var="verifiedCourtList" value="${verifiedCourtList}" scope="request"/> --%>
 				<label><fmt:message key="userForm.selectCourt"/></label>
 				 <form:select path="selectCourt" id="selectCourt" onchange="displayFurtherSectionOfCourt()">
 					<c:forEach var="court" items="${verifiedCourtList}">
@@ -394,6 +395,7 @@
 </div>
 </form:form>
 
+    
 <script type="text/javascript">
 
 $(function(){
@@ -433,6 +435,7 @@ function onFormSubmit(theForm) {
 			cglAlert('Invalid Action', txt, 300);
 			return false;
 		}
+		setHomeCourtAttributes();
 		return theForm.submit();
 	}
 	
@@ -543,37 +546,92 @@ function showOppSkillLevelOptions(){
 	}
 }
 
-function displayFurtherSectionOfCourt(){
-	var optionChoosen=$('#homeCourtText').val();
-	alert("Court Drop Down Option Choosen=="+optionChoosen);
+function setHomeCourtAttributes(){
+	if ($('#selectCourt').val() != '-1') {
+		<c:forEach var="court" items="${verifiedCourtList}">
+			<c:if test="${court.id eq 1}">
+				courtMap['name'] = '<c:out value='${court.name}'/>';
+				courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
+				courtMap['city'] = '<c:out value='${court.cities[0].name}'/>';
+				courtMap['state'] = '<c:out value='${court.courtState}'/>';
 	
-	if('-1' == optionChoosen){
-		$('#homeCourtDiv').show();
-	}else{
-		$('#homeCourtDiv').hide();
-		$('#showCourtDetails').show();
+				courtMap['isCourtLighted'] = '<c:out value='${court.isCourtLighted}'/>';
+				courtMap['numberOfCourts'] = '<c:out value='${court.numberOfCourts}'/>';
+				courtMap['openCourtMeridiem'] = '<c:out value='${court.openCourtMeridiem}'/>';
+				courtMap['openCourtHour'] = '<c:out value='${court.openCourtHour}'/>';
+				courtMap['closeCourtMeridiem'] = '<c:out value='${court.closeCourtMeridiem}'/>';
+				courtMap['closeCourtHour'] = '<c:out value='${court.closeCourtHour}'/>';
+			</c:if>
+		</c:forEach>
+		$('#homeCourtText').val(courtMap['name']);
+		$('#courtAddress').val(courtMap['address']);
+		$('#courtCity').val(courtMap['city']);
+		$('#courtState').val(courtMap['state']);
+		$('#isCourtLighted').val(courtMap['isCourtLighted']);
+		$('#numberOfCourts').val(courtMap['numberOfCourts']);
+		$('#openCourtMeridiem').val(courtMap['openCourtMeridiem']);
+		$('#openCourtHour').val(courtMap['openCourtHour']);
+		$('#closeCourtMeridiem').val(courtMap['closeCourtMeridiem']);
+		$('#closeCourtHour').val(courtMap['closeCourtHour']);
 	}
 }
 
-$(document).ready( function() {
-    var now = new Date();
-    var day = ("0" + now.getDate()).slice(-2);
-    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-    $('#todayDate').val(today);
-	$('#todayDate').attr("disabled", true) 
-	
-	$('#opponentSkillLevelDiv').hide();
-	
-	if(anyVerifiedCourtPresent){
-		$('#homeCourtDiv').hide();
-	}else{
-		$('#homeCourtDiv').show();
+	function displayFurtherSectionOfCourt() {
+		var courtMap = new Object();
+		var selCourtId = $('#selectCourt').val();
+
+		if ('-1' == selCourtId) {
+			$('#homeCourtDiv').show();
+		} else {
+			/* <c:forEach var="court" items="${verifiedCourtList}">
+				<c:if test="${court.id eq 1}">
+					courtMap['name'] = '<c:out value='${court.name}'/>';
+					courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
+					courtMap['city'] = '<c:out value='${court.cities[0].name}'/>';
+					courtMap['state'] = '<c:out value='${court.courtState}'/>';
+					
+					courtMap['isCourtLighted'] = '<c:out value='${court.isCourtLighted}'/>';
+					courtMap['numberOfCourts'] = '<c:out value='${court.numberOfCourts}'/>';
+					courtMap['openCourtMeridiem'] = '<c:out value='${court.openCourtMeridiem}'/>';
+					courtMap['openCourtHour'] = '<c:out value='${court.openCourtHour}'/>';
+					courtMap['closeCourtMeridiem'] = '<c:out value='${court.closeCourtMeridiem}'/>';
+					courtMap['closeCourtHour'] = '<c:out value='${court.closeCourtHour}'/>';
+				</c:if>
+			</c:forEach>
+			$('#homeCourtText').val(courtMap['name']);
+			$('#courtAddress').val(courtMap['address']);
+			$('#courtCity').val(courtMap['city']);
+			$('#courtState').val(courtMap['state']);
+			$('#isCourtLighted').val(courtMap['isCourtLighted']);
+			$('#numberOfCourts').val(courtMap['numberOfCourts']);
+			$('#openCourtMeridiem').val(courtMap['openCourtMeridiem']);
+			$('#openCourtHour').val(courtMap['openCourtHour']);
+			$('#closeCourtMeridiem').val(courtMap['closeCourtMeridiem']);
+			$('#closeCourtHour').val(courtMap['closeCourtHour']); */
+
+			$('#homeCourtDiv').hide();
+		}
 	}
- });
+
+	$(document).ready(function() {
+		var now = new Date();
+		var day = ("0" + now.getDate()).slice(-2);
+		var month = ("0" + (now.getMonth() + 1)).slice(-2);
+		var today = now.getFullYear() + "-" + (month) + "-" + (day);
+		$('#todayDate').val(today);
+		$('#todayDate').attr("disabled", true)
+
+		$('#opponentSkillLevelDiv').hide();
+
+		if (anyVerifiedCourtPresent) {
+			$('#homeCourtDiv').hide();
+		} else {
+			$('#homeCourtDiv').show();
+		}
+	});
 
 	var anyVerifiedCourtPresent;
-		<c:if test="${not empty verifiedCourtList}">
+	<c:if test="${not empty verifiedCourtList}">
 	anyVerifiedCourtPresent = true;
 	</c:if>
 </script>
