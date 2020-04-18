@@ -1314,6 +1314,5 @@ public class User extends BaseObject implements Serializable, UserDetails
 	public void setSelectCourt(String selectCourt) {
 		this.selectCourt = selectCourt;
 	}
-	
-	
+
 }

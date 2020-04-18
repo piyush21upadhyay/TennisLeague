@@ -59,7 +59,6 @@ import com.sageconsulting.webapp.util.RequestUtil;
 public class UserFormController extends BaseFormController
 {
     private RoleManager roleManager;
-    //private CourseManager courseManager;
     private CityManager cityManager;
     private SeasonManager seasonManager;
     private CourtManager courtManager;
@@ -73,11 +72,6 @@ public class UserFormController extends BaseFormController
     {
         this.roleManager = mgr;
     }
-    
-//    public void setCourseManager(CourseManager mgr)
-//    {
-//        this.courseManager = mgr;
-//    }
     
     public void setCityManager(CityManager mgr)
     {
@@ -282,7 +276,7 @@ public class UserFormController extends BaseFormController
 
         User user = (User)command;
         Locale locale = request.getLocale();
-
+        
         // Handle delete request here first
         if (isDelete(request))
         {
@@ -347,13 +341,6 @@ public class UserFormController extends BaseFormController
     		return;
     	}
     	    	
-    	/*if (this.getUserManager().isGhinNumberInUse(user.getGhinNumber()))
-    	{
-    		errors.rejectValue("ghinNumber", "errors.existing.ghin", //$NON-NLS-1$ //$NON-NLS-2$
-        		new Object[] { user.getGhinNumber() }, "duplicate ghin number"); //$NON-NLS-1$
-        	return;
-    	}*/
-    	
     	if (this.getUserManager().isEmailInUse(user.getEmail()))
     	{
     		errors.rejectValue("email", "errors.existing.email", //$NON-NLS-1$ //$NON-NLS-2$
@@ -406,7 +393,9 @@ public class UserFormController extends BaseFormController
     		user.setDateJoined(dateFormat.parse(dateFormat.format(date)));
             user.addRole(this.roleManager.getRole(Constants.USER_ROLE));
     	}
-    	user.setCourtId(saveCourt(user));
+    	if(null == user.getCourtId()){ //For new Court this condition will be met
+    		user.setCourtId(saveCourt(user));
+    	}
         getUserManager().saveUser(user);
     }
     
@@ -420,15 +409,13 @@ public class UserFormController extends BaseFormController
     	court.setOpenCourtMeridiem(user.getOpenCourtMeridiem());
     	court.setCloseCourtMeridiem(user.getCloseCourtMeridiem());
     	court.setCloseCourtHour(user.getCloseCourtHour());
-    	court.setId(user.getCourtId());
+    	//court.setId(user.getCourtId());
     	
     	City city=user.getRegisteredCity();
     	List<City> cityList=new ArrayList<City>();
     	cityList.add(city);
     	
     	court.setCities(cityList);
-    	
-    	//this.courtManager.saveCourt(court);
     	return this.courtManager.saveAndReturnCourt(court);
 	}
 
@@ -535,7 +522,6 @@ public class UserFormController extends BaseFormController
         }
 
         ModelAndView view = super.showForm(request, response, errors);
-        //updateCourseInfo(view, getCurrentCity(request, view));
         updateCourtInfo(view, getCurrentCity(request, view));
         updateReferralInfo(view, request);
         view.addObject("isAdministrator", Boolean.valueOf(isAdministratorEdit(request))); //$NON-NLS-1$
@@ -550,23 +536,6 @@ public class UserFormController extends BaseFormController
 		view.addObject("hoursList", generateListOfSequentialNumber(24));
         return view;
     }
-    
-    /*
-    private void updateOriginalPassword(User user, ModelAndView view)
-    {
-    	String orig = ""; //$NON-NLS-1$
-    	if (null != user.getVersion())
-    	{
-    		User dbUser = this.getUserManager().getUser(user.getId().toString());
-    		if (null != dbUser)
-    		{
-    			orig = dbUser.getPassword();
-    		}
-    	}
-    	
-    	view.addObject("originalPassword", orig); //$NON-NLS-1$
-    }
-    */
     
 	private List<Integer> generateListOfSequentialNumber(int upperBound) {
 		List<Integer> intList = new ArrayList<Integer>();
@@ -596,15 +565,6 @@ public class UserFormController extends BaseFormController
     	}
     	return city;
     }
-    
-   /* private void updateCourseInfo(ModelAndView view, City city)
-    {
-        if (null != city)
-        {
-            view.addObject("courseList",  //$NON-NLS-1$
-                this.courseManager.getCourses(city.getId()));
-        }
-    }*/
     
     /**
      * It can be used later to show the COurts corresponding to city selected on userForm.jsp

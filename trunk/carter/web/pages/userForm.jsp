@@ -38,7 +38,7 @@
 	<form:hidden path="bestResultSeason"/>
 	<form:hidden path="lowScore"/>
 	<form:hidden path="seasonEntered"/>
-	<%-- <form:hidden path="playerLevel"/> --%>
+	<form:hidden path="courtId"/>
 	<c:if test="${cookieLogin == 'true'}">
 		<form:hidden path="password"/>
 		<form:hidden path="confirmPassword"/>
@@ -547,9 +547,11 @@ function showOppSkillLevelOptions(){
 }
 
 function setHomeCourtAttributes(){
+	var courtMap = new Object();
 	if ($('#selectCourt').val() != '-1') {
 		<c:forEach var="court" items="${verifiedCourtList}">
 			<c:if test="${court.id eq 1}">
+				courtMap['courtId'] = '<c:out value='${court.id}'/>';
 				courtMap['name'] = '<c:out value='${court.name}'/>';
 				courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
 				courtMap['city'] = '<c:out value='${court.cities[0].name}'/>';
@@ -573,42 +575,16 @@ function setHomeCourtAttributes(){
 		$('#openCourtHour').val(courtMap['openCourtHour']);
 		$('#closeCourtMeridiem').val(courtMap['closeCourtMeridiem']);
 		$('#closeCourtHour').val(courtMap['closeCourtHour']);
+		$('#courtId').val(courtMap['courtId']);
 	}
 }
 
 	function displayFurtherSectionOfCourt() {
-		var courtMap = new Object();
 		var selCourtId = $('#selectCourt').val();
 
 		if ('-1' == selCourtId) {
 			$('#homeCourtDiv').show();
 		} else {
-			/* <c:forEach var="court" items="${verifiedCourtList}">
-				<c:if test="${court.id eq 1}">
-					courtMap['name'] = '<c:out value='${court.name}'/>';
-					courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
-					courtMap['city'] = '<c:out value='${court.cities[0].name}'/>';
-					courtMap['state'] = '<c:out value='${court.courtState}'/>';
-					
-					courtMap['isCourtLighted'] = '<c:out value='${court.isCourtLighted}'/>';
-					courtMap['numberOfCourts'] = '<c:out value='${court.numberOfCourts}'/>';
-					courtMap['openCourtMeridiem'] = '<c:out value='${court.openCourtMeridiem}'/>';
-					courtMap['openCourtHour'] = '<c:out value='${court.openCourtHour}'/>';
-					courtMap['closeCourtMeridiem'] = '<c:out value='${court.closeCourtMeridiem}'/>';
-					courtMap['closeCourtHour'] = '<c:out value='${court.closeCourtHour}'/>';
-				</c:if>
-			</c:forEach>
-			$('#homeCourtText').val(courtMap['name']);
-			$('#courtAddress').val(courtMap['address']);
-			$('#courtCity').val(courtMap['city']);
-			$('#courtState').val(courtMap['state']);
-			$('#isCourtLighted').val(courtMap['isCourtLighted']);
-			$('#numberOfCourts').val(courtMap['numberOfCourts']);
-			$('#openCourtMeridiem').val(courtMap['openCourtMeridiem']);
-			$('#openCourtHour').val(courtMap['openCourtHour']);
-			$('#closeCourtMeridiem').val(courtMap['closeCourtMeridiem']);
-			$('#closeCourtHour').val(courtMap['closeCourtHour']); */
-
 			$('#homeCourtDiv').hide();
 		}
 	}

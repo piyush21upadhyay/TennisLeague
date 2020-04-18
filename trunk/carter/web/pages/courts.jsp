@@ -24,7 +24,7 @@
 	<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
 	<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
 	<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
-	<p><fmt:message key="courtDetails.verified"/> <c:out value="${court.isCourtVerifiedByAdmin}"/></p>
+	<p><fmt:message key="courtDetails.verified"/> <c:out value="${court.courtVerified}"/></p>
 </div>
 </c:forEach>
 </div>

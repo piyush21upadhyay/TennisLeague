@@ -36,7 +36,7 @@ public class Court extends BaseObject implements Serializable
     private String openCourtHour;
     private String closeCourtMeridiem;
     private String closeCourtHour;
-    private boolean isCourtVerifiedByAdmin=false;
+    private boolean courtVerified=false;
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -229,12 +229,12 @@ public class Court extends BaseObject implements Serializable
 	/**
      * @hibernate.property column="is_court_verified" not-null="false"
      */
-	public boolean isCourtVerifiedByAdmin() {
-		return isCourtVerifiedByAdmin;
+	public boolean isCourtVerified() {
+		return courtVerified;
 	}
 
-	public void setCourtVerifiedByAdmin(boolean isCourtVerifiedByAdmin) {
-		this.isCourtVerifiedByAdmin = isCourtVerifiedByAdmin;
+	public void setCourtVerified(boolean courtVerified) {
+		this.courtVerified = courtVerified;
 	}
 
 	@Override
