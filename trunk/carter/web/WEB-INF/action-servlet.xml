@@ -123,6 +123,7 @@
     </bean>
     
     <bean id="courtsController" class="com.sageconsulting.webapp.action.CourtsController">
+   		 <property name="formView" value="courts"/>
     	<property name="courtManager" ref="courtManager"/>
     	<property name="userManager" ref="userManager"/>
     </bean>

@@ -24,8 +24,8 @@
     				<p><label for="cities"><fmt:message key="courtDetails.city"/></label>
     					<form:input path="courtList[${status.index}].cities[0].name" id="cities" cssClass="longBox" maxlength="30"/></p>
     					
-    				<label for="courtState"><fmt:message key="courtDetails.state"/></label>	
-					<carter:state name="court.courtState" prompt="" default="courtList[${status.index}].courtState"/>
+    				<p><label for="courtState"><fmt:message key="courtDetails.state"/></label>	
+					<carter:state name="court.courtState" prompt="${courtList[status.index].courtState}" default="courtList[${status.index}].courtState"/></p>
     				<%-- <p><label for="courtState"><fmt:message key="courtDetails.state"/></label>
     					<form:input path="courtList[${status.index}].courtState" id="courtState" /></p> --%>
     					
@@ -34,16 +34,16 @@
     					<form:input path="courtList[${status.index}].numberOfCourts" id="numberOfCourts" /></p>	 --%>
     					
 					
-					 <label><fmt:message key="userForm.isCourtLighted"/></label>
+					 <p><label><fmt:message key="userForm.isCourtLighted"/></label>
 				 	<form:select path="courtList[${status.index}].isCourtLighted" id="isCourtLighted" cssClass="sixcol">
 					 	<option value="No" selected>
 					 		<c:out value="${courtList[status.index].isCourtLighted}"/>
 					 	</option>
 						<option value="no"><fmt:message key="userForm.no"/></option>
 						<option value="yes"><fmt:message key="userForm.yes"/></option>
-					</form:select> 
+					</form:select> </p>
 					
-					<label><fmt:message key="userForm.numberOfCourts"/></label>
+					<p><label><fmt:message key="userForm.numberOfCourts"/></label>
 					 <form:select path="courtList[${status.index}].numberOfCourts" id="numberOfCourts" cssClass="sixcol">
 					 	<option value="courtList[${status.index}].numberOfCourts" selected>
 					 		<c:out value="${courtList[status.index].numberOfCourts}"/>
@@ -53,10 +53,10 @@
 								 <c:out value="${court}"/>
 							</option>
 						</c:forEach>
-					</form:select>
+					</form:select></p>
 					
 					
-					<label><fmt:message key="userForm.hoursOpen"/></label>
+					<p><label><fmt:message key="userForm.hoursOpen"/></label>
 				 	<form:select path="courtList[${status.index}].openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
 					 	<option value="courtList[${status.index}].openCourtMeridiem" selected>
 					 		<c:out value="${courtList[status.index].openCourtMeridiem}"/>
@@ -73,9 +73,9 @@
 							<c:out value="${hour}"/>
 						</option>
 					</c:forEach>
-				</form:select>
+				</form:select></p>
 				
-				<label><fmt:message key="userForm.hoursClose"/></label>
+				<p><label><fmt:message key="userForm.hoursClose"/></label>
 				 <form:select path="courtList[${status.index}].closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
 				 	<option value="courtList[${status.index}].closeCourtMeridiem" selected>
 				 		<c:out value="${courtList[status.index].closeCourtMeridiem}"/>
@@ -92,7 +92,7 @@
 							<c:out value="${hour}"/>
 						</option>
 					</c:forEach>
-				</form:select>
+				</form:select></p>
 					
     				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
     					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>

@@ -8,6 +8,7 @@
  */
 package com.sageconsulting.webapp.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,6 +99,8 @@ public class CourtsController  extends BaseFormController
         }
         
         view.addObject("courtList", this.courtManager.getCourts(city.getId())); //$NON-NLS-1$
+        //view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
+		//view.addObject("hoursList", generateListOfSequentialNumber(24));
         
         return view;
     }
@@ -178,9 +181,18 @@ public class CourtsController  extends BaseFormController
         User user = getUser(request);
         boolean isAdmin = this.isCurrentUserAdmin(request, user);
         view.addObject("isAdmin", Boolean.valueOf(isAdmin));
+        view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
+		view.addObject("hoursList", generateListOfSequentialNumber(24));
         return view;
     }
    
+    private List<Integer> generateListOfSequentialNumber(int upperBound) {
+		List<Integer> intList = new ArrayList<Integer>();
+		for (int i = 1; i <= upperBound; i++) {
+			intList.add(i);
+		}
+		return intList;
+	}
     
     private boolean isCancel(HttpServletRequest request)
     {
