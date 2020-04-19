@@ -23,10 +23,11 @@
     					<form:input path="courtList[${status.index}].courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/></p>
     				<p><label for="cities"><fmt:message key="courtDetails.city"/></label>
     					<form:input path="courtList[${status.index}].cities[0].name" id="cities" cssClass="longBox" maxlength="30"/></p>
-    				<p><label for="courtState"><fmt:message key="courtDetails.state"/></label>
-    					<form:input path="courtList[${status.index}].courtState" id="courtState" /></p>
-    				 <p><label for="lighted"><fmt:message key="courtDetails.lighted"/></label>
-    					<form:input path="courtList[${status.index}].isCourtLighted" id="isCourtLighted" /></p>
+    					
+    				<label for="courtState"><fmt:message key="courtDetails.state"/></label>	
+					<carter:state name="court.courtState" prompt="" default="courtList[${status.index}].courtState"/>
+    				<%-- <p><label for="courtState"><fmt:message key="courtDetails.state"/></label>
+    					<form:input path="courtList[${status.index}].courtState" id="courtState" /></p> --%>
     					
     					
     				<%-- <p><label for="noOfCourts"><fmt:message key="courtDetails.noOfCourts"/></label>
