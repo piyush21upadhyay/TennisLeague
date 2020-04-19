@@ -324,6 +324,7 @@
 	</bean>
 	
 	<bean id="courtFormController" class="com.sageconsulting.webapp.action.CourtFormController">
+		<property name="formView" value="court"/>
 	</bean>
     
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -367,7 +368,8 @@
                 <prop key="/emailValidate.html">emailValidateController</prop>
                 <prop key="/congratsPage.html">congratsMessageController</prop>
                 <prop key="/courts.html">courtsController</prop>
-                <prop key="/editCourt.html">courtFormController</prop>
+                <prop key="/editCourts.html">courtsController</prop>
+                <!-- <prop key="/courts.html">courtFormController</prop> -->
             </props>
         </property>
     </bean>

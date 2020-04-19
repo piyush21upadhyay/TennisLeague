@@ -12,35 +12,82 @@
 </div>
 
 <div class="court-section">
-<c:forEach var="court" items="${courtList}">
-<div class="threecol-frame">
-	<h2><c:out value="${court.name}"/></h2>
-	<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
-	<p><fmt:message key="courtDetails.city"/> 
-		<c:forEach var="city" items="${court.cities}">
-			<c:out value="${city.name}"/>
-		</c:forEach>
-	<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
-	<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
-	<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
-	<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
-	<p><fmt:message key="courtDetails.verified"/> <c:out value="${court.courtVerified}"/></p>
-</div>
-</c:forEach>
-</div>
-
-<!-- Below section is displayed when admin logs in and some courts for that city are in non verified mode--Starts -->
-<c:if test="${isAdmin}">
-<form:form commandName="editCourt" method="post" id="editCourt" action="/editCourt.html">
-	<div class="court-section">
-		<c:forEach var="court" items="${courtList}">
-			<div class="threecol-frame">
-				<label for="name"><fmt:message key="courtDetails.name"/></label><form:input path="name" id="name" cssClass="longBox" maxlength="30"/>
+<c:choose>
+    <c:when test="${isAdmin}">
+    	<form:form commandName="courtListWrapper" method="post" id="editCourt" action="/editCourts.html">
+    		<c:forEach var="court" items="${courtListWrapper.courtList}" varStatus="status">
+    		<div class="threecol-frame">
+    				<label for="name"><fmt:message key="courtDetails.name"/></label>
+    					<form:input path="courtList[${status.index}].name" id="name" cssClass="longBox" maxlength="30"/>
+    				<label for="courtAddress"><fmt:message key="courtDetails.address"/></label>
+    					<form:input path="courtList[${status.index}].courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/>
+    				<label for="cities"><fmt:message key="courtDetails.city"/></label>
+    					<form:input path="courtList[${status.index}].cities[0].name" id="cities" cssClass="longBox" maxlength="30"/>
+    				<label for="courtState"><fmt:message key="courtDetails.state"/></label>
+    					<form:input path="courtList[${status.index}].courtState" id="courtState" />
+    				<label for="noOfCourts"><fmt:message key="courtDetails.noOfCourts"/></label>
+    					<form:input path="courtList[${status.index}].numberOfCourts" id="numberOfCourts" />
+    				<label for="lighted"><fmt:message key="courtDetails.lighted"/></label>
+    					<form:input path="courtList[${status.index}].isCourtLighted" id="isCourtLighted" />
+    				<label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
+    					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/>
+    		</div>
+    		</c:forEach>
+    		 <div class="section">
+	    		<div class="buttons">
+					<div class="left">
+						<carter:button onclick="return onFormSubmit(document.getElementById('editCourt'));" key="button.save"/>
+					</div>
+					<div class="left">
+						<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('editCourt').submit();return false;" key="button.cancel"/>
+					</div>
+					<input id="bCancel" type="hidden" name="bCancel" value="false"/>
+					<div class="clear"></div>
+				</div>
+			 </div>
+		    <div class="section">
+				<spring:bind path="courtListWrapper.*">
+				    <c:if test="${not empty status.errorMessages}">
+				    <div class="error">
+				        <c:forEach var="error" items="${status.errorMessages}">
+				            <img src="<c:url value="/images/iconWarning.gif"/>"
+				                alt="<fmt:message key="icon.warning"/>" class="icon"/>
+				            <c:out value="${error}" escapeXml="false"/><br />
+				        </c:forEach>
+				    </div>
+				    </c:if>
+				</spring:bind>
 			</div>
-		</c:forEach>
-	</div>
-</form:form>
-</c:if>
+    	</form:form>
+    	
+    	<script type="text/javascript">
+			function onFormSubmit(theForm) { // need to add validations of a form
+				return theForm.submit();
+			}
+		</script>
+    
+   </c:when>
+   <c:otherwise>
 
-<!-- Below section is displayed when admin logs in and some courts for that city are in non verified mode--Ends -->
+	<c:forEach var="court" items="${courtList}">
+			<div class="threecol-frame">
+				<h2><c:out value="${court.name}"/></h2>
+				<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
+				<p><fmt:message key="courtDetails.city"/> 
+					<c:forEach var="city" items="${court.cities}">
+						<c:out value="${city.name}"/>
+					</c:forEach>
+				<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
+				<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
+				<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
+				<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
+				<p><fmt:message key="courtDetails.verified"/> <c:out value="${court.courtVerified}"/></p>
+			</div>
+	</c:forEach>
+
+	</c:otherwise>
+</c:choose>
+
+</div>
+
 </c:if>
