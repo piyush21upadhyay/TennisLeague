@@ -126,4 +126,6 @@ public interface UserManager
 	public List<User> findTotalUsers(Long cityId, String firstname, String lastname,
 			String gender, Double rating, Double minRating, Double maxRating,
 			String dexterity, String matchPreference, String tournamentEntry, String orderBy);
+	
+	public List<User> findUsers(Long cityId, Long courtId);
 }

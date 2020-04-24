@@ -515,4 +515,23 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
 	private boolean isNotEmpty(String input) {
 		return (null != input) && (input.length()) > 0;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> findUsers(Long cityId, Long courtId) {
+		StringBuilder sb = new StringBuilder();
+        if (null != cityId)
+        {
+        	sb.append("u.registeredCity.id=").append(cityId).append(" ");
+        }
+        if (null != courtId) {
+        	sb.append("and u.courtId=").append(courtId);
+        }
+        if (sb.length() > 0)
+        {
+            sb.insert(0, "where "); //$NON-NLS-1$
+        }
+        sb.insert(0, "from User u "); //$NON-NLS-1$
+        return getHibernateTemplate().find(sb.toString());
+	}
 }

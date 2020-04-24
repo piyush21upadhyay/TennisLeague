@@ -24,6 +24,7 @@ import com.sageconsulting.model.City;
 import com.sageconsulting.model.Court;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.CourtManager;
+import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
 import com.sageconsulting.webapp.filter.CourtListWrapper;
 
@@ -71,26 +72,13 @@ public class CourtsController  extends BaseFormController
     	ModelAndView view = null;
     	if (isCourtEdit(request))
         {
-    		/*if(isDelete(request))
-    		{x
-    			super.setSuccessView("redirect:default.jsp");
-            	super.setCancelView("redirect:default.jsp");
-    		}
-    		else
-    		{*/
-    			super.setSuccessView("redirect:courts.html"); //$NON-NLS-1$
-            	super.setCancelView("redirect:courts.html"); //$NON-NLS-1$
-    		//}
+			super.setSuccessView("redirect:courts.html"); //$NON-NLS-1$
+        	super.setCancelView("redirect:courts.html"); //$NON-NLS-1$
         }
     	
     	view = super.handleRequestInternal(request, response);
-    	//return view;
-    	
-        //ModelAndView view = new ModelAndView(); //super.onSubmit(request, response, command, errors);
         City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
-        User user = getUser(request);
-        boolean isAdmin = this.isCurrentUserAdmin(request, user);
-        view.addObject("isAdmin", Boolean.valueOf(isAdmin));
+        view.addObject("isAdmin", Boolean.valueOf(this.isCurrentUserAdmin(request, getUser(request))));
         if (null == city)
         {
         	String msg = getMessageSourceAccessor().getMessage("errors.noCity", request.getLocale()); //$NON-NLS-1$
@@ -99,9 +87,6 @@ public class CourtsController  extends BaseFormController
         }
         
         view.addObject("courtList", this.courtManager.getCourts(city.getId())); //$NON-NLS-1$
-        //view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
-		//view.addObject("hoursList", generateListOfSequentialNumber(24));
-        
         return view;
     }
     
@@ -125,16 +110,45 @@ public class CourtsController  extends BaseFormController
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
     	CourtListWrapper wrapper = (CourtListWrapper)command;
-    	for(Court court:wrapper.getCourtList()){
-    		System.out.println(court.getName()+"::"+court.isCourtVerified());
-    	}
+    	saveCourtDetails(wrapper);
 		City city = (City) request.getSession().getAttribute(
 				Constants.CITY_TOKEN);
-		return getModelAndView(city, (Court) command, request);
+		String successView = getSuccessView();
+		return new ModelAndView(successView);
+		//return getModelAndView(city, (CourtListWrapper) command, request);
 	}
     
     
-    private ModelAndView getModelAndView(City city, Court command,
+    private void saveCourtDetails(CourtListWrapper courtListWrapper) {
+		for (Court court : courtListWrapper.getCourtList()) {
+			courtManager.saveCourt(court);
+			updateUsersBelongingToThisCourt(court);
+		}
+	}
+
+	private void updateUsersBelongingToThisCourt(Court court) {
+		List<User> users = this.userManager.findUsers(court.getCities().get(0).getId(), court.getId());
+		for(User user: users){
+			user.setHomeCourtText(court.getName());
+			user.setCourtCity(court.getCities().get(0).getName());
+			user.setCourtState(court.getCourtState());
+			user.setIsCourtLighted(court.getIsCourtLighted());
+			user.setNumberOfCourts(court.getNumberOfCourts());
+			user.setOpenCourtMeridiem(court.getOpenCourtMeridiem());
+			user.setOpenCourtHour(court.getOpenCourtHour());
+			user.setCloseCourtMeridiem(court.getCloseCourtMeridiem());
+			user.setCloseCourtHour(court.getCloseCourtHour());
+			user.setCourtVerified(court.isCourtVerified());
+			try {
+				this.userManager.saveUser(user);
+			} catch (UserExistsException e) {
+				log.error("Error occured while updating court information for User::"+user.getFullName());
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private ModelAndView getModelAndView(City city, CourtListWrapper command,
 			HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
 		view.addObject(CMD_NAME, command);
@@ -174,10 +188,6 @@ public class CourtsController  extends BaseFormController
     {
     	
         ModelAndView view = super.showForm(request, response, errors);
-        /*if(isAdministratorEdit(request))
-        {
-        	view.addObject("isAdmin", true);
-        }*/
         User user = getUser(request);
         boolean isAdmin = this.isCurrentUserAdmin(request, user);
         view.addObject("isAdmin", Boolean.valueOf(isAdmin));

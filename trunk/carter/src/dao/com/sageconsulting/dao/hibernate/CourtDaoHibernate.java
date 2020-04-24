@@ -74,7 +74,7 @@ public class CourtDaoHibernate extends BaseDaoHibernate implements CourtDao
 	@Override
 	public List<Court> getVerifiedCourts(Long cityId) {
 		StringBuilder sb = new StringBuilder("from Court c where ").append(cityId)
-				.append(" in elements(cities) and c.courtVerified=1 ").append(" order by c.name");
+				.append(" in elements(cities) and courtVerified=").append(" 1 order by c.name");
 		return getHibernateTemplate().find(sb.toString());
 	}
 }
