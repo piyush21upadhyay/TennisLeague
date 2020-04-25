@@ -21,14 +21,17 @@
                 var focusField = null;
                 var i = 0;
                 var fields = new Array();
-                var selectCourtVal = form['selectCourt'].selectedOptions[0].value;
+                var selectCourtVal;
+                if(form['selectCourt']){
+	                selectCourtVal = form['selectCourt'].selectedOptions[0].value;
+                }
                 var iconField = 0;
                 oRequired = new required();
                 
                 for (x in oRequired) {
                     var field = form[oRequired[x][0]];
                     if((field.name == "courtAddress" || field.name == "courtCity" || field.name == "courtState" 
-                    	|| field.name == "homeCourtText") && selectCourtVal != -1){
+                    	|| field.name == "homeCourtText") && selectCourtVal && selectCourtVal != -1){
                     	continue;
                     }
                     
