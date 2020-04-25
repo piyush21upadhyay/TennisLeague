@@ -9,6 +9,7 @@
 package com.sageconsulting.webapp.action;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,21 +73,34 @@ public class CourtsController  extends BaseFormController
     	ModelAndView view = null;
     	if (isCourtEdit(request))
         {
-			super.setSuccessView("redirect:courts.html"); //$NON-NLS-1$
-        	super.setCancelView("redirect:courts.html"); //$NON-NLS-1$
+			super.setSuccessView("redirect:courts.html");
+        	super.setCancelView("redirect:courts.html");
         }
     	
     	view = super.handleRequestInternal(request, response);
         City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
-        view.addObject("isAdmin", Boolean.valueOf(this.isCurrentUserAdmin(request, getUser(request))));
+        boolean isAdmin = Boolean.valueOf(this.isCurrentUserAdmin(request, getUser(request)));
+        view.addObject("isAdmin", isAdmin);
         if (null == city)
         {
-        	String msg = getMessageSourceAccessor().getMessage("errors.noCity", request.getLocale()); //$NON-NLS-1$
-        	view.addObject("successMessages", new String[] { msg });//$NON-NLS-1$
+        	String msg = getMessageSourceAccessor().getMessage("errors.noCity", request.getLocale());
+        	view.addObject("successMessages", new String[] { msg });
             return view;
         }
+        List<Court> courts = this.courtManager.getCourts(city.getId());
+        if(isAdmin){
+        	view.addObject("courtList", courts);
+        }else{
+        	Iterator<Court> itr = courts.iterator();
+        	while (itr.hasNext()) {
+        		Court court = (Court) itr.next();
+				if(!court.isCourtVerified()){
+					itr.remove();
+				}
+			}
+        	view.addObject("courtList", courts);
+        }
         
-        view.addObject("courtList", this.courtManager.getCourts(city.getId())); //$NON-NLS-1$
         return view;
     }
     
@@ -111,11 +125,8 @@ public class CourtsController  extends BaseFormController
 			throws Exception {
     	CourtListWrapper wrapper = (CourtListWrapper)command;
     	saveCourtDetails(wrapper);
-		City city = (City) request.getSession().getAttribute(
-				Constants.CITY_TOKEN);
 		String successView = getSuccessView();
 		return new ModelAndView(successView);
-		//return getModelAndView(city, (CourtListWrapper) command, request);
 	}
     
     
@@ -148,14 +159,6 @@ public class CourtsController  extends BaseFormController
 		}
 	}
 
-	private ModelAndView getModelAndView(City city, CourtListWrapper command,
-			HttpServletRequest request) {
-		ModelAndView view = new ModelAndView();
-		view.addObject(CMD_NAME, command);
-
-		return view;
-	}
-    
     @Override
 	public Object formBackingObject(HttpServletRequest request)
 			throws Exception {
@@ -164,7 +167,6 @@ public class CourtsController  extends BaseFormController
         CourtListWrapper courtListWrapper = new CourtListWrapper();
         List<Court> courts = this.courtManager.getCourts(city.getId());
         courtListWrapper.setCourtList(courts);
-        //Court court = courts.get(0);
         return courtListWrapper;
 	}
     
