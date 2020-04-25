@@ -548,9 +548,13 @@ function showOppSkillLevelOptions(){
 
 function setHomeCourtAttributes(){
 	var courtMap = new Object();
+	var id = $('#selectCourt').val();
 	if ($('#selectCourt').val() != '-1') {
 		<c:forEach var="court" items="${verifiedCourtList}">
-			<c:if test="${court.id eq 1}">
+		var courtId = "<c:out value="${court.id}"/>";
+			//<c:if test="${courtId eq id}">
+			if(courtId == id){
+			
 				courtMap['courtId'] = '<c:out value='${court.id}'/>';
 				courtMap['name'] = '<c:out value='${court.name}'/>';
 				courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
@@ -563,7 +567,8 @@ function setHomeCourtAttributes(){
 				courtMap['openCourtHour'] = '<c:out value='${court.openCourtHour}'/>';
 				courtMap['closeCourtMeridiem'] = '<c:out value='${court.closeCourtMeridiem}'/>';
 				courtMap['closeCourtHour'] = '<c:out value='${court.closeCourtHour}'/>';
-			</c:if>
+			}
+			//</c:if>
 		</c:forEach>
 		$('#homeCourtText').val(courtMap['name']);
 		$('#courtAddress').val(courtMap['address']);
