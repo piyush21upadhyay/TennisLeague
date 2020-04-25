@@ -409,6 +409,7 @@ public class UserFormController extends BaseFormController
     	court.setOpenCourtMeridiem(user.getOpenCourtMeridiem());
     	court.setCloseCourtMeridiem(user.getCloseCourtMeridiem());
     	court.setCloseCourtHour(user.getCloseCourtHour());
+    	court.setCourtCity(user.getCourtCity());
     	//court.setId(user.getCourtId());
     	
     	City city=user.getRegisteredCity();

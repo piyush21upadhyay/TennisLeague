@@ -37,6 +37,7 @@ public class Court extends BaseObject implements Serializable
     private String closeCourtMeridiem;
     private String closeCourtHour;
     private boolean courtVerified=false;
+    private String courtCity;
 
     /**
      * @hibernate.id column="id" generator-class="native" unsaved-value="null"
@@ -65,6 +66,20 @@ public class Court extends BaseObject implements Serializable
     {
         return this.cities;
     }
+    
+    /**
+     * @hibernate.property column="court_city" not-null="true"
+     */
+	public String getCourtCity() {
+		return courtCity;
+	}
+
+	/**
+     * @spring.validator type="required"
+     */
+	public void setCourtCity(String courtCity) {
+		this.courtCity = courtCity;
+	}
 
     /**
      * Convert user roles to LabelValue objects for convenience.

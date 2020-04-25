@@ -22,12 +22,13 @@
     				<p><label for="courtAddress"><fmt:message key="courtDetails.address"/></label>
     					<form:input path="courtList[${status.index}].courtAddress" id="courtAddress" cssClass="longBox" maxlength="30"/></p>
     				<p><label for="cities"><fmt:message key="courtDetails.city"/></label>
-    					<form:input path="courtList[${status.index}].cities[0].name" id="cities" cssClass="longBox" maxlength="30"/></p>
+    					<form:input path="courtList[${status.index}].courtCity" id="cities" cssClass="longBox" maxlength="30"/></p>
     					
     				<p><label for="courtState"><fmt:message key="courtDetails.state"/></label>	
 					<carter:state name="court.courtState" prompt="${courtList[status.index].courtState}" 
 						default="courtList[${status.index}].courtState"/>
 					</p>
+					
 					
 					 <p><label><fmt:message key="userForm.isCourtLighted"/></label>
 				 	<form:select path="courtList[${status.index}].isCourtLighted" id="isCourtLighted" cssClass="sixcol">
@@ -115,10 +116,10 @@
 			<div class="threecol-frame">
 				<h2><c:out value="${court.name}"/></h2>
 				<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
-				<p><fmt:message key="courtDetails.city"/> 
-					<c:forEach var="city" items="${court.cities}">
+				<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
+					<%-- <c:forEach var="city" items="${court.cities}">
 						<c:out value="${city.name}"/>
-					</c:forEach>
+					</c:forEach> --%>
 				<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
 				<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
 				<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>

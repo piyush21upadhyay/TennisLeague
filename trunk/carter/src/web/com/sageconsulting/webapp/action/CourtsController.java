@@ -141,7 +141,7 @@ public class CourtsController  extends BaseFormController
 		List<User> users = this.userManager.findUsers(court.getCities().get(0).getId(), court.getId());
 		for(User user: users){
 			user.setHomeCourtText(court.getName());
-			user.setCourtCity(court.getCities().get(0).getName());
+			user.setCourtCity(court.getCourtCity());
 			user.setCourtState(court.getCourtState());
 			user.setIsCourtLighted(court.getIsCourtLighted());
 			user.setNumberOfCourts(court.getNumberOfCourts());

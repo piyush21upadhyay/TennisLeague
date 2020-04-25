@@ -861,6 +861,7 @@ fgACAAABoA==]]></value>
     <column>closeCourtMeridiem</column>
     <column>closeCourtHour</column>
     <column>is_court_verified</column>
+    <column>court_city</column>
     <row>
       <value>1</value>
       <value>1</value>
@@ -874,6 +875,7 @@ fgACAAABoA==]]></value>
       <value>PM</value>
       <value>6</value>
       <value>false</value>
+       <value>Delhi</value>
     </row>
   </table>
   
