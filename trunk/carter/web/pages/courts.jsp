@@ -25,9 +25,13 @@
     					<form:input path="courtList[${status.index}].courtCity" id="cities" cssClass="longBox" maxlength="30"/></p>
     					
     				<p><label for="courtState"><fmt:message key="courtDetails.state"/></label>	
-					<carter:state name="court.courtState" prompt="${courtList[status.index].courtState}" 
-						default="courtList[${status.index}].courtState"/>
-					</p>
+					<form:select path="courtList[${status.index}].courtState" id="courtState" cssClass="sixcol">
+					 	<c:forEach var="state" items="${stateList}">
+							<option value="<c:out value='${state}'/>" <c:if test="${state == courtList[status.index].courtState}">selected</c:if>>
+								 <c:out value="${state}"/>
+							</option>
+						</c:forEach>
+					</form:select></p>
 					
 					
 					 <p><label><fmt:message key="userForm.isCourtLighted"/></label>

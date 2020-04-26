@@ -199,7 +199,13 @@
 					<form:input path="courtCity" id="courtCity" cssClass="longBox" maxlength="30"/> 
 					
 				<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
-					<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+				<form:select path="courtState" id="courtState" cssClass="sixcol">
+				 	<c:forEach var="state" items="${stateList}">
+						<option value="<c:out value='${state}'/>" <c:if test="${state == user.courtState}">selected</c:if>>
+							<c:out value="${state}"/>
+						</option>
+					</c:forEach>
+				</form:select>
 					
 				<label><fmt:message key="userForm.isCourtLighted"/></label>
 				 <form:select path="isCourtLighted" id="isCourtLighted" cssClass="sixcol">

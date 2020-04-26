@@ -27,6 +27,7 @@ import com.sageconsulting.model.User;
 import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
+import com.sageconsulting.util.StateUtil;
 import com.sageconsulting.webapp.filter.CourtListWrapper;
 
 public class CourtsController  extends BaseFormController
@@ -195,6 +196,7 @@ public class CourtsController  extends BaseFormController
         view.addObject("isAdmin", Boolean.valueOf(isAdmin));
         view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
 		view.addObject("hoursList", generateListOfSequentialNumber(24));
+		view.addObject("stateList", StateUtil.getStates());
         return view;
     }
    
@@ -221,25 +223,6 @@ public class CourtsController  extends BaseFormController
     protected boolean isCourtEdit(HttpServletRequest request)
     {
     	return request.getRequestURI().indexOf("editCourts") >= 0; //$NON-NLS-1$
-    }
-    
-    private boolean isAdministratorEdit(HttpServletRequest request)
-    {
-    	boolean isAdministrator = false;
-    	User currentUser = this.getUserManager().getUserByUsername(request.getRemoteUser());
-    	GrantedAuthority[] userAuthorities = currentUser.getAuthorities();
-        
-        for(int counter=0; counter<userAuthorities.length; counter++)
-        {
-        	String userRole = userAuthorities[counter].toString();
-        	if(userRole.equalsIgnoreCase("admin"))
-        	{
-        		isAdministrator = true;
-        		break;
-        	}
-        }
-        
-    	return isAdministrator;
     }
     
     private User getUser(HttpServletRequest request)

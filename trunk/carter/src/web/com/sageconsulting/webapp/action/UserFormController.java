@@ -46,6 +46,7 @@ import com.sageconsulting.service.RoleManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
+import com.sageconsulting.util.StateUtil;
 import com.sageconsulting.util.StringUtil;
 import com.sageconsulting.webapp.util.CustomCityEditor;
 import com.sageconsulting.webapp.util.CustomHandicapEditor;
@@ -535,6 +536,7 @@ public class UserFormController extends BaseFormController
         }
 		view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
 		view.addObject("hoursList", generateListOfSequentialNumber(24));
+		view.addObject("stateList", StateUtil.getStates());
         return view;
     }
     
