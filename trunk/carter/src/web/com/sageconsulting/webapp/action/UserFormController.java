@@ -535,7 +535,7 @@ public class UserFormController extends BaseFormController
         	view.addObject("adminId",adminId);
         }
 		view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
-		view.addObject("hoursList", generateListOfSequentialNumber(24));
+		view.addObject("hoursList", generateListOfSequentialNumber(12));
 		view.addObject("stateList", StateUtil.getStates());
         return view;
     }
