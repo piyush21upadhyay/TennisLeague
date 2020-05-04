@@ -61,10 +61,6 @@ public class CourtsController  extends BaseFormController
     @Override
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder)
     {
-        //binder.registerCustomEditor(Course.class, null, new CustomCourseEditor(this.courseManager.getCourses()));
-       // binder.registerCustomEditor(Court.class, null, new CustomCourtEditor(this.courtManager.getCourts()));
-       // binder.registerCustomEditor(Season.class, null, new CustomSeasonEditor(this.userManager.get));
-        //binder.registerCustomEditor(Double.class, "handicap", new CustomHandicapEditor()); //$NON-NLS-1$
         super.initBinder(request, binder);
     }
     
@@ -195,7 +191,7 @@ public class CourtsController  extends BaseFormController
         boolean isAdmin = this.isCurrentUserAdmin(request, user);
         view.addObject("isAdmin", Boolean.valueOf(isAdmin));
         view.addObject("numberOfCourts",generateListOfSequentialNumber(12));
-		view.addObject("hoursList", generateListOfSequentialNumber(24));
+		view.addObject("hoursList", generateListOfSequentialNumber(12));
 		view.addObject("stateList", StateUtil.getStates());
         return view;
     }
