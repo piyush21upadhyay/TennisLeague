@@ -76,8 +76,6 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       if (_jspx_meth_menu_005fuseMenuDisplayer_005f0(_jspx_page_context))
         return;
-      out.write('\r');
-      out.write('\n');
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -116,6 +114,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write('\n');
         if (_jspx_meth_menu_005fdisplayMenu_005f2(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
           return true;
+        out.write('\r');
         out.write('\n');
         if (_jspx_meth_menu_005fdisplayMenu_005f3(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
           return true;
@@ -135,11 +134,29 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write('\n');
         if (_jspx_meth_menu_005fdisplayMenu_005f7(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
           return true;
+        out.write('\r');
         out.write('\n');
         if (_jspx_meth_menu_005fdisplayMenu_005f8(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
           return true;
+        out.write("\r\n");
+        out.write("<hr>\r\n");
+        out.write("<div class=\"second-menu\">\r\n");
+        if (_jspx_meth_menu_005fdisplayMenu_005f9(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
+          return true;
         out.write('\r');
         out.write('\n');
+        if (_jspx_meth_menu_005fdisplayMenu_005f10(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        if (_jspx_meth_menu_005fdisplayMenu_005f11(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
+          return true;
+        out.write('\r');
+        out.write('\n');
+        if (_jspx_meth_menu_005fdisplayMenu_005f12(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
+          return true;
+        out.write("\r\n");
+        out.write("</div>\r\n");
         int evalDoAfterBody = _jspx_th_menu_005fuseMenuDisplayer_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -233,7 +250,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
     net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f4 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
     _jspx_th_menu_005fdisplayMenu_005f4.setPageContext(_jspx_page_context);
     _jspx_th_menu_005fdisplayMenu_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f4.setName("Courses");
+    _jspx_th_menu_005fdisplayMenu_005f4.setName("Courts");
     int _jspx_eval_menu_005fdisplayMenu_005f4 = _jspx_th_menu_005fdisplayMenu_005f4.doStartTag();
     if (_jspx_th_menu_005fdisplayMenu_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f4);
@@ -312,6 +329,78 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f8);
+    return false;
+  }
+
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f9(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  menu:displayMenu
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f9 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f9.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f9.setName("About");
+    int _jspx_eval_menu_005fdisplayMenu_005f9 = _jspx_th_menu_005fdisplayMenu_005f9.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f9);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f9);
+    return false;
+  }
+
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f10(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  menu:displayMenu
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f10 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f10.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f10.setName("Rules");
+    int _jspx_eval_menu_005fdisplayMenu_005f10 = _jspx_th_menu_005fdisplayMenu_005f10.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f10);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f10);
+    return false;
+  }
+
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f11(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  menu:displayMenu
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f11 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f11.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f11.setName("Contact");
+    int _jspx_eval_menu_005fdisplayMenu_005f11 = _jspx_th_menu_005fdisplayMenu_005f11.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f11);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f11);
+    return false;
+  }
+
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f12(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  menu:displayMenu
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f12 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f12.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f12.setName("Cities");
+    int _jspx_eval_menu_005fdisplayMenu_005f12 = _jspx_th_menu_005fdisplayMenu_005f12.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f12);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f12);
     return false;
   }
 }

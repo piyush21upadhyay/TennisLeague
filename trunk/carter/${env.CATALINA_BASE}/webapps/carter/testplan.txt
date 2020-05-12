@@ -39,7 +39,7 @@ page on the site.  These are:
   - Top left allows navigation to About, Rules and Contact pages.
   - Top left also allows user to click "cities" to choose another city.
   - Top right has Login/Signup if not logged in and Logout if logged in
-  - Main nav contains Home, Player Profile, Schedule, Members, Courses, 
+  - Main nav contains Home, Player Profile, Schedule, Members, Courts, 
   	  Leaderboard, Playoffs, and Champions
   - Bottom left contains Feedback, Terms of Use and Privacy Policy links
   
@@ -184,9 +184,9 @@ Members
 -------
 The page that allows viewing members from the city you are in.
 
-Courses
+Courts
 -------
-The page that allows viewing the courses from the city you are in.
+The page that allows viewing the courts from the city you are in.
 
 Leaderboard
 -----------

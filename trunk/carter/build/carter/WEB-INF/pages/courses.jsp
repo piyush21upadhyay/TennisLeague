@@ -8,7 +8,7 @@
 <c:if test="${empty errors and empty successMessages}">
 
 <div class="section">
-	<h2 class="page-title"><fmt:message key="courses.title"/></h2>
+	<h2 class="page-title"><fmt:message key="courts.title"/></h2>
 </div>
 
 <div class="course-section">

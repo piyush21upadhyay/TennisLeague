@@ -16,9 +16,9 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fmenu_005fuseMenuDisplayer_005fpermissions_005fname_005fconfig;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_005ftest;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fcarter_005fconstants_005fscope_005fnobody;
 
@@ -28,18 +28,18 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   public void _jspInit() {
     _005fjspx_005ftagPool_005fmenu_005fuseMenuDisplayer_005fpermissions_005fname_005fconfig = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fcarter_005fconstants_005fscope_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _005fjspx_005ftagPool_005fmenu_005fuseMenuDisplayer_005fpermissions_005fname_005fconfig.release();
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_005ftest.release();
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
     _005fjspx_005ftagPool_005fcarter_005fconstants_005fscope_005fnobody.release();
   }
@@ -84,8 +84,8 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write('\r');
+      out.write('\n');
       if (_jspx_meth_menu_005fuseMenuDisplayer_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
@@ -164,34 +164,16 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_menu_005fuseMenuDisplayer_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("<div class=\"left\">\r\n");
-        if (_jspx_meth_menu_005fdisplayMenu_005f0(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        if (_jspx_meth_menu_005fdisplayMenu_005f1(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        if (_jspx_meth_menu_005fdisplayMenu_005f2(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
-          return true;
-        out.write('\r');
-        out.write('\n');
-        if (_jspx_meth_menu_005fdisplayMenu_005f3(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
-          return true;
-        out.write("\r\n");
-        out.write("</div>\r\n");
-        out.write("\r\n");
         out.write("<div class=\"right\">\r\n");
         out.write("\t<div id=\"links\">\r\n");
-        out.write("\t\t<a class=\"ie-post-link\" onclick=\"showLink('https://twitter.com/CityGolfLeague');\">\r\n");
-        out.write("\t\t\t<img src=\"images/twitter_link.png\">\r\n");
-        out.write("\t\t</a>\r\n");
         out.write("\t\t<a class=\"ie-post-link\" onclick=\"showLink('http://www.facebook.com/pages/City-Golf-League/348284351925121');\">\r\n");
-        out.write("\t\t\t<img src=\"images/facebook_link.png\">\r\n");
+        out.write("\t\t\t<i class=\"fa fa-facebook\"></i>\r\n");
         out.write("\t\t</a>\r\n");
+        out.write("\t\t<a class=\"ie-post-link\" onclick=\"showLink('https://twitter.com/CityGolfLeague');\">\r\n");
+        out.write("\t\t\t<i class=\"fa fa-twitter\"></i>\r\n");
+        out.write("\t\t</a>\r\n");
+        out.write("\t\t<a href=\"\" target=\"_blank\"><i class=\"fa fa-instagram\"></i></a>\r\n");
         out.write("\t</div>\r\n");
-        out.write("\t\r\n");
         out.write("\t<div style=\"display:inline-block;\">\r\n");
         out.write("\t");
         if (_jspx_meth_c_005fchoose_005f0(_jspx_th_menu_005fuseMenuDisplayer_005f0, _jspx_page_context))
@@ -210,78 +192,6 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fmenu_005fuseMenuDisplayer_005fpermissions_005fname_005fconfig.reuse(_jspx_th_menu_005fuseMenuDisplayer_005f0);
-    return false;
-  }
-
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f0 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f0.setName("About");
-    int _jspx_eval_menu_005fdisplayMenu_005f0 = _jspx_th_menu_005fdisplayMenu_005f0.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f0);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f0);
-    return false;
-  }
-
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f1 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f1.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f1.setName("Rules");
-    int _jspx_eval_menu_005fdisplayMenu_005f1 = _jspx_th_menu_005fdisplayMenu_005f1.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f1);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f1);
-    return false;
-  }
-
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f2 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f2.setName("Contact");
-    int _jspx_eval_menu_005fdisplayMenu_005f2 = _jspx_th_menu_005fdisplayMenu_005f2.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f2);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f2);
-    return false;
-  }
-
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_menu_005fuseMenuDisplayer_005f0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f3 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_menu_005fuseMenuDisplayer_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f3.setName("Cities");
-    int _jspx_eval_menu_005fdisplayMenu_005f3 = _jspx_th_menu_005fdisplayMenu_005f3.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f3);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f3);
     return false;
   }
 
@@ -338,11 +248,11 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("\t\t\t<div id=\"signup-nav\">");
-        if (_jspx_meth_menu_005fdisplayMenu_005f4(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
+        if (_jspx_meth_menu_005fdisplayMenu_005f0(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
         out.write("</div>\r\n");
         out.write("\t\t\t<div id=\"login-nav\">");
-        if (_jspx_meth_menu_005fdisplayMenu_005f5(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
+        if (_jspx_meth_menu_005fdisplayMenu_005f1(_jspx_th_c_005fwhen_005f0, _jspx_page_context))
           return true;
         out.write("</div>\r\n");
         out.write("\t\t");
@@ -359,39 +269,39 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f4 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f4.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f4.setName("Signup");
-    int _jspx_eval_menu_005fdisplayMenu_005f4 = _jspx_th_menu_005fdisplayMenu_005f4.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f4);
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f0 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f0.setName("Signup");
+    int _jspx_eval_menu_005fdisplayMenu_005f0 = _jspx_th_menu_005fdisplayMenu_005f0.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f0);
       return true;
     }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f4);
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f0);
     return false;
   }
 
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f5(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fwhen_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f5 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f5.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f5.setName("Login");
-    int _jspx_eval_menu_005fdisplayMenu_005f5 = _jspx_th_menu_005fdisplayMenu_005f5.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f5);
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f1 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fwhen_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f1.setName("Login");
+    int _jspx_eval_menu_005fdisplayMenu_005f1 = _jspx_th_menu_005fdisplayMenu_005f1.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f1);
       return true;
     }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f5);
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f1);
     return false;
   }
 
@@ -437,7 +347,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\r\n");
         out.write("\t\t\t<div id=\"logout-nav\">");
-        if (_jspx_meth_menu_005fdisplayMenu_005f6(_jspx_th_c_005fotherwise_005f0, _jspx_page_context))
+        if (_jspx_meth_menu_005fdisplayMenu_005f2(_jspx_th_c_005fotherwise_005f0, _jspx_page_context))
           return true;
         out.write("</div>\r\n");
         out.write("\t\t");
@@ -454,21 +364,21 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_menu_005fdisplayMenu_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f0, PageContext _jspx_page_context)
+  private boolean _jspx_meth_menu_005fdisplayMenu_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  menu:displayMenu
-    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f6 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
-    _jspx_th_menu_005fdisplayMenu_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_menu_005fdisplayMenu_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
-    _jspx_th_menu_005fdisplayMenu_005f6.setName("Logout");
-    int _jspx_eval_menu_005fdisplayMenu_005f6 = _jspx_th_menu_005fdisplayMenu_005f6.doStartTag();
-    if (_jspx_th_menu_005fdisplayMenu_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f6);
+    net.sf.navigator.taglib.el.DisplayMenuTag _jspx_th_menu_005fdisplayMenu_005f2 = (net.sf.navigator.taglib.el.DisplayMenuTag) _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.get(net.sf.navigator.taglib.el.DisplayMenuTag.class);
+    _jspx_th_menu_005fdisplayMenu_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_menu_005fdisplayMenu_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
+    _jspx_th_menu_005fdisplayMenu_005f2.setName("Logout");
+    int _jspx_eval_menu_005fdisplayMenu_005f2 = _jspx_th_menu_005fdisplayMenu_005f2.doStartTag();
+    if (_jspx_th_menu_005fdisplayMenu_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f2);
       return true;
     }
-    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f6);
+    _005fjspx_005ftagPool_005fmenu_005fdisplayMenu_005fname_005fnobody.reuse(_jspx_th_menu_005fdisplayMenu_005f2);
     return false;
   }
 }

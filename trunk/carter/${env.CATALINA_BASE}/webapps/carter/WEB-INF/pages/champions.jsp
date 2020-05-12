@@ -9,23 +9,15 @@
 
 <div class="section">
 	<div class="left">
-		<h2 class="page-title"><fmt:message key="champions.title"/> <c:out value="${year}"/></h2>
+		<h2 class="page-title"><fmt:message key="champions.title"/></h2>
 	</div>
-		<div class="right">
-		<form name="chooseYear" action="champions.html">
-		<select id="changeYear" name="changeYear" onchange="document.chooseYear.submit();">
-			<option><fmt:message key="champions.changeYear"/></option>
-			<c:forEach var="year" items="${years}">
-				<option value="<c:out value="${year}"/>"><c:out value="${year}"/></option>
-			</c:forEach>
-	      </select>
-	    </form>
-	</div>
+	<div class="year-heading"><h6><fmt:message key="champions.title"/><c:out value="${year}"/></h6> </div>
+
 </div>
 <div class="clear"></div>
 
-
-<div class="champion-section">
+<div class="row">
+<div class="champion-section col-sm-10">
 
 <c:choose>
 	<c:when test="${empty champions}">
@@ -106,87 +98,97 @@
 			   	});
 			}
 		</script>
-		<div class="threecol-frame">
-			<div>
-				<div class="left"><img src="images/trophy-icon.gif" alt="member"/></div>
-				<div class="left">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
-				</div>
-
-				<div class="right">
+		<div class="row">
+		<div class="threecol-frame col-sm-4 frame-box">
+			<div class="card">
+				<div class="center"><img src="images/trophy-icon.png" alt="member"/></div>
+				<div class="center">
 					
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
-				<div class="clear"></div>
-				<p class="champ-info">City Champion</p>
-	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<div class="center">
+					<h2>&nbsp;<strong>Division Winner</strong></h2>
+				</div>
 
-				<p>USGA Handicap: 10.7</p>
+				
+				<div class="clear"></div>
+				<p class="champ-info center">City Champion</p>
+	        	<p class="champ-info center">Summer 2009 Division One</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
 		</div>
 	
-		<div class="threecol-frame">
-			<div>
-				<div class="left"><img src="images/trophy-icon.gif" alt="member"/></div>
-				<div class="left">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
-				</div>
-
-				<div class="right">
+		<div class="threecol-frame frame-box col-sm-4">
+			<div  class="card">
+				<div class="center"><img src="images/trophy-icon.png" alt="member"/></div>
+					<div class="center">
 					
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
-				<div class="clear"></div>
-				<p class="champ-info">City Champion</p>
-	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<div class="center">
+					<h2>&nbsp;<strong>Division Winner</strong></h2>
+				</div>
 
-				<p>USGA Handicap: 10.7</p>
+			
+				<div class="clear"></div>
+				<p class="champ-info center">City Champion</p>
+	        	<p class="champ-info center">Summer 2009 Division One</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
 		</div>
 
 	
-		<div class="threecol-frame">
-			<div>
-				<div class="left"><img src="images/trophy-icon.gif" alt="member"/></div>
-				<div class="left">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
-				</div>
-
-				<div class="right">
+		<div class="threecol-frame col-sm-4 frame-box">
+			<div  class="card">
+				<div class="center"><img src="images/trophy-icon.png" alt="member"/></div>
+				<div class="center">
 					
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
-				<div class="clear"></div>
-				<p class="champ-info">City Champion</p>
-	        	<p class="champ-info">Summer 2009 Division One</p>
-				<p>Home Course: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+				<div class="center">
+					<h2>&nbsp;<strong>Division Winner</strong></h2>
+				</div>
 
-				<p>USGA Handicap: 10.7</p>
+				
+				<div class="clear"></div>
+				<p class="champ-info center">City Champion</p>
+	        	<p class="champ-info center">Summer 2009 Division One</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+
+				<!-- <p>USGA Handicap: 10.7</p> -->
+				<p>Rating: 5.0</p>
 				<p>Season Record: <a onclick="showPopupMsg();" class="ie-post-link">0-0-0</a></p>
 			</div>
+		</div>
 		</div>
 	</c:when>
 	<c:otherwise>
 		<c:forEach var="champion" items="${champions}">
 			<div class="threecol-frame">
 				<div>
-					<div class="left"><img width="42" src="<c:url value="${champion.player.icon}"/>" alt="member"/></div>
-					<div class="left">
-						<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/></strong></h2>
-					</div>
-					<div class="right">
+					<div class="center"><img width="42" src="<c:url value="${champion.player.icon}"/>" alt="member"/></div>
+						<div class="center">
 						<c:set var="url"><c:url value="/profile.html"/></c:set>
 						<carter:button page="${url}" param="id=${champion.player.id}&amp;msg=false" key="members.profile"/>
 					</div>
+					<div class="center">
+						<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/><c:out value="${champion.player.playerLevel}"/></strong></h2>
+					</div>
+				
 					<div class="clear"></div>
-					<p class="champ-info"><fmt:message key="champions.cityChampion"/></p>
-		        	<p class="champ-info"><c:out value="${champion.season}"/> <c:out value="${champion.division}"/></p>
-					<p><fmt:message key="members.homeCourse"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourse.id}"/>"><c:out value="${champion.homeCourse.name}"/></a></p>
-					<p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p>
+					<p class="champ-info center"><fmt:message key="champions.cityChampion"/></p>
+		        	<p class="champ-info center"><c:out value="${champion.season}"/> <c:out value="${champion.division}"/></p>
+					<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
+					<%-- <p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p> --%>
+					<p><fmt:message key="members.rating"/> <c:out value="${champion.player.playerLevel}"/></p>
 					<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${champion.player.id}"/>"><c:out value="${champion.record}"/></a></p>
 				</div>
 			</div>
@@ -195,5 +197,15 @@
 </c:choose>
 
 </div>
-
+		<div class="col-sm-1 cham-year-drop">
+		<form name="chooseYear" action="champions.html">
+		<select id="changeYear" name="changeYear" onchange="document.chooseYear.submit();">
+			<option><fmt:message key="champions.changeYear"/></option>
+			<c:forEach var="year" items="${years}">
+				<option value="<c:out value="${year}"/>"><c:out value="${year}"/></option>
+			</c:forEach>
+	      </select>
+	    </form>
+	</div>
+</div>
 </c:if>

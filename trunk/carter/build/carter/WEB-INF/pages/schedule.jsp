@@ -8,7 +8,7 @@
 <c:if test="${empty errors and empty successMessages}">
 
 <div id="schedule">
-
+<h2 class="page-title"> Schedule</h2>
 <div id="onecol">
 
 	<c:if test="${not empty user}">
@@ -135,7 +135,7 @@
 <table class="schedule" id="match">
 	<thead>
 		<tr>
-			<th><fmt:message key="schedule.opponent"/></th>
+			<th class="opp"><fmt:message key="schedule.opponent"/></th>
 			<th><fmt:message key="schedule.location"/></th>
 			<th><fmt:message key="schedule.playBy"/></th>
 			<th><fmt:message key="schedule.played"/></th>
@@ -143,6 +143,9 @@
 		</tr>
 	</thead>
 	<tbody>
+		<tr>
+		<td colspan="5"> &nbsp;</td>
+		</tr>
 		<tr class="odd">
 			<td>-</td>
 			<td>-</td>

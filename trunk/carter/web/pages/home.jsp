@@ -137,23 +137,25 @@
 <c:if test="${empty errors and empty successMessages}">
 
 <div id="home">
-
+<!--marquee id="news-ticker" behavior="scroll" scrollamount="3" direction="left"><p><c:out value="${tickerMessages}" escapeXml="false"/></p></marquee-->
+<div class="row">
+<div class="col-sm-8">
 <c:choose>
 	<c:when test="${seasonStarted eq 1 and not empty playOffCountdownDays}">
 		<div id="header-home">
 			<div id="header-home-text">
-				<div class="count-down"><fmt:message key="home.playoff" /></div>
-				<div class="count-down-days"><c:out value="${playOffCountdownDays}"/></div>
-				<div class="count-down"><fmt:message key="home.days"/></div>
+				<span class="count-down"><fmt:message key="home.playoff" /></span>
+				<span class="count-down-days"><c:out value="${playOffCountdownDays}"/></span>
+				<span class="count-down-day"><fmt:message key="home.days"/></span>
 		 	</div>
 		</div>
 	</c:when>
 	<c:when test="${not empty countdownMessage and seasonStarted ne 2}">
 		<div id="header-home">
 			<div id="header-home-text">
-				<div class="count-down"><c:out value="${countdownMessage}"/></div>
-			    <div class="count-down-days"><c:out value="${countdownDays}"/></div>
-			    <div class="count-down"><fmt:message key="home.days"/></div>
+				<span class="count-down"><c:out value="${countdownMessage}"/></span>
+			    <span class="count-down-days"><c:out value="${countdownDays}"/></span>
+			    <span class="count-down-day"><fmt:message key="home.days"/></span>
 	   		</div>
 	  	</div>
 	</c:when>
@@ -161,119 +163,16 @@
 		<div id="header-home-none"></div>
 	</c:otherwise>
 </c:choose>
-
-<marquee id="news-ticker" behavior="scroll" scrollamount="3" direction="left"><p><c:out value="${tickerMessages}" escapeXml="false"/></p></marquee>
-
-<div id="twocol-left">
-	<div class="std-pad">
-		<h2 class="page-title"><fmt:message key="home.welcomeTo"/> <fmt:message key="webapp.name"/></h2>
+	<div class="std-pad flu-box shadow">
+	    <h2 class="page-title">Home</h2>
+		<h3><fmt:message key="home.welcomeTo"/> <fmt:message key="webapp.name"/></h3>
 	    <p class="justify"><fmt:message key="home.intro"/></p>
-		
-		<div id="birdie-challenge" style="position:relative;">
-			<c:if test="${empty user}">
-			<a href="signup.html"  style="position: absolute; z-index: 1000; left:0; top:0;
-			width: 630px; height: 171px; background:#fff; filter: alpha(opacity=0); opacity:0; 
-			-moz-opacity:0; -webkit-opacity:0;
-			outline:none;">  &nbsp;
-			</a>
-			</c:if>
-	    	<div class="city-name"><c:out value="${cityName}"/></div>
-	    	<div class="left-msg">
-	    	<c:choose>
-	    		<c:when test="${not empty countdownDate}">Opens for Season</c:when>
-				<c:otherwise>&nbsp;</c:otherwise>
-			</c:choose>
-	    	</div>
-			<div class="left-msg">
-				<c:choose>
-		    		<c:when test="${not empty countdownDate}">
-		    		Registration <fmt:formatDate type="date" pattern="MMMM d" value="${countdownDate}" /><sup><c:out value="${dateSuffix}" /></sup>
-		    		</c:when>
-					<c:otherwise>&nbsp;</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="right-msg-1"><i>Click here to</i></div>
-			<div class="right-msg-2">SIGN UP</div>
-			<div class="right-msg-3">NOW</div>
-			<div class="right-msg-4"><i>Tour caddie optional</i></div>
-	    </div>
-	
-		<div id="home-info">
-			<div class="left">
-				<img src="images/keyInformation.jpg" alt="Key"/>
-			</div>
-			<div class="left">
-				<h3><fmt:message key="home.keyinfo"/></h3>
-			</div>
-			<div class="clear"></div>
-			<%@ include file="include/keyInfo.html"%>
-		</div>
-		
-		<div id="home-msgbrd">
-			<div class="left">
-			 	<a href="<c:url value="msgboard.html"/>">
-					<img src="images/pubMsgBrd.jpg" alt="Messages" />
-				</a>
-			</div>
-			<div class="left">
-				<h3><fmt:message key="home.msgbrdHeader"/></h3>
-			</div>
-			<div class="clear"></div>
-		   	<c:choose>
-				<c:when test="${empty publicMessages}">
-		 			<div class="nomessages"><fmt:message key="home.noMessages"/></div>
-		     	</c:when>
-		  	  	<c:otherwise>
-		  	  		<div class="tbl-msg-div">
-						<display:table name="publicMessages" id="publicMessages" cellspacing="0" cellpadding="0" class="messages" requestURI="">
-				    	    <display:column property="poster.fullName" titleKey="home.from" url="/profile.html" paramId="id" paramProperty="poster.id" decorator="com.sageconsulting.webapp.decorators.MessageTextColumnDecorator"/>
-						    <%-- <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
-								<a href="#" class="dm-link-class" onclick="return false;">
-								<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
-			    			</display:column> --%>
-			    			<display:column titleKey="home.subject" maxLength="25" url="/home.html" paramId="msg" paramProperty="id" style="whitespace: nowrap;" class="dm-link-class">
-									<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/>
-			    			</display:column>
-						    <display:column property="date" titleKey="home.date" url="/home.html" paramId="msg" paramProperty="id" decorator="com.sageconsulting.webapp.decorators.MessageDateColumnDecorator"/>
-			
-						    <display:setProperty name="basic.empty.showtable" value="false"/>
-						    <display:setProperty name="basic.msg.empty_list" value="" />
-							<display:setProperty name="paging.banner.no_items_found" value="" />
-							<display:setProperty name="paging.banner.one_item_found" value="" />
-							<display:setProperty name="paging.banner.some_items_found" value="" />
-							<display:setProperty name="paging.banner.all_items_found" value="" />
-							<display:setProperty name="paging.banner.full" value="" />
-							<display:setProperty name="paging.banner.first" value="" />
-							<display:setProperty name="paging.banner.last" value="" />
-							<display:setProperty name="paging.banner.onepage" value="" />
-						</display:table>
-					</div>
-		     	</c:otherwise>
-		   	</c:choose>
-			
-			<c:if test="${not empty currentMessage}">
-		   		<div class="clear"></div>
-				<div id="msg-div">
-					<div style="margin-bottom:8px;">
-						<h2><c:out value="${currentMessage.subject}"/></h2>
-					</div>
-					<div id="msg">
-						<c:out value="${currentMessage.message}" escapeXml="false"/>
-					</div>
-				</div>
-				<div class="clear"></div>
-			</c:if>
-		   	
-		   	<a class="green ie-post-link" onclick="checkAction();">
-				<fmt:message key="profile.postMessage"/>
-	  		</a>
-		</div>
+	     <p><b> Watch us grow. City Tennis League: Tee it up!</b></p>
 	</div>
 </div>
-
-<div id="twocol-right">
+<div class="col-sm-4">
 	<div id="home-leaderboard">
-		<h2><fmt:message key="home.leaderboard"/></h2>
+		<!--h2><fmt:message key="home.leaderboard"/></h2-->
 		<c:choose>
 			<c:when test="${empty seasons or not empty hideStandings}">
 				<div>
@@ -288,7 +187,7 @@
 					</thead>
 					
 					<tbody>
-						<tr class="odd">
+						<tr class="odd activetd">
 							<td>-</td>
 							<td>-</td>
 							<td>-</td>
@@ -415,6 +314,136 @@
 		</c:if></c:if>
 	</div>
 </div>
+</div>
+<!--Section first end-->
+<div class="col-sm-12" style="padding:0px">
+	<!--image section start-->
+		<div id="birdie-challenge">
+		<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">  
+			&nbsp;
+			</a>
+			<c:if test="${empty user}">
+			<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">  
+			&nbsp;
+			</a>
+			</c:if>
+	    	<!--div class="city-name"><c:out value="${cityName}"/></div-->
+	    	<div class="left-msg">
+	    	<c:choose>
+	    		<c:when test="${not empty countdownDate}">Opens for Season</c:when>
+				<c:otherwise>&nbsp;</c:otherwise>
+			</c:choose>
+	    	</div>
+			<div class="left-msg">
+				<c:choose>
+		    		<c:when test="${not empty countdownDate}">
+		    		Registration <fmt:formatDate type="date" pattern="MMMM d" value="${countdownDate}" /><sup><c:out value="${dateSuffix}" /></sup>
+		    		</c:when>
+					<c:otherwise>&nbsp;</c:otherwise>
+				</c:choose>
+			</div>
+			<!--div class="row">
+			<div class="col-sm-6"><a href="signup.html" class="signup-txt"> SIGN UP NOW</a></div>
+			<div class="col-sm-6"><a href="signup.html" class="clickhere">Click here</a></div>
+			</div-->
+			<!--div class="right-msg-3"></div-->
+			<!--div class="right-msg-4"><i>Tour caddie optional</i></div-->
+	    </div>
+	<!--image section end-->
+</div>
+<!--Third section start-->
+<div class="row">
+	<div class="col-sm-4">
+	<!--key Info start-->
+	<div class="shadow hm-tag">
+		<div class="heading-golfer">
+				<h3 class="green-txt"><fmt:message key="home.keyinfo"/></h3>
+			</div>
+		<div id="home-info" class="flu-box">
+			<!--div class="left">
+				<img src="images/keyInformation.jpg" alt="Key"/>
+			</div-->
+			<div class="clear"></div>
+			<%@ include file="include/keyInfo.html"%>
+		</div>
+		</div>
+		<!--key Info end-->
+		
+	</div>
+	<div class="col-sm-8">
+	<!--Msg board start-->
+	<div class="hm-tag">
+	<div class="heading-golfer">
+				<h3 style="font-weight: normal;"><fmt:message key="home.msgbrdHeader"/></h3>
+				<a href="<c:url value="msgboard.html"/>">
+					<img src="images/public-bd-icon.png" alt="Messages" />
+				</a>
+			</div>
+		<div id="home-msgbrd">
+			<!--div class="left">
+			 	
+			</div-->
+			<div class="clear"></div>
+		   	<c:choose>
+				<c:when test="${empty publicMessages}">
+		 			<div class="nomessages"><fmt:message key="home.noMessages"/></div>
+		     	</c:when>
+		  	  	<c:otherwise>
+		  	  		<div class="tbl-msg-div shadow">
+						<display:table name="publicMessages" id="publicMessages" cellspacing="0" cellpadding="0" class="messages" requestURI="">
+				    	    <display:column property="poster.fullName" titleKey="home.from" url="/profile.html" paramId="id" paramProperty="poster.id" decorator="com.sageconsulting.webapp.decorators.MessageTextColumnDecorator"/>
+						    <%-- <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
+								<a href="#" class="dm-link-class" onclick="return false;">
+								<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
+			    			</display:column> --%>
+			    			<display:column titleKey="home.subject" maxLength="25" url="/home.html" paramId="msg" paramProperty="id" style="whitespace: nowrap;" class="dm-link-class">
+									<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/>
+			    			</display:column>
+						    <display:column property="date" titleKey="home.date" url="/home.html" paramId="msg" paramProperty="id" decorator="com.sageconsulting.webapp.decorators.MessageDateColumnDecorator"/>
+			
+						    <display:setProperty name="basic.empty.showtable" value="false"/>
+						    <display:setProperty name="basic.msg.empty_list" value="" />
+							<display:setProperty name="paging.banner.no_items_found" value="" />
+							<display:setProperty name="paging.banner.one_item_found" value="" />
+							<display:setProperty name="paging.banner.some_items_found" value="" />
+							<display:setProperty name="paging.banner.all_items_found" value="" />
+							<display:setProperty name="paging.banner.full" value="" />
+							<display:setProperty name="paging.banner.first" value="" />
+							<display:setProperty name="paging.banner.last" value="" />
+							<display:setProperty name="paging.banner.onepage" value="" />
+						</display:table>
+					</div>
+		     	</c:otherwise>
+		   	</c:choose>
+			
+			<c:if test="${not empty currentMessage}">
+		   		<div class="clear"></div>
+				<div id="msg-div">
+				<div class="heading-golfer">
+				<h3>Message Preview</h3>			
+			  </div>
+				<div class="msg-head shadow-sm">
+					<h2><label for="subject">Subject:</label><c:out value="${currentMessage.subject}"/></h2>
+				</div>
+				<div id="msg" class="shadow-sm">
+				<label for="Message">Message:</label>	<c:out value="${currentMessage.message}" escapeXml="false"/>
+				</div>
+				</div>
+				<div class="clear"></div>
+			</c:if>
+		   	<div class="green-post-link">
+		   	<a class="green ie-post-link" onclick="checkAction();">
+				<fmt:message key="profile.postMessage"/>
+	  		</a>
+			</div>
+		</div>
+		</div>
+		<!--Msg board end-->
+	</div>
+</div>
+<!-- third section end -->
+
+<!--Home End-->
 </div>
 
 </c:if>

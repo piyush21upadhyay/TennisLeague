@@ -67,7 +67,7 @@
     </div>
     </c:if>
 </spring:bind>
-
+<div class="grey-box shadow-sm registration-page">
 <form:form commandName="registration" method="post" action="registrationForm.html" id="registrationForm">
 <form:hidden path="id"/>
 <form:hidden path="version"/>
@@ -253,8 +253,8 @@
 </ul>
 
 </form:form>
-
-<h4><fmt:message key="registration.registrants"/></h4>
+</div>
+<h4 style="margin: 10px;font-size: 17px;"><fmt:message key="registration.registrants"/></h4>
 <display:table name="registrantList" cellspacing="0" cellpadding="0" requestURI="" 
     defaultsort="1" id="registrantList" class="table" export="false">
     <display:column sortable="true" property="user.fullName" titleKey="registration.name" url="/profile.html" paramId="id" paramProperty="id" style="white-space: nowrap" media="html"/>
@@ -356,4 +356,3 @@ function enableChekboxesBeforeSubmit(){
 
 <v:javascript formName="registration" staticJavascript="false"/>
 <script type="text/javascript" src="<c:url value="/scripts/validator.jsp"/>"></script>
-

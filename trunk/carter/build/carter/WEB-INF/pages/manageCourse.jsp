@@ -19,7 +19,7 @@
 			</display:table><br/>
 		</c:when>
 		<c:otherwise>
-			<p>No Courses are registered with this city.</p><br/>
+			<p>No Courts are registered with this city.</p><br/>
 		</c:otherwise>
 	</c:choose>
 	<a style="margin-right:20px;" href="citymanage.html"><fmt:message key="manageCourse.back"/></a>

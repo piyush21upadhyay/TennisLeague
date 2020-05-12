@@ -1,15 +1,16 @@
+
 @font-face {
-	font-family: "Agenda Bold";
+	font-family:"Agenda Bold";
 	src: url('Agenda-Bold.otf');
 }
 
 html, body {
 	margin:0;
 	padding:0;
-	background:#0E0907;
-	color:#fff;
+	background:#fff;
+	color:#5d5d5d;
 	font-size:14px;
-	font-family:Helvetica;
+	 font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 p {
@@ -46,16 +47,38 @@ p.vspace {
 .justify {
 	text-align:justify;
 }
-
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+#sidebar {
+    min-width: 18%;
+    max-width: 18%;
+    background: url(../../images/sidebar-bg.png);
+    background-repeat: no-repeat;
+    color: #fff;
+    /*transition: all 0.3s;
+    background-position: center top;*/
+    background-size: contain;
+    background-color: #353b46;
+}
+.sidebar-header a img {
+    width: 120px;
+    height: 120px;
+    transform: translate(-5px , 42px);
+}
 #container {
-	position:relative;
+	/*position:relative;
 	margin:0 auto;
 	width:900px;
 	border-left:5px solid #fff;
 	border-right:5px solid #fff;
 	border-bottom:5px solid #fff;
 	font-family:Helvetica;
-	background-color:#23201F;
+	background-color:#23201F;*/
+	width: 100%;
+  
+    transition: all 0.3s;
 }
 
 #container h2.green {
@@ -73,7 +96,22 @@ select {
 input[type="text"], input[type="password"] {
 	border: 1px solid #000000;
 }
+/*table tbody tr{
+    height: 55px !important;
+}*/
 
+table tbody tr.even{
+    background: #fff !important;
+    height: 55px !important;
+}
+table tbody tr.odd{
+  background: #dedfdd !important;
+    height: 55px !important;
+}
+
+table tbody tr td, table tbody tr td a {
+    color: #676768 !important;
+}
 /*
 .txt-orange {
 	color:#ff653f;
@@ -112,7 +150,7 @@ h4 {
 }
 
 a {
-	color:#fff;
+	color:#676768;
 	text-decoration:underline;
 	font-weight:bold;
 	line-height:20px;
@@ -125,8 +163,8 @@ a:hover {
 }
 
 a.msg-link {
-	color:#8DA92E;
-	text-decoration:underline;
+	color:#474747;
+	text-decoration: none;
 	font-weight:bold;
 	line-height:20px;
 	font-size:12px;
@@ -196,7 +234,7 @@ div.err-space {
 
 div.section {
 	clear:both;
-	padding: 20px 20px;
+	padding: 0px 20px;
 }
 
 div.subsection {
@@ -216,11 +254,11 @@ h2.page-title span {
 div.clear {
 	clear:both;
 }
+#top-nav{
+font-size: 12px;
+    text-align: left;
+    margin: 4px 0px
 
-#top-nav {
-	width:100%;
-	height:40px;
-	background-color:#fff;
 }
 
 #top-nav a {
@@ -242,16 +280,21 @@ div.clear {
 }
 
 #login-nav {
-	background-image:url(../../images/login.gif);
+	/*background-image:url(../../images/login.gif);
 	background-repeat:no-repeat;
 	width:85px;
 	height:27px;
-	padding:0;
+	padding:0;*/
+	border: 1px solid #fff;
+   	 border-radius: 30px;
+   	 padding: 5px 20px;
+   	 margin-right: 10px;
+   	 color: #fff;
 	float:right;
 }
 
 #login-nav:hover {
-	background-image:url(../../images/loginOver.gif);
+	/*background-image:url(../../images/loginOver.gif);*/
 }
 
 #login-nav a {
@@ -279,16 +322,21 @@ div.clear {
 }	
 
 #signup-nav {
-	background-image:url(../../images/signUp.gif);
+	/*background-image:url(../../images/signUp.gif);
 	background-repeat:no-repeat;
 	width:85px;
 	height:27px;
-	padding:0;
+	padding:0;*/
+	border: 1px solid #fff;
+   	 border-radius: 30px;
+    	padding: 5px 20px;
+    	margin-right: 10px;
+    	color: #fff;
 	float:right;
 }
 
 #signup-nav:hover {
-	background-image:url(../../images/signUpOn.gif);
+	/*background-image:url(../../images/signUpOn.gif);*/
 }
 
 #signup-nav a {
@@ -316,18 +364,23 @@ div.clear {
 }	
 
 #logout-nav {
-	background-image:url(../../images/logout.gif);
-	background-repeat:no-repeat;
-	width:170px;
-	height:27px;
-	padding:0;
+	/*background-image:url(../../images/logout.gif);
+	background-repeat:no-repeat;*/
+    	border: 1px solid #fff;
+    	border-radius: 30px;
+    	padding: 5px 20px;
+   	 margin-right: 10px;
+   	 color: #fff;
 	float:right;
 }
 
 #links
 {
-	display:inline-block;
-	margin-right: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: super;
+    position: relative;
+    top: -5px;
 }
 
 #links img
@@ -337,12 +390,17 @@ div.clear {
 
 #links a
 {
-	padding:0px;
-	border:0px none;
+padding: 0px 10px;
+    font-size: 25px;
+    color: #fff;
+    border: none;
 }
 
+#links a:hover{
+ color: #fff;
+}
 #logout-nav:hover {
-	background-image:url(../../images/logoutOver.gif);
+	/*background-image:url(../../images/logoutOver.gif);*/
 }	
 
 #logout-nav a {
@@ -370,45 +428,59 @@ div.clear {
 }	
 
 #header {
-	height:45px;
+	/*height:45px;
 	background-color:#fff;
 	background-image:url(../../images/mainHeaderImage.jpg);
 	background-repeat:no-repeat;
 	background-position:bottom;
+	padding:  30px 0 0 20px;*/
 	font-size:22px;
-	color:#8DA92E;
-	padding:30px 0 0 20px;
+	color:#fff;
 }
 
 #main-nav {
-	height:25px;
+	/*height:25px;
 	width:100%;
 	background:url(../../images/mid-hdr-grad.gif) top left repeat-x;
 	border-top:1px solid #fff;
 	border-bottom:1px solid #fff;
 	line-height:24px;
 	text-transform:uppercase;
-	text-align:center;
+	text-align:center;*/
+		    padding: 20px 0;
+       max-width: 100%;
+    width: 175px;
+    text-align: left;
+    margin: 0 auto;
+	
 }
 
 #main-nav a {
-	font-size:13px;
+	/*font-size:13px;
 	font-weight:bold;
 	color:#fff;
 	background-color:transparent;
 	padding:4px 9px 5px 9px;
 	line-height:25px;
 	border-left:1px solid #000;
+	text-transform:uppercase;*/
+   	 padding: 10px;
+   	 font-size: 16px;
+   	 display: block;
+    	text-transform: uppercase;
+    	color: #dedede;
+    	font-weight: normal;
+    	margin-bottom: 20px;
 	text-decoration:none;
-	text-transform:uppercase;
+	word-break: break-word;
 }
 
 #main-nav a.first {
-	border-left:none;
+	/*border-left:none;*/
 }
 
 #main-nav a:hover, a.selected {
-	background:url(../../images/mid-hdr-grad-ovr.gif) top left repeat-x;
+	/*background:url(../../images/mid-hdr-grad-ovr.gif) top left repeat-x;*/
 }
 
 #main-nav .drop-menu {
@@ -476,27 +548,35 @@ div.clear {
 	font-size:12px;
 	color:#fff;
 	line-height:20px;
+
 }
 
 .threecolw {
-	float:left;
+	/*float:left;
 	width:264px;
 	margin:0 5px 10px;
 	padding:10px;
 	font-size:12px;
 	color:#fff;
-	line-height:20px;
+	line-height:20px;*/
+float: left;
+    width: 23.5%;
+    margin: 0 10px 10px;
+    padding: 10px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 20px;
 }
 
 .threecol-frame {
-	float:left;
+	/*float:left;
 	width:253px;
 	background-color:#000;
 	margin:0 10px 10px 10px;
 	padding:10px;
 	font-size:12px;
 	color:#fff;
-	line-height:20px;
+	line-height:20px;/
 }
 
 .threecol-scroll {
@@ -562,7 +642,7 @@ tr.odd {
 }
 
 tr.even {
-	background:#18100D none repeat scroll 0 0;
+	background:#dedfdd  none repeat scroll 0 0;
 }
 
 th {
@@ -597,17 +677,18 @@ table.messages td a {
 	clear:both;
 	width:100%;
 	height:40px;
-	background-image:url(../../images/footer.jpg);
+	/*background-image:url(../../images/footer.jpg);*/
+    background: #c7c7c7;
 }
 
 #footer a {
-	color:#fff;
-	font-size:13px;
-	font-weight:bold;
+color: #8c8c8c;
+    font-size: 13px;
+    font-weight: normal;
 	padding:0 10px 0 10px;
 	line-height:40px;
 	background-color:transparent;
-	border-left:1px solid #fff;
+	
 	text-decoration:none;
 }
 
@@ -626,6 +707,9 @@ table.messages td a {
 	float:right;
 	padding:13px 40px;
 	font-weight:bolder;
+color: #8c8c8c;
+    font-weight: normal;
+    font-size: 13px;
 }
 
 #copyright {
@@ -636,7 +720,7 @@ table.messages td a {
 a.fill {
 	width:100%;
 }
-
+/*
 a.squarebutton {
 	background:transparent url('../../images/square-gray-left.gif') no-repeat top left;
 	display:block;
@@ -699,7 +783,7 @@ a.squarebutton-register span {
 	display:block;
 	background-position:bottom right !important;
 	text-transform:uppercase;
-}
+}*/
 
 .buttonwrapper {
 	overflow:hidden;
@@ -889,15 +973,16 @@ a.inactive-city {
 }
 
 #home p {
-	font-size:12px;
-	line-height:16px;
-	margin-bottom:18px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 18px;
+    color: #6c757d;
 }
 
 #header-home {
-	background-image:url(../../images/homePageHdr.jpg);
-	height:150px;
-	width:100%;
+	width: 100%;
+    background: #40444d;
+    margin-top: 20px;
 }
 
 #header-home-none
@@ -908,29 +993,51 @@ a.inactive-city {
 }
 
 #header-home-text {
-	margin-left:700px;
+	/*margin-left:700px;
 	padding-top:20px;
 	width:180px;
 	height:110px;
-	font-weight:bold;
+	font-weight:bold;*/
+	padding: 15px 20px;
+	font-size: 26px;
+}
+.std-pad h3 {
+    color: #9cb23b;
+    font-size: 22px !important;
+    margin-bottom: 30px;
+}
+.std-pad p {
+    line-height: 24px !important;
+    padding: 0px 0px 30px 0px;
 }
 
 .count-down {
 	text-align:center;
+   color: #fff !important;
 }
 
 .count-down-days {
-	font-size:70px;
+	font-size: 26px;
 	text-align:center;
+	color: #9cb23b;
+}
+
+.count-down-day{
+	color: #9cb23b;
 }
 
 #birdie-challenge {
 	background-image:url(../../images/homeBirdieChallenge.jpg);
-	width:623px;
-	height:162px;
-	margin-top:20px;
-	padding: 10px;
-	font-family:"Agenda Bold", sans-serif;
+    width: 100%;
+        height: 175px;
+    margin-top: 0;
+    padding: 10px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Agenda Bold", sans-serif;
+   padding: 30px 0px;
+
 }
 
 #birdie-challenge div.city-name
@@ -990,20 +1097,23 @@ a.inactive-city {
 }
 
 #home-info {
-	float:left;
+	/*float:left;
 	width:45%;
-	margin-top:20px;
-	margin-bottom:20px;
+	margin-top:20px;*/
+	margin-bottom: 20px;
+    margin-top: 0px;
+    padding: 20px;
 }
 
 #home-info h2 {
-	color:#FDFBA6;
+	color:#40444d;
 	margin-top:12px;
+    margin-bottom: 20px;
 }
 
 #home h3 {
-	font-size:13px;
-	font-weight:bold;
+	/*font-size:13px;
+	font-weight:bold;*/
 	padding-bottom:0;
 }
 
@@ -1024,9 +1134,9 @@ a.inactive-city {
 }
 
 #home-msgbrd {
-	float:right;
+	/*float:right;
 	width:50%;
-	margin-top:20px;
+	margin-top:20px;*/
 	margin-bottom:20px;
 }
 
@@ -1046,11 +1156,27 @@ a.inactive-city {
 #home-msgbrd table {
 	margin-top:15px;
 }
-
+.msg-head h2 {
+    font-size: 15px !important;
+    color: #2d2e2f !important;
+    font-weight: 600 !important;
+}
+.msg-head h2 label {
+    color: #9cb23b;
+    padding-right: 10px;
+}
+div#msg label {
+color: #9cb23b;
+    display: block;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+div#msg {
+    padding: 10px 20px !important;
+}
 #home-leaderboard {
-	padding:20px 14px 20px 20px;
-	background:#fff url(../../images/home-leaderboard-top.jpg) top left no-repeat;
-	height:340px;
+    padding: 0px 14px 20px 20px;
+    margin-top: -50px;
 }
 
 #home-leaderboard h2 {
@@ -1064,7 +1190,7 @@ a.inactive-city {
 #home-leaderboard table {
 	width:100%;
 	margin-bottom:10px;
-	border:1px solid #828F98;
+	border:none;
 	font-size:11px;
 	margin-top:8px;
 }
@@ -1082,18 +1208,21 @@ a.inactive-city {
 }
 
 #home-leaderboard th {
-	text-align:center;
-	padding:2px;
-	background:#828F98 none repeat scroll 0 0;
-	color:#FFFFFF;
-	font-weight:bold;
+    text-align: center;
+    padding: 25px 10px 10px;
+    background: transparent;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #home-leaderboard td {
-	text-align:center;
-	padding:3px 5px;
+    text-align: center;
+    padding: 20px 5px;
 }
-
+#home-leaderboard tr.activetd td{
+    background: #40444d;
+}
 #leaderboard-form {
 	margin-top:10px;
 	text-align:center;
@@ -1107,8 +1236,8 @@ a.inactive-city {
 
 #home-weather {
 	padding:20px 14px 20px 20px;
-	background:#fff url(../../images/home-leaderboard-btm.jpg) bottom left no-repeat;
-	height:750px;
+	/*background:#fff url(../../images/home-leaderboard-btm.jpg) bottom left no-repeat;
+	height:750px;*/
 }
 
 .ldrBrdWeatherHdr {
@@ -1153,7 +1282,7 @@ a.inactive-city {
 
 /* ========== profile.jsp ========== */
 #profile {
-	background-color:#23201F;
+	/*background-color:#23201F;*/
 	margin-top:20px;
 	margin-left:10px;
 	margin-right:10px;
@@ -1174,13 +1303,14 @@ a.inactive-city {
 }
 
 #profile .msg-link {
-	color:#ab3213;
+	    color: #9cb23b;
+    font-size: 15px;
 }
 
 .profile-caption {
-	float: left;
+	/*float: left;
 	padding-left:6px;
-	margin-top: 8px;
+	margin-top: 0px;*/
 }
 
 #profile .birdies {
@@ -1221,7 +1351,24 @@ a.inactive-city {
 	height:auto;
 	margin:10px 0px;
 }
-
+.subsection.register-btn {
+    background: #9eb43a;
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    width: 150px;
+    padding: 10px 10px;
+    border-radius: 25px;
+ 
+}
+.register-btn .buttonwrapper {
+    float: none !important;
+    text-align: center;
+}
+.subsection.register-btn a{
+   text-align: center;
+    color: #fff;
+}
 /*.birdies .images img {
 	position:absolute;
 	top:-50px;
@@ -1346,13 +1493,12 @@ a.inactive-city {
 
 #inbox-message {
 	margin-bottom:20px;
-	width:360px;
-	margin-top:39px;
+	width: 100%;
 }
 
 #msg-div{
 	margin:20px 0px 10px 0px;
-	width:320px;
+	width:100%;
 }
 
 #msg-div h2{
@@ -1360,22 +1506,23 @@ a.inactive-city {
 }
 
 #msg-div #msg{
-	color:#fff;
-	background-color:#000;
-	height:80px;
-	padding:10px;
-	overflow-y:auto;
+color: #4e4e4e;
+    background-color: #dedfdd;
+    height: 80px;
+    padding: 10px;
+    overflow-y: auto;
 }
 
 #inbox-message #msgheader {
-	background-color:#FDFBA6;
-	padding:5px;
-	border-radius:4px;
+   background-color: #dedfdd;
+    /* padding: 5px; */
+    border-radius: 0;
 }
 
 #inbox-message #msgheader h2 {
-	color:#000;
-	padding:2px;
+    color: #676768;
+    font-size: 15px;
+    padding: 10px 10px;
 }
 
 #inbox-message h3 {
@@ -1385,11 +1532,12 @@ a.inactive-city {
 }
 
 #inbox-message #msg {
-	background-color:#000;
-	color:#fff;
-	padding:10px;
-	height:120px;
-	overflow-y:scroll;
+    background-color: #dedfdd;
+    color: #636363;
+    padding: 20px;
+    max-height: 120px;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 #inbox #banner {
@@ -1409,7 +1557,7 @@ a.inactive-city {
 }
 
 .post {
-	margin:20px 0;
+   margin: 0;
 }
 
 .post h3 {
@@ -1471,12 +1619,14 @@ a.inactive-city {
 /* ========== schedule.jsp ========== */
 
 #schedule-none {
-	text-align:right;
-	color:#ff3300;
-	font-size:13px;
-	text-transform:uppercase;
-	width:600px;
-	font-weight:bold;
+    text-align: left;
+    color: #9cb23b;
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
+    background: #40444d;
+    padding: 20px 30px;
 }
 
 #search {
@@ -1485,44 +1635,86 @@ a.inactive-city {
 
 table.schedule {
 	margin-bottom:20px;
+width: 100%;
 }
 
 .search-row {
-	float:left;
+	/*float:left;
 	height:40px;
-	padding-bottom:20px;
+	padding-bottom:20px;*/
 }
 .search-col {
-	height:50%;
+	/*height:50%;
 	padding:0 5px;
-	line-height:28px;
+	line-height:28px;*/
+	
 }
-
+.search-col, .search-col a {
+    line-height: 22px;
+    color: #444;
+    text-decoration: none;
+	    margin-bottom: 10px;
+}
 .search-col h4 {
 	color:#FDFBA6;
 	padding-top:8px;
 }
+.list-view-match label {
+    padding: 5px 0px;
+    line-height: 14px;
+}
 
 .search-col input[type="checkbox"]
 {
-	margin-top:7px;
+    background: none !important;
+    border: none !important;
+    position: relative;
+    top: 1px;
 }
+.search-col input[type='checkbox']:after {
+    width: 16px;
+    height: 16px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #bbbbbb;
+    }
 
+
+.search-col input[type='checkbox']:checked:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+    top: -2px;
+    left: -1px;
+        position: relative;
+        background-color: #9cb23b;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
 div.member-section {
 	clear:both;
-	height:580px;
+	margin-bottom:20px;
+padding: 20px;
+	/*height:580px;
 	margin-top:120px;
 	margin-left:10px;
 	margin-right:10px;
-	margin-bottom:20px;
 	overflow:auto;
-	overflow-y:scroll;
+	overflow-y:scroll;*/
 }
 
 div.champion-section {
 	clear:both;
 	min-height:620px;
-	margin-top:20px;
+	margin-top: 30px;
 	margin-left:10px;
 	margin-right:10px;
 	margin-bottom:20px;
@@ -1538,14 +1730,20 @@ div.champion-section div.threecol-frame {
 }
 
 div.champion-section div.threecol-frame div.buttonwrapper {
-	position:absolute;
+	/*position:absolute;
 	margin-top:22px;
-	left:200px;
+	left:200px;*/
 }
 
 div.member-section p {
 	margin-top:2px;
 	margin-bottom:2px;
+}
+.champion-section.col-sm-10 .row {
+    margin-left: 0px;
+}
+.cham-year-drop {
+    margin-top: 30px;
 }
 
 /* ========== results.jsp ========== */
@@ -1645,18 +1843,25 @@ div.member-section p {
 
 /* ========== standings.jsp ========== */
 #standings-container {
-	margin: 35px 30px 35px;
-	width:620px;
+	    margin: 0;
+    width: 100%;
+    position: relative;
+    top: -50px;
+
 }
 
 #standings-scroller {
 	/*overflow:auto;*/
-	overflow-y:scroll;
-	height:334px;
+	    overflow-y: auto;
+    max-height: 510px;
+    height: 100%;
 }
 
 #standings-container table {
-	width:600px;
+	width:100%;
+}
+#standings-container table .first-row, #standings-container table .first-row td{
+background: #40444d !important;
 }
 
 /* Center text and give standard padding */
@@ -1669,35 +1874,36 @@ div.member-section p {
 }
 /* TH tags */
 #standings-container table th {
-	padding:6px 4px 15px;
-	font-size:18px;
-	font-weight:bold;
-	color:#18100d;
-	background:none;
-	text-transform:uppercase;
-	background:url(../../images/heading_standings_column.jpg) no-repeat left top;
+    padding: 6px 4px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background: none;
+    text-transform: uppercase;
+	
 }
 #standings-container table th.first {
-	background:url(../../images/heading_standings_left.jpg) no-repeat left top;
+	
 }
 #standings-container table th.last {
-	width:57px;
-	background:url(../../images/heading_standings_right.jpg) no-repeat right top;
+	
 }
 /* First Row, Red */
 #standings-container table .first-row, #standings-container table .first-row a, #standings-container table .first-row a:link {
-	color:#ff3300;
+	color:#fff !important;
 }
 /* Use borders on table cells to simulate seing background */
 #standings-container table .even td, #standings-container table .odd td {
-	border-left:2px solid #23201f;
-	border-right:2px solid #23201f;
-	background:#000000;
-	padding:3px 4px;
-	height:14px;
+    background: #ffffff;
+    padding: 15px 4px;
+    height: 14px;
+color: #333;
 }
 #standings-container table .even td {
-	background:#23201f;
+    background: #dedfdd;
+}
+#results tr.odd.first-row td {
+    color: #fff !important;
 }
 
 /* Column Widths */
@@ -1717,14 +1923,36 @@ div.member-section p {
 /*#standings-container table tr td + td + td + td + td + td + td {width: auto;} /* Rest */
 
 #standings-container table .pos {
-	width: 40px;
+	width: 5%;
 }
 #standings-container table .player {
-	width: 100px;
+	width: 40%;
+    text-align: left !important;
 }
 #standings-container table .course {
-	width: 160px;
+	width: 10%;
 }
+#results tbody tr td:nth-child(1)
+  {width:5%}
+
+
+#results td:nth-child(2)
+  {width:40% ;     text-align: left !important;}
+
+
+
+#results tbody tr td:nth-child(3)
+  {width:10%}
+
+
+#results td:nth-child(4)
+  {width:10%}
+  #results td:nth-child(5)
+  {width:10%}
+  #results td:nth-child(6)
+  {width:10%}
+  #results td:nth-child(7)
+  {width:10%}
 
 /*
 #standings-container table .points {
@@ -1742,6 +1970,7 @@ div.member-section p {
 #standings-container table .ties {
 	width: 40px;
 }
+
 */
 
 .playoffs-counter {
@@ -2074,57 +2303,77 @@ div.record-section .match {
 /* ========== champions.jsp ========== */
 
 p.champ-info {
-	font-size:12px;
-	font-weight:bold;
-	color:#7f8c9a;
+    font-size: 12px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+.frame-box p {
+    color: #4a4a4a;
 }
 
 /* ========== userForm.jsp ========== */
 
 .edituser-section {
-	margin-top:20px;
-	margin-left:10px;
+	/*margin-top:20px;
+	margin-left:10px;*/
 }
 
-#edituser label {
-	display:block;
-	padding-top:4px
+/*#edituser label {
+	/*display:block;
+	padding-top:4px*/
+color: #585859;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 4px;
+    font-weight: 600;
+    padding-bottom: 4px;
 }
-
+*/
 #edituser label.radiolabel {
 	display:inline;
 }
 
 #edituser legend {
-	color:#FDFBA6;
+	/*color:#FDFBA6;
 	font-size:16px;
 	text-transform:uppercase;
 	padding-top:4px;
-	padding-bottom:4px;
-}
+	padding-bottom:4px;*/
+color: #585859;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 4px;
+    font-weight: 600;
+    padding-bottom: 4px;
+	
 
+}
+fieldset.other-info legend, fieldset.equip legend {
+    padding-bottom: 20px !important;
+    padding-top: 10px !important;
+}
 #edituser input[type="text"] {
-	width:266px;
+	width:100%;
 }
 
 #edituser input[type="password"] {
-	width:266px;
+	width:100%;
 }
 
 #edituser img {
 	margin-left:4px;
 	margin-right:4px;
-	width: 40px;
-	height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 #edituser select {
-	width:268px;
+	width: 100%;
 }
 
 
 #edituser #ghinNumber {
-	width:110px;
+	width: 110px;
 }
 
 #edituser #handicap {
@@ -2133,7 +2382,7 @@ p.champ-info {
 
 #edituser .mandatory {
 	margin-top:10px;
-	color:#FF0000;
+	color:#000;
 }
 
 #edituser .mandatory-msg {
@@ -2145,16 +2394,11 @@ p.champ-info {
 	color:#ff0000;
 }
 
-#edituser .sixcol {
-	width: 132px;
-}
-
 /*=========== registration.jsp ==========*/
 
 #registrationForm {
 	margin-top:10px;
-	background-color:#000;
-	width:500px;
+	width: 100%;
 }
 
 #registrationForm label {
@@ -2167,40 +2411,61 @@ p.champ-info {
 }
 
 #registrationForm legend {
-	color:#FDFBA6;
-	font-size:16px;
-	text-transform:uppercase;
-	padding-top:20px;
-	padding-bottom:4px;
+color: #40444d;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+    padding-top: 20px;
 }
 
 #registrationForm .cost {
 	margin-left:10px;
+       color: #4d4d4d;
 }
 
 #registrationForm select {
-    width: 268px;
+  width: 70%;
+    float: left;
+    border: none;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
 }
-
+.regsectionTab{
+  padding: 20px 0px;
+}
 .reg-msg
 {
 	margin-top: 20px;
-	width: 680px;
+	width: 100%;
+    line-height: 18px;
+padding: 0px 20px;
 }
-
+#registrationForm label {
+    display: inline;
+    padding-top: 4px;
+    width: 20%;
+    float: left;
+}
+#registrationForm .form-reg div {
+    padding: 15px 0px;
+clear: both;
+}
 .regsection {
-	float:left;
-	width:840px;
+	
+	width:100%;
+       /*float:left;
 	padding:10px;
 	font-size:14px;
 	color:#fff;
 	line-height:20px;
-	min-height: 620px;
+	min-height: 620px;*/
 }
 
 .regsection img {
 	vertical-align: top;
-	margin-left: 20px;
 }
 
 .regsection .seal
@@ -2217,11 +2482,23 @@ p.champ-info {
 .regsection .col .buttons {
 	margin-top: 10px;
 }
-
-.regsection input {
-	width: 266px;
+.reg-btn .white-btn {
+    border: 1px solid #b1b1b1;
+}
+.buttons.reg-btn {
+    padding: 20px 0px;
+    clear: both;
+    overflow: hidden;
 }
 
+.regsection input {
+    width: 70%;
+    float: left;
+    border: none;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
+}
 .regsection select {
 	width: 240px;
 }
@@ -2245,7 +2522,7 @@ p.champ-info {
 }
 
 .regsection h3 {
-	color: #FDFBA6;
+	color: #40444d;
 	/*margin-bottom: 50px;*/
 	text-align: center;
 }
@@ -2255,21 +2532,23 @@ p.champ-info {
 	text-align:left;
 }
 
-.regsection .thankyou-msg
-{
-	margin-top: 20px;
-    width: 680px;
+.regsection .thankyou-msg {
+    margin-top: 20px;
+    width: 100%;
     margin-bottom: 45px;
+    line-height: 15px;
 }
 
 .regsection .conf-col {
-	float: left;
-	width: 350px;
-	height: 130px;
-	margin-right: 10px;
-	margin-bottom: 15px;
+    margin-bottom: 20px;
+    min-height: 250px;
+    padding: 20px;
+    margin-top: 30px;
 }
 
+.amount {
+    padding: 20px 0px;
+}
 .regsection .conf-col div.header
 {
 	text-align:left;
@@ -2277,6 +2556,11 @@ p.champ-info {
 	font-size:14px;
 	text-transform:uppercase;
 	margin-bottom: 15px;
+}
+.regsectionTab select#registration {
+    border-radius: 0;
+    padding: 10px;
+    width: 50%;
 }
 
 .regsection .conf-col h3
@@ -2289,7 +2573,10 @@ p.champ-info {
 }
 
 .regsection #print {
-	margin-left: 400px;
+   text-align: right;
+    display: block;
+    width: 100%;
+    margin: 20px 0px;
 }
 
 .regsection #print div{
@@ -2301,7 +2588,15 @@ p.champ-info {
 	text-transform: uppercase;
 	color: #e46c0a;
 }
-
+.conf-account h3 {
+    padding: 10px 0px;
+}
+.conf-season {
+    margin-top: 20px;
+}
+div#print .white-btn, div#print .green-btn {
+    float: right;
+}
 /* ========== about.jsp contact.jsp rules.jsp ========== */
 
 .about-cgl {
@@ -2439,12 +2734,11 @@ p.champ-info {
 /* Change row background colors */
 .messages tr.even {
 	background:none;
-	height:25px !important;
+	height:55px !important;
 }
 .messages tr.odd {
-	/*background:#24201f;*/
-	background:#18100d;
-	height:25px !important;
+    background: #dedfdd;
+    height: 55px !important;
 }
 
 /* Conent background */
@@ -2494,24 +2788,35 @@ p.champ-info {
 /* ============ members.html ============ */
 /* Justifying Search button with right side of 3rd Profile */
 #members #search {
-	margin-right:15px;
+	    margin-right: 0;
+    padding: 20px;
+    width: 100%;
 }
 /* Shorten height of input boxes */
 #members #search input[type=text] {
-	height:13px;
-	padding:1px 2px;
-	margin-top:4px;
+margin-top: 4px;
+    border: 1px solid #eeeeed;
+    background: #eeeeed;
+    width: auto;
+    border-radius: 24px;
+    padding: 0px 10px;
+	    width: 100%;
 }
 /* Shorten height of select boxes */
 #members #search select {
-	height:17px;
-	padding:1px;
-	margin-top:4px;
+margin-top: 4px;
+    border: 1px solid #eeeeed;
+    background: #eeeeed;
+    width: auto;
+    border-radius: 24px;
+    padding: 0px 10px;
+	    width: 100%;
 }
 /* Move search button down a touch */
 #members #search .buttonwrapper {
-	margin:1px 0px 0px;
-	* margin:6px 0px 0px;
+    text-align: center;
+    display: inline;
+    margin: 0;
 }
 /* Align Profile button with bottom of icon */
 .player-info {
@@ -2760,7 +3065,7 @@ p.champ-info {
 /* ============= schedule.html ============ */
 /* Change color of background */
 #schedule {
-	background:#18100d url(../../images/bg_checkered.jpg);
+	/*background:#18100d url(../../images/bg_checkered.jpg);*/
 	height:600px;
 	padding-bottom:100px;
 }
@@ -2786,29 +3091,50 @@ p.champ-info {
 	background:none;
 }
 .schedule th {
-	background:url(../../images/row_yellow.jpg) repeat-x;
-	height:33px;
-	font-size:12px;
-	font-weight:bold;
-	padding:6px 10px;
-	color:#000000;
+height: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 10px;
+    background: #40444d;
+    color: #fff;
+    line-height: 24px;
+}
+.schedule th.opp {
+    padding-left: 22px;
+}
+.schedule tbody tr td:first-child {
+    padding-left: 25px;
+}
+.schedule th:nth-child(4), .schedule tbody tr td:nth-child(4){
+    text-align: right;
+}
+.schedule th:last-child, .schedule tbody tr td:last-child{
+    text-align: right;
+padding-right: 25px;
 }
 /* Row Backgrounds */
 .schedule tr.even {
 	background:none;
 }
 .schedule tr.odd {
-	background:#24201f;
+	    background: #dedede;
+    height: 40px;
 }
 /* Cell Padding */
 .schedule td {
-	padding:4px 10px;
+	padding: 4px 10px;
+    line-height: 25px;
+    color: #525252;
+    font-weight: normal;
 }
 .schedule td.opponent {
 	font-weight:bold;
 	font-size:12px;
 }
-
+.schedule td a{
+    color: #525252;
+    font-weight: normal;
+}
 /* ============== signup.html ============= */
 /* Needed to decrease space between 'section' divs.  I know you use this oe a lot, though, so I had to add the signup div around the whole of the page content */
 #signup div.section {
@@ -2929,8 +3255,9 @@ p.champ-info {
 }
 
 .signup-icon {
-	float:left;
-	margin-right:20px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
 }
 
 
@@ -3052,16 +3379,16 @@ p.champ-info {
 }
 
 #inbox table.messages tbody{
-	width:460px;
+	width: 100%;
 	height:148px;
 }
 
 #inbox table.messages tr, #inbox table.messages td{
-	width:320px;
+	width: 100%;
 }
 
 #home-msgbrd table.messages tbody{
-	width:320px;
+	width: 100%;
 	font-size:12px;
 	font-weight:bold;
 	display:block !important;
@@ -3069,7 +3396,7 @@ p.champ-info {
 }
 
 #home-msgbrd table.messages tbody td{
-	width:100px;
+	width: 100%;
 }
 
 #home-msgbrd table.messages thead th
@@ -3077,10 +3404,12 @@ p.champ-info {
 	width:90px;
 }
 
-#inbox-message p.msg-head{
-	color: #FDFBA6;
-	padding-left: 10px;
-    padding-top: 15px;
+#inbox-message p.msg-head {
+    color: #636363;
+    padding-left: 20px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
 }
 
 #inbox-message a.reply-link{
@@ -3100,13 +3429,13 @@ p.champ-info {
 }
 
 #profile table.messages tbody{
-	width:250px;
-	height:80px;
-	overflow-y:scroll;
+    width:100%;
+    height: 80px;
+    overflow-y: scroll;
 }
 
 #profile table.messages tbody td{
-	width:108px;
+	width: 195px;
 }
 
 .public-post{
@@ -3251,8 +3580,8 @@ p.champ-info {
 
 /* ========== profile.jsp ========== */
 .tee-off-img{
-	width:292px;
-	height:170px;
+    width: 100%;
+    height: 100%
 }
 
 #birdie-info-div{
@@ -3377,5 +3706,1030 @@ output:after {
 }
 
 .court-section h2 {
-	color:#FDFBA6;
+	color:#5d5d5d;
+}
+
+/*Preety changes */
+.page_title h2 {
+    text-transform: uppercase;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    height: 200px;
+text-align: center;
+}
+.navbar {
+   padding: 45px 10px 15px;
+    background-color: #9cb23b !important;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 250px;
+    display: block;
+}
+.page-container {
+    position: relative;
+    top: -70px;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+h2.page-title span {
+    display: none;
+}
+.page_title #header {
+    position: absolute;
+    bottom: 35%;
+    font-size: 15px;
+}
+ #main-nav hr {
+    margin: 0 auto;
+    width: 90px;
+    border-top: 2px solid #a1a1a1;
+    text-align: left;
+    margin-left: 10px;
+    padding-bottom: 20px;
+}
+div#top-nav .links {
+    vertical-align: top;
+}
+.second-menu a {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+}
+#main-nav a.active, .second-menu a.active {
+    color: #9cb23b;
+}
+/* Sign up pages */
+.page-container #edituser {
+    padding: 0px 15px;
+}
+/*
+ .field-wrapper{
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: 15px;
+        }
+ 
+        .field-wrapper input, .field-wrapper select{
+    border-bottom: 1px solid #494949 !important;
+    padding: 10px;
+    border-radius: 0;
+    width: 100%;
+    border: 0px;
+    background: transparent;
+        }
+ 
+ .field-wrapper .field-placeholder{
+            font-size: 16px;
+            position: absolute;
+            background: none;
+            bottom: 10px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #80868b;
+            left: 0;
+            -webkit-transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            z-index: 1;
+            text-align: left;
+            width: 100%;
+        } 
+        
+        .field-wrapper .field-placeholder label{
+            background: none;;
+            padding: 0px;
+color: #000;
+        }
+ 
+        .field-wrapper input:not([disabled]):focus~.field-placeholder,
+		.field-wrapper select:not([disabled]):focus~.field-placeholder
+        {
+            color:#9cb23b;
+        }
+ 
+        .field-wrapper input:not([disabled]):focus~.field-placeholder,
+        .field-wrapper.hasValue input:not([disabled])~.field-placeholder,
+		.field-wrapper select:not([disabled]):focus~.field-placeholder,
+        .field-wrapper.hasValue select:not([disabled])~.field-placeholder,
+        {
+            -webkit-transform: scale(.75) translateY(-30px) translateX(-35px);
+            transform: scale(.75) translateY(-30px) translateX(-35px);
+            
+        } 
+ .field-wrapper input:focus,
+ .field-wrapper input:active,
+ .field-wrapper input:hover,
+ .field-wrapper input:visited,
+  .field-wrapper select:focus,
+ .field-wrapper select:active,
+ .field-wrapper select:hover,
+ .field-wrapper select:visited{
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    border-bottom: 1px solid #494949 !Important;
+}*/
+.styled-input {
+    margin: 0px 0px 5px 0px;
+}
+
+.styled-input label, .checkbox-dropdown label {
+	padding: 0;
+    color: #484848;
+    font-size: 15px;
+    display: block;
+}
+.styled-input input, .styled-input select {
+    padding: 8px 0px;
+    border-bottom: 1px solid #333;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: transparent;
+}
+#edituser label.checkboxlabel {
+    display: inline;
+    color: #333;
+}
+.section.signup-section {
+    padding: 20px 0px;
+}
+
+.signup-section legend {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.section.signup-section legend label {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: initial;
+}
+
+.signup-icon img {
+    margin-left: 4px;
+    margin-right: 4px;
+    width: auto;
+    height: auto;
+}
+.icon-input {
+ width: 19px;
+    height: 19px;
+    border: none;
+    border-radius: 50%;
+    float: right;
+    margin-right: 5px;
+  
+}
+.signup-icon .icon-input input[type=radio]{
+    padding: 20px;
+    height: 16px;
+    width: 16px;
+    background: none !important;
+  }
+
+.signup-icon .icon-input input[type='radio']:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
+
+
+.signup-icon .icon-input input[type='radio']:checked:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #9cb23b;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
+.green-btn {
+    border-radius: 25px;
+    background: #9cb23b;
+    padding: 5px 20px;
+}
+.white-btn {
+    border-radius: 25px;
+    background: #fff;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+.white-btn a, .green-btn a, .white-btn a span, .green-btn a span{
+ background: none !important;
+
+}
+.white-btn a span{
+ color: #333 !important;
+}
+.green-btn a span{
+ color: #fff !important;
+}
+.white-btn a:hover span{
+    color: #333 !important;
+} 
+
+/*Leader page*/
+form#command {
+    display: inline-block;
+}
+form#command {
+    padding: 0px 30px 0px 0px;
+}
+form#command select {
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 20px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+#standings-scroller{
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+    box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+}
+
+/*Profile*/
+.player-info{
+ padding: 0px 20px;
+}
+.heading-golfer {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 10px;
+    color: #fff;
+}
+.heading-golfer h4{
+    color: #fff !important;
+    display: inline;
+    line-height: 24px;
+    padding-left: 25px;
+    margin-top: 0px;
+    padding-bottom: 0;
+}
+.heading-golfer img {
+    display: inline;
+    text-align: right;
+    float: right;
+    width: auto;
+    height: 30px;
+}
+.flu-box {
+    background: #fff;
+    color: #333;
+    margin-top: 15px;
+    padding: 30px
+}
+.flu-box p {
+    font-weight: normal;
+    line-height: 24px;
+}
+
+/*Mmeber page*/
+.grey-box {
+    background: #dedfdd;
+    overflow: hidden;
+}
+.member-btn{
+      position: absolute;
+    right: 30px;
+    bottom: 0px;
+}
+.member-btn .buttonwrapper a {
+      margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.member-btn .white-btn{
+border-radius: 25px;
+    background: transparent;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: 1px solid #fff;
+
+}
+/*champion page*/
+.year-heading{
+    text-align: left;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
+    background: #40444d;
+    padding: 20px 30px;
+
+}
+.cham-year-drop #changeYear {
+    border: 1px solid #6b6b6b;
+    border-radius: 25px;
+    padding: 6px 12px;
+    color: #6b6b6b;
+}
+
+.champion-section .card {
+    border-radius: 0;
+    background: #dedfdd;
+   padding: 25px 0px;
+    /* text-align: center; */
+}
+div.champion-section div.threecol-frame div.buttonwrapper a {
+    text-align: center;
+    float: none !important;
+    width: auto !important;
+    background: none;
+    display: inline;
+    background-color: #eeeeed;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: #333;
+}
+
+div.champion-section div.threecol-frame div.buttonwrapper a.squarebutton span {
+    background: none !important;
+    display: inline !important;
+    color: #333 !important;
+    padding: 0 !important;
+}
+/*Hoem page*/
+.std-pad h2 {
+    color: #9cb23b;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.signup-txt {
+    position: absolute;
+    top: -82px;
+    bottom: 0;
+    display: inline-block;
+    padding: 40px 45px;
+    font-size: 38px;
+    background: rgba(12, 12, 12, 0.4117647058823529);
+	text-decoration: none;
+}
+.clickhere {
+    text-align: right;
+    float: right;
+    position: absolute;
+    top: -54px;
+    bottom: 0;
+    display: inline-block;
+    padding: 20px 40px;
+    font-size: 30px;
+    right: 13%;
+    width: auto;
+    background: #9cb43a;
+    border-radius: 20px;
+    line-height: 24px;
+text-decoration: none;
+}
+.signup-txt:hover, .clickhere:hover{
+ color: #fff;
+}
+.hm-tag {
+    margin-top: 30px;
+}
+.hm-tag .heading-golfer {
+   padding: 15px 30px;
+    overflow: hidden;
+}
+.hm-tag .heading-golfer h3 {
+    line-height: 24px;
+    font-size: 15px !important;
+  display: inline;
+    float: left;
+}
+
+.hm-tag .heading-golfer a{
+    display: inline;
+    text-align: right;
+    float: right;
+}
+.green-txt{
+ color: #9cb23b !important;
+}
+table#standings thead {
+    background: transparent;
+}
+#home-leaderboard a.squarebutton {
+    background: #9cb23b;
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+}
+#home-leaderboard a.squarebutton:hover{
+padding: 10px;
+}
+form#leaderboard-form #division {
+    background: #e3e3e3;
+    border: none;
+    padding: 15px 10px;
+    font-size: 15px;
+}
+table#standings tbody {
+  display: block;
+  max-height: 300px;
+  overflow-y: auto;
+}
+#home-leaderboard #standings
+tbody tr{
+     display: table;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+table#standings thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.editerForm {
+    padding: 20px;
+}
+.frame-box .buttonwrapper {
+    display: block;
+    text-align: center;
+    padding: 10px 0px;
+}
+.frame-box h2 {
+        text-align: center;
+    color: #9cb23b;
+    margin-top: 10px;
+}
+.frame-box p {
+    text-align: center;
+}
+div.champion-section div.threecol-frame div.buttonwrapper a:active,
+div.champion-section div.threecol-frame div.buttonwrapper a:visited,
+div.champion-section div.threecol-frame div.buttonwrapper a:hover
+{
+	text-transform: capitalize;
+}
+/*MSGBoard*/
+.sub-container, .msginput-container {
+    margin-bottom: 30px;
+    padding: 20px 20px 20px 30px;
+}
+.sub-container label {
+    display: inline;
+}
+.sub-container .sub-input{
+    display: inline-block;
+    width: 90%;
+}
+.sub-input #subject {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 8px;
+    background: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cacaca;
+}
+.msginput-container textarea#msginput {
+    width: 100%;
+    background: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cacaca;
+    margin-top: 20px;
+}
+.send-btn {
+    display: inline;
+}
+.send-btn .buttonwrapper {
+    background: #dedfdd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline;
+}
+.buttonwrapper a {
+    text-decoration: none;
+}
+.buttonwrapper a:hover {
+    text-decoration: underline;
+}
+.send-btn .buttonwrapper a{
+ color: #444;
+}
+.bcancel-btn {
+    display: inline;
+}
+
+.bcancel-btn .buttonwrapper {
+    background: #9cb23b;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline;
+}
+.bcancel-btn .buttonwrapper a {
+     color: #fff;
+}
+#msgForm .buttons {
+    text-align: right;
+}
+table#message{
+    margin: 0;
+}
+table#message tbody {
+    max-height: 500px !important;
+    height: 100% !important;
+}
+table#message thead {
+    display: none;
+}
+table#message tbody tr td {
+    color: #676768;
+}
+table#message tbody tr td:first-child {
+    width: 5%;
+}
+table#message tbody tr td a {
+    color: #676768 !important;
+}
+table#message tr.even{
+    background: #fff;
+    height: 55px !important;
+}
+table#message tbody td input {
+    width: 20px;
+    height: 20px;
+    box-shadow: none;
+    margin: 10px;
+}
+table#private-message thead {
+    display: none;
+}
+table#publicMessages thead {
+    display: none;
+}
+table#publicMessages, table#publicMessages tbody {
+    width: 100% !important;
+}
+table#private-message, table#private-message tbody, table#private-message tbody tr {
+    width: 100% !important;
+}
+table.messages{
+ width: 100% !important;
+}
+.green-post-link, .reply-post-link {
+    display: block;
+    padding: 10px;
+}
+.green-post-link a:hover{
+ color: #9cb23b !important;
+}
+.msg-head {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #dedfdd;
+}
+div#msg-div h2 {
+    color: #000;
+}
+.reply-post-link a{
+}
+
+.edit-link {
+    display: block;
+    padding: 20px;
+}
+.edit-link a {
+    color: #8DA92E;
+}
+form#deleteMsg .tbl-msg-div {
+margin-bottom: 20px;
+}
+form#deleteMsg a[href="msgboard.html?post=true"] {
+    overflow: hidden;
+    color: #9cb23b;
+    padding: 10px;
+    clear: both;
+    display: block;
+    margin-bottom: 20px;
+}
+form#scheduleSeason {
+    color: #000;
+}
+.search-col.match-col {
+    width: 110px;
+    margin: 0 auto;
+}
+table#public-message thead {
+    display: none;
+}
+table tr td:first-child {
+    padding-left: 10px;
+}
+table tr td:last-child {
+    padding-right: 10px;
+}
+/*Payment page */
+.form-reg {
+    padding: 30px;
+}
+.profile-img {
+    height: 100px !important;
+    max-width: 100px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #9cb23b;
+    text-align: center;
+   margin: 0 auto;
+    position: relative;
+background: #f5f5f5;
+}
+.subsection .flu-box .left, .subsection .flu-box .left table {
+    width: 100%;
+    text-align: center;
+}
+.profile-img h2 {
+    position: absolute;
+    top: 35%;
+}
+table.show-profile-info .buttonwrapper {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    float: none !IMPORTANT;
+    width: auto;
+    display: inline;
+    margin: 20px auto;
+    clear: both;
+}
+.member-section .col-sm-4 {
+    max-width: 25%;
+    flex: 0 0 25%;
+}
+.member-section .col-sm-4 .player-info{
+ padding: 0px;
+}
+
+.member-section .col-sm-4 .player-info .flu-box {
+background: #dedfdd;
+}
+.member-section .col-sm-4 .player-info .flu-box p{
+text-align: center;
+
+}
+.member-section p.msg-link-btn {
+display: inline;
+    word-break: break-word;
+    width: 45%;
+    float: left;
+    background: #dedfdd;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    margin: 10px 5px;
+    text-decoration: none !important;
+}
+
+.member-section p.msg-link-btn a.msg-link{
+
+
+}
+/*Sign up dropdown CSS*/
+.checkbox-dropdown {
+    position: relative;
+    user-select: none;
+	display: block;
+    border-bottom: 1px solid !important;
+    padding: 10px 0px !important;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkbox-dropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkbox-dropdown.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; /* align the dropdown right below the dropdown text */
+    border: inherit;
+    border-top: none;
+    left: -1px; /* align the dropdown to the left */
+    right: -1px; /* align the dropdown to the right */
+    opacity: 0; /* hide the dropdown */
+   
+    transition: opacity 0.4s ease-in-out;
+    max-height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none; /* avoid mouse click events inside the dropdown */
+}
+.is-active .checkbox-dropdown-list {
+    opacity: 1; /* display the dropdown */
+    pointer-events: auto; /* make sure that the user still can select checkboxes */
+	 background: #fffefe;
+    z-index: 9;
+}
+.checkbox-dropdown-list li {
+border-bottom: 1px solid silver;
+    clear: both;
+}
+ul.checkbox-dropdown-list input {
+	display: inline-block;
+    width: 15%;
+    float: left;
+    height: 15px;
+    position: relative;
+    top: 10px;
+}
+
+.checkbox-dropdown-list li label {
+    padding: 10px;
+    display: inline-block !important;
+    width: 85%;
+    float: left;
+    transition: all 0.2s ease-out;
+}
+select:hover{
+	background: none !important;
+}
+
+/* end Sign up dropdown CSS*/
+
+
+/*Sign up fluid inputCSS*/
+.floating-label-wrap {
+    margin: 10px 0px;
+}
+/* Making the label break the flow */
+.floating-label
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+     z-index: 1500;
+}
+/* Hide the browser-specific focus styles */
+.floating-label-field
+{
+    color: rgba(44, 62, 80, .75); 
+    border-width: 0;
+    z-index: 2000;
+}
+.floating-label-field:focus
+{
+    outline: 0;
+    box-shadow: 0;
+}
+.floating-label-field::placeholder
+{
+    color: rgba(44, 62, 80, .5);
+}
+/* Make the label and field look identical on every browser */
+.floating-label,
+.floating-label-field
+{
+    font: inherit;
+    line-height: 1; 
+
+    display: block;
+
+    width: 100%;
+}
+.floating-label-field,
+.floating-label-wrap
+{
+    position: relative;
+}
+.floating-label-field--s3
+{
+    padding: 10px 5px;
+    transition: border-color .25s ease-in-out;
+    color: #484848;
+    border-radius: 0;
+    background-color: transparent;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-bottom: 1px solid #333333 !important;
+}
+.floating-label-field--s3 + .floating-label
+{
+	position: absolute;
+	top: 0.5em;
+    left: 0;
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 0px;
+    transition: transform .25s, opacity .25s, padding .25s ease-in-out;
+    transform-origin: 0 0;
+    color: rgb(102, 102, 103);
+}
+.floating-label-field--s3:focus,
+.floating-label-field--s3:not(:placeholder-shown)
+{
+    border-color: rgba(255, 255, 255, .1);
+}
+.floating-label-field--s3:focus + .floating-label,
+.floating-label-field--s3:not(:placeholder-shown) + .floating-label
+{
+    z-index: 2500;
+    padding: 0;
+    transform: translate(0, -0.75em) scale(.9);
+    color: #9cb23b;
+}
+/* Common Styles */
+/* Identical inputs on all browsers */
+.floating-label-field--s3:not(textarea)
+{
+    max-height: 4em;
+}
+.floating-label-field--s1::placeholder,
+.floating-label-field--s3::placeholder
+{
+    color: transparent;
+}
+/*end Sign up dropdown CSS*/
+input.longBox:hover {
+    background-color: transparent !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+
+@-webkit-keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+button#sidebarCollapse{
+  display: none;
+}
+@media(min-width: 320px) and (max-width: 768px){
+div#sidebar {
+    display: none;
+}
+div#sidebar.active {
+    display: block;
+}
+#sidebar {
+    min-width: 45%;
+    max-width: 45%;
+}
+.page_title #header {
+    position: absolute;
+    bottom: 15%;
+    font-size: 15px;
+}
+button#sidebarCollapse {
+font-size: 27px;
+    color: #fff;
+    padding: 0 10px 0px 0px;
+    display: inline;
+    float: left;
+}
+.member-section .col-sm-4 {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+}
+
+.registration-page {
+    padding: 10px 20px;
+}
+form#registrationForm li {
+       padding: 10px 0px;
+    clear: both;
+}
+
+form#registrationForm input{
+border: 1px solid #dedfdd;
+    color: #373737;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
+}
+form#registrationForm input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+form#registrationForm input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+form#registrationForm .buttonBar [name="save"] {
+    background: #9cb23b !IMPORTANT;
+    color: #fff !IMPORTANT;
+    padding: 10px 20px !important;
+}
+form#registrationForm .buttonBar [name="cancel"] {
+    background: #ffffff !IMPORTANT;
+    color: #454545 !IMPORTANT;
+    padding: 10px 20px !important;
+    border: 1px solid #fff !important;
+}
+select#postSeasonPlayers {
+        width: 182px;
+    margin-left: 25px;
+}
+
+form#scheduleSeason li {
+    padding: 10px 0px;
+    clear: both;
+}
+form#scheduleSeason input, form#scheduleSeason select {
+    border: 1px solid #dedfdd;
+    color: #373737;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
+}
+
+
+#scheduleSeason .buttonBar [name="save"] {
+    background: #9cb23b !IMPORTANT;
+    color: #fff !IMPORTANT;
+    padding: 10px 20px !important;
+}
+#scheduleSeason .buttonBar [name="cancel"] {
+    background: #ffffff !IMPORTANT;
+    color: #454545 !IMPORTANT;
+    padding: 10px 20px !important;
+    border: 1px solid #fff !important;
+}
+.homeDefault-socail #links
+{
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: super;
+    position: relative;
+    top: -5px;
+}
+
+.homeDefault-socail #links img
+{
+	display:inline-block;
+}
+
+.homeDefault-socail #links a
+{
+padding: 0px 10px;
+    font-size: 25px;
+    color: #fff;
+    border: none;
+}
+
+.homeDefault-socail #links a:hover{
+ color: #fff;
 }

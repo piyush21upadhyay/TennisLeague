@@ -7,9 +7,11 @@
 </head>
 
 <div class="section">
-
+<h2 class="page-title"> Home </h2>
 <c:if test="${not empty seasonList or not empty registeredSeason}">
+	<div class="heading-golfer"> 
 	<h2><fmt:message key="registrationEntry.heading"/></h2>
+	</div>
 	<c:if test="${not empty seasonList}">
 		<c:if test="${empty verifySeason}">
 		<p class="reg-msg"><fmt:message key="registrationEntry.registrationMsg"/></p>
@@ -27,7 +29,10 @@
 		<c:choose>
 			<c:when test="${empty verifySeason}">
 				<div class="regsection">
-			        <label for=""><fmt:message key="registrationEntry.season"/></label>
+				<div class="regsectionTab">
+				<div class="row">
+				<div class="col-sm-5">
+			        <!--label for=""><fmt:message key="registrationEntry.season"/></label-->
 			        <form:select path="registration" id="registration" cssClass="text large">
 			       		<c:forEach var="season" items="${seasonList}">
 							<option value="<c:out value='${season.id}'/>">
@@ -40,7 +45,8 @@
 			    		<fmt:message key="registrationEntry.cost"/>
 			    		<strong><fmt:formatNumber type="currency" value="${amount}" /></strong>
 			    	</span>
-			    	
+			    	</div>
+					<div class="col-sm-7">
 			    	<span>
 			    		<!-- <img src="images/credit_cards.png" alt="credit cards"/> -->
 			    		<img src="images/visa.jpg" alt="visa"/>
@@ -48,13 +54,17 @@
 			    		<img src="images/amex.jpg" alt="amex" style="margin-left:10px;"/>
 			    		<img src="images/discover.jpg" alt="discover" style="margin-left:10px;"/>
 			    	</span>
-			    	
-			    	<h3 class="top-msg">
+					</div>
+			    	</div>
+					</div>
+			    	<!--h3 class="top-msg">
 			    		<fmt:message key="registrationEntry.creditCardInfo"/>
-			    	</h3>
-
-					<div class="col">
-						<fieldset>
+			    	</h3-->
+                    <div class="informSection">
+					<div class="heading-golfer"><h2>Credit Card Information</h2></div>
+					<div class="row">
+					<div class="col-sm-4">
+						<fieldset class="grey-box shadow form-reg">
 					        <legend><fmt:message key="registrationEntry.nameOfCardHodler"/></legend>
 							
 							<div>
@@ -84,8 +94,8 @@
 				        </fieldset>
 			        </div>
 			        
-			        <div class="col">
-			        	<fieldset>
+			        <div class="col-sm-4">
+			        	<fieldset class="grey-box shadow form-reg">
 			        		<legend><fmt:message key="registrationEntry.billingAddress"/></legend>
 
 					        <div>
@@ -112,28 +122,28 @@
 				                <label for="billingAddress.country"><fmt:message key="registrationEntry.billingAddress.country"/></label>
 					            <carter:country name="billingAddress.country" prompt="" default="${registrationEntry.billingAddress.country}"/>
 					        </div>
-					        
-							<div class="buttons">
-								<div class="left">
+				        	</fieldset>
+							<div class="buttons reg-btn">
+								<div class="right green-btn">
 									<carter:button onclick="document.getElementById('bRegister').value='true';return onFormSubmit(document.getElementById('registrationForm'));" key="button.register"/>
 								</div>
-								<div class="left">
+								<div class="right white-btn">
 									<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('registrationForm').submit();return false;" key="button.registerLater"/>
 								</div>
 								<input id="bRegister" type="hidden" name="bRegister" value="false"/>
 								<input id="bCancel" type="hidden" name="bCancel" value="false"/>
 				            </div>
-			        	</fieldset>
 			        </div>
-			        
+			        </div>
+					</div>
 			        <div class="col">
 			        	<!-- (c) 2005, 2012. Authorize.Net is a registered trademark of CyberSource Corporation -->
-			        	<div class="AuthorizeNetSeal seal">
+			        	<!--div class="AuthorizeNetSeal seal">
 			        		<script type="text/javascript" language="javascript">
 			        			var ANS_customer_id="d87450a0-b28d-40ae-bc26-888fb22a1ebf";
 			        		</script>
 			        		<script type="text/javascript" language="javascript" src="//verify.authorize.net/anetseal/seal.js" ></script>
-			        	</div> 
+			        	</div--> 
 			        </div>
 			        
 			        <div class="clear"></div>
@@ -164,7 +174,10 @@
 		    		<h3 class="top-msg" style="margin-bottom:40px;">
 		    			<fmt:message key="registrationEntry.verifySeason"/>
 		    		</h3>
-		    		<div class="conf-col">
+					<div class="heading-golfer"><h2>Credit Card Information</h2></div>
+		    		<div class="row">
+					<div class="col-sm-4">
+					<div class="conf-col grey-box shadow">
 		    			<div class="header"><fmt:message key="registrationEntry.yourDetails"/></div>
 		    			<h3>
 		    				<c:choose>
@@ -173,36 +186,42 @@
 		    				</c:choose>
 		    				<c:out value="${registrationEntry.firstName}"/>&nbsp;<c:out value="${registrationEntry.lastName}"/>
 		    			</h3>
+						<div class="amount">
+							<div class="header"><fmt:message key="registrationEntry.amountPaid"/></div>
+							<h3><fmt:formatNumber type="currency" value="${amount}" /></h3>
+						</div>
 		    		</div>
-		    		<div class="conf-col">
+					</div>
+					<div class="col-sm-4">
+		    		<div class="conf-col grey-box shadow">
+					<div class="header"><fmt:message key="registrationEntry.payment"/></div>
+					  <!--div>
+		    			<h3><fmt:message key="registrationEntry.paymentForm"/></h3>
+		    			<h3><fmt:message key="registrationEntry.accountNumber"/></h3>
+						<h3><fmt:message key="registrationEntry.expiration"/></h3>
+						</div-->
+						<div class="conf-account">
+						<!--div class="header">&nbsp;</div-->
+						<h3><c:out value="${acctType}"/></h3>
+						<h3><c:out value="${cardNumber}"/></h3>
+						<h3><c:out value="${verifyExpiration}"/></h3>
+					</div>
+		    		</div>
+					</div>
+					<div class="col-sm-4">
+		    		<div class="conf-col grey-box shadow">
 		    			<div class="header"><fmt:message key="registrationEntry.billingAddress"/></div>
 		    			<h3><c:out value="${registrationEntry.billingAddress.address}"/></h3>
 		    			<h3><c:out value="${registrationEntry.billingAddress.city}"/></h3>
 		    			<h3><c:out value="${registrationEntry.billingAddress.province}"/></h3>
 		    			<h3><c:out value="${registrationEntry.billingAddress.postalCode}"/></h3>
+						<div class="conf-season">
+							<div class="header"><fmt:message key="registrationEntry.season"/></div>
+							<h3><c:out value="${verifySeason}"/></h3>
+						</div>
+					</div>
 		    		</div>
-		    		<div class="clear"></div>
-		    		<div class="conf-col" style="height:70px;">
-		    			<div class="header"><fmt:message key="registrationEntry.amountPaid"/></div>
-		    			<h3><fmt:formatNumber type="currency" value="${amount}" /></h3>
-		    		</div>
-					<div class="conf-col" style="height:70px;">
-		    			<div class="header"><fmt:message key="registrationEntry.season"/></div>
-		    			<h3><c:out value="${verifySeason}"/></h3>
-		    		</div>
-		    		<div class="clear"></div>
-		    		<div class="conf-col">
-		    			<div class="header"><fmt:message key="registrationEntry.payment"/></div>
-		    			<h3><fmt:message key="registrationEntry.paymentForm"/></h3>
-		    			<h3><fmt:message key="registrationEntry.accountNumber"/></h3>
-		    			<h3><fmt:message key="registrationEntry.expiration"/></h3>
-		    		</div>
-					<div class="conf-col">
-		    			<div class="header">&nbsp;</div>
-		    			<h3><c:out value="${acctType}"/></h3>
-		    			<h3><c:out value="${cardNumber}"/></h3>
-		    			<h3><c:out value="${verifyExpiration}"/></h3>
-		    		</div>
+
 		    		<div class="clear"></div>
 
 					<div class="conf-col" style="height:30px;">
@@ -210,7 +229,8 @@
 				    		<img id="processing" src="<c:url value="images/ball-in-hole.gif"/>" alt="processing" style="visibility:hidden;"/>
 			    		</div>
 					</div>
-					<div class="conf-col" style="height:30px;">
+					</div>
+					<div class="">
 					
 				        <form:hidden id="firstName" path="firstName"/>
 				        <form:hidden id="lastName" path="lastName"/>
@@ -223,13 +243,14 @@
 				        <form:hidden id="billingAddress.province" path="billingAddress.province"/>
 				        <form:hidden id="billingAddress.postalCode" path="billingAddress.postalCode"/>
 				        <form:hidden id="billingAddress.country" path="billingAddress.country"/>
-						<div class="buttons">
-							<div class="left">
-								<carter:button onclick="document.getElementById('bBack').value='true';document.getElementById('registrationForm').submit();return false;" key="button.back"/>
-							</div>
-							<div class="left">
+						<div class="buttons reg-btn" style="clear: both">
+						<div class="right green-btn">
 								<carter:button onclick="showProcImg();document.getElementById('bVerify').value='true';document.getElementById('registrationForm').submit();return false;" key="button.process"/>
 							</div>
+							<div class="right white-btn">
+								<carter:button onclick="document.getElementById('bBack').value='true';document.getElementById('registrationForm').submit();return false;" key="button.back"/>
+							</div>
+							
 							<input id="bVerify" type="hidden" name="bVerify" value="false"/>
 							<input id="bBack" type="hidden" name="bBack" value="false"/>
 			            </div>
@@ -243,7 +264,7 @@
 						-->
 						</script>
 					</div>
-					<img alt="CGL Logo" src="images/CGL-logo.gif">
+					<!--img alt="CGL Logo" src="images/CGL-logo.gif"-->
 		    	</div>
 			</c:otherwise>
 		</c:choose>
@@ -255,7 +276,9 @@
 	    			<fmt:message key="registrationEntry.thankYou"/>
 	    		</h3>
 	    		<p class="thankyou-msg"><fmt:message key="registrationEntry.thankYouMsg"/></p>
-	    		<div class="conf-col">
+				<div class="row">
+				<div class="col-sm-4">
+	    		<div class="conf-col grey-box shadow">
 	    			<div class="header"><fmt:message key="registrationEntry.yourDetails"/></div>
 	    			<h3>
 	    				<c:choose>
@@ -264,48 +287,55 @@
 	    				</c:choose>
 	    				<c:out value="${registrationEntry.firstName}"/>&nbsp;<c:out value="${registrationEntry.lastName}"/>
 	    			</h3>
-	    		</div>
-	    		<div class="conf-col">
-	    			<div class="header"><fmt:message key="registrationEntry.billingAddress"/></div>
-	    			<h3><c:out value="${registrationEntry.billingAddress.address}"/></h3>
-	    			<h3><c:out value="${registrationEntry.billingAddress.city}"/></h3>
-	    			<h3><c:out value="${registrationEntry.billingAddress.province}"/></h3>
-	    			<h3><c:out value="${registrationEntry.billingAddress.postalCode}"/></h3>
-	    		</div>
-	    		<div class="clear"></div>
-	    		<div class="conf-col" style="height:70px;">
-	    			<div class="header"><fmt:message key="registrationEntry.amountPaid"/></div>
+				<div class="amount">
+	    		<div class="header"><fmt:message key="registrationEntry.amountPaid"/></div>
 	    			<h3><fmt:formatNumber type="currency" value="${amount}" /></h3>
 	    		</div>
-				<div class="conf-col" style="height:70px;">
-	    			<div class="header"><fmt:message key="registrationEntry.season"/></div>
-	    			<h3><c:out value="${verifySeason}"/></h3>
 	    		</div>
-	    		<div class="clear"></div>
-	    		<div class="conf-col">
+				</div>
+				<div class="col-sm-4">
+	    		<div class="conf-col grey-box shadow">
 	    			<div class="header"><fmt:message key="registrationEntry.payment"/></div>
-	    			<h3><fmt:message key="registrationEntry.paymentForm"/></h3>
-	    			<h3><fmt:message key="registrationEntry.accountNumber"/></h3>
-	    			<h3><fmt:message key="registrationEntry.expiration"/></h3>
-	    		</div>
-				<div class="conf-col">
-	    			<div class="header">&nbsp;</div>
+	    			<!--h3><fmt:message key="registrationEntry.paymentForm"/></h3-->
+	    			<!--h3><fmt:message key="registrationEntry.accountNumber"/></h3-->
+	    			<!--h3><fmt:message key="registrationEntry.expiration"/></h3-->
+	    		
+				 <div class="">
+	    			<!--div class="header">&nbsp;</div-->
 	    			<h3><c:out value="${acctType}"/></h3>
 	    			<h3><c:out value="${cardNumber}"/></h3>
 	    			<h3><c:out value="${verifyExpiration}"/></h3>
 	    		</div>
+				</div>
+				</div>
+	    		<div class="col-sm-4">
+				<div class="conf-col grey-box shadow">
+					<div class="header"><fmt:message key="registrationEntry.billingAddress"/></div>
+	    			<h3><c:out value="${registrationEntry.billingAddress.address}"/></h3>
+	    			<h3><c:out value="${registrationEntry.billingAddress.city}"/></h3>
+	    			<h3><c:out value="${registrationEntry.billingAddress.province}"/></h3>
+	    			<h3><c:out value="${registrationEntry.billingAddress.postalCode}"/></h3>
+					<div class="" style="height:70px;">
+						<div class="header"><fmt:message key="registrationEntry.season"/></div>
+						<h3><c:out value="${verifySeason}"/></h3>
+					</div>
+				</div>
+				</div>
+
+
 	    		<div class="clear"></div>
 
-				<div id="print">
-					<div>
-						<carter:button onclick="window.print();" key="registrationEntry.printConfirmation"/>
-					</div>
-					<div>
+				<div id="print" class="reg-btn">
+					<div class="green-btn">
 						<c:set var="url"><c:url value="/profile.html"/></c:set>
 						<carter:button page="${url}" key="registrationEntry.continue"/>
 					</div>
+					<div class="white-btn">
+						<carter:button onclick="window.print();" key="registrationEntry.printConfirmation"/>
+					</div>
 				</div>
-				<img alt="CGL Logo" src="images/CGL-logo.gif">
+				</div>
+				<!--img alt="CGL Logo" src="images/CGL-logo.gif"-->
 	    	</div>
 		</c:if>
 	</c:otherwise>
@@ -319,13 +349,12 @@ $("#registration").focus();
 
 function onFormSubmit(theForm) {
 	
-	if(validateRegistrationEntry(theForm))
-		return theForm.submit();
+	//if(validateRegistrationEntry(theForm))
+		//return theForm.submit();
 	
-	return false;
+	return theForm.submit();
 }
 </script>
 
 <v:javascript formName="registrationEntry" staticJavascript="false"/>
 <script type="text/javascript" src="<c:url value="/scripts/validator.jsp"/>"></script>
-
