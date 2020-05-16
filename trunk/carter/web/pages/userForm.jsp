@@ -6,15 +6,10 @@
     <script type="text/javascript" src="<c:url value='/scripts/selectbox.js'/>"></script>
 </head>
 
-<%-- <c:if test="${not empty courseList}"> --%>
-
 <div class="section">
 	<div class="left">
 		<h2 class="page-title"><fmt:message key="userForm.title"/> <span><fmt:message key="userForm.heading"/></span></h2>
 	</div>
-	<!--div class="right">
-		<fmt:message key="userForm.message"/>
-	</div-->
 </div>
 <div class="clear"></div>
 <div class="shadow-sm grey-box editerForm">
@@ -38,7 +33,7 @@
 	<form:hidden path="bestResultSeason"/>
 	<form:hidden path="lowScore"/>
 	<form:hidden path="seasonEntered"/>
-	<%-- <form:hidden path="playerLevel"/> --%>
+	<form:hidden path="courtId"/>
 	<c:if test="${cookieLogin == 'true'}">
 		<form:hidden path="password"/>
 		<form:hidden path="confirmPassword"/>
