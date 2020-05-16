@@ -53,8 +53,8 @@
 				<label for="username" class="floating-label"><fmt:message key="userForm.username"/><span class="mandatory">*</span></label>
 			</div>
 			<div class="floating-label-wrap">
-			<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-			<label class="floating-label" for="password"><fmt:message key="userForm.password"/><span class="mandatory">*</span></label>
+				<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
+				<label class="floating-label" for="password"><fmt:message key="userForm.password"/><span class="mandatory">*</span></label>
 			</div>
 			<div class="floating-label-wrap">
 			<form:password path="confirmPassword" id="confirmPassword" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
@@ -235,22 +235,26 @@
 			<div class="floating-label-wrap">
 				<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 				<label for="homeCourtText" class="floating-label"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-				</div>
+			</div>
 			<div class="floating-label-wrap">
-
 				<form:input path="courtAddress" id="courtAddress" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-					<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+				<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
 			</div>
 			
 			<div class="floating-label-wrap">	
-			
-			<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
-			<label for="courtCity" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+				<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
+				<label for="courtCity" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
 			</div>
 				
 			<div class="styled-input">
-			<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
-			<carter:state name="courtState" prompt="" default="${user.address.province}"/>
+				<label for="courtState"><fmt:message key="userForm.state"/><span class="mandatory">*</span></label>
+				<form:select path="courtState" id="courtState" cssClass="sixcol">
+				 	<c:forEach var="state" items="${stateList}">
+						<option value="<c:out value='${state}'/>" <c:if test="${state == user.courtState}">selected</c:if>>
+							<c:out value="${state}"/>
+						</option>
+					</c:forEach>
+				</form:select>
 			</div>
 			
 		</fieldset>

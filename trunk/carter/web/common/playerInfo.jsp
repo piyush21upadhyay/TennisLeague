@@ -84,20 +84,9 @@
 	<div class="subsection p1">
 	<div class="flu-box shadow">
 		<p style="clear: both"><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
-		<%-- <p><fmt:message key="profile.handicap"/> <c:if test="${not empty player}">
-			<span class="green">
-			<c:choose>
-				<c:when test="${player.handicap lt 0}">
-					<c:out value="+"/><c:out value="${0 - player.handicap}"/>
-				</c:when>
-				<c:otherwise>
-					<c:out value="${player.handicap}"/>
-				</c:otherwise>
-			</c:choose>
-			</span></c:if></p> --%>
-		<%-- <c:if test="${param.fullPlayerInfo eq 'true'}">
-			<p><fmt:message key="profile.division"/> <c:if test="${not empty player}"><span class="green"><c:out value="${currentDivision}"/></span></c:if></p>
-		</c:if> --%>
+		<p><fmt:message key="profile.homeCourt"/> 
+			<c:if test="${not empty player}"><c:out value="${homeCourt}"/></c:if>
+		</p>
 		<c:if test="${not param.fullPlayerInfo eq 'true' and not empty currentRecord}">
 			<%-- <p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p> --%>
 			<c:choose>
