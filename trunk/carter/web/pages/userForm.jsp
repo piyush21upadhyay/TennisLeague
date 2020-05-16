@@ -53,8 +53,8 @@
 				<label for="username" class="floating-label"><fmt:message key="userForm.username"/><span class="mandatory">*</span></label>
 			</div>
 			<div class="floating-label-wrap">
-				<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-				<label class="floating-label" for="password"><fmt:message key="userForm.password"/><span class="mandatory">*</span></label>
+			<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
+			<label class="floating-label" for="password"><fmt:message key="userForm.password"/><span class="mandatory">*</span></label>
 			</div>
 			<div class="floating-label-wrap">
 			<form:password path="confirmPassword" id="confirmPassword" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
@@ -232,18 +232,35 @@
 
 		<fieldset>
 			<legend><fmt:message key="userForm.courtSelection"/></legend>
+			<c:set var="verifiedCourtList" value="${verifiedCourtList}" scope="request"/>
+			<c:if test="${not empty verifiedCourtList}">
+				<div class="styled-input">
+					<label><fmt:message key="userForm.selectCourt"/></label>
+					 <form:select path="selectCourt" id="selectCourt" onchange="displayFurtherSectionOfCourt()">
+						<c:forEach var="court" items="${verifiedCourtList}">
+							<option value="<c:out value='${court.id}'/>" <c:if test="${court.name == user.selectCourt}">selected</c:if>>
+								<c:out value="${court.name}"/>
+							</option>
+						</c:forEach>
+						<option value='-1'><fmt:message key="userForm.fillNewCourt"/></option>
+					</form:select>
+				</div>
+			</c:if>
+		<div id="homeCourtDiv">
 			<div class="floating-label-wrap">
 				<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 				<label for="homeCourtText" class="floating-label"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
-			</div>
+				</div>
 			<div class="floating-label-wrap">
+
 				<form:input path="courtAddress" id="courtAddress" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-				<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+					<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
 			</div>
 			
 			<div class="floating-label-wrap">	
-				<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
-				<label for="courtCity" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+			
+			<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
+			<label for="courtCity" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
 			</div>
 				
 			<div class="styled-input">
@@ -257,6 +274,61 @@
 				</form:select>
 			</div>
 			
+			<div class="styled-input">
+			<label><fmt:message key="userForm.isCourtLighted"/></label>
+				 <form:select path="isCourtLighted" id="isCourtLighted" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+					<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+				</form:select>
+			</div>
+				
+			<div class="styled-input">
+				<label><fmt:message key="userForm.numberOfCourts"/></label>
+				 <form:select path="numberOfCourts" id="numberOfCourts" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="court" items="${numberOfCourts}">
+						<option value="<c:out value='${court}'/>" <c:if test="${court == user.numberOfCourts}">selected</c:if>>
+							<c:out value="${court}"/>
+						</option>
+					</c:forEach>
+				</form:select>
+			</div>
+			
+			<div class="styled-input">
+				<label><fmt:message key="userForm.hoursOpen"/></label>
+				 <form:select path="openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+					<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+				</form:select>
+				 <form:select path="openCourtHour" id="openCourtHour" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="hour" items="${hoursList}">
+						<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.openCourtHour}">selected</c:if>>
+							<c:out value="${hour}"/>
+						</option>
+					</c:forEach>
+				</form:select>
+			</div>
+			
+			<div class="styled-input">
+			<label><fmt:message key="userForm.hoursClose"/></label>
+				 <form:select path="closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
+				 	<form:option value=""></form:option>
+					<form:option value="AM"><fmt:message key="userForm.am"/></form:option>
+					<form:option value="PM"><fmt:message key="userForm.pm"/></form:option>
+				</form:select>
+				 <form:select path="closeCourtHour" id="closeCourtHour" cssClass="sixcol">
+				 	<option value=''></option>
+				 	<c:forEach var="hour" items="${hoursList}">
+						<option value="<c:out value='${hour}'/>" <c:if test="${hour == user.closeCourtHour}">selected</c:if>>
+							<c:out value="${hour}"/>
+						</option>
+					</c:forEach>
+				</form:select>
+			</div>
+		</div>	
 		</fieldset>
 		<fieldset class="equip">    
             <!--label><span class="mandatory">*</span>all mandatory except equipment</label-->
@@ -425,6 +497,7 @@
 		</c:if>
 	</spring:bind>
 </div>
+</div>
 </form:form>
 </div>
 <script type="text/javascript">
@@ -471,6 +544,7 @@ function onFormSubmit(theForm) {
 			cglAlert('Invalid Action', txt, 300);
 			return false;
 		}
+		setHomeCourtAttributes();
 		return theForm.submit();
 	}
 	
@@ -581,6 +655,52 @@ function showOppSkillLevelOptions(){
 	}
 }
 
+function setHomeCourtAttributes(){
+	var courtMap = new Object();
+	var id = $('#selectCourt').val();
+	if ($('#selectCourt').val() != '-1') {
+		<c:forEach var="court" items="${verifiedCourtList}">
+		var courtId = "<c:out value="${court.id}"/>";
+			//<c:if test="${courtId eq id}">
+			if(courtId == id){
+			
+				courtMap['courtId'] = '<c:out value='${court.id}'/>';
+				courtMap['name'] = '<c:out value='${court.name}'/>';
+				courtMap['address'] = '<c:out value='${court.courtAddress}'/>';
+				courtMap['city'] = '<c:out value='${court.cities[0].name}'/>';
+				courtMap['state'] = '<c:out value='${court.courtState}'/>';
+	
+				courtMap['isCourtLighted'] = '<c:out value='${court.isCourtLighted}'/>';
+				courtMap['numberOfCourts'] = '<c:out value='${court.numberOfCourts}'/>';
+				courtMap['openCourtMeridiem'] = '<c:out value='${court.openCourtMeridiem}'/>';
+				courtMap['openCourtHour'] = '<c:out value='${court.openCourtHour}'/>';
+				courtMap['closeCourtMeridiem'] = '<c:out value='${court.closeCourtMeridiem}'/>';
+				courtMap['closeCourtHour'] = '<c:out value='${court.closeCourtHour}'/>';
+			}
+			//</c:if>
+		</c:forEach>
+		$('#homeCourtText').val(courtMap['name']);
+		$('#courtAddress').val(courtMap['address']);
+		$('#courtCity').val(courtMap['city']);
+		$('#courtState').val(courtMap['state']);
+		$('#isCourtLighted').val(courtMap['isCourtLighted']);
+		$('#numberOfCourts').val(courtMap['numberOfCourts']);
+		$('#openCourtMeridiem').val(courtMap['openCourtMeridiem']);
+		$('#openCourtHour').val(courtMap['openCourtHour']);
+		$('#closeCourtMeridiem').val(courtMap['closeCourtMeridiem']);
+		$('#closeCourtHour').val(courtMap['closeCourtHour']);
+		$('#courtId').val(courtMap['courtId']);
+	}
+}
+	function displayFurtherSectionOfCourt() {
+		var selCourtId = $('#selectCourt').val();
+		if ('-1' == selCourtId) {
+			$('#homeCourtDiv').show();
+		} else {
+			$('#homeCourtDiv').hide();
+		}
+	}
+
 $(document).ready( function() {
     var now = new Date();
     var day = ("0" + now.getDate()).slice(-2);
@@ -591,38 +711,46 @@ $(document).ready( function() {
 	
 	$('#opponentSkillLevelDiv').hide();
 	
-		$(".checkbox-dropdown").click(function () {
-	    $(this).toggleClass("is-active");
-	});
+	if (anyVerifiedCourtPresent) {
+		$('#homeCourtDiv').hide();
+	} else {
+		$('#homeCourtDiv').show();
+	}
 	
+	$(".checkbox-dropdown").click(function() {
+			$(this).toggleClass("is-active");
+	});
+
 	$(".checkbox-dropdown ul").click(function(e) {
-	    e.stopPropagation();
+		e.stopPropagation();
 	});
 
-$('.floating-label-wrap').each(function(){
-  var inputText = $(this).find('.longBox').attr("name");
-  //console.log(name);
-  $(this).find('input').attr('placeholder',inputText);
-});
+	$('.floating-label-wrap').each(function() {
+		var inputText = $(this).find('.longBox').attr("name");
+		$(this).find('input').attr('placeholder', inputText);
+	});
 
+	});
+
+	$(document).ready(function() {
+		$('input[name=checkdrop]').click(function() {
+			if (this.checked) {
+				//uncheck all other checkbox
+				$('input[name=checkdrop]').not(this).prop('checked', false);
+				//hide all dropdown first
+				$('.dropdown').hide();
+				//show the checked one
+				$('#' + this.value).parent().show();
+			} else {
+				$('#' + this.value).parent().hide();
+			}
+		});
+	});
 	
- });
- 
- $(document).ready(function(){
-         $('input[name=checkdrop]').click(function() {
-		  if (this.checked) {
-		    //uncheck all other checkbox
-		    $('input[name=checkdrop]').not(this).prop('checked', false);
-		    //hide all dropdown first
-		    $('.dropdown').hide();
-		    //show the checked one
-		    $('#' + this.value).parent().show();
-		  } else {
-		    $('#' + this.value).parent().hide();
-		  }
-		});	
- });
- 
+	var anyVerifiedCourtPresent;
+	<c:if test="${not empty verifiedCourtList}">
+	anyVerifiedCourtPresent = true;
+	</c:if>
 </script>
 
 
