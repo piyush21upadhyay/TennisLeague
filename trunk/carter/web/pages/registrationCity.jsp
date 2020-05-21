@@ -28,8 +28,9 @@
 		<form:hidden path="id"/>
 		<form:hidden path="version"/>
 		<form:hidden path="countDownDate"/>
-	
-		<table cellpadding="3" border="0">
+	     <div class="row">
+	     <div class="col-sm-4">
+		<table cellpadding="3" border="0" class="shadow-sm grey-box">
 		    <tr>
 		    	<td><carter:label styleClass="desc" key="city.name"/></td>
 		        <td><form:input path="name" id="name" cssClass="text medium" /></td>
@@ -66,15 +67,17 @@
 		    <tr>
 		    	<td colspan="2" style="padding:5px 10px;">
 			    	<div class="buttons">
-			    		<div class="left">
+			    		<div class="left submit-btn">
 					    	<carter:button onclick="return onFormSubmit(document.getElementById('registrationCity'));" key="button.save"/>
 					    </div>
-					    <div class="left">
+					    <div class="left cancel-btn">
 					    	<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('registrationCity').submit();return false;" key="button.cancel"/>
 					    </div>
+					    <div class="left cancel-btn">
 					    <c:if test="${not empty currentCity}">
 					    	<carter:button onclick="document.getElementById('bDelete').value='true';document.getElementById('registrationCity').submit();return false;" key="button.delete"/>
 					    </c:if>
+					    </div>
 					</div>
 					<div class="clear"></div>
 				    <div class="mandatory">
@@ -85,7 +88,8 @@
 			    </td>
 		    </tr>
 		</table>
-	
+	  </div>
+	  </div>
 	</form:form>
 </div>
 

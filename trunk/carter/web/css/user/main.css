@@ -2607,11 +2607,12 @@ div#print .white-btn, div#print .green-btn {
 }
 	
 #about-content {
-	padding:20px 20px 5px 20px;;
-	width:860px;
-	min-height:660px;
-	background-color:#23201f;
-	line-height:16px;
+    padding: 20px 20px 5px 20px;
+    width: 90%;
+    min-height: 660px;
+    background-color: #dedfdd;
+    line-height: 16px;
+    margin: 0px 20px;
 }
 
 #about-content li, #contact-content li {
@@ -2623,7 +2624,7 @@ div#print .white-btn, div#print .green-btn {
 #about-content a {
 	text-decoration:underline;
 	line-height:20px;
-	color:#fff;
+	color: #060606;
 }
 
 #about-content a:hover {
@@ -2632,7 +2633,7 @@ div#print .white-btn, div#print .green-btn {
 
 #about-content h2, #contact-content h2 {
 	font-size:15px;
-	color:#FDFBA6;
+	color:#7e941f;
 	line-height:20px;
 	text-transform:uppercase;
 }
@@ -2659,7 +2660,7 @@ div#print .white-btn, div#print .green-btn {
 	padding:20px;
 	width:860px;
 	min-height:640px;
-	background-color:#23201f;
+	background-color: #dedfdd;;
 	line-height:16px;
 }
 
@@ -4732,4 +4733,171 @@ padding: 0px 10px;
 
 .homeDefault-socail #links a:hover{
  color: #fff;
+}
+.court-section form {
+    width: 100%;
+}
+form#courts .threecol-frame .grey-box {
+    padding: 20px;
+}
+#courts .threecol-frame label {
+    width: 35%;
+}
+#courts .threecol-frame {
+    float: left;
+margin-bottom: 30px;
+}
+#courts .threecol-frame input {
+    width: 60%;
+    padding: 6px 10px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+#courts .threecol-frame select {
+    padding: 6px 10px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+#courts .threecol-frame input[type="checkbox"] {
+    text-align: left;
+    width: 20px;
+    height: 20px;
+}
+#courts .submit-btn {
+    padding: 10px 0px;
+    background: #9cb23b;
+    width: 100px;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 30px;
+}
+#courts .submit-btn .buttonwrapper {
+    text-align: center;
+    color: #fff;
+}
+#courts .submit-btn .buttonwrapper a{
+   color: #fff;
+}
+#courts .cancel-btn {
+    padding: 10px 0px;
+    background: #e2e2e2;
+    width: 100px;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 30px;
+}
+#courts .cancel-btn .buttonwrapper {
+    text-align: center;
+    color: #fff;
+}
+#courts .cancel-btn .buttonwrapper a{
+   color: #565656;
+}
+#registrationCity input {
+    width: 90%;
+    padding: 6px 10px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+#registrationCity table{
+    margin-bottom: 30px;
+}
+.submit-button {
+    padding: 10px 0px;
+    background: #9cb23b;
+    width: 100px;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 30px;
+}
+form#courseForm label {width: 10%;float: left;}
+
+form#courseForm input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+form#courseForm label {width: 10%;float: left;}
+
+form#courseForm input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+
+form#courseForm  .pick-available,form#courseForm  .pick-selected {
+    float: left;
+    width: 15%;
+    padding: 5px;
+    border: 1px solid #bdbdbd;
+    background: #f3f3f3;
+    border-radius: 25px;
+}
+
+form#courseForm .pick-buttons {
+    float: left;
+    width: 15%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form#courseForm  .pick-available select, form#courseForm  .pick-selected select {
+    padding: 5px;
+    /* border: 1px solid #bdbdbd; */
+    background: none;
+    border-radius: 25px;
+    width: 97%;
+    border: none;
+}
+
+form#courseForm  .pick-available label {
+    width: 100% !important;
+}
+form#courseForm {
+    background: #dedfdd;
+    overflow: hidden;
+    padding: 20px;
+}
+form#courseForm div > div {
+    margin-bottom: 10px;
+}
+form#courseForm input[type="submit"]{
+    padding: 10px 0px !important;
+    background: #9cb23b !important;
+    width: 100px !important;
+    text-align: center;
+    border-radius: 25px;
+    color: #fff !important;
+    margin-top: 30px;
+
+}
+form#testPlaySeasonForm, form#testCreateUsersForm {
+    background: #dedfdd;
+    padding: 20px;
+}
+form#courseForm {
+    background: #dedfdd;
+    overflow: hidden;
+    padding: 20px;
+}
+form#courseForm div > div {
+    margin-bottom: 10px;
+}
+form#courseForm input[type="submit"], input[type="submit"]{
+    padding: 10px 0px !important;
+    background: #9cb23b !important;
+    width: 100px !important;
+    text-align: center;
+    border-radius: 25px;
+    color: #fff !important;
+    margin-top: 30px;
+    border: none;
+
 }

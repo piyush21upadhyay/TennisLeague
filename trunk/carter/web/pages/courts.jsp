@@ -14,9 +14,11 @@
 <div class="court-section col-sm-12">
 <c:choose>
     <c:when test="${isAdmin}">
+	<div class="row">
     	<form:form commandName="courtListWrapper" method="post" id="courts" action="editCourts.html">
     		<c:forEach var="court" items="${courtListWrapper.courtList}" varStatus="status">
-    		<div class="threecol-frame">
+    		<div class="threecol-frame col-sm-4">
+			    <div class="shadow-sm grey-box">
     				<p><label for="name"><fmt:message key="courtDetails.name"/></label>
     					<form:input path="courtList[${status.index}].name" id="name" cssClass="longBox" maxlength="30"/></p>
     				<p><label for="courtAddress"><fmt:message key="courtDetails.address"/></label>
@@ -79,13 +81,14 @@
     				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
     					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>
     		</div>
+			</div>
     		</c:forEach>
     		 <div class="section">
 	    		<div class="buttons">
-					<div class="left">
+					<div class="left submit-btn">
 						<carter:button onclick="return onFormSubmit(document.getElementById('courts'));" key="button.save"/>
 					</div>
-					<div class="left">
+					<div class="left cancel-btn">
 						<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('courts').submit();return false;" key="button.cancel"/>
 					</div>
 					<input id="bCancel" type="hidden" name="bCancel" value="false"/>
@@ -106,7 +109,7 @@
 				</spring:bind>
 			</div>
     	</form:form>
-    	
+    	</div>
     	<script type="text/javascript">
 			function onFormSubmit(theForm) { // need to add validations of a form
 				return theForm.submit();
@@ -117,7 +120,8 @@
    <c:otherwise>
 
 	<c:forEach var="court" items="${courtList}">
-			<div class="threecol-frame">
+			<div class="threecol-frame col-sm-4">
+			 <div class="shadow-sm grey-box">
 				<h2><c:out value="${court.name}"/></h2>
 				<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
 				<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
@@ -133,6 +137,7 @@
 						<c:when test="${court.courtVerified eq 'true'}">Yes</c:when>
 						<c:otherwise>No</c:otherwise>
 					</c:choose> --%>
+			</div>
 			</div>
 	</c:forEach>
 

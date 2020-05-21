@@ -6,7 +6,12 @@
     <script type="text/javascript">
     	$(function() {
         	$("#results tbody tr:first").addClass("first-row");
+        	$('#command').insertBefore('#top-nav .right');
     	});
+		 jQuery('body').live(function(event){ 
+		    event.stopPropagation();        
+		  jQuery('#command').insertBefore('#top-nav .right');
+		});
     </script>
 </head>
 
