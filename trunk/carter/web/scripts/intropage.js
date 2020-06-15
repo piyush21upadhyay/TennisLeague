@@ -457,7 +457,7 @@ function _jqAutoCloseVideoPop( id )
 	if (vBackgroundImg != '')
 		$("#main-container").css("background-image", vBackgroundImg);
 	else if (vBackgroundImg == '')
-		$("#main-container").css("background-image", "url('../images/bg_img_1.jpg')");
+		$("#main-container").css("background-image", "url('../images/bg_img_2.jpg')");
 	
 	$("#logo img").css("display","inline-block");
 	$("#sidemenu-fixed").css("display","block");

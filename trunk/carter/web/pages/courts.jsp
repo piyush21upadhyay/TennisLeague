@@ -118,32 +118,40 @@
     
    </c:when>
    <c:otherwise>
-
-	<c:forEach var="court" items="${courtList}">
-			<div class="threecol-frame col-sm-4">
-			 <div class="shadow-sm grey-box">
-				<h2><c:out value="${court.name}"/></h2>
-				<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
-				<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
-					<%-- <c:forEach var="city" items="${court.cities}">
-						<c:out value="${city.name}"/>
-					</c:forEach> --%>
-				<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
-				<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
-				<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
-				<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
-				<%-- <p><fmt:message key="courtDetails.verified"/>
-					 <c:choose>
-						<c:when test="${court.courtVerified eq 'true'}">Yes</c:when>
-						<c:otherwise>No</c:otherwise>
-					</c:choose> --%>
-			</div>
-			</div>
-	</c:forEach>
-
+   		<c:choose>
+   			<c:when test="${not empty courtList}">
+   				<c:forEach var="court" items="${courtList}">
+					<div class="threecol-frame col-sm-4">
+					 <div class="shadow-sm grey-box">
+						<h2><c:out value="${court.name}"/></h2>
+						<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
+						<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
+						<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
+						<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
+						<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
+						<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
+					</div>
+					</div>
+			</c:forEach>
+   			</c:when>
+   			<c:otherwise>
+	   			<c:forEach begin="1" end="9" varStatus="loop">
+	   			<div class="row">
+	   				<div class="threecol-frame col-sm-4">
+						 <div class="shadow-sm grey-box">
+							<p><fmt:message key="courtDetails.address"/><c:out value="Piyush"/> <br/></p>
+							<p><fmt:message key="courtDetails.city"/></p>
+							<p><fmt:message key="courtDetails.state"/></p>
+							<p><fmt:message key="courtDetails.noOfCourts"/></p>
+							<p><fmt:message key="courtDetails.lighted"/></p>
+							<p><fmt:message key="courtDetails.hours"/></p>
+						</div>
+					</div>
+				</div>
+				</c:forEach>
+   			</c:otherwise>
+   		</c:choose>
 	</c:otherwise>
 </c:choose>
-
 </div>
-
 </c:if>

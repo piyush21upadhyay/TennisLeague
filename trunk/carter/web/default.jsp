@@ -7,7 +7,7 @@
 <c:set var="vRandom" value='${rand.random}'/>
 
 <c:set target="${rand}" property="min" value="1"/>
-<c:set target="${rand}" property="max" value="6"/>
+<c:set target="${rand}" property="max" value="2"/>
 <c:set target="${rand}" property="random" value="0"/>
 <c:set var="vTagIndex" value='${rand.random}'/>
 
@@ -71,19 +71,11 @@ function checkUserPass()
 				width: 100%;
 				height: 100%;
 				margin: auto;
-				/*background: #fff url("images/bg_img_2.jpg") repeat center top;*/
 				margin-left: -0.5px;
 			}
 		</style>
 	</c:otherwise>
 </c:choose>
-<!--[if lt IE 9]>
-	<script type="text/javascript" src="scripts/html5.js"></script>
-<![endif]-->
-<!--[if IE 7]>
-	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="css/style-IE7.css" type="text/css" media="all" />
-<![endif]-->
 
 <style type="text/css">
 	/* Safari/Chrome css hack */
@@ -144,32 +136,32 @@ function checkUserPass()
 	<div id="outer-container">
 		<!--// Loading container //-->
 		<div id="loading-container" >
-			<c:if test="${vTagIndex eq 1}"><p class="tagline-p">Tour caddy optional</p></c:if>
-			<c:if test="${vTagIndex eq 2}"><p class="tagline-p">Get a birdie and the entire internet will know</p></c:if>
-			<c:if test="${vTagIndex eq 3}"><p class="tagline-p">We'll post your bragging rights online</p></c:if>
+			<c:if test="${vTagIndex eq 1}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if>
+			<c:if test="${vTagIndex eq 2}"><p class="tagline-p">OPEN PLAY TENNIS</p></c:if>
+			<%-- <c:if test="${vTagIndex eq 3}"><p class="tagline-p">We'll post your bragging rights online</p></c:if>
 			<c:if test="${vTagIndex eq 4}"><p class="tagline-p">You athletic glory days are in front of you.</p></c:if> 
 			<c:if test="${vTagIndex eq 5}"><p class="tagline-p">Prove it</p></c:if>
-			<%-- <c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if> --%>
-			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if>
+			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if>
+			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if> --%>
 		</div>
 
 		<div id="main-container">
 			<div id="main" class="container">
-			<div class="header-section">
-			<div class="row">
-			<div  class="col-sm-2">
-			<div id="logo">
-		        	<img src="images/open-tennis-logo.png" alt="">
+				<div class="header-section">
+					<div class="row">
+						<div class="col-sm-2">
+							<!-- <div id="logo">
+								<img src="images/open-tennis-logo.png" alt="">
+							</div> -->
+						</div>
+						<header class="col-sm-10">
+							<h3 id="enter-lnk" onclick="_jqNavLinks(1);">Enter Site</h3>
+							<h3 id="signup-lnk" onclick="_jqNavLinks(2);">Sign Up</h3>
+							<h3 id="login-lnk" onclick="_jqNavLinks(3);">Login</h3>
+							<h3 id="video-lnk" onclick="_jqNavLinks(4);">View Demo</h3>
+						</header>
+					</div>
 				</div>
-				</div>
-				<header class="col-sm-10">
-					<h3 id="enter-lnk" onclick="_jqNavLinks(1);">Enter Site</h3>
-					<h3 id="signup-lnk" onclick="_jqNavLinks(2);">Sign Up</h3>
-					<h3 id="login-lnk" onclick="_jqNavLinks(3);">Login</h3>
-					<h3 id="video-lnk" onclick="_jqNavLinks(4);">View Demo</h3>
-				</header>
-              </div>
-                </div>
 				<div class="clear"></div>
 
 				<div id="site_content">
