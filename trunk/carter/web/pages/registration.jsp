@@ -33,6 +33,7 @@
 				<div class="row">
 				<div class="col-sm-5">
 			        <!--label for=""><fmt:message key="registrationEntry.season"/></label-->
+					<div><strong style="padding-left: 12px;padding-top: 15px;font-size: 16px;"><c:out value="${seasonList[0].seasonName}" /></strong></div>
 			        <form:select path="registration" id="registration" cssClass="text large">
 			       		<c:forEach var="season" items="${seasonList}">
 							<option value="<c:out value='${season.id}'/>">

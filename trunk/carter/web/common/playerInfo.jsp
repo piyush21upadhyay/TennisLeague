@@ -62,19 +62,8 @@
 							<c:out value="${player.fullName} | F"/>
 						</c:otherwise>
 					</c:choose>
-					<%-- <c:out value="${player.fullName}"/> --%>
 					</strong></h4>
-					<h4>&nbsp;<c:out value="${player.address.city},${player.address.province}"/></h4>
-					<%-- <h4>&nbsp;<fmt:message key="profile.lastlogin"/>
-					<c:choose>
-						<c:when test="${not empty lastLogin}">
-							<fmt:formatDate pattern="MMMMM d" value="${lastLogin}" />
-						</c:when>
-						<c:otherwise>
-							<fmt:formatDate pattern="MMMMM d" value="${player.lastLogin}" />
-						</c:otherwise>
-					</c:choose>
-					</h4> --%>
+					<h4>&nbsp;<c:out value="${player.address.city} , ${player.address.province}"/></h4>
 				</div>
 			</c:if>
 		</c:otherwise>

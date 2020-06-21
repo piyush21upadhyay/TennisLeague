@@ -169,17 +169,17 @@
 			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
 		</form:select>
 		</div>
-			<div id="opponentSkillLevelDiv">
-			<input type="checkbox" name="checkdrop" value="dropdown1" /> <label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label> 
-				<div class="dropdown" >
-				<ul class="category_filters" id="dropdown1" >
+		<div id="opponentSkillLevelDiv" class="checkbox-dropdown floating-label-wrap">
+		<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label> 
+			<div class="dropdown" >
+				<ul class="checkbox-dropdown-list">
 				<li><form:radiobutton path="opponentSkillLevel" value="onlyMyRating" /> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label></li>
 				<li><form:radiobutton path="opponentSkillLevel" value="within0.5Rating"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label></li>
 				<li><form:radiobutton path="opponentSkillLevel" value="anyRating"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label></li>
 		        <li><form:radiobutton path="opponentSkillLevel" value="onlyPlayUp"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label></li>
 				</ul>
-				</div>
 			</div>
+		</div>
 	</fieldset>
 
 		
@@ -348,7 +348,7 @@
 			<legend><fmt:message key="userForm.otherInformation"/></legend>
 			
 			<div class="styled-input">
-			<label for="referral"><fmt:message key="userForm.howfound"/></label>
+			<label for="referral"><fmt:message key="userForm.howfound"/><span class="mandatory">*</span></label>
 			<form:select path="referral" id="referral">
 				<option value=''><fmt:message key="userForm.defaultOptionText"/></option>
 				<c:forEach var="referral" items="${referrals}">

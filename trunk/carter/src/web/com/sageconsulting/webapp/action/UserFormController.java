@@ -576,7 +576,7 @@ public class UserFormController extends BaseFormController
      */
     private void updateCourtInfo(ModelAndView view, City city)
     {
-        if (null != city)
+        if (null != city && this.courtManager !=null)
         {
             view.addObject("verifiedCourtList",  //$NON-NLS-1$
                 this.courtManager.getVerifiedCourts(city.getId()));
