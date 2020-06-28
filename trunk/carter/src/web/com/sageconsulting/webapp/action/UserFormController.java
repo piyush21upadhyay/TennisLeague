@@ -476,10 +476,15 @@ public class UserFormController extends BaseFormController
     {
         // Send an account information e-mail
         this.message.setSubject(getText("userForm.email.subject", locale)); //$NON-NLS-1$
-        //String url="<a href=\""+RequestUtil.getAppURL(request)+"\">"+"CITY GOLF LEAGUE"+"</a>";
         String url=RequestUtil.getAppURL(request);
-        sendUserMessage(user, getText("newuser.email.message", user.getFullName(), locale), //$NON-NLS-1$
-        		url);
+        try {
+			sendUserMessage(user, getText("newuser.email.message", user.getFullName(), locale), //$NON-NLS-1$
+					url);
+			this.log.info("Email sent successfully to the User");
+		} catch (Exception e) {
+			this.log.error("There was an error sending the email to the User::"+e);
+			e.printStackTrace();
+		}
         sendCourtAddressDetailsToAdmin(request,user,locale);
     }
     
@@ -496,7 +501,12 @@ public class UserFormController extends BaseFormController
         StringBuffer msg = new StringBuffer("Please verify the new court.");
         this.message.setSubject(subject);
 		this.message.setText(msg.toString());
-		this.mailEngine.send(this.message);
+		try {
+			this.mailEngine.send(this.message);
+			this.log.info("Court Details are sent successfully to the Admin for approval.");
+		} catch (Exception e) {
+			this.log.error("There was an error sending the email to the Admin::"+e);
+		}
        
     }
 
