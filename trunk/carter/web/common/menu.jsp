@@ -10,11 +10,4 @@
 <menu:displayMenu name="Playoffs"/>
 <menu:displayMenu name="Champions"/>
 <menu:displayMenu name="AdminMenu"/>
-<hr>
-<div class="second-menu">
-<menu:displayMenu name="About"/>
-<menu:displayMenu name="Rules"/>
-<menu:displayMenu name="Contact"/>
-<menu:displayMenu name="Cities"/>
-</div>
 </menu:useMenuDisplayer>

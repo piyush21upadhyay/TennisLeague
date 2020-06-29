@@ -1,15 +1,23 @@
 <%@ include file="/common/taglibs.jsp"%>
+
 <menu:useMenuDisplayer name="Velocity" config="WEB-INF/classes/cssHorizontalMenu.vm" permissions="rolesAdapter">
+<div class="left">
+<menu:displayMenu name="About"/>
+<menu:displayMenu name="Rules"/>
+<menu:displayMenu name="Contact"/>
+<menu:displayMenu name="Cities"/>
+</div>
+
 <div class="right">
 	<div id="links">
-		<a class="ie-post-link" onclick="showLink('http://www.facebook.com/pages/City-Golf-League/348284351925121');">
-			<i class="fa fa-facebook"></i>
-		</a>
 		<a class="ie-post-link" onclick="showLink('https://twitter.com/CityGolfLeague');">
-			<i class="fa fa-twitter"></i>
+			<img src="images/twitter_link.png">
 		</a>
-		<a href="" target="_blank"><i class="fa fa-instagram"></i></a>
+		<a class="ie-post-link" onclick="showLink('http://www.facebook.com/pages/City-Golf-League/348284351925121');">
+			<img src="images/facebook_link.png">
+		</a>
 	</div>
+	
 	<div style="display:inline-block;">
 	<c:choose>
 		<c:when test="${empty pageContext.request.remoteUser}">

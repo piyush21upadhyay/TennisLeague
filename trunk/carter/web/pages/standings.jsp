@@ -6,12 +6,7 @@
     <script type="text/javascript">
     	$(function() {
         	$("#results tbody tr:first").addClass("first-row");
-        	$('#command').insertBefore('#top-nav .right');
     	});
-		 jQuery('body').live(function(event){ 
-		    event.stopPropagation();        
-		  jQuery('#command').insertBefore('#top-nav .right');
-		});
     </script>
 </head>
 
@@ -34,14 +29,8 @@
 		<form:form name="season" method="post" action="standings.html">
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="standings.choose"/></option>
-				<!--<c:forEach var="season" items="${seasons}">
+				<c:forEach var="season" items="${seasons}">
 					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/><%--  - <c:out value="${season.division}"/> --%></option>
-				</c:forEach>-->
-				
-				<c:forEach var="seasonObj" items="${seasons}">
-					<option value="<c:out value="${seasonObj.id}"/>"<c:if test="${seasonObj.id == season.id}">selected</c:if>>
-						<c:out value="${seasonObj.name}"/>
-					</option>
 				</c:forEach>
 			</select>
 		</form:form>
