@@ -319,35 +319,37 @@
 <div class="col-sm-12" style="padding:0px">
 	<!--image section start-->
 		<div id="birdie-challenge">
-		<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">  
-			&nbsp;
-			</a>
-			<c:if test="${empty user}">
-			<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">  
-			&nbsp;
-			</a>
-			</c:if>
-	    	<!--div class="city-name"><c:out value="${cityName}"/></div-->
-	    	<div class="left-msg">
-	    	<c:choose>
-	    		<c:when test="${not empty countdownDate}">Opens for Season</c:when>
-				<c:otherwise>&nbsp;</c:otherwise>
+			<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+			
+			<c:choose>
+				<c:when test="${empty user}">
+					<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+				</c:when>
+				<c:otherwise>
+					<c:if test="${not empty openRegistrations and empty registeredSeason}">
+						<a href="registration.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+					</c:if>
+				</c:otherwise>
 			</c:choose>
+			
+			
+			<%-- <c:if test="${empty user}">
+				<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+			</c:if> --%>
+	    	<div class="left-msg">
+		    	<c:choose>
+		    		<c:when test="${not empty countdownDate}">Opens for Season</c:when>
+					<c:otherwise>&nbsp;</c:otherwise>
+				</c:choose>
 	    	</div>
 			<div class="left-msg">
 				<c:choose>
 		    		<c:when test="${not empty countdownDate}">
-		    		Registration <fmt:formatDate type="date" pattern="MMMM d" value="${countdownDate}" /><sup><c:out value="${dateSuffix}" /></sup>
+		    			Registration <fmt:formatDate type="date" pattern="MMMM d" value="${countdownDate}" /><sup><c:out value="${dateSuffix}" /></sup>
 		    		</c:when>
 					<c:otherwise>&nbsp;</c:otherwise>
 				</c:choose>
 			</div>
-			<!--div class="row">
-			<div class="col-sm-6"><a href="signup.html" class="signup-txt"> SIGN UP NOW</a></div>
-			<div class="col-sm-6"><a href="signup.html" class="clickhere">Click here</a></div>
-			</div-->
-			<!--div class="right-msg-3"></div-->
-			<!--div class="right-msg-4"><i>Tour caddie optional</i></div-->
 	    </div>
 	<!--image section end-->
 </div>

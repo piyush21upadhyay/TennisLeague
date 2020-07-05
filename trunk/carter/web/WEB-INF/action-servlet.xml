@@ -50,6 +50,7 @@
 		<property name="userManager" ref="userManager"/>
 		<property name="registrationManager" ref="registrationManager"/>
 		<property name="matchCategoryManager" ref="matchCategoryManager"></property>
+		<property name="registrationEntryManager" ref="registrationEntryManager"/>
     </bean>
     
     <bean id="profileController" class="com.sageconsulting.webapp.action.ProfileController">
@@ -370,7 +371,7 @@
                 <prop key="/congratsPage.html">congratsMessageController</prop>
                 <prop key="/courts.html">courtsController</prop>
                 <prop key="/editCourts.html">courtsController</prop>
-                <!-- <prop key="/courts.html">courtFormController</prop> -->
+                <!-- <prop key="/courtLinkingToUserValidate.html">courtsController</prop> -->
             </props>
         </property>
     </bean>

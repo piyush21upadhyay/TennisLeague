@@ -8,6 +8,7 @@
  */
 package com.sageconsulting.webapp.action;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -36,11 +37,13 @@ import com.sageconsulting.model.Match;
 import com.sageconsulting.model.MatchCategory;
 import com.sageconsulting.model.PublicMessage;
 import com.sageconsulting.model.Registration;
+import com.sageconsulting.model.RegistrationEntry;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.TickerMessage;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.MatchCategoryManager;
 import com.sageconsulting.service.PublicMessageManager;
+import com.sageconsulting.service.RegistrationEntryManager;
 import com.sageconsulting.service.RegistrationManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.service.TickerMessageManager;
@@ -60,6 +63,7 @@ public class HomeController extends ApplicationObjectSupport implements Controll
     private UserManager userManager;
     private RegistrationManager registrationManager;
     private MatchCategoryManager matchCategoryManager;
+    private RegistrationEntryManager registrationEntryManager;
 	private String weatherKey = "2bca57c999051124122908";
     
     public void setSeasonManager(SeasonManager mgr)
@@ -90,6 +94,11 @@ public class HomeController extends ApplicationObjectSupport implements Controll
     public void setMatchCategoryManager(MatchCategoryManager matchCategoryManager) {
 		this.matchCategoryManager = matchCategoryManager;
 	}
+    
+    public void setRegistrationEntryManager(RegistrationEntryManager mgr)
+    {
+    	this.registrationEntryManager = mgr;
+    }
 
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
@@ -147,6 +156,7 @@ public class HomeController extends ApplicationObjectSupport implements Controll
             	view.addObject("user",user);
             	HttpSession session=request.getSession();
             	session.setAttribute("sessionLoginUser", user);
+            	view.addObject("registeredSeason", this.getOpenEntryRegistrations(user));
             }
             
             // get city name
@@ -154,6 +164,7 @@ public class HomeController extends ApplicationObjectSupport implements Controll
             
             // get banner date
             List<Registration> openRegistrations = this.registrationManager.getOpenRegistrationsForCity(city.getId());
+            view.addObject("openRegistrations", openRegistrations); 
             Registration currentRegistration = null;
             
             if(openRegistrations.size() > 0)
@@ -219,6 +230,37 @@ public class HomeController extends ApplicationObjectSupport implements Controll
         return view;
     }
   
+	private Object getOpenEntryRegistrations(User user) {
+
+    	List<Registration> userRegisteredSeason = new ArrayList<Registration>();
+    	if (null != user)
+    	{
+    		//get list of all open seasons in user's registered city
+    		List<Registration> cityOpenSeasonList = this.registrationManager.getOpenRegistrationsForCity(user.getRegisteredCity().getId());
+    		
+    		if(cityOpenSeasonList.size() > 0)
+    		{
+    			List<RegistrationEntry> userRegistrationEntryList = this.registrationEntryManager.getRegistrationEntriesForUser(user.getId());
+    			
+    			for(int listCounter=0; listCounter<userRegistrationEntryList.size(); listCounter++)
+    			{
+    				RegistrationEntry userEntry = userRegistrationEntryList.get(listCounter);
+    				Registration registedSeason = userEntry.getRegistration();
+
+    				for(int innerCounter=0; innerCounter<cityOpenSeasonList.size(); innerCounter++)
+    				{
+    					if(registedSeason.getId() == cityOpenSeasonList.get(innerCounter).getId())
+        				{
+        					userRegisteredSeason.add(registedSeason);
+        				}
+    				}
+    			}
+    		}
+    	}
+    	return userRegisteredSeason;
+    
+	}
+
 	private List<MatchCategory> getVariousMatchCategories(City city) {
 		return this.matchCategoryManager.getMatchCategoryForCity(city.getId());
 	}
