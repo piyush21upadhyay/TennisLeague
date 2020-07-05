@@ -353,7 +353,7 @@
                 <prop key="/schedule.html">scheduleController</prop>
                 <prop key="/champions.html">championsController</prop>
                 <prop key="/courses.html">coursesController</prop>
-                <prop key="/coursedetails.html">courseDetailsController</prop>
+                <prop key="/courtdetails.html">courtsController</prop>
                 <prop key="/registration.html">registrationController</prop>
                 <prop key="/printcard.html">printCardController</prop>
                 <prop key="/choosecity.html">chooseCityController</prop>

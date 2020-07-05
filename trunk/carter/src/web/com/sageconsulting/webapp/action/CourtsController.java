@@ -84,6 +84,25 @@ public class CourtsController  extends BaseFormController
         	view.addObject("successMessages", new String[] { msg });
             return view;
         }
+        // changes to handle court click from player profile page
+        Long courtId = getCourtId(request);
+        if (null != courtId)
+        {
+        	Court court = getCourt(courtId);
+        	if(null == court){
+	        	String msg = getMessageSourceAccessor().getMessage("coursedetails.noCourse", request.getLocale()); //$NON-NLS-1$
+	        	view.addObject("successMessages", new String[] { msg });//$NON-NLS-1$
+	        	return view;
+        	}else{
+        		List<Court> courts = new ArrayList<Court>();
+        		courts.add(court);
+        		view.addObject("courtList", courts);
+        		return view;
+        	}
+        }
+        
+        
+        
         List<Court> courts = this.courtManager.getCourts(city.getId());
         if(isAdmin){
         	view.addObject("courtList", courts);
@@ -166,6 +185,35 @@ public class CourtsController  extends BaseFormController
         courtListWrapper.setCourtList(courts);
         return courtListWrapper;
 	}
+    
+    private Court getCourt(Long courtId)
+    {
+    	if (null != courtId)
+    	{
+    		return this.courtManager.getCourt(courtId);
+    	}
+    	
+    	return null;
+    }
+    
+    private Long getCourtId(HttpServletRequest request)
+    {
+        Long id = null;
+        String strCourse = request.getParameter("id"); //$NON-NLS-1$
+        if (null != strCourse)
+        {
+            try
+            {
+                id = Long.valueOf(strCourse);
+            }
+            catch (NumberFormatException e)
+            {
+                log.error("Invalid course id: "+strCourse); //$NON-NLS-1$
+            }
+        }
+        
+        return id;
+    }
     
     @Override
     protected void onBind(HttpServletRequest request, Object command) throws Exception
