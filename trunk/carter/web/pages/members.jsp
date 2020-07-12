@@ -26,6 +26,9 @@
 				 $("#sortingParameter").val("lastName");
 				 $('#search').submit();
 		    });
+		    $(".player-info").each(function() {
+			  $(".left",this).prependTo($(".subsection .flu-box",this));
+			});
 	});
 
 	function checkAccess(redirectUrl){
@@ -71,35 +74,40 @@
 	<div class="membersLeft">
 		<h2 class="page-title"><fmt:message key="members.members"/></h2>
 		<div class="search-row">
-			<div class="search-col">
+			<!--div class="search-col">
 				<h4><fmt:message key="members.searchBy"/></h4>
-			</div>
+			</div-->
 		</div>
 	</div>
-	<div class="right">
+	<div class="col-sm-12 shadow-sm grey-box">
+	
 		<form:form commandName="search" method="post" action="members.html">
-		
+		<div class="row">
 		<!-- Search By First Name/Last Name/Gender starts -->
 		<input type="hidden" name="sortingParameter" id="sortingParameter">
-		<div class="search-row">
-			<div class="search-col">
+		<div class="col-sm-3">
+		<div class="row">
+			<div class="search-col col-sm-4">
 				<a  href="#" id="sortByFirstNameId"><fmt:message key="members.firstname"/></a>
 			</div>
-			<div class="search-col">
-				<a  href="#" id="sortByLastNameId"><fmt:message key="members.lastname"/></a>
-			</div>
-			<div class="search-col">
-				<fmt:message key="members.gender"/>
-			</div>
-		</div>
-		<div class="search-row">
-			<div class="search-col">
+			<div class="search-col col-sm-8">
 				<form:input path="firstname" id="firstname" size="10" maxlength="10"/>
 			</div>
-			<div class="search-col">
+		</div>
+		
+		<div class="row">
+			<div class="search-col col-sm-4">
+				<a  href="#" id="sortByLastNameId"><fmt:message key="members.lastname"/></a>
+			</div>
+			<div class="search-col col-sm-8">
 				<form:input path="lastname" id="lastname" size="10" maxlength="10"/>
 			</div>
-			<div class="search-col">
+		</div>
+		<div class="row">
+			<div class="search-col col-sm-4">
+				<fmt:message key="members.gender"/>
+			</div>
+					<div class="search-col col-sm-8">
 				<form:select path="gender" id="gender">
 					<option> </option>
 					<c:forEach var="gndr" items="${gender}">
@@ -108,22 +116,11 @@
 				</form:select>
 			</div>
 		</div>
-		<!-- Search By First Name/Last Name/Gender ends -->
-		
-		<!-- Search By Dexterity/Match Preference starts -->
-		<div class="search-row">
-			<div class="search-col">
+		<div class="row">
+			<div class="search-col col-sm-4">
 				<fmt:message key="members.dexterity"/>
 			</div>
-			<div class="search-col">
-				<fmt:message key="members.matchPreference"/>
-			</div>
-			<div class="search-col">
-				<fmt:message key="members.tournamentEntry"/>
-			</div>
-		</div>
-		<div class="search-row">
-			<div class="search-col">
+			<div class="search-col col-sm-8">
 				<form:select path="dexterity" id="dexterity">
 					<option> </option>
 					<c:forEach var="dexterity" items="${dexterities}">
@@ -131,53 +128,83 @@
 					</c:forEach>
 				</form:select>
 			</div>
-			<div class="search-col">
+		</div>
+		
+		</div>
+		<!-- Search By First Name/Last Name/Gender ends -->
+		
+		<!-- Search By Dexterity/Match Preference starts -->
+		<div class="col-sm-3">
+		<div class="row">
+		<div class="search-row col-sm-12">
+		
+			<div class="search-col text-center">
+				<fmt:message key="members.matchPreference"/>
+			</div>
+		
+		</div>
+		<div class="search-row col-sm-12 match-list">
+	
+			<div class="search-col match-col">
 				<%-- <form:select path="matchPreference" id="matchPreference">
 					<option> </option> --%>
 					<c:forEach var="matchPreference" items="${matchPreferences}">
 						<%-- <option<c:if test="${search.matchPreference eq matchPreference}"> selected="true"</c:if>><c:out value="${matchPreference}"/></option> --%>
+						<div class="list-view-match text-left">
 						<form:checkbox path="matchPreference" value="${matchPreference}" /> 
-							<label class="checkboxlabel" ><c:out value="${matchPreference}"/>
+						<label class="checkboxlabel" ><c:out value="${matchPreference}"/>
 						</label>
+						</div>
 					</c:forEach>
 				<%-- </form:select> --%>
 			</div>
-			<div class="search-col">
-				<form:input path="tournamentEntry" id="tournamentEntry" size="20" maxlength="30"/>
-			</div>
+		
+		</div>
+		</div>
 		</div>
 		<!-- Search By Dexterity/Match Preference ends -->
 		
 		<!-- Search By Rating starts -->
-		<div class="search-row">
-			<div class="search-col">
-				<fmt:message key="members.minRating"/>
+		<div class="col-sm-3">
+		<div class="row">
+			<div class="search-col col-sm-6">
+				<fmt:message key="members.tournamentEntry"/>
 			</div>
-			<div class="search-col">
-				<fmt:message key="members.rating"/>
-			</div>
-			<div class="search-col">
-				<fmt:message key="members.maxRating"/>
+			<div class="search-col col-sm-6">
+				<form:input path="tournamentEntry" id="tournamentEntry" size="20" maxlength="30"/>
 			</div>
 		</div>
-		<div class="search-row">
-			<div class="search-col">
+		<div class="row">
+			<div class="search-col col-sm-6">
+				<fmt:message key="members.minRating"/>
+			</div>
+			<div class="search-col col-sm-6">
 				<form:select path="minRating" id="minRating">
-					<option> </option>
-					<c:forEach var="rating" items="${playerRatings}">
-						<option<c:if test="${search.minRating eq rating}"> selected="true"</c:if>><c:out value="${rating}"/></option>
-					</c:forEach>
+				<option> </option>
+				<c:forEach var="rating" items="${playerRatings}">
+				<option<c:if test="${search.minRating eq rating}"> selected="true"</c:if>><c:out value="${rating}"/></option>
+				</c:forEach>
 				</form:select>
 			</div>
-			<div class="search-col">
+		</div>
+		<div class="row">
+			<div class="search-col col-sm-6">
+				<fmt:message key="members.rating"/>
+			</div>
+			<div class="search-col col-sm-6">
 				<form:select path="rating" id="rating">
-					<option> </option>
-					<c:forEach var="rat" items="${playerRatings}">
-						<option<c:if test="${search.rating eq rat}"> selected="true"</c:if>><c:out value="${rat}"/></option>
-					</c:forEach>
+				<option> </option>
+				<c:forEach var="rat" items="${playerRatings}">
+				<option<c:if test="${search.rating eq rat}"> selected="true"</c:if>><c:out value="${rat}"/></option>
+				</c:forEach>
 				</form:select>
 			</div>
-			<div class="search-col">
+		</div>
+		<div class="row">
+			<div class="search-col col-sm-6">
+				<fmt:message key="members.maxRating"/>
+			</div>
+			<div class="search-col col-sm-6">
 				<form:select path="maxRating" id="maxRating">
 					<option> </option>
 					<c:forEach var="rating" items="${playerRatings}">
@@ -186,40 +213,49 @@
 				</form:select>
 			</div>
 		</div>
+
+		</div>
 		<!-- Search By Rating ends -->
-	
+	<div class="col-sm-3">
 		<c:if test="${isAdministrator}">
 		<div class="search-row">
 			<div class="search-col">
 				<fmt:message key="members.deleted"/>
-			</div>
-		</div>
-		<div class="search-row">
-			<div class="search-col">
 				<input type="checkbox" name="showDeleted" id="showDeleted" value="1" <c:if test="${showDeleted}"> checked="true"</c:if>/>
 			</div>
 		</div>
-		</c:if>
-		<div class="search-row">
+		
+		<!--div class="search-row">
 			<div class="search-col">
+				
+			</div>
+		</div-->
+		</c:if>
+		<div class="search-row member-btn">
+			<div class="search-col green-btn">
 				<carter:button onclick="document.getElementById('search').submit();return false;" key="button.search"/>
 			</div>
-			<div class="search-col">
+			<div class="search-col white-btn">
 	    		<carter:button onclick="document.location.href='members.html';" key="button.clear"/>
 			</div>
 		</div>
+		</div>
+		</div>
 		</form:form>
+		
 	</div>
 </div>
 
 <div class="member-section">
+<div class="row">
 <c:choose>
 	<c:when test="${not empty memberList}">
 	<c:set var="count" value="0" scope="page" />
 		<c:forEach var="member" items="${memberList}">
+			   
+	          <div class="col-sm-4">
 			<c:set var="firstName" value="${member.firstName}"/>
 		    <c:set var="count" value="${count + 1}" scope="page"/>
-	          <div class="fourcol-scroll">
 				<c:set var="player" value="${member}" scope="request"/>
 				<c:set var="currentRecord" value="${member.currentRecord}" scope="request"/>
 				<c:set var="registeredUserList" value="${registeredUsers}" scope="request"/>
@@ -230,7 +266,6 @@
 				</c:import>
 			</div>
 			<c:if test="${count%4==0}">
-			<div style="clear:both;"></div>
 			</c:if>	
 		</c:forEach>
 	</c:when>
@@ -240,6 +275,6 @@
 </c:choose>
 </div>
 </div>
+</div>
 
 </c:if>
-
