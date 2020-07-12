@@ -126,8 +126,6 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
         return;
-      out.write("\r\n");
-      out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -191,6 +189,9 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\t $(\"#sortingParameter\").val(\"lastName\");\r\n");
         out.write("\t\t\t\t $('#search').submit();\r\n");
         out.write("\t\t    });\r\n");
+        out.write("\t\t    $(\".player-info\").each(function() {\r\n");
+        out.write("\t\t\t  $(\".left\",this).prependTo($(\".subsection .flu-box\",this));\r\n");
+        out.write("\t\t\t});\r\n");
         out.write("\t});\r\n");
         out.write("\r\n");
         out.write("\tfunction checkAccess(redirectUrl){\r\n");
@@ -219,26 +220,30 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("</h2>\r\n");
         out.write("\t\t<div class=\"search-row\">\r\n");
-        out.write("\t\t\t<div class=\"search-col\">\r\n");
+        out.write("\t\t\t<!--div class=\"search-col\">\r\n");
         out.write("\t\t\t\t<h4>");
         if (_jspx_meth_fmt_005fmessage_005f2(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("</h4>\r\n");
-        out.write("\t\t\t</div>\r\n");
+        out.write("\t\t\t</div-->\r\n");
         out.write("\t\t</div>\r\n");
         out.write("\t</div>\r\n");
-        out.write("\t<div class=\"right\">\r\n");
+        out.write("\t<div class=\"col-sm-12 shadow-sm grey-box\">\r\n");
+        out.write("\t\r\n");
         out.write("\t\t");
         if (_jspx_meth_form_005fform_005f0(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("\r\n");
+        out.write("\t\t\r\n");
         out.write("\t</div>\r\n");
         out.write("</div>\r\n");
         out.write("\r\n");
         out.write("<div class=\"member-section\">\r\n");
+        out.write("<div class=\"row\">\r\n");
         if (_jspx_meth_c_005fchoose_005f1(_jspx_th_c_005fif_005f0, _jspx_page_context))
           return true;
         out.write("\r\n");
+        out.write("</div>\r\n");
         out.write("</div>\r\n");
         out.write("</div>\r\n");
         out.write("\r\n");
@@ -398,10 +403,12 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_form_005fform_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\r\n");
+          out.write("\t\t<div class=\"row\">\r\n");
           out.write("\t\t<!-- Search By First Name/Last Name/Gender starts -->\r\n");
           out.write("\t\t<input type=\"hidden\" name=\"sortingParameter\" id=\"sortingParameter\">\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
+          out.write("\t\t<div class=\"col-sm-3\">\r\n");
+          out.write("\t\t<div class=\"row\">\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-4\">\r\n");
           out.write("\t\t\t<div class=\"search-col\">\r\n");
           out.write("\t\t\t\t<a  href=\"#\" id=\"sortByFirstNameId\">");
           if (_jspx_meth_fmt_005fmessage_005f3(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -420,8 +427,14 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
             return true;
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
+          out.write("\t\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t\t\t");
+          if (_jspx_meth_fmt_005fmessage_005f6(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t\t</div>\r\n");
           out.write("\t\t</div>\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-8\">\r\n");
           out.write("\t\t\t<div class=\"search-col\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_form_005finput_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -440,38 +453,33 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
             return true;
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
-          out.write("\t\t</div>\r\n");
-          out.write("\t\t<!-- Search By First Name/Last Name/Gender ends -->\r\n");
-          out.write("\t\t\r\n");
-          out.write("\t\t<!-- Search By Dexterity/Match Preference starts -->\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
-          out.write("\t\t\t\t");
-          if (_jspx_meth_fmt_005fmessage_005f6(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
-            return true;
-          out.write("\r\n");
-          out.write("\t\t\t</div>\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
-          out.write("\t\t\t\t");
-          if (_jspx_meth_fmt_005fmessage_005f7(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
-            return true;
-          out.write("\r\n");
-          out.write("\t\t\t</div>\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
-          out.write("\t\t\t\t");
-          if (_jspx_meth_fmt_005fmessage_005f8(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
-            return true;
-          out.write("\r\n");
-          out.write("\t\t\t</div>\r\n");
-          out.write("\t\t</div>\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t\t\t\t<div class=\"search-col\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_form_005fselect_005f1(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t<!-- Search By First Name/Last Name/Gender ends -->\r\n");
+          out.write("\t\t\r\n");
+          out.write("\t\t<!-- Search By Dexterity/Match Preference starts -->\r\n");
+          out.write("\t\t<div class=\"col-sm-3\">\r\n");
+          out.write("\t\t<div class=\"row\">\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-12\">\r\n");
+          out.write("\t\t\r\n");
+          out.write("\t\t\t<div class=\"search-col text-center\">\r\n");
+          out.write("\t\t\t\t");
+          if (_jspx_meth_fmt_005fmessage_005f7(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t\t</div>\r\n");
+          out.write("\t\t\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-12 match-list\">\r\n");
+          out.write("\t\r\n");
+          out.write("\t\t\t<div class=\"search-col match-col\">\r\n");
           out.write("\t\t\t\t");
           out.write("\r\n");
           out.write("\t\t\t\t\t");
@@ -481,17 +489,22 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\t\t\t\t");
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
-          out.write("\t\t\t\t");
-          if (_jspx_meth_form_005finput_005f2(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
-            return true;
-          out.write("\r\n");
-          out.write("\t\t\t</div>\r\n");
+          out.write("\t\t\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
           out.write("\t\t</div>\r\n");
           out.write("\t\t<!-- Search By Dexterity/Match Preference ends -->\r\n");
           out.write("\t\t\r\n");
           out.write("\t\t<!-- Search By Rating starts -->\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
+          out.write("\t\t<div class=\"col-sm-3\">\r\n");
+          out.write("\t\t<div class=\"row\">\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-6\">\r\n");
+          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t\t\t");
+          if (_jspx_meth_fmt_005fmessage_005f8(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t\t</div>\r\n");
           out.write("\t\t\t<div class=\"search-col\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_fmt_005fmessage_005f9(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -511,7 +524,13 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
           out.write("\t\t</div>\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
+          out.write("\t\t<div class=\"search-row col-sm-6\">\r\n");
+          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t\t\t");
+          if (_jspx_meth_form_005finput_005f2(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t\t</div>\r\n");
           out.write("\t\t\t<div class=\"search-col\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_form_005fselect_005f2(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -531,25 +550,29 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
           out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
           out.write("\t\t<!-- Search By Rating ends -->\r\n");
-          out.write("\t\r\n");
+          out.write("\t<div class=\"col-sm-3\">\r\n");
           out.write("\t\t");
           if (_jspx_meth_c_005fif_005f6(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("\r\n");
-          out.write("\t\t<div class=\"search-row\">\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t<div class=\"search-row member-btn\">\r\n");
+          out.write("\t\t\t<div class=\"search-col green-btn\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_carter_005fbutton_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
-          out.write("\t\t\t<div class=\"search-col\">\r\n");
+          out.write("\t\t\t<div class=\"search-col white-btn\">\r\n");
           out.write("\t    \t\t");
           if (_jspx_meth_carter_005fbutton_005f1(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("\r\n");
           out.write("\t\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
+          out.write("\t\t</div>\r\n");
           out.write("\t\t</div>\r\n");
           out.write("\t\t");
           int evalDoAfterBody = _jspx_th_form_005fform_005f0.doAfterBody();
@@ -622,6 +645,24 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f5);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_005fmessage_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:message
+    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f6 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
+    _jspx_th_fmt_005fmessage_005f6.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_005fmessage_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    _jspx_th_fmt_005fmessage_005f6.setKey("members.dexterity");
+    int _jspx_eval_fmt_005fmessage_005f6 = _jspx_th_fmt_005fmessage_005f6.doStartTag();
+    if (_jspx_th_fmt_005fmessage_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f6);
+      return true;
+    }
+    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f6);
     return false;
   }
 
@@ -811,60 +852,6 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_fmt_005fmessage_005f6(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:message
-    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f6 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
-    _jspx_th_fmt_005fmessage_005f6.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_005fmessage_005f6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    _jspx_th_fmt_005fmessage_005f6.setKey("members.dexterity");
-    int _jspx_eval_fmt_005fmessage_005f6 = _jspx_th_fmt_005fmessage_005f6.doStartTag();
-    if (_jspx_th_fmt_005fmessage_005f6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f6);
-      return true;
-    }
-    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f6);
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_005fmessage_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:message
-    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f7 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
-    _jspx_th_fmt_005fmessage_005f7.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_005fmessage_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    _jspx_th_fmt_005fmessage_005f7.setKey("members.matchPreference");
-    int _jspx_eval_fmt_005fmessage_005f7 = _jspx_th_fmt_005fmessage_005f7.doStartTag();
-    if (_jspx_th_fmt_005fmessage_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f7);
-      return true;
-    }
-    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f7);
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_005fmessage_005f8(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:message
-    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f8 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
-    _jspx_th_fmt_005fmessage_005f8.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_005fmessage_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    _jspx_th_fmt_005fmessage_005f8.setKey("members.tournamentEntry");
-    int _jspx_eval_fmt_005fmessage_005f8 = _jspx_th_fmt_005fmessage_005f8.doStartTag();
-    if (_jspx_th_fmt_005fmessage_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f8);
-      return true;
-    }
-    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f8);
-    return false;
-  }
-
   private boolean _jspx_meth_form_005fselect_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -993,6 +980,24 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
+  private boolean _jspx_meth_fmt_005fmessage_005f7(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:message
+    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f7 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
+    _jspx_th_fmt_005fmessage_005f7.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_005fmessage_005f7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    _jspx_th_fmt_005fmessage_005f7.setKey("members.matchPreference");
+    int _jspx_eval_fmt_005fmessage_005f7 = _jspx_th_fmt_005fmessage_005f7.doStartTag();
+    if (_jspx_th_fmt_005fmessage_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f7);
+      return true;
+    }
+    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f7);
+    return false;
+  }
+
   private boolean _jspx_meth_c_005fforEach_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
@@ -1011,15 +1016,17 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\r\n");
           out.write("\t\t\t\t\t\t");
           out.write("\r\n");
+          out.write("\t\t\t\t\t\t<div class=\"list-view-match text-left\">\r\n");
           out.write("\t\t\t\t\t\t");
           if (_jspx_meth_form_005fcheckbox_005f0(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
             return true;
           out.write(" \r\n");
-          out.write("\t\t\t\t\t\t\t<label class=\"checkboxlabel\" >");
+          out.write("\t\t\t\t\t\t<label class=\"checkboxlabel\" >");
           if (_jspx_meth_c_005fout_005f2(_jspx_th_c_005fforEach_005f2, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f2))
             return true;
           out.write("\r\n");
           out.write("\t\t\t\t\t\t</label>\r\n");
+          out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1085,32 +1092,21 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_form_005finput_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+  private boolean _jspx_meth_fmt_005fmessage_005f8(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_005fsize_005fpath_005fmaxlength_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
-    _jspx_th_form_005finput_005f2.setPageContext(_jspx_page_context);
-    _jspx_th_form_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    _jspx_th_form_005finput_005f2.setPath("tournamentEntry");
-    _jspx_th_form_005finput_005f2.setId("tournamentEntry");
-    _jspx_th_form_005finput_005f2.setSize("20");
-    _jspx_th_form_005finput_005f2.setMaxlength("30");
-    int[] _jspx_push_body_count_form_005finput_005f2 = new int[] { 0 };
-    try {
-      int _jspx_eval_form_005finput_005f2 = _jspx_th_form_005finput_005f2.doStartTag();
-      if (_jspx_th_form_005finput_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_form_005finput_005f2[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_form_005finput_005f2.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_form_005finput_005f2.doFinally();
-      _005fjspx_005ftagPool_005fform_005finput_005fsize_005fpath_005fmaxlength_005fid_005fnobody.reuse(_jspx_th_form_005finput_005f2);
+    //  fmt:message
+    org.apache.taglibs.standard.tag.el.fmt.MessageTag _jspx_th_fmt_005fmessage_005f8 = (org.apache.taglibs.standard.tag.el.fmt.MessageTag) _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.get(org.apache.taglibs.standard.tag.el.fmt.MessageTag.class);
+    _jspx_th_fmt_005fmessage_005f8.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_005fmessage_005f8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    _jspx_th_fmt_005fmessage_005f8.setKey("members.tournamentEntry");
+    int _jspx_eval_fmt_005fmessage_005f8 = _jspx_th_fmt_005fmessage_005f8.doStartTag();
+    if (_jspx_th_fmt_005fmessage_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f8);
+      return true;
     }
+    _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f8);
     return false;
   }
 
@@ -1165,6 +1161,35 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005ffmt_005fmessage_005fkey_005fnobody.reuse(_jspx_th_fmt_005fmessage_005f11);
+    return false;
+  }
+
+  private boolean _jspx_meth_form_005finput_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:input
+    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f2 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_005fsize_005fpath_005fmaxlength_005fid_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
+    _jspx_th_form_005finput_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_form_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    _jspx_th_form_005finput_005f2.setPath("tournamentEntry");
+    _jspx_th_form_005finput_005f2.setId("tournamentEntry");
+    _jspx_th_form_005finput_005f2.setSize("20");
+    _jspx_th_form_005finput_005f2.setMaxlength("30");
+    int[] _jspx_push_body_count_form_005finput_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_005finput_005f2 = _jspx_th_form_005finput_005f2.doStartTag();
+      if (_jspx_th_form_005finput_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_005finput_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_005finput_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_005finput_005f2.doFinally();
+      _005fjspx_005ftagPool_005fform_005finput_005fsize_005fpath_005fmaxlength_005fid_005fnobody.reuse(_jspx_th_form_005finput_005f2);
+    }
     return false;
   }
 
@@ -1571,16 +1596,18 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (_jspx_meth_fmt_005fmessage_005f12(_jspx_th_c_005fif_005f6, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
           return true;
         out.write("\r\n");
-        out.write("\t\t\t</div>\r\n");
-        out.write("\t\t</div>\r\n");
-        out.write("\t\t<div class=\"search-row\">\r\n");
-        out.write("\t\t\t<div class=\"search-col\">\r\n");
         out.write("\t\t\t\t<input type=\"checkbox\" name=\"showDeleted\" id=\"showDeleted\" value=\"1\" ");
         if (_jspx_meth_c_005fif_005f7(_jspx_th_c_005fif_005f6, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
           return true;
         out.write("/>\r\n");
         out.write("\t\t\t</div>\r\n");
         out.write("\t\t</div>\r\n");
+        out.write("\t\t\r\n");
+        out.write("\t\t<!--div class=\"search-row\">\r\n");
+        out.write("\t\t\t<div class=\"search-col\">\r\n");
+        out.write("\t\t\t\t\r\n");
+        out.write("\t\t\t</div>\r\n");
+        out.write("\t\t</div-->\r\n");
         out.write("\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f6.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -1786,6 +1813,8 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_005fforEach_005f6 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
+          out.write("\t\t\t   \r\n");
+          out.write("\t          <div class=\"col-sm-4\">\r\n");
           out.write("\t\t\t");
           if (_jspx_meth_c_005fset_005f1(_jspx_th_c_005fforEach_005f6, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f6))
             return true;
@@ -1794,7 +1823,6 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_005fset_005f2(_jspx_th_c_005fforEach_005f6, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f6))
             return true;
           out.write("\r\n");
-          out.write("\t          <div class=\"fourcol-scroll\">\r\n");
           out.write("\t\t\t\t");
           if (_jspx_meth_c_005fset_005f3(_jspx_th_c_005fforEach_005f6, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f6))
             return true;
@@ -2062,7 +2090,6 @@ public final class members_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_005fif_005f8 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\r\n");
-        out.write("\t\t\t<div style=\"clear:both;\"></div>\r\n");
         out.write("\t\t\t");
         int evalDoAfterBody = _jspx_th_c_005fif_005f8.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
