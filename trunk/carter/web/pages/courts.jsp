@@ -14,8 +14,8 @@
 <div class="court-section col-sm-12">
 <c:choose>
     <c:when test="${isAdmin}">
-	<div class="row">
     	<form:form commandName="courtListWrapper" method="post" id="courts" action="editCourts.html">
+		<div class="row">
     		<c:forEach var="court" items="${courtListWrapper.courtList}" varStatus="status">
     		<div class="threecol-frame col-sm-4">
 			    <div class="shadow-sm grey-box">
@@ -83,6 +83,7 @@
     		</div>
 			</div>
     		</c:forEach>
+			</div>
     		 <div class="section">
 	    		<div class="buttons">
 					<div class="left submit-btn">

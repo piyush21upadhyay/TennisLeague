@@ -496,32 +496,36 @@ padding: 0px 10px;
 
 #main-nav .drop-menu {
 	position:fixed;
-	top: 0;
-	border: 1px solid #B5E2FE;
+	top: 50px;
+	border: 1px solid #9cb23b;
 	border-bottom-width: 0;
 	line-height:18px;
 	z-index:100;
 	background: none;
-	background-color: white;
+	background-color: #9cb23b;
 	width: 300px;
 	visibility: hidden;
 }
 
 #main-nav .drop-menu a {
-	width: 100%;
-	display: block;
-	text-indent: 3px;
-	border-bottom: 1px solid #B5E2FE;
-	padding: 2px 0;
-	text-decoration: none;
-	font-weight: bold;
-	color: black;
+    width: 100%;
+    display: block;
+    text-indent: 3px;
+    border-bottom: 1px solid #ffffff;
+    padding: 5px 0;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0px;
 }
-
+#main-nav .drop-menu a.active {
+    color: #ececec;
+}
 #main-nav .drop-menu a:hover {
 	text-align: left;
 	background: none;
-	background-color: #EBF7FF;
+	background-color: #40444d;
 }
 
 #news-ticker {
@@ -699,7 +703,7 @@ color: #8c8c8c;
 	padding:0 10px 0 10px;
 	line-height:40px;
 	background-color:transparent;
-	
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 	text-decoration:none;
 }
 
@@ -721,11 +725,13 @@ color: #8c8c8c;
 color: #8c8c8c;
     font-weight: normal;
     font-size: 13px;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 #copyright {
 	color:#999;
 	text-align:center;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 a.fill {
@@ -1664,7 +1670,12 @@ width: 100%;
     line-height: 22px;
     color: #444;
     text-decoration: none;
-	    margin-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+.search-col.col-sm-6:first-child {
+    margin-bottom: 0px;
+    line-height: 24px;
 }
 .search-col h4 {
 	color:#8DA92E;
@@ -3755,7 +3766,7 @@ h2.page-title span {
 }
 .page_title #header {
     position: absolute;
-    bottom: 55%;
+    bottom: 40%;
     font-size: 15px;
 }
  #main-nav hr {
@@ -3773,7 +3784,7 @@ div#top-nav .links {
     font-size: 14px !important;
     margin-bottom: 10px !important;
 }
-#main-nav a.active, .second-menu a.active {
+.second-menu a.active {
     color: #9cb23b;
 }
 /* Sign up pages */
@@ -4770,4 +4781,83 @@ padding: 0px 10px;
 
 .second-menu a.first {
     border-left: none !important;
+}
+.subNav {
+    color: #fff !important;
+}
+.subNav a {
+    color: #fff !important;
+    font-size: 11px !important;
+    font-weight: normal !important;
+}
+div#top-nav .subNav {
+    margin-bottom: 10px;
+	text-align: right;
+}
+form#courts{
+	width: 99%
+}
+form#courts .threecol-frame .grey-box {
+    padding: 20px;
+	margin-bottom: 20px;
+}
+form#courts .threecol-frame .grey-box p {
+    margin: 0;
+    padding: 5px 0px;
+}
+form#courts .threecol-frame .grey-box p label {
+    width: 40%;
+}
+form#courts .threecol-frame .grey-box p input, form#courts .threecol-frame .grey-box p select {
+    padding: 5px;
+    border: 1px solid #7d7d7d;
+    border-radius: 15px;
+}
+form#courts .buttons .submit-btn {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+}
+
+form#courts .buttons {
+    margin: 50px 0px;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .cancel-btn {
+    background: #c7c7c7;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+}
+form#courts .buttons .cancel-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .cancel-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .submit-btn:hover{
+	background: #83962f;
+}
+form#courts .buttons .cancel-btn:hover{
+	    background: #9c9c9c;
+}
+a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="href="registrationCity.html"] {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
+}
+.table thead th a {
+    color: #fff;
 }

@@ -3,9 +3,13 @@
 <head>
 	<title><fmt:message key="standings.title"/></title>
     <meta name="menu" content="Standings"/>
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript">
+    
     	$(function() {
         	$("#results tbody tr:first").addClass("first-row");
+        	$('#command').insertBefore('#top-nav .right');
+      
     	});
     </script>
 </head>
@@ -26,7 +30,7 @@
 		</h2>
 	</div>
 	<div class="right">
-		<form:form name="season" method="post" action="standings.html">
+		<form:form name="season" method="post" class="command-season" action="standings.html">
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="standings.choose"/></option>
 				<c:forEach var="season" items="${seasons}">

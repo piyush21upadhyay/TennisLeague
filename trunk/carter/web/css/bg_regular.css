@@ -241,10 +241,9 @@ nav li a:hover {
 	color:#98cb00
 }
 .sidebar-menu {
-	/*float: right;
-	width: 487px;*/ /*20130306*/
-	    width: 500px;
-    margin: 0 auto;
+    width: 500px;
+    margin: 0 50px 0 auto;
+    display: none;
 }
 .flt {
 	float:left;
