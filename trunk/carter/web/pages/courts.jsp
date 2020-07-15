@@ -137,7 +137,7 @@
    		<c:choose>
    			<c:when test="${not empty courtList}">
    				<c:forEach var="court" items="${courtList}">
-					<div class="threecol-frame col-sm-4">
+					<div class="threecol-frame col-sm-4" id="user-court">
 					 <div class="shadow-sm grey-box">
 						<h2><c:out value="${court.name}"/></h2>
 						<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
@@ -154,7 +154,7 @@
 	   			<c:forEach begin="1" end="9" varStatus="loop">
 	   				<div class="threecol-frame col-sm-4" id="user-court">
 						 <div class="shadow-sm grey-box">
-							<p><fmt:message key="courtDetails.address"/><c:out value="Piyush"/> <br/></p>
+							<p><fmt:message key="courtDetails.address"/><br/></p>
 							<p><fmt:message key="courtDetails.city"/></p>
 							<p><fmt:message key="courtDetails.state"/></p>
 							<p><fmt:message key="courtDetails.noOfCourts"/></p>

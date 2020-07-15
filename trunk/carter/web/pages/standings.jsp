@@ -30,7 +30,7 @@
 		</h2>
 	</div>
 	<div class="right">
-		<form:form name="season" method="post" class="command-season" action="standings.html">
+		<form:form name="season" method="post" action="standings.html">
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="standings.choose"/></option>
 				<c:forEach var="season" items="${seasons}">
