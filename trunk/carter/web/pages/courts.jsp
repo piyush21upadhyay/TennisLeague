@@ -3,18 +3,20 @@
 <head>
 	<title><fmt:message key="courts.title"/></title>
     <meta name="menu" content="Courts"/>
-    <style type="text/css">
-			div#user-court .grey-box {
-			    padding: 20px;
-			}
-			
-			div#user-court {
-			    margin-bottom: 25px;
-			}
-			div#user-court .grey-box p {
-			    line-height: 24px;
-			}
-		 </style>
+
+<style type="text/css">
+	div#user-court .grey-box {
+		padding: 20px;
+	}
+	
+	div#user-court {
+		margin-bottom: 25px;
+	}
+	
+	div#user-court .grey-box p {
+		line-height: 24px;
+	}
+</style>
 </head>
 
 <c:if test="${empty errors and empty successMessages}">

@@ -7,7 +7,7 @@
 <c:set var="vRandom" value='${rand.random}'/>
 
 <c:set target="${rand}" property="min" value="1"/>
-<c:set target="${rand}" property="max" value="6"/>
+<c:set target="${rand}" property="max" value="2"/>
 <c:set target="${rand}" property="random" value="0"/>
 <c:set var="vTagIndex" value='${rand.random}'/>
 
@@ -15,9 +15,8 @@
 <html>
 <head>
 <title><fmt:message key="webapp.name" /></title>
-
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
-
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 <%@ include file="/common/meta.jsp"%>
 <script type="text/javascript">
 function checkUserPass()
@@ -55,6 +54,7 @@ function checkUserPass()
 	urchinTracker();
 </script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/grid.css'/>" />
+<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/user/bootstrap.min.css'/>" />
 <script type="text/javascript" src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/login.js"></script>
 
@@ -68,11 +68,9 @@ function checkUserPass()
 		<link  rel="stylesheet" type="text/css" href="css/bg_regular.css">
 		<style type="text/css">
 			#main-container {
-				width: 100%;
-				height: 100%;
-				margin: auto;
-				/*background: #fff url("images/bg_img_<c:out value='${vRandom}'/>.jpg") repeat center top;*/
-				margin-left: -0.5px;
+		    width: 100%;
+   			 min-height: 100%;
+   		 	margin: auto;
 			}
 		</style>
 	</c:otherwise>
@@ -89,12 +87,12 @@ function checkUserPass()
 	/* Safari/Chrome css hack */
 	@media screen and (-webkit-min-device-pixel-ratio:0)
 	{
-		.video-container{margin-top:0px!important;}
+		.video-container{margin-top: 70px!important;}
 		#sampleMovie{margin-top:0px!important;}
 	}
 
 	#loading-container{		
-		background:#000;
+		/*background:#000;*/
 		width:99%;
 		height:100%;
 		margin:auto;	
@@ -106,9 +104,10 @@ function checkUserPass()
 	.tagline-p
 	{
 		font-family: "avantgardemediumbt", "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
-		color:#FFFFFF; font-size:20px;
-		padding-top:362px; 
-		text-align:middle;
+		color:#FFFFFF; 
+		 font-size: 80px;
+    	line-height: 80px;
+    	text-align: left !important;
 	}
 </style>
 
@@ -118,8 +117,8 @@ function checkUserPass()
 		var vTglineHT	= 0;
 		var vOuterHT	= $("#outer-container").height() / 2;
 
-		if(  vOuterHT > 38 )
-			vTglineHT	= vOuterHT - 38;
+		if(  vOuterHT > 30 )
+			vTglineHT	= vOuterHT - 30;
 		$(".tagline-p").css("padding-top", vTglineHT);
 		
 		if ($.browser.msie) {
@@ -131,6 +130,7 @@ function checkUserPass()
 				clear : 'both'
 			});
 		}
+
 	});
 </script>
 
@@ -140,34 +140,39 @@ function checkUserPass()
 		<source src="swf/assets/sound/rollover.mp3" type="audio/mpeg" />
 		<source src="swf/assets/sound/rollover.wav" type="audio/wav" />
 	</audio>
+	 <img src="images/bg_img_2.jpg" alt="" class="bg-image">
 	<div id="outer-container">
-
 		<!--// Loading container //-->
 		<div id="loading-container" >
-			<c:if test="${vTagIndex eq 1}"><p class="tagline-p">Tour caddy optional</p></c:if>
-			<c:if test="${vTagIndex eq 2}"><p class="tagline-p">Get a birdie and the entire internet will know</p></c:if>
-			<c:if test="${vTagIndex eq 3}"><p class="tagline-p">We'll post your bragging rights online</p></c:if>
+		<div class="container">
+<%-- <c:if test="${vTagIndex eq 3}"><p class="tagline-p">We'll post your bragging rights online</p></c:if>
 			<c:if test="${vTagIndex eq 4}"><p class="tagline-p">You athletic glory days are in front of you.</p></c:if> 
 			<c:if test="${vTagIndex eq 5}"><p class="tagline-p">Prove it</p></c:if>
-			<%-- <c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if> --%>
-			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if>
+			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">Start beating new people</p></c:if>
+			<c:if test="${vTagIndex eq 6}"><p class="tagline-p">BEAT SOMEONE NEW</p></c:if> --%>
+			<!--NEED TO VIEW THESE TWO PARA ONCE THE PAGE LOAD -->
+			<c:if test="${vTagIndex eq 1}"><p class="tagline-p">BEAT <br/> <span class="highlightGreen"> SOMEONE</span> <br/> NEW</p></c:if>
+			<c:if test="${vTagIndex eq 2}"><p class="tagline-p">OPEN <span class="highlightGreen">PLAY</span><br/>TENNIS</p></c:if>
+			</div>
 		</div>
 
 		<div id="main-container">
-			<div id="main">
-				<header>
-					<h3 id="enter-lnk" onclick="_jqNavLinks(1);">ENTER SITE</h3>
-					<img class="separator" src="images/separator_bg.png">
-					<h3 id="signup-lnk" onclick="_jqNavLinks(2);">SIGN UP</h3>
-					<img class="separator" src="images/separator_bg.png">
-					<h3 id="login-lnk" onclick="_jqNavLinks(3);">LOG IN</h3>
-					<img class="separator" src="images/separator_bg.png">
-					<h3 id="video-lnk" onclick="_jqNavLinks(4);">VIEW DEMO</h3>
-				</header>
-				<div id="logo">
-		        	<img src="images/logo.png" alt="">
+			<div id="main" class="container">
+			<div class="header-section">
+			<div class="row">
+			<div  class="col-sm-2">
+			<div id="logo">
+		        	<img src="images/open-tennis-logo.png" alt="">
 				</div>
-				
+				</div>
+				<header class="col-sm-10">
+					<h3 id="enter-lnk" onclick="_jqNavLinks(1);">Enter Site</h3>
+					<h3 id="signup-lnk" onclick="_jqNavLinks(2);">Sign Up</h3>
+					<h3 id="login-lnk" onclick="_jqNavLinks(3);">Login</h3>
+					<h3 id="video-lnk" onclick="_jqNavLinks(4);">View Demo</h3>
+				</header>
+              </div>
+                </div>
 				<div class="clear"></div>
 
 				<div id="site_content">
@@ -178,17 +183,19 @@ function checkUserPass()
 							</ul>
 
 							<div id="login-box" style="display:none;">
+							<p class="text-left">Welcome to the website</p>
 								<!--<div class="login-txt">Log in</div>-->
 								<form method="get" style="padding-right:5px;" class="signin" onsubmit="setUserValues(this);" action="j_security_check">
 									<fieldset class="textbox">
 										<label class="username">
 											<span id="error-msg"></span>
 										</label>
+										
 										<div>
 											<input id="j_username" name="j_username" type="text"
 												autocomplete="off" placeholder="ENTER USERNAME"
 												onfocus="javascript:this.placeholder='';"
-												onblur="javascript:this.placeholder='ENTER USERNAME';" style="margin-bottom:4px;float:left;">
+												onblur="javascript:this.placeholder='ENTER USERNAME';">
 
 											<div class="clear"></div>
 
@@ -198,20 +205,28 @@ function checkUserPass()
 												onblur="javascript:this.placeholder='ENTER PASSWORD';" style="float:left;">
 										</div>
 										
-										<div id="login-bottom1" style="height: 24px; width:360px; display:block;">
-											<button class="submit button" type="submit" style="float:right; margin-top:6px;" onclick="return checkUserPass();"></button>
-										</div>
-										<div id="login-bottom2" style="height:30px;display:block;margin-top:17px;">
+									<div class="clear"></div>
+										<div class="row">
+											<div id="login-bottom2" class="col-sm-5">
 											<span style="text-align:left; float:left; width:115px; color:#FFFFFF; position:relative; top:10px; font-weight:bold;">
 												<input type="checkbox" name="rememberMe" id="rememberMe" value="true" style="width:10px; margin-right:4px; margin-top:3px;">
 												<label class="check-txt" for="rememberMe">Remember me</label>
 											</span>
+										      </div>
+											<div class="col-sm-7">
+											<input type="hidden" id="fname" value=""/>
+											<p id="login-bottom3">
+												<a id="forgot-lnk" class="forgot" href="javascript:void(0)">Forget your password?</a>
+											</p>
+											   </div>
+										</div>
+										<div id="login-bottom1">
+											<button class="submit button" type="submit"  onclick="return checkUserPass();"> Login</button>
+											<div style="clear: both"></div>
+											<a id="signup-lnk" onclick="_jqNavLinks(2);">Sign Up</a>
 										</div>
 										
-										<input type="hidden" id="fname" value=""/>
-										<p id="login-bottom3">
-											Forgotten your password? Click <a id="forgot-lnk" class="forgot" href="javascript:void(0)">here</a>
-										</p>
+										
 									</fieldset>
 								</form>
 							</div>
@@ -242,8 +257,34 @@ function checkUserPass()
 						</video>
 					</div>
 				</div>
+					<div class="homeDefault-socail">
+				<div id="links" class="text-right">
+		<a class="ie-post-link" onclick="showLink('http://www.facebook.com/pages/City-Golf-League/348284351925121');">
+			<i class="fa fa-facebook"></i>
+		</a>
+		<a class="ie-post-link" onclick="showLink('https://twitter.com/CityGolfLeague');">
+			<i class="fa fa-twitter"></i>
+		</a>
+		<a href="" target="_blank"><i class="fa fa-instagram"></i></a>
+	</div>
+		</div>
 			</div>
+		<div id="footer">
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-8 text-left">
+		<jsp:include page="/common/footer.jsp"/>
+		</div>
+		<div class="col-sm-4">
+		<span class="copyright">OPEN PLAY TENNIS, LLC &copy; 2018</span>
+		</div>
+		</div>
 		</div>
 	</div>
+		</div>
+	
+
+	</div>
+
 </body>
 </html>

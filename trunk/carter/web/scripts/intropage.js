@@ -31,10 +31,14 @@ function jqLoadingPage()
 
 	$("#loading-container").fadeOut(1500, function(){
 		/*---// Start Animation //---*/	
-		setTimeout('jqAnimateMainBox();', 200);
+		setTimeout('jqAnimateMainBox();', 1000);
 	});
+	
 }
-
+var delayInMilliseconds = 500; //1 second
+setTimeout(function() {
+     $('.sidebar-menu').css({display: 'block'});
+}, delayInMilliseconds);
 /*---// Main box animation //---*/
 function jqAnimateMainBox()
 {
@@ -44,11 +48,11 @@ function jqAnimateMainBox()
 	if( vPageID > 0 )
 		_jqHandleCustomeBox(vPageID);
 	else
-	{
+	{   
 		$("#nav-common").css({height:'0px', width:'0px'});
 		$("#nav-common").animate({
 				height	: '204px',
-				width	:'398px'
+				width	:'398px',
 			}, 1000,
 			function(){
 				jqAddMainBoxItem();
@@ -420,9 +424,9 @@ function _jqHandleDemoBox()
 {
 	var objContainer	= $("#main-container");
 	var back			= objContainer.css("background-image");
-	objContainer.css("background-image","none");
-	objContainer.css("background-color","#000");
-	$("#logo img").css("display","none");
+	//objContainer.css("background-image","none");
+	//objContainer.css("background-color","#000");
+	//$("#logo img").css("display","none");
 
 	/*---// Set black bg : video start //---*/
 	vBackgroundImg = back;
@@ -457,7 +461,7 @@ function _jqAutoCloseVideoPop( id )
 	if (vBackgroundImg != '')
 		$("#main-container").css("background-image", vBackgroundImg);
 	else if (vBackgroundImg == '')
-		$("#main-container").css("background-image", "url('../images/bg_img_1.jpg')");
+		$("#main-container").css("background-image", "url('../images/bg_img_2.jpg')");
 	
 	$("#logo img").css("display","inline-block");
 	$("#sidemenu-fixed").css("display","block");

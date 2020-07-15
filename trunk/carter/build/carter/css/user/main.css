@@ -1,9 +1,17 @@
-
 @font-face {
 	font-family:"Agenda Bold";
 	src: url('Agenda-Bold.otf');
 }
+select:focus, option:focus, input:focus, [type=submit]:not(:disabled), button:not(:disabled){
+    outline: none;
+}
+input:focus, textarea:focus{
+	background: none;
+}
 
+*:focus {
+    outline: none;
+}
 html, body {
 	margin:0;
 	padding:0;
@@ -51,6 +59,9 @@ p.vspace {
     display: flex;
     align-items: stretch;
 }
+select option {
+    color: #333;
+}
 #sidebar {
     min-width: 18%;
     max-width: 18%;
@@ -59,7 +70,7 @@ p.vspace {
     color: #fff;
     /*transition: all 0.3s;
     background-position: center top;*/
-    background-size: contain;
+    background-size: cover;
     background-color: #353b46;
 }
 .sidebar-header a img {
@@ -86,7 +97,7 @@ p.vspace {
 }
 
 .yellow {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 select {
@@ -118,7 +129,7 @@ table tbody tr td, table tbody tr td a {
 }
 
 .txt-yellow {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 .txt-green {
@@ -198,7 +209,7 @@ strong {
 
 div.error, div.message {
    font-size: 16px;
-   color: #FDFBA6;
+   color: #8DA92E;
    font-weight: bold;
    margin: 20px 20px;
    text-transform: none;
@@ -485,32 +496,36 @@ padding: 0px 10px;
 
 #main-nav .drop-menu {
 	position:fixed;
-	top: 0;
-	border: 1px solid #B5E2FE;
+	top: 50px;
+	border: 1px solid #9cb23b;
 	border-bottom-width: 0;
 	line-height:18px;
 	z-index:100;
 	background: none;
-	background-color: white;
+	background-color: #9cb23b;
 	width: 300px;
 	visibility: hidden;
 }
 
 #main-nav .drop-menu a {
-	width: 100%;
-	display: block;
-	text-indent: 3px;
-	border-bottom: 1px solid #B5E2FE;
-	padding: 2px 0;
-	text-decoration: none;
-	font-weight: bold;
-	color: black;
+    width: 100%;
+    display: block;
+    text-indent: 3px;
+    border-bottom: 1px solid #ffffff;
+    padding: 5px 0;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0px;
 }
-
+#main-nav .drop-menu a.active {
+    color: #ececec;
+}
 #main-nav .drop-menu a:hover {
 	text-align: left;
 	background: none;
-	background-color: #EBF7FF;
+	background-color: #40444d;
 }
 
 #news-ticker {
@@ -525,7 +540,7 @@ padding: 0px 10px;
 
 #onecol {
 	width:100%;
-	padding:20px;
+	/*padding:20px;*/
 }
 
 #twocol-left {
@@ -688,7 +703,7 @@ color: #8c8c8c;
 	padding:0 10px 0 10px;
 	line-height:40px;
 	background-color:transparent;
-	
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 	text-decoration:none;
 }
 
@@ -710,11 +725,13 @@ color: #8c8c8c;
 color: #8c8c8c;
     font-weight: normal;
     font-size: 13px;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 #copyright {
 	color:#999;
 	text-align:center;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 a.fill {
@@ -813,10 +830,10 @@ a.squarebutton-register span {
 
 #content {
 	position:relative;
-	left:435px;
+	left:0;
 	top:0px;
-	width:490px;
-	height:315px;
+	width:100%;
+	height:100%;
 }
 
 #content h1 {
@@ -982,7 +999,7 @@ a.inactive-city {
 #header-home {
 	width: 100%;
     background: #40444d;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 
 #header-home-none
@@ -1209,7 +1226,7 @@ div#msg {
 
 #home-leaderboard th {
     text-align: center;
-    padding: 25px 10px 10px;
+    padding: 11px 10px 10px;
     background: transparent;
     color: #FFFFFF;
     font-weight: 500;
@@ -1294,7 +1311,7 @@ div#msg {
 #profile .threecol + .threecol + .threecol {width:253px;}
 
 #profile h4 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #profile p {
@@ -1335,7 +1352,7 @@ div#msg {
 	float:left;
 	width:85px;
 	padding-top:5px;
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #profile .birdies .points {
@@ -1552,7 +1569,7 @@ color: #4e4e4e;
 
 .msgboard-section {
 	clear:both;
-	padding: 20px 20px;
+	padding: 0px 20px;
 	min-height:660px;
 }
 
@@ -1602,7 +1619,7 @@ color: #4e4e4e;
 }
 
 .course-section h2 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 /* ========== coursedetails.jsp ========== */
@@ -1612,7 +1629,7 @@ color: #4e4e4e;
 
 .course-phones h2 {
 	text-align:right;
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-weight:normal;
 }
 
@@ -1653,10 +1670,15 @@ width: 100%;
     line-height: 22px;
     color: #444;
     text-decoration: none;
-	    margin-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+.search-col.col-sm-6:first-child {
+    margin-bottom: 0px;
+    line-height: 24px;
 }
 .search-col h4 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	padding-top:8px;
 }
 .list-view-match label {
@@ -1781,7 +1803,7 @@ div.member-section p {
 
 /* Player Boxes */
 #result-members h3 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-size:13px;
 	font-weight:bold;
 	margin-bottom:8px;
@@ -2032,20 +2054,21 @@ div.record-section .match {
 /* ========== playoffs.jsp ========== */
 
 #bracket-container {
-	background:url(../../images/rounds.gif) no-repeat left top;
+	background:url(../../images/rounds.png) no-repeat left top;
 	padding-top:40px;
 	margin-top:20px;
 	margin-left:16px;
 	margin-top:30px;
-	width:860px;
+	width:90%;
 	height:600px;
 }
 
 #bracket {
-	width:860px;
+	width:90%;
 	height:400px;
 	position:absolute;
-	background:transparent url(../../images/bracket.gif) repeat scroll 0 0;
+	background:transparent url(../../images/bracket.gif) no-repeat scroll;
+	background-position: 20px 8px;
 }
 
 #bracket div {
@@ -2053,7 +2076,7 @@ div.record-section .match {
 }
 
 #bracket #trophy {
-	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
+	background:transparent url(../../images/trophy.png) repeat scroll 0 0;
 	top:12px;
 	left:392px;
 	width:71px;
@@ -2211,7 +2234,7 @@ div.record-section .match {
 }
 
 #champion {
-	top:300px;
+	top:340px;
 	left:330px;
 	width:202px;
 }
@@ -2290,14 +2313,16 @@ div.record-section .match {
 	border-bottom:1px solid #23201f;
 	font-size:18px;
 	font-weight:bold;
-	color:#FDFBA6;
+	color:#8DA92E;
 	padding:10px 0 10px 0;
 }
 
 #champion .label {
-	font-size:18px;
-	color:#ABBCCF;
-	padding-top:10px;
+    font-size: 18px;
+    color: #888888;
+    padding-top: 10px;
+    text-transform: uppercase !important;
+    font-weight: normal;
 }
 
 /* ========== champions.jsp ========== */
@@ -2334,7 +2359,7 @@ color: #585859;
 }
 
 #edituser legend {
-	/*color:#FDFBA6;
+	/*color:#8DA92E;
 	font-size:16px;
 	text-transform:uppercase;
 	padding-top:4px;
@@ -2607,10 +2632,10 @@ div#print .white-btn, div#print .green-btn {
 }
 	
 #about-content {
-	padding:20px 20px 5px 20px;;
-	width:860px;
+	padding:20px 20px 5px 20px;
+	width:100%;
 	min-height:660px;
-	background-color:#23201f;
+	background-color:#dadada;
 	line-height:16px;
 }
 
@@ -2632,7 +2657,7 @@ div#print .white-btn, div#print .green-btn {
 
 #about-content h2, #contact-content h2 {
 	font-size:15px;
-	color:#FDFBA6;
+	color:#8DA92E;
 	line-height:20px;
 	text-transform:uppercase;
 }
@@ -2647,7 +2672,7 @@ div#print .white-btn, div#print .green-btn {
 }
 
 #about-content td {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #about-content p {
@@ -2657,9 +2682,9 @@ div#print .white-btn, div#print .green-btn {
 
 #contact-content {
 	padding:20px;
-	width:860px;
+	width:100%;
 	min-height:640px;
-	background-color:#23201f;
+	background-color:#dadada;
 	line-height:16px;
 }
 
@@ -2678,7 +2703,7 @@ div#print .white-btn, div#print .green-btn {
 }
 
 #contact-content h3 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #contact-content p {
@@ -2863,15 +2888,16 @@ margin-top: 4px;
 /* ============ playoffs.html ============ */
 /* Change Trophy Logo */
 #bracket #trophy {
-	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
-	top:12px;
-	left:392px;
-	width:71px;
-	height:71px;
+	background:transparent url(../../images/trophy.png) repeat scroll 0 0;
+	top: 32px;
+    left: 412px;
+    width: 72px;
+    height: 71px;
+    background-size: contain;
 }
 /* This just adds 'rounds' image to background and adjusts spacing */
 #bracket-container {
-	background:url(../../images/rounds.gif) no-repeat left top;
+	background:url(../../images/rounds.png) no-repeat left top;
 	padding-top:40px;
 	margin-top:20px;
 }
@@ -3201,7 +3227,7 @@ padding-right: 25px;
 	padding:0px 10px 6px;
 }
 #signup .otherInformation h2 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-size:14px;
 	font-weight:bold;
 	text-transform:uppercase;
@@ -3720,13 +3746,13 @@ output:after {
 text-align: center;
 }
 .navbar {
-   padding: 45px 10px 15px;
+   padding: 25px 10px 15px;
     background-color: #9cb23b !important;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    min-height: 250px;
+    min-height: 200px;
     display: block;
 }
 .page-container {
@@ -3740,7 +3766,7 @@ h2.page-title span {
 }
 .page_title #header {
     position: absolute;
-    bottom: 35%;
+    bottom: 40%;
     font-size: 15px;
 }
  #main-nav hr {
@@ -3758,7 +3784,7 @@ div#top-nav .links {
     font-size: 14px !important;
     margin-bottom: 10px !important;
 }
-#main-nav a.active, .second-menu a.active {
+.second-menu a.active {
     color: #9cb23b;
 }
 /* Sign up pages */
@@ -4140,8 +4166,8 @@ table#standings thead {
 #home-leaderboard a.squarebutton:hover{
 padding: 10px;
 }
-form#leaderboard-form #division {
-    background: #e3e3e3;
+form#leaderboard-form #division, form#leaderboard-form #division:focus, form#leaderboard-form #division:hover, form#leaderboard-form #division:active {
+    background: #e3e3e3 !important;
     border: none;
     padding: 15px 10px;
     font-size: 15px;
@@ -4351,15 +4377,17 @@ table tr td:last-child {
     padding: 30px;
 }
 .profile-img {
-    height: 100px !important;
+min-height: 100px!important;
     max-width: 100px !important;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #9cb23b;
-    text-align: center;
-   margin: 0 auto;
+    /* border: 5px solid #9cb23b; */
+    /* text-align: center; */
+    margin: 0 auto 30px;
     position: relative;
-background: #f5f5f5;
+    background: url(../../images/icon-3.png);
+    background-position: center center;
+    background-size: contain;
 }
 .subsection .flu-box .left, .subsection .flu-box .left table {
     width: 100%;
@@ -4367,7 +4395,12 @@ background: #f5f5f5;
 }
 .profile-img h2 {
     position: absolute;
-    top: 35%;
+    bottom: -40px;
+    display: block;
+    width: 100% !important;
+    text-align: center !important;
+    color: #9db32c;
+    font: 20px/30px "avantgardemediumbt", arial, sans-serif;
 }
 table.show-profile-info .buttonwrapper {
     background: #f5f5f5;
@@ -4628,7 +4661,7 @@ div#sidebar.active {
 }
 .page_title #header {
     position: absolute;
-    bottom: 15%;
+    bottom: 45%;
     font-size: 15px;
 }
 button#sidebarCollapse {
@@ -4732,4 +4765,109 @@ padding: 0px 10px;
 
 .homeDefault-socail #links a:hover{
  color: #fff;
+}
+.second-menu {
+    display: block;
+    color: #fff !important;
+    margin-bottom: 10px;
+	text-align: right;
+}
+.second-menu a{
+     color: #fff !important;
+     font-weight: normal !important;
+     margin-bottom: 10px;
+     border-left: 1px solid #fff !important;
+}
+
+.second-menu a.first {
+    border-left: none !important;
+}
+.subNav {
+    color: #fff !important;
+}
+.subNav a {
+    color: #fff !important;
+    font-size: 11px !important;
+    font-weight: normal !important;
+}
+div#top-nav .subNav {
+    margin-bottom: 10px;
+	text-align: right;
+}
+form#courts{
+	width: 99%
+}
+form#courts .threecol-frame .grey-box {
+    padding: 20px;
+	margin-bottom: 20px;
+}
+form#courts .threecol-frame .grey-box p {
+    margin: 0;
+    padding: 5px 0px;
+}
+form#courts .threecol-frame .grey-box p label {
+    width: 40%;
+}
+form#courts .threecol-frame .grey-box p input, form#courts .threecol-frame .grey-box p select {
+    padding: 5px;
+    border: 1px solid #7d7d7d;
+    border-radius: 15px;
+}
+form#courts .buttons .submit-btn {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+}
+
+form#courts .buttons {
+    margin: 50px 0px;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .cancel-btn {
+    background: #c7c7c7;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+}
+form#courts .buttons .cancel-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .cancel-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .submit-btn:hover{
+	background: #83962f;
+}
+form#courts .buttons .cancel-btn:hover{
+	    background: #9c9c9c;
+}
+a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="href="registrationCity.html"] {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
+}
+.table thead th a {
+    color: #fff;
+}
+div#user-court .grey-box {
+    padding: 20px;
+}
+
+div#user-court {
+    margin-bottom: 25px;
+}
+div#user-court .grey-box p {
+    line-height: 24px;
 }
