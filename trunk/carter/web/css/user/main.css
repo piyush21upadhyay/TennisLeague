@@ -4852,7 +4852,7 @@ form#courts .buttons .submit-btn:hover{
 form#courts .buttons .cancel-btn:hover{
 	    background: #9c9c9c;
 }
-a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="href="registrationCity.html"] {
+a[href="registrationForm.html"],a[href="manageCourse.html"],a[href="href="registrationCity.html"]{
     background: #9cb23b;
     padding: 10px;
     border-radius: 15px;
@@ -4860,4 +4860,14 @@ a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="href="regi
 }
 .table thead th a {
     color: #fff;
+}
+div#user-court .grey-box {
+    padding: 20px;
+}
+
+div#user-court {
+    margin-bottom: 25px;
+}
+div#user-court .grey-box p {
+    line-height: 24px;
 }

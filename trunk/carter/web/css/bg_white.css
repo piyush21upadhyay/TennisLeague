@@ -252,12 +252,14 @@ div#main {
     height: 100%;
 }
 ul#sidemenu-fixed {
-    padding: 0px 20px;
+    padding: 0px 15px;
     display: block !important;
     width: 100% !important;
+    float: none !important;
+    margin: 20px 0px;
 }
 .menubg {
-    background-color: rgba(255, 255, 255, 0.78);
+        background-color: rgba(255, 255, 255, 0.78);
     /*width: 500px !important;*/
     margin: 0 auto 100px;
     height: 100% !important;
@@ -276,19 +278,19 @@ ul#sidemenu-fixed {
 	padding: 0;
 }
 .menu a, .menu a:visited {
-	 /*background: url("../images/box-plus-black.png") no-repeat scroll 0 0 transparent;*/
 	color: #323233 !important;
     display: block;
-    font: 220%/32px "avantgardemediumbt", arial, sans-serif;
+    font: 220%/28px "avantgardemediumbt", arial, sans-serif;
     height: 50px;
-    margin: 0px 0px 20px 0px;
-    padding: 20px 0px 0px;
+    margin: 20px 0px;
+    padding: 10px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
     width: 373px;
     text-align: left;
-letter-spacing: 0.2em;
+    letter-spacing: 0;
+    border: 1px solid #000;
 }
 
 .menu a:hover, .menu a:active, .menu li.current_page_item a, .menu li.current_page_item a:visited {
@@ -323,7 +325,7 @@ fieldset{ border:none}
 #login-box{
 	margin: 10px auto;
     width: 100%;
-	padding: 20px;
+	
 }
 
 form.signin .textbox label {
@@ -348,20 +350,18 @@ p#login-bottom3 a {
 }
 form.signin .textbox span {
     display: block;
-	width: 126px !important;
 }
 form.signin p, form.signin span {
-    color: #FFFFFF;
+    color: #9cb23b;
     font-size: 13px;
     line-height: 18px;
     font-family: "avantgardemediumbt", sans-serif;
-    font-weight: bold;
+    font-weight: normal;
     text-align: left;
 }
 form.signin .textbox input {
 color: #323233  !important;
-    font: normal 11px "avantgardemediumbt", sans-serif;
-    padding: 3px 6px;
+    font: normal 14px "avantgardemediumbt", sans-serif;
     width: 100% !important;
     border-top: 0;
     border-right: 0;
@@ -369,7 +369,7 @@ color: #323233  !important;
     border-bottom: 1px solid #000;
     background: none !important;
     background-color: transparent !important;
-    padding: 15px 10px !important;
+    padding: 10px 10px !important;
     margin-bottom: 20px;
 }
 form.signin input:-moz-placeholder {
@@ -474,6 +474,9 @@ margin-bottom: 0px;
     font-weight: normal;
     letter-spacing: 0.1em;
 }
+div#login-bottom2 span{
+    width: 127px !important;
+}
 div#login-bottom2 input {
     width: 15% !important;
     float: left;
@@ -573,8 +576,7 @@ form.signin {
 #enter-box {
     margin: 0 auto;
     width: 100%;
-	    overflow: hidden;
-    padding: 20px 40px 40px;
+overflow: hidden;
 }
 .enter-txt{
    background: url("../images/box-minus-black.PNG") no-repeat scroll 0 0 transparent;
@@ -600,7 +602,6 @@ form.signin {
 #signup-box {
     margin: 0 auto;
     width: 100%;
-	 padding: 20px 20px;
 	 overflow: hidden;
 }
 .signup-txt{
@@ -667,7 +668,7 @@ color: #8c8c8c;
 	padding:0 10px 0 10px;
 	line-height:40px;
 	background-color:transparent;
-	
+	font-family:"avantgardemediumbt", sans-serif;
 	text-decoration:none;
 }
 
@@ -694,6 +695,7 @@ color: #8c8c8c;
 #copyright {
 	color:#999;
 	text-align:center;
+	font-family: "avantgardemediumbt", sans-serif;
 }
 @media(min-width 320px) and (max-width: 767px){
 .sidebar-menu, .menubg, #login-box, #enter-box, #signup-box, #sidemenu-fixed{
@@ -732,4 +734,24 @@ padding: 0px 10px;
 }
 div#login-bottom1 button:hover {
     background: #809230;
+}
+#enter-city, #signup-city, #login-box{
+	width: 100%;
+}
+div#login-bottom1 button:hover {
+    background: #809230;
+}
+div#enter-box p,div#signup-box p, #login-box p {
+    padding: 0px 20px;
+}
+
+ul#enter-city, div#signup-box ul, #login-box form {
+    padding: 0px 20px 20px;
+}
+p#login-bottom3 {
+    padding: 10px 0px 0px !important;
+    text-align: right;
+}
+form.signin fieldset {
+    padding-right: 15px;
 }

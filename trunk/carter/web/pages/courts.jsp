@@ -3,6 +3,18 @@
 <head>
 	<title><fmt:message key="courts.title"/></title>
     <meta name="menu" content="Courts"/>
+    <style type="text/css">
+			div#user-court .grey-box {
+			    padding: 20px;
+			}
+			
+			div#user-court {
+			    margin-bottom: 25px;
+			}
+			div#user-court .grey-box p {
+			    line-height: 24px;
+			}
+		 </style>
 </head>
 
 <c:if test="${empty errors and empty successMessages}">
@@ -12,6 +24,7 @@
 </div>
 
 <div class="court-section col-sm-12">
+<div class="row">
 <c:choose>
     <c:when test="${isAdmin}">
     	<form:form commandName="courtListWrapper" method="post" id="courts" action="editCourts.html">
@@ -110,7 +123,7 @@
 				</spring:bind>
 			</div>
     	</form:form>
-    	</div>
+
     	<script type="text/javascript">
 			function onFormSubmit(theForm) { // need to add validations of a form
 				return theForm.submit();
@@ -137,8 +150,7 @@
    			</c:when>
    			<c:otherwise>
 	   			<c:forEach begin="1" end="9" varStatus="loop">
-	   			<div class="row">
-	   				<div class="threecol-frame col-sm-4">
+	   				<div class="threecol-frame col-sm-4" id="user-court">
 						 <div class="shadow-sm grey-box">
 							<p><fmt:message key="courtDetails.address"/><c:out value="Piyush"/> <br/></p>
 							<p><fmt:message key="courtDetails.city"/></p>
@@ -148,11 +160,12 @@
 							<p><fmt:message key="courtDetails.hours"/></p>
 						</div>
 					</div>
-				</div>
+			
 				</c:forEach>
    			</c:otherwise>
    		</c:choose>
 	</c:otherwise>
 </c:choose>
+</div>
 </div>
 </c:if>
