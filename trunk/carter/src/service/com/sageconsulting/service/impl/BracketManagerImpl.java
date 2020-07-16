@@ -36,6 +36,11 @@ public class BracketManagerImpl extends BaseManager implements BracketManager
     {
         return getBracketEntryDao().getRoundOneBracketForSeason(seasonId);
     }
+    
+    public List<BracketEntry> getRoundBracketForSeason(Long seasonId, Integer roundNum)
+    {
+        return getBracketEntryDao().getRoundBracketForSeason(seasonId, roundNum);
+    }
 
     public void saveBracket(List<BracketEntry> bracket)
     {

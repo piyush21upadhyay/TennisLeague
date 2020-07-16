@@ -18,6 +18,7 @@ public interface BracketManager
     public BracketEntry getBracketEntry(Long id);
     public void saveBracket(List<BracketEntry> bracket);
     public List<BracketEntry> getRoundOneBracketForSeason(Long seasonId);
+    public List<BracketEntry> getRoundBracketForSeason(Long seasonId, Integer roundNum);
     public void saveBracketEntry(BracketEntry entry);
     public  List<BracketEntry> getRound(Match match);
     public List<BracketEntry> getRound(Long seasonId);

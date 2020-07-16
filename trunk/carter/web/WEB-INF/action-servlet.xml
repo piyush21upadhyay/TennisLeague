@@ -129,6 +129,12 @@
     	<property name="userManager" ref="userManager"/>
     </bean>
     
+   <!--  <bean id="courtLinkingToUserController" class="com.sageconsulting.webapp.action.CourtsController">
+   		 <property name="formView" value="courts"/>
+    	<property name="courtManager" ref="courtManager"/>
+    	<property name="userManager" ref="userManager"/>
+    </bean> -->
+    
     <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
     	<property name="loginId" value="3zxVd7Hc8UD"/>
     	<property name="transactionKey" value="945rCA94SbeM8Xfx"/>
@@ -155,7 +161,7 @@
     </bean>
     
     <bean id="scheduleSeasonController" class="com.sageconsulting.webapp.action.ScheduleSeasonController">
-        <!--property name="validator" ref="beanValidator"/-->
+        <property name="matchManager" ref="matchManager"/>
         <property name="cancelView" value="redirect:manageRegistration.html"/>
         <property name="successView" value="redirect:viewSeason.html"/>
     	<property name="registrationManager" ref="registrationManager"/>
@@ -371,7 +377,7 @@
                 <prop key="/congratsPage.html">congratsMessageController</prop>
                 <prop key="/courts.html">courtsController</prop>
                 <prop key="/editCourts.html">courtsController</prop>
-                <!-- <prop key="/courtLinkingToUserValidate.html">courtsController</prop> -->
+                <prop key="/courtLinkingToUserValidate.html">courtsController</prop>
             </props>
         </property>
     </bean>

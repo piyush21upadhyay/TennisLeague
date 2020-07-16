@@ -1,7 +1,7 @@
 /*
  * ScheduleSeasonController.java
  * 
- * Copyright Â© 2008-2009 City Golf League, LLC.  All Rights Reserved
+ * Copyright © 2008-2009 City Golf League, LLC.  All Rights Reserved
  * http://www.citygolfleague.com
  * 
  * @author Steve Paquin - Sage Software Consulting, Inc.
@@ -37,6 +37,7 @@ import com.sageconsulting.model.RegistrationEntry;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.BracketManager;
+import com.sageconsulting.service.MatchManager;
 import com.sageconsulting.service.RegistrationEntryManager;
 import com.sageconsulting.service.RegistrationManager;
 import com.sageconsulting.service.SeasonManager;
@@ -51,6 +52,7 @@ public class ScheduleSeasonController extends BaseFormController
     private RegistrationEntryManager registrationEntryManager;
     private SeasonManager seasonManager;
     private BracketManager bracketManager;
+    private MatchManager matchManager;
 
     public ScheduleSeasonController()
     {
@@ -76,6 +78,11 @@ public class ScheduleSeasonController extends BaseFormController
     public void setBracketManager(BracketManager mgr)
     {
         this.bracketManager = mgr;
+    }
+    
+    public void setMatchManager(MatchManager mgr)
+    {
+        this.matchManager = mgr;
     }
     
     /**
@@ -226,17 +233,17 @@ public class ScheduleSeasonController extends BaseFormController
         sortRegistrants(registrants);
 
         List<RegistrationEntry> groupA = getGroup(registrants, scheduleInfo.getGroupACutoff());
-        List<RegistrationEntry> groupB = getGroup(registrants, scheduleInfo.getGroupBCutoff());
+        /*List<RegistrationEntry> groupB = getGroup(registrants, scheduleInfo.getGroupBCutoff());
         List<RegistrationEntry> groupC = getGroup(registrants, scheduleInfo.getGroupCCutoff());
         List<RegistrationEntry> groupD = getGroup(registrants, scheduleInfo.getGroupDCutoff());
-        List<RegistrationEntry> groupE = getGroup(registrants, scheduleInfo.getGroupECutoff());
+        List<RegistrationEntry> groupE = getGroup(registrants, scheduleInfo.getGroupECutoff());*/
         
         createSeason(registration, groupA, getText("scheduleSeason.aflight", locale), scheduleInfo); //$NON-NLS-1$
-        createSeason(registration, groupB, getText("scheduleSeason.bflight", locale), scheduleInfo); //$NON-NLS-1$
+        /*createSeason(registration, groupB, getText("scheduleSeason.bflight", locale), scheduleInfo); //$NON-NLS-1$
         createSeason(registration, groupC, getText("scheduleSeason.cflight", locale), scheduleInfo); //$NON-NLS-1$
         createSeason(registration, groupD, getText("scheduleSeason.dflight", locale), scheduleInfo); //$NON-NLS-1$
         createSeason(registration, groupE, getText("scheduleSeason.eflight", locale), scheduleInfo); //$NON-NLS-1$
-    }
+*/    }
     
     private void sortRegistrants(List<RegistrationEntry> registrants)
     {
@@ -407,6 +414,7 @@ public class ScheduleSeasonController extends BaseFormController
     private void createPostSeasonSchedule(Registration registration)
     {
         List<Season> seasons = getSeasonList(registration);
+        List<BracketEntry> bracket = null;
         for (Season season : seasons)
         {
             SeasonInfo seasonInfo = new SeasonInfo();
@@ -415,7 +423,7 @@ public class ScheduleSeasonController extends BaseFormController
             seasonInfo.updateResults();
             SeasonResult[] results = seasonInfo.getResults();
 
-            List<BracketEntry> bracket = this.bracketManager.getRoundOneBracketForSeason(seasonInfo.getSeasonId());
+            bracket = this.bracketManager.getRoundOneBracketForSeason(seasonInfo.getSeasonId());
             BracketUtility.fillBracket(bracket, results);
             this.bracketManager.saveBracket(bracket);
             season.setState(Season.STATE_POST_SEASON);
@@ -439,6 +447,7 @@ public class ScheduleSeasonController extends BaseFormController
         }
         registration.setScheduleState(Registration.STATE_POST_SEASON_SCHEDULED);
         this.registrationManager.saveRegistration(registration);
+        updateBracketEntriesForNullPlayers(seasons);
     }
     
 //    private void createPostSeasonSchedule(Season season, SeasonResult[] results, int nMatches)
@@ -447,7 +456,33 @@ public class ScheduleSeasonController extends BaseFormController
 //        BracketUtility.fillBracket(bracket, results);
 //    }
     
-    /**
+	private void updateBracketEntriesForNullPlayers(List<Season> seasons) {
+		List<BracketEntry> brackets;
+		for (Season season : seasons) {
+			brackets = this.bracketManager.getRoundOneBracketForSeason(season
+					.getId());
+			int roundCount = BracketUtility.getRoundCount(brackets.size());
+			for (int round = 1; round <= roundCount; round++) {
+				if (round > 1) {
+					brackets = this.bracketManager.getRoundBracketForSeason(
+							season.getId(), Integer.valueOf(round));
+				}
+				for (BracketEntry bracketEntry : brackets) {
+					Match match = bracketEntry.getMatch();
+					if ((match.getGolfer1() == null && match.getGolfer2() != null)
+							|| (match.getGolfer2() == null && match
+									.getGolfer1() != null)) {
+						match.setDefaultWinner(match.getGolfer1() == null ? match
+								.getGolfer2() : match.getGolfer1());
+						updateBracket(match);
+					}
+					
+				}
+			}
+		}
+	}
+
+	/**
      * For each registrant, update their first season, current season and season record
      * stats.
      */
@@ -506,6 +541,41 @@ public class ScheduleSeasonController extends BaseFormController
         {
             // This should never happen since we are just updating.
             this.log.error("Error saving user during scheduling.", e); //$NON-NLS-1$
+        }
+    }
+    
+    /**
+     * Take the winner from the passed in match and move him/her to the next
+     * round of the bracket.
+     * @param match The match to update.
+     */
+    private void updateBracket(Match match)
+    {
+        BracketEntry entry = match.getBracketEntry();
+        if (null != entry)
+        {
+            BracketEntry next = entry.getNext();
+            if (null != next)
+            {
+                // If the match was an odd numbered match for that round, then the
+                // golfer becomes the 1st golfer in the next round match.  If it is
+                // an even numbered match the the golfer becomes golfer 2 of the next
+                // round match.
+                User winner = match.getDefaultWinner();
+                if (!match.isDefaultWin())
+                {
+                    winner = match.getResult().getWinner();
+                }
+                if ((entry.getMatchNumber().intValue() % 2) == 0)
+                {
+                    next.getMatch().setGolfer1(winner);
+                }
+                else
+                {
+                    next.getMatch().setGolfer2(winner);
+                }
+                this.matchManager.saveMatch(next.getMatch());
+            }
         }
     }
     
