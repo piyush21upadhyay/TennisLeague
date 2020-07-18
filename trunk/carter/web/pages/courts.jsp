@@ -93,8 +93,16 @@
 					</c:forEach>
 				</form:select></p>
 					
-    				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
-    					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>
+   				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
+   					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>
+   				<!-- Delete Button Changes Starts -->
+    			<div>
+					<div class="right submit-btn">
+						<form:hidden path="courtList[${status.index}].id" id="id[${status.index}]"/>
+						<a onclick="validateIfCourtIsLinkedToAnyUser(document.getElementById('id[<c:out value='${status.index}'/>]').value)" href="#">Delete</a>
+					</div>
+				</div>
+				<!-- Delete Button Changes Ends -->
     		</div>
 			</div>
     		</c:forEach>
@@ -129,6 +137,44 @@
     	<script type="text/javascript">
 			function onFormSubmit(theForm) { // need to add validations of a form
 				return theForm.submit();
+			}
+			
+			function validateIfCourtIsLinkedToAnyUser(courtId)
+			{
+				var result = "";
+				var boolValue = false;
+				if(courtId != '')
+				{
+					var reqUrl = 'courtLinkingToUserValidate.html?courtId=' + courtId;
+					// Ajax call for getting message contents
+					result = reqAjax(reqUrl);
+					//alert("result::"+result);
+					begin = result.indexOf("response") + 9;
+					end = result.lastIndexOf("response") - 2;
+					boolValue = result.slice(begin,end);
+				}
+				if(trim(boolValue) == 'true'){
+					cglAlert('Invalid Action',"xyz user is linked to the current court, Please switch him/her to another court in order to proceed ",300);
+				} else {
+					location.href = 'editCourts.html';
+				}
+			}
+			
+			function reqAjax( pURL )
+			{
+				var vResult = $.ajax({
+					url: pURL,
+					cache: false,
+					async: false
+				}).responseText;
+
+			   return vResult;
+			}
+			
+			//Trim whitespace from left and right sides of s.
+			function trim(s) 
+			{
+			    return s.replace( /^\s*/, "" ).replace( /\s*$/, "" );
 			}
 		</script>
     

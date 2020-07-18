@@ -107,6 +107,7 @@
 				/viewresults.html*=ROLE_ANONYMOUS,admin,user
 				/printcard.html*=ROLE_ANONYMOUS,admin,user
                 /congratsPage.html*=admin,user
+                /courtLinkingToUserValidate.html*=admin,user
 				/**/*.html*=admin,user
             </value>
         </property>

@@ -73,6 +73,11 @@ public class CourtsController  extends BaseFormController
 			super.setSuccessView("redirect:courts.html");
         	super.setCancelView("redirect:courts.html");
         }
+    	else if(request.getRequestURI().indexOf("courtLinkingToUserValidate") >= 0)
+        {
+        	super.setSuccessView("redirect:courtLinkingToUserValidate.html");
+        	super.setCancelView("redirect:courtLinkingToUserValidate.html");
+        }
     	
     	view = super.handleRequestInternal(request, response);
         City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
@@ -106,6 +111,16 @@ public class CourtsController  extends BaseFormController
         List<Court> courts = this.courtManager.getCourts(city.getId());
         if(isAdmin){
         	view.addObject("courtList", courts);
+        	String courtIdToBeDeleted = request.getParameter("courtId");
+        	if ( (request.getRequestURI().indexOf("courtLinkingToUserValidate") >= 0) && (courtIdToBeDeleted != null) )
+        	{
+        		List<User> users = this.userManager.findUsers(city.getId(), Long.parseLong(courtIdToBeDeleted));
+        		if(!users.isEmpty() && users.size()>0){ //delete the court
+        			view.addObject("usersAssociatedWithThisCourt", users.size()>0);
+        		} else {
+        			this.courtManager.removeCourt(Long.parseLong(courtIdToBeDeleted));
+        		}
+        	}
         }else{
         	Iterator<Court> itr = courts.iterator();
         	while (itr.hasNext()) {
@@ -321,4 +336,5 @@ public class CourtsController  extends BaseFormController
         
         return user.getUsername().equals(currentUserName);
     }
+    
 }
