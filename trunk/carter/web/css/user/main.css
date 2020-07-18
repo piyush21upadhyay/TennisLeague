@@ -8,7 +8,10 @@ select:focus, option:focus, input:focus, [type=submit]:not(:disabled), button:no
 input:focus, textarea:focus{
 	background: none;
 }
-
+input:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #dedfdd inset !important;
+    background-color: transparent !important;
+}
 *:focus {
     outline: none;
 }
@@ -3857,24 +3860,7 @@ color: #000;
     background: transparent !important;
     border-bottom: 1px solid #494949 !Important;
 }*/
-.styled-input {
-    margin: 0px 0px 5px 0px;
-}
 
-.styled-input label, .checkbox-dropdown label {
-	padding: 0;
-    color: #484848;
-    font-size: 15px;
-    display: block;
-}
-.styled-input input, .styled-input select {
-    padding: 8px 0px;
-    border-bottom: 1px solid #333;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    background: transparent;
-}
 #edituser label.checkboxlabel {
     display: inline;
     color: #333;
@@ -4526,125 +4512,6 @@ select:hover{
 /* end Sign up dropdown CSS*/
 
 
-/*Sign up fluid inputCSS*/
-.floating-label-wrap {
-    margin: 10px 0px;
-}
-/* Making the label break the flow */
-.floating-label
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    user-select: none;
-     z-index: 1500;
-}
-/* Hide the browser-specific focus styles */
-.floating-label-field
-{
-    color: rgba(44, 62, 80, .75); 
-    border-width: 0;
-    z-index: 2000;
-}
-.floating-label-field:focus
-{
-    outline: 0;
-    box-shadow: 0;
-}
-.floating-label-field::placeholder
-{
-    color: rgba(44, 62, 80, .5);
-}
-/* Make the label and field look identical on every browser */
-.floating-label,
-.floating-label-field
-{
-    font: inherit;
-    line-height: 1; 
-
-    display: block;
-
-    width: 100%;
-}
-.floating-label-field,
-.floating-label-wrap
-{
-    position: relative;
-}
-.floating-label-field--s3
-{
-    padding: 10px 5px;
-    transition: border-color .25s ease-in-out;
-    color: #484848;
-    border-radius: 0;
-    background-color: transparent;
-    border-top: 0px !important;
-    border-left: 0px !important;
-    border-right: 0px !important;
-    border-bottom: 1px solid #333333 !important;
-}
-.floating-label-field--s3 + .floating-label
-{
-	position: absolute;
-	top: 0.5em;
-    left: 0;
-    display: inline-block;
-    width: auto;
-    margin: 0;
-    padding: 0px;
-    transition: transform .25s, opacity .25s, padding .25s ease-in-out;
-    transform-origin: 0 0;
-    color: rgb(102, 102, 103);
-}
-.floating-label-field--s3:focus,
-.floating-label-field--s3:not(:placeholder-shown)
-{
-    border-color: rgba(255, 255, 255, .1);
-}
-.floating-label-field--s3:focus + .floating-label,
-.floating-label-field--s3:not(:placeholder-shown) + .floating-label
-{
-    z-index: 2500;
-    padding: 0;
-    transform: translate(0, -0.75em) scale(.9);
-    color: #9cb23b;
-}
-/* Common Styles */
-/* Identical inputs on all browsers */
-.floating-label-field--s3:not(textarea)
-{
-    max-height: 4em;
-}
-.floating-label-field--s1::placeholder,
-.floating-label-field--s3::placeholder
-{
-    color: transparent;
-}
-/*end Sign up dropdown CSS*/
-input.longBox:hover {
-    background-color: transparent !important;
-}
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-animation: autofill 0s forwards;
-    animation: autofill 0s forwards;
-}
-
-@keyframes autofill {
-    100% {
-        background: transparent;
-        color: inherit;
-    }
-}
-
-@-webkit-keyframes autofill {
-    100% {
-        background: transparent;
-        color: inherit;
-    }
-}
 button#sidebarCollapse{
   display: none;
 }
@@ -4852,7 +4719,7 @@ form#courts .buttons .submit-btn:hover{
 form#courts .buttons .cancel-btn:hover{
 	    background: #9c9c9c;
 }
-a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="href="registrationCity.html"] {
+a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="registrationCity.html"] {
     background: #9cb23b;
     padding: 10px;
     border-radius: 15px;
@@ -4870,4 +4737,128 @@ div#user-court {
 }
 div#user-court .grey-box p {
     line-height: 24px;
+}
+.floating-label-wrap {
+    /* padding: 10px 0px; */
+    margin: 10px 0px 20px 0;
+}
+
+.floating-label-wrap input {
+    width: 100%;
+    border-top: 0px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #777;
+    background: none;
+    height: 25px;
+    margin-top: 10px;
+}
+
+.floating-label-wrap input:hover, .floating-label-wrap input:focus,.floating-label-wrap input:active {
+    background: none !important;
+}
+.styled-input {
+    margin: 0px 0px 5px 0px;
+}
+
+.styled-input label, .checkbox-dropdown label {
+	padding: 0;
+    color: #484848;
+    font-size: 15px;
+    display: block;
+}
+.styled-input input, .styled-input select {
+	margin: 10px 0;
+    border-bottom: 1px solid #777;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: transparent;
+    height: 25px;
+    margin-top: 10px;
+}
+.edituser-section fieldset legend {
+    margin-bottom: 20px !important;
+}
+.hour-open select, .hour-close select {
+    width: 45% !important;
+    float: left;
+    /* margin-right: 10px; */
+    margin: 0 10px 0px 0px;
+}
+
+.hour-open, .hour-close  {
+    margin-bottom: 10px;
+    overflow: hidden;
+    clear: both;
+}
+.radio-section ul {
+    display: block;
+}
+
+.radio-section ul li {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding: 0;
+}
+
+.radio-section ul li input {
+    width: auto;
+    vertical-align: sub;
+}
+
+.radio-section ul li label {
+    vertical-align: inherit;
+    margin-bottom: 0px !important;
+    line-height: 24px;
+}
+
+.radio-section {
+    overflow: hidden;
+}
+.floating-checkbox label, .radio-section label{
+	color: #484848;
+}
+.floating-checkbox ul li input {
+    width: 15%;
+    height: auto;
+}
+
+.floating-checkbox ul li {
+    display: block;
+	color: #484848;
+}
+.styled-input option{
+    font-size: 14px;
+    background-color: #ececec;
+    padding: 20px 10px;
+}
+div#opponentSkillLevelDiv label {
+    margin-bottom: 10px;
+}
+select option:hover, select option:active{
+    background-color: #dedfdd !important;
+    color: #101010;
+}
+.ui-dialog {
+	position: relative;
+    padding: .2em;
+    width: 50% !important;
+    background-color: #fff;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0;
+}
+.ui-dialog-titlebar {
+    padding: 10px !important;
+    background: #9cb23b !important;
+    border-radius: 0 !important;
+    color: #fff !important;
+    border: 0 !important;
+}
+.ui-dialog-content {
+    line-height: 24px !important;
 }

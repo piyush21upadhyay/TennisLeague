@@ -44,24 +44,26 @@
      <fieldset>  
 			<legend><fmt:message key="userForm.accountinfo"/></legend>
 			<div class="floating-label-wrap">
+			<label for="username" class="floating-label"><fmt:message key="userForm.username"/><span class="mandatory">*</span></label>
 				<form:input path="username" id="username" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-				<label for="username" class="floating-label"><fmt:message key="userForm.username"/><span class="mandatory">*</span></label>
 			</div>
 			<div class="floating-label-wrap">
-			<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 			<label class="floating-label" for="password"><fmt:message key="userForm.password"/><span class="mandatory">*</span></label>
+			<form:password path="password" id="password" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
+			
 			</div>
 			<div class="floating-label-wrap">
-			<form:password path="confirmPassword" id="confirmPassword" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 			<label class="floating-label" for="confirmPassword"><fmt:message key="userForm.confirmpassword"/><span class="mandatory">*</span></label>
+			<form:password path="confirmPassword" id="confirmPassword" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
+	
 			</div>
 			<div class="floating-label-wrap">
-			<form:input path="passwordHint" id="passwordHint" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			<label class="floating-label" for="passwordHint"><fmt:message key="userForm.passwordhint"/><span class="mandatory">*</span></label>
+			<form:input path="passwordHint" id="passwordHint" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			</div>
 			<div class="floating-label-wrap">
-			<form:input path="email" id="email" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 			<label class="floating-label" for="email"><fmt:message key="userForm.email"/><span class="mandatory">*</span></label>
+			<form:input path="email" id="email" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 			</div>
 			<div class="styled-input">
 			<label for="playerLevel"><fmt:message key="userForm.playerLevel"/></label>
@@ -90,21 +92,22 @@
 	<fieldset>
 		<legend><fmt:message key="userForm.personalinfo"/></legend>
 		<div class="floating-label-wrap">
-		<form:input path="firstName" id="firstName" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="50"/> 
 		<label for="firstName" class="floating-label"><fmt:message key="userForm.firstname"/><span class="mandatory">*</span></label>
+		<form:input path="firstName" id="firstName" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="50"/> 
 		</div>
 	<div class="floating-label-wrap">
+		<label for="lastName" class="floating-label"><fmt:message key="userForm.lastname"/><span class="mandatory">*</span></label>
 		<form:input path="lastName" id="lastName" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="50"/> 
-			<label for="lastName" class="floating-label"><fmt:message key="userForm.lastname"/><span class="mandatory">*</span></label>
 		</div>
 		<div class="floating-label-wrap">
+		<label for="homePhone" class="floating-label"><fmt:message key="userForm.homephone"/></label>
 		<form:input path="homePhone" id="homePhone" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-		<label for="homePhone" class="floating-label"><fmt:message key="userForm.homephone"/></label> 
+		 
 		</div>
 		<div class="floating-label-wrap">
+		<label for="cellPhone" class="floating-label"><fmt:message key="userForm.cellphone"/></label>
 		<form:input path="cellPhone" id="cellPhone" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-			<label for="cellPhone" class="floating-label"><fmt:message key="userForm.cellphone"/></label>
-		
+			
 		</div>
 		
 		<div class="styled-input">
@@ -115,9 +118,9 @@
 		</form:select>
 		
 		</div>
-		<div class="checkbox-dropdown floating-label-wrap">
-		  	<label><fmt:message key="userForm.sex"/></label>
-		  <ul class="checkbox-dropdown-list">
+		<div class=" floating-label-wrap radio-section">
+		  <label><fmt:message key="userForm.sex"/></label>
+		  <ul class="">
 		   <li>
 				<form:radiobutton path="male" value="true" id="male" /> 
 					<label class="radiolabel" for="male"><fmt:message key="userForm.male"/></label>
@@ -137,9 +140,9 @@
 		
 		</div>
 		<div style="clear:both"></div>
-		<div class="checkbox-dropdown floating-label-wrap">
+		<div class=" floating-label-wrap floating-checkbox">
   		<label  class="anchor1"><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
-		  <ul class="checkbox-dropdown-list">
+		  <ul class="">
 		   <li><form:checkbox path="playingPreference" value="Singles" id="singles"/>
 			<label class="checkboxlabel"><fmt:message key="userForm.singles"/></label>
 			</li>
@@ -169,16 +172,15 @@
 			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
 		</form:select>
 		</div>
-		<div id="opponentSkillLevelDiv" class="checkbox-dropdown floating-label-wrap">
+		<div id="opponentSkillLevelDiv" class="radio-section">
 		<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label> 
-			<div class="dropdown" >
-				<ul class="checkbox-dropdown-list">
+				<ul>
 				<li><form:radiobutton path="opponentSkillLevel" value="onlyMyRating" /> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label></li>
 				<li><form:radiobutton path="opponentSkillLevel" value="within0.5Rating"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label></li>
 				<li><form:radiobutton path="opponentSkillLevel" value="anyRating"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label></li>
 		        <li><form:radiobutton path="opponentSkillLevel" value="onlyPlayUp"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label></li>
 				</ul>
-			</div>
+
 		</div>
 	</fieldset>
 
@@ -190,13 +192,12 @@
 		<fieldset>
 			<legend><fmt:message key="userForm.address"/></legend>
 			<div class="floating-label-wrap">
-			<form:input path="address.address" id="address.address" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			<label for="address.address" class="floating-label"><fmt:message key="userForm.line1"/><span class="mandatory">*</span></label>
-					
+			<form:input path="address.address" id="address.address" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 	
 			</div>
 			<div class="floating-label-wrap">
-			<form:input path="address.city" id="address.city" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			<label for="address.city" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+			<form:input path="address.city" id="address.city" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 				
 			</div>
 			<div class="styled-input">
@@ -204,9 +205,8 @@
 			<carter:state name="address.province" prompt="" default="${user.address.province}"/>
 			</div>
 			<div class="floating-label-wrap">
-			<form:input path="address.postalCode" id="address.postalCode" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="10"/>
 			<label for="address.postalCode" class="floating-label"><fmt:message key="userForm.zip"/><span class="mandatory">*</span></label>
-				
+			<form:input path="address.postalCode" id="address.postalCode" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="10"/>	
 			</div>
 			<div class="styled-input">
 			<label for="address.country"><fmt:message key="userForm.country"/></label>
@@ -242,20 +242,19 @@
 				</div>
 			</c:if>
 		<div id="homeCourtDiv">
+			<label for="homeCourtText" class="floating-label"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
 			<div class="floating-label-wrap">
 				<form:input path="homeCourtText" id="homeCourtText" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-				<label for="homeCourtText" class="floating-label"><fmt:message key="userForm.homeCourt"/><span class="mandatory">*</span></label>
 				</div>
 			<div class="floating-label-wrap">
-
+				<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
 				<form:input path="courtAddress" id="courtAddress" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
-					<label for="courtAddress" class="floating-label"><fmt:message key="userForm.courtAddress"/><span class="mandatory">*</span></label>
+	
 			</div>
 			
 			<div class="floating-label-wrap">	
-			
-			<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			<label for="courtCity" class="floating-label"><fmt:message key="userForm.city"/><span class="mandatory">*</span></label>
+			<form:input path="courtCity" id="courtCity" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			</div>
 				
 			<div class="styled-input">
@@ -290,7 +289,7 @@
 				</form:select>
 			</div>
 			
-			<div class="styled-input">
+			<div class="styled-input hour-open">
 				<label><fmt:message key="userForm.hoursOpen"/></label>
 				 <form:select path="openCourtMeridiem" id="openCourtMeridiem" cssClass="sixcol">
 				 	<form:option value=""></form:option>
@@ -307,7 +306,7 @@
 				</form:select>
 			</div>
 			
-			<div class="styled-input">
+			<div class="styled-input hour-close">
 			<label><fmt:message key="userForm.hoursClose"/></label>
 				 <form:select path="closeCourtMeridiem" id="closeCourtMeridiem" cssClass="sixcol">
 				 	<form:option value=""></form:option>
@@ -330,17 +329,20 @@
             <legend for="equipment"><fmt:message key="userForm.equipment"/></legend>
 			
 			<div class="floating-label-wrap">
+			 <label for="racquet" class="floating-label"><fmt:message key="userForm.racquet"/></label>
 			<form:input path="racquet" id="racquet" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
-			      <label for="racquet" class="floating-label"><fmt:message key="userForm.racquet"/></label>
+			     
 			 </div>
 			
 			<div class="floating-label-wrap">
-			<form:input path="tennisString" id="tennisString" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
 			<label for="tennisString" class="floating-label"><fmt:message key="userForm.string"/></label>
+			<form:input path="tennisString" id="tennisString" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/> 
+			
 			</div>
 			<div class="floating-label-wrap">
-			<form:input path="shoes" id="shoes" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
 			<label for="shoes" class="floating-label"><fmt:message key="userForm.shoes"/></label>
+			<form:input path="shoes" id="shoes" cssClass="longBox floating-label-field floating-label-field--s3" maxlength="30"/>
+			
 			</div> 
 		</fieldset>
 		
@@ -712,35 +714,21 @@ $(document).ready( function() {
 		$('#homeCourtDiv').show();
 	}
 	
-	$(".checkbox-dropdown").click(function() {
+	/*$(".checkbox-dropdown").click(function() {
 			$(this).toggleClass("is-active");
 	});
 
 	$(".checkbox-dropdown ul").click(function(e) {
 		e.stopPropagation();
-	});
+	});*/
 
-	$('.floating-label-wrap').each(function() {
+	/*$('.floating-label-wrap').each(function() {
 		var inputText = $(this).find('.longBox').attr("name");
 		$(this).find('input').attr('placeholder', inputText);
-	});
+	});*/
 
 	});
 
-	$(document).ready(function() {
-		$('input[name=checkdrop]').click(function() {
-			if (this.checked) {
-				//uncheck all other checkbox
-				$('input[name=checkdrop]').not(this).prop('checked', false);
-				//hide all dropdown first
-				$('.dropdown').hide();
-				//show the checked one
-				$('#' + this.value).parent().show();
-			} else {
-				$('#' + this.value).parent().hide();
-			}
-		});
-	});
 	
 	var anyVerifiedCourtPresent;
 	<c:if test="${not empty verifiedCourtList}">
