@@ -81,7 +81,7 @@
 	</div>
 	<div class="col-sm-12 shadow-sm grey-box">
 	
-		<form:form commandName="search" method="post" action="members.html">
+		<form:form commandName="search" method="get" action="members.html">
 		<div class="row">
 		<!-- Search By First Name/Last Name/Gender starts -->
 		<input type="hidden" name="sortingParameter" id="sortingParameter">
