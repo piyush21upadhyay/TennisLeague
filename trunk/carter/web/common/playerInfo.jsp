@@ -185,8 +185,7 @@
 	</c:if>
 	<c:if test="${param.displayMessageLink eq 'true'}">
 		<p class="msg-link-btn">
-		<a class="msg-link ie-post-link" onclick="checkAccess('<c:url value="/sendMessage.html?id="/>
-		<c:out value="${player.id}"/>');">
+		<a class="msg-link ie-post-link" onclick="checkAccess('<c:url value="/sendMessage.html?id="/><c:out value="${player.id}"/>')">
 		   Message
 		</a>
 		</p>

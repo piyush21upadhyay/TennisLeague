@@ -9,7 +9,7 @@ input:focus, textarea:focus{
 	background: none;
 }
 input:-webkit-autofill, select:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #dedfdd inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
     background-color: transparent !important;
 }
 *:focus {
@@ -66,15 +66,23 @@ select option {
     color: #333;
 }
 #sidebar {
-    min-width: 18%;
-    max-width: 18%;
-    background: url(../../images/sidebar-bg.png);
+    min-width: 15%;
+    max-width: 15%;
+    background: url(../../images/sidebar-bg.png) top center #353b46 ;
     background-repeat: no-repeat;
     color: #fff;
     /*transition: all 0.3s;
     background-position: center top;*/
-    background-size: cover;
-    background-color: #353b46;
+      background-size: contain;
+    min-height: 1000px;
+}
+#sidebar:after{
+position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: #353b46;
 }
 .sidebar-header a img {
     width: 120px;
@@ -91,7 +99,7 @@ select option {
 	font-family:Helvetica;
 	background-color:#23201F;*/
 	width: 100%;
-  
+  position:relative;
     transition: all 0.3s;
 }
 
@@ -116,11 +124,11 @@ input[type="text"], input[type="password"] {
 
 table tbody tr.even{
     background: #fff !important;
-    height: 55px !important;
+    height: 30px !important;
 }
 table tbody tr.odd{
   background: #dedfdd !important;
-    height: 55px !important;
+    height: 30px !important;
 }
 
 table tbody tr td, table tbody tr td a {
@@ -484,11 +492,13 @@ padding: 0px 10px;
     	text-transform: uppercase;
     	color: #dedede;
     	font-weight: normal;
-    	margin-bottom: 20px;
+    	margin-bottom: 10px;
 	text-decoration:none;
 	word-break: break-word;
 }
-
+#main-nav a.active {
+    color: #9cb23b;
+}
 #main-nav a.first {
 	/*border-left:none;*/
 }
@@ -518,9 +528,10 @@ padding: 0px 10px;
     padding: 5px 0;
     text-decoration: none;
     line-height: 24px;
-    font-weight: bold;
+    font-weight: normal;
     color: #fff;
     margin-bottom: 0px;
+    font-size: 14px !important;
 }
 #main-nav .drop-menu a.active {
     color: #ececec;
@@ -594,7 +605,7 @@ float: left;
 	padding:10px;
 	font-size:12px;
 	color:#fff;
-	line-height:20px;/
+	line-height:20px;*/
 }
 
 .threecol-scroll {
@@ -652,7 +663,7 @@ caption {
 
 thead {
 	color:#fff;
-	background-color:#000;
+	background-color:#414350;
 }
 
 tr.odd {
@@ -697,6 +708,8 @@ table.messages td a {
 	height:40px;
 	/*background-image:url(../../images/footer.jpg);*/
     background: #c7c7c7;
+    position: absolute;
+bottom: 0;
 }
 
 #footer a {
@@ -1048,15 +1061,15 @@ a.inactive-city {
 
 #birdie-challenge {
 	background-image:url(../../images/homeBirdieChallenge.jpg);
-    width: 100%;
-        height: 175px;
-    margin-top: 0;
-    padding: 10px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: "Agenda Bold", sans-serif;
-   padding: 30px 0px;
+	width: 100%;
+   	 height: 175px;
+   	 margin-top: 0;
+   	 display: block;
+   	 background-repeat: no-repeat;
+    	background-size: cover;
+    	font-family: "Agenda Bold", sans-serif;
+    	padding: 45px 20px;
+    	position: relative;
 
 }
 
@@ -1073,12 +1086,12 @@ a.inactive-city {
 
 #birdie-challenge div.left-msg
 {
-	margin-left:10px;
-	font-weight:bold;
-	font-size:35px;
-	width: 440px;
-	height: 36px;
-	overflow: hidden;
+    margin-left: 10px;
+    font-weight: normal !important;
+    font-size: 27px;
+    width: 440px;
+    height: 36px;
+    overflow: hidden;
 }
 
 #birdie-challenge div.right-msg-1
@@ -1212,9 +1225,24 @@ div#msg {
 	margin-bottom:10px;
 	border:none;
 	font-size:11px;
-	margin-top:8px;
+	margin-top:45px;
 }
 
+#home-leaderboard table#standings thead tr
+{
+    background: #40444d;
+}
+#home-leaderboard table#standings thead tr th{
+   padding: 20px;
+}
+
+#home-leaderboard table#standings .activetd {
+    background: #40444d;
+}
+
+#home-leaderboard table#standings .activetd th {
+    padding: 20px;
+}
 #home-leaderboard tr {
 	color:#676767;
 }
@@ -1238,7 +1266,9 @@ div#msg {
 
 #home-leaderboard td {
     text-align: center;
-    padding: 20px 5px;
+    padding: 10px 5px;
+    font-size: 14px;
+    line-height: 24px;
 }
 #home-leaderboard tr.activetd td{
     background: #40444d;
@@ -1774,7 +1804,7 @@ div.member-section p {
 /* ========== results.jsp ========== */
 #result-members {
 	margin:13px 10px 0px;
-	height:202px;
+	/*height:202px;*/
 }
 #matchForm .buttons a.msg-link {
 	display:block;
@@ -1999,18 +2029,19 @@ color: #333;
 */
 
 .playoffs-counter {
-	position:absolute;
-	right:25px;
-	top:230px;
-	width:130px;
-	height:73px;
-	padding:37px 70px 0px 0px;
-	color:#ffffff;
-	font-size:63px;
-	font-weight:bold;
-	line-height:63px;
-	text-shadow: 2px 2px 2px #222;
-	background:url(../../images/playoffs_begin.gif);
+position: absolute;
+    right: 25px;
+    top: 230px;
+    width: 200px;
+    height: 120px;
+    padding: 37px 70px 0px 0px;
+    color: #ffffff;
+    font-size: 63px;
+    font-weight: bold;
+    line-height: 63px;
+    text-shadow: 2px 2px 2px #222;
+    background: url(../../images/playoffs_begin.gif);
+    background-repeat: no-repeat;
 }
 
 .playoffs-counter-number {
@@ -2037,15 +2068,20 @@ div.record-section .match {
 	color:#FCF9B4;
 	font-size:18px;
 }
+.userInfo {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 10px;
+}
 .userInfo .season {
 	color:#9dc227;
 	font-weight:bold;
 	font-size:12px;
 }
 .userInfo .division {
-	color:#fcf9b4;
-	font-weight:bold;
-	font-size:12px;
+    color: #9dc227;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .match p {
@@ -2071,7 +2107,7 @@ div.record-section .match {
 	height:400px;
 	position:absolute;
 	background:transparent url(../../images/bracket.gif) no-repeat scroll;
-	background-position: 20px 8px;
+	background-position: 0px 8px;
 }
 
 #bracket div {
@@ -2087,82 +2123,82 @@ div.record-section .match {
 }
 
 #r1m1p1 {
-	top:15px;
-	left: 8px;
+    top: 25px;
+    left: 40px;
 }
 
 #r1m1p2 {
-	top:65px;
-	left:8px;
+	top:75px;
+	left:40px;
 }
 
 #r1m2p1 {
-	top:105px;
-	left:8px;
+	top:118px;
+	left:40px;
 }
 
 #r1m2p2 {
-	top:155px;
-	left:8px;
+	top:168px;
+	left:40px;
 }
 
 #r1m3p1 {
-	top:195px;
-	left:8px;
+	top:214px;
+	left:40px;
 }
 
 #r1m3p2 {
-	top:245px;
-	left:8px;
+	top:265px;
+	left:40px;
 }
 
 #r1m4p1 {
-	top:285px;
-	left:8px;
+	top:305px;
+	left:40px;
 }
 
 #r1m4p2 {
-	top:335px;
-	left:8px;
+	top:355px;
+	left:40px;
 }
 
 #r1m5p1 {
-	top:15px;
+	top:25px;
 	left:768px;
 }
 
 #r1m5p2 {
-	top:65px;
+	top:75px;
 	left:768px;
 }
 
 #r1m6p1 {
-	top:105px;
+	top:115px;
 	left:768px;
 }
 
 #r1m6p2 {
-	top:155px;
+	top:165px;
 	left:768px;
 }
 
 #r1m7p1 {
-	top:195px;
+	top:200px;
 	left:768px;
 }
 
 #r1m7p2 {
-	top:245px;
+	top:255px;
 	left:768px;
 }
 
 #r1m8p1 {
-	top:285px;
+	top:295px;
 	left:768px;
 }
 
 #r1m8p2 {
-	top:335px;
+	top:345px;
 	left:768px;
 }
 
@@ -2451,31 +2487,37 @@ color: #40444d;
 #registrationForm .cost {
 	margin-left:10px;
        color: #4d4d4d;
+line-height: 34px;
 }
 
 #registrationForm select {
-  width: 70%;
+  width: 65%;
     float: left;
-    border: none;
     padding: 5px;
-    background: #f3f5f2;
     border-radius: 25px;
+    border: 1px solid #bbbbbb;
+    color: #272727 !important;
+    background: #ffffff !important;
 }
 .regsectionTab{
   padding: 20px 0px;
 }
 .reg-msg
 {
-	margin-top: 20px;
-	width: 100%;
+margin-top: 20px;
+    width: 100%;
     line-height: 18px;
-padding: 0px 20px;
+    color: #fff;
+    background: #40444d;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 10px 5px;
 }
 #registrationForm label {
     display: inline;
     padding-top: 4px;
-    width: 20%;
+    width: 35%;
     float: left;
+    line-height: 24px;
 }
 #registrationForm .form-reg div {
     padding: 15px 0px;
@@ -2494,6 +2536,7 @@ clear: both;
 
 .regsection img {
 	vertical-align: top;
+   width: 120px;
 }
 
 .regsection .seal
@@ -2517,6 +2560,9 @@ clear: both;
     padding: 20px 0px;
     clear: both;
     overflow: hidden;
+    position: relative;
+    right: 20px;
+    top: 0;
 }
 
 .regsection input {
@@ -2558,13 +2604,21 @@ clear: both;
 .regsection h3.top-msg
 {
 	text-align:left;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background: #e4ba00;
+    padding: 20px 10px;
+    color: #fff;
+    font-weight: normal;
 }
 
 .regsection .thankyou-msg {
-    margin-top: 20px;
+    margin-top: 0px;
     width: 100%;
     margin-bottom: 45px;
     line-height: 15px;
+ box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background: #e4ba00;
+   padding: 20px 10px;
 }
 
 .regsection .conf-col {
@@ -2762,11 +2816,11 @@ div#print .white-btn, div#print .green-btn {
 /* Change row background colors */
 .messages tr.even {
 	background:none;
-	height:55px !important;
+	/*height:55px !important;*/
 }
 .messages tr.odd {
     background: #dedfdd;
-    height: 55px !important;
+   /* height: 55px !important;*/
 }
 
 /* Conent background */
@@ -2863,12 +2917,14 @@ margin-top: 4px;
 }
 /* 'Division' text */
 .player-info h3 {
-	color:#feff99;
-	font-size:15px;
-	margin:0px;
-	padding:0px;
-	float:left;
-	font-weight:bold;
+    color: #292929;
+    font-size: 15px;
+    margin: 10px 0px;
+    padding: 0px;
+    float: none;
+    font-weight: normal;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-align: center !important;
 }
 /* Padding to Right of Image */
 .player-info img {
@@ -2877,6 +2933,7 @@ margin-top: 4px;
 
 .regbanner {
 	margin-top:20px;
+    position: relative;
 }
 
 #profile .player-info img {
@@ -3100,15 +3157,17 @@ margin-top: 4px;
 }
 /* Change Heading Colors to Design Comp */
 #schedule-header {
-	padding:0px;
+	    background: #40444d;
+    padding: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 #schedule-header h4 {
 	color:#9aca02;
 	font-weight:bold;
 }
 #schedule-header h4.division {
-	color:#feff99;
-	font-weight:bold;
+    color: #ececec;
+    font-weight: normal;
 }
 /* Table Width */
 .schedule {
@@ -3525,17 +3584,17 @@ padding-right: 25px;
 
 /* ============== congrats.html ============= */
 #congrats {
-	background:#18100d url(../../images/bg_checkered.jpg);
+	background:#dedfdd;
 	height:472px;
-	padding: 100px 12px;
+	padding: 50px 12px;
 }
 
 #congrats-msg-div{
-	background: none repeat scroll 0 0 #000000;
+	background: #40444d;
 	padding: 28px 28px 25px 28px;
 	color: #fff;
 	height: 75px;
-	width: 800px;
+	width: 100%;
 	border-radius: 5px;
 	margin: 12px;
 }
@@ -3544,11 +3603,15 @@ padding-right: 25px;
 {
 	font-size:35px;
 	font-weight:lighter;
+	line-height: 24px;
+	vertical-align: middle;
 }
 
 #congrats-txt{
 	color:#a8d60f;
 	padding-left: 15px;
+line-height: 24px;
+	vertical-align: middle;
 }
 
 #congrats-msg{
@@ -3572,7 +3635,7 @@ padding-right: 25px;
     margin-right: 30px;
     margin-top: 50px;
     min-height: 420px;
-    width: 820px;	
+    width: 90%;	
 }
 
 .congrats-para-div{
@@ -3749,7 +3812,7 @@ output:after {
 text-align: center;
 }
 .navbar {
-   padding: 25px 10px 15px;
+   padding: 15px 10px 15px;
     background-color: #9cb23b !important;
     border: none;
     border-radius: 0;
@@ -3763,6 +3826,8 @@ text-align: center;
     top: -70px;
     max-width: 100%;
     flex: 0 0 100%;
+    min-height: auto;
+max-height: 100%;
 }
 h2.page-title span {
     display: none;
@@ -3951,8 +4016,12 @@ color: #000;
 .green-btn a span{
  color: #fff !important;
 }
+.green-btn a:hover {
+    text-decoration: none;
+} 
 .white-btn a:hover span{
     color: #333 !important;
+    text-decoration: none;
 } 
 
 /*Leader page*/
@@ -4148,6 +4217,8 @@ table#standings thead {
     color: #fff;
     text-align: center;
     font-size: 18px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    font-weight: normal;
 }
 #home-leaderboard a.squarebutton:hover{
 padding: 10px;
@@ -4157,6 +4228,7 @@ form#leaderboard-form #division, form#leaderboard-form #division:focus, form#lea
     border: none;
     padding: 15px 10px;
     font-size: 15px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 table#standings tbody {
   display: block;
@@ -4241,7 +4313,7 @@ div.champion-section div.threecol-frame div.buttonwrapper a:hover
     text-decoration: none;
 }
 .buttonwrapper a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 .send-btn .buttonwrapper a{
  color: #444;
@@ -4363,7 +4435,7 @@ table tr td:last-child {
     padding: 30px;
 }
 .profile-img {
-min-height: 100px!important;
+     min-height: 100px!important;
     max-width: 100px !important;
     border-radius: 50%;
     object-fit: cover;
@@ -4386,7 +4458,7 @@ min-height: 100px!important;
     width: 100% !important;
     text-align: center !important;
     color: #9db32c;
-    font: 20px/30px "avantgardemediumbt", arial, sans-serif;
+    font: 14px/18px "avantgardemediumbt", arial, sans-serif;
 }
 table.show-profile-info .buttonwrapper {
     background: #f5f5f5;
@@ -4426,6 +4498,10 @@ display: inline;
     border-radius: 25px;
     margin: 10px 5px;
     text-decoration: none !important;
+}
+p.msg-link-btn:hover {
+    background: #fff;
+    cursor: pointer;
 }
 
 .member-section p.msg-link-btn a.msg-link{
@@ -4554,11 +4630,13 @@ form#registrationForm li {
 }
 
 form#registrationForm input{
-border: 1px solid #dedfdd;
-    color: #373737;
+    border: 1px solid #bbbbbb;
+    color: #272727 !important;
     padding: 5px;
-    background: #f3f5f2;
+    background: #ffffff !important;
     border-radius: 25px;
+    width: 60%;
+    line-height: 24px;
 }
 form#registrationForm input[type="checkbox"] {
     width: 20px;
@@ -4569,14 +4647,18 @@ form#registrationForm input[type="checkbox"] {
     height: 15px;
 }
 form#registrationForm .buttonBar [name="save"] {
-    background: #9cb23b !IMPORTANT;
+   background: #9cb23b !IMPORTANT;
     color: #fff !IMPORTANT;
-    padding: 10px 20px !important;
+    padding: 5px 20px !important;
+    min-width: 120px !important;
+    width: 120px !important;
 }
 form#registrationForm .buttonBar [name="cancel"] {
     background: #ffffff !IMPORTANT;
     color: #454545 !IMPORTANT;
-    padding: 10px 20px !important;
+       padding: 5px 20px !important;
+    min-width: 120px !important;
+    width: 120px !important;
     border: 1px solid #fff !important;
 }
 select#postSeasonPlayers {
@@ -4686,6 +4768,9 @@ form#courts .buttons .submit-btn {
     border-radius: 20px;
     min-width: 120px;
     text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 form#courts .buttons {
@@ -4699,12 +4784,15 @@ form#courts .buttons .submit-btn .buttonwrapper {
 form#courts .buttons .submit-btn .buttonwrapper a {
     color: #fff;
 }
-form#courts .buttons .cancel-btn {
+form#courts .buttons .cancel-btn,  #manageCourse a[href="citymanage.html"] {
     background: #c7c7c7;
     padding: 10px;
     border-radius: 20px;
     min-width: 120px;
     text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
 }
 form#courts .buttons .cancel-btn .buttonwrapper {
     text-align: center;
@@ -4719,11 +4807,15 @@ form#courts .buttons .submit-btn:hover{
 form#courts .buttons .cancel-btn:hover{
 	    background: #9c9c9c;
 }
-a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="registrationCity.html"] {
+a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="registrationCity.html"],
+#manageCourse a[href="editCourse.html"] {
     background: #9cb23b;
     padding: 10px;
     border-radius: 15px;
     color: #fff;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
 }
 .table thead th a {
     color: #fff;
@@ -4862,3 +4954,352 @@ select option:hover, select option:active{
 .ui-dialog-content {
     line-height: 24px !important;
 }
+.subsection .buttonwrapper a[href="/carter/signup.html"] {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background: #9cb23b;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    line-height: 24px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+.left-msg {
+    color: #fff;
+}
+div#page-admin-users input[value="Done"] {
+    padding: 10px 10px;
+    margin: 10px 0px;
+    background: #9cb23b;
+    border: none;
+    border-radius: 25px;
+    min-width: 120px;
+    color: #fff;
+}
+
+div#page-admin-users input[value="Add"] {
+   background: #9cb23b;
+   padding: 10px 10px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 25px;
+    min-width: 120px;
+    color: #fff;
+}
+div#page-admin-users div.displayUser {
+    background: #414350;
+    padding: 10px 15px;
+}
+.displayUser .pagebanner {
+    color: #9cb23b;
+    font-size: 17px;
+    padding-left: 20px;
+}
+#birdie-challenge a.greybtn{
+ 	position: absolute;
+    min-width: 320px;
+    height: auto;
+    top: 30%;
+    left: 0px;
+    text-align: right;
+    /* padding-right: 20px; */
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    font-size: 30px;
+    color: #fbfbfb;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 30px 20px;
+    font-weight: 600;
+
+}
+#birdie-challenge a.greenBtn{
+position: absolute;
+    min-width: 140px;
+    height: auto;
+    top: 45%;
+    right: 40px;
+    text-align: center;
+    padding-right: 20px;
+    text-decoration: none;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    background: #9cb23b;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    border-radius: 25px;
+    text-decoration: none;
+}
+form#courseForm .editcourse-section {
+    padding: 20px;
+}
+
+form#courseForm .editcourse-section label {
+    width: 15%;
+}
+
+form#courseForm .editcourse-section div {
+    padding: 5px 0px;
+}
+table.show-profile-info .buttonwrapper {
+    background: #9eb32e;
+    color: #fff !important;
+}
+
+table.show-profile-info .buttonwrapper a {
+    color: #fff !important;
+}
+form#registrationCity .col-sm-4 table {
+    padding: 20px;
+}
+
+form#registrationCity .submit-btn .buttonwrapper a {
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity .submit-btn .buttonwrapper, form#registrationCity .cancel-btn .buttonwrapper {
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity .cancel-btn .buttonwrapper a {
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity table tr td {
+    padding: 10px;
+}
+
+form#registrationCity table tr td input {
+    border: 1px solid #888;
+    padding: 2px 10px;
+    line-height: 24px;
+    border-radius: 25px;
+}
+.mandatory, .mandatory span.asterisk,span.req {
+    color: red !important;
+}
+#upper-btn .buttonwrapper a, #lower-btn .buttonwrapper a{
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+#congrats-nav, #congrats-msg, #no-msg-div{
+padding: 50px 0px;
+}
+div#successMessages {
+    background-color: #fff !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 20px;
+color: #444;
+}
+form#matchForm {
+    clear: both;
+    padding: 40px 0px;
+}
+
+#played-info .heading-golfer {
+    padding: 20px 10px 20px 20px;
+    margin-bottom: 20px
+}
+
+#played-info .heading-golfer img {
+    margin-top: -10px;
+}
+.section.section-post {
+    background: #40444d;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    color: #dadada;
+    font-weight: 300;
+    font-family: "Avant_Garde_Gothic", Arial, sans-serif;
+}
+form#matchForm .col-sm-8 .heading-golfer {
+    padding: 20px;
+}
+#matchForm .section.col-sm-8 .card {
+    background: none;
+    border: none;
+}
+#matchForm .section.col-sm-8 .edituser-section {
+    background: #dedede;
+    border: none;
+    border-radius: 0;
+    margin-top: 30px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.edituser-section .namecolw p.textAlign i.postUser {
+    padding: 13px 16px;
+    background: #bbb;
+    border-radius: 25px;
+    font-size: 24px;
+}
+
+.edituser-section .namecolw p.textAlign {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.edituser-section .namecolw p.textAlign b {
+    padding-left: 10px;
+    font-size: 18px;
+    vertical-align: super;
+    font-weight: 100;
+    color: #585858;
+}
+
+.oneBigBox fieldset input {
+    width: 50px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    height: 50px;
+    box-shadow: 0 0.1rem 0.1rem rgba(0,0,0,0.15)!important;
+}
+
+.oneSmallBox input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+}
+
+#matchForm .section.col-sm-8 .card {
+    background: none;
+    border: none;
+}
+
+.opponentSection {
+    background: #fff;
+    margin: 30px 0px;
+    padding: 20px;
+}
+
+.opponentSection .onecolw {
+    width: 30% !important;
+}
+
+.opponentSection #opponentRetired {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #00a5c2 !important;
+    border-radius: 25px !important;
+}
+
+.opponentSection .onecolw fieldset:first-child label {
+    font-size: 17px;
+    font-weight: normal;
+    color: #00a5c2;
+    vertical-align: super;
+    padding-left: 5px;
+}
+div#result-members .player-info {
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    text-align: center;
+}
+
+div#result-members .player-info .left {
+    float: none;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+div#result-members .player-info .left:first-child img {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+div#result-members .player-info .left:first-child img {
+    border: 1px solid #bdbdbd;
+    border-radius: 40px;
+    /* background: #afafaf; */
+    text-align: center;
+}
+
+
+.post-btn .buttonwrapper {
+    background: #9cb23b;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+
+.post-btn .buttonwrapper a {
+    color: #fff;
+}
+
+.cancel-btn .buttonwrapper {
+        background: #dedede;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+.cancel-btn.buttonwrapper a {
+    color: #666666;
+}
+
+.profile-btn .buttonwrapper,.profile-btn .buttonwrapper a {
+    text-align: center;
+}
+
+.profile-btn .buttonwrapper {
+    background: #9bb13b;
+    padding: 8px;
+    border-radius: 25px;
+    color: #fff;
+    width: 100px;
+    margin: 0 auto;
+}
+.profile-btn .buttonwrapper a{
+     color: #fff;
+}
+.userInfo {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 20px;
+}
+div#view-back .buttonwrapper {
+    background: #9cb23b;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+div#view-back .buttonwrapper a{
+    color: #fff;
+} 

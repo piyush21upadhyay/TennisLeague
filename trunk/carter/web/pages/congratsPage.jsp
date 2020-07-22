@@ -26,7 +26,7 @@
 	<c:if test="${not empty user}">
 	<div id="congrats-msg-div">
 		<span class="left">
-    		<img src="images/congrats.png" alt="congrats"/>
+    		<img src="images/guest.PNG" alt="congrats"/>
     	</span>
 		
 		<p class="large-txt">
@@ -36,8 +36,10 @@
 			<c:out value="${fullName}"/>
 		</p>
 		<div id="congrats-msg">
-			<span class="msg-left"><fmt:message key="congrats.successMessage"/></span>
-			<span class="msg-right">Tour Caddie Optional</span>
+		   <div class="row">
+			<span class="col-sm-6"><fmt:message key="congrats.successMessage"/></span>
+			<span class="col-sm-6">Tour Caddie Optional</span>
+			</div>
 		</div>
 	</div>
 	

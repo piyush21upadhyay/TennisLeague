@@ -324,16 +324,16 @@
 
 <style type="text/css">
 				body{
-					background: #eee
+					background: #fff;
 				}
 				.container{
 					font-family:Arial, Helvetica, sans-serif;
-					 background: #fff;
+					/* background: #fff;*/
 				}
 				.component-page{
-					  width: 100%;
+					 width: 100%;
 					padding: 10px 0px;
-					overflow: hidden;
+					/*overflow: hidden;*/
 				}
 	 
 				table.entering td {
@@ -408,10 +408,11 @@
 				.super-input-bottom {
 					vertical-align: super;
 					position: relative;
-					top: -10px;
+					top: -20px;
 					margin-right: 10px;
 					width: 20px;
 					margin-top: 38px;
+					 text-align: center;
 				}
 				
 				.super-input-bottom input{
@@ -425,18 +426,18 @@
 				}
 				
 				.onecolw {
-					float:left;
-					width:30px;
-					margin:0 5px 10px;
-					padding:10px;
-					font-size:12px;
-					color:#fff;
-					line-height:20px;
+					float: left;
+					width: 60px;
+					margin: 10px 0px 10px;
+					padding: 10px 0px;
+					font-size: 12px;
+					color: #fff;
+					line-height: 20px;
 				}
 				
 				.namecolw {
 					float:left;
-					width:30px;
+					width:33%;
 					margin:0 5px 10px;
 					padding:10px;
 					font-size:12px;
@@ -450,13 +451,79 @@
 				    margin-top: 17px;
 				    text-align: center;
 				}
+				div#ui-datepicker-div {
+display: block !important;
+    width: 400px;
+    height: 300px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 0 !important;
+    border-radius: 0;
+}
+
+.ui-datepicker-header {
+    padding: 20px;
+    background: #dedede !important;
+    border-radius: 0px;
+    border: none;
+    color: #666666;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+.ui-datepicker .ui-datepicker-prev span {
+    top: 200%;
+    left: 20px;
+}
+
+.ui-datepicker .ui-datepicker-next span {
+    top: 200%;
+    right: 20px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+    background: none;
+    border: none;
+    /* padding: 11px; */
+}
+
+a.ui-state-default.ui-state-highlight.ui-state-active {
+    background: #dedede;
+    border-radius: 25px;
+    width: 30px;
+    height: 30px;
+    padding: 5px 2px;
+}
+.ui-datepicker td {
+    padding: 10px;
+}
+.ui-state-disabled td {}
+
+td.ui-datepicker-today {
+    /* width: 40px !important; */
+}
+
+table.ui-datepicker-calendar thead tr {
+    padding: 20px 0px !important;
+}
+
+.ui-datepicker th {
+    padding: 10px 0px 10px!important;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+table.ui-datepicker-calendar {
+}
 
 </style>
 </head>
 
 <c:if test="${not empty match}">
 
-	<div class="section">
+	<div class="section section-post">
 		<div class="left">
 			<h2><fmt:message key="results.header"/></h2>
 			
@@ -507,8 +574,9 @@
 		<form:form commandName="match" method="post" action="results.html" id="matchForm">
 			<form:hidden path="id"/>
 				<form:hidden path="version"/>
-
-			<div class="section">
+			<h2 class="page-title"> Schedule</h2>
+            <div class="row">    
+			<div class="section col-sm-4">
 				<div id="played-info">
 					<%-- <label for="course"><fmt:message key="results.course"/></label>
 			        <form:select path="course" id="course">
@@ -531,92 +599,106 @@
 							</c:otherwise>
 						</c:choose>
 			        </form:select>--%>
-					<label for="played"><fmt:message key="results.datePlayed"/></label>
+					<div class=" heading-golfer">
+	               <label for="played"><fmt:message key="results.datePlayed"/>
+					</label>
+						<img src="images/date-played.png" alt=""> 
+						</div>
+
 					<input type="text" id="played" name="played" maxlength="12"
 						value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/>
 				</div> 
 			</div>
 			
 			<!-- Changes done by Akash & Piyush -->
-			<div class="section">
+			<div class="section col-sm-8">
+			<div class=" heading-golfer">
+	               <label> Post Scores
+					</label>
+						<img src="images/score.png" alt=""> 
+						</div>
 				<div class="card">
 				<div class="edituser-section">
 					<div class="namecolw">
-						<p class="textAlign"><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></p>
-						<p class="textAlign"><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></p>
+						<p class="textAlign"><i class="fa fa-user postUser"></i><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></p>
+						<p class="textAlign"><i class="fa fa-user postUser"></i><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></p>
 	 				</div>
 	 				
 	 				
 				
-					<div class="onecolw">
+					<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set1" id="player1set1" onkeyup="autotab(this,document.getElementById('score.player1set1'))"/>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set1" id="player2set1" onkeyup="autotab(this,document.getElementById('score.player2set1'))"/>
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set1Sup" id="player1set1sup" onkeyup="autotab(this,document.getElementById('score.player1set1Sup'))"/>
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set1Sup" id="player2set1sup" onkeyup="autotab(this,document.getElementById('score.player2set1Sup'))"/>
 	 					</fieldset>
 	 				</div>
 	 				
-	 				<div class="onecolw">
+	 				<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set2" id="player1set2" onkeyup="autotab(this,document.getElementById('score.player1set2'))"/>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set2" id="player2set2" onkeyup="autotab(this,document.getElementById('score.player2set2'))"/>
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set2Sup" id="player1set2sup" onkeyup="autotab(this,document.getElementById('score.player1set2Sup'))"/>
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set2Sup" id="player2set2sup" onkeyup="autotab(this,document.getElementById('score.player2set2Sup'))"/>
 	 					</fieldset>
 	 				</div>
 	 				
-	 				<div class="onecolw">
+	 				<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player1set3" id="player1set3" onkeyup="autotab(this,document.getElementById('score.player1set3'))"/>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.player2set3" id="player2set3" onkeyup="autotab(this,document.getElementById('score.player2set3'))"/>
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.player1set3Sup" id="player1set3sup" onkeyup="autotab(this,document.getElementById('score.player1set3Sup'))"/>
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.player2set3Sup" id="player2set3sup" onkeyup="autotab(this,document.getElementById('score.player2set3Sup'))"/>
 	 					</fieldset>
 	 				</div>
-	 				<!-- Changes for Opponent Required -->
+ 				</div>
+				<div class="shadow opponentSection">
+							<!-- Changes for Opponent Required -->
 	 				<div class="onecolw">
 	 					<fieldset>
 	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" /> 
 	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
 	 					</fieldset>
 	 				</div>
- 				</div>
+				</div>
+			</div>
 			</div>
 			</div>
 			<!-- Changes done by Akash & Piyush Ends -->
 			<div class="clear"></div>
 			<div id="result-members">
-				<div class="threecol">
+			<div class="row">
+				<div class="col-sm-3">
 					<h3><fmt:message key="results.homePlayer"/></h3>
 					<div class="player-info">
 						<div class="left"><img src="<c:url value="${match.golfer1.icon}"/>" alt="member"/></div>
-						<div class="left">
-							<h2>&nbsp;<strong><c:out value="${match.golfer1.displayName}"/></strong></h2>
+						<div class="center">
+							<h2 class="center">&nbsp;<strong><c:out value="${match.golfer1.displayName}"/></strong></h2>
 						</div>
-						<div class="right">
+						<div class="center profile-btn">
 							<c:set var="url"><c:url value="/profile.html"/></c:set>
 							<carter:button page="${url}" param="id=${match.golfer1.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
 							<%-- <h3><c:out value="${match.golfer1.currentSeason.division}"/></h3> --%>
-							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
+							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
-							<p>
-							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer1.id}"/>">
+							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
+							<p class="center">
+							<a class="msg-link center" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer1.id}"/>">
 								<fmt:message key="members.schedule">
 									<fmt:param value="${match.golfer1.firstName}"/>
 								</fmt:message>
@@ -625,24 +707,24 @@
 						</div>
 					</div>
 			    </div>
-				<div class="threecol">
+				<div class="col-sm-3">
 					<h3><fmt:message key="results.awayPlayer"/></h3>
 					<div class="player-info">
-						<div class="left"><img src="<c:url value="${match.golfer2.icon}"/>" alt="member"/></div>
-						<div class="left">
-							<h2>&nbsp;<strong><c:out value="${match.golfer2.displayName}"/></strong></h2>
+						<div class="left"><img src="<c:url value="${match.golfer1.icon}"/>" alt="member"/></div>
+						<div class="center">
+							<h2 class="center">&nbsp;<strong><c:out value="${match.golfer2.displayName}"/></strong></h2>
 						</div>
-						<div class="right">
+						<div class="center profile-btn">
 							<c:set var="url"><c:url value="/profile.html"/></c:set>
 							<carter:button page="${url}" param="id=${match.golfer2.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
 							<%-- <h3><c:out value="${match.golfer2.currentSeason.division}"/></h3> --%>
-							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
+							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
-							<p>
-							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
+							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
+							<p class="center">
+							<a class="msg-link center" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
 								<fmt:message key="members.schedule">
 									<fmt:param value="${match.golfer2.firstName}"/>
 								</fmt:message>
@@ -652,15 +734,16 @@
 					</div>
 			    </div>
 			</div>
-			<div class="section">
+			</div>
+			<div class="section" style="margin-top: 40px">
 				<div class="buttons">
-					<div class="left">
-						<carter:button onclick="checkFields();" key="button.post" name="postButton"/>
-					</div>
-					<div class="left">
+			
+					<div class="cancel-btn left">
 						<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('matchForm').submit();return false;" key="button.cancel"/>
 					</div>
-				
+					<div class="post-btn left">
+						<carter:button onclick="checkFields();" key="button.post" name="postButton"/>
+					</div>
 					<div class="clear"></div>
 					<div>
 						<a class="msg-link" onclick="document.getElementById('bDefault').value='true';document.getElementById('matchForm').submit();return false;" href="javascript:{}"><fmt:message key="button.default"/></a>
@@ -727,10 +810,10 @@
 			   		</div>
 				</c:if>
 				<div class="buttons">
-					<div class="left">
+					<div class="left post-btn">
 						<carter:button onclick="document.getElementById('bSave').value='true';document.getElementById('matchForm').submit();return true;" key="button.save"/>
 					</div>
-					<div class="left">
+					<div class="left cancel-btn">
 						<carter:button onclick="document.getElementById('bBack').value='true';document.getElementById('matchForm').submit();return false;" key="button.back"/>
 					</div>
 					<input id="bBack" type="hidden" name="bBack" value="false"/>

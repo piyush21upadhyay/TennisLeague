@@ -179,7 +179,7 @@
 					<table id="standings">
 					<caption><fmt:message key="home.noLeaderboard"/></caption>
 					<thead>
-						<tr>
+						<tr class="activetd">
 							<th><fmt:message key="home.position"/></th>
 							<th><fmt:message key="home.player"/></th>
 							<th><fmt:message key="home.points"/></th>
@@ -187,7 +187,7 @@
 					</thead>
 					
 					<tbody>
-						<tr class="odd activetd">
+						<tr class="odd">
 							<td>-</td>
 							<td>-</td>
 							<td>-</td>
@@ -319,11 +319,11 @@
 <div class="col-sm-12" style="padding:0px">
 	<!--image section start-->
 		<div id="birdie-challenge">
-			<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+			<a href="signup.html" class="greybtn">Sign Up Now</a>
 			
 			<c:choose>
 				<c:when test="${empty user}">
-					<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+					<a href="signup.html" class="greenBtn">Click Here</a>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${not empty openRegistrations and empty registeredSeason}">

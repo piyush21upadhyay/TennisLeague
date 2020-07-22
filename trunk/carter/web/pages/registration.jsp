@@ -50,10 +50,10 @@
 					<div class="col-sm-7">
 			    	<span>
 			    		<!-- <img src="images/credit_cards.png" alt="credit cards"/> -->
-			    		<img src="images/visa.jpg" alt="visa"/>
-			    		<img src="images/master.jpg" alt="master" style="margin-left:10px;"/>
-			    		<img src="images/amex.jpg" alt="amex" style="margin-left:10px;"/>
-			    		<img src="images/discover.jpg" alt="discover" style="margin-left:10px;"/>
+			    		<img src="images/visa.png" alt="visa"/>
+			    		<img src="images/master.png" alt="master" style="margin-left:10px;"/>
+			    		<img src="images/amex.png" alt="amex" style="margin-left:10px;"/>
+			    		<img src="images/discover.png" alt="discover" style="margin-left:10px;"/>
 			    	</span>
 					</div>
 			    	</div>

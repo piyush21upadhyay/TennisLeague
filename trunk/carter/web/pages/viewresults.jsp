@@ -5,7 +5,7 @@
     <meta name="menu" content="PostResults"/>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/${appConfig["csstheme"]}/scorecard2.css'/>" />
 </head>
-
+<h2 class="page-title"> Schedule</h2>
 <div class="section">
 	<div class="left userInfo">
 		<h2><fmt:message key="viewresults.header"/></h2>
@@ -33,7 +33,7 @@
 			<p class="division"><fmt:message key="results.draw"/></p>
 		</c:if>
 	</div>
-	<div class=clear"></div>
+	<div class="clear"></div>
 </div>
 
 <c:if test="${not match.defaultWin}">

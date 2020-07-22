@@ -547,7 +547,7 @@ div#login-bottom2 input[type="checkbox"]:after {
 	/*background: url("../images/submenu-plus.PNG") no-repeat scroll 0 0 transparent;*/
     color: #323233 !important;
     display: block;
-    font: 500 13px/20px "avantgardemediumbt",sans-serif;
+    font: 500 13px/17px "avantgardemediumbt",sans-serif;
     /* height: 25px; */
     margin: 5px 0px;
     padding: 5px 0px;
@@ -561,7 +561,7 @@ div#login-bottom2 input[type="checkbox"]:after {
 	text-decoration:none; color:#526402  !important;
 }
 .par-txt{
-color: #323233;
+   color: #323233;
     font-family: "avantgardemediumbt",sans-serif;
     font-size: 16px;
     font-weight: normal;

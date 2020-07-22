@@ -4,53 +4,65 @@
 </c:if>
 
 <style type="text/css">
-            body{
-                background: #eee
+              body{
+                background: #fff;
             }
              .container{
                 font-family:Arial, Helvetica, sans-serif;
-                 background: #212121;
+                /* background: #212121;*/
             } 
             .component-page{
-                  width: 124%;
+                /*  width: 124%;
                 padding: 10px 0px;
-                overflow: hidden;
+                overflow: hidden;*/
             }
              .hd-title{
-                   width: 100%;
-                    text-align: right;
-                    overflow: hidden;
-                    padding-bottom: 40px
+              padding-bottom: 40px;
+				position: relative;
+				margin-top: 50px;
+				 margin-left: 25px;
             }
-            .selected-country{
-                    width: 30%;
-                    float: left;
-                    font-weight: bold;
-                    font-size: 20px;
-                    margin-right: 10px;
-            }
+			.selected-country {
+				width: 65%;
+				/* float: left; */
+				font-weight: 500;
+				font-size: 15px;
+				margin-right: 10px;
+				transform: rotateZ(-90deg);
+				position: absolute;
+				left: -33%;
+				padding: 10px 10px;
+				bottom: 50%;
+				background: #9cb23b;
+				color: #fff;
+				font-family: "Avant_Garde_Gothic", Arial, sans-serif;
+			}
             .retiredWin{
                   width: 38%;
                  float: right;
                  margin-right: -15px;
                  margin-top:-45px;
             }
-            .score-list{
-                  width: 65%;
-                 float: right;
-                 margin-right: -10px;
-            }
+			.score-list {
+				width: 90%;
+				background: #fff;
+				padding: 30px;
+				min-height: 270px;
+				margin-top: 10px;
+				box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+			}
             .super{
                 vertical-align: super;
 				 font-weight: normal;
 				 font-size: 12px;
             }
 
-            table.linescore {
-                margin-right: auto;
-                margin-left: 0;
-                table-layout: fixed
-            }
+			table.linescore {
+				margin-right: auto;
+				margin-left: 0;
+				table-layout: fixed;
+				width: 100% !important;
+			}
 
             table.linescore td {
                 padding: .5em
@@ -88,12 +100,31 @@
                 font-style: italic;
                     width: 12%;            
             }  
-            .match-status{
-                  width: 5%;
-                 float: left;
-                 font-weight: bold;
-                 font-size: 30px;
+            .matchDate{
+				float: left;
+				font-weight: bold;
+				font-size: 15px;
+				width: 82%;
+				background: #dedede;
+				position: absolute;
+				top: -35px;
+				padding: 10px;
+				left: 21px;
             }
+			.match-status {
+				width: 5%;
+				float: left;
+				font-weight: bold;
+				font-size: 30px;
+				/* width: 92%; */
+				/* background: #dedede; */
+				position: absolute;
+				top: 30%;
+				padding: 5px;
+				right: 30px;
+				color: #9cb23b;
+				bottom: 0;
+			}
             .score-table{
                 table-layout: auto;
                 float: left;
@@ -127,21 +158,26 @@
             }
             .trophy table{
                 width: 50%;
-            }
-                
+            }  
   
 </style>
 
-<div class="container">
+<div>
       <div class="component-page">
-          <div class="hd-title">
+           <div class="row">
+          <div class="hd-title col-sm-4">
               <div class="selected-country">
               <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               
               </div>
               
-             
+                 <div class="matchDate">
+			      <p>
+			        Add Date Here
+			    </p>
+			    
+			  </div>
               <div class="match-status">
           <%--     <%! 
               int player1Wins=0;
@@ -311,7 +347,7 @@
            		<c:if test="${match.opponentRetiredWin}">
                     <fmt:message key="results.opponentRetired"/>
                 </c:if>
-             
+             </div>
              </div>
           </div>
       </div>

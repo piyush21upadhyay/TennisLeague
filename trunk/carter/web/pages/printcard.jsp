@@ -38,8 +38,8 @@
 </c:if>
 
 <style type="text/css">
-				body{
-					background: #eee
+							body{
+					background: #fff;
 				}
 				.container{
 					font-family:Arial, Helvetica, sans-serif;
@@ -123,10 +123,11 @@
 				.super-input-bottom {
 					vertical-align: super;
 					position: relative;
-					top: -10px;
+					top: -20px;
 					margin-right: 10px;
 					width: 20px;
 					margin-top: 38px;
+					 text-align: center;
 				}
 				
 				.super-input-bottom input{
@@ -140,18 +141,18 @@
 				}
 				
 				.onecolw {
-					float:left;
-					width:30px;
-					margin:0 5px 10px;
-					padding:10px;
-					font-size:12px;
-					color:#fff;
-					line-height:20px;
+					float: left;
+					width: 60px;
+					margin: 10px 0px 10px;
+					padding: 10px 0px;
+					font-size: 12px;
+					color: #fff;
+					line-height: 20px;
 				}
 				
 				.namecolw {
 					float:left;
-					width:30px;
+					width:33%;
 					margin:0 5px 10px;
 					padding:10px;
 					font-size:12px;
@@ -204,16 +205,25 @@
 		<form:form commandName="match" method="post" action="results.html" id="matchForm">
 			<form:hidden path="id"/>
 				<form:hidden path="version"/>
-
-			<div class="section">
-				<div id="played-info">
-					<label for="played"><fmt:message key="results.datePlayed"/></label>
-					<input type="text" id="played" name="played" maxlength="12"	value=""/>
+          <h2 class="page-title"> Schedule</h2>
+		  <div class="row">   
+			<div class="section col-sm-4">
+			     <div class="heading-golfer">
+				  <div id="played-info">
+					<label for="played"><fmt:message key="results.datePlayed"/>
+					</label><img src="images/date-played.png" alt="">
+					</div>	
 				</div> 
+				<input type="text" id="played" name="played" maxlength="12"	value=""/>
 			</div>
 			
 			<!-- Changes done by Akash & Piyush -->
-			<div class="section">
+			<div class="section col-sm-8">
+			<div class=" heading-golfer">
+	               <label> Post Scores
+					</label>
+						<img src="images/score.png" alt=""> 
+						</div>
 				<div class="card">
 				<div class="edituser-section">
 					<div class="namecolw">
@@ -223,75 +233,80 @@
 	 				
 	 				
 				
-					<div class="onecolw">
+					<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<!-- <input cssClass="num-input" maxlength="1" id="player1set1"> -->
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player1set1" />
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player2set1" />
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.opponentRetired" id="player1set1sup" />
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.opponentRetired" id="player2set1sup" />
 	 					</fieldset>
 	 				</div>
 	 				
-	 				<div class="onecolw">
+	 				<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player1set2" />
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player2set2" />
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.opponentRetired" id="player1set2sup" />
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.opponentRetired" id="player2set2sup" />
 	 					</fieldset>
 	 				</div>
 	 				
-	 				<div class="onecolw">
+	 				<div class="onecolw oneBigBox">
 	 					<fieldset>
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player1set3" />
 	 						<form:input cssClass="num-input" maxlength="1" path="score.opponentRetired" id="player2set3" />
 	 					</fieldset>
 	 				</div>
-	 				<div class="onecolw">
+	 				<div class="onecolw oneSmallBox">
 	 					<fieldset>
 	 						<form:input cssClass="super-input" maxlength="2" path="score.opponentRetired" id="player1set3sup" />
 	 						<form:input cssClass="super-input-bottom" maxlength="2" path="score.opponentRetired" id="player2set3sup"/>
 	 					</fieldset>
 	 				</div>
-	 				<!-- Changes for Opponent Required -->
+	 	
+ 				</div>
+				<div class="shadow opponentSection">
+			     <!-- Changes for Opponent Required -->
 	 				<div class="onecolw">
 	 					<fieldset>
 	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" onclick="boxDisable();"/> 
 	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
 	 					</fieldset>
 	 				</div>
- 				</div>
+				</div>
+			</div>
 			</div>
 			</div>
 			<!-- Changes done by Akash & Piyush Ends -->
 			<div class="clear"></div>
 			<div id="result-members">
-				<div class="threecol">
+			    <div class="row">
+				<div class="col-sm-3">
 					<h3><fmt:message key="results.homePlayer"/></h3>
 					<div class="player-info">
 						<div class="left"><img src="<c:url value="${match.golfer1.icon}"/>" alt="member"/></div>
-						<div class="left">
-							<h2>&nbsp;<strong><c:out value="${match.golfer1.displayName}"/></strong></h2>
+						<div class="center">
+							<h2 class="center">&nbsp;<strong><c:out value="${match.golfer1.displayName}"/></strong></h2>
 						</div>
-						<div class="right">
+						<div class="center profile-btn">
 							<c:set var="url"><c:url value="/profile.html"/></c:set>
 							<carter:button page="${url}" param="id=${match.golfer1.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
-							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
+							<h4 class="center" style="padding: 10px 0px;"><c:out value="${match.golfer1.currentSeason.division}"/></h4>
+							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
-							<p>
+							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
+							<p class="center">
 							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer1.id}"/>">
 								<fmt:message key="members.schedule">
 									<fmt:param value="${match.golfer1.firstName}"/>
@@ -301,24 +316,24 @@
 						</div>
 					</div>
 			    </div>
-				<div class="threecol">
+				<div class="col-sm-3">
 					<h3><fmt:message key="results.awayPlayer"/></h3>
 					<div class="player-info">
 						<div class="left"><img src="<c:url value="${match.golfer2.icon}"/>" alt="member"/></div>
-						<div class="left">
-							<h2>&nbsp;<strong><c:out value="${match.golfer2.displayName}"/></strong></h2>
+						<div class="center">
+							<h2 class="center">&nbsp;<strong><c:out value="${match.golfer2.displayName}"/></strong></h2>
 						</div>
-						<div class="right">
+						<div class="center profile-btn">
 							<c:set var="url"><c:url value="/profile.html"/></c:set>
 							<carter:button page="${url}" param="id=${match.golfer2.id}&amp;msg=false" key="members.profile"/>
 						</div>
-						<div style="clear:both">
-							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
-							<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
+						<div class="center" style="clear:both">
+							<h4 class="center" style="padding: 10px 0px;"><c:out value="${match.golfer2.currentSeason.division}"/></h4>
+							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							
-							<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
-							<p>
-							<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
+							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
+							<p class="center">
+							<a class="msg-link center" href="<c:url value="/schedule.html?id="/><c:out value="${match.golfer2.id}"/>">
 								<fmt:message key="members.schedule">
 									<fmt:param value="${match.golfer2.firstName}"/>
 								</fmt:message>
@@ -327,18 +342,19 @@
 						</div>
 					</div>
 			    </div>
+				</div>
 			</div>
-			<div class="section">
+			<div class="section" style="margin-top: 40px">
 				<div class="buttons">
 					
-					<div class="left" >
+					<div class="post-btn left" >
 						<carter:button onclick="window.print();" key="schedule.print"/>
 					</div>
 					<!-- <br></br> -->
-					<div class="left" >
+					<div class="right" >
 						<hr width="120px" ><p align="center"><c:out value="${match.golfer1.firstName}"/>'s Signature</p>
 					</div>
-					<div class="left" >
+					<div class="right" >
 						<hr width="120px"><p align="center"><c:out value="${match.golfer2.firstName}"/>'s Signature</p>
 					</div>
 					<div class="clear"></div>

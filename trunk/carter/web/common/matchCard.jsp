@@ -5,47 +5,79 @@
 
 <style type="text/css">
             body{
-                background: #eee
+                background: #fff;
             }
             /* .container{
                 font-family:Arial, Helvetica, sans-serif;
                  background: #fff;
             } */
             .component-page{
-                  width: 124%;
+                 /* width: 124%;
                 padding: 10px 0px;
-                overflow: hidden;
+                overflow: hidden;*/
             }
              .hd-title{
-                   width: 100%;
-                    text-align: right;
-                    overflow: hidden;
-                    padding-bottom: 40px
+              padding-bottom: 40px;
+				position: relative;
+				margin-top: 50px;
+				 margin-left: 25px;
             }
-            .selected-country{
-                    width: 30%;
-                    float: left;
-                    font-weight: bold;
-                    font-size: 20px;
-                    margin-right: 10px;
+			.score-list {
+				width: 90%;
+				background: #fff;
+				padding: 30px;
+				min-height: 270px;
+				margin-top: 10px;
+				box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+			}
+			.selected-country {
+				width: 65%;
+				/* float: left; */
+				font-weight: 500;
+				font-size: 15px;
+				margin-right: 10px;
+				transform: rotateZ(-90deg);
+				position: absolute;
+				left: -33%;
+				padding: 10px 10px;
+				bottom: 50%;
+				background: #9cb23b;
+				color: #fff;
+				font-family: "Avant_Garde_Gothic", Arial, sans-serif;
+			}
+			.score-list {
+				width: 90%;
+				background: #fff;
+				padding: 30px;
+				min-height: 270px;
+				margin-top: 10px;
+				box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+			}
+         .matchDate{
+				float: left;
+				font-weight: bold;
+				font-size: 15px;
+				width: 82%;
+				background: #dedede;
+				position: absolute;
+				top: -35px;
+				padding: 10px;
+				left: 21px;
             }
-            .match-date{
-                    width: 30%;
-                    float: left;
-                    font-size: 15px;
-                    margin-right: 10px;
-            }
-            .score-list{
-                  width: 65%;
-                 float: right;
-                 margin-right: -10px;
-            }
-            .match-status{
-                  width: 5%;
-                 float: left;
-                 font-weight: bold;
-                 font-size: 30px;
-            }
+			.match-status {
+				width: 5%;
+				float: left;
+				font-weight: bold;
+				font-size: 30px;
+				/* width: 92%; */
+				/* background: #dedede; */
+				position: absolute;
+				top: 30%;
+				padding: 5px;
+				right: 30px;
+				color: #9cb23b;
+				bottom: 0;
+			}
             .retiredWin{
                   width: 38%;
                  float: right;
@@ -61,7 +93,8 @@
             table.linescore {
                 margin-right: auto;
                 margin-left: 0;
-                table-layout: fixed
+                table-layout: fixed;
+                width: 100%;
             }
 
             table.linescore td {
@@ -137,15 +170,30 @@
                 
   
 </style>
-
-<div class="container">
+<h2 class="page-title"> Schedule</h2>
+<div class="">
       <div class="component-page">
-          <div class="hd-title">
+	      <div class="row">
+          <div class="hd-title col-sm-4">
               <div class="selected-country">
               <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               </div>
-              
+                <div class="matchDate">
+				<div class="match-date"> 
+				<c:choose>
+					<c:when test="${not empty match.played}">
+						Played on : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.played}"/>
+					</c:when>
+					<c:when test="${empty match.played and empty match.golfer2}">
+						Played By : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.playBy}"/>
+					</c:when>
+					<c:otherwise>
+						
+					</c:otherwise>
+				</c:choose>
+				</div>
+			  </div>
              <div class="match-status">
 	              <c:choose>
 	              		<c:when test="${not empty user}">
@@ -298,20 +346,7 @@
              
              </div>
               
-              <div class="match-date"> 
-				<c:choose>
-					<c:when test="${not empty match.played}">
-						Played on : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.played}"/>
-					</c:when>
-					<c:when test="${empty match.played and empty match.golfer2}">
-			 			Played By : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.playBy}"/>
-			 		</c:when>
-	    			<c:otherwise>
-	    				
-	    			</c:otherwise>
-	    		</c:choose>
-              </div>
-              
+             </div> 
           </div>
       </div>
       <!-- <div class="component-page"> -->
