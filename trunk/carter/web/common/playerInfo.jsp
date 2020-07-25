@@ -14,7 +14,8 @@
 					<table class="show-profile-info">
 						<tr>
 							<td colspan="2">
-								<div  class="profile-img">
+								<!-- <div  class="profile-img"> -->
+								<div class="profile-img"><img src="<c:out value="${player.icon}"/>" alt="ballHoppers"/>
 								<h2 style="width: auto;word-wrap: break-word;text-align: center;" title='<c:out value="${player.fullName}"/>'><c:out value="${player.fullName}"/>	
 							</h2>
 							</div>
@@ -73,9 +74,9 @@
 	<div class="subsection p1">
 	<div class="flu-box shadow">
 		<p style="clear: both"><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
-		<p><fmt:message key="profile.homeCourt"/> 
+		<%-- <p><fmt:message key="profile.homeCourt"/> 
 			<c:if test="${not empty player}"><c:out value="${homeCourt}"/></c:if>
-		</p>
+		</p> --%>
 		<c:if test="${not param.fullPlayerInfo eq 'true' and not empty currentRecord}">
 			<%-- <p><fmt:message key="profile.seasonRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p> --%>
 			<c:choose>

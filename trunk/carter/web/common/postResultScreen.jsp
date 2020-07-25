@@ -174,7 +174,7 @@
               
                  <div class="matchDate">
 			      <p>
-			        Add Date Here
+			        <fmt:formatDate value="${match.played}" pattern="MMM dd, yyyy"/>
 			    </p>
 			    
 			  </div>

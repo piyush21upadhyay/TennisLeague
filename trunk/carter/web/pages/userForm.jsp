@@ -373,23 +373,23 @@
 		
 		<div class="signup-icon">
 			<div><img src="images/icon-1.png" alt="ballHoppers"/></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/BallHoppers.gif" id="firsticon"/></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-1.png" id="firsticon"/></div>
 		</div>
 		<div class="signup-icon">
 			<div><img src="images/icon-2.png" alt="singlesRacquet" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/SinglesRacquet.gif"/></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-2.png"/></div>
 		</div>
 		<div class="signup-icon">
 			<div><img src="images/icon-3.png" alt="tennisBall" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/TennisBall.gif"/></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-3.png"/></div>
 		</div>
 		<div class="signup-icon">
 			<div><img src="images/icon-4.png" alt="racquets" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/Racquets.gif"/></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-4.png"/></div>
 		</div>
 		<div class="signup-icon">
 			<div><img src="images/icon-5.png" alt="footwear" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/Footwear.gif"/></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-5.png"/></div>
 		</div>
 		
 		<c:if test="${(isAdministrator) && userId ne adminId }">

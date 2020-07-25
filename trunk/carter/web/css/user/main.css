@@ -4443,7 +4443,7 @@ table tr td:last-child {
     /* text-align: center; */
     margin: 0 auto 30px;
     position: relative;
-    background: url(../../images/icon-3.png);
+    /* background: url(../../images/icon-3.png); */
     background-position: center center;
     background-size: contain;
 }
@@ -4488,7 +4488,7 @@ text-align: center;
 }
 .member-section p.msg-link-btn {
 display: inline;
-    word-break: break-word;
+    /* word-break: break-word; */
     width: 45%;
     float: left;
     background: #dedfdd;
@@ -4496,7 +4496,7 @@ display: inline;
     text-align: center;
     padding: 6px 20px;
     border-radius: 25px;
-    margin: 10px 5px;
+    margin: 10px 0px 0px 6px;
     text-decoration: none !important;
 }
 p.msg-link-btn:hover {

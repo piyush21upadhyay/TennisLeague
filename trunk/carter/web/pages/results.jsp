@@ -672,14 +672,19 @@ table.ui-datepicker-calendar {
 	 						<form:checkbox path="score.opponentRetired" value="1" id="opponentRetired" /> 
 	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
 	 					</fieldset>
-	 				</div>
+					</div>
+					<div>
+						<a class="msg-link"
+							onclick="document.getElementById('bDefault').value='true';document.getElementById('matchForm').submit();return false;"
+							href="javascript:{}"><fmt:message key="button.default" /></a>
+					</div>
 				</div>
 			</div>
 			</div>
 			</div>
 			<!-- Changes done by Akash & Piyush Ends -->
 			<div class="clear"></div>
-			<div id="result-members">
+			<%-- <div id="result-members">
 			<div class="row">
 				<div class="col-sm-3">
 					<h3><fmt:message key="results.homePlayer"/></h3>
@@ -693,7 +698,7 @@ table.ui-datepicker-calendar {
 							<carter:button page="${url}" param="id=${match.golfer1.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
-							<%-- <h3><c:out value="${match.golfer1.currentSeason.division}"/></h3> --%>
+							<h3><c:out value="${match.golfer1.currentSeason.division}"/></h3>
 							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer1.homeCourtText}"/>"><c:out value="${match.golfer1.homeCourtText}"/></a></p>
 							
 							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer1.id}"/>"><c:out value="${match.golfer1.currentWins}"/>-<c:out value="${match.golfer1.currentLosses}"/></a></p>
@@ -719,7 +724,7 @@ table.ui-datepicker-calendar {
 							<carter:button page="${url}" param="id=${match.golfer2.id}&amp;msg=false" key="members.profile"/>
 						</div>
 						<div style="clear:both">
-							<%-- <h3><c:out value="${match.golfer2.currentSeason.division}"/></h3> --%>
+							<h3><c:out value="${match.golfer2.currentSeason.division}"/></h3>
 							<p class="center"><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${match.golfer2.homeCourtText}"/>"><c:out value="${match.golfer2.homeCourtText}"/></a></p>
 							
 							<p class="center"><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${match.golfer2.id}"/>"><c:out value="${match.golfer2.currentWins}"/>-<c:out value="${match.golfer2.currentLosses}"/></a></p>
@@ -734,7 +739,7 @@ table.ui-datepicker-calendar {
 					</div>
 			    </div>
 			</div>
-			</div>
+			</div> --%>
 			<div class="section" style="margin-top: 40px">
 				<div class="buttons">
 			
@@ -745,9 +750,6 @@ table.ui-datepicker-calendar {
 						<carter:button onclick="checkFields();" key="button.post" name="postButton"/>
 					</div>
 					<div class="clear"></div>
-					<div>
-						<a class="msg-link" onclick="document.getElementById('bDefault').value='true';document.getElementById('matchForm').submit();return false;" href="javascript:{}"><fmt:message key="button.default"/></a>
-					</div>
 					<input id="bCancel" type="hidden" name="bCancel" value="false"/>
 					<input id="bDefault" type="hidden" name="bDefault" value="false"/>
 					<input id="bVerify" type="hidden" name="bVerify" value="false"/>
