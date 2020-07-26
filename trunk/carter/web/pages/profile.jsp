@@ -121,11 +121,12 @@
 		<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.upcomingMatches"/></h4>
 		<img src="images/match.png" alt=""/> 
 		</div>
-		<div class="flu-box shadow">
+		
 		<c:if test="${empty matches}">
-			<p><fmt:message key="profile.noMatches"/></p>
+			<div class="flu-box shadow">
+				<p><fmt:message key="profile.noMatches"/></p>
+			</div>
 		</c:if>
-	   </div>
 	</c:if>
   
 	<c:forEach var="match" items="${matches}">
@@ -135,7 +136,7 @@
 		</c:if>
 		<div class="flu-box shadow">
 		<p><fmt:formatDate value="${match.playBy}" pattern="MMM d"/></p>
-		</div>
+		
 		<c:choose>
 			<c:when test="${not empty opponent}">
 				<div>
@@ -146,7 +147,7 @@
 			<c:otherwise>
 			
 				<!-- <div>TBD</div> -->
-				<div class="flu-box shadow">
+				<!-- <div class="flu-box shadow"> -->
 				 <c:choose>
 	    				<c:when test="${match.postSeason}">
 			    			<fmt:message key="schedule.tbd"/>
@@ -155,9 +156,10 @@
 	    	    			<fmt:message key="schedule.bye"/>
 	    				</c:otherwise>
 	    			</c:choose> 
-	    			</div>
+	    			<!-- </div> -->
 			</c:otherwise>
 		</c:choose>
+		</div>
 	</c:forEach>
 	<c:choose>
    	<c:when test="${empty user}">

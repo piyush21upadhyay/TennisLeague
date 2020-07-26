@@ -41,7 +41,7 @@
 							<c:set var="url"><c:url value="/profile.html"/></c:set>
 							<c:choose>
 								<c:when test="${registered}">
-									<carter:button styleClass="squarebutton-register" page="${url}" param="id=${player.id}&amp;msg=false" key="members.profile"/>
+									<carter:button styleClass="active-member" page="${url}" param="id=${player.id}&amp;msg=false" key="members.profile"/>
 								</c:when>
 								<c:otherwise>
 									<carter:button page="${url}" param="id=${player.id}&amp;msg=false" key="members.profile"/>

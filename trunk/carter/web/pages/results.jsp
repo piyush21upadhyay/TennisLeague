@@ -341,7 +341,6 @@
 					font-weight: 700;
 					text-align: left;
 				}
-
 				table.entering td.firstChild {
 					text-align: left;
 					text-transform: uppercase
@@ -374,7 +373,6 @@
 				.entering tr {
 					line-height: 60px;
 				}  
-
 				 .num-input{
 					width: 40px;
 					height: 40px;
@@ -385,7 +383,6 @@
 					border: 1px solid #d7d7d7;
 					margin: 8px;
 				}
-
 				  .super-input {
 					vertical-align: super;
 					position: relative;
@@ -461,7 +458,6 @@ display: block !important;
     padding: 0 !important;
     border-radius: 0;
 }
-
 .ui-datepicker-header {
     padding: 20px;
     background: #dedede !important;
@@ -471,24 +467,19 @@ display: block !important;
     font-size: 20px;
     font-weight: normal;
 }
-
-
 .ui-datepicker .ui-datepicker-prev span {
     top: 200%;
     left: 20px;
 }
-
 .ui-datepicker .ui-datepicker-next span {
     top: 200%;
     right: 20px;
 }
-
 .ui-state-default, .ui-widget-content .ui-state-default {
     background: none;
     border: none;
     /* padding: 11px; */
 }
-
 a.ui-state-default.ui-state-highlight.ui-state-active {
     background: #dedede;
     border-radius: 25px;
@@ -500,24 +491,19 @@ a.ui-state-default.ui-state-highlight.ui-state-active {
     padding: 10px;
 }
 .ui-state-disabled td {}
-
 td.ui-datepicker-today {
     /* width: 40px !important; */
 }
-
 table.ui-datepicker-calendar thead tr {
     padding: 20px 0px !important;
 }
-
 .ui-datepicker th {
     padding: 10px 0px 10px!important;
     font-size: 16px;
     font-weight: normal;
 }
-
 table.ui-datepicker-calendar {
 }
-
 </style>
 </head>
 
@@ -673,7 +659,7 @@ table.ui-datepicker-calendar {
 	 						<label class="checkboxlabel"><fmt:message key="results.opponentRetired"/></label>
 	 					</fieldset>
 					</div>
-					<div>
+					<div class="onecolw">
 						<a class="msg-link"
 							onclick="document.getElementById('bDefault').value='true';document.getElementById('matchForm').submit();return false;"
 							href="javascript:{}"><fmt:message key="button.default" /></a>

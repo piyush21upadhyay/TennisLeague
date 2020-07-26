@@ -1220,12 +1220,16 @@ div#msg {
 	color:#000;
 }
 
+
 #home-leaderboard table {
 	width:100%;
 	margin-bottom:10px;
 	border:none;
 	font-size:11px;
 	margin-top:45px;
+}
+table#standings caption {
+    padding: 0px 10px;
 }
 
 #home-leaderboard table#standings thead tr
@@ -4445,7 +4449,7 @@ table tr td:last-child {
     /* text-align: center; */
     margin: 0 auto 30px;
     position: relative;
-    /* background: url(../../images/icon-3.png); */
+   /* background: url(../../images/icon-3.png);*/
     background-position: center center;
     background-size: contain;
 }
@@ -4482,7 +4486,11 @@ table.show-profile-info .buttonwrapper {
 }
 
 .member-section .col-sm-4 .player-info .flu-box {
-background: #dedfdd;
+    background: #dedfdd;
+    padding: 30px 20px;
+    text-align: center;
+    min-height: 450px;
+
 }
 .member-section .col-sm-4 .player-info .flu-box p{
 text-align: center;
@@ -4490,8 +4498,8 @@ text-align: center;
 }
 .member-section p.msg-link-btn {
 display: inline;
-   /*  word-break: break-word; */
-    width: 45%;
+   /* word-break: break-word;*/
+    width: 100px;
     float: left;
     background: #dedfdd;
     border: 1px solid #fff;
@@ -4625,6 +4633,10 @@ font-size: 27px;
 
 .registration-page {
     padding: 10px 20px;
+  width: 60%;
+}
+form#registrationForm ul li input {
+    width: auto;
 }
 form#registrationForm li {
        padding: 10px 0px;
@@ -4755,14 +4767,36 @@ form#courts .threecol-frame .grey-box {
 form#courts .threecol-frame .grey-box p {
     margin: 0;
     padding: 5px 0px;
+width: 100%;
 }
 form#courts .threecol-frame .grey-box p label {
-    width: 40%;
+    width: 35%;
 }
 form#courts .threecol-frame .grey-box p input, form#courts .threecol-frame .grey-box p select {
     padding: 5px;
-    border: 1px solid #7d7d7d;
+    border: 1px solid #c4c4c4;
     border-radius: 15px;
+    width: 60%;
+}
+select#openCourtMeridiem, select#openCourtHour, select#closeCourtMeridiem, select#closeCourtHour {
+    width: 30% !important;
+}
+
+input#courtVerified {
+    text-align: left !important;
+    width: 10% !important;
+    height: 18px;
+}
+
+#courts .submit-btn a[href="#"] {
+    background: #828282;
+    width: 120px !important;
+    padding: 5px 10px;
+    border-radius: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: normal;
 }
 form#courts .buttons .submit-btn {
     background: #9cb23b;
@@ -4786,7 +4820,17 @@ form#courts .buttons .submit-btn .buttonwrapper {
 form#courts .buttons .submit-btn .buttonwrapper a {
     color: #fff;
 }
-form#courts .buttons .cancel-btn,  #manageCourse a[href="citymanage.html"] {
+form#courts .buttons .cancel-btn{
+   border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: #828282;
+} 
+
+ #manageCourse a[href="citymanage.html"] {
     background: #c7c7c7;
     padding: 10px;
     border-radius: 20px;
@@ -5047,12 +5091,12 @@ form#courseForm .editcourse-section div {
     padding: 5px 0px;
 }
 table.show-profile-info .buttonwrapper {
-    background: #9eb32e;
-    color: #fff !important;
+    background: #b7b7b7;
+    color: #595959 !important;
 }
 
 table.show-profile-info .buttonwrapper a {
-    color: #fff !important;
+    color: #595959  !important;
 }
 form#registrationCity .col-sm-4 table {
     padding: 20px;
@@ -5305,3 +5349,49 @@ div#view-back .buttonwrapper {
 div#view-back .buttonwrapper a{
     color: #fff;
 } 
+.active-member {
+    text-align: center;
+    background: #9db32c;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    float: none !IMPORTANT;
+    width: auto;
+    display: inline;
+    margin: 20px auto;
+    clear: both;
+}
+
+.active-member a {
+    color: #fff !important;
+    text-decoration: none;
+}
+.onecolw a.msg-link {
+    color: #a30a0a;
+    font-size: 17px;
+    font-weight: normal;
+}
+div#schedule .buttonwrapper {
+    background: #9cb23b;
+    width: 95px;
+    padding: 8px;
+    border-radius: 25px;
+    text-align: center;
+}
+div#schedule .buttonwrapper a {
+   color: #fff;
+   text-align: center;
+}
+
+
+@media(min-width: 1200px) and (max-width: 1372px){
+.member-section p.msg-link-btn{
+  width: auto;
+  padding:6px 10px;
+}
+}
+@media(min-width: 320px) and (max-width: 1200px){
+.member-section p.msg-link-btn{
+  width: 100%;
+}
+}

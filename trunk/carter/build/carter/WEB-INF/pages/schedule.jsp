@@ -124,7 +124,9 @@
 		<display:setProperty name="paging.banner.onepage" value="" />
 	</display:table>
 	
-	<carter:button onclick="window.print();" key="schedule.print"/>
+	<div class="left green-btn">
+		<carter:button onclick="window.print();" key="schedule.print"/>
+	</div>
 
 </c:when>
 

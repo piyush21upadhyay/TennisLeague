@@ -84,6 +84,7 @@ public abstract class BaseSeasonResultController extends BaseFormController
         view.addObject("seasons", seasons); //$NON-NLS-1$
         Season currentSeason = getCurrentSeason(request, seasons);
         view.addObject("season", currentSeason); //$NON-NLS-1$
+        view.addObject("submittedSeason", currentSeason);
         
         updateModelAndView(currentSeason, view);
         

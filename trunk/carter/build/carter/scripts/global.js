@@ -160,5 +160,6 @@ function addFocusHandlers(elements) {
 
 window.onload = function() {
     highlightFormElements();
+   $('#command').insertBefore('#top-nav .right');
 }
 

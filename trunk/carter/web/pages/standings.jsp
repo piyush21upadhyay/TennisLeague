@@ -34,7 +34,9 @@
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="standings.choose"/></option>
 				<c:forEach var="season" items="${seasons}">
-					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/><%--  - <c:out value="${season.division}"/> --%></option>
+					<option value="<c:out value="${season.id}"/>"<c:if test="${season.id == submittedSeason.id}">selected</c:if>>
+						<c:out value="${season.name}"/>
+					</option>
 				</c:forEach>
 			</select>
 		</form:form>
