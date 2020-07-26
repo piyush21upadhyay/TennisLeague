@@ -225,11 +225,11 @@
 
 		    		<div class="clear"></div>
 
-					<div class="conf-col" style="height:30px;">
+					<%-- <div class="conf-col" style="height:30px;">
 					    <div>
 				    		<img id="processing" src="<c:url value="images/ball-in-hole.gif"/>" alt="processing" style="visibility:hidden;"/>
 			    		</div>
-					</div>
+					</div> --%>
 					</div>
 					<div class="">
 					
@@ -246,7 +246,7 @@
 				        <form:hidden id="billingAddress.country" path="billingAddress.country"/>
 						<div class="buttons reg-btn" style="clear: both">
 						<div class="right green-btn">
-								<carter:button onclick="showProcImg();document.getElementById('bVerify').value='true';document.getElementById('registrationForm').submit();return false;" key="button.process"/>
+								<carter:button onclick="document.getElementById('bVerify').value='true';document.getElementById('registrationForm').submit();return false;" key="button.process"/>
 							</div>
 							<div class="right white-btn">
 								<carter:button onclick="document.getElementById('bBack').value='true';document.getElementById('registrationForm').submit();return false;" key="button.back"/>
