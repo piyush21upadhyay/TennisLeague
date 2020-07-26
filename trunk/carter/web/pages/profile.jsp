@@ -125,7 +125,7 @@
 		<c:if test="${empty matches}">
 			<p><fmt:message key="profile.noMatches"/></p>
 		</c:if>
-	 
+	   </div>
 	</c:if>
   
 	<c:forEach var="match" items="${matches}">
@@ -133,7 +133,9 @@
 		<c:if test="${match.golfer1 eq user}">
 			<c:set var="opponent" value="${match.golfer2}"/>
 		</c:if>
+		<div class="flu-box shadow">
 		<p><fmt:formatDate value="${match.playBy}" pattern="MMM d"/></p>
+		</div>
 		<c:choose>
 			<c:when test="${not empty opponent}">
 				<div>
@@ -142,8 +144,9 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-			  </div>
+			
 				<!-- <div>TBD</div> -->
+				<div class="flu-box shadow">
 				 <c:choose>
 	    				<c:when test="${match.postSeason}">
 			    			<fmt:message key="schedule.tbd"/>
@@ -152,6 +155,7 @@
 	    	    			<fmt:message key="schedule.bye"/>
 	    				</c:otherwise>
 	    			</c:choose> 
+	    			</div>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

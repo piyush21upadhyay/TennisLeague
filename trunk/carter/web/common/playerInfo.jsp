@@ -15,7 +15,7 @@
 						<tr>
 							<td colspan="2">
 								<!-- <div  class="profile-img"> -->
-								<div class="profile-img"><img src="<c:out value="${player.icon}"/>" alt="ballHoppers"/>
+								<div class="profile-img"><img src="<c:out value="${player.icon}"/>"/>
 								<h2 style="width: auto;word-wrap: break-word;text-align: center;" title='<c:out value="${player.fullName}"/>'><c:out value="${player.fullName}"/>	
 							</h2>
 							</div>

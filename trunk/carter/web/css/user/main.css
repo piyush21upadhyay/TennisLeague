@@ -2121,7 +2121,9 @@ div.record-section .match {
 	width:71px;
 	height:71px;
 }
-
+#bracket div a {
+    text-decoration: none !important;
+}
 #r1m1p1 {
     top: 25px;
     left: 40px;
@@ -2203,73 +2205,73 @@ div.record-section .match {
 }
 
 #r2m1p1 {
-	top:42px;
-	left:118px;
+	top: 50px;
+	left: 160px;
 }
 
 #r2m1p2 {
-	top:132px;
-	left:118px;
+	top: 140px;
+	left: 160px;
 }
 
 #r2m2p1 {
-	top:222px;
-	left:118px;
+	top: 233px;
+	left: 160px;
 }
 
 #r2m2p2 {
-	top:312px;
-	left:118px;
+	top: 325px;
+	left: 158px;
 }
 
 #r2m3p1 {
-	top:42px;
+	top: 48px;
 	left:644px;
 }
 
 #r2m3p2 {
-	top:132px;
+	top: 140px;
 	left:644px;
 }
 
 #r2m4p1 {
-	top:222px;
+	top: 235px;
 	left:644px;
 }
 
 #r2m4p2 {
-	top:312px;
-	left:644px;
+	top: 330px;
+	left: 650px;
 }
 
 #r3m1p1 {
-	top:88px;
-	left:228px;
+	top: 95px;
+	left: 285px;
 }
 
 #r3m1p2 {
-	top:268px;
-	left:228px;
+	top: 280px;
+	left: 280px;
 }
 
 #r3m2p1 {
-	top:88px;
-	left:534px;
+	top: 95px;
+	left: 520px;
 }
 
 #r3m2p2 {
-	top:268px;
-	left:534px;
+	top: 280px;
+	left: 525px;
 }
 
 #r4m1p1 {
-	top:142px;
-	left:338px;
+	top: 150px;
+	left: 395px;
 }
 
 #r4m1p2 {
-	top:192px;
-	left:422px;
+	top: 225px;
+	left: 415px;
 }
 
 #champion {
@@ -4488,7 +4490,7 @@ text-align: center;
 }
 .member-section p.msg-link-btn {
 display: inline;
-    /* word-break: break-word; */
+   /*  word-break: break-word; */
     width: 45%;
     float: left;
     background: #dedfdd;

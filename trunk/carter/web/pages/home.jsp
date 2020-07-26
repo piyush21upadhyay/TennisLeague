@@ -160,7 +160,7 @@
 	  	</div>
 	</c:when>
 	<c:otherwise>
-		<div id="header-home-none"></div>
+		<!--div id="header-home-none"></div-->
 	</c:otherwise>
 </c:choose>
 	<div class="std-pad flu-box shadow">
@@ -394,6 +394,9 @@
 		  	  		<div class="tbl-msg-div shadow">
 						<display:table name="publicMessages" id="publicMessages" cellspacing="0" cellpadding="0" class="messages" requestURI="">
 				    	    <display:column property="poster.fullName" titleKey="home.from" url="/profile.html" paramId="id" paramProperty="poster.id" decorator="com.sageconsulting.webapp.decorators.MessageTextColumnDecorator"/>
+						   <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
+								<a href="#" class="dm-link-class" onclick="return false;"><input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
+							</display:column>
 						    <%-- <display:column titleKey="home.subject" maxLength="25" style="whitespace: nowrap;">
 								<a href="#" class="dm-link-class" onclick="return false;">
 								<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
