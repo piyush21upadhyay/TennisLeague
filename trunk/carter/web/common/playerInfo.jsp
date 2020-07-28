@@ -3,22 +3,39 @@
 <div class="player-info">
 	<c:choose>
 		<c:when test="${empty player}">
-			<!--div class="left"><img src="<c:url value="images/maleGolfer-icon.gif"/>" alt="member"/></div-->
 			<div class="left heading-golfer"><h4><fmt:message key="profile.welcomeGuest"/></h4>
 			<img src="<c:url value="images/guest.PNG"/>" alt="member"/></div>
 		</c:when>
 		<c:otherwise>
-			<!--div class="left"><img src="<c:url value="${player.icon}"/>" alt="member" width="42"/></div-->
 			<c:if test="${param.showProfileButton eq 'true'}">
 				<div class="left">
 					<table class="show-profile-info">
+						<tr><td class="profile-img"><img src="<c:out value="${player.icon}"/>"/></td></tr>
 						<tr>
-							<td colspan="2">
-								<!-- <div  class="profile-img"> -->
-								<div class="profile-img"><img src="<c:out value="${player.icon}"/>"/>
-								<h2 style="width: auto;word-wrap: break-word;text-align: center;" title='<c:out value="${player.fullName}"/>'><c:out value="${player.fullName}"/>	
+							<td align="center" style="padding: 20px 0px; text-align: center;">
+								<c:set var="registered" value="false"/>							
+								<c:forEach var="user" items="${registeredUserList}">
+									<c:if test="${user.key eq player.id}">
+										<c:set var="registered" value="true"/>
+									</c:if>
+								</c:forEach>
+								
+								<c:set var="url"><c:url value="/profile.html"/></c:set>
+								<c:choose>
+									<c:when test="${registered}">
+										<carter:button styleClass="active-member" page="${url}" param="id=${player.id}&amp;msg=false" key="members.viewProfile"/>
+									</c:when>
+									<c:otherwise>
+										<carter:button page="${url}" param="id=${player.id}&amp;msg=false" key="members.viewProfile"/>
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h2 style="width: auto;word-wrap: break-word;text-align: center;color: #9db32c;font: 14px/18px "avantgardemediumbt", arial, sans-serif;" title='<c:out value="${player.fullName}"/>'>
+								<c:out value="${player.fullName}"/>	
 							</h2>
-							</div>
 							</td>
 						</tr>
 						<tr>
@@ -28,27 +45,7 @@
 								</c:if>
 							</td>
 						</tr>
-						<tr>
-							
-							<td align="center" style="padding: 20px 0px; text-align: center;">
-							<c:set var="registered" value="false"/>							
-							<c:forEach var="user" items="${registeredUserList}">
-								<c:if test="${user.key eq player.id}">
-									<c:set var="registered" value="true"/>
-								</c:if>
-							</c:forEach>
-							
-							<c:set var="url"><c:url value="/profile.html"/></c:set>
-							<c:choose>
-								<c:when test="${registered}">
-									<carter:button styleClass="active-member" page="${url}" param="id=${player.id}&amp;msg=false" key="members.profile"/>
-								</c:when>
-								<c:otherwise>
-									<carter:button page="${url}" param="id=${player.id}&amp;msg=false" key="members.profile"/>
-								</c:otherwise>
-							</c:choose>
-							</td>
-						</tr>
+						
 					</table>
 				</div>
 			</c:if>
