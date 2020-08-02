@@ -10,7 +10,12 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#player1set1").focus();
-		$("#played").datepicker({showOn: 'button', buttonImage: 'images/calendar-icon.jpg', buttonImageOnly: true, maxDate: new Date()});
+		 $("#match-date-picker").datepicker({
+			maxDate: new Date(),
+		    onSelect: function(dateText) {
+		      $('#played').val(dateText);
+		    }
+		  });
 		
 		//fix for safari
 		if(window.devicePixelRatio)
@@ -449,61 +454,62 @@
 				    text-align: center;
 				}
 				div#ui-datepicker-div {
-display: block !important;
-    width: 400px;
-    height: 300px;
-    background: #fff;
-    border: none;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-    padding: 0 !important;
-    border-radius: 0;
-}
-.ui-datepicker-header {
-    padding: 20px;
-    background: #dedede !important;
-    border-radius: 0px;
-    border: none;
-    color: #666666;
-    font-size: 20px;
-    font-weight: normal;
-}
-.ui-datepicker .ui-datepicker-prev span {
-    top: 200%;
-    left: 20px;
-}
-.ui-datepicker .ui-datepicker-next span {
-    top: 200%;
-    right: 20px;
-}
-.ui-state-default, .ui-widget-content .ui-state-default {
-    background: none;
-    border: none;
-    /* padding: 11px; */
-}
-a.ui-state-default.ui-state-highlight.ui-state-active {
-    background: #dedede;
-    border-radius: 25px;
-    width: 30px;
-    height: 30px;
-    padding: 5px 2px;
-}
-.ui-datepicker td {
-    padding: 10px;
-}
-.ui-state-disabled td {}
-td.ui-datepicker-today {
-    /* width: 40px !important; */
-}
-table.ui-datepicker-calendar thead tr {
-    padding: 20px 0px !important;
-}
-.ui-datepicker th {
-    padding: 10px 0px 10px!important;
-    font-size: 16px;
-    font-weight: normal;
-}
-table.ui-datepicker-calendar {
-}
+					display: block !important;
+				    width: 400px;
+				    height: 300px;
+				    background: #fff;
+				    border: none;
+				    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+				    padding: 0 !important;
+				    border-radius: 0;
+				}
+				.ui-datepicker-header {
+				    padding: 20px;
+				    background: #dedede !important;
+				    border-radius: 0px;
+				    border: none;
+				    color: #666666;
+				    font-size: 20px;
+				    font-weight: normal;
+				}
+				.ui-datepicker .ui-datepicker-prev span {
+				    top: 200%;
+				    left: 20px;
+				}
+				.ui-datepicker .ui-datepicker-next span {
+				    top: 200%;
+				    right: 20px;
+				}
+				.ui-state-default, .ui-widget-content .ui-state-default {
+				    background: none;
+				    border: none;
+				    /* padding: 11px; */
+				}
+				a.ui-state-default.ui-state-highlight.ui-state-active {
+				    background: #dedede;
+				    border-radius: 25px;
+				    width: 30px;
+				    height: 30px;
+				    padding: 5px 2px;
+				}
+				.ui-datepicker td {
+				    padding: 10px;
+				}
+				.ui-state-disabled td {}
+				td.ui-datepicker-today {
+				    /* width: 40px !important; */
+				}
+				table.ui-datepicker-calendar thead tr {
+				    padding: 20px 0px !important;
+				}
+				.ui-datepicker th {
+				    padding: 10px 0px 10px!important;
+				    font-size: 16px;
+				    font-weight: normal;
+				}
+				table.ui-datepicker-calendar {
+				}
+				.ui-datepicker { width:inherit;}
 </style>
 </head>
 
@@ -568,8 +574,10 @@ table.ui-datepicker-calendar {
 			               <label for="played"><fmt:message key="results.datePlayed"/></label><img src="images/date-played.png" alt=""> 
 						</div>
 	
-						<input type="text" id="played" name="played" maxlength="12"
-							value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/>
+						 <input type="hidden" id="played" name="played" maxlength="12"
+							value="<fmt:formatDate value="${match.played}" pattern="MM/dd/yyyy"/>"/> 
+						
+						<div id="match-date-picker"></div>
 					</div> 
 				</div>
 				
