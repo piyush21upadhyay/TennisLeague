@@ -39,11 +39,7 @@
 							</td>
 						</tr>
 						<tr>
-						<td align="center">
-								<c:if test="${not empty player.currentSeason}">
-									<h3>&nbsp;<c:out value="${player.currentSeason.division}"/></h3>
-								</c:if>
-							</td>
+							<td align="center"><h3>&nbsp;<c:out value="${player.playerLevel}"/> Rating</h3></td>
 						</tr>
 						
 					</table>

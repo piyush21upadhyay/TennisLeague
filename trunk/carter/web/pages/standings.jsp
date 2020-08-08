@@ -53,7 +53,6 @@
 				<th class="points"><fmt:message key="standings.points"/></th>
 				<th class="wins"><fmt:message key="standings.wins"/></th>
 				<th class="losses"><fmt:message key="standings.losses"/></th>
-				<th class="last ties"><fmt:message key="standings.ties"/></th>
 			</tr>
 		</thead>
 	</table>
@@ -65,7 +64,6 @@
 	    <display:column class="points" property="points" />
 	    <display:column class="wins" property="wins" />
 	    <display:column class="losses" property="losses" />
-	    <display:column class="ties" property="ties"/>
 
 	    <display:setProperty name="basic.show.header" value="false"/>
 	    <display:setProperty name="basic.empty.showtable" value="false"/>
@@ -86,7 +84,6 @@
 	    <display:column property="points"/>
 	    <display:column property="wins"/>
 	    <display:column property="losses"/>
-	    <display:column property="ties"/>
 
 	    <display:setProperty name="basic.show.header" value="false"/>
 	    <display:setProperty name="basic.empty.showtable" value="false"/>
