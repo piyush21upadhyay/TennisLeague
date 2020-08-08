@@ -468,17 +468,17 @@ public class User extends BaseObject implements Serializable, UserDetails
 			    		boolean isStraightLose = false;
 			    		int numberOfSetsWon = 0;
 			    		int pointsForMatch = 0;
-			    		if(null != match.getDefaultWinner() && this.id == match.getDefaultWinner().id)
+			    		if(null != match.getDefaultWinner() && this.id == match.getDefaultWinner().getId())
 			    		{
 			    			pointsForMatch += 2;
 			    		}
 			    		else if(null != match.getScore().getOpponentRetired() 
-			    				&& (this.id == match.getGolfer1().id || this.id == match.getGolfer2().id))
+			    				&& (this.id == match.getGolfer1().getId() || this.id == match.getGolfer2().getId()))
 			    		{
 			    			if(!this.id.equals(match.getScore().getOpponentRetired()))
 			    				pointsForMatch += 3;
 			    		}
-			    		else if(match.getGolfer1().id == this.id)
+			    		else if(match.getGolfer1().getId() == this.id)
 			    		{
 				    		if(match.getScore().getPlayer1set1() > match.getScore().getPlayer2set1()){
 				    			pointsForMatch += 1;
@@ -506,7 +506,7 @@ public class User extends BaseObject implements Serializable, UserDetails
 				    		if(numberOfSetsWon > 1)
 				    			pointsForMatch += 1;
 			    		}
-			    		else if(match.getGolfer2().id == this.id )
+			    		else if(match.getGolfer2().getId() == this.id )
 			    		{
 			    			if(match.getScore().getPlayer2set1() > match.getScore().getPlayer1set1()){
 				    			pointsForMatch += 1;
@@ -538,8 +538,8 @@ public class User extends BaseObject implements Serializable, UserDetails
 		    		}
 		    		else if(match.isBye())
 		    		{
-		    			if((null != match.getGolfer1() && this.id == match.getGolfer1().id) 
-		    					|| (null != match.getGolfer2() && this.id == match.getGolfer2().id))
+		    			if((null != match.getGolfer1() && this.id == match.getGolfer1().getId()) 
+		    					|| (null != match.getGolfer2() && this.id == match.getGolfer2().getId()))
 		    				seasonPoints += 2;
 		    		}
 		    		
@@ -562,15 +562,17 @@ public class User extends BaseObject implements Serializable, UserDetails
 	    		int numOfLossGames = 0;
 	    		for(Match match : matches)
 		    	{
+	    			
 		    		if(match.getPlayed() != null)
 		    		{
-			    		if(match.getGolfer1().id == this.id)
+		    			//System.out.println("Match Details : "+match.getId()+" "+match.getPlayed()+" "+match.getGolfer1().getId()+" "+match.getGolfer2().getId());
+			    		if(match.getGolfer1().getId() == this.id)
 			    		{
 			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
 			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
 			    				
 			    		}
-			    		else if(match.getGolfer2().id == this.id )
+			    		else if(match.getGolfer2().getId() == this.id )
 			    		{
 			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
 			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
@@ -606,13 +608,13 @@ public class User extends BaseObject implements Serializable, UserDetails
 		    	{
 		    		if(match.getPlayed() != null)
 		    		{
-			    		if(match.getGolfer1().id == this.id)
+			    		if(match.getGolfer1().getId() == this.id)
 			    		{
 			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
 			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
 			    				
 			    		}
-			    		else if(match.getGolfer2().id == this.id )
+			    		else if(match.getGolfer2().getId() == this.id )
 			    		{
 			    			numOfWinGames = numOfWinGames + match.getScore().getPlayer2set1() + match.getScore().getPlayer2set2() + match.getScore().getPlayer2set3();
 			    			numOfLossGames = numOfLossGames + match.getScore().getPlayer1set1() + match.getScore().getPlayer1set2() + match.getScore().getPlayer1set3();
