@@ -173,17 +173,18 @@
 <h2 class="page-title"> Schedule</h2>
 <div class="">
       <div class="component-page">
+      
 	      <div class="row">
           <div class="hd-title col-sm-4">
               <div class="selected-country">
-              <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>
+              <p><c:out value="${seasonName}"/></p>
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               </div>
                 <div class="matchDate">
 				<div class="match-date"> 
 				<c:choose>
 					<c:when test="${not empty match.played}">
-						Played on : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.played}"/>
+						<!-- Played on :  --><fmt:formatDate pattern="MMM dd, yyyy" value="${match.played}"/>  <p><c:out value="${tournamentName}"/></p>
 					</c:when>
 					<c:when test="${empty match.played and empty match.golfer2}">
 						Played By : <fmt:formatDate pattern="MMM dd, yyyy" value="${match.playBy}"/>
@@ -245,7 +246,9 @@
                     	<table class="centerAlign linescore">
                         	<tbody>
                         	<tr>
-                            	<td class="  leftAlign strong"><c:out value="${match.golfer1.fullName}"/></td>
+                            	<td class="  leftAlign strong"><c:out value="${match.golfer1.fullName}"/>
+                            	<%-- <img src="<c:url value="${match.golfer1.icon}"/>"/> --%>
+                            	</td>
         							<c:choose>
 										<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
 											<td class="strong runs">

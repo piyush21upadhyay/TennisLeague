@@ -98,6 +98,7 @@
     
     <bean id="viewResultsController" class="com.sageconsulting.webapp.action.ViewResultsController">
     	<property name="matchManager" ref="matchManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
     </bean>
     
     <bean id="recordController" class="com.sageconsulting.webapp.action.RecordController">

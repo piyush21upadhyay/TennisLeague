@@ -5,16 +5,16 @@
     <meta name="menu" content="PostResults"/>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/${appConfig["csstheme"]}/scorecard2.css'/>" />
 </head>
-<h2 class="page-title"> Schedule</h2>
+<!-- <h2 class="page-title"> Schedule</h2> -->
 <div class="section">
 	<div class="left userInfo">
 		<h2><fmt:message key="viewresults.header"/></h2>
 	    <p class="user">
 	        <c:out value="${match.course.name}"/>
 	    </p>
-	    <p class="season">
+	   <%--  <p class="season">
 			<fmt:formatDate value="${match.played}" pattern="MMM dd, yyyy"/>
-		</p>
+		</p> --%>
 		<p class="division">
 			<c:choose>
 				<c:when test="${match.defaultWin}">
