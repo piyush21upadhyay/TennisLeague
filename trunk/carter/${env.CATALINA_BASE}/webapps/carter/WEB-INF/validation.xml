@@ -177,6 +177,18 @@
                   <arg0 key="address.province"/>
               </field>
       </form>
+      <form name="court">
+              <field property="courtCity"
+                     depends="required">
+
+                  <arg0 key="court.courtCity"/>
+              </field>
+              <field property="id"
+                     depends="required">
+
+                  <arg0 key="court.id"/>
+              </field>
+      </form>
       <form name="publicMessage">
               <field property="subject"
                      depends="required">
@@ -232,6 +244,16 @@
 
                   <arg0 key="registration.regularRegistrationFee"/>
               </field>
+              <field property="secondEventFee"
+                     depends="required">
+
+                  <arg0 key="registration.secondEventFee"/>
+              </field>
+              <field property="thirdEventFee"
+                     depends="required">
+
+                  <arg0 key="registration.thirdEventFee"/>
+              </field>
       </form>
       <form name="city">
               <field property="name"
@@ -246,6 +268,11 @@
               </field>
       </form>
       <form name="user">
+              <field property="courtAddress"
+                     depends="required">
+
+                  <arg0 key="user.courtAddress"/>
+              </field>
               <field property="username"
                      depends="required">
 
@@ -357,11 +384,6 @@
 
                   <arg0 key="user.passwordHint"/>
               </field>
-              <field property="homeCourse.id"
-                     depends="required">
-
-                  <arg0 key="user.homeCourse.id"/>
-              </field>
               <field property="referral"
                      depends="required">
 
@@ -372,26 +394,20 @@
 
                   <arg0 key="user.icon"/>
               </field>
-              <field property="homeCourt"
+              <field property="homeCourtText"
                      depends="required">
 
-                  <arg0 key="user.homeCourt"/>
+                  <arg0 key="user.homeCourtText"/>
               </field>
-              <field property="playingPreference"
-                     depends="required,checkbox">
-                  <msg
-                    name="checkbox"
-                    key="errors.checkbox"/>
+              <field property="courtCity"
+                     depends="required">
 
-                  <arg0 key="user.playingPreference"/>
+                  <arg0 key="user.courtCity"/>
               </field>
-              <field property="opponentSkillLevel"
-                     depends="required,checkbox">
-                  <msg
-                    name="checkbox"
-                    key="errors.checkbox"/>
+              <field property="courtState"
+                     depends="required">
 
-                  <arg0 key="user.opponentSkillLevel"/>
+                  <arg0 key="user.courtState"/>
               </field>
       </form>
       <form name="course">

@@ -3,7 +3,7 @@
 <head>
 	<title><fmt:message key="choosecity.title"/></title>
 	<content tag="heading"><fmt:message key="choosecity.heading"/></content>
-    <meta name="menu" content="Courses"/>
+    <meta name="menu" content="Courts"/>
 </head>
 
 <p><fmt:message key="choosecity.message"/></p>

@@ -85,7 +85,8 @@
 <![endif]-->
 
 <div id="profile">
-
+<h2 class="page-title"> Player Profile</h2>
+<div class="row">
 <script type="text/javascript">
 	function checkMrAccess(msgUrl)
 	{
@@ -101,7 +102,7 @@
 	}
 </script>
 
-<div class="threecol">
+<div class="col-sm-12 col-lg-4">
 	<c:set var="player" value="${user}" scope="request"/>
 	<c:import url="/common/playerInfo.jsp">
 		<c:param name="fullPlayerInfo" value="true"/>
@@ -110,19 +111,23 @@
 	</c:import>
 </div>
             
- <div class="threecol">
+ <div class="col-sm-12 col-lg-4">
    	<c:if test="${not empty user}">
-   		<div class="left">
+   		<!--div class="left">
 	   		<a href="<c:url value="schedule.html"/>?id=<c:out value="${user.id}"/>">
 				<img src="images/ppGolfTee.jpg" alt="tee" />
 			</a>
+		</div-->
+		<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.upcomingMatches"/></h4>
+		<img src="images/match.png" alt=""/> 
 		</div>
-		<div class="profile-caption"><h4><fmt:message key="profile.upcomingMatches"/></h4></div>
-		<div class="clear">&nbsp;</div>
+		<div class="flu-box shadow">
 		<c:if test="${empty matches}">
 			<p><fmt:message key="profile.noMatches"/></p>
 		</c:if>
+	   </div>
 	</c:if>
+  
 	<c:forEach var="match" items="${matches}">
 		<c:set var="opponent" value="${match.golfer1}"/>
 		<c:if test="${match.golfer1 eq user}">
@@ -133,30 +138,39 @@
 			<c:when test="${not empty opponent}">
 				<div>
 					<a class="green" href="<c:url value="/profile.html?id="/><c:out value="${opponent.id}"/>"><c:out value="${opponent.fullName}"/></a> <fmt:message key="profile.at"/> 
-					<a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${opponent.homeCourse.id}"/>"><c:out value="${opponent.homeCourse.name}"/></a>
+					<a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${opponent.homeCourtText}"/>"><c:out value="${opponent.homeCourtText}"/></a>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div>TBD</div>
+				<!-- <div>TBD</div> -->
+				 <c:choose>
+	    				<c:when test="${match.postSeason}">
+			    			<fmt:message key="schedule.tbd"/>
+	    				</c:when>
+	    				<c:otherwise>
+	    	    			<fmt:message key="schedule.bye"/>
+	    				</c:otherwise>
+	    			</c:choose> 
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:choose>
    	<c:when test="${empty user}">
-   		<div class="left">
+   		<!--div class="left">
 			<img src="images/ppGolfTee.jpg" alt="tee" />
-		</div>
-		<div class="profile-caption"><h4><fmt:message key="profile.upcomingMatches"/></h4></div>
+		</div-->
+		<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.upcomingMatches"/></h4><img src="images/match.png" alt="tee" /></div>
 		<div class="clear">&nbsp;</div>
+		<div class="flu-box shadow" style="margin-bottom:20px;">
 		<p><fmt:message key="profile.noMatches"/></p>
-		
+		</div>
 		<c:choose>
 			<c:when test="${ not empty openRegistrationForVisitor }">
-				<div>
+				<div style="position: relative">
 			   		<a title="Go to Payment page" href="signup.html">
 			   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner.png"/>" alt="register" />
 			   		</a>
-			   		<div class="subsection">
+			   		<div class="subsection register-btn">
 						<c:set var="url"><c:url value="/signup.html"/></c:set>
 						<carter:button page="${url}" key="profile.registration"/>
 			    	</div>
@@ -166,13 +180,14 @@
 				<div class="regbanner">
 			    	<div>
 			    		<a title="Go to Signup page" href="signup.html">
-			    			<img class="tee-off-img" src="<c:url value="images/signupBanner.png"/>" alt="sign up" />
-			    		</a>
-			    	</div>
-			    	<div class="subsection">
+			    			<img class="tee-off-img" src="<c:url value="images/get-profile-pg.png"/>" alt="sign up" />
+			    			  	<div class="subsection">
 						<c:set var="url"><c:url value="/signup.html"/></c:set>
 						<carter:button page="${url}" key="profile.signup"/>
 			    	</div>
+			    		</a>
+			    	</div>
+			  
 			    </div>
 			</c:otherwise>
 		</c:choose>
@@ -186,7 +201,7 @@
 		</div>
 	</c:when> --%>
 	<c:when test="${not empty user}">
-		<p>
+		<p class="flu-box shadow" style="margin: 20px 0px">
 			<a class="msg-link" href="<c:url value="/schedule.html?id="/><c:out value="${user.id}"/>">
 			<fmt:message key="members.schedule">
 				<fmt:param value="${user.firstName}"/>
@@ -196,14 +211,16 @@
 	</c:when>
 	</c:choose>
 	
+
+		
 	<c:choose>
 		<c:when test="${not empty openRegistrations and empty registeredSeason}">
 			<c:if test="${isCurrentUser}">
-			<div>
+			<div style="position: relative">
 		   		<a title="Go to Payment page" href="registration.html">
 		   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner.png"/>" alt="register" />
 		   		</a>
-		   		<div class="subsection">
+		   		<div class="subsection register-btn">
 					<c:set var="url"><c:url value="/registration.html"/></c:set>
 					<carter:button page="${url}" key="profile.registration"/>
 		    	</div>
@@ -211,15 +228,26 @@
 		   	</c:if>
      	</c:when>
      	<c:when test="${not empty seasonStarted and !seasonStarted}">
-			<div>
+			<div style="margin-bottom: 20px; position: relative">
 		   		<img class="tee-off-img" src="<c:url value="images/yourTeeOffBanner.png"/>" alt="Your tee box, schedule coming soon." />
+				
 		   	</div>
      	</c:when>
      </c:choose>
-</div>
-            
-<div class="threecol">
-	<div class="left">
+	 		 <!-- Added by Piyush/Akash starts -->
+	<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.equipment"/></h4><img src="images/equpment.png" alt="Equipment"></div>
+	<div class="subsection">
+	<div class="flu-box shadow">
+		<p><fmt:message key="profile.racquet"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.racquet}"/></span></c:if></p>
+		<p><fmt:message key="profile.strings"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.tennisString}"/></span></c:if></p>
+		<p><fmt:message key="profile.shoes"/> <c:if test="${not empty user}"><span class="green"><c:out value="${user.shoes}"/></span></c:if></p>
+   </div>
+    </div>
+    </div>   
+<div class="col-sm-12 col-lg-4">
+
+	<!-- Added by Piyush/Akash ends -->
+	<!--div class="left">
 		<c:if test="${isCurrentUser}">
 			<a href="<c:url value="inbox.html"/>">
 		</c:if>
@@ -227,9 +255,18 @@
 		<c:if test="${isCurrentUser}">
 			</a>
 		</c:if>
+	</div-->
+	<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.inbox"/></h4>
+			<c:if test="${isCurrentUser}">
+			<a href="<c:url value="inbox.html"/>">
+		</c:if>
+		<img src="images/inbox.png" alt="msg" />
+		<c:if test="${isCurrentUser}">
+			</a>
+		</c:if>
 	</div>
-	<div class="profile-caption"><h4><fmt:message key="profile.inbox"/></h4></div>
 	<div class="clear">&nbsp;</div>
+	<div class="shadow">
 	<c:choose>
 		<c:when test="${empty privateMessages}">
 			<div class="tbl-msg-div">
@@ -295,22 +332,25 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
-   	<div>
+   	<div class="green-post-link">
 	   	<c:if test="${not empty user and not isCurrentUser}">
 		    <a class="green ie-post-link" onclick="checkMrAccess('<c:url value="sendMessage.html"/>?id=<c:out value="${user.id}"/>');">
 			    <fmt:message key="profile.leave"/> <c:out value="${user.firstName}"/> <fmt:message key="profile.amessage"/>
 		    </a>
 	    </c:if>
 	</div>
- 
+ </div>
  	<div class="clear">&nbsp;</div>
- 	<div class="left">
+ 	<!--div class="left">
 	 	<a href="<c:url value="msgboard.html"/>">
 	   		<img src="images/ppMessage.jpg" alt="msg"/>
 	   	</a>
-   	</div>
-   	<div class="profile-caption"><h4><fmt:message key="profile.messageBoard"/></h4></div>
+   	</div-->
+   	<div class="profile-caption heading-golfer"><h4><fmt:message key="profile.messageBoard"/></h4>	<a href="<c:url value="msgboard.html"/>">
+	   		<img src="images/public-bd-icon.png" alt="msg"/>
+	   	</a></div>
    	<div class="clear">&nbsp;</div>
+	<div class="shadow">
    	<c:choose>
 		<c:when test="${empty publicMessages}">
 			<div class="tbl-msg-div">
@@ -337,14 +377,23 @@
 			</div>
      	</c:otherwise>
    	</c:choose>
-   <div class="public-post">
+   <div class="public-post green-post-link">
    	  <a class="green ie-post-link" onclick="checkMrAccess('<c:url value="msgboard.html"/>?post=true');">
    		<fmt:message key="profile.postMessage"/>
    	  </a>
     </div>
-</div>
 
-<div class="section birdies" <c:if test="${isAdmin}">style="margin-top:-40px;" </c:if>>
+</div>
+   <div class="edit-link"> 
+    <c:if test="${isCurrentUser}">
+			<c:set var="url"><c:url value="/editprofile.html"/></c:set>
+			<carter:button page="${url}" key="profile.edit"/>
+	</c:if>
+	 </div>	
+
+
+</div>
+<!-- <div class="section birdies" <c:if test="${isAdmin}">style="margin-top:-40px;" </c:if>>
 	<div class="left">
 		<img src="images/birdie-icon.jpg" alt="birdies" />
 	</div>
@@ -422,6 +471,6 @@
 	    	</c:if>
 	    </div>
 	</div>
+</div> -->
 </div>
-
 </div>

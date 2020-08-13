@@ -23,7 +23,7 @@
 <form:form commandName="course" method="post" action="editCourse.html" onsubmit="return onFormSubmit(this)" id="courseForm">
 <form:hidden path="id"/>
 <form:hidden path="version"/>
-
+<div class="shadow-sm grey-box editcourse-section">
 	<div>
        	<div>
        		<carter:label key="course.name"/>
@@ -203,6 +203,7 @@
 			</tr>
 		</table>
 	</div>
+	<div style="clear:both">
 	<div>
 		<carter:label key="course.womensPars"/>
 		<table class="coursecard">
@@ -253,7 +254,8 @@
 			</tr>
 		</table>
 	</div>
-	<input type="submit" class="button" name="save" onclick="bCancel=false" value="<fmt:message key="button.save"/>"/>
+	<input type="submit" class="button save-button" name="save" onclick="bCancel=false" value="<fmt:message key="button.save"/>"/>
+	</div>
 </form:form>
 
 <script type="text/javascript">

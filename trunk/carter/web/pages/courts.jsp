@@ -3,6 +3,20 @@
 <head>
 	<title><fmt:message key="courts.title"/></title>
     <meta name="menu" content="Courts"/>
+
+<style type="text/css">
+	div#user-court .grey-box {
+		padding: 20px;
+	}
+	
+	div#user-court {
+		margin-bottom: 25px;
+	}
+	
+	div#user-court .grey-box p {
+		line-height: 24px;
+	}
+</style>
 </head>
 
 <c:if test="${empty errors and empty successMessages}">
@@ -11,12 +25,15 @@
 	<h2 class="page-title"><fmt:message key="courts.title"/></h2>
 </div>
 
-<div class="court-section">
+<div class="court-section col-sm-12">
+<div class="row">
 <c:choose>
     <c:when test="${isAdmin}">
     	<form:form commandName="courtListWrapper" method="post" id="courts" action="editCourts.html">
+		<div class="row">
     		<c:forEach var="court" items="${courtListWrapper.courtList}" varStatus="status">
-    		<div class="threecol-frame">
+    		<div class="threecol-frame col-sm-4">
+			    <div class="shadow-sm grey-box">
     				<p><label for="name"><fmt:message key="courtDetails.name"/></label>
     					<form:input path="courtList[${status.index}].name" id="name" cssClass="longBox" maxlength="30"/></p>
     				<p><label for="courtAddress"><fmt:message key="courtDetails.address"/></label>
@@ -76,16 +93,26 @@
 					</c:forEach>
 				</form:select></p>
 					
-    				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
-    					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>
+   				<p><label for="courtVerified"><fmt:message key="courtDetails.verified"/></label>
+   					<form:checkbox path="courtList[${status.index}].courtVerified" id="courtVerified"/></p>
+   				<!-- Delete Button Changes Starts -->
+    			<div>
+					<div class="right submit-btn">
+						<form:hidden path="courtList[${status.index}].id" id="id[${status.index}]"/>
+						<a onclick="validateIfCourtIsLinkedToAnyUser(document.getElementById('id[<c:out value='${status.index}'/>]').value)" href="#">Delete</a>
+					</div>
+				</div>
+				<!-- Delete Button Changes Ends -->
     		</div>
+			</div>
     		</c:forEach>
+			</div>
     		 <div class="section">
 	    		<div class="buttons">
-					<div class="left">
+					<div class="left submit-btn">
 						<carter:button onclick="return onFormSubmit(document.getElementById('courts'));" key="button.save"/>
 					</div>
-					<div class="left">
+					<div class="left cancel-btn">
 						<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('courts').submit();return false;" key="button.cancel"/>
 					</div>
 					<input id="bCancel" type="hidden" name="bCancel" value="false"/>
@@ -106,39 +133,87 @@
 				</spring:bind>
 			</div>
     	</form:form>
-    	
+
     	<script type="text/javascript">
 			function onFormSubmit(theForm) { // need to add validations of a form
 				return theForm.submit();
+			}
+			
+			function validateIfCourtIsLinkedToAnyUser(courtId)
+			{
+				var result = "";
+				var boolValue = false;
+				if(courtId != '')
+				{
+					var reqUrl = 'courtLinkingToUserValidate.html?courtId=' + courtId;
+					// Ajax call for getting message contents
+					result = reqAjax(reqUrl);
+					//alert("result::"+result);
+					begin = result.indexOf("response") + 9;
+					end = result.lastIndexOf("response") - 2;
+					boolValue = result.slice(begin,end);
+				}
+				if(trim(boolValue) == 'true'){
+					cglAlert('Invalid Action',"xyz user is linked to the current court, Please switch him/her to another court in order to proceed ",300);
+				} else {
+					location.href = 'editCourts.html';
+				}
+			}
+			
+			function reqAjax( pURL )
+			{
+				var vResult = $.ajax({
+					url: pURL,
+					cache: false,
+					async: false
+				}).responseText;
+
+			   return vResult;
+			}
+			
+			//Trim whitespace from left and right sides of s.
+			function trim(s) 
+			{
+			    return s.replace( /^\s*/, "" ).replace( /\s*$/, "" );
 			}
 		</script>
     
    </c:when>
    <c:otherwise>
-
-	<c:forEach var="court" items="${courtList}">
-			<div class="threecol-frame">
-				<h2><c:out value="${court.name}"/></h2>
-				<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
-				<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
-					<%-- <c:forEach var="city" items="${court.cities}">
-						<c:out value="${city.name}"/>
-					</c:forEach> --%>
-				<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
-				<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
-				<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
-				<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
-				<%-- <p><fmt:message key="courtDetails.verified"/>
-					 <c:choose>
-						<c:when test="${court.courtVerified eq 'true'}">Yes</c:when>
-						<c:otherwise>No</c:otherwise>
-					</c:choose> --%>
-			</div>
-	</c:forEach>
-
+   		<c:choose>
+   			<c:when test="${not empty courtList}">
+   				<c:forEach var="court" items="${courtList}">
+					<div class="threecol-frame col-sm-4" id="user-court">
+					 <div class="shadow-sm grey-box">
+						<h2><c:out value="${court.name}"/></h2>
+						<p><fmt:message key="courtDetails.address"/> <c:out value="${court.courtAddress}"/><br/></p>
+						<p><fmt:message key="courtDetails.city"/><c:out value="${court.courtCity}"/></p>
+						<p><fmt:message key="courtDetails.state"/> <c:out value="${court.courtState}"/></p>
+						<p><fmt:message key="courtDetails.noOfCourts"/> <c:out value="${court.numberOfCourts}"/></p>
+						<p><fmt:message key="courtDetails.lighted"/> <c:out value="${court.isCourtLighted}"/></p>
+						<p><fmt:message key="courtDetails.hours"/> <c:out value="${court.openCourtHour}"/> <c:out value="${court.openCourtMeridiem}"/>-<c:out value="${court.closeCourtHour}"/><c:out value="${court.closeCourtMeridiem}"/></p>
+					</div>
+					</div>
+			</c:forEach>
+   			</c:when>
+   			<c:otherwise>
+	   			<c:forEach begin="1" end="9" varStatus="loop">
+	   				<div class="threecol-frame col-sm-4" id="user-court">
+						 <div class="shadow-sm grey-box">
+							<p><fmt:message key="courtDetails.address"/><br/></p>
+							<p><fmt:message key="courtDetails.city"/></p>
+							<p><fmt:message key="courtDetails.state"/></p>
+							<p><fmt:message key="courtDetails.noOfCourts"/></p>
+							<p><fmt:message key="courtDetails.lighted"/></p>
+							<p><fmt:message key="courtDetails.hours"/></p>
+						</div>
+					</div>
+			
+				</c:forEach>
+   			</c:otherwise>
+   		</c:choose>
 	</c:otherwise>
 </c:choose>
-
 </div>
-
+</div>
 </c:if>

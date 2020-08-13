@@ -20,7 +20,7 @@
 					<c:out value="${city.name}"/> 
 				</c:when>
 				<c:otherwise>
-					<c:out value="${season.name}"/> <span><c:out value="${season.division}"/></span>
+					<c:out value="${season.name}"/> <%-- <span><c:out value="${season.division}"/></span> --%>
 				</c:otherwise>
 			</c:choose>
 		</h2>
@@ -30,7 +30,7 @@
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="standings.choose"/></option>
 				<c:forEach var="season" items="${seasons}">
-					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/> - <c:out value="${season.division}"/></option>
+					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/><%--  - <c:out value="${season.division}"/> --%></option>
 				</c:forEach>
 			</select>
 		</form:form>
@@ -43,7 +43,7 @@
 			<tr>
 				<th class="first pos"><fmt:message key="standings.position"/></th>
 				<th class="player"><fmt:message key="standings.player"/></th>
-				<th class="course"><fmt:message key="standings.course"/></th>
+				<th class="course"><fmt:message key="standings.court"/></th>
 				<th class="points"><fmt:message key="standings.points"/></th>
 				<th class="wins"><fmt:message key="standings.wins"/></th>
 				<th class="losses"><fmt:message key="standings.losses"/></th>
@@ -55,7 +55,7 @@
 	<display:table name="results" id="results" cellspacing="0" cellpadding="0" requestURI="">
 	    <display:column class="pos"><%=pageContext.getAttribute("results_rowNum")%></display:column>
 	    <display:column class="player" property="user.fullName" url="/profile.html" paramId="id" paramProperty="user.id"/>
-	    <display:column class="course" property="user.homeCourse.name" url="/coursedetails.html" paramId="id" paramProperty="user.homeCourse.id"/>
+	    <display:column class="course" property="user.homeCourtText" /><!-- url="/coursedetails.html" paramId="id" paramProperty="user.homeCourse.id"/> -->
 	    <display:column class="points" property="points" />
 	    <display:column class="wins" property="wins" />
 	    <display:column class="losses" property="losses" />

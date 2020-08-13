@@ -268,7 +268,7 @@
                 var focusField = null;
                 var i = 0;
                 var fields = new Array();
-                oCheckBox = new checkBox();
+                oCheckBox = new checkbox();
                 for (x in oCheckBox) {
                     var field = form[oCheckBox[x][0]];
                     

@@ -233,13 +233,16 @@ public class SeasonInfo
             {
                 if (result1.getPoints() == result2.getPoints())
                 {
-                	if(result1.getWins() == result2.getWins()) // if both have 0 wins
+                	if(result1.getWins() == result2.getWins()) // if both have same wins
                 	{
-                		if (result1.getWins() > 0 && result2.getWins() > 0) {
+                		// Akash : Changing (commenting below if condition) to handle scenario when number of wins are 0 for both players,need to decide on the  basis of % of games on
+                		//if (result1.getWins() > 0 && result2.getWins() > 0) {
                 			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage().replace("%", ""));
                 			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage().replace("%", ""));
-                			return (percentageOfGamesWonByPlayer1.compareTo(percentageOfGamesWonByPlayer2));
-                		}
+                			if(!percentageOfGamesWonByPlayer1.equals(percentageOfGamesWonByPlayer2))
+                				return (percentageOfGamesWonByPlayer2.compareTo(percentageOfGamesWonByPlayer1));
+                		//}
+                		
                 		
                 		// logic to handle 0 wins/points, atleast played a match
                 		if(result1.getPoints() == 0 && result2.getPoints() == 0

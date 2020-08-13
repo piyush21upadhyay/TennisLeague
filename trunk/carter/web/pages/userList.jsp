@@ -49,11 +49,11 @@
 		<display:column property="address.postalCode" titleKey="user.address.postalCode" media="csv xml excel pdf"/>
 		<display:column property="cellPhone" titleKey="user.cellPhone" media="csv xml excel pdf"/>
 		<display:column property="homePhone" titleKey="user.homePhone" media="csv xml excel pdf"/>
-		<display:column property="handicap" titleKey="user.handicap" media="csv xml excel pdf"/>
+		<%-- <display:column property="handicap" titleKey="user.handicap" media="csv xml excel pdf"/> --%>
 		<display:column property="dateJoined" format="{0,date,dd-MM-yyyy}" titleKey="user.dateJoined" media="csv xml excel pdf"/>
 		<display:column property="seasonEntered" titleKey="user.seasonEntered" media="csv xml excel pdf"/>
 		<display:column property="currentSeason.name" titleKey="user.lastSeason" media="csv xml excel pdf"/>
-		<display:column property="homeCourse.name" titleKey="user.homeCourse.name" media="csv xml excel pdf"/>
+		<display:column property="homeCourtText" titleKey="user.homeCourtText" media="csv xml excel pdf"/>
 		<display:column property="referral" nulls="true" titleKey="user.otherInfo" media="csv xml excel pdf"/>
 		
 		<display:column sortProperty="enabled" sortable="true" titleKey="user.enabled" style="width: 11%; padding-left: 15px" media="html">

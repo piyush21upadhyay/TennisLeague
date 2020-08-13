@@ -73,7 +73,7 @@
 			$("#sent-message").remove();
 
 		// Fill the place holder
-		$("#inbox").after('<div id="inbox-message" class="right"></div><div class="clear></div>');
+		$("#inbox").after('<div id="inbox-message" class="col-sm-6"></div><div class="clear></div>');
 
 		if( navigator.userAgent.match(/msie/gi) != 'MSIE' )
 		{
@@ -153,14 +153,18 @@
 		}
 	}
 </style>
-
+<h2 class="page-title">Home</h2>
 <div class="msgboard-section">
-	<div id="inbox" class="left">
-		<div class="left"><img src="images/ppMessage.jpg" alt="msg"/></div>
-	   	<div class="left"><h2><fmt:message key="profile.messageBoard"/></h2></div>
+<div class="row">
+	<div id="inbox" class="col-sm-6">
+		<!--div class="left"><img src="images/ppMessage.jpg" alt="msg"/></div-->
+		<div class="heading-golfer">
+				<h4><fmt:message key="profile.messageBoard"/></h4>
+					<img src="images/public-bd-icon.png" alt="Messages">
+			</div>
 	   	<div class="clear"></div>
 		<form method="post" name="deletemsg" id="deleteMsg" action="<c:url value="msgboard.html"/>">
-			<div class="tbl-msg-div">
+			<div class="tbl-msg-div shadow">
 			<display:table name="messages" id="message" cellspacing="0" cellpadding="0" class="messages" requestURI="">
 				<c:choose>
 					<c:when test="${not empty admin}">
@@ -200,18 +204,20 @@
 				<display:setProperty name="paging.banner.onepage" value="" />
 			</display:table>
 			</div>
-
+           
 			<c:choose>
 				<c:when test="${not empty user}">
-					<a href="<c:url value="msgboard.html"/>?post=true"><fmt:message key="msgboard.post"/></a>
+					<a class="msg-post-btn" href="<c:url value="msgboard.html"/>?post=true"><fmt:message key="msgboard.post"/></a>
 				</c:when>
 				<c:otherwise>
 					<fmt:message key="msgboard.login"/>
 				</c:otherwise>
 			</c:choose>
 			<c:if test="${not empty admin or not empty showDeleteBtn}">
+			<div class="send-btn">
 				<carter:button onclick="document.getElementById('bDelete').value='true';document.getElementById('deleteMsg').submit(); return false;" key="button.delete"/>
 				<input type="hidden" id="bDelete" name="bDelete" value="false"/>
+				</div>
 			</c:if>
 		</form>
     </div>
@@ -222,37 +228,57 @@
 
 	<c:choose>
 		<c:when test="${not empty currentMessage}">
-			<div id="inbox-message" class="right">
-				<div id="msgheader">
+			<div id="inbox-message" class="col-sm-6">
+				<div id="msgheader" class="grey-box shadow">
+				<div class="heading-golfer">
+					<h4>Write Your Message</h4>
+					<img src="images/public-bd-icon.png" alt="Messages">
+			    </div>
 					<h2><fmt:message key="inbox.msgFrom"/> <b><c:out value="${currentMessage.poster.fullName}"/></b></h2>
 					<h2><fmt:message key="inbox.msgSubject"/> <b><c:out value="${currentMessage.subject}"/></b></h2>
 				</div>
+				<div class="grey-box shadow">
+					<div class="heading-golfer">
+					<h4>Write Your Message</h4>
+					<img src="images/public-bd-icon.png" alt="Messages">
+			    </div>
 				<p class="msg-head"><fmt:message key="publicMessage.message"/>:</p>
 				<div id="msg">
 					<c:out value="${currentMessage.message}" escapeXml="false"/>
 				</div>
+				</div>
 				<c:if test="${not empty user}">
+				<div class="reply-post-link">
 					<a class="reply-link" href="<c:url value="msgboard.html"/>?replyTo=<c:out value="${currentMessage.id}"/>"><fmt:message key="inbox.reply"/></a>
+					</div>
 				</c:if>
 				</div>
 			<div class="clear"></div>
 		</c:when>
 		
 		<c:when test="${not empty user and post}">
-			<div id="form-div" class="right">
-				<h2><fmt:message key="sendMsg.create"/></h2>
+			<div id="form-div" class="col-sm-6">
+				<div class="heading-golfer">
+					<h4><fmt:message key="sendMsg.create"/></h4>
+					<img src="images/edit-icon.png" alt="Public">
+				</div>
 				<div class="post">
 					<form:form commandName="publicMessage" id="msgForm">
+					<div class="sub-container grey-box shadow">
 					    <label for="subject"><fmt:message key="sendMsg.subject"/></label>
+						<div class="sub-input">
 					    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
-					    <span class="span-spacer"></span>
+						</div>
+					</div>
+					   <div class="msginput-container grey-box shadow"> 
 						<label for="msginput"><fmt:message key="sendMsg.message"/></label>
 					    <form:textarea path="message" cssClass="emailMessage" id="msginput"/>
+						</div>
 					    <div class="buttons">
-					    	<div class="left">
+					    	<div class="send-btn">
 								<carter:button onclick="return onFormSubmit(document.getElementById('msgForm'));" key="button.send"/>
 					    	</div>
-					    	<div class="left">
+					    	<div class="bcancel-btn">
 								<carter:button onclick="document.getElementById('bCancel').value='true';document.getElementById('msgForm').submit();return false;" key="button.cancel"/>
 						    </div>
 							<input id="bCancel" type="hidden" name="bCancel" value="false"/>
@@ -291,11 +317,11 @@
 		</c:when>
 		
 		<c:when test="${not empty sentMessage}">
-			<div id="sent-message" class="right">
+			<div id="sent-message" class="col-sm-6">
 				<h3><c:out value="${sentMessage}"/></h3>
 			</div>
 		</c:when>
 	</c:choose>
 </div>
-
+</div>
 </c:if>

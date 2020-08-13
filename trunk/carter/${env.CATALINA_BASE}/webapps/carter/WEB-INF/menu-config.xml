@@ -16,7 +16,8 @@
         <Menu name="PostResults" title="menu.results" page="/results.html"/>
         <Menu name="Schedule" title="menu.schedule" page="/schedule.html"/>
         <Menu name="Champions" title="menu.champions" page="/champions.html"/>
-        <Menu name="Courses" title="menu.courses" page="/courses.html"/>
+        <!-- <Menu name="Courses" title="menu.courts" page="/courses.html"/> -->
+        <Menu name="Courts" title="menu.courts" page="/courts.html"/>
         <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editprofile.html" roles="admin,user"/>
         <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="admin" width="120" page="/users.html">
             <Item name="ManageRegistration" title="menu.admin.registration" page="/manageRegistration.html"/>

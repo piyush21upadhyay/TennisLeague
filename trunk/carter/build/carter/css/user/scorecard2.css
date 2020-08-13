@@ -271,3 +271,9 @@ body .card-small .card {
 	width:13px;
 	height:13px;
 }
+
+.square{
+    width: 27px;
+    height: 27px;
+    Background-color: #9dc227;/* Your Color */
+}

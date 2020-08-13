@@ -1,15 +1,27 @@
 @font-face {
-	font-family: "Agenda Bold";
+	font-family:"Agenda Bold";
 	src: url('Agenda-Bold.otf');
 }
-
+select:focus, option:focus, input:focus, [type=submit]:not(:disabled), button:not(:disabled){
+    outline: none;
+}
+input:focus, textarea:focus{
+	background: none;
+}
+input:-webkit-autofill, select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+    background-color: transparent !important;
+}
+*:focus {
+    outline: none;
+}
 html, body {
 	margin:0;
 	padding:0;
-	background:#0E0907;
-	color:#fff;
+	background:#fff;
+	color:#5d5d5d;
 	font-size:14px;
-	font-family:Helvetica;
+	 font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 p {
@@ -46,16 +58,49 @@ p.vspace {
 .justify {
 	text-align:justify;
 }
-
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+select option {
+    color: #333;
+}
+#sidebar {
+    min-width: 15%;
+    max-width: 15%;
+    background: url(../../images/sidebar-bg.png) top center #353b46 ;
+    background-repeat: no-repeat;
+    color: #fff;
+    /*transition: all 0.3s;
+    background-position: center top;*/
+      background-size: contain;
+    min-height: 1000px;
+}
+#sidebar:after{
+position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: #353b46;
+}
+.sidebar-header a img {
+    width: 120px;
+    height: 120px;
+    transform: translate(-5px , 42px);
+}
 #container {
-	position:relative;
+	/*position:relative;
 	margin:0 auto;
 	width:900px;
 	border-left:5px solid #fff;
 	border-right:5px solid #fff;
 	border-bottom:5px solid #fff;
 	font-family:Helvetica;
-	background-color:#23201F;
+	background-color:#23201F;*/
+	width: 100%;
+  position:relative;
+    transition: all 0.3s;
 }
 
 #container h2.green {
@@ -63,7 +108,7 @@ p.vspace {
 }
 
 .yellow {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 select {
@@ -73,14 +118,29 @@ select {
 input[type="text"], input[type="password"] {
 	border: 1px solid #000000;
 }
+/*table tbody tr{
+    height: 55px !important;
+}*/
 
+table tbody tr.even{
+    background: #fff !important;
+    height: 30px !important;
+}
+table tbody tr.odd{
+  background: #dedfdd !important;
+    height: 30px !important;
+}
+
+table tbody tr td, table tbody tr td a {
+    color: #676768 !important;
+}
 /*
 .txt-orange {
 	color:#ff653f;
 }
 
 .txt-yellow {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 .txt-green {
@@ -112,7 +172,7 @@ h4 {
 }
 
 a {
-	color:#fff;
+	color:#676768;
 	text-decoration:underline;
 	font-weight:bold;
 	line-height:20px;
@@ -125,8 +185,8 @@ a:hover {
 }
 
 a.msg-link {
-	color:#8DA92E;
-	text-decoration:underline;
+	color:#474747;
+	text-decoration: none;
 	font-weight:bold;
 	line-height:20px;
 	font-size:12px;
@@ -160,7 +220,7 @@ strong {
 
 div.error, div.message {
    font-size: 16px;
-   color: #FDFBA6;
+   color: #8DA92E;
    font-weight: bold;
    margin: 20px 20px;
    text-transform: none;
@@ -196,12 +256,12 @@ div.err-space {
 
 div.section {
 	clear:both;
-	padding: 20px 20px;
+	padding: 0px 20px;
 }
 
 div.subsection {
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
 
 h2.page-title {
@@ -216,11 +276,11 @@ h2.page-title span {
 div.clear {
 	clear:both;
 }
+#top-nav{
+font-size: 12px;
+    text-align: left;
+    margin: 4px 0px
 
-#top-nav {
-	width:100%;
-	height:40px;
-	background-color:#fff;
 }
 
 #top-nav a {
@@ -242,16 +302,21 @@ div.clear {
 }
 
 #login-nav {
-	background-image:url(../../images/login.gif);
+	/*background-image:url(../../images/login.gif);
 	background-repeat:no-repeat;
 	width:85px;
 	height:27px;
-	padding:0;
+	padding:0;*/
+	border: 1px solid #fff;
+   	 border-radius: 30px;
+   	 padding: 5px 20px;
+   	 margin-right: 10px;
+   	 color: #fff;
 	float:right;
 }
 
 #login-nav:hover {
-	background-image:url(../../images/loginOver.gif);
+	/*background-image:url(../../images/loginOver.gif);*/
 }
 
 #login-nav a {
@@ -279,16 +344,21 @@ div.clear {
 }	
 
 #signup-nav {
-	background-image:url(../../images/signUp.gif);
+	/*background-image:url(../../images/signUp.gif);
 	background-repeat:no-repeat;
 	width:85px;
 	height:27px;
-	padding:0;
+	padding:0;*/
+	border: 1px solid #fff;
+   	 border-radius: 30px;
+    	padding: 5px 20px;
+    	margin-right: 10px;
+    	color: #fff;
 	float:right;
 }
 
 #signup-nav:hover {
-	background-image:url(../../images/signUpOn.gif);
+	/*background-image:url(../../images/signUpOn.gif);*/
 }
 
 #signup-nav a {
@@ -316,18 +386,23 @@ div.clear {
 }	
 
 #logout-nav {
-	background-image:url(../../images/logout.gif);
-	background-repeat:no-repeat;
-	width:170px;
-	height:27px;
-	padding:0;
+	/*background-image:url(../../images/logout.gif);
+	background-repeat:no-repeat;*/
+    	border: 1px solid #fff;
+    	border-radius: 30px;
+    	padding: 5px 20px;
+   	 margin-right: 10px;
+   	 color: #fff;
 	float:right;
 }
 
 #links
 {
-	display:inline-block;
-	margin-right: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: super;
+    position: relative;
+    top: -5px;
 }
 
 #links img
@@ -337,12 +412,17 @@ div.clear {
 
 #links a
 {
-	padding:0px;
-	border:0px none;
+padding: 0px 10px;
+    font-size: 25px;
+    color: #fff;
+    border: none;
 }
 
+#links a:hover{
+ color: #fff;
+}
 #logout-nav:hover {
-	background-image:url(../../images/logoutOver.gif);
+	/*background-image:url(../../images/logoutOver.gif);*/
 }	
 
 #logout-nav a {
@@ -370,75 +450,96 @@ div.clear {
 }	
 
 #header {
-	height:45px;
+	/*height:45px;
 	background-color:#fff;
 	background-image:url(../../images/mainHeaderImage.jpg);
 	background-repeat:no-repeat;
 	background-position:bottom;
+	padding:  30px 0 0 20px;*/
 	font-size:22px;
-	color:#8DA92E;
-	padding:30px 0 0 20px;
+	color:#fff;
 }
 
 #main-nav {
-	height:25px;
+	/*height:25px;
 	width:100%;
 	background:url(../../images/mid-hdr-grad.gif) top left repeat-x;
 	border-top:1px solid #fff;
 	border-bottom:1px solid #fff;
 	line-height:24px;
 	text-transform:uppercase;
-	text-align:center;
+	text-align:center;*/
+		    padding: 20px 0;
+       max-width: 100%;
+    width: 175px;
+    text-align: left;
+    margin: 0 auto;
+	
 }
 
 #main-nav a {
-	font-size:13px;
+	/*font-size:13px;
 	font-weight:bold;
 	color:#fff;
 	background-color:transparent;
 	padding:4px 9px 5px 9px;
 	line-height:25px;
 	border-left:1px solid #000;
+	text-transform:uppercase;*/
+   	 padding: 10px;
+   	 font-size: 16px;
+   	 display: block;
+    	text-transform: uppercase;
+    	color: #dedede;
+    	font-weight: normal;
+    	margin-bottom: 10px;
 	text-decoration:none;
-	text-transform:uppercase;
+	word-break: break-word;
 }
-
+#main-nav a.active {
+    color: #9cb23b;
+}
 #main-nav a.first {
-	border-left:none;
+	/*border-left:none;*/
 }
 
 #main-nav a:hover, a.selected {
-	background:url(../../images/mid-hdr-grad-ovr.gif) top left repeat-x;
+	/*background:url(../../images/mid-hdr-grad-ovr.gif) top left repeat-x;*/
 }
 
 #main-nav .drop-menu {
 	position:fixed;
-	top: 0;
-	border: 1px solid #B5E2FE;
+	top: 50px;
+	border: 1px solid #9cb23b;
 	border-bottom-width: 0;
 	line-height:18px;
 	z-index:100;
 	background: none;
-	background-color: white;
+	background-color: #9cb23b;
 	width: 300px;
 	visibility: hidden;
 }
 
 #main-nav .drop-menu a {
-	width: 100%;
-	display: block;
-	text-indent: 3px;
-	border-bottom: 1px solid #B5E2FE;
-	padding: 2px 0;
-	text-decoration: none;
-	font-weight: bold;
-	color: black;
+    width: 100%;
+    display: block;
+    text-indent: 3px;
+    border-bottom: 1px solid #ffffff;
+    padding: 5px 0;
+    text-decoration: none;
+    line-height: 24px;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 0px;
+    font-size: 14px !important;
 }
-
+#main-nav .drop-menu a.active {
+    color: #ececec;
+}
 #main-nav .drop-menu a:hover {
 	text-align: left;
 	background: none;
-	background-color: #EBF7FF;
+	background-color: #40444d;
 }
 
 #news-ticker {
@@ -453,7 +554,7 @@ div.clear {
 
 #onecol {
 	width:100%;
-	padding:20px;
+	/*padding:20px;*/
 }
 
 #twocol-left {
@@ -476,27 +577,35 @@ div.clear {
 	font-size:12px;
 	color:#fff;
 	line-height:20px;
+
 }
 
 .threecolw {
-	float:left;
+	/*float:left;
 	width:264px;
 	margin:0 5px 10px;
 	padding:10px;
 	font-size:12px;
 	color:#fff;
-	line-height:20px;
+	line-height:20px;*/
+float: left;
+    width: 23.5%;
+    margin: 0 10px 10px;
+    padding: 10px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 20px;
 }
 
 .threecol-frame {
-	float:left;
+	/*float:left;
 	width:253px;
 	background-color:#000;
 	margin:0 10px 10px 10px;
 	padding:10px;
 	font-size:12px;
 	color:#fff;
-	line-height:20px;
+	line-height:20px;*/
 }
 
 .threecol-scroll {
@@ -554,7 +663,7 @@ caption {
 
 thead {
 	color:#fff;
-	background-color:#000;
+	background-color:#414350;
 }
 
 tr.odd {
@@ -562,7 +671,7 @@ tr.odd {
 }
 
 tr.even {
-	background:#18100D none repeat scroll 0 0;
+	background:#dedfdd  none repeat scroll 0 0;
 }
 
 th {
@@ -597,17 +706,20 @@ table.messages td a {
 	clear:both;
 	width:100%;
 	height:40px;
-	background-image:url(../../images/footer.jpg);
+	/*background-image:url(../../images/footer.jpg);*/
+    background: #c7c7c7;
+    position: absolute;
+bottom: 0;
 }
 
 #footer a {
-	color:#fff;
-	font-size:13px;
-	font-weight:bold;
+color: #8c8c8c;
+    font-size: 13px;
+    font-weight: normal;
 	padding:0 10px 0 10px;
 	line-height:40px;
 	background-color:transparent;
-	border-left:1px solid #fff;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 	text-decoration:none;
 }
 
@@ -626,17 +738,22 @@ table.messages td a {
 	float:right;
 	padding:13px 40px;
 	font-weight:bolder;
+color: #8c8c8c;
+    font-weight: normal;
+    font-size: 13px;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 #copyright {
 	color:#999;
 	text-align:center;
+	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
 
 a.fill {
 	width:100%;
 }
-
+/*
 a.squarebutton {
 	background:transparent url('../../images/square-gray-left.gif') no-repeat top left;
 	display:block;
@@ -699,7 +816,7 @@ a.squarebutton-register span {
 	display:block;
 	background-position:bottom right !important;
 	text-transform:uppercase;
-}
+}*/
 
 .buttonwrapper {
 	overflow:hidden;
@@ -729,10 +846,10 @@ a.squarebutton-register span {
 
 #content {
 	position:relative;
-	left:435px;
+	left:0;
 	top:0px;
-	width:490px;
-	height:315px;
+	width:100%;
+	height:100%;
 }
 
 #content h1 {
@@ -889,15 +1006,16 @@ a.inactive-city {
 }
 
 #home p {
-	font-size:12px;
-	line-height:16px;
-	margin-bottom:18px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 18px;
+    color: #6c757d;
 }
 
 #header-home {
-	background-image:url(../../images/homePageHdr.jpg);
-	height:150px;
-	width:100%;
+	width: 100%;
+    background: #40444d;
+    /*margin-top: 20px;*/
 }
 
 #header-home-none
@@ -908,29 +1026,51 @@ a.inactive-city {
 }
 
 #header-home-text {
-	margin-left:700px;
+	/*margin-left:700px;
 	padding-top:20px;
 	width:180px;
 	height:110px;
-	font-weight:bold;
+	font-weight:bold;*/
+	padding: 15px 20px;
+	font-size: 26px;
+}
+.std-pad h3 {
+    color: #9cb23b;
+    font-size: 22px !important;
+    margin-bottom: 30px;
+}
+.std-pad p {
+    line-height: 24px !important;
+    padding: 0px 0px 30px 0px;
 }
 
 .count-down {
 	text-align:center;
+   color: #fff !important;
 }
 
 .count-down-days {
-	font-size:70px;
+	font-size: 26px;
 	text-align:center;
+	color: #9cb23b;
+}
+
+.count-down-day{
+	color: #9cb23b;
 }
 
 #birdie-challenge {
 	background-image:url(../../images/homeBirdieChallenge.jpg);
-	width:623px;
-	height:162px;
-	margin-top:20px;
-	padding: 10px;
-	font-family:"Agenda Bold", sans-serif;
+	width: 100%;
+   	 height: 175px;
+   	 margin-top: 0;
+   	 display: block;
+   	 background-repeat: no-repeat;
+    	background-size: cover;
+    	font-family: "Agenda Bold", sans-serif;
+    	padding: 45px 20px;
+    	position: relative;
+
 }
 
 #birdie-challenge div.city-name
@@ -946,12 +1086,12 @@ a.inactive-city {
 
 #birdie-challenge div.left-msg
 {
-	margin-left:10px;
-	font-weight:bold;
-	font-size:35px;
-	width: 440px;
-	height: 36px;
-	overflow: hidden;
+    margin-left: 10px;
+    font-weight: normal !important;
+    font-size: 27px;
+    width: 440px;
+    height: 36px;
+    overflow: hidden;
 }
 
 #birdie-challenge div.right-msg-1
@@ -990,20 +1130,23 @@ a.inactive-city {
 }
 
 #home-info {
-	float:left;
+	/*float:left;
 	width:45%;
-	margin-top:20px;
-	margin-bottom:20px;
+	margin-top:20px;*/
+	margin-bottom: 20px;
+    margin-top: 0px;
+    padding: 20px;
 }
 
 #home-info h2 {
-	color:#FDFBA6;
+	color:#40444d;
 	margin-top:12px;
+    margin-bottom: 20px;
 }
 
 #home h3 {
-	font-size:13px;
-	font-weight:bold;
+	/*font-size:13px;
+	font-weight:bold;*/
 	padding-bottom:0;
 }
 
@@ -1024,9 +1167,9 @@ a.inactive-city {
 }
 
 #home-msgbrd {
-	float:right;
+	/*float:right;
 	width:50%;
-	margin-top:20px;
+	margin-top:20px;*/
 	margin-bottom:20px;
 }
 
@@ -1046,11 +1189,27 @@ a.inactive-city {
 #home-msgbrd table {
 	margin-top:15px;
 }
-
+.msg-head h2 {
+    font-size: 15px !important;
+    color: #2d2e2f !important;
+    font-weight: 600 !important;
+}
+.msg-head h2 label {
+    color: #9cb23b;
+    padding-right: 10px;
+}
+div#msg label {
+color: #9cb23b;
+    display: block;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+div#msg {
+    padding: 10px 20px !important;
+}
 #home-leaderboard {
-	padding:20px 14px 20px 20px;
-	background:#fff url(../../images/home-leaderboard-top.jpg) top left no-repeat;
-	height:340px;
+    padding: 0px 14px 20px 20px;
+    margin-top: -50px;
 }
 
 #home-leaderboard h2 {
@@ -1061,14 +1220,33 @@ a.inactive-city {
 	color:#000;
 }
 
+
 #home-leaderboard table {
 	width:100%;
 	margin-bottom:10px;
-	border:1px solid #828F98;
+	border:none;
 	font-size:11px;
-	margin-top:8px;
+	margin-top:45px;
+}
+table#standings caption {
+    padding: 0px 10px;
 }
 
+#home-leaderboard table#standings thead tr
+{
+    background: #40444d;
+}
+#home-leaderboard table#standings thead tr th{
+   padding: 20px;
+}
+
+#home-leaderboard table#standings .activetd {
+    background: #40444d;
+}
+
+#home-leaderboard table#standings .activetd th {
+    padding: 20px;
+}
 #home-leaderboard tr {
 	color:#676767;
 }
@@ -1082,18 +1260,23 @@ a.inactive-city {
 }
 
 #home-leaderboard th {
-	text-align:center;
-	padding:2px;
-	background:#828F98 none repeat scroll 0 0;
-	color:#FFFFFF;
-	font-weight:bold;
+    text-align: center;
+    padding: 11px 10px 10px;
+    background: transparent;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 #home-leaderboard td {
-	text-align:center;
-	padding:3px 5px;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 14px;
+    line-height: 24px;
 }
-
+#home-leaderboard tr.activetd td{
+    background: #40444d;
+}
 #leaderboard-form {
 	margin-top:10px;
 	text-align:center;
@@ -1107,8 +1290,8 @@ a.inactive-city {
 
 #home-weather {
 	padding:20px 14px 20px 20px;
-	background:#fff url(../../images/home-leaderboard-btm.jpg) bottom left no-repeat;
-	height:750px;
+	/*background:#fff url(../../images/home-leaderboard-btm.jpg) bottom left no-repeat;
+	height:750px;*/
 }
 
 .ldrBrdWeatherHdr {
@@ -1153,7 +1336,7 @@ a.inactive-city {
 
 /* ========== profile.jsp ========== */
 #profile {
-	background-color:#23201F;
+	/*background-color:#23201F;*/
 	margin-top:20px;
 	margin-left:10px;
 	margin-right:10px;
@@ -1165,7 +1348,7 @@ a.inactive-city {
 #profile .threecol + .threecol + .threecol {width:253px;}
 
 #profile h4 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #profile p {
@@ -1174,13 +1357,14 @@ a.inactive-city {
 }
 
 #profile .msg-link {
-	color:#ab3213;
+	    color: #9cb23b;
+    font-size: 15px;
 }
 
 .profile-caption {
-	float: left;
+	/*float: left;
 	padding-left:6px;
-	margin-top: 8px;
+	margin-top: 0px;*/
 }
 
 #profile .birdies {
@@ -1205,7 +1389,7 @@ a.inactive-city {
 	float:left;
 	width:85px;
 	padding-top:5px;
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #profile .birdies .points {
@@ -1221,7 +1405,24 @@ a.inactive-city {
 	height:auto;
 	margin:10px 0px;
 }
-
+.subsection.register-btn {
+    background: #9eb43a;
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    width: 150px;
+    padding: 10px 10px;
+    border-radius: 25px;
+ 
+}
+.register-btn .buttonwrapper {
+    float: none !important;
+    text-align: center;
+}
+.subsection.register-btn a{
+   text-align: center;
+    color: #fff;
+}
 /*.birdies .images img {
 	position:absolute;
 	top:-50px;
@@ -1346,13 +1547,12 @@ a.inactive-city {
 
 #inbox-message {
 	margin-bottom:20px;
-	width:360px;
-	margin-top:39px;
+	width: 100%;
 }
 
 #msg-div{
 	margin:20px 0px 10px 0px;
-	width:320px;
+	width:100%;
 }
 
 #msg-div h2{
@@ -1360,22 +1560,23 @@ a.inactive-city {
 }
 
 #msg-div #msg{
-	color:#fff;
-	background-color:#000;
-	height:80px;
-	padding:10px;
-	overflow-y:auto;
+color: #4e4e4e;
+    background-color: #dedfdd;
+    height: 80px;
+    padding: 10px;
+    overflow-y: auto;
 }
 
 #inbox-message #msgheader {
-	background-color:#FDFBA6;
-	padding:5px;
-	border-radius:4px;
+   background-color: #dedfdd;
+    /* padding: 5px; */
+    border-radius: 0;
 }
 
 #inbox-message #msgheader h2 {
-	color:#000;
-	padding:2px;
+    color: #676768;
+    font-size: 15px;
+    padding: 10px 10px;
 }
 
 #inbox-message h3 {
@@ -1385,11 +1586,12 @@ a.inactive-city {
 }
 
 #inbox-message #msg {
-	background-color:#000;
-	color:#fff;
-	padding:10px;
-	height:120px;
-	overflow-y:scroll;
+    background-color: #dedfdd;
+    color: #636363;
+    padding: 20px;
+    max-height: 120px;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 #inbox #banner {
@@ -1404,12 +1606,12 @@ a.inactive-city {
 
 .msgboard-section {
 	clear:both;
-	padding: 20px 20px;
+	padding: 0px 20px;
 	min-height:660px;
 }
 
 .post {
-	margin:20px 0;
+   margin: 0;
 }
 
 .post h3 {
@@ -1454,7 +1656,7 @@ a.inactive-city {
 }
 
 .course-section h2 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 /* ========== coursedetails.jsp ========== */
@@ -1464,19 +1666,21 @@ a.inactive-city {
 
 .course-phones h2 {
 	text-align:right;
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-weight:normal;
 }
 
 /* ========== schedule.jsp ========== */
 
 #schedule-none {
-	text-align:right;
-	color:#ff3300;
-	font-size:13px;
-	text-transform:uppercase;
-	width:600px;
-	font-weight:bold;
+    text-align: left;
+    color: #9cb23b;
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
+    background: #40444d;
+    padding: 20px 30px;
 }
 
 #search {
@@ -1485,44 +1689,91 @@ a.inactive-city {
 
 table.schedule {
 	margin-bottom:20px;
+width: 100%;
 }
 
 .search-row {
-	float:left;
+	/*float:left;
 	height:40px;
-	padding-bottom:20px;
+	padding-bottom:20px;*/
 }
 .search-col {
-	height:50%;
+	/*height:50%;
 	padding:0 5px;
-	line-height:28px;
+	line-height:28px;*/
+	
 }
-
+.search-col, .search-col a {
+    line-height: 22px;
+    color: #444;
+    text-decoration: none;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+.search-col.col-sm-6:first-child {
+    margin-bottom: 0px;
+    line-height: 24px;
+}
 .search-col h4 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	padding-top:8px;
+}
+.list-view-match label {
+    padding: 5px 0px;
+    line-height: 14px;
 }
 
 .search-col input[type="checkbox"]
 {
-	margin-top:7px;
+    background: none !important;
+    border: none !important;
+    position: relative;
+    top: 1px;
 }
+.search-col input[type='checkbox']:after {
+    width: 16px;
+    height: 16px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #fff;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #bbbbbb;
+    }
 
+
+.search-col input[type='checkbox']:checked:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+    top: -2px;
+    left: -1px;
+        position: relative;
+        background-color: #9cb23b;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
 div.member-section {
 	clear:both;
-	height:580px;
+	margin-bottom:20px;
+padding: 20px;
+	/*height:580px;
 	margin-top:120px;
 	margin-left:10px;
 	margin-right:10px;
-	margin-bottom:20px;
 	overflow:auto;
-	overflow-y:scroll;
+	overflow-y:scroll;*/
 }
 
 div.champion-section {
 	clear:both;
 	min-height:620px;
-	margin-top:20px;
+	margin-top: 30px;
 	margin-left:10px;
 	margin-right:10px;
 	margin-bottom:20px;
@@ -1538,20 +1789,26 @@ div.champion-section div.threecol-frame {
 }
 
 div.champion-section div.threecol-frame div.buttonwrapper {
-	position:absolute;
+	/*position:absolute;
 	margin-top:22px;
-	left:200px;
+	left:200px;*/
 }
 
 div.member-section p {
 	margin-top:2px;
 	margin-bottom:2px;
 }
+.champion-section.col-sm-10 .row {
+    margin-left: 0px;
+}
+.cham-year-drop {
+    margin-top: 30px;
+}
 
 /* ========== results.jsp ========== */
 #result-members {
 	margin:13px 10px 0px;
-	height:202px;
+	/*height:202px;*/
 }
 #matchForm .buttons a.msg-link {
 	display:block;
@@ -1583,7 +1840,7 @@ div.member-section p {
 
 /* Player Boxes */
 #result-members h3 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-size:13px;
 	font-weight:bold;
 	margin-bottom:8px;
@@ -1645,18 +1902,25 @@ div.member-section p {
 
 /* ========== standings.jsp ========== */
 #standings-container {
-	margin: 35px 30px 35px;
-	width:620px;
+	    margin: 0;
+    width: 100%;
+    position: relative;
+    top: -50px;
+
 }
 
 #standings-scroller {
 	/*overflow:auto;*/
-	overflow-y:scroll;
-	height:334px;
+	    overflow-y: auto;
+    max-height: 510px;
+    height: 100%;
 }
 
 #standings-container table {
-	width:600px;
+	width:100%;
+}
+#standings-container table .first-row, #standings-container table .first-row td{
+background: #40444d !important;
 }
 
 /* Center text and give standard padding */
@@ -1669,35 +1933,36 @@ div.member-section p {
 }
 /* TH tags */
 #standings-container table th {
-	padding:6px 4px 15px;
-	font-size:18px;
-	font-weight:bold;
-	color:#18100d;
-	background:none;
-	text-transform:uppercase;
-	background:url(../../images/heading_standings_column.jpg) no-repeat left top;
+    padding: 6px 4px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background: none;
+    text-transform: uppercase;
+	
 }
 #standings-container table th.first {
-	background:url(../../images/heading_standings_left.jpg) no-repeat left top;
+	
 }
 #standings-container table th.last {
-	width:57px;
-	background:url(../../images/heading_standings_right.jpg) no-repeat right top;
+	
 }
 /* First Row, Red */
 #standings-container table .first-row, #standings-container table .first-row a, #standings-container table .first-row a:link {
-	color:#ff3300;
+	color:#fff !important;
 }
 /* Use borders on table cells to simulate seing background */
 #standings-container table .even td, #standings-container table .odd td {
-	border-left:2px solid #23201f;
-	border-right:2px solid #23201f;
-	background:#000000;
-	padding:3px 4px;
-	height:14px;
+    background: #ffffff;
+    padding: 15px 4px;
+    height: 14px;
+color: #333;
 }
 #standings-container table .even td {
-	background:#23201f;
+    background: #dedfdd;
+}
+#results tr.odd.first-row td {
+    color: #fff !important;
 }
 
 /* Column Widths */
@@ -1717,14 +1982,36 @@ div.member-section p {
 /*#standings-container table tr td + td + td + td + td + td + td {width: auto;} /* Rest */
 
 #standings-container table .pos {
-	width: 40px;
+	width: 5%;
 }
 #standings-container table .player {
-	width: 100px;
+	width: 40%;
+    text-align: left !important;
 }
 #standings-container table .course {
-	width: 160px;
+	width: 10%;
 }
+#results tbody tr td:nth-child(1)
+  {width:5%}
+
+
+#results td:nth-child(2)
+  {width:40% ;     text-align: left !important;}
+
+
+
+#results tbody tr td:nth-child(3)
+  {width:10%}
+
+
+#results td:nth-child(4)
+  {width:10%}
+  #results td:nth-child(5)
+  {width:10%}
+  #results td:nth-child(6)
+  {width:10%}
+  #results td:nth-child(7)
+  {width:10%}
 
 /*
 #standings-container table .points {
@@ -1742,21 +2029,23 @@ div.member-section p {
 #standings-container table .ties {
 	width: 40px;
 }
+
 */
 
 .playoffs-counter {
-	position:absolute;
-	right:25px;
-	top:230px;
-	width:130px;
-	height:73px;
-	padding:37px 70px 0px 0px;
-	color:#ffffff;
-	font-size:63px;
-	font-weight:bold;
-	line-height:63px;
-	text-shadow: 2px 2px 2px #222;
-	background:url(../../images/playoffs_begin.gif);
+position: absolute;
+    right: 25px;
+    top: 230px;
+    width: 200px;
+    height: 120px;
+    padding: 37px 70px 0px 0px;
+    color: #ffffff;
+    font-size: 63px;
+    font-weight: bold;
+    line-height: 63px;
+    text-shadow: 2px 2px 2px #222;
+    background: url(../../images/playoffs_begin.gif);
+    background-repeat: no-repeat;
 }
 
 .playoffs-counter-number {
@@ -1783,15 +2072,20 @@ div.record-section .match {
 	color:#FCF9B4;
 	font-size:18px;
 }
+.userInfo {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 10px;
+}
 .userInfo .season {
 	color:#9dc227;
 	font-weight:bold;
 	font-size:12px;
 }
 .userInfo .division {
-	color:#fcf9b4;
-	font-weight:bold;
-	font-size:12px;
+    color: #9dc227;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .match p {
@@ -1803,20 +2097,21 @@ div.record-section .match {
 /* ========== playoffs.jsp ========== */
 
 #bracket-container {
-	background:url(../../images/rounds.gif) no-repeat left top;
+	background:url(../../images/rounds.png) no-repeat left top;
 	padding-top:40px;
 	margin-top:20px;
 	margin-left:16px;
 	margin-top:30px;
-	width:860px;
+	width:90%;
 	height:600px;
 }
 
 #bracket {
-	width:860px;
+	width:90%;
 	height:400px;
 	position:absolute;
-	background:transparent url(../../images/bracket.gif) repeat scroll 0 0;
+	background:transparent url(../../images/bracket.gif) no-repeat scroll;
+	background-position: 0px 8px;
 }
 
 #bracket div {
@@ -1824,165 +2119,167 @@ div.record-section .match {
 }
 
 #bracket #trophy {
-	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
+	background:transparent url(../../images/trophy.png) repeat scroll 0 0;
 	top:12px;
 	left:392px;
 	width:71px;
 	height:71px;
 }
-
+#bracket div a {
+    text-decoration: none !important;
+}
 #r1m1p1 {
-	top:15px;
-	left: 8px;
+    top: 25px;
+    left: 40px;
 }
 
 #r1m1p2 {
-	top:65px;
-	left:8px;
+	top:75px;
+	left:40px;
 }
 
 #r1m2p1 {
-	top:105px;
-	left:8px;
+	top:118px;
+	left:40px;
 }
 
 #r1m2p2 {
-	top:155px;
-	left:8px;
+	top:168px;
+	left:40px;
 }
 
 #r1m3p1 {
-	top:195px;
-	left:8px;
+	top:214px;
+	left:40px;
 }
 
 #r1m3p2 {
-	top:245px;
-	left:8px;
+	top:265px;
+	left:40px;
 }
 
 #r1m4p1 {
-	top:285px;
-	left:8px;
+	top:305px;
+	left:40px;
 }
 
 #r1m4p2 {
-	top:335px;
-	left:8px;
+	top:355px;
+	left:40px;
 }
 
 #r1m5p1 {
-	top:15px;
+	top:25px;
 	left:768px;
 }
 
 #r1m5p2 {
-	top:65px;
+	top:75px;
 	left:768px;
 }
 
 #r1m6p1 {
-	top:105px;
+	top:115px;
 	left:768px;
 }
 
 #r1m6p2 {
-	top:155px;
+	top:165px;
 	left:768px;
 }
 
 #r1m7p1 {
-	top:195px;
+	top:200px;
 	left:768px;
 }
 
 #r1m7p2 {
-	top:245px;
+	top:255px;
 	left:768px;
 }
 
 #r1m8p1 {
-	top:285px;
+	top:295px;
 	left:768px;
 }
 
 #r1m8p2 {
-	top:335px;
+	top:345px;
 	left:768px;
 }
 
 #r2m1p1 {
-	top:42px;
-	left:118px;
+	top: 50px;
+	left: 160px;
 }
 
 #r2m1p2 {
-	top:132px;
-	left:118px;
+	top: 140px;
+	left: 160px;
 }
 
 #r2m2p1 {
-	top:222px;
-	left:118px;
+	top: 233px;
+	left: 160px;
 }
 
 #r2m2p2 {
-	top:312px;
-	left:118px;
+	top: 325px;
+	left: 158px;
 }
 
 #r2m3p1 {
-	top:42px;
+	top: 48px;
 	left:644px;
 }
 
 #r2m3p2 {
-	top:132px;
+	top: 140px;
 	left:644px;
 }
 
 #r2m4p1 {
-	top:222px;
+	top: 235px;
 	left:644px;
 }
 
 #r2m4p2 {
-	top:312px;
-	left:644px;
+	top: 330px;
+	left: 650px;
 }
 
 #r3m1p1 {
-	top:88px;
-	left:228px;
+	top: 95px;
+	left: 285px;
 }
 
 #r3m1p2 {
-	top:268px;
-	left:228px;
+	top: 280px;
+	left: 280px;
 }
 
 #r3m2p1 {
-	top:88px;
-	left:534px;
+	top: 95px;
+	left: 520px;
 }
 
 #r3m2p2 {
-	top:268px;
-	left:534px;
+	top: 280px;
+	left: 525px;
 }
 
 #r4m1p1 {
-	top:142px;
-	left:338px;
+	top: 150px;
+	left: 395px;
 }
 
 #r4m1p2 {
-	top:192px;
-	left:422px;
+	top: 225px;
+	left: 415px;
 }
 
 #champion {
-	top:300px;
+	top:340px;
 	left:330px;
 	width:202px;
 }
@@ -2061,70 +2358,92 @@ div.record-section .match {
 	border-bottom:1px solid #23201f;
 	font-size:18px;
 	font-weight:bold;
-	color:#FDFBA6;
+	color:#8DA92E;
 	padding:10px 0 10px 0;
 }
 
 #champion .label {
-	font-size:18px;
-	color:#ABBCCF;
-	padding-top:10px;
+    font-size: 18px;
+    color: #888888;
+    padding-top: 10px;
+    text-transform: uppercase !important;
+    font-weight: normal;
 }
 
 /* ========== champions.jsp ========== */
 
 p.champ-info {
-	font-size:12px;
-	font-weight:bold;
-	color:#7f8c9a;
+    font-size: 12px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+.frame-box p {
+    color: #4a4a4a;
 }
 
 /* ========== userForm.jsp ========== */
 
 .edituser-section {
-	margin-top:20px;
-	margin-left:10px;
+	/*margin-top:20px;
+	margin-left:10px;*/
 }
 
-#edituser label {
-	display:block;
-	padding-top:4px
+/*#edituser label {
+	/*display:block;
+	padding-top:4px*/
+color: #585859;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 4px;
+    font-weight: 600;
+    padding-bottom: 4px;
 }
-
+*/
 #edituser label.radiolabel {
 	display:inline;
 }
 
 #edituser legend {
-	color:#FDFBA6;
+	/*color:#8DA92E;
 	font-size:16px;
 	text-transform:uppercase;
 	padding-top:4px;
-	padding-bottom:4px;
-}
+	padding-bottom:4px;*/
+color: #585859;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 4px;
+    font-weight: 600;
+    padding-bottom: 4px;
+	
 
+}
+fieldset.other-info legend, fieldset.equip legend {
+    padding-bottom: 20px !important;
+    padding-top: 10px !important;
+}
 #edituser input[type="text"] {
-	width:266px;
+	width:100%;
 }
 
 #edituser input[type="password"] {
-	width:266px;
+	width:100%;
 }
 
 #edituser img {
 	margin-left:4px;
 	margin-right:4px;
-	width: 40px;
-	height: 40px;
+    width: 50px;
+    height: 50px;
 }
 
 #edituser select {
-	width:268px;
+	width: 100%;
 }
 
 
 #edituser #ghinNumber {
-	width:110px;
+	width: 110px;
 }
 
 #edituser #handicap {
@@ -2133,7 +2452,7 @@ p.champ-info {
 
 #edituser .mandatory {
 	margin-top:10px;
-	color:#FF0000;
+	color:#000;
 }
 
 #edituser .mandatory-msg {
@@ -2145,16 +2464,11 @@ p.champ-info {
 	color:#ff0000;
 }
 
-#edituser .sixcol {
-	width: 132px;
-}
-
 /*=========== registration.jsp ==========*/
 
 #registrationForm {
 	margin-top:10px;
-	background-color:#000;
-	width:500px;
+	width: 100%;
 }
 
 #registrationForm label {
@@ -2167,40 +2481,68 @@ p.champ-info {
 }
 
 #registrationForm legend {
-	color:#FDFBA6;
-	font-size:16px;
-	text-transform:uppercase;
-	padding-top:20px;
-	padding-bottom:4px;
+color: #40444d;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+    padding-top: 20px;
 }
 
 #registrationForm .cost {
 	margin-left:10px;
+       color: #4d4d4d;
+line-height: 34px;
 }
 
 #registrationForm select {
-    width: 268px;
+  width: 65%;
+    float: left;
+    padding: 5px;
+    border-radius: 25px;
+    border: 1px solid #bbbbbb;
+    color: #272727 !important;
+    background: #ffffff !important;
 }
-
+.regsectionTab{
+  padding: 20px 0px;
+}
 .reg-msg
 {
-	margin-top: 20px;
-	width: 680px;
+margin-top: 20px;
+    width: 100%;
+    line-height: 18px;
+    color: #fff;
+    background: #40444d;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 10px 5px;
 }
-
+#registrationForm label {
+    display: inline;
+    padding-top: 4px;
+    width: 35%;
+    float: left;
+    line-height: 24px;
+}
+#registrationForm .form-reg div {
+    padding: 15px 0px;
+clear: both;
+}
 .regsection {
-	float:left;
-	width:840px;
+	
+	width:100%;
+       /*float:left;
 	padding:10px;
 	font-size:14px;
 	color:#fff;
 	line-height:20px;
-	min-height: 620px;
+	min-height: 620px;*/
 }
 
 .regsection img {
 	vertical-align: top;
-	margin-left: 20px;
+   width: 120px;
 }
 
 .regsection .seal
@@ -2217,11 +2559,26 @@ p.champ-info {
 .regsection .col .buttons {
 	margin-top: 10px;
 }
-
-.regsection input {
-	width: 266px;
+.reg-btn .white-btn {
+    border: 1px solid #b1b1b1;
+}
+.buttons.reg-btn {
+    padding: 20px 0px;
+    clear: both;
+    overflow: hidden;
+    position: relative;
+    right: 20px;
+    top: 0;
 }
 
+.regsection input {
+    width: 70%;
+    float: left;
+    border: none;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
+}
 .regsection select {
 	width: 240px;
 }
@@ -2245,7 +2602,7 @@ p.champ-info {
 }
 
 .regsection h3 {
-	color: #FDFBA6;
+	color: #40444d;
 	/*margin-bottom: 50px;*/
 	text-align: center;
 }
@@ -2253,23 +2610,33 @@ p.champ-info {
 .regsection h3.top-msg
 {
 	text-align:left;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background: #e4ba00;
+    padding: 20px 10px;
+    color: #fff;
+    font-weight: normal;
 }
 
-.regsection .thankyou-msg
-{
-	margin-top: 20px;
-    width: 680px;
+.regsection .thankyou-msg {
+    margin-top: 0px;
+    width: 100%;
     margin-bottom: 45px;
+    line-height: 15px;
+ box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    background: #e4ba00;
+   padding: 20px 10px;
 }
 
 .regsection .conf-col {
-	float: left;
-	width: 350px;
-	height: 130px;
-	margin-right: 10px;
-	margin-bottom: 15px;
+    margin-bottom: 20px;
+    min-height: 250px;
+    padding: 20px;
+    margin-top: 30px;
 }
 
+.amount {
+    padding: 20px 0px;
+}
 .regsection .conf-col div.header
 {
 	text-align:left;
@@ -2277,6 +2644,11 @@ p.champ-info {
 	font-size:14px;
 	text-transform:uppercase;
 	margin-bottom: 15px;
+}
+.regsectionTab select#registration {
+    border-radius: 0;
+    padding: 10px;
+    width: 50%;
 }
 
 .regsection .conf-col h3
@@ -2289,7 +2661,10 @@ p.champ-info {
 }
 
 .regsection #print {
-	margin-left: 400px;
+   text-align: right;
+    display: block;
+    width: 100%;
+    margin: 20px 0px;
 }
 
 .regsection #print div{
@@ -2301,7 +2676,15 @@ p.champ-info {
 	text-transform: uppercase;
 	color: #e46c0a;
 }
-
+.conf-account h3 {
+    padding: 10px 0px;
+}
+.conf-season {
+    margin-top: 20px;
+}
+div#print .white-btn, div#print .green-btn {
+    float: right;
+}
 /* ========== about.jsp contact.jsp rules.jsp ========== */
 
 .about-cgl {
@@ -2312,10 +2695,10 @@ p.champ-info {
 }
 	
 #about-content {
-	padding:20px 20px 5px 20px;;
-	width:860px;
+	padding:20px 20px 5px 20px;
+	width:100%;
 	min-height:660px;
-	background-color:#23201f;
+	background-color:#dadada;
 	line-height:16px;
 }
 
@@ -2337,7 +2720,7 @@ p.champ-info {
 
 #about-content h2, #contact-content h2 {
 	font-size:15px;
-	color:#FDFBA6;
+	color:#8DA92E;
 	line-height:20px;
 	text-transform:uppercase;
 }
@@ -2352,7 +2735,7 @@ p.champ-info {
 }
 
 #about-content td {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #about-content p {
@@ -2362,9 +2745,9 @@ p.champ-info {
 
 #contact-content {
 	padding:20px;
-	width:860px;
+	width:100%;
 	min-height:640px;
-	background-color:#23201f;
+	background-color:#dadada;
 	line-height:16px;
 }
 
@@ -2383,7 +2766,7 @@ p.champ-info {
 }
 
 #contact-content h3 {
-	color:#FDFBA6;
+	color:#8DA92E;
 }
 
 #contact-content p {
@@ -2439,12 +2822,11 @@ p.champ-info {
 /* Change row background colors */
 .messages tr.even {
 	background:none;
-	height:25px !important;
+	/*height:55px !important;*/
 }
 .messages tr.odd {
-	/*background:#24201f;*/
-	background:#18100d;
-	height:25px !important;
+    background: #dedfdd;
+   /* height: 55px !important;*/
 }
 
 /* Conent background */
@@ -2494,24 +2876,35 @@ p.champ-info {
 /* ============ members.html ============ */
 /* Justifying Search button with right side of 3rd Profile */
 #members #search {
-	margin-right:15px;
+	    margin-right: 0;
+    padding: 20px;
+    width: 100%;
 }
 /* Shorten height of input boxes */
 #members #search input[type=text] {
-	height:13px;
-	padding:1px 2px;
-	margin-top:4px;
+margin-top: 4px;
+    border: 1px solid #eeeeed;
+    background: #eeeeed;
+    width: auto;
+    border-radius: 24px;
+    padding: 0px 10px;
+	    width: 100%;
 }
 /* Shorten height of select boxes */
 #members #search select {
-	height:17px;
-	padding:1px;
-	margin-top:4px;
+margin-top: 4px;
+    border: 1px solid #eeeeed;
+    background: #eeeeed;
+    width: auto;
+    border-radius: 24px;
+    padding: 0px 10px;
+	    width: 100%;
 }
 /* Move search button down a touch */
 #members #search .buttonwrapper {
-	margin:1px 0px 0px;
-	* margin:6px 0px 0px;
+    text-align: center;
+    display: inline;
+    margin: 0;
 }
 /* Align Profile button with bottom of icon */
 .player-info {
@@ -2530,20 +2923,23 @@ p.champ-info {
 }
 /* 'Division' text */
 .player-info h3 {
-	color:#feff99;
-	font-size:15px;
-	margin:0px;
-	padding:0px;
-	float:left;
-	font-weight:bold;
+    color: #292929;
+    font-size: 15px;
+    margin: 10px 0px;
+    padding: 0px;
+    float: none;
+    font-weight: normal;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-align: center !important;
 }
 /* Padding to Right of Image */
 .player-info img {
-	padding-right:5px;
+	padding-left: 50px;
 }
 
 .regbanner {
 	margin-top:20px;
+    position: relative;
 }
 
 #profile .player-info img {
@@ -2558,15 +2954,16 @@ p.champ-info {
 /* ============ playoffs.html ============ */
 /* Change Trophy Logo */
 #bracket #trophy {
-	background:transparent url(../../images/trophy.gif) repeat scroll 0 0;
-	top:12px;
-	left:392px;
-	width:71px;
-	height:71px;
+	background:transparent url(../../images/trophy.png) repeat scroll 0 0;
+	top: 32px;
+    left: 412px;
+    width: 72px;
+    height: 71px;
+    background-size: contain;
 }
 /* This just adds 'rounds' image to background and adjusts spacing */
 #bracket-container {
-	background:url(../../images/rounds.gif) no-repeat left top;
+	background:url(../../images/rounds.png) no-repeat left top;
 	padding-top:40px;
 	margin-top:20px;
 }
@@ -2760,21 +3157,23 @@ p.champ-info {
 /* ============= schedule.html ============ */
 /* Change color of background */
 #schedule {
-	background:#18100d url(../../images/bg_checkered.jpg);
+	/*background:#18100d url(../../images/bg_checkered.jpg);*/
 	height:600px;
 	padding-bottom:100px;
 }
 /* Change Heading Colors to Design Comp */
 #schedule-header {
-	padding:0px;
+	    background: #40444d;
+    padding: 10px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 #schedule-header h4 {
 	color:#9aca02;
 	font-weight:bold;
 }
 #schedule-header h4.division {
-	color:#feff99;
-	font-weight:bold;
+    color: #ececec;
+    font-weight: normal;
 }
 /* Table Width */
 .schedule {
@@ -2786,29 +3185,50 @@ p.champ-info {
 	background:none;
 }
 .schedule th {
-	background:url(../../images/row_yellow.jpg) repeat-x;
-	height:33px;
-	font-size:12px;
-	font-weight:bold;
-	padding:6px 10px;
-	color:#000000;
+height: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 10px;
+    background: #40444d;
+    color: #fff;
+    line-height: 24px;
+}
+.schedule th.opp {
+    padding-left: 22px;
+}
+.schedule tbody tr td:first-child {
+    padding-left: 25px;
+}
+.schedule th:nth-child(4), .schedule tbody tr td:nth-child(4){
+    text-align: right;
+}
+.schedule th:last-child, .schedule tbody tr td:last-child{
+    text-align: right;
+padding-right: 25px;
 }
 /* Row Backgrounds */
 .schedule tr.even {
 	background:none;
 }
 .schedule tr.odd {
-	background:#24201f;
+	    background: #dedede;
+    height: 40px;
 }
 /* Cell Padding */
 .schedule td {
-	padding:4px 10px;
+	padding: 4px 10px;
+    line-height: 25px;
+    color: #525252;
+    font-weight: normal;
 }
 .schedule td.opponent {
 	font-weight:bold;
 	font-size:12px;
 }
-
+.schedule td a{
+    color: #525252;
+    font-weight: normal;
+}
 /* ============== signup.html ============= */
 /* Needed to decrease space between 'section' divs.  I know you use this oe a lot, though, so I had to add the signup div around the whole of the page content */
 #signup div.section {
@@ -2875,7 +3295,7 @@ p.champ-info {
 	padding:0px 10px 6px;
 }
 #signup .otherInformation h2 {
-	color:#FDFBA6;
+	color:#8DA92E;
 	font-size:14px;
 	font-weight:bold;
 	text-transform:uppercase;
@@ -2929,8 +3349,9 @@ p.champ-info {
 }
 
 .signup-icon {
-	float:left;
-	margin-right:20px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
 }
 
 
@@ -3052,16 +3473,16 @@ p.champ-info {
 }
 
 #inbox table.messages tbody{
-	width:460px;
+	width: 100%;
 	height:148px;
 }
 
 #inbox table.messages tr, #inbox table.messages td{
-	width:320px;
+	width: 100%;
 }
 
 #home-msgbrd table.messages tbody{
-	width:320px;
+	width: 100%;
 	font-size:12px;
 	font-weight:bold;
 	display:block !important;
@@ -3069,7 +3490,7 @@ p.champ-info {
 }
 
 #home-msgbrd table.messages tbody td{
-	width:100px;
+	width: 100%;
 }
 
 #home-msgbrd table.messages thead th
@@ -3077,10 +3498,12 @@ p.champ-info {
 	width:90px;
 }
 
-#inbox-message p.msg-head{
-	color: #FDFBA6;
-	padding-left: 10px;
-    padding-top: 15px;
+#inbox-message p.msg-head {
+    color: #636363;
+    padding-left: 20px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
 }
 
 #inbox-message a.reply-link{
@@ -3100,13 +3523,13 @@ p.champ-info {
 }
 
 #profile table.messages tbody{
-	width:250px;
-	height:80px;
-	overflow-y:scroll;
+    width:100%;
+    height: 80px;
+    overflow-y: scroll;
 }
 
 #profile table.messages tbody td{
-	width:108px;
+	width: 195px;
 }
 
 .public-post{
@@ -3167,17 +3590,17 @@ p.champ-info {
 
 /* ============== congrats.html ============= */
 #congrats {
-	background:#18100d url(../../images/bg_checkered.jpg);
+	background:#dedfdd;
 	height:472px;
-	padding: 100px 12px;
+	padding: 50px 12px;
 }
 
 #congrats-msg-div{
-	background: none repeat scroll 0 0 #000000;
+	background: #40444d;
 	padding: 28px 28px 25px 28px;
 	color: #fff;
 	height: 75px;
-	width: 800px;
+	width: 100%;
 	border-radius: 5px;
 	margin: 12px;
 }
@@ -3186,11 +3609,15 @@ p.champ-info {
 {
 	font-size:35px;
 	font-weight:lighter;
+	line-height: 24px;
+	vertical-align: middle;
 }
 
 #congrats-txt{
 	color:#a8d60f;
 	padding-left: 15px;
+line-height: 24px;
+	vertical-align: middle;
 }
 
 #congrats-msg{
@@ -3214,7 +3641,7 @@ p.champ-info {
     margin-right: 30px;
     margin-top: 50px;
     min-height: 420px;
-    width: 820px;	
+    width: 90%;	
 }
 
 .congrats-para-div{
@@ -3251,8 +3678,8 @@ p.champ-info {
 
 /* ========== profile.jsp ========== */
 .tee-off-img{
-	width:292px;
-	height:170px;
+    width: 100%;
+    height: 100%
 }
 
 #birdie-info-div{
@@ -3377,5 +3804,1594 @@ output:after {
 }
 
 .court-section h2 {
-	color:#FDFBA6;
+	color:#5d5d5d;
+}
+
+/*Preety changes */
+.page_title h2 {
+    text-transform: uppercase;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    height: 200px;
+text-align: center;
+}
+.navbar {
+   padding: 15px 10px 15px;
+    background-color: #9cb23b !important;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    display: block;
+}
+.page-container {
+    position: relative;
+    top: -70px;
+    max-width: 100%;
+    flex: 0 0 100%;
+    min-height: auto;
+max-height: 100%;
+}
+h2.page-title span {
+    display: none;
+}
+.page_title #header {
+    position: absolute;
+    bottom: 40%;
+    font-size: 15px;
+}
+ #main-nav hr {
+    margin: 0 auto;
+    width: 90px;
+    border-top: 2px solid #a1a1a1;
+    text-align: left;
+    margin-left: 10px;
+    padding-bottom: 20px;
+}
+div#top-nav .links {
+    vertical-align: top;
+}
+.second-menu a {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+}
+.second-menu a.active {
+    color: #9cb23b;
+}
+/* Sign up pages */
+.page-container #edituser {
+    padding: 0px 15px;
+}
+/*
+ .field-wrapper{
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: 15px;
+        }
+ 
+        .field-wrapper input, .field-wrapper select{
+    border-bottom: 1px solid #494949 !important;
+    padding: 10px;
+    border-radius: 0;
+    width: 100%;
+    border: 0px;
+    background: transparent;
+        }
+ 
+ .field-wrapper .field-placeholder{
+            font-size: 16px;
+            position: absolute;
+            background: none;
+            bottom: 10px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #80868b;
+            left: 0;
+            -webkit-transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            z-index: 1;
+            text-align: left;
+            width: 100%;
+        } 
+        
+        .field-wrapper .field-placeholder label{
+            background: none;;
+            padding: 0px;
+color: #000;
+        }
+ 
+        .field-wrapper input:not([disabled]):focus~.field-placeholder,
+		.field-wrapper select:not([disabled]):focus~.field-placeholder
+        {
+            color:#9cb23b;
+        }
+ 
+        .field-wrapper input:not([disabled]):focus~.field-placeholder,
+        .field-wrapper.hasValue input:not([disabled])~.field-placeholder,
+		.field-wrapper select:not([disabled]):focus~.field-placeholder,
+        .field-wrapper.hasValue select:not([disabled])~.field-placeholder,
+        {
+            -webkit-transform: scale(.75) translateY(-30px) translateX(-35px);
+            transform: scale(.75) translateY(-30px) translateX(-35px);
+            
+        } 
+ .field-wrapper input:focus,
+ .field-wrapper input:active,
+ .field-wrapper input:hover,
+ .field-wrapper input:visited,
+  .field-wrapper select:focus,
+ .field-wrapper select:active,
+ .field-wrapper select:hover,
+ .field-wrapper select:visited{
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    border-bottom: 1px solid #494949 !Important;
+}*/
+
+#edituser label.checkboxlabel {
+    display: inline;
+    color: #333;
+}
+.section.signup-section {
+    padding: 20px 0px;
+}
+
+.signup-section legend {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.section.signup-section legend label {
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: initial;
+}
+
+.signup-icon img {
+    margin-left: 4px;
+    margin-right: 4px;
+    width: auto;
+    height: auto;
+}
+.icon-input {
+ width: 19px;
+    height: 19px;
+    border: none;
+    border-radius: 50%;
+    float: right;
+    margin-right: 5px;
+  
+}
+.signup-icon .icon-input input[type=radio]{
+    padding: 20px;
+    height: 16px;
+    width: 16px;
+    background: none !important;
+  }
+
+.signup-icon .icon-input input[type='radio']:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
+
+
+.signup-icon .icon-input input[type='radio']:checked:after {
+        width: 16px;
+        height: 16px;
+        border-radius: 15px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #9cb23b;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #9cb23b;
+    }
+.green-btn {
+    border-radius: 25px;
+    background: #9cb23b;
+    padding: 5px 20px;
+}
+.white-btn {
+    border-radius: 25px;
+    background: #fff;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+.white-btn a, .green-btn a, .white-btn a span, .green-btn a span{
+ background: none !important;
+
+}
+.white-btn a span{
+ color: #333 !important;
+}
+.green-btn a span{
+ color: #fff !important;
+}
+.green-btn a:hover {
+    text-decoration: none;
+} 
+.white-btn a:hover span{
+    color: #333 !important;
+    text-decoration: none;
+} 
+
+/*Leader page*/
+form#command {
+    display: inline-block;
+}
+form#command {
+    padding: 0px 30px 0px 0px;
+}
+form#command select {
+    border: 1px solid #fff;
+    background: transparent;
+    border-radius: 20px;
+    padding: 7px 10px;
+    color: #fff;
+}
+
+#standings-scroller{
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+    box-shadow: 0px 0px 5px 5px rgba(175, 175, 175, 0.26);
+}
+
+/*Profile*/
+.player-info{
+ padding: 0px 20px;
+}
+.heading-golfer {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 10px;
+    color: #fff;
+}
+.heading-golfer h4{
+    color: #fff !important;
+    display: inline;
+    line-height: 24px;
+    padding-left: 25px;
+    margin-top: 0px;
+    padding-bottom: 0;
+}
+.heading-golfer img {
+    display: inline;
+    text-align: right;
+    float: right;
+    width: auto;
+    height: 30px;
+}
+.flu-box {
+    background: #fff;
+    color: #333;
+    margin-top: 15px;
+    padding: 30px
+}
+.flu-box p {
+    font-weight: normal;
+    line-height: 24px;
+}
+
+/*Mmeber page*/
+.grey-box {
+    background: #dedfdd;
+    overflow: hidden;
+}
+.member-btn{
+      position: absolute;
+    right: 30px;
+    bottom: 0px;
+}
+.member-btn .buttonwrapper a {
+      margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.member-btn .white-btn{
+border-radius: 25px;
+    background: transparent;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: 1px solid #fff;
+
+}
+/*champion page*/
+.year-heading{
+    text-align: left;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
+    background: #40444d;
+    padding: 20px 30px;
+
+}
+.cham-year-drop #changeYear {
+    border: 1px solid #6b6b6b;
+    border-radius: 25px;
+    padding: 6px 12px;
+    color: #6b6b6b;
+}
+
+.champion-section .card {
+    border-radius: 0;
+    background: #dedfdd;
+   padding: 25px 0px;
+    /* text-align: center; */
+}
+div.champion-section div.threecol-frame div.buttonwrapper a {
+    text-align: center;
+    float: none !important;
+    width: auto !important;
+    background: none;
+    display: inline;
+    background-color: #eeeeed;
+    padding: 10px 30px;
+    border-radius: 25px;
+    color: #333;
+}
+
+div.champion-section div.threecol-frame div.buttonwrapper a.squarebutton span {
+    background: none !important;
+    display: inline !important;
+    color: #333 !important;
+    padding: 0 !important;
+}
+/*Hoem page*/
+.std-pad h2 {
+    color: #9cb23b;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.signup-txt {
+    position: absolute;
+    top: -82px;
+    bottom: 0;
+    display: inline-block;
+    padding: 40px 45px;
+    font-size: 38px;
+    background: rgba(12, 12, 12, 0.4117647058823529);
+	text-decoration: none;
+}
+.clickhere {
+    text-align: right;
+    float: right;
+    position: absolute;
+    top: -54px;
+    bottom: 0;
+    display: inline-block;
+    padding: 20px 40px;
+    font-size: 30px;
+    right: 13%;
+    width: auto;
+    background: #9cb43a;
+    border-radius: 20px;
+    line-height: 24px;
+text-decoration: none;
+}
+.signup-txt:hover, .clickhere:hover{
+ color: #fff;
+}
+.hm-tag {
+    margin-top: 30px;
+}
+.hm-tag .heading-golfer {
+   padding: 15px 30px;
+    overflow: hidden;
+}
+.hm-tag .heading-golfer h3 {
+    line-height: 24px;
+    font-size: 15px !important;
+  display: inline;
+    float: left;
+}
+
+.hm-tag .heading-golfer a{
+    display: inline;
+    text-align: right;
+    float: right;
+}
+.green-txt{
+ color: #9cb23b !important;
+}
+table#standings thead {
+    background: transparent;
+}
+#home-leaderboard a.squarebutton {
+    background: #9cb23b;
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    font-weight: normal;
+}
+#home-leaderboard a.squarebutton:hover{
+padding: 10px;
+}
+form#leaderboard-form #division, form#leaderboard-form #division:focus, form#leaderboard-form #division:hover, form#leaderboard-form #division:active {
+    background: #e3e3e3 !important;
+    border: none;
+    padding: 15px 10px;
+    font-size: 15px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+}
+table#standings tbody {
+  display: block;
+  max-height: 300px;
+  overflow-y: auto;
+}
+#home-leaderboard #standings
+tbody tr{
+     display: table;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+table#standings thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.editerForm {
+    padding: 20px;
+}
+.frame-box .buttonwrapper {
+    display: block;
+    text-align: center;
+    padding: 10px 0px;
+}
+.frame-box h2 {
+        text-align: center;
+    color: #9cb23b;
+    margin-top: 10px;
+}
+.frame-box p {
+    text-align: center;
+}
+div.champion-section div.threecol-frame div.buttonwrapper a:active,
+div.champion-section div.threecol-frame div.buttonwrapper a:visited,
+div.champion-section div.threecol-frame div.buttonwrapper a:hover
+{
+	text-transform: capitalize;
+}
+/*MSGBoard*/
+.sub-container, .msginput-container {
+    margin-bottom: 30px;
+    padding: 20px 20px 20px 30px;
+}
+.sub-container label {
+    display: inline;
+}
+.sub-container .sub-input{
+    display: inline-block;
+    width: 90%;
+}
+.sub-input #subject {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 8px;
+    background: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cacaca;
+}
+.msginput-container textarea#msginput {
+    width: 100%;
+    background: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #cacaca;
+    margin-top: 20px;
+}
+.send-btn {
+    display: inline;
+}
+.send-btn .buttonwrapper {
+    background: #dedfdd;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline;
+}
+.buttonwrapper a {
+    text-decoration: none;
+}
+.buttonwrapper a:hover {
+    text-decoration: none;
+}
+.send-btn .buttonwrapper a{
+ color: #444;
+}
+.bcancel-btn {
+    display: inline;
+}
+
+.bcancel-btn .buttonwrapper {
+    background: #9cb23b;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline;
+}
+.bcancel-btn .buttonwrapper a {
+     color: #fff;
+}
+#msgForm .buttons {
+    text-align: right;
+}
+table#message{
+    margin: 0;
+}
+table#message tbody {
+    max-height: 500px !important;
+    height: 100% !important;
+}
+table#message thead {
+    display: none;
+}
+table#message tbody tr td {
+    color: #676768;
+}
+table#message tbody tr td:first-child {
+    width: 5%;
+}
+table#message tbody tr td a {
+    color: #676768 !important;
+}
+table#message tr.even{
+    background: #fff;
+    height: 55px !important;
+}
+table#message tbody td input {
+    width: 20px;
+    height: 20px;
+    box-shadow: none;
+    margin: 10px;
+}
+table#private-message thead {
+    display: none;
+}
+table#publicMessages thead {
+    display: none;
+}
+table#publicMessages, table#publicMessages tbody {
+    width: 100% !important;
+}
+table#private-message, table#private-message tbody, table#private-message tbody tr {
+    width: 100% !important;
+}
+table.messages{
+ width: 100% !important;
+}
+.green-post-link, .reply-post-link {
+    display: block;
+    padding: 10px;
+}
+.green-post-link a:hover{
+ color: #9cb23b !important;
+}
+.msg-head {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #dedfdd;
+}
+div#msg-div h2 {
+    color: #000;
+}
+.reply-post-link a{
+}
+
+.edit-link {
+    display: block;
+    padding: 20px;
+}
+.edit-link a {
+    color: #8DA92E;
+}
+form#deleteMsg .tbl-msg-div {
+margin-bottom: 20px;
+}
+form#deleteMsg a[href="msgboard.html?post=true"] {
+    overflow: hidden;
+    color: #9cb23b;
+    padding: 10px;
+    clear: both;
+    display: block;
+    margin-bottom: 20px;
+}
+form#scheduleSeason {
+    color: #000;
+}
+.search-col.match-col {
+    width: 110px;
+    margin: 0 auto;
+}
+table#public-message thead {
+    display: none;
+}
+table tr td:first-child {
+    padding-left: 10px;
+}
+table tr td:last-child {
+    padding-right: 10px;
+}
+/*Payment page */
+.form-reg {
+    padding: 30px;
+}
+.profile-img {
+     min-height: 100px!important;
+    max-width: 100px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border: 5px solid #9cb23b; */
+    /* text-align: center; */
+    margin: 0 auto 30px;
+    position: relative;
+   /* background: url(../../images/icon-3.png);*/
+    background-position: center center;
+    background-size: contain;
+}
+.subsection .flu-box .left, .subsection .flu-box .left table {
+    width: 100%;
+    text-align: center;
+}
+.profile-img h2 {
+    position: absolute;
+    bottom: -40px;
+    display: block;
+    width: 100% !important;
+    text-align: center !important;
+    color: #9db32c;
+    font: 14px/18px "avantgardemediumbt", arial, sans-serif;
+}
+table.show-profile-info .buttonwrapper {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    float: none !IMPORTANT;
+    width: auto;
+    display: inline;
+    margin: 20px auto;
+    clear: both;
+}
+.member-section .col-sm-4 {
+    max-width: 25%;
+    flex: 0 0 25%;
+}
+.member-section .col-sm-4 .player-info{
+ padding: 0px;
+}
+
+.member-section .col-sm-4 .player-info .flu-box {
+    background: #dedfdd;
+    padding: 30px 20px;
+    text-align: center;
+    min-height: 450px;
+
+}
+.member-section .col-sm-4 .player-info .flu-box p{
+text-align: center;
+
+}
+.member-section p.msg-link-btn {
+display: inline;
+   /* word-break: break-word;*/
+    width: 100px;
+    float: left;
+    background: #dedfdd;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    margin: 10px 0px 0px 6px;
+    text-decoration: none !important;
+}
+p.msg-link-btn:hover {
+    background: #fff;
+    cursor: pointer;
+}
+
+.member-section p.msg-link-btn a.msg-link{
+
+
+}
+/*Sign up dropdown CSS*/
+.checkbox-dropdown {
+    position: relative;
+    user-select: none;
+	display: block;
+    border-bottom: 1px solid !important;
+    padding: 10px 0px !important;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkbox-dropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkbox-dropdown.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; /* align the dropdown right below the dropdown text */
+    border: inherit;
+    border-top: none;
+    left: -1px; /* align the dropdown to the left */
+    right: -1px; /* align the dropdown to the right */
+    opacity: 0; /* hide the dropdown */
+   
+    transition: opacity 0.4s ease-in-out;
+    max-height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none; /* avoid mouse click events inside the dropdown */
+}
+.is-active .checkbox-dropdown-list {
+    opacity: 1; /* display the dropdown */
+    pointer-events: auto; /* make sure that the user still can select checkboxes */
+	 background: #fffefe;
+    z-index: 9;
+}
+.checkbox-dropdown-list li {
+border-bottom: 1px solid silver;
+    clear: both;
+}
+ul.checkbox-dropdown-list input {
+	display: inline-block;
+    width: 15%;
+    float: left;
+    height: 15px;
+    position: relative;
+    top: 10px;
+}
+
+.checkbox-dropdown-list li label {
+    padding: 10px;
+    display: inline-block !important;
+    width: 85%;
+    float: left;
+    transition: all 0.2s ease-out;
+}
+select:hover{
+	background: none !important;
+}
+
+/* end Sign up dropdown CSS*/
+
+
+button#sidebarCollapse{
+  display: none;
+}
+@media(min-width: 320px) and (max-width: 768px){
+div#sidebar {
+    display: none;
+}
+div#sidebar.active {
+    display: block;
+}
+#sidebar {
+    min-width: 45%;
+    max-width: 45%;
+}
+.page_title #header {
+    position: absolute;
+    bottom: 45%;
+    font-size: 15px;
+}
+button#sidebarCollapse {
+font-size: 27px;
+    color: #fff;
+    padding: 0 10px 0px 0px;
+    display: inline;
+    float: left;
+}
+.member-section .col-sm-4 {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+}
+
+.registration-page {
+    padding: 10px 20px;
+  width: 60%;
+}
+form#registrationForm ul li input {
+    width: auto;
+}
+form#registrationForm li {
+       padding: 10px 0px;
+    clear: both;
+}
+
+form#registrationForm input{
+    border: 1px solid #bbbbbb;
+    color: #272727 !important;
+    padding: 5px;
+    background: #ffffff !important;
+    border-radius: 25px;
+    width: 60%;
+    line-height: 24px;
+}
+form#registrationForm input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+form#registrationForm input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+form#registrationForm .buttonBar [name="save"] {
+   background: #9cb23b !IMPORTANT;
+    color: #fff !IMPORTANT;
+    padding: 5px 20px !important;
+    min-width: 120px !important;
+    width: 120px !important;
+}
+form#registrationForm .buttonBar [name="cancel"] {
+    background: #ffffff !IMPORTANT;
+    color: #454545 !IMPORTANT;
+       padding: 5px 20px !important;
+    min-width: 120px !important;
+    width: 120px !important;
+    border: 1px solid #fff !important;
+}
+select#postSeasonPlayers {
+        width: 182px;
+    margin-left: 25px;
+}
+
+form#scheduleSeason li {
+    padding: 10px 0px;
+    clear: both;
+}
+form#scheduleSeason input, form#scheduleSeason select {
+    border: 1px solid #dedfdd;
+    color: #373737;
+    padding: 5px;
+    background: #f3f5f2;
+    border-radius: 25px;
+}
+
+
+#scheduleSeason .buttonBar [name="save"] {
+    background: #9cb23b !IMPORTANT;
+    color: #fff !IMPORTANT;
+    padding: 10px 20px !important;
+}
+#scheduleSeason .buttonBar [name="cancel"] {
+    background: #ffffff !IMPORTANT;
+    color: #454545 !IMPORTANT;
+    padding: 10px 20px !important;
+    border: 1px solid #fff !important;
+}
+.homeDefault-socail #links
+{
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: super;
+    position: relative;
+    top: -5px;
+}
+
+.homeDefault-socail #links img
+{
+	display:inline-block;
+}
+
+.homeDefault-socail #links a
+{
+padding: 0px 10px;
+    font-size: 25px;
+    color: #fff;
+    border: none;
+}
+
+.homeDefault-socail #links a:hover{
+ color: #fff;
+}
+.second-menu {
+    display: block;
+    color: #fff !important;
+    margin-bottom: 10px;
+	text-align: right;
+}
+.second-menu a{
+     color: #fff !important;
+     font-weight: normal !important;
+     margin-bottom: 10px;
+     border-left: 1px solid #fff !important;
+}
+
+.second-menu a.first {
+    border-left: none !important;
+}
+.subNav {
+    color: #fff !important;
+}
+.subNav a {
+    color: #fff !important;
+    font-size: 11px !important;
+    font-weight: normal !important;
+}
+div#top-nav .subNav {
+    margin-bottom: 10px;
+	text-align: right;
+}
+form#courts{
+	width: 99%
+}
+form#courts .threecol-frame .grey-box {
+    padding: 20px;
+	margin-bottom: 20px;
+}
+form#courts .threecol-frame .grey-box p {
+    margin: 0;
+    padding: 5px 0px;
+width: 100%;
+}
+form#courts .threecol-frame .grey-box p label {
+    width: 35%;
+}
+form#courts .threecol-frame .grey-box p input, form#courts .threecol-frame .grey-box p select {
+    padding: 5px;
+    border: 1px solid #c4c4c4;
+    border-radius: 15px;
+    width: 60%;
+}
+select#openCourtMeridiem, select#openCourtHour, select#closeCourtMeridiem, select#closeCourtHour {
+    width: 30% !important;
+}
+
+input#courtVerified {
+    text-align: left !important;
+    width: 10% !important;
+    height: 18px;
+}
+
+#courts .submit-btn a[href="#"] {
+    background: #828282;
+    width: 120px !important;
+    padding: 5px 10px;
+    border-radius: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: normal;
+}
+form#courts .buttons .submit-btn {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#courts .buttons {
+    margin: 50px 0px;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .submit-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .cancel-btn{
+   border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+    color: #828282;
+} 
+
+ #manageCourse a[href="citymanage.html"] {
+    background: #c7c7c7;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 120px;
+    text-align: center;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+form#courts .buttons .cancel-btn .buttonwrapper {
+    text-align: center;
+}
+
+form#courts .buttons .cancel-btn .buttonwrapper a {
+    color: #fff;
+}
+form#courts .buttons .submit-btn:hover{
+	background: #83962f;
+}
+form#courts .buttons .cancel-btn:hover{
+	    background: #9c9c9c;
+}
+a[href="registrationForm.html"], a[href="manageCourse.html"], a[href="registrationCity.html"],
+#manageCourse a[href="editCourse.html"] {
+    background: #9cb23b;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+.table thead th a {
+    color: #fff;
+}
+div#user-court .grey-box {
+    padding: 20px;
+}
+
+div#user-court {
+    margin-bottom: 25px;
+}
+div#user-court .grey-box p {
+    line-height: 24px;
+}
+.floating-label-wrap {
+    /* padding: 10px 0px; */
+    margin: 10px 0px 20px 0;
+}
+
+.floating-label-wrap input {
+    width: 100%;
+    border-top: 0px;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #777;
+    background: none;
+    height: 25px;
+    margin-top: 10px;
+}
+
+.floating-label-wrap input:hover, .floating-label-wrap input:focus,.floating-label-wrap input:active {
+    background: none !important;
+}
+.styled-input {
+    margin: 0px 0px 5px 0px;
+}
+
+.styled-input label, .checkbox-dropdown label {
+	padding: 0;
+    color: #484848;
+    font-size: 15px;
+    display: block;
+}
+.styled-input input, .styled-input select {
+	margin: 10px 0;
+    border-bottom: 1px solid #777;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background: transparent;
+    height: 25px;
+    margin-top: 10px;
+}
+.edituser-section fieldset legend {
+    margin-bottom: 20px !important;
+}
+.hour-open select, .hour-close select {
+    width: 45% !important;
+    float: left;
+    /* margin-right: 10px; */
+    margin: 0 10px 0px 0px;
+}
+
+.hour-open, .hour-close  {
+    margin-bottom: 10px;
+    overflow: hidden;
+    clear: both;
+}
+.radio-section ul {
+    display: block;
+}
+
+.radio-section ul li {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding: 0;
+}
+
+.radio-section ul li input {
+    width: auto;
+    vertical-align: sub;
+}
+
+.radio-section ul li label {
+    vertical-align: inherit;
+    margin-bottom: 0px !important;
+    line-height: 24px;
+}
+
+.radio-section {
+    overflow: hidden;
+}
+.floating-checkbox label, .radio-section label{
+	color: #484848;
+}
+.floating-checkbox ul li input {
+    width: 15%;
+    height: auto;
+}
+
+.floating-checkbox ul li {
+    display: block;
+	color: #484848;
+}
+.styled-input option{
+    font-size: 14px;
+    background-color: #ececec;
+    padding: 20px 10px;
+}
+div#opponentSkillLevelDiv label {
+    margin-bottom: 10px;
+}
+select option:hover, select option:active{
+    background-color: #dedfdd !important;
+    color: #101010;
+}
+.ui-dialog {
+	position: relative;
+    padding: .2em;
+    width: 50% !important;
+    background-color: #fff;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0;
+}
+.ui-dialog-titlebar {
+    padding: 10px !important;
+    background: #9cb23b !important;
+    border-radius: 0 !important;
+    color: #fff !important;
+    border: 0 !important;
+}
+.ui-dialog-content {
+    line-height: 24px !important;
+}
+.subsection .buttonwrapper a[href="/carter/signup.html"] {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    background: #9cb23b;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    line-height: 24px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+.left-msg {
+    color: #fff;
+}
+div#page-admin-users input[value="Done"] {
+    padding: 10px 10px;
+    margin: 10px 0px;
+    background: #9cb23b;
+    border: none;
+    border-radius: 25px;
+    min-width: 120px;
+    color: #fff;
+}
+
+div#page-admin-users input[value="Add"] {
+   background: #9cb23b;
+   padding: 10px 10px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 25px;
+    min-width: 120px;
+    color: #fff;
+}
+div#page-admin-users div.displayUser {
+    background: #414350;
+    padding: 10px 15px;
+}
+.displayUser .pagebanner {
+    color: #9cb23b;
+    font-size: 17px;
+    padding-left: 20px;
+}
+#birdie-challenge a.greybtn{
+ 	position: absolute;
+    min-width: 320px;
+    height: auto;
+    top: 30%;
+    left: 0px;
+    text-align: right;
+    /* padding-right: 20px; */
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    font-size: 30px;
+    color: #fbfbfb;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 30px 20px;
+    font-weight: 600;
+
+}
+#birdie-challenge a.greenBtn{
+position: absolute;
+    min-width: 140px;
+    height: auto;
+    top: 45%;
+    right: 40px;
+    text-align: center;
+    padding-right: 20px;
+    text-decoration: none;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    background: #9cb23b;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 400;
+    border-radius: 25px;
+    text-decoration: none;
+}
+form#courseForm .editcourse-section {
+    padding: 20px;
+}
+
+form#courseForm .editcourse-section label {
+    width: 15%;
+}
+
+form#courseForm .editcourse-section div {
+    padding: 5px 0px;
+}
+table.show-profile-info .buttonwrapper {
+    background: #b7b7b7;
+    color: #595959 !important;
+}
+
+table.show-profile-info .buttonwrapper a {
+    color: #595959  !important;
+}
+form#registrationCity .col-sm-4 table {
+    padding: 20px;
+}
+
+form#registrationCity .submit-btn .buttonwrapper a {
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity .submit-btn .buttonwrapper, form#registrationCity .cancel-btn .buttonwrapper {
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity .cancel-btn .buttonwrapper a {
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+form#registrationCity table tr td {
+    padding: 10px;
+}
+
+form#registrationCity table tr td input {
+    border: 1px solid #888;
+    padding: 2px 10px;
+    line-height: 24px;
+    border-radius: 25px;
+}
+.mandatory, .mandatory span.asterisk,span.req {
+    color: red !important;
+}
+#upper-btn .buttonwrapper a, #lower-btn .buttonwrapper a{
+    background: #9cb23b;
+    color: #fff !important;
+    padding: 20px;
+    font-weight: normal;
+    border-radius: 25px;
+    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+#congrats-nav, #congrats-msg, #no-msg-div{
+padding: 50px 0px;
+}
+div#successMessages {
+    background-color: #fff !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    padding: 20px;
+color: #444;
+}
+form#matchForm {
+    clear: both;
+    padding: 40px 0px;
+}
+
+#played-info .heading-golfer {
+    padding: 20px 10px 20px 20px;
+    margin-bottom: 20px
+}
+
+#played-info .heading-golfer img {
+    margin-top: -10px;
+}
+.section.section-post {
+    background: #40444d;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    color: #dadada;
+    font-weight: 300;
+    font-family: "Avant_Garde_Gothic", Arial, sans-serif;
+}
+form#matchForm .col-sm-8 .heading-golfer {
+    padding: 20px;
+}
+#matchForm .section.col-sm-8 .card {
+    background: none;
+    border: none;
+}
+#matchForm .section.col-sm-8 .edituser-section {
+    background: #dedede;
+    border: none;
+    border-radius: 0;
+    margin-top: 30px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.edituser-section .namecolw p.textAlign i.postUser {
+    padding: 13px 16px;
+    background: #bbb;
+    border-radius: 25px;
+    font-size: 24px;
+}
+
+.edituser-section .namecolw p.textAlign {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.edituser-section .namecolw p.textAlign b {
+    padding-left: 10px;
+    font-size: 18px;
+    vertical-align: super;
+    font-weight: 100;
+    color: #585858;
+}
+
+.oneBigBox fieldset input {
+    width: 50px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    height: 50px;
+    box-shadow: 0 0.1rem 0.1rem rgba(0,0,0,0.15)!important;
+}
+
+.oneSmallBox input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+}
+
+#matchForm .section.col-sm-8 .card {
+    background: none;
+    border: none;
+}
+
+.opponentSection {
+    background: #fff;
+    margin: 30px 0px;
+    padding: 20px;
+}
+
+.opponentSection .onecolw {
+    width: 30% !important;
+}
+
+.opponentSection #opponentRetired {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #00a5c2 !important;
+    border-radius: 25px !important;
+}
+
+.opponentSection .onecolw fieldset:first-child label {
+    font-size: 17px;
+    font-weight: normal;
+    color: #00a5c2;
+    vertical-align: super;
+    padding-left: 5px;
+}
+div#result-members .player-info {
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    text-align: center;
+}
+
+div#result-members .player-info .left {
+    float: none;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+div#result-members .player-info .left:first-child img {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+div#result-members .player-info .left:first-child img {
+    border: 1px solid #bdbdbd;
+    border-radius: 40px;
+    /* background: #afafaf; */
+    text-align: center;
+}
+
+
+.post-btn .buttonwrapper {
+    background: #9cb23b;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+
+.post-btn .buttonwrapper a {
+    color: #fff;
+}
+
+.cancel-btn .buttonwrapper {
+        background: #dedede;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+.cancel-btn.buttonwrapper a {
+    color: #666666;
+}
+
+.profile-btn .buttonwrapper,.profile-btn .buttonwrapper a {
+    text-align: center;
+}
+
+.profile-btn .buttonwrapper {
+    background: #9bb13b;
+    padding: 8px;
+    border-radius: 25px;
+    color: #fff;
+    width: 100px;
+    margin: 0 auto;
+}
+.profile-btn .buttonwrapper a{
+     color: #fff;
+}
+.userInfo {
+    background: #40444d;
+    width: 100%;
+    padding: 10px 20px;
+}
+div#view-back .buttonwrapper {
+    background: #9cb23b;
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff !important;
+}
+div#view-back .buttonwrapper a{
+    color: #fff;
+} 
+.active-member {
+    text-align: center;
+    background: #9db32c;
+    text-align: center;
+    padding: 6px 20px;
+    border-radius: 25px;
+    float: none !IMPORTANT;
+    width: auto;
+    display: inline;
+    margin: 20px auto;
+    clear: both;
+}
+
+.active-member a {
+    color: #fff !important;
+    text-decoration: none;
+}
+.onecolw a.msg-link {
+    color: #a30a0a;
+    font-size: 17px;
+    font-weight: normal;
+}
+div#schedule .buttonwrapper {
+    background: #9cb23b;
+    width: 95px;
+    padding: 8px;
+    border-radius: 25px;
+    text-align: center;
+}
+div#schedule .buttonwrapper a {
+   color: #fff;
+   text-align: center;
+}
+
+
+@media(min-width: 1200px) and (max-width: 1372px){
+.member-section p.msg-link-btn{
+  width: auto;
+  padding:6px 10px;
+}
+}
+@media(min-width: 320px) and (max-width: 1200px){
+.member-section p.msg-link-btn{
+  width: 100%;
+}
 }

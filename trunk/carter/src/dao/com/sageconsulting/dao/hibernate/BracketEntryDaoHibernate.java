@@ -33,6 +33,13 @@ public class BracketEntryDaoHibernate extends BaseDaoHibernate implements Bracke
             new Object[] { seasonId, Integer.valueOf(1) });
     }
     
+    @SuppressWarnings("unchecked")
+    public List<BracketEntry> getRoundBracketForSeason(Long seasonId, Integer roundNum)
+    {
+        return getHibernateTemplate().find("from BracketEntry b where b.seasonId=? and b.round=? order by b.matchNumber", //$NON-NLS-1$
+            new Object[] { seasonId, roundNum });
+    }
+    
     public void saveBracket(List<BracketEntry> bracket)
     {
         // This traverses the tree of the bracket and saves each entry starting

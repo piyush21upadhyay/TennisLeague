@@ -434,7 +434,7 @@ public class RegistrationController extends BaseFormController
         		for(Registration registration: openRegistrationsForCity){
         			
         			String userGender=user.getMale()==true?"Men's":"Women's";
-        			List<String> userPlayingPrefList=Arrays.asList(user.getPlayingPreference());
+        			//List<String> userPlayingPrefList=Arrays.asList(user.getPlayingPreference());
         			
         			for(String gender:registration.getGender()){
         				if(gender.equalsIgnoreCase(userGender)){

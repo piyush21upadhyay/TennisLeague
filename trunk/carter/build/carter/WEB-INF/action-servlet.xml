@@ -32,12 +32,13 @@
         <!-- property name="cancelView" value="redirect:home.html"/-->
         <property name="userManager" ref="userManager"/>
         <property name="roleManager" ref="roleManager"/>
-        <property name="courseManager" ref="courseManager"/>
+        <!-- <property name="courseManager" ref="courseManager"/> -->
         <property name="cityManager" ref="cityManager"/>
         <property name="seasonManager" ref="seasonManager"/>
         <property name="mailEngine" ref="mailEngine"/>
         <property name="message" ref="mailMessage"/>
         <property name="templateName" value="accountCreated.vm"/>
+        <property name="courtManager" ref="courtManager"></property>
     </bean>
     
     <!-- Add additional controller beans here -->
@@ -74,6 +75,7 @@
     <bean id="playoffsController" class="com.sageconsulting.webapp.action.PlayoffsController">
     	<property name="seasonManager" ref="seasonManager"/>
     	<property name="bracketManager" ref="bracketManager"/>
+    	<property name="matchCategoryManager" ref="matchCategoryManager"></property>
     </bean>
     
     <bean id="resultsDispatcher" class="com.sageconsulting.webapp.action.ResultsDispatchController">
@@ -85,7 +87,8 @@
     	<property name="cancelView" value="redirect:schedule.html"/>
     	<property name="successView" value="redirect:schedule.html"/>
     	<property name="userManager" ref="userManager"/>
-    	<property name="courseManager" ref="courseManager"/>
+    	<!-- <property name="courseManager" ref="courseManager"/> -->
+    	<property name="courtManager" ref="courtManager"/>
     	<property name="matchManager" ref="matchManager"/>
     	<property name="championManager" ref="championManager"/>
     	<property name="bracketManager" ref="bracketManager"/>
@@ -117,6 +120,12 @@
     
     <bean id="courseDetailsController" class="com.sageconsulting.webapp.action.CourseDetailsController">
     	<property name="courseManager" ref="courseManager"/>
+    </bean>
+    
+    <bean id="courtsController" class="com.sageconsulting.webapp.action.CourtsController">
+   		 <property name="formView" value="courts"/>
+    	<property name="courtManager" ref="courtManager"/>
+    	<property name="userManager" ref="userManager"/>
     </bean>
     
     <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
@@ -256,7 +265,7 @@
         <!-- property name="cancelView" value="redirect:home.html"/-->
         <property name="userManager" ref="userManager"/>
         <property name="roleManager" ref="roleManager"/>
-        <property name="courseManager" ref="courseManager"/>
+        <!-- <property name="courseManager" ref="courseManager"/> -->
         <property name="cityManager" ref="cityManager"/>
         <property name="seasonManager" ref="seasonManager"/>
         <!-- <property name="mailEngine" ref="mailEngine"/>
@@ -314,6 +323,10 @@
     <bean id="manageCourseController" class="com.sageconsulting.webapp.action.ManageCourseController">
     	<property name="courseManager" ref="courseManager"/>
 	</bean>
+	
+	<bean id="courtFormController" class="com.sageconsulting.webapp.action.CourtFormController">
+		<property name="formView" value="court"/>
+	</bean>
     
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
@@ -355,6 +368,9 @@
                 <prop key="/inbox.html">inboxController</prop>
                 <prop key="/emailValidate.html">emailValidateController</prop>
                 <prop key="/congratsPage.html">congratsMessageController</prop>
+                <prop key="/courts.html">courtsController</prop>
+                <prop key="/editCourts.html">courtsController</prop>
+                <!-- <prop key="/courts.html">courtFormController</prop> -->
             </props>
         </property>
     </bean>

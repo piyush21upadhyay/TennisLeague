@@ -21,11 +21,19 @@
                 var focusField = null;
                 var i = 0;
                 var fields = new Array();
+                var selectCourtVal;
+                if(form['selectCourt']){
+	                selectCourtVal = form['selectCourt'].selectedOptions[0].value;
+                }
                 var iconField = 0;
                 oRequired = new required();
                 
                 for (x in oRequired) {
                     var field = form[oRequired[x][0]];
+                    if((field.name == "courtAddress" || field.name == "courtCity" || field.name == "courtState" 
+                    	|| field.name == "homeCourtText") && selectCourtVal && selectCourtVal != -1){
+                    	continue;
+                    }
                     
                     if (field.type == 'text' ||
                         field.type == 'textarea' ||
@@ -65,6 +73,30 @@
                     		{
                     			if( field[counter].checked )
                     				isChecked = true;
+                            }
+                            if( field[counter].name == 'playingPreference' )
+                    		{
+                    			if( field[counter].checked )
+                    			{
+                    				isChecked = true;
+                    				break;
+                    			}
+                            }
+                            if( field[counter].name == 'playerLevel' )
+                    		{
+                    			if( field[counter].checked )
+                    			{
+                    				isChecked = true;
+                    				break;
+                    			}
+                            }
+                            if( field[counter].name == 'gender' )
+                    		{
+                    			if( field[counter].checked )
+                    			{
+                    				isChecked = true;
+                    				break;
+                    			}
                             }
                     	}
                     	

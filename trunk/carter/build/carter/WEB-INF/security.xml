@@ -82,6 +82,7 @@
                 /editprofile.html*=ROLE_ANONYMOUS,admin,user
                 /signup.html*=ROLE_ANONYMOUS,admin,user
                 /courses.html*=ROLE_ANONYMOUS,admin,user
+                /courts.html*=ROLE_ANONYMOUS,admin,user
                 /standings.html*=ROLE_ANONYMOUS,admin,user
                 /record.html*=ROLE_ANONYMOUS,admin,user
                 /playoffs.html*=ROLE_ANONYMOUS,admin,user

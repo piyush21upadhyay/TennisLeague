@@ -15,26 +15,26 @@
 					<c:out value="${city.name}"/> 
 				</c:when>
 				<c:otherwise>
-					<c:out value="${season.name}"/> <span><c:out value="${season.division}"/></span>
+					<c:out value="${season.name}"/> <%-- <span><c:out value="${season.division}"/></span> --%>
 				</c:otherwise>
 			</c:choose>
 		</h2>
 	</div>
 	<div class="right">
-		<%-- <form:form name="season" method="post" action="playoffs.html">
+		<form:form name="season" method="post" action="playoffs.html">
 			<select name="seasonid" onchange="document.season.submit();">
 				<option value="0"><fmt:message key="playoffs.choose"/></option>
 				<c:forEach var="season" items="${seasons}">
-					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/> <c:out value="${season.division}"/></option>
+					<option value="<c:out value="${season.id}"/>"><c:out value="${season.name}"/> <%-- <c:out value="${season.division}"/> --%></option>
 				</c:forEach>
 			</select>
-		</form:form> --%>
-		<select id="matchCat" name="matchCat" >
+		</form:form>
+		<%-- <select id="matchCat" name="matchCat" >
 				<option value="0"><fmt:message key="playoffs.chooseCategory"/></option> 
 				<c:forEach var="matchCategory" items="${matchCategories}">
 					<option value="<c:out value="${matchCategory.id}"/>"><c:out value="${matchCategory.name}"/></option>
 				</c:forEach>
-			</select>
+			</select> --%>
 	</div>
 </div>
 

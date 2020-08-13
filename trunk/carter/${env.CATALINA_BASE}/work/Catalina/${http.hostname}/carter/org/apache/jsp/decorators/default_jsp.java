@@ -102,9 +102,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n");
-      out.write("    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
-      out.write("\n");
+      out.write("<!DOCTYPE html>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -119,9 +117,9 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\n");
-      out.write("<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n");
-      out.write("    <head>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("    <head>\r\n");
       out.write("        ");
       out.write("        <!-- HTTP 1.1 -->\r\n");
       out.write("        <meta http-equiv=\"Cache-Control\" content=\"no-store\"/>\r\n");
@@ -129,20 +127,21 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Pragma\" content=\"no-cache\"/>\r\n");
       out.write("        <!-- Prevents caching at the Proxy Server -->\r\n");
       out.write("        <meta http-equiv=\"Expires\" content=\"0\"/>\r\n");
-      out.write("        \r\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/> \r\n");
       out.write("        ");
       if (_jspx_meth_c_005fset_005f0(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("        <meta name=\"author\" content=\"Steve Paquin (spaquin@citygolfleague.com)\"/>\r\n");
+      out.write("        <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">\r\n");
       out.write("        <link rel=\"icon\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
       out.write('"');
       out.write('/');
       out.write('>');
-      out.write("\n");
+      out.write("\r\n");
       out.write("        <title>");
       if (_jspx_meth_decorator_005ftitle_005f0(_jspx_page_context))
         return;
@@ -151,79 +150,101 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(' ');
       if (_jspx_meth_fmt_005fmessage_005f0(_jspx_page_context))
         return;
-      out.write("</title>\n");
-      out.write("\n");
+      out.write("</title>\r\n");
+      out.write("\t\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("\" />\n");
+      out.write("\" />\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("\" />\n");
+      out.write("\" />\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"");
       if (_jspx_meth_c_005furl_005f3(_jspx_page_context))
         return;
-      out.write("\" />\n");
+      out.write("\" />\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"");
       if (_jspx_meth_c_005furl_005f4(_jspx_page_context))
         return;
-      out.write("\" />\n");
+      out.write("\" />\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"");
       if (_jspx_meth_c_005furl_005f5(_jspx_page_context))
         return;
-      out.write("\" />\n");
-      out.write("\n");
+      out.write("\" />\r\n");
+      out.write("\r\n");
       if (_jspx_meth_authz_005fauthorize_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("        <script type=\"text/javascript\" src=\"");
       if (_jspx_meth_c_005furl_005f7(_jspx_page_context))
         return;
-      out.write("\"></script>\n");
+      out.write("\"></script>\r\n");
+      out.write("        <!-- jQuery CDN - Slim version (=without AJAX) -->\r\n");
+      out.write("    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\r\n");
+      out.write("    <!-- Popper.JS -->\r\n");
+      out.write("    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js\" integrity=\"sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ\" crossorigin=\"anonymous\"></script>\r\n");
+      out.write("    <!-- Bootstrap JS -->\r\n");
+      out.write("    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js\" integrity=\"sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm\" crossorigin=\"anonymous\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"");
       if (_jspx_meth_c_005furl_005f8(_jspx_page_context))
         return;
-      out.write("\"></script>\n");
+      out.write("\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"");
       if (_jspx_meth_c_005furl_005f9(_jspx_page_context))
         return;
-      out.write("\"></script>\n");
+      out.write("\"></script>\r\n");
       out.write("        ");
       if (_jspx_meth_decorator_005fhead_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("    </head>\n");
+      out.write("\r\n");
+      out.write("    </head>\r\n");
       out.write("<body");
       if (_jspx_meth_decorator_005fgetProperty_005f0(_jspx_page_context))
         return;
       if (_jspx_meth_decorator_005fgetProperty_005f1(_jspx_page_context))
         return;
-      out.write(">\n");
-      out.write("\n");
-      out.write("<div id=\"container\">\n");
-      out.write("\t\n");
+      out.write(">\r\n");
+      out.write("\r\n");
+      out.write("<div class=\"wrapper\">\r\n");
+      out.write("<div id=\"sidebar\">\r\n");
+      out.write("        <div class=\"sidebar-header\"> \r\n");
+      out.write("        <a href=\"#\"><img src=\"images/open-tennis-logo.png\" class=\"img-responsive\" alt=\"Play Open Tennis\"></a>\r\n");
+      out.write("        </div>\r\n");
+      out.write("        <div id=\"main-nav\">\r\n");
+      out.write("\t\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/menu.jsp", out, false);
+      out.write("\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write(" </div>       \r\n");
+      out.write("<div id=\"container\">\r\n");
+      out.write("\t     <nav class=\"navbar navbar-expand-lg\">\r\n");
+      out.write("            <div class=\"container-fluid\">\r\n");
       out.write("\t");
       if (_jspx_meth_c_005fset_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t<div id=\"top-nav\">");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/header.jsp", out, false);
-      out.write("</div>\n");
-      out.write("\t\n");
+      out.write("\r\n");
+      out.write("\t<div class=\"page_title\">                \r\n");
+      out.write("\t<button type=\"button\" id=\"sidebarCollapse\" class=\"btn\">\r\n");
+      out.write("                <i class=\"fa fa-align-left\"></i>\r\n");
+      out.write("            </button>\r\n");
       out.write("\t<div id=\"header\">");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("</div>\n");
-      out.write("\t<div id=\"main-nav\">\n");
-      out.write("\t\t");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/menu.jsp", out, false);
-      out.write("\n");
-      out.write("\t</div>\n");
-      out.write("\n");
+      out.write("</div>\r\n");
+      out.write("\t</div>\t\r\n");
+      out.write("\t<div id=\"top-nav\">");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/header.jsp", out, false);
+      out.write("</div>\r\n");
+      out.write("\t\r\n");
+      out.write("</div>\r\n");
+      out.write("</nav>\r\n");
+      out.write("<div class=\"page-container col-sm-9\">\r\n");
       out.write("\t");
-      out.write("\n");
+      out.write("\r\n");
       out.write("    ");
+      out.write('\r');
+      out.write('\n');
       out.write('\r');
       out.write('\n');
       if (_jspx_meth_c_005fif_005f0(_jspx_page_context))
@@ -234,50 +255,70 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       if (_jspx_meth_c_005fif_005f1(_jspx_page_context))
         return;
-      out.write('\r');
-      out.write('\n');
-      out.write("\n");
+      out.write("\r\n");
       out.write("    ");
       if (_jspx_meth_decorator_005fbody_005f0(_jspx_page_context))
         return;
+      out.write('\r');
       out.write('\n');
       out.write('	');
-      out.write("\t\n");
-      out.write("\n");
-      out.write("\t<div id=\"footer\">\n");
+      out.write("\t\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("</div>\t\r\n");
+      out.write("\t<div id=\"footer\">\r\n");
       out.write("\t\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/footer.jsp", out, false);
-      out.write("\n");
-      out.write("\t\t<span class=\"copyright\">City Golf League, LLC &copy; 2012</span>\n");
-      out.write("\t</div>\n");
-      out.write("</div>\n");
-      out.write("\n");
-      out.write("<script type=\"text/javascript\">\n");
-      out.write("\tfunction showLink(link)\n");
-      out.write("\t{\n");
-      out.write("\t\twindow.open(link);\n");
-      out.write("\t}\n");
-      out.write("</script>\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\t\t<span class=\"copyright\">OPEN PLAY TENNIS, LLC &copy; 2018</span>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("</div>\r\n");
+      out.write("</div>\r\n");
+      out.write("<script type=\"text/javascript\">\r\n");
+      out.write("\tfunction showLink(link)\r\n");
+      out.write("\t{\r\n");
+      out.write("\t\twindow.open(link);\r\n");
+      out.write("\t}\r\n");
+      out.write("\t\t$(document).ready(function() {\r\n");
+      out.write("\t\t$(\"#main-nav a\").each(function() {   \r\n");
+      out.write("\t    if (this.href == window.location.href) {\r\n");
+      out.write("\t        $(this).addClass(\"active\");\r\n");
+      out.write("\t    }\r\n");
+      out.write("\t    });\r\n");
+      out.write("\t    \r\n");
+      out.write("\t    });\r\n");
+      out.write("\t    \r\n");
+      out.write("\t    $(document).ready(function () {\r\n");
+      out.write("\t\t    $('#sidebarCollapse').on('click', function () {\r\n");
+      out.write("\t\t        $('#sidebar').toggleClass('active');\r\n");
+      out.write("\t\t    });\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t});\r\n");
+      out.write("</script>\r\n");
+      out.write("\r\n");
       if (_jspx_meth_authz_005fauthorize_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("<script type=\"text/javascript\">\n");
-      out.write("<!--\n");
-      out.write("var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");\n");
-      out.write("document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));\n");
-      out.write("-->\n");
-      out.write("</script>\n");
-      out.write("<script type=\"text/javascript\">\n");
-      out.write("<!--\n");
-      out.write("try {\n");
-      out.write("  var pageTracker = _gat._getTracker(\"UA-34480500-1\");\n");
-      out.write("  pageTracker._trackPageview();\n");
-      out.write("} catch(err) {}\n");
-      out.write("-->\n");
-      out.write("</script>\n");
-      out.write("</body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("<script type=\"text/javascript\">\r\n");
+      out.write("<!--\r\n");
+      out.write("var gaJsHost = ((\"https:\" == document.location.protocol) ? \"https://ssl.\" : \"http://www.\");\r\n");
+      out.write("document.write(unescape(\"%3Cscript src='\" + gaJsHost + \"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E\"));\r\n");
+      out.write("-->\r\n");
+      out.write("</script>\r\n");
+      out.write("<script type=\"text/javascript\">\r\n");
+      out.write("<!--\r\n");
+      out.write("try {\r\n");
+      out.write("  var pageTracker = _gat._getTracker(\"UA-34480500-1\");\r\n");
+      out.write("  pageTracker._trackPageview();\r\n");
+      out.write("} catch(err) {}\r\n");
+      out.write("-->\r\n");
+      out.write("</script>\r\n");
+      out.write("<script type=\"text/javascript\">\r\n");
+      out.write("var newTitle = $('.page-title');\r\n");
+      out.write("$(\".navbar .page_title #header\").before(newTitle);\r\n");
+      out.write("</script>\r\n");
+      out.write("\r\n");
+      out.write("</body>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -465,11 +506,11 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_authz_005fauthorize_005f0 = _jspx_th_authz_005fauthorize_005f0.doStartTag();
     if (_jspx_eval_authz_005fauthorize_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("\t\t<script type=\"text/javascript\" src=\"");
         if (_jspx_meth_c_005furl_005f6(_jspx_th_authz_005fauthorize_005f0, _jspx_page_context))
           return true;
-        out.write("\"></script>\n");
+        out.write("\"></script>\r\n");
         int evalDoAfterBody = _jspx_th_authz_005fauthorize_005f0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;
@@ -1028,10 +1069,10 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_authz_005fauthorize_005f1 = _jspx_th_authz_005fauthorize_005f1.doStartTag();
     if (_jspx_eval_authz_005fauthorize_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
-        out.write("<script type=\"text/javascript\">\n");
-        out.write("cssdropdown.startchrome(\"main-nav\")\n");
-        out.write("</script>\n");
+        out.write("\r\n");
+        out.write("<script type=\"text/javascript\">\r\n");
+        out.write("cssdropdown.startchrome(\"main-nav\")\r\n");
+        out.write("</script>\r\n");
         int evalDoAfterBody = _jspx_th_authz_005fauthorize_005f1.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;

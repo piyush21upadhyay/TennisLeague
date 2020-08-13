@@ -50,6 +50,7 @@
 		<property name="userManager" ref="userManager"/>
 		<property name="registrationManager" ref="registrationManager"/>
 		<property name="matchCategoryManager" ref="matchCategoryManager"></property>
+		<property name="registrationEntryManager" ref="registrationEntryManager"/>
     </bean>
     
     <bean id="profileController" class="com.sageconsulting.webapp.action.ProfileController">
@@ -97,6 +98,7 @@
     
     <bean id="viewResultsController" class="com.sageconsulting.webapp.action.ViewResultsController">
     	<property name="matchManager" ref="matchManager"/>
+    	<property name="registrationManager" ref="registrationManager"/>
     </bean>
     
     <bean id="recordController" class="com.sageconsulting.webapp.action.RecordController">
@@ -128,6 +130,12 @@
     	<property name="userManager" ref="userManager"/>
     </bean>
     
+   <!--  <bean id="courtLinkingToUserController" class="com.sageconsulting.webapp.action.CourtsController">
+   		 <property name="formView" value="courts"/>
+    	<property name="courtManager" ref="courtManager"/>
+    	<property name="userManager" ref="userManager"/>
+    </bean> -->
+    
     <bean id="registrationController" class="com.sageconsulting.webapp.action.RegistrationController">
     	<property name="loginId" value="3zxVd7Hc8UD"/>
     	<property name="transactionKey" value="945rCA94SbeM8Xfx"/>
@@ -154,7 +162,7 @@
     </bean>
     
     <bean id="scheduleSeasonController" class="com.sageconsulting.webapp.action.ScheduleSeasonController">
-        <!--property name="validator" ref="beanValidator"/-->
+        <property name="matchManager" ref="matchManager"/>
         <property name="cancelView" value="redirect:manageRegistration.html"/>
         <property name="successView" value="redirect:viewSeason.html"/>
     	<property name="registrationManager" ref="registrationManager"/>
@@ -352,7 +360,7 @@
                 <prop key="/schedule.html">scheduleController</prop>
                 <prop key="/champions.html">championsController</prop>
                 <prop key="/courses.html">coursesController</prop>
-                <prop key="/coursedetails.html">courseDetailsController</prop>
+                <prop key="/courtdetails.html">courtsController</prop>
                 <prop key="/registration.html">registrationController</prop>
                 <prop key="/printcard.html">printCardController</prop>
                 <prop key="/choosecity.html">chooseCityController</prop>
@@ -370,7 +378,7 @@
                 <prop key="/congratsPage.html">congratsMessageController</prop>
                 <prop key="/courts.html">courtsController</prop>
                 <prop key="/editCourts.html">courtsController</prop>
-                <!-- <prop key="/courts.html">courtFormController</prop> -->
+                <prop key="/courtLinkingToUserValidate.html">courtsController</prop>
             </props>
         </property>
     </bean>

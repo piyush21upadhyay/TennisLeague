@@ -24,7 +24,6 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fchoose;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fwhen_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fotherwise;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_005ftest;
 
   public Object getDependants() {
@@ -40,7 +39,6 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fchoose = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fwhen_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fotherwise = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fif_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
@@ -53,7 +51,6 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fc_005fchoose.release();
     _005fjspx_005ftagPool_005fc_005fwhen_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fotherwise.release();
-    _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody.release();
     _005fjspx_005ftagPool_005fc_005fif_005ftest.release();
   }
 
@@ -148,22 +145,22 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_fmt_005fmessage_005f0(_jspx_page_context))
         return;
       out.write("</title>\r\n");
-      out.write("\r\n");
       out.write("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=EDGE\">\r\n");
-      out.write("\r\n");
+      out.write("<meta name=\"viewport\" content=\"width=device-width, minimum-scale=1, maximum-scale=1\">\r\n");
       out.write("        <!-- HTTP 1.1 -->\r\n");
       out.write("        <meta http-equiv=\"Cache-Control\" content=\"no-store\"/>\r\n");
       out.write("        <!-- HTTP 1.0 -->\r\n");
       out.write("        <meta http-equiv=\"Pragma\" content=\"no-cache\"/>\r\n");
       out.write("        <!-- Prevents caching at the Proxy Server -->\r\n");
       out.write("        <meta http-equiv=\"Expires\" content=\"0\"/>\r\n");
-      out.write("        \r\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/> \r\n");
       out.write("        ");
       if (_jspx_meth_c_005fset_005f8(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("        <meta name=\"author\" content=\"Steve Paquin (spaquin@citygolfleague.com)\"/>\r\n");
+      out.write("        <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">\r\n");
       out.write("        <link rel=\"icon\" href=\"");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
@@ -210,6 +207,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
       out.write("\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n");
       out.write("<script type=\"text/javascript\" src=\"scripts/jquery.min.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"scripts/login.js\"></script>\r\n");
       out.write("\r\n");
@@ -230,7 +228,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t/* Safari/Chrome css hack */\r\n");
       out.write("\t@media screen and (-webkit-min-device-pixel-ratio:0)\r\n");
       out.write("\t{\r\n");
-      out.write("\t\t.video-container{margin-top:0px!important;}\r\n");
+      out.write("\t\t.video-container{margin-top: 70px!important;}\r\n");
       out.write("\t\t#sampleMovie{margin-top:0px!important;}\r\n");
       out.write("\t}\r\n");
       out.write("\r\n");
@@ -272,6 +270,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\tclear : 'both'\r\n");
       out.write("\t\t\t});\r\n");
       out.write("\t\t}\r\n");
+      out.write("\r\n");
       out.write("\t});\r\n");
       out.write("</script>\r\n");
       out.write("\r\n");
@@ -282,7 +281,6 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<source src=\"swf/assets/sound/rollover.wav\" type=\"audio/wav\" />\r\n");
       out.write("\t</audio>\r\n");
       out.write("\t<div id=\"outer-container\">\r\n");
-      out.write("\r\n");
       out.write("\t\t<!--// Loading container //-->\r\n");
       out.write("\t\t<div id=\"loading-container\" >\r\n");
       out.write("\t\t\t");
@@ -306,26 +304,30 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\r\n");
       out.write("\t\t\t");
+      out.write("\r\n");
+      out.write("\t\t\t");
       if (_jspx_meth_c_005fif_005f5(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\r\n");
       out.write("\t\t<div id=\"main-container\">\r\n");
-      out.write("\t\t\t<div id=\"main\">\r\n");
-      out.write("\t\t\t\t<header>\r\n");
-      out.write("\t\t\t\t\t<h3 id=\"enter-lnk\" onclick=\"_jqNavLinks(1);\">ENTER SITE</h3>\r\n");
-      out.write("\t\t\t\t\t<img class=\"separator\" src=\"images/separator_bg.png\">\r\n");
-      out.write("\t\t\t\t\t<h3 id=\"signup-lnk\" onclick=\"_jqNavLinks(2);\">SIGN UP</h3>\r\n");
-      out.write("\t\t\t\t\t<img class=\"separator\" src=\"images/separator_bg.png\">\r\n");
-      out.write("\t\t\t\t\t<h3 id=\"login-lnk\" onclick=\"_jqNavLinks(3);\">LOG IN</h3>\r\n");
-      out.write("\t\t\t\t\t<img class=\"separator\" src=\"images/separator_bg.png\">\r\n");
-      out.write("\t\t\t\t\t<h3 id=\"video-lnk\" onclick=\"_jqNavLinks(4);\">VIEW DEMO</h3>\r\n");
-      out.write("\t\t\t\t</header>\r\n");
-      out.write("\t\t\t\t<div id=\"logo\">\r\n");
-      out.write("\t\t        \t<img src=\"images/logo.png\" alt=\"\">\r\n");
+      out.write("\t\t\t<div id=\"main\" class=\"container\">\r\n");
+      out.write("\t\t\t<div class=\"header-section\">\r\n");
+      out.write("\t\t\t<div class=\"row\">\r\n");
+      out.write("\t\t\t<div  class=\"col-sm-2\">\r\n");
+      out.write("\t\t\t<div id=\"logo\">\r\n");
+      out.write("\t\t        \t<img src=\"images/open-tennis-logo.png\" alt=\"\">\r\n");
       out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t<header class=\"col-sm-10\">\r\n");
+      out.write("\t\t\t\t\t<h3 id=\"enter-lnk\" onclick=\"_jqNavLinks(1);\">Enter Site</h3>\r\n");
+      out.write("\t\t\t\t\t<h3 id=\"signup-lnk\" onclick=\"_jqNavLinks(2);\">Sign Up</h3>\r\n");
+      out.write("\t\t\t\t\t<h3 id=\"login-lnk\" onclick=\"_jqNavLinks(3);\">Login</h3>\r\n");
+      out.write("\t\t\t\t\t<h3 id=\"video-lnk\" onclick=\"_jqNavLinks(4);\">View Demo</h3>\r\n");
+      out.write("\t\t\t\t</header>\r\n");
+      out.write("              </div>\r\n");
+      out.write("                </div>\r\n");
       out.write("\t\t\t\t<div class=\"clear\"></div>\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t<div id=\"site_content\">\r\n");
@@ -336,17 +338,19 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t</ul>\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t\t\t\t<div id=\"login-box\" style=\"display:none;\">\r\n");
+      out.write("\t\t\t\t\t\t\t<p class=\"text-left\">Welcome to the website</p>\r\n");
       out.write("\t\t\t\t\t\t\t\t<!--<div class=\"login-txt\">Log in</div>-->\r\n");
       out.write("\t\t\t\t\t\t\t\t<form method=\"get\" style=\"padding-right:5px;\" class=\"signin\" onsubmit=\"setUserValues(this);\" action=\"j_security_check\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t<fieldset class=\"textbox\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<label class=\"username\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<span id=\"error-msg\"></span>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</label>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t<div>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<input id=\"j_username\" name=\"j_username\" type=\"text\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\tautocomplete=\"off\" placeholder=\"ENTER USERNAME\"\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\tonfocus=\"javascript:this.placeholder='';\"\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t\tonblur=\"javascript:this.placeholder='ENTER USERNAME';\" style=\"margin-bottom:4px;float:left;\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\tonblur=\"javascript:this.placeholder='ENTER USERNAME';\">\r\n");
       out.write("\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<div class=\"clear\"></div>\r\n");
       out.write("\r\n");
@@ -356,33 +360,41 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t\t\t\t\t\t\tonblur=\"javascript:this.placeholder='ENTER PASSWORD';\" style=\"float:left;\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<div id=\"login-bottom1\" style=\"height: 24px; width:360px; display:block;\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\t<button class=\"submit button\" type=\"submit\" style=\"float:right; margin-top:6px;\" onclick=\"return checkUserPass();\"></button>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<div id=\"login-bottom2\" style=\"height:30px;display:block;margin-top:17px;\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t<div class=\"clear\"></div>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<div class=\"row\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<div id=\"login-bottom2\" class=\"col-sm-6\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t<span style=\"text-align:left; float:left; width:115px; color:#FFFFFF; position:relative; top:10px; font-weight:bold;\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"rememberMe\" id=\"rememberMe\" value=\"true\" style=\"width:10px; margin-right:4px; margin-top:3px;\">\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"check-txt\" for=\"rememberMe\">Remember me</label>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\t</span>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t      </div>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-sm-6\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" id=\"fname\" value=\"\"/>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<p id=\"login-bottom3\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t\t<a id=\"forgot-lnk\" class=\"forgot\" href=\"javascript:void(0)\">Forget your password?</a>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t</p>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t   </div>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t<div id=\"login-bottom1\">\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<button class=\"submit button\" type=\"submit\"  onclick=\"return checkUserPass();\"> Login</button>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<div style=\"clear: both\"></div>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\t<a id=\"signup-lnk\" onclick=\"_jqNavLinks(2);\">Sign Up</a>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t\t\t\t\t\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" id=\"fname\" value=\"\"/>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t<p id=\"login-bottom3\">\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t\tForgotten your password? Click <a id=\"forgot-lnk\" class=\"forgot\" href=\"javascript:void(0)\">here</a>\r\n");
-      out.write("\t\t\t\t\t\t\t\t\t\t</p>\r\n");
+      out.write("\t\t\t\t\t\t\t\t\t\t\r\n");
       out.write("\t\t\t\t\t\t\t\t\t</fieldset>\r\n");
       out.write("\t\t\t\t\t\t\t\t</form>\r\n");
       out.write("\t\t\t\t\t\t\t</div>\r\n");
       out.write("\t\r\n");
       out.write("\t\t\t\t\t\t\t<div id=\"enter-box\" style=\"display:none;\">\r\n");
       out.write("\t\t\t\t\t\t\t\t<!--<div class=\"enter-txt\">Enter site</div>-->\r\n");
-      out.write("\t\t\t\t\t\t\t\t<p class=\"par-txt\">To enter City Golf League, please choose the city you'd like to view from the list below:</p>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<p class=\"par-txt\">To enter City Tennis League, please choose the city you'd like to view from the list below:</p>\r\n");
       out.write("\t\t\t\t\t\t\t\t<ul id=\"enter-city\" class=\"submenu flt\"></ul>\r\n");
       out.write("\t\t\t\t\t\t\t</div>\r\n");
       out.write("\t\r\n");
       out.write("\t\t\t\t\t\t\t<div id=\"signup-box\" style=\"display:none;\">\r\n");
       out.write("\t\t\t\t\t\t\t\t<!--<div class=\"signup-txt\">Sign up</div>-->\r\n");
-      out.write("\t\t\t\t\t\t\t\t<p class=\"par-txt\">Welcome to City Golf League, please select your city from the bellow:</p>\r\n");
+      out.write("\t\t\t\t\t\t\t\t<p class=\"par-txt\">Welcome to City Tennis League, please select your city from the bellow:</p>\r\n");
       out.write("\t\t\t\t\t\t\t\t<ul id=\"signup-city\" class=\"submenu flt\"></ul>\r\n");
       out.write("\t\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t\t</nav>\r\n");
@@ -400,11 +412,39 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t\t</video>\r\n");
       out.write("\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t</div>\r\n");
+      out.write("\t\t\t\t\t<div class=\"homeDefault-socail\">\r\n");
+      out.write("\t\t\t\t<div id=\"links\" class=\"text-right\">\r\n");
+      out.write("\t\t<a class=\"ie-post-link\" onclick=\"showLink('http://www.facebook.com/pages/City-Golf-League/348284351925121');\">\r\n");
+      out.write("\t\t\t<i class=\"fa fa-facebook\"></i>\r\n");
+      out.write("\t\t</a>\r\n");
+      out.write("\t\t<a class=\"ie-post-link\" onclick=\"showLink('https://twitter.com/CityGolfLeague');\">\r\n");
+      out.write("\t\t\t<i class=\"fa fa-twitter\"></i>\r\n");
+      out.write("\t\t</a>\r\n");
+      out.write("\t\t<a href=\"\" target=\"_blank\"><i class=\"fa fa-instagram\"></i></a>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
       out.write("\t\t\t</div>\r\n");
+      out.write("\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\r\n");
+      out.write("\t\t<div id=\"footer\">\r\n");
+      out.write("\t\t<div class=\"container\">\r\n");
+      out.write("\t\t<div class=\"row\">\r\n");
+      out.write("\t\t<div class=\"col-sm-8 text-left\">\r\n");
+      out.write("\t\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/common/footer.jsp", out, false);
+      out.write("\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t<div class=\"col-sm-4\">\r\n");
+      out.write("\t\t<span class=\"copyright\">OPEN PLAY TENNIS, LLC &copy; 2018</span>\r\n");
+      out.write("\t\t</div>\r\n");
+      out.write("\t\t</div>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
+      out.write("\t</div>\r\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
-      out.write("</html>\r\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -731,10 +771,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\t\t\t\twidth: 100%;\r\n");
         out.write("\t\t\t\theight: 100%;\r\n");
         out.write("\t\t\t\tmargin: auto;\r\n");
-        out.write("\t\t\t\tbackground: #fff url(\"images/bg_img_");
-        if (_jspx_meth_c_005fout_005f0(_jspx_th_c_005fotherwise_005f0, _jspx_page_context))
-          return true;
-        out.write(".jpg\") repeat center top;\r\n");
+        out.write("\t\t\t\t/*background: #fff url(\"images/bg_img_2.jpg\") repeat center top;*/\r\n");
         out.write("\t\t\t\tmargin-left: -0.5px;\r\n");
         out.write("\t\t\t}\r\n");
         out.write("\t\t</style>\r\n");
@@ -749,24 +786,6 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _005fjspx_005ftagPool_005fc_005fotherwise.reuse(_jspx_th_c_005fotherwise_005f0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_005fout_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_005fotherwise_005f0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.el.core.OutTag _jspx_th_c_005fout_005f0 = (org.apache.taglibs.standard.tag.el.core.OutTag) _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.el.core.OutTag.class);
-    _jspx_th_c_005fout_005f0.setPageContext(_jspx_page_context);
-    _jspx_th_c_005fout_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fotherwise_005f0);
-    _jspx_th_c_005fout_005f0.setValue("${vRandom}");
-    int _jspx_eval_c_005fout_005f0 = _jspx_th_c_005fout_005f0.doStartTag();
-    if (_jspx_th_c_005fout_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f0);
-      return true;
-    }
-    _005fjspx_005ftagPool_005fc_005fout_005fvalue_005fnobody.reuse(_jspx_th_c_005fout_005f0);
     return false;
   }
 
@@ -912,7 +931,7 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_005fif_005f5 = _jspx_th_c_005fif_005f5.doStartTag();
     if (_jspx_eval_c_005fif_005f5 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("<p class=\"tagline-p\">Start beating new people</p>");
+        out.write("<p class=\"tagline-p\">BEAT SOMEONE NEW</p>");
         int evalDoAfterBody = _jspx_th_c_005fif_005f5.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
           break;

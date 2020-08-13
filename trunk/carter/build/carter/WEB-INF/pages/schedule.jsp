@@ -8,7 +8,7 @@
 <c:if test="${empty errors and empty successMessages}">
 
 <div id="schedule">
-
+<h2 class="page-title"> Schedule</h2>
 <div id="onecol">
 
 	<c:if test="${not empty user}">
@@ -124,7 +124,9 @@
 		<display:setProperty name="paging.banner.onepage" value="" />
 	</display:table>
 	
-	<carter:button onclick="window.print();" key="schedule.print"/>
+	<div class="left green-btn">
+		<carter:button onclick="window.print();" key="schedule.print"/>
+	</div>
 
 </c:when>
 
@@ -135,7 +137,7 @@
 <table class="schedule" id="match">
 	<thead>
 		<tr>
-			<th><fmt:message key="schedule.opponent"/></th>
+			<th class="opp"><fmt:message key="schedule.opponent"/></th>
 			<th><fmt:message key="schedule.location"/></th>
 			<th><fmt:message key="schedule.playBy"/></th>
 			<th><fmt:message key="schedule.played"/></th>
@@ -143,6 +145,9 @@
 		</tr>
 	</thead>
 	<tbody>
+		<tr>
+		<td colspan="5"> &nbsp;</td>
+		</tr>
 		<tr class="odd">
 			<td>-</td>
 			<td>-</td>

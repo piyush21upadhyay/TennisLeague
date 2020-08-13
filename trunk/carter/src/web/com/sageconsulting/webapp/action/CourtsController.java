@@ -73,6 +73,11 @@ public class CourtsController  extends BaseFormController
 			super.setSuccessView("redirect:courts.html");
         	super.setCancelView("redirect:courts.html");
         }
+    	else if(request.getRequestURI().indexOf("courtLinkingToUserValidate") >= 0)
+        {
+        	super.setSuccessView("redirect:courtLinkingToUserValidate.html");
+        	super.setCancelView("redirect:courtLinkingToUserValidate.html");
+        }
     	
     	view = super.handleRequestInternal(request, response);
         City city = (City)request.getSession().getAttribute(Constants.CITY_TOKEN);
@@ -84,9 +89,38 @@ public class CourtsController  extends BaseFormController
         	view.addObject("successMessages", new String[] { msg });
             return view;
         }
+        // changes to handle court click from player profile page
+        Long courtId = getCourtId(request);
+        if (null != courtId)
+        {
+        	Court court = getCourt(courtId);
+        	if(null == court){
+	        	String msg = getMessageSourceAccessor().getMessage("coursedetails.noCourse", request.getLocale()); //$NON-NLS-1$
+	        	view.addObject("successMessages", new String[] { msg });//$NON-NLS-1$
+	        	return view;
+        	}else{
+        		List<Court> courts = new ArrayList<Court>();
+        		courts.add(court);
+        		view.addObject("courtList", courts);
+        		return view;
+        	}
+        }
+        
+        
+        
         List<Court> courts = this.courtManager.getCourts(city.getId());
         if(isAdmin){
         	view.addObject("courtList", courts);
+        	String courtIdToBeDeleted = request.getParameter("courtId");
+        	if ( (request.getRequestURI().indexOf("courtLinkingToUserValidate") >= 0) && (courtIdToBeDeleted != null) )
+        	{
+        		List<User> users = this.userManager.findUsers(city.getId(), Long.parseLong(courtIdToBeDeleted));
+        		if(!users.isEmpty() && users.size()>0){ //delete the court
+        			view.addObject("usersAssociatedWithThisCourt", users.size()>0);
+        		} else {
+        			this.courtManager.removeCourt(Long.parseLong(courtIdToBeDeleted));
+        		}
+        	}
         }else{
         	Iterator<Court> itr = courts.iterator();
         	while (itr.hasNext()) {
@@ -166,6 +200,35 @@ public class CourtsController  extends BaseFormController
         courtListWrapper.setCourtList(courts);
         return courtListWrapper;
 	}
+    
+    private Court getCourt(Long courtId)
+    {
+    	if (null != courtId)
+    	{
+    		return this.courtManager.getCourt(courtId);
+    	}
+    	
+    	return null;
+    }
+    
+    private Long getCourtId(HttpServletRequest request)
+    {
+        Long id = null;
+        String strCourse = request.getParameter("id"); //$NON-NLS-1$
+        if (null != strCourse)
+        {
+            try
+            {
+                id = Long.valueOf(strCourse);
+            }
+            catch (NumberFormatException e)
+            {
+                log.error("Invalid course id: "+strCourse); //$NON-NLS-1$
+            }
+        }
+        
+        return id;
+    }
     
     @Override
     protected void onBind(HttpServletRequest request, Object command) throws Exception
@@ -273,4 +336,5 @@ public class CourtsController  extends BaseFormController
         
         return user.getUsername().equals(currentUserName);
     }
+    
 }

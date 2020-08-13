@@ -19,7 +19,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.sageconsulting.model.Match;
 import com.sageconsulting.model.MatchScore;
+import com.sageconsulting.model.Registration;
 import com.sageconsulting.service.MatchManager;
+import com.sageconsulting.service.RegistrationManager;
 
 public class ViewResultsController implements Controller
 {
@@ -28,13 +30,20 @@ public class ViewResultsController implements Controller
     private static final String CMD_NAME = "match"; //$NON-NLS-1$
     
     private MatchManager matchManager;
+    private RegistrationManager registrationManager;
     
     public void setMatchManager(MatchManager mgr)
     {
         this.matchManager = mgr;
     }
 
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+    public void setRegistrationManager(RegistrationManager registrationManager) {
+		this.registrationManager = registrationManager;
+	}
+
+
+
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
     {
         ModelAndView view = new ModelAndView();
         Match match = getMatch(request);
@@ -59,6 +68,14 @@ public class ViewResultsController implements Controller
         		winningCount++;
         	else
         		lossingCount++;
+        }
+        // get season name & tournament name
+        if(null != match.getGolfer1() && null != match.getGolfer1().getCurrentSeason()){
+	        Long registrationId = match.getGolfer1().getCurrentSeason().getRegistrationId();
+	        Registration registration = registrationManager.getRegistration(registrationId);
+	        String seasonName = registration.getDisplayName().replace(registration.getSeasonName(), "");
+	        view.addObject("tournamentName", registration.getSeasonName());
+	        view.addObject("seasonName", seasonName);
         }
         
         view.addObject(CMD_NAME, match);
