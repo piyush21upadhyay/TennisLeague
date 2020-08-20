@@ -101,14 +101,7 @@ function checkUserPass()
 		z-index:10000;
 	}
 
-	.tagline-p
-	{
-		font-family: "avantgardemediumbt", "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
-		color:#FFFFFF; 
-		 font-size: 80px;
-    	line-height: 80px;
-    	text-align: left !important;
-	}
+	
 </style>
 
 <script type="text/javascript">
@@ -119,7 +112,7 @@ function checkUserPass()
 
 		if(  vOuterHT > 30 )
 			vTglineHT	= vOuterHT - 30;
-		$(".tagline-p").css("padding-top", vTglineHT);
+		//$(".tagline-p").css("padding-top", vTglineHT);
 		
 		if ($.browser.msie) {
 			$(".check-txt").css({

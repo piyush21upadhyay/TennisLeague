@@ -1,6 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 
-<div class="player-info">
+
+<div class="player-info members-listing-desc memberBox-bg w-100 h-100 flu-box shadow">
 	<c:choose>
 		<c:when test="${empty player}">
 			<div class="left heading-golfer"><h4><fmt:message key="profile.welcomeGuest"/></h4>
@@ -10,7 +11,7 @@
 			<c:if test="${param.showProfileButton eq 'true'}">
 				<div class="left">
 					<table class="show-profile-info">
-						<tr><td class="profile-img"><img src="<c:out value="${player.icon}"/>"/></td></tr>
+						<tr><td class="profile-img text-center"><img src="<c:out value="${player.icon}"/>"/></td></tr>
 						<tr>
 							<td align="center" style="padding: 20px 0px; text-align: center;">
 								<c:set var="registered" value="false"/>							
@@ -33,7 +34,7 @@
 						</tr>
 						<tr>
 							<td>
-								<h2 style="width: auto;word-wrap: break-word;text-align: center;color: #9db32c;font: 14px/18px "avantgardemediumbt", arial, sans-serif;" title='<c:out value="${player.fullName}"/>'>
+								<h2 class="playerINfotitle" title='<c:out value="${player.fullName}"/>'>
 								<c:out value="${player.fullName}"/>	
 							</h2>
 							</td>
@@ -65,8 +66,8 @@
 	<div class="clear"></div>
 	
 	<div class="subsection p1">
-	<div class="flu-box shadow">
-		<p style="clear: both"><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
+	<div class="flu-box">
+		<p class="overflowText"><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
 		<%-- <p><fmt:message key="profile.homeCourt"/> 
 			<c:if test="${not empty player}"><c:out value="${homeCourt}"/></c:if>
 		</p> --%>
@@ -164,7 +165,28 @@
 	   </div>
 	   <div class="subsection">
 	   <div class="flu-box shadow">
-			<p><fmt:message key="profile.percentageGamesWon"/> <c:if test="${not empty player}"><span class="green"><c:out value="${percentageGamesWon}"/></span></c:if></p>
+	   
+			<p><fmt:message key="profile.percentageGamesWon"/> <c:if test="${not empty player}">
+			
+			
+			
+			<span class="chart-div-pInfo">
+<svg viewBox="0 0 36 36" class="circular-chart-pInfo">
+  <path class="circlepinfo"
+    stroke-dasharray="<c:out value="${percentageGamesWon}"/>, 100"
+    d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+  />
+
+</svg>
+<span class="green"><c:out value="${percentageGamesWon}"/></span>
+</span>
+			
+			
+			
+			
+			</c:if></p>
 			<%-- <p><fmt:message key="profile.percentageGamesLoss"/> <c:if test="${not empty player}"><span class="green"><c:out value="${percentageGamesLoss}"/></span></c:if></p> --%>
 		
 	   <!-- Added by Piyush and Akash ends -->
@@ -185,7 +207,7 @@
 		</p>
 	</c:if>
 	<c:if test="${not param.fullPlayerInfo eq 'true'}">
-		<p style="clear: both"><fmt:message key="profile.bestResults"/> <c:if test="${not empty player}"><span class="green">N/A<%--TODO--%></span></c:if></p>
+		<p class="pt-3" style="clear: both"><fmt:message key="profile.bestResults"/> <c:if test="${not empty player}"><span class="green">N/A<%--TODO--%></span></c:if></p>
 	</c:if>
 </div>
 </div>

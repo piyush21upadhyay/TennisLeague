@@ -21,7 +21,7 @@ html, body {
 	background:#fff;
 	color:#5d5d5d;
 	font-size:14px;
-	 font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+	font-family: 'Montserrat', sans-serif,  arial;
 }
 
 p {
@@ -153,13 +153,16 @@ span.green, a.green {
 }
 
 h2 {
-	font-size:18px;
+	font-size:29px;
 	padding-bottom: 4px;
+	font-weight:600;
 }
 
+
 h3 {
-	font-size:16px;
+	font-size:22px;
 	padding-bottom: 4px;
+	font-weight:400;
 }
 
 h4 {
@@ -1032,7 +1035,8 @@ a.inactive-city {
 	height:110px;
 	font-weight:bold;*/
 	padding: 15px 20px;
-	font-size: 26px;
+	font-size: 29px;
+	font-weight:600;
 }
 .std-pad h3 {
     color: #9cb23b;
@@ -1208,12 +1212,11 @@ div#msg {
     padding: 10px 20px !important;
 }
 #home-leaderboard {
-    padding: 0px 14px 20px 20px;
-    margin-top: -50px;
+    padding: 0px 14px 20px 20px; 
 }
 
 #home-leaderboard h2 {
-	color:#ff653f;
+padding: 15px 20px;color:#fff; background:#40444d; text-align: center;
 }
 
 #home-leaderboard h3 {
@@ -1223,10 +1226,8 @@ div#msg {
 
 #home-leaderboard table {
 	width:100%;
-	margin-bottom:10px;
 	border:none;
 	font-size:11px;
-	margin-top:45px;
 }
 table#standings caption {
     padding: 0px 10px;
@@ -1237,7 +1238,7 @@ table#standings caption {
     background: #40444d;
 }
 #home-leaderboard table#standings thead tr th{
-   padding: 20px;
+   padding:15px;
 }
 
 #home-leaderboard table#standings .activetd {
@@ -1270,15 +1271,17 @@ table#standings caption {
 
 #home-leaderboard td {
     text-align: center;
-    padding: 10px 5px;
+    padding: 15px;
     font-size: 14px;
-    line-height: 24px;
+    line-height:1.2;
 }
+
+
+#home-leaderboard td:first-child, #home-leaderboard table#standings thead tr th:first-child{text-align:left;}
 #home-leaderboard tr.activetd td{
     background: #40444d;
 }
 #leaderboard-form {
-	margin-top:10px;
 	text-align:center;
 }
 
@@ -1329,7 +1332,7 @@ table#standings caption {
 #leaderboard-form #division {
 	color:#676767;
 	font-size:11px;
-	margin-top:10px;
+	margin-top:0px;
 	width:100%;
 	border:default;
 }
@@ -1905,7 +1908,7 @@ div.member-section p {
 	    margin: 0;
     width: 100%;
     position: relative;
-    top: -50px;
+    top: -20px;
 
 }
 
@@ -1925,7 +1928,7 @@ background: #40444d !important;
 
 /* Center text and give standard padding */
 #standings-container table td, #standings-container table th {
-	text-align:center;
+	text-align:right;
 	padding:4px;
 }
 #standings-container table thead {
@@ -1933,7 +1936,7 @@ background: #40444d !important;
 }
 /* TH tags */
 #standings-container table th {
-    padding: 6px 4px 15px;
+    padding: 15px;
     font-size: 14px;
     font-weight: 500;
     color: #ffffff;
@@ -1954,7 +1957,7 @@ background: #40444d !important;
 /* Use borders on table cells to simulate seing background */
 #standings-container table .even td, #standings-container table .odd td {
     background: #ffffff;
-    padding: 15px 4px;
+    padding: 15px;
     height: 14px;
 color: #333;
 }
@@ -1966,21 +1969,24 @@ color: #333;
 }
 
 /* Column Widths */
-#standings-container td.pos {width:36px;} /* 1st */
-#standings-container td.player {width:96px;} /* 2nd */
-#standings-container td.course {width: 156px;} /* 3rd */
-#standings-container td.points {width: 63px;} /* 4th */
-#standings-container td.wins {width: 43px;} /* 5th */
-#standings-container td.losses  {width: 68px;} /* 6th */
-#standings-container td.ties {width: auto;} /* Rest */
-/*#standings-container table tr td {width:36px;} /* 1st */
-/*#standings-container table tr td + td {width:96px;} /* 2nd */
-/*#standings-container table tr td + td + td {width: 156px;} /* 3rd */
-/*#standings-container table tr td + td + td + td {width: 63px;} /* 4th */
-/*#standings-container table tr td + td + td + td + td {width: 43px;} /* 5th */
-/*#standings-container table tr td + td + td + td + td + td  {width: 68px;} /* 6th */
-/*#standings-container table tr td + td + td + td + td + td + td {width: auto;} /* Rest */
+/*  #standings-container td.pos {width:36px;}  1st */
+/*  #standings-container td.player {width:96px;}  2nd */
+/*  #standings-container td.course {width: 156px;}  3rd */
+/*  #standings-container td.points {width: 63px;}  4th */
+/*  #standings-container td.wins {width: 43px;}  5th */
+/*  #standings-container td.losses  {width: 68px;}  6th */
+/*  #standings-container td.ties {width: auto;}  Rest */
 
+
+/*  #standings-container table tr td {width:36px;} 1st */
+/* #standings-container table tr td + td {width:96px;}  2nd */
+/* #standings-container table tr td + td + td {width: 156px;}  3rd */
+/* #standings-container table tr td + td + td + td {width: 63px;}  4th */
+/* #standings-container table tr td + td + td + td + td {width: 43px;}  5th */
+/* #standings-container table tr td + td + td + td + td + td  {width: 68px;}  6th */
+/* #standings-container table tr td + td + td + td + td + td + td {width: auto;}  Rest */
+
+/*
 #standings-container table .pos {
 	width: 5%;
 }
@@ -2012,6 +2018,8 @@ color: #333;
   {width:10%}
   #results td:nth-child(7)
   {width:10%}
+  
+*/
 
 /*
 #standings-container table .points {
@@ -2035,7 +2043,7 @@ color: #333;
 .playoffs-counter {
 position: absolute;
     right: 25px;
-    top: 230px;
+    bottom: -130px;
     width: 200px;
     height: 120px;
     padding: 37px 70px 0px 0px;
@@ -4223,9 +4231,9 @@ table#standings thead {
     color: #fff;
     text-align: center;
     font-size: 18px;
-    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
     font-weight: normal;
 }
+
 #home-leaderboard a.squarebutton:hover{
 padding: 10px;
 }
@@ -4236,11 +4244,12 @@ form#leaderboard-form #division, form#leaderboard-form #division:focus, form#lea
     font-size: 15px;
     font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
+/*
 table#standings tbody {
   display: block;
-  max-height: 300px;
-  overflow-y: auto;
 }
+
+
 #home-leaderboard #standings
 tbody tr{
      display: table;
@@ -4253,6 +4262,7 @@ table#standings thead {
   width: 100%;
   table-layout: fixed;
 }
+*/
 .editerForm {
     padding: 20px;
 }
@@ -5216,8 +5226,7 @@ form#matchForm .col-sm-8 .heading-golfer {
 
 .edituser-section .namecolw p.textAlign b {
     padding-left: 10px;
-    font-size: 18px;
-    vertical-align: super;
+    font-size: 18px; 
     font-weight: 100;
     color: #585858;
 }
@@ -5382,6 +5391,39 @@ div#schedule .buttonwrapper a {
    color: #fff;
    text-align: center;
 }
+
+
+.h2_text{font-family: 'Montserrat', sans-serif,  arial;font-size:29px;font-weight:800;}
+.home-green-bg-leadboard{ background: #9cb23b;
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;}
+#leader_rt_sc_div{max-height: 265px; overflow-y: scroll;min-height: 265px;}
+.lt-leader-mnht{min-height:378px}
+.members-listing-desc.player-info img{padding-left:0px; max-width:70px;border-radius:50%;border:4px solid #9db32c;}
+.player-info.members-listing-desc table.show-profile-info .buttonwrapper{ background:#efefee;color:#a0afc2 !important;}
+.playerINfotitle{font-size:16px;font-weight:600; color:#9db32c; text-align: center;}
+.overflowText{white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis; margin: 0 auto;}
+
+.members-listing-desc  p.msg-link-btn{padding:1px 20px;}
+.memberBox-bg{background:#dedfdd;}
+.members-listing-desc  .flu-box{min-height:auto !important;}
+#members .search-col input[type="checkbox"] {visibility:hidden}
+
+.hd-title .selected-country p{text-align:center;}
+
+.leader-tab-info table{table-layout:fixed;width:100%}
+table#results tr td:nth-child(3){text-align:left;}
+table#results tr td:nth-child(1), .leader-tab-info tr th:nth-child(1){width:60px;text-align:right}
+table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px;text-align:right}
+#standings-container a{text-decoration:none}
+
+
+.chart-div-pInfo{    width: 70px; height: 70px; display: inline-block; position: relative;} .chart-div-pInfo span{    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; z-index: 2;} .circular-chart-pInfo { display: block; margin: 0px auto; max-width: 100%; max-height: 100%; stroke:#9db32c; } .circlepinfo { fill: #ccc; stroke-width: 2.8; stroke-linecap: round; animation: progress-pinfo 1s ease-out forwards; } @keyframes progress-pinfo { 0% { stroke-dasharray: 0 100; } }
 
 
 @media(min-width: 1200px) and (max-width: 1372px){

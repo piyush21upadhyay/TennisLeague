@@ -18,25 +18,22 @@
             }
              .hd-title{
               padding-bottom: 40px;
-				position: relative;
-				margin-top: 50px;
-				 margin-left: 25px;
             }
 			.selected-country {
-				width: 65%;
-				/* float: left; */
-				font-weight: 500;
-				font-size: 15px;
-				margin-right: 10px;
-				transform: rotateZ(-90deg);
-				position: absolute;
-				left: -33%;
-				padding: 10px 10px;
-				bottom: 50%;
-				background: #9cb23b;
-				color: #fff;
-				font-family: "Avant_Garde_Gothic", Arial, sans-serif;
+				width: 195px;
+			    /* float: left; */
+			    font-weight: 500;
+			    font-size: 15px;
+			    margin-right: 0;
+			    transform: rotateZ(-90deg);
+			    position: absolute;
+			    left: -120px;
+			    padding: 10px 10px;
+			    bottom: 76px;
+			    background: #9cb23b;
+			    color: #fff;
 			}
+			.mt-40{margin: 40px 50px 0 60px;}
             .retiredWin{
                   width: 38%;
                  float: right;
@@ -44,11 +41,10 @@
                  margin-top:-45px;
             }
 			.score-list {
-				width: 90%;
+				width:100%;
 				background: #fff;
 				padding: 30px;
-				min-height: 270px;
-				margin-top: 10px;
+				min-height: 210px; 
 				box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 			}
             .super{
@@ -69,27 +65,26 @@
             }
 
             table.linescore td {
-                border: thin solid #ddd;
+               /* border: thin solid #ddd;*/
                 font-weight: 700;
                 text-align: right
             }
 
             table.linescore td.firstChild,table.linescore td:first-child {
                 text-align: left;
-                text-transform: uppercase
+              
             }
 
             table.linescore td.firstChild,table.linescore td:first-child,table.linescore th.firstChild,table.linescore th:first-child {
                 padding-right: 1.5em
             }
 
-            table.linescore .runs {
-                background-color: #9dc227;
-            }
+            
             .flag-icon{
                 margin-right: 10px;
-                width: 20px;
-    			height: 20px; 
+                width: 40px;
+    			height: 40px; 
+    			vertical-align:middle;
             }
             .char{
                 font-size: 55px;
@@ -101,29 +96,25 @@
                     width: 12%;            
             }  
             .matchDate{
-				float: left;
+					display:inline-block;
 				font-weight: bold;
 				font-size: 15px;
-				width: 82%;
+				width:100%;
 				background: #dedede;
 				position: absolute;
-				top: -35px;
-				padding: 10px;
-				left: 21px;
+				top: -40px;
+				padding: 15px;
+				left: 0px;
             }
 			.match-status {
-				width: 5%;
-				float: left;
 				font-weight: bold;
-				font-size: 30px;
-				/* width: 92%; */
-				/* background: #dedede; */
+				font-size: 30px; 
 				position: absolute;
-				top: 30%;
+				top: 50%;
 				padding: 5px;
-				right: 30px;
+				right:-45px;
 				color: #9cb23b;
-				bottom: 0;
+				 transform:translateY(-50%)
 			}
             .score-table{
                 table-layout: auto;
@@ -159,15 +150,20 @@
             .trophy table{
                 width: 50%;
             }  
+            
+            table.centerAlign.linescore tr td:first-child{width:200px;}
   
 </style>
 
 <div>
       <div class="component-page">
-           <div class="row">
-          <div class="hd-title col-sm-4">
+           <div class="row mt-5 ">
+          <div class="hd-title  col-lg-6">
+          <div class=" position-relative mt-40">
               <div class="selected-country">
-              <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>
+              <p><c:out value=" ${match.golfer1.currentSeason.name}"/></p>
+              
+               <%-- original code  <p><c:out value="${match.golfer1.currentSeason.city.name}, ${match.golfer1.currentSeason.name}"/></p>  --%>
               <%-- <p><c:out value="${user.currentWins} Wins  "/><c:out value="${user.currentLosses} Loss  "/></p> --%>
               
               </div>
@@ -231,7 +227,7 @@
 
 				</div>
 				 <div class="score-list">
-                    <table class="centerAlign linescore">
+                    <table class="centerAlign linescore ">
                         <tbody>
                         <tr>
                             <td class="  leftAlign strong"><img class="flag-icon" src="<c:url value="${match.golfer1.icon}"/>" alt="flag"><c:out value="${match.golfer1.fullName}"/></td>
@@ -349,6 +345,7 @@
                 </c:if>
              </div>
              </div>
+          </div>
           </div>
       </div>
       

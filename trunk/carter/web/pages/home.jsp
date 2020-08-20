@@ -3,6 +3,7 @@
 <head>
 	<title><fmt:message key="home.title"/></title>
     <meta name="menu" content="Welcome"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="<c:url value='/scripts/jquery.marquee.js'/>"></script>
     <script type="text/javascript" src="scripts/swfobject.js"></script>
 	<script type="text/javascript">
@@ -163,19 +164,20 @@
 		<!--div id="header-home-none"></div-->
 	</c:otherwise>
 </c:choose>
-	<div class="std-pad flu-box shadow">
+	<div class="std-pad flu-box shadow lt-leader-mnht">
 	    <h2 class="page-title">Home</h2>
 		<h3><fmt:message key="home.welcomeTo"/> <fmt:message key="webapp.name"/></h3>
 	    <p class="justify"><fmt:message key="home.intro"/></p>
-	     <p><b> Watch us grow. City Tennis League: Tee it up!</b></p>
+	     <p class="p-0"><b> Watch us grow. City Tennis League: Tee it up!</b></p>
 	</div>
 </div>
 <div class="col-sm-4">
 	<div id="home-leaderboard">
-		<!--h2><fmt:message key="home.leaderboard"/></h2-->
+		<h2><fmt:message key="home.leaderboard"/></h2>
+		<!-- hard code html --><span class="home-green-bg-leadboard"><c:out value="${season.name}"/> <%-- <c:out value="${season.division}"/> --%></span>
 		<c:choose>
 			<c:when test="${empty seasons or not empty hideStandings}">
-				<div>
+				<div id="leader_rt_sc_div">
 					<table id="standings">
 					<caption><fmt:message key="home.noLeaderboard"/></caption>
 					<thead>
@@ -242,9 +244,9 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div>
+				<div  id="leader_rt_sc_div">
 					<display:table id="standings" name="standings" pagesize="10">
-						<display:caption><c:out value="${season.name}"/> <%-- <c:out value="${season.division}"/> --%></display:caption>
+						<display:caption></display:caption>
 						<display:column titleKey="home.position"><%=pageContext.getAttribute("standings_rowNum")%></display:column>
 						<display:column property="user.fullName" titleKey="home.player"/>
 						<display:column property="points" titleKey="home.points"/>
@@ -300,7 +302,7 @@
 			    
 	</div>
 --%>
-	<div id="home-weather" class="orange-title">
+	<div id="home-weather" class="orange-title d-none">
 		<c:if test="${not empty weather}"><c:if test="${not empty weather.icon and not empty weather.high and not empty weather.low}">
 			<div class="ldrBrdWeatherHdr"><fmt:message key="home.weather"/></div>
 			<div class="ldrBrdWthr">
