@@ -63,6 +63,19 @@ function checkUserPass()
 <c:choose>
 	<c:when test="${ vRandom eq 3 }">
 		<link  rel="stylesheet" type="text/css" href="css/bg_white.css">
+		
+		<style type="text/css">
+			
+			.tagline-p{
+		padding-top:222px;
+		color:#FFFFFF; 
+		 font-size: 100px;
+    	line-height: 1;
+    	text-align: left !important;
+    	font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:125px;
+    	
+	}
+		</style>
 	</c:when>
 	<c:otherwise>
 		<link  rel="stylesheet" type="text/css" href="css/bg_regular.css">
