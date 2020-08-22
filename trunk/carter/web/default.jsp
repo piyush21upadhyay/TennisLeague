@@ -72,6 +72,16 @@ function checkUserPass()
    			 min-height: 100%;
    		 	margin: auto;
 			}
+			.tagline-p
+	{
+		padding-top:222px;
+		color:#FFFFFF; 
+		 font-size: 100px;
+    	line-height: 1;
+    	text-align: left !important;
+    	font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:125px;
+    	
+	}
 		</style>
 	</c:otherwise>
 </c:choose>
