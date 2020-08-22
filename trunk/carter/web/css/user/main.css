@@ -5429,6 +5429,9 @@ table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px
 #profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow .subsection.p1{margin-top: 10px; margin-bottom: 10px;}
 #profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow .subsection.p1 .flu-box{ box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;}
 
+#contact-content{position:relative;padding-bottom:120px;}
+.blackFooterLogo{bottom:0px;right:30px;}
+
 @media(min-width: 1200px) and (max-width: 1372px){
 .member-section p.msg-link-btn{
   width: auto;
