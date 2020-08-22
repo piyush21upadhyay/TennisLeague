@@ -180,7 +180,7 @@
   />
 
 </svg>
-<span class="green"><c:out value="${percentageGamesWon}"/></span>
+<span class="green"><c:out value="${percentageGamesWon}"/>%</span>
 </span>
 			
 			

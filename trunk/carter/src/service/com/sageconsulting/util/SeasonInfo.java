@@ -237,8 +237,8 @@ public class SeasonInfo
                 	{
                 		// Akash : Changing (commenting below if condition) to handle scenario when number of wins are 0 for both players,need to decide on the  basis of % of games on
                 		//if (result1.getWins() > 0 && result2.getWins() > 0) {
-                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage().replace("%", ""));
-                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage().replace("%", ""));
+                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage());
+                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage());
                 			if(!percentageOfGamesWonByPlayer1.equals(percentageOfGamesWonByPlayer2))
                 				return (percentageOfGamesWonByPlayer2.compareTo(percentageOfGamesWonByPlayer1));
                 		//}

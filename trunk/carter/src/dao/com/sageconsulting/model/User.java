@@ -587,9 +587,9 @@ public class User extends BaseObject implements Serializable, UserDetails
     	}
     	String wonPercentageStr = wonPercentage+"";
     	if(wonPercentageStr.indexOf(".") > 0 && wonPercentageStr.substring(wonPercentageStr.indexOf(".")).length() > 3)
-    		return wonPercentageStr.substring(0, wonPercentageStr.indexOf(".")+3)+"%";
+    		return wonPercentageStr.substring(0, wonPercentageStr.indexOf(".")+3);
     	else
-    		return wonPercentageStr+"%";
+    		return wonPercentageStr;
     
     }
     

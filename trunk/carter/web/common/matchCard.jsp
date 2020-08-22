@@ -242,7 +242,7 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-                            				<c:out value="${match.score.player1set1} "/>
+                            				<span><c:out value="${match.score.player1set1} "/></span>
                             			<c:if test="${(null != match.score.player1set1Sup) && match.score.player1set1Sup > 0}">
                             				<span class="super"><c:out value="${match.score.player1set1Sup}"/></span>
                             			</c:if>
@@ -256,7 +256,7 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-                            				<c:out value="${match.score.player1set2} "/>
+                            				<span><c:out value="${match.score.player1set2} "/></span>
                             				<c:if test="${(null != match.score.player1set2Sup) && match.score.player1set2Sup > 0}">
                             					<span class="super"><c:out value="${match.score.player1set2Sup}"/></span>
                             				</c:if>
@@ -270,7 +270,7 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-                            				<c:out value="${match.score.player1set3} "/>
+                            				<span><c:out value="${match.score.player1set3} "/></span>
                             				<c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
                             					<span class="super"><c:out value="${match.score.player1set3Sup}"/></span>
                             				</c:if>
@@ -286,7 +286,7 @@
 										<td>
 								</c:otherwise>
 								</c:choose>
-									<c:out value="${match.score.player2set1} "/> 
+									<span><c:out value="${match.score.player2set1} "/> </span>
 							 			<c:if test="${(null != match.score.player2set1Sup) && match.score.player2set1Sup > 0}">
                             			<span class="super"><c:out value="${match.score.player2set1Sup}"/></span>
                             			</c:if>
@@ -300,7 +300,7 @@
 										<td>
 									</c:otherwise>
 								</c:choose>
-									<c:out value="${match.score.player2set2} "/>
+									<span><c:out value="${match.score.player2set2} "/></span>
 									<c:if test="${(null != match.score.player2set2Sup) && match.score.player2set2Sup > 0}">
                             			<span class="super"><c:out value="${match.score.player2set2Sup}"/></span>
                             		</c:if>
@@ -314,7 +314,7 @@
 										<td>
 									</c:otherwise>
 								</c:choose>
-									<c:out value="${match.score.player2set3} "/>
+									<span><c:out value="${match.score.player2set3} "/></span>
 									<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
                             			<span class="super"><c:out value="${match.score.player2set3Sup}"/></span>
                             		</c:if>
