@@ -60,6 +60,18 @@ function checkUserPass()
 
 <script type="text/javascript" src="scripts/intropage.js"></script>
 
+<style type="text/css">
+#enter-box{max-height:317px;min-height:317px !important;}
+#login-box{max-height:327px;min-height:327px !important;}
+#signup-city{max-height:287px;min-height:287px !important;}
+ 
+@media only screen and (min-width:1200px){
+#footer{position:relative !important; bottom:0px;}
+div#main { height: 100%; min-height:700px; }
+}
+
+</style>
+
 <c:choose>
 	<c:when test="${ vRandom eq 3 }">
 		<link  rel="stylesheet" type="text/css" href="css/bg_white.css">
