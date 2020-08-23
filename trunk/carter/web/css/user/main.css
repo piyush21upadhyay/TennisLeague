@@ -5451,7 +5451,7 @@ table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px
 .sentMsgSection .memberBox-bg table.show-profile-info{width:100% !important;}
 .pgBtn{background: #dddddb;color: #777078 !important;display:inline-block; padding:10px 40px; border-radius:30px;}
 .del_btn_pg a{font-size: 14px; margin-top: 30px; background: #dddddb;color: #777078 !important;display:inline-block; padding:10px 40px; border-radius:30px;}
-
+#members .member-section .row .col-sm-4{margin-bottom:30px;}
 
 @media(min-width: 1200px) and (max-width: 1372px){
 .member-section p.msg-link-btn{
