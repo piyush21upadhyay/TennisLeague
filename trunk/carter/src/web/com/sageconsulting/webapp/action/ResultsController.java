@@ -28,12 +28,14 @@ import com.sageconsulting.model.Court;
 import com.sageconsulting.model.Match;
 import com.sageconsulting.model.MatchResult;
 import com.sageconsulting.model.MatchScore;
+import com.sageconsulting.model.Registration;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.BracketManager;
 import com.sageconsulting.service.ChampionManager;
 import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.MatchManager;
+import com.sageconsulting.service.RegistrationManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.util.UserStatsUtil;
 import com.sageconsulting.webapp.util.CustomCourtEditor;
@@ -51,6 +53,11 @@ public class ResultsController extends BaseFormController
     private BracketManager bracketManager;
     private ChampionManager championManager;
     private SeasonManager seasonManager;
+    private RegistrationManager registrationManager;
+
+    public void setRegistrationManager(RegistrationManager registrationManager) {
+		this.registrationManager = registrationManager;
+	}
   
     private transient MatchResult result = null;
     
@@ -258,6 +265,15 @@ public class ResultsController extends BaseFormController
             {
             	//view.addObject("user", this.getCurrentUser(request));
             	view.addObject("isAdministrator", true);
+            }
+            
+         // get season name & tournament name
+            if(null != match.getGolfer1() && null != match.getGolfer1().getCurrentSeason()){
+    	        Long registrationId = match.getGolfer1().getCurrentSeason().getRegistrationId();
+    	        Registration registration = registrationManager.getRegistration(registrationId);
+    	        String seasonName = registration.getDisplayName().replace(registration.getSeasonName(), "");
+    	        view.addObject("tournamentName", registration.getSeasonName());
+    	        view.addObject("seasonName", seasonName);
             }
             
             return view;
