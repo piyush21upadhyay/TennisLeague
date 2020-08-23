@@ -172,27 +172,29 @@
 	   <div class="subsection">
 	   <div class="flu-box shadow">
 	   
-			<p><fmt:message key="profile.percentageGamesWon"/><c:if test="${not empty player}"><span>: <c:out value="${percentageGamesWon}"/>%</span>
-			
-			
-			
-			<span class="chart-div-pInfo">
-<svg viewBox="0 0 36 36" class="circular-chart-pInfo">
-  <path class="circlepinfo"
-    stroke-dasharray="<c:out value="${percentageGamesWon}"/>, 100"
-    d="M18 2.0845
-      a 15.9155 15.9155 0 0 1 0 31.831
-      a 15.9155 15.9155 0 0 1 0 -31.831"
-  />
-
-</svg>
-<span class="green"><c:out value="${percentageGamesWon}"/>%</span>
-</span>
-			
-			
-			
-			
-			</c:if></p>
+		<p><fmt:message key="profile.percentageGamesWon"/>
+			<c:if test="${not empty player}">
+				<c:choose>
+					<c:when test='${percentageGamesWon ne "N/A"}'>
+						<span>: <c:out value="${percentageGamesWon}"/>%</span>
+						<span class="chart-div-pInfo"> 
+							<svg viewBox="0 0 36 36" class="circular-chart-pInfo">
+	  							<path class="circlepinfo"
+									stroke-dasharray="<c:out value="${percentageGamesWon}"/>, 100"
+									d="M18 2.0845
+								      a 15.9155 15.9155 0 0 1 0 31.831
+								      a 15.9155 15.9155 0 0 1 0 -31.831" />
+	
+							</svg> 
+							<span class="green"><c:out value="${percentageGamesWon}" />%</span>
+						</span>
+					</c:when>
+					<c:otherwise>
+						<span>: <c:out value="${percentageGamesWon}"/></span>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
+		</p>
 			<%-- <p><fmt:message key="profile.percentageGamesLoss"/> <c:if test="${not empty player}"><span class="green"><c:out value="${percentageGamesLoss}"/></span></c:if></p> --%>
 		
 	   <!-- Added by Piyush and Akash ends -->
