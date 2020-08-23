@@ -67,7 +67,7 @@ function checkUserPass()
  
 @media only screen and (min-width:1200px){
 #footer{position:relative !important; bottom:0px;}
-div#main { height: 100%; min-height:700px; }
+div#main { height: 100%; min-height:730px; }
 }
 
 </style>
