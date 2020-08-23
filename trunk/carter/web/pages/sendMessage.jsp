@@ -17,7 +17,7 @@
 <div class="msgboard-section">
 	<div class="left">
 		<h2><fmt:message key="sendMsg.header"/></h2>
-		<div class="msguser">
+		<div class="msguser sentMsgSection">
 			<c:set var="player" value="${member}" scope="request"/>
 			<c:set var="msgLink" value="${not empty sentMessage}"/>
 			<c:import url="/common/playerInfo.jsp">

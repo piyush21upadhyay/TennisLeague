@@ -100,6 +100,12 @@
 	   <div class="subsection">
 	   <div class="flu-box shadow">
 	   	<p><fmt:message key="profile.tournamentRecord"/> <c:if test="${not empty player}"><a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a></c:if></p>
+	  <!-- Hard code --> 	<div class="winloss-sec">
+	   		<i class="winBall"></i>
+	   		<i class="winBall"></i>
+	   		<i class="winBall"></i>
+	   		<i class="lossBall"></i>
+	   	</div>
 	   </div>
 	   </div>
 	   <div class="subsection">

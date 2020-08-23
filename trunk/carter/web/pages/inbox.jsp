@@ -6,10 +6,13 @@
 
 <c:if test="${not empty pageContext.request.remoteUser}">
 <div class="msgboard-section">
-	<div id="inbox" class="left">
-		<div class="left"><img src="<c:url value="images/ppMessage.jpg"/>" alt="inbox" /></div>
-		<div class="left"><h2><fmt:message key="inbox.inbox"/></h2></div>
-		<div class="left"><h3><c:out value="${newMessageCount}"/> <fmt:message key="inbox.unread"/></h3></div>
+	<div id="inbox" class="col-12">
+	<div class="d-flex justify-content-between heading-golfer">
+	<span class="pt-10"> <fmt:message key="inbox.inbox"/> </span> <span><img src="images/inbox.png" alt="msg"> </span>
+	</div>
+		
+		
+		<!-- as per latest design not required --> <!-- <div class="left"><h3><c:out value="${newMessageCount}"/> <fmt:message key="inbox.unread"/></h3></div> -->
 		<div class="clear"></div>
 		<form id="msgForm" method="post" action="<c:url value="/inbox.html"/>">
 		<display:table name="messages" id="message" cellspacing="0" cellpadding="0" pagesize="10" requestURI="" class="messages">
@@ -44,12 +47,14 @@
 			<display:setProperty name="paging.banner.last"><fmt:message key="inbox.last"/></display:setProperty>
 			<display:setProperty name="paging.banner.onepage" value="" />
 		</display:table>
+		<div class="col-12 text-right del_btn_pg">
 		<carter:button onclick="document.getElementById('bDelete').value='true';return onFormSubmit(document.getElementById('msgForm'));" key="button.delete"/>
 		<input type="hidden" id="bDelete" name="bDelete" value="false"/>
+		</div>
 		</form>
 	</div>
 	
-	<div id="inbox-message" class="right">
+	<div id="inbox-message" class="col-12">
 	
 	<c:choose>
 	
