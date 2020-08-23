@@ -151,7 +151,13 @@
                 width: 50%;
             }
                 
-                table.centerAlign.linescore tr td:first-child { width: 200px;}
+                table.centerAlign.linescore tr td:first-child { width: 140px;}
+                .score-list span { border: 1px solid #ccc; border-radius: 3px; display: inline-block; padding: 15px; }
+                
+                @media only screen and (min-width:992px) and (max-width:1160px){
+                .score-list{padding:30px 10px;}
+                 table.centerAlign.linescore tr td:first-child { width: 80px;}
+                }
   
 </style>
 <h2 class="page-title"> Schedule</h2>

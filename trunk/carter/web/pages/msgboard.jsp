@@ -73,7 +73,7 @@
 			$("#sent-message").remove();
 
 		// Fill the place holder
-		$("#inbox").after('<div id="inbox-message" class="col-sm-6"></div><div class="clear></div>');
+		$("#inbox").after('<div id="inbox-message" class="col-sm-12"></div><div class="clear></div>');
 
 		if( navigator.userAgent.match(/msie/gi) != 'MSIE' )
 		{
@@ -121,7 +121,7 @@
 
 <!--[if IE]>
 <style type="text/css">
-	.tbl-msg-div {position:relative; height:200px; width:480px;}
+	.tbl-msg-div {position:relative; height:200px; }
 
 	<c:choose>
 		<c:when test="${not empty showDeleteBtn}">
@@ -156,7 +156,7 @@
 <h2 class="page-title">Home</h2>
 <div class="msgboard-section">
 <div class="row">
-	<div id="inbox" class="col-sm-6">
+	<div id="inbox" class="col-sm-12">
 		<!--div class="left"><img src="images/ppMessage.jpg" alt="msg"/></div-->
 		<div class="heading-golfer">
 				<h4><fmt:message key="profile.messageBoard"/></h4>
@@ -257,19 +257,33 @@
 		</c:when>
 		
 		<c:when test="${not empty user and post}">
-			<div id="form-div" class="col-sm-6">
+			<div id="form-div" class="col-sm-12">
 				<div class="heading-golfer">
 					<h4><fmt:message key="sendMsg.create"/></h4>
-					<img src="images/edit-icon.png" alt="Public">
+					<img src="images/public-bd-icon.png" alt="Messages">
 				</div>
 				<div class="post">
 					<form:form commandName="publicMessage" id="msgForm">
-					<div class="sub-container grey-box shadow">
-					    <label for="subject"><fmt:message key="sendMsg.subject"/></label>
-						<div class="sub-input">
-					    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
+						<div class="row">
+							<div class="col-6">
+						<!-- this needs to be TO as per design  hard code-->		<div class="sub-container grey-box shadow">
+								    <label for="subject">To</label>
+									<div class="sub-input">
+								    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="sub-container grey-box shadow">
+								    <label for="subject"><fmt:message key="sendMsg.subject"/></label>
+									<div class="sub-input">
+								    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+					
+					
 					   <div class="msginput-container grey-box shadow"> 
 						<label for="msginput"><fmt:message key="sendMsg.message"/></label>
 					    <form:textarea path="message" cssClass="emailMessage" id="msginput"/>
