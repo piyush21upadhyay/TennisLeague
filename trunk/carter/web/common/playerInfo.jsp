@@ -166,7 +166,7 @@
 	   <div class="subsection">
 	   <div class="flu-box shadow">
 	   
-			<p><fmt:message key="profile.percentageGamesWon"/><c:if test="${not empty player}"><span>: <c:out value="${percentageGamesWon}"/>%</span>
+			<p><fmt:message key="profile.percentageGamesWon"/> <c:if test="${not empty player}">
 			
 			
 			

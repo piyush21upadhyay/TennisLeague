@@ -94,7 +94,6 @@
     	<property name="championManager" ref="championManager"/>
     	<property name="bracketManager" ref="bracketManager"/>
     	<property name="seasonManager" ref="seasonManager"/>
-    	<property name="registrationManager" ref="registrationManager"/>
     </bean>
     
     <bean id="viewResultsController" class="com.sageconsulting.webapp.action.ViewResultsController">
