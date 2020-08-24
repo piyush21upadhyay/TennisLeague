@@ -171,7 +171,7 @@
 </c:choose>
 	<div class="std-pad flu-box shadow lt-leader-mnht">
 	    <h2 class="page-title">Home</h2>
-		<h3><fmt:message key="home.welcomeTo"/> <fmt:message key="webapp.name"/></h3>
+		<h3><fmt:message key="home.welcomeTo"/> <fmt:message key="openplaytennis"/> - <fmt:message key="beatSomeOneNewText"/></h3>
 	    <p class="justify"><fmt:message key="home.intro"/></p>
 	     <p class="p-0 m-0"><b> Ball Boys Optional </b></p>
 	</div>
