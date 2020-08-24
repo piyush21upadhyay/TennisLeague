@@ -11,10 +11,15 @@
                 font-family:Arial, Helvetica, sans-serif;
                  background: #fff;
             } */
+            
+            .left{float:none;}
             .component-page{
                  /* width: 124%;
-                padding: 10px 0px;
+               
                 overflow: hidden;*/
+                width:100%;
+                 padding: 10px 0px;
+                
             }
              .hd-title{
               padding-bottom: 40px;
@@ -22,7 +27,7 @@
 			.score-list {
 				width:100%;
 				background: #fff;
-				padding: 30px;
+				padding: 30px 10px;
 				min-height: 210px; 
 				box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 			}
@@ -78,8 +83,6 @@
             table.linescore {
                 margin-right: auto;
                 margin-left: 0;
-                table-layout: fixed;
-                width: 100%;
             }
 
             table.linescore td {
@@ -150,13 +153,16 @@
             .trophy table{
                 width: 50%;
             }
-                
-                table.centerAlign.linescore tr td:first-child { width: 140px;}
-                .score-list span { border: 1px solid #ccc; border-radius: 3px; display: inline-block;  padding:15px 20px; }
+                 td.strong.runs span{color: #9cb23b;}
+             td.strong.runs span sup{ color: #676768 !important;} 
+                table.centerAlign.linescore tr td:first-child { width: 240px;}
+                .score-list td.strong.runs  span { border: 1px solid #ccc; border-radius: 3px; display: inline-block;  padding:15px 20px; }
+                 .score-list   span { border: 1px solid transparent; border-radius: 3px; display: inline-block;  padding:15px 20px; }
                 
                 @media only screen and (min-width:992px) and (max-width:1160px){
                 .score-list{padding:30px 10px;}
                  table.centerAlign.linescore tr td:first-child { width: 80px;}
+                 table.linescore td{padding:3px;}
                 }
   
 </style>
@@ -239,7 +245,7 @@
                         	<tr>
                             	<td class="  leftAlign strong">
                             	<%-- <img src="<c:url value="${match.golfer1.icon}"/>"/> --%>
-                            	<p class="textAlign "><img  class="align-middle" style="width: 40px;" src="<c:out value="${match.golfer1.icon}"/>"/><c:out value="${match.golfer1.fullName}"/></p>
+                            	<p class=" "><img  class="align-middle" style="width: 40px; margin-right:3px;" src="<c:out value="${match.golfer1.icon}"/>"/><c:out value="${match.golfer1.fullName}"/></p>
                             	</td>
         							<c:choose>
 										<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
@@ -299,7 +305,7 @@
                         	</tr>
                       		<tr>
                             	   <td class="  leftAlign strong">
-                            	   <p class="textAlign "><img  class="align-middle" style="width: 40px;" src="<c:out value="${match.golfer2.icon}"/>"/><c:out value="${match.golfer2.fullName}"/></p>
+                            	   <p class=" "><img  class="align-middle" style="width: 40px; margin-right:3px;" src="<c:out value="${match.golfer2.icon}"/>"/><c:out value="${match.golfer2.fullName}"/></p>
                             	   </td>
                            		<c:choose>
 									<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
