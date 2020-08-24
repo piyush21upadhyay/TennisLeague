@@ -237,8 +237,9 @@
                     	<table class="centerAlign linescore">
                         	<tbody>
                         	<tr>
-                            	<td class="  leftAlign strong"><c:out value="${match.golfer1.fullName}"/>
+                            	<td class="  leftAlign strong">
                             	<%-- <img src="<c:url value="${match.golfer1.icon}"/>"/> --%>
+                            	<p class="textAlign "><img  class="align-middle" style="width: 40px;" src="<c:out value="${match.golfer1.icon}"/>"/><c:out value="${match.golfer1.fullName}"/></p>
                             	</td>
         							<c:choose>
 										<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
@@ -248,10 +249,14 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-                            				<span  class="position-relative"><c:out value="${match.score.player1set1} "/> <sup class="abs_sup_span"><c:out value="${match.score.player1set1Sup}"/></sup></span>
+                            				<span  class="position-relative"><c:out value="${match.score.player1set1}"/>
                             			<c:if test="${(null != match.score.player1set1Sup) && match.score.player1set1Sup > 0}">
-                            				
+                            				<c:if test="${(match.score.player1set1 > match.score.player2set1 && match.score.player1set1Sup > 7) 
+                            				|| (match.score.player1set1 < match.score.player2set1 && match.score.player1set1Sup < 6)}">
+                            					<sup class="abs_sup_span"><c:out value="${match.score.player1set1Sup}"/></sup>
+                            				</c:if>
                             			</c:if>
+                            				</span>
                             				</td>
                             
                             		<c:choose>
@@ -262,10 +267,14 @@
 											<td>
 										</c:otherwise>
 									</c:choose>
-                            				<span  class="position-relative"><c:out value="${match.score.player1set2} "/> <sup class="abs_sup_span"><c:out value="${match.score.player1set2Sup}"/></sup></span>
+                            				<span  class="position-relative"><c:out value="${match.score.player1set2} "/>
                             				<c:if test="${(null != match.score.player1set2Sup) && match.score.player1set2Sup > 0}">
-                            					
+                            					<c:if test="${(match.score.player1set2 > match.score.player2set2 && match.score.player1set2Sup > 7) 
+                            						|| (match.score.player1set2 < match.score.player2set2 && match.score.player1set2Sup < 6)}">
+                            					 		<sup class="abs_sup_span"><c:out value="${match.score.player1set2Sup}"/></sup>
+                            					 </c:if>
                             				</c:if>
+                            				</span>
                             				</td>
                             
                             		<c:choose>
@@ -277,15 +286,21 @@
 										</c:otherwise>
 									</c:choose>
 									<c:if test="${(null != match.score.player1set3) && match.score.player1set3 > 0}">
-                            				<span  class="position-relative"><c:out value="${match.score.player1set3} "/> <sup class="abs_sup_span"><c:out value="${match.score.player1set3Sup}"/></sup></span>
-                            		</c:if>
+                            				<span  class="position-relative"><c:out value="${match.score.player1set3} "/>
                             				<c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
-                            					
+                            					<c:if test="${(match.score.player1set3 > match.score.player2set3 && match.score.player1set3Sup > 7) 
+                            						|| (match.score.player1set3 < match.score.player2set3 && match.score.player1set3Sup < 6)}">
+                            							<sup class="abs_sup_span"><c:out value="${match.score.player1set3Sup}"/></sup>
+                            					</c:if>
                             				</c:if>
+                            				</span>
+                            		</c:if>
                             				</td>
                         	</tr>
                       		<tr>
-                            	   <td class="  leftAlign strong"><c:out value="${match.golfer2.fullName}"/></td>
+                            	   <td class="  leftAlign strong">
+                            	   <p class="textAlign "><img  class="align-middle" style="width: 40px;" src="<c:out value="${match.golfer2.icon}"/>"/><c:out value="${match.golfer2.fullName}"/></p>
+                            	   </td>
                            		<c:choose>
 									<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
 										<td class="strong runs">
@@ -294,10 +309,14 @@
 										<td>
 								</c:otherwise>
 								</c:choose>
-									<span  class="position-relative"><c:out value="${match.score.player2set1} "/> <sup class="abs_sup_span"><c:out value="${match.score.player2set1Sup}"/></sup</span>
+									<span  class="position-relative"><c:out value="${match.score.player2set1} "/>
 							 			<c:if test="${(null != match.score.player2set1Sup) && match.score.player2set1Sup > 0}">
-                            			
+							 				<c:if test="${(match.score.player2set1 > match.score.player1set1 && match.score.player2set1Sup > 7) 
+                            						|| (match.score.player2set1 < match.score.player1set1 && match.score.player2set1Sup < 6)}">
+                            						<sup class="abs_sup_span"><c:out value="${match.score.player2set1Sup}"/></sup>
+                            				</c:if>
                             			</c:if>
+                            			</span>
 										</td>
 							
                         	    <c:choose>
@@ -308,10 +327,14 @@
 										<td>
 									</c:otherwise>
 								</c:choose>
-									<span  class="position-relative"><c:out value="${match.score.player2set2} "/> <sup class="abs_sup_span"><c:out value="${match.score.player2set2Sup}"/></sup></span>
+									<span  class="position-relative"><c:out value="${match.score.player2set2} "/> 
 									<c:if test="${(null != match.score.player2set2Sup) && match.score.player2set2Sup > 0}">
-                            			
+										<c:if test="${(match.score.player2set2 > match.score.player1set2 && match.score.player2set2Sup > 7) 
+                            						|| (match.score.player2set2 < match.score.player1set2 && match.score.player2set2Sup < 6)}">
+                            				<sup class="abs_sup_span"><c:out value="${match.score.player2set2Sup}"/></sup>
+                            			</c:if>
                             		</c:if>
+                            		</span>
 									</td>
 							
                             	<c:choose>
@@ -323,11 +346,15 @@
 									</c:otherwise>
 								</c:choose>
 								<c:if test="${(null != match.score.player2set3) && match.score.player2set3 > 0}">
-									<span  class="position-relative"><c:out value="${match.score.player2set3} "/> <sup class="abs_sup_span"><c:out value="${match.score.player2set3Sup}"/></sup></span>
-								</c:if>
+									<span  class="position-relative"><c:out value="${match.score.player2set3} "/> 
 									<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
-                            			
+										<c:if test="${(match.score.player2set3 > match.score.player1set3 && match.score.player2set3Sup > 7) 
+                            						|| (match.score.player2set3 < match.score.player1set3 && match.score.player2set3Sup < 6)}">
+                            					<sup class="abs_sup_span"><c:out value="${match.score.player2set3Sup}"/></sup>
+                            			</c:if>
                             		</c:if>
+									</span>
+								</c:if>
 									</td>
                         </tr>
                     </tbody>

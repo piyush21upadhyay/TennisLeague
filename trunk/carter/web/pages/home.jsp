@@ -162,6 +162,11 @@
 	</c:when>
 	<c:otherwise>
 		<!--div id="header-home-none"></div-->
+		<div id="header-home">
+			<div id="header-home-text">
+				<span class="count-down"><fmt:message key="home.seasonComingSoon"/></span>
+	   		</div>
+	  	</div>
 	</c:otherwise>
 </c:choose>
 	<div class="std-pad flu-box shadow lt-leader-mnht">
