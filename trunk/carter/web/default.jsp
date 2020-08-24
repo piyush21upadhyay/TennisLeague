@@ -65,7 +65,7 @@ function checkUserPass()
 #login-box{max-height:327px;min-height:327px !important;}
 #signup-city{max-height:287px;min-height:287px !important;overflow-y:scroll !important;}
  
-@media only screen and (min-width:1200px){
+@media only screen and (min-width:992px){
 #footer{position:relative !important; bottom:0px;}
 div#main { height: 100%; min-height:730px; }
 }
@@ -77,16 +77,7 @@ div#main { height: 100%; min-height:730px; }
 		<link  rel="stylesheet" type="text/css" href="css/bg_white.css">
 		
 		<style type="text/css">
-			
-			.tagline-p{
-		padding-top:222px;
-		color:#FFFFFF; 
-		 font-size: 100px;
-    	line-height: 1;
-    	text-align: left !important;
-    	font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:125px;
-    	
-	}
+			.tagline-p{ padding-top:330px; color:#FFFFFF; font-size:85px; line-height: 1; text-align: left !important; font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:80px; }
 		</style>
 	</c:when>
 	<c:otherwise>
@@ -97,16 +88,7 @@ div#main { height: 100%; min-height:730px; }
    			 min-height: 100%;
    		 	margin: auto;
 			}
-			.tagline-p
-	{
-		padding-top:222px;
-		color:#FFFFFF; 
-		 font-size: 100px;
-    	line-height: 1;
-    	text-align: left !important;
-    	font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:125px;
-    	
-	}
+			.tagline-p{ padding-top:330px; color:#FFFFFF; font-size:85px; line-height: 1; text-align: left !important; font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:80px; }
 		</style>
 	</c:otherwise>
 </c:choose>
