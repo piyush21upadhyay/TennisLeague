@@ -533,9 +533,9 @@
 			    <p>
 			        <c:out value="${match.course.name}"/>
 			    </p>
-			    <p>
+			    <%-- <p>
 					<fmt:formatDate value="${match.played}" pattern="MMM dd, yyyy"/>
-				</p>
+				</p> --%>
 				<p>
 					<c:choose>
 						<c:when test="${match.result.tie}">
@@ -550,7 +550,7 @@
 						<c:otherwise>
 							<c:out value="${match.result.winner.fullName}"/>
 							<fmt:message key="results.wins"/>
-							<%-- <c:out value="${match.result.winner.currentWins}"/>-<c:out value="${match.result.winner.currentLosses}"/> --%>
+							<c:out value="${match.result.winner.currentWins}"/>-<c:out value="${match.result.winner.currentLosses}"/>
 						</c:otherwise>
 					</c:choose>
 				</p>
