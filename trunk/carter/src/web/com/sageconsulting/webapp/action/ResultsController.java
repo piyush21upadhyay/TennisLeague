@@ -276,6 +276,17 @@ public class ResultsController extends BaseFormController
     	        view.addObject("seasonName", seasonName);
             }
             
+			try {
+				int[] winningLoosingCount = fetchWinningLoosingCount(match);
+				if (winningLoosingCount != null
+						&& winningLoosingCount.length > 0) {
+					view.addObject("winningCount", winningLoosingCount[0]);
+					view.addObject("loosingCount", winningLoosingCount[1]);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+            
             return view;
         }
         else if (isSave(request))
@@ -430,7 +441,37 @@ public class ResultsController extends BaseFormController
         return super.onSubmit(request, response, command, errors);
     }
     
-    private boolean isDefaultWin(HttpServletRequest request)
+	private int[] fetchWinningLoosingCount(Match match) {
+		int[] winLooseCountArr = new int[2];
+
+		int winningCount = 0, lossingCount = 0;
+		if (match.getScore().getPlayer1set1() > match.getScore()
+				.getPlayer2set1())
+			winningCount++;
+		else
+			lossingCount++;
+
+		if (match.getScore().getPlayer1set2() > match.getScore()
+				.getPlayer2set2())
+			winningCount++;
+		else
+			lossingCount++;
+
+		if (match.getScore().getPlayer1set3() > 0
+				|| match.getScore().getPlayer2set3() > 0) {
+			if (match.getScore().getPlayer1set3() > match.getScore()
+					.getPlayer2set3())
+				winningCount++;
+			else
+				lossingCount++;
+		}
+
+		winLooseCountArr[0] = winningCount;
+		winLooseCountArr[1] = lossingCount;
+		return winLooseCountArr;
+	}
+
+	private boolean isDefaultWin(HttpServletRequest request)
     {
         String defaultWinParam = request.getParameter("defaultWin"); //$NON-NLS-1$
         return ((null != defaultWinParam) && defaultWinParam.equals("true")); //$NON-NLS-1$

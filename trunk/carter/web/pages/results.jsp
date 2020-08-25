@@ -550,7 +550,7 @@
 						<c:otherwise>
 							<c:out value="${match.result.winner.fullName}"/>
 							<fmt:message key="results.wins"/>
-							<c:out value="${match.result.winner.currentWins}"/>-<c:out value="${match.result.winner.currentLosses}"/>
+							<c:out value="${winningCount}"/> - <c:out value="${loosingCount}"/>
 						</c:otherwise>
 					</c:choose>
 				</p>
