@@ -4,17 +4,22 @@
 </c:if>
 
 <style type="text/css">
-            body{
+                 body{
                 background: #fff;
             }
             /* .container{
                 font-family:Arial, Helvetica, sans-serif;
                  background: #fff;
             } */
+            
+            
             .component-page{
                  /* width: 124%;
-                padding: 10px 0px;
+               
                 overflow: hidden;*/
+                width:100%;
+                 padding: 10px 0px;
+                
             }
              .hd-title{
               padding-bottom: 40px;
@@ -78,17 +83,14 @@
             table.linescore {
                 margin-right: auto;
                 margin-left: 0;
-               
+                width:100%;
             }
 
-            table.linescore td {
-                padding: .5em
-            }
+            
 
             table.linescore td {
                
-                font-weight: 700;
-                text-align: right
+                font-weight: 700; text-align: center; width: 20px;
             }
 
             table.linescore td.firstChild,table.linescore td:first-child {
@@ -149,21 +151,22 @@
             .trophy table{
                 width: 50%;
             }
-                
-                
-             td.strong.runs span{color: #9cb23b;}
-             td.strong.runs span sup{ color: #676768 !important;} 
-            table.centerAlign.linescore tr td:first-child { width: 240px;}
-            
- .score-list td.strong.runs  span { border: 1px solid #ccc; border-radius: 3px; display: inline-block;  padding:15px 20px; }
-                 .score-list   span { border: 1px solid transparent; border-radius: 3px; display: inline-block;  padding:15px 20px; }
-                
-				@media only screen and (min-width:992px) and (max-width:1160px){
+          	 	 .homeTextVAl{font-weight:600;}
+          	 	 .awayTextVAl{font-weight:400;}
+        		 table tr td:last-child { padding-right: 10px; padding-left: 10px; }
+          	  .infodiv_sec{display: flex; align-items: center; text-align: left;}
+                 td.strong.runs span, .g-textCol{color: #9cb23b;}
+            	sup{ color: #676768 !important;font-size:11px;} 
+                table.centerAlign.linescore tr td:first-child { width: 240px;    padding:20px 5px;}
+                .score-list td.strong.runs  span {border: 2px solid #dcdcdc; border-radius: 8px; display: inline-block; padding: 0; width: 32px; height: 32px; line-height: 28px; text-align: center;}
+				.score-list   span { border: 2px solid transparent; border-radius: 8px; display: inline-block; padding: 0; width: 32px; height: 32px; line-height: 28px; text-align: center;}
+
+
+                @media only screen and (min-width:992px) and (max-width:1160px){
                 .score-list{padding:30px 10px;}
-                 table.centerAlign.linescore tr td:first-child { width: 80px;}
-                  table.linescore td{padding:3px;}
-                }
-  
+                 }
+                 @media only screen and (max-width:1160px) { table.linescore td, table tr td:last-child {padding:0px;}}
+               
 </style>
 <h2 class="page-title"> Schedule</h2>
 <div class="">
@@ -244,7 +247,12 @@
                         	<tr>
                             	<td class="  leftAlign strong"><%-- <c:out value="${match.golfer1.fullName}"/> --%>
                             	<%-- <img src="<c:url value="${match.golfer1.icon}"/>"/> --%>
-                            	<p class=" "><img  class="align-middle" style="width: 40px; margin-right:3px;" src="<c:out value="${match.golfer1.icon}"/>"/><c:out value="${match.golfer1.fullName}"/></p>
+                            	
+                            	<div class="infodiv_sec"> 
+                            		<div><img  class="align-middle" style="width: 40px; border-radius: 50%;margin-right:8px;" src="<c:out value="${match.golfer1.icon}"/>"/></div>
+                            		<div class="d-block w-100 g-textCol"><c:out value="${match.golfer1.fullName}"/> <br/> <b class="homeTextVAl d-block pt-2">Home</b></div>
+                            	</div>
+                            	
                             	</td>
         							<c:choose>
 										<c:when test="${match.score.player1set1 > match.score.player2set1}"> 
@@ -256,7 +264,7 @@
 									</c:choose>
                             				<span class="position-relative"><c:out value="${match.score.player1set1} "/>
                             			<c:if test="${(null != match.score.player1set1Sup) && match.score.player1set1Sup > 0}">
-                            				 <sup class="abs_sup_span"><c:out value="${match.score.player1set1Sup}"/></sup>
+                            				 <sup class=""><c:out value="${match.score.player1set1Sup}"/></sup>
                             			</c:if>
                             			</span>
                             				</td>
@@ -272,7 +280,7 @@
                             				<span class="position-relative"><c:out value="${match.score.player1set2} "/> 
                             				
                             				<c:if test="${(null != match.score.player1set2Sup) && match.score.player1set2Sup > 0}">
-                            					<sup class="abs_sup_span"><c:out value="${match.score.player1set2Sup}"/></sup>
+                            					<sup class=""><c:out value="${match.score.player1set2Sup}"/></sup>
                             				</c:if>
                             				</span>
                             				</td>
@@ -288,7 +296,7 @@
                             				<c:if test="${(null != match.score.player1set3) && match.score.player1set3 > 0}">
 	                            			<span class="position-relative"><c:out value="${match.score.player1set3} "/> 
 	                            				<c:if test="${(null != match.score.player1set3Sup) && match.score.player1set3Sup > 0}">
-	                            					<sup class="abs_sup_span"><c:out value="${match.score.player1set3Sup}"/></sup>
+	                            					<sup class=""><c:out value="${match.score.player1set3Sup}"/></sup>
 	                            				</c:if>
 	                            			</span>
 	                         				</c:if>
@@ -296,7 +304,12 @@
                         	</tr>
                       		<tr>
                             	   <td class="  leftAlign strong"><%-- <c:out value="${match.golfer2.fullName}"/> --%>
-                            	   <p class=" "><img  class="align-middle" style="width: 40px; margin-right:3px;" src="<c:out value="${match.golfer2.icon}"/>"/><c:out value="${match.golfer2.fullName}"/></p>
+                            	   
+                            	    <div class="infodiv_sec"> 
+                            			<div><img  class="align-middle" style="width: 40px; border-radius: 50%;margin-right:8px;" src="<c:out value="${match.golfer2.icon}"/>"/></div>
+                            			<div class="d-block"><c:out value="${match.golfer2.fullName}"/> <br/> <b class="awayTextVAl  d-block pt-2">Away</b></div>
+                           			</div>
+                           			
                             	   </td>
                            		<c:choose>
 									<c:when test="${match.score.player2set1 > match.score.player1set1}"> 
@@ -308,7 +321,7 @@
 								</c:choose>
 									<span class="position-relative"><c:out value="${match.score.player2set1} "/> 
 							 			<c:if test="${(null != match.score.player2set1Sup) && match.score.player2set1Sup > 0}">
-                            				<sup class="abs_sup_span"><c:out value="${match.score.player2set1Sup}"/></sup>
+                            				<sup class=""><c:out value="${match.score.player2set1Sup}"/></sup>
                             			</c:if>
                             			</span>
 										</td>
@@ -324,7 +337,7 @@
 									<span class="position-relative"><c:out value="${match.score.player2set2} "/>
 									
 									<c:if test="${(null != match.score.player2set2Sup) && match.score.player2set2Sup > 0}">
-                            			<sup class="abs_sup_span"><c:out value="${match.score.player2set2Sup}"/></sup>
+                            			<sup class=""><c:out value="${match.score.player2set2Sup}"/></sup>
                             		</c:if>
                             		</span>
 									</td>
@@ -340,7 +353,7 @@
 									<c:if test="${(null != match.score.player2set3) && match.score.player2set3 > 0}">
 										<span class="position-relative"><c:out value="${match.score.player2set3} "/> 
 										<c:if test="${(null != match.score.player2set3Sup) && match.score.player2set3Sup > 0}">
-                            				<sup class="abs_sup_span"><c:out value="${match.score.player2set3Sup}"/></sup>
+                            				<sup class=""><c:out value="${match.score.player2set3Sup}"/></sup>
                             			</c:if>
 										</span>
 							 		</c:if>

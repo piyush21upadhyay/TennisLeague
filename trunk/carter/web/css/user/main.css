@@ -2064,6 +2064,7 @@ position: absolute;
 
 /* ========== record.jsp ========== */
 
+/*
 div.record-section {
 	float:left;
 	padding: 20px 20px;
@@ -2073,7 +2074,7 @@ div.record-section {
 	/*overflow:auto;*/
 	overflow-y:scroll;
 }
-
+*/
 div.record-section .match {
 	padding:10px 0;
 }
@@ -4503,7 +4504,7 @@ table.show-profile-info .buttonwrapper {
 
 .member-section .col-sm-4 .player-info .flu-box {
     background: #dedfdd;
-    padding: 30px 20px;
+    padding: 30px 20px 0px;
     text-align: center;
     min-height: 450px;
 
@@ -5410,7 +5411,7 @@ div#schedule .buttonwrapper a {
     font-weight: normal;}
 #leader_rt_sc_div{max-height: 265px; overflow-y: scroll;min-height: 265px;}
 .lt-leader-mnht{min-height:378px}
-.members-listing-desc.player-info img{padding-left:0px; max-width:70px;border-radius:50%;border:4px solid #9db32c;}
+.members-listing-desc.player-info img{padding-left:0px; max-width:60px;border-radius:50%;border:4px solid #9db32c;}
 .player-info.members-listing-desc table.show-profile-info .buttonwrapper{ background:#efefee;color:#a0afc2 !important;}
 .playerINfotitle{font-size:16px;font-weight:600; color:#9db32c; text-align: center;}
 .overflowText{white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis; margin: 0 auto;}
