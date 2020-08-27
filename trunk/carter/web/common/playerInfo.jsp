@@ -104,17 +104,21 @@
 	   			<a class="green" href="<c:url value="/record.html"/>?id=<c:out value="${player.id}"/>"><c:out value="${currentRecord}"/></a>
 	   		</c:if>
 	   	</p>
-	   	<c:if test="${currentRecord ne '0-0'}">
-		  	<div class="winloss-sec">
-		  		<c:forEach var="i" begin="0" end="${currentwins-1}" step="1">
-		  			<i class="winBall"></i>
-		  		</c:forEach>
-		   		<c:forEach var="i" begin="0" end="${currentLosses-1}" step="1">
-			   		<i class="lossBall"></i>
-		  		</c:forEach>
-		   	</div>
-	   	</c:if>
-	   </div>
+		<c:if test="${currentRecord ne '0-0'}">
+			<div class="winloss-sec">
+				<c:if test="${currentwins gt 0}">
+					<c:forEach var="i" begin="0" end="${currentwins-1}" step="1">
+						<i class="winBall"></i>
+					</c:forEach>
+				</c:if>
+				<c:if test="${currentLosses gt 0}">
+					<c:forEach var="i" begin="0" end="${currentLosses-1}" step="1">
+						<i class="lossBall"></i>
+					</c:forEach>
+				</c:if>
+			</div>
+		</c:if>
+		</div>
 	   </div>
 	   <div class="subsection">
 	   <div class="flu-box shadow">
