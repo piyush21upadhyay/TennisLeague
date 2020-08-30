@@ -168,7 +168,7 @@
                
   
 </style>
-<h2 class="page-title"> Schedule</h2>
+<!-- <h2 class="page-title"> Schedule</h2> -->
 <div class="">
       <div class="component-page">
       

@@ -391,6 +391,14 @@
 			<div><img src="images/icon-5.png" alt="footwear" /></div>
 			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-5.png"/></div>
 		</div>
+		<div class="signup-icon">
+			<div><img src="images/icon-6.png" alt="tennisShot" /></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-6.png"/></div>
+		</div>
+		<div class="signup-icon">
+			<div><img src="images/icon-7.png" alt="tennisBalls" /></div>
+			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-7.png"/></div>
+		</div>
 		
 		<c:if test="${(isAdministrator) && userId ne adminId }">
 		<div class="signup-icon">
