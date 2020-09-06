@@ -266,27 +266,30 @@
 					<form:form commandName="publicMessage" id="msgForm">
 						<div class="row">
 							<div class="col-6">
-						<!-- this needs to be TO as per design  hard code-->		<div class="sub-container grey-box shadow">
-								    <label for="subject">To</label>
+								<!-- this needs to be TO as per design  hard code-->
+								<div class="sub-container grey-box shadow">
+									<label for="msgTo">To</label>
 									<div class="sub-input">
-								    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
+										<form:input id="msgTo" path="msgTo" cssClass="longBox"
+											maxlength="50" />
 									</div>
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="sub-container grey-box shadow">
-								    <label for="subject"><fmt:message key="sendMsg.subject"/></label>
+									<label for="subject"><fmt:message
+											key="sendMsg.subject" /></label>
 									<div class="sub-input">
-								    <form:input id="subject" path="subject" cssClass="longBox" maxlength="50"/>
+										<form:input id="subject" path="subject" cssClass="longBox"
+											maxlength="50" />
 									</div>
 								</div>
 							</div>
 						</div>
-					
-					
-					   <div class="msginput-container grey-box shadow"> 
-						<label for="msginput"><fmt:message key="sendMsg.message"/></label>
-					    <form:textarea path="message" cssClass="emailMessage" id="msginput"/>
+
+						<div class="msginput-container grey-box shadow"> 
+							<label for="msginput"><fmt:message key="sendMsg.message"/></label>
+						    <form:textarea path="message" cssClass="emailMessage" id="msginput"/>
 						</div>
 					    <div class="buttons">
 					    	<div class="send-btn">
