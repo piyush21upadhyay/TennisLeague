@@ -38,7 +38,7 @@
 		<div id="congrats-msg">
 		   <div class="row">
 			<span class="col-sm-6"><fmt:message key="congrats.successMessage"/></span>
-			<span class="col-sm-6">Tour Caddie Optional</span>
+			<span class="col-sm-6">Ball Boys Optional</span>
 			</div>
 		</div>
 	</div>

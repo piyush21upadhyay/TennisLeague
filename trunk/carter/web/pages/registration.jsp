@@ -276,7 +276,7 @@
 	    		<h3 class="top-msg">
 	    			<fmt:message key="registrationEntry.thankYou"/>
 	    		</h3>
-	    		<p class="thankyou-msg"><fmt:message key="registrationEntry.thankYouMsg"/></p>
+	    		<p class="thankyou-msg"><fmt:message key="registrationEntry.thankYouMsg"/><br><fmt:message key="registrationEntry.thankYouMsg1"/></p>
 				<div class="row">
 				<div class="col-sm-4">
 	    		<div class="conf-col grey-box shadow">
