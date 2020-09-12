@@ -4376,10 +4376,12 @@ table#message tbody tr td:first-child {
 table#message tbody tr td a {
     color: #676768 !important;
 }
-table#message tr.even{
+table#message tr.even, table#message tr.odd{
     background: #fff;
-    height: 55px !important;
+    height:35px !important;
 }
+table#message tr.even td, table#message tr.odd td {padding:13px 10px}
+
 table#message tbody td input {
     width: 20px;
     height: 20px;
@@ -4504,7 +4506,7 @@ table.show-profile-info .buttonwrapper {
 
 .member-section .col-sm-4 .player-info .flu-box {
     background: #dedfdd;
-    padding: 30px 20px 0px;
+    padding: 15px 10px 0px;
     text-align: center;
     min-height: 450px;
 
@@ -4517,9 +4519,9 @@ text-align: center;
 display: inline;
    /* word-break: break-word;*/
     width: 100px;
-    float: left;
+    display: inline-block;
     background: #dedfdd;
-    border: 1px solid #fff;
+    border: 3px solid #fff;
     text-align: center;
     padding: 6px 20px;
     border-radius: 25px;
@@ -5456,6 +5458,15 @@ table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px
 #members .member-section .row .col-sm-4{margin-bottom:30px;}
 .abs_sup_span{position: absolute; top: 7px; right: 5px;}
 
+#members .members-listing-desc.player-info img {border-radius:0px;border:none;max-width:50px;}
+#members .buttonwrapper{background:transparent !important;}
+#members .show-profile-info a{background: #efefee;border-radius: 25px;padding:6px 20px;}
+#members .show-profile-info a.active-member{background: yellow;}
+
+#members .player-info h3{margin:5px 0;}
+#members  div.subsection{margin-top:0px;}
+#members   .member-section p.msg-link-btn{margin:5px 0px 0px 6px}
+.copyRtText{font-size: 15px; vertical-align: middle;}
 
 @media(min-width: 1200px) and (max-width: 1372px){
 .member-section p.msg-link-btn{

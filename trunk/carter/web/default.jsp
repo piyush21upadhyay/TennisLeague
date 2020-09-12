@@ -286,7 +286,7 @@ div#main { height: 100%; min-height:730px; }
 		<jsp:include page="/common/footer.jsp"/>
 		</div>
 		<div class="col-md-6">
-		<span class="copyright">Open Play Tennis Copyright <img style="max-width:19px" class="align-middle" alt="copyright"  src="images/copyright-guidelines.png"> 2020. All rights reserved</span>
+		<span class="copyright">Open Play Tennis Copyright  <span class="copyRtText"> &copy; </span>  2020. All rights reserved</span>
 		</div>
 		</div>
 		</div>

@@ -13,7 +13,7 @@
 					<table class="show-profile-info">
 						<tr><td class="profile-img text-center"><img src="<c:out value="${player.icon}"/>"/></td></tr>
 						<tr>
-							<td align="center" style="padding: 20px 0px; text-align: center;">
+							<td align="center" style="padding:9px 0px; text-align: center;">
 								<c:set var="registered" value="false"/>							
 								<c:forEach var="user" items="${registeredUserList}">
 									<c:if test="${user.key eq player.id}">
@@ -227,7 +227,7 @@
 		</p>
 	</c:if>
 	<c:if test="${not param.fullPlayerInfo eq 'true'}">
-		<p class="pt-3" style="clear: both"><fmt:message key="profile.bestResults"/> <c:if test="${not empty player}"><span class="green">N/A<%--TODO--%></span></c:if></p>
+		<p class="pt-2 mb-0" style="clear: both"><fmt:message key="profile.bestResults"/> <c:if test="${not empty player}"><span class="green">N/A<%--TODO--%></span></c:if></p>
 	</c:if>
 </div>
 </div>
