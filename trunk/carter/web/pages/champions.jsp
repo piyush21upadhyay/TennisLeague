@@ -107,14 +107,14 @@
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
 				<div class="center">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
+					<h2>&nbsp;<strong>League Winner</strong></h2>
 				</div>
 
 				
 				<div class="clear"></div>
 				<p class="champ-info center">City Champion</p>
-	        	<p class="champ-info center">Summer 2009 Division One</p>
-				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+	        	<p class="champ-info center">League name and year</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Tennis Court</a></p>
 
 				<!-- <p>USGA Handicap: 10.7</p> -->
 				<p>Rating: 5.0</p>
@@ -130,14 +130,14 @@
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
 				<div class="center">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
+					<h2>&nbsp;<strong>League Winner</strong></h2>
 				</div>
 
 			
 				<div class="clear"></div>
 				<p class="champ-info center">City Champion</p>
-	        	<p class="champ-info center">Summer 2009 Division One</p>
-				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+	        	<p class="champ-info center">League name and year</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Tennis Court</a></p>
 
 				<!-- <p>USGA Handicap: 10.7</p> -->
 				<p>Rating: 5.0</p>
@@ -154,14 +154,14 @@
 					<div class="buttonwrapper"><a onclick="showPopupMsg();" class="squarebutton ie-post-link"><span>Profile</span></a></div>
 				</div>
 				<div class="center">
-					<h2>&nbsp;<strong>Division Winner</strong></h2>
+					<h2>&nbsp;<strong>League Winner</strong></h2>
 				</div>
 
 				
 				<div class="clear"></div>
 				<p class="champ-info center">City Champion</p>
-	        	<p class="champ-info center">Summer 2009 Division One</p>
-				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Golf Course</a></p>
+	        	<p class="champ-info center">League name and year</p>
+				<p>Home Court: <a onclick="showPopupMsg();" class="course-link ie-post-link">Some Tennis Court</a></p>
 
 				<!-- <p>USGA Handicap: 10.7</p> -->
 				<p>Rating: 5.0</p>
@@ -172,24 +172,27 @@
 	</c:when>
 	<c:otherwise>
 		<c:forEach var="champion" items="${champions}">
-			<div class="threecol-frame">
-				<div>
-					<div class="center"><img width="42" src="<c:url value="${champion.player.icon}"/>" alt="member"/></div>
+			<div class="row">
+				<div class="threecol-frame col-sm-4 frame-box">
+					<div class="card">
+						<div class="center"><img width="42" src="<c:url value="${champion.player.icon}"/>" alt="member"/></div>
 						<div class="center">
-						<c:set var="url"><c:url value="/profile.html"/></c:set>
-						<carter:button page="${url}" param="id=${champion.player.id}&amp;msg=false" key="members.profile"/>
+							<div class="buttonwrapper">
+								<c:set var="url"><c:url value="/profile.html"/></c:set>
+								<carter:button page="${url}" param="id=${champion.player.id}&amp;msg=false" key="members.profile" />
+							</div>
+						</div>
+						<div class="center">
+							<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/></strong></h2>
+						</div>
+					
+						<div class="clear"></div>
+						<p class="champ-info center"><fmt:message key="champions.cityChampion"/></p>
+			        	<p class="champ-info center"><c:out value="${champion.season}"/></p>
+						<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/courtdetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
+						<p><fmt:message key="members.rating"/> <c:out value="${champion.player.playerLevel}"/></p>
+						<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${champion.player.id}"/>"><c:out value="${champion.record}"/></a></p>
 					</div>
-					<div class="center">
-						<h2>&nbsp;<strong><c:out value="${champion.player.fullName}"/><c:out value="${champion.player.playerLevel}"/></strong></h2>
-					</div>
-				
-					<div class="clear"></div>
-					<p class="champ-info center"><fmt:message key="champions.cityChampion"/></p>
-		        	<p class="champ-info center"><c:out value="${champion.season}"/> <c:out value="${champion.division}"/></p>
-					<p><fmt:message key="members.homeCourt"/> <a class="course-link" href="<c:url value="/coursedetails.html?id="/><c:out value="${champion.homeCourt.id}"/>"><c:out value="${champion.homeCourt.name}"/></a></p>
-					<%-- <p><fmt:message key="members.handicap"/> <c:out value="${champion.player.handicap}"/></p> --%>
-					<p><fmt:message key="members.rating"/> <c:out value="${champion.player.playerLevel}"/></p>
-					<p><fmt:message key="members.seasonRecord"/> <a href="<c:url value="/record.html?id="/><c:out value="${champion.player.id}"/>"><c:out value="${champion.record}"/></a></p>
 				</div>
 			</div>
 		</c:forEach>
