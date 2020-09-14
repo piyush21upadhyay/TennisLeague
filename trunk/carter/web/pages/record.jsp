@@ -24,10 +24,10 @@
 <div class="clear"></div>
 
 <div class="record-section">
-  <div class="record-section-container">
+  <div class="record-section-container row">
 
 	<c:forEach var="match" items="${matches}">
-		<div class="match">
+		<div class="match col-lg-6">
 
 			<c:if test="${isAdministrator}">
 				<c:set var="url"><c:url value="/resultsdispatch.html"/></c:set>

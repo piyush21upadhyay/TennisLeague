@@ -172,8 +172,8 @@
 <div class="">
       <div class="component-page">
       
-	      <div class="row mt-5 ">
-          <div class="hd-title col-lg-6">
+	      <div class="mt-5 ">
+          <div class="hd-title ">
           <div class=" position-relative mt-40">
               <div class="selected-country">
               <p><c:out value="${seasonName}"/></p>
