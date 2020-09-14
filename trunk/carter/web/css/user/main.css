@@ -5468,6 +5468,12 @@ table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px
 #members   .member-section p.msg-link-btn{margin:5px 0px 0px 6px}
 .copyRtText{font-size: 15px; vertical-align: middle;}
 
+#user-court h2{
+	width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 @media(min-width: 1200px) and (max-width: 1372px){
 .member-section p.msg-link-btn{
   width: auto;
