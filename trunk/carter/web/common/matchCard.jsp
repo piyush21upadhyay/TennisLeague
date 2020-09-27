@@ -171,9 +171,20 @@
 <!-- <h2 class="page-title"> Schedule</h2> -->
 <div class="">
       <div class="component-page">
-      
-	      <div class="mt-5 ">
-          <div class="hd-title ">
+
+		<c:choose>
+			<c:when test="${fromScheduleViewResultLink eq 'true'}">
+		        <div class="row mt-5 ">
+	          	<div class="hd-title col-lg-6">
+			</c:when>
+			<c:otherwise>
+        		<div class="mt-5 ">
+          		<div class="hd-title ">
+			</c:otherwise>
+		</c:choose>
+
+<!-- 		<div class="mt-5 ">
+          <div class="hd-title "> -->
           <div class=" position-relative mt-40">
               <div class="selected-country">
               <p><c:out value="${seasonName}"/></p>
