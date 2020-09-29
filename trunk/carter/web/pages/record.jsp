@@ -24,21 +24,43 @@
 <div class="clear"></div>
 
 <div class="record-section">
-  <div class="record-section-container row">
-
-	<c:forEach var="match" items="${matches}">
-		<div class="match col-lg-6">
-
-			<c:if test="${isAdministrator}">
-				<c:set var="url"><c:url value="/resultsdispatch.html"/></c:set>
-				<carter:button page="${url}" param="id=${match.id}&amp;user_id=${user.id}" key="button.edit"/>
-			</c:if>
-			<%-- <c:if test="${not match.defaultWin and not match.bye}"> --%>
-				<c:set var="matchParam" value="${match}" scope="request"/>
-				<c:import url="/common/matchCard.jsp"/>
-				<div class="clear"></div>
-			<%-- </c:if> --%>
+<c:choose>
+    <c:when test="${fromScheduleViewResultLink eq 'true'}">
+    	<div class="record-section-container">
+			<c:forEach var="match" items="${matches}">
+				<div class="match">
+					<c:if test="${isAdministrator}">
+						<c:set var="url">
+							<c:url value="/resultsdispatch.html" />
+						</c:set>
+						<carter:button page="${url}"
+							param="id=${match.id}&amp;user_id=${user.id}" key="button.edit" />
+					</c:if>
+					<c:set var="matchParam" value="${match}" scope="request" />
+					<c:import url="/common/matchCard.jsp" />
+					<div class="clear"></div>
+				</div>
+			</c:forEach>
 		</div>
-	</c:forEach>
-  </div>
+    </c:when>    
+    <c:otherwise>
+    	<div class="record-section-container row">
+			<c:forEach var="match" items="${matches}">
+				<div class="match col-lg-6">
+					<c:if test="${isAdministrator}">
+						<c:set var="url">
+							<c:url value="/resultsdispatch.html" />
+						</c:set>
+						<carter:button page="${url}"
+							param="id=${match.id}&amp;user_id=${user.id}" key="button.edit" />
+					</c:if>
+					<c:set var="matchParam" value="${match}" scope="request" />
+					<c:import url="/common/matchCard.jsp" />
+					<div class="clear"></div>
+				</div>
+			</c:forEach>
+		</div>
+    </c:otherwise>
+</c:choose>
+  
 </div>
