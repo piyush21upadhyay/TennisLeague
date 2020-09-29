@@ -463,23 +463,41 @@ public class ScheduleSeasonController extends BaseFormController
 					.getId());
 			int roundCount = BracketUtility.getRoundCount(brackets.size());
 			for (int round = 1; round <= roundCount; round++) {
+				boolean checkIfAnyMatchHasNotBeenPlayedForPreviousRound=false;
 				if (round > 1) {
 					brackets = this.bracketManager.getRoundBracketForSeason(
 							season.getId(), Integer.valueOf(round));
+					checkIfAnyMatchHasNotBeenPlayedForPreviousRound = checkIfAnyMatchHasNotBeenPlayedForPreviousRound(season.getId(), round-1);
 				}
-				for (BracketEntry bracketEntry : brackets) {
-					Match match = bracketEntry.getMatch();
-					if ((match.getGolfer1() == null && match.getGolfer2() != null)
-							|| (match.getGolfer2() == null && match
-									.getGolfer1() != null)) {
-						match.setDefaultWinner(match.getGolfer1() == null ? match
-								.getGolfer2() : match.getGolfer1());
-						updateBracket(match);
+				if(!checkIfAnyMatchHasNotBeenPlayedForPreviousRound){
+					for (BracketEntry bracketEntry : brackets) {
+						Match match = bracketEntry.getMatch();
+						if ((match.getGolfer1() == null && match.getGolfer2() != null)
+								|| (match.getGolfer2() == null && match
+								.getGolfer1() != null)) {
+							match.setDefaultWinner(match.getGolfer1() == null ? match
+									.getGolfer2() : match.getGolfer1());
+							updateBracket(match);
+						}
+						
 					}
-					
 				}
 			}
 		}
+	}
+
+	private boolean checkIfAnyMatchHasNotBeenPlayedForPreviousRound(Long seasonId, int prevRound) {
+		List<BracketEntry> prevBracketForSeason = this.bracketManager.getRoundBracketForSeason(seasonId, Integer.valueOf(prevRound));
+		return checkIfAnyMatchHasNotBeenPlayedForPreviousRound(prevBracketForSeason);
+	}
+
+	private boolean checkIfAnyMatchHasNotBeenPlayedForPreviousRound(List<BracketEntry> brackets) {
+		for (BracketEntry bracketEntry : brackets) {
+			Match match = bracketEntry.getMatch();
+			if (match.getGolfer1() != null && match.getGolfer2() != null && match.getPlayed() == null)
+				return true;
+		}
+		return false;
 	}
 
 	/**

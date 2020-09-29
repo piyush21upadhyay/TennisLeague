@@ -81,7 +81,7 @@ public class MailEngine
     {
         try
         {
-            this.mailSender.send(msg);
+            //this.mailSender.send(msg);
         }
         catch (MailException ex)
         {
