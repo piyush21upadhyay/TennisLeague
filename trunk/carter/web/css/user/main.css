@@ -21,7 +21,7 @@ html, body {
 	background:#fff;
 	color:#5d5d5d;
 	font-size:14px;
-	 font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
+	font-family: 'Montserrat', sans-serif,  arial;
 }
 
 p {
@@ -153,13 +153,16 @@ span.green, a.green {
 }
 
 h2 {
-	font-size:18px;
+	font-size:29px;
 	padding-bottom: 4px;
+	font-weight:600;
 }
 
+
 h3 {
-	font-size:16px;
+	font-size:22px;
 	padding-bottom: 4px;
+	font-weight:400;
 }
 
 h4 {
@@ -1032,13 +1035,15 @@ a.inactive-city {
 	height:110px;
 	font-weight:bold;*/
 	padding: 15px 20px;
-	font-size: 26px;
+	font-size: 29px;
+	font-weight:600;
 }
 .std-pad h3 {
     color: #9cb23b;
     font-size: 22px !important;
     margin-bottom: 30px;
 }
+.def_col{ color: #333 !important;font-weight: 700;}
 .std-pad p {
     line-height: 24px !important;
     padding: 0px 0px 30px 0px;
@@ -1208,12 +1213,11 @@ div#msg {
     padding: 10px 20px !important;
 }
 #home-leaderboard {
-    padding: 0px 14px 20px 20px;
-    margin-top: -50px;
+    padding: 0px 14px 20px 20px; 
 }
 
 #home-leaderboard h2 {
-	color:#ff653f;
+padding: 15px 20px;color:#fff; background:#40444d; text-align: center;
 }
 
 #home-leaderboard h3 {
@@ -1223,10 +1227,8 @@ div#msg {
 
 #home-leaderboard table {
 	width:100%;
-	margin-bottom:10px;
 	border:none;
 	font-size:11px;
-	margin-top:45px;
 }
 table#standings caption {
     padding: 0px 10px;
@@ -1237,7 +1239,7 @@ table#standings caption {
     background: #40444d;
 }
 #home-leaderboard table#standings thead tr th{
-   padding: 20px;
+   padding:15px;
 }
 
 #home-leaderboard table#standings .activetd {
@@ -1270,15 +1272,17 @@ table#standings caption {
 
 #home-leaderboard td {
     text-align: center;
-    padding: 10px 5px;
+    padding: 15px;
     font-size: 14px;
-    line-height: 24px;
+    line-height:1.2;
 }
+
+
+#home-leaderboard td:first-child, #home-leaderboard table#standings thead tr th:first-child{text-align:left;}
 #home-leaderboard tr.activetd td{
     background: #40444d;
 }
 #leaderboard-form {
-	margin-top:10px;
 	text-align:center;
 }
 
@@ -1329,7 +1333,7 @@ table#standings caption {
 #leaderboard-form #division {
 	color:#676767;
 	font-size:11px;
-	margin-top:10px;
+	margin-top:0px;
 	width:100%;
 	border:default;
 }
@@ -1507,9 +1511,10 @@ table#standings caption {
 
 /* ========== inobox.jsp ========== */
 
+.pt-10{    padding-top: 10px;}
 #inbox {
 	margin-bottom:20px;
-	width:460px;
+/*	width:460px;*/
 }
 
 #inbox h2 {
@@ -1905,7 +1910,7 @@ div.member-section p {
 	    margin: 0;
     width: 100%;
     position: relative;
-    top: -50px;
+    top: -20px;
 
 }
 
@@ -1925,7 +1930,7 @@ background: #40444d !important;
 
 /* Center text and give standard padding */
 #standings-container table td, #standings-container table th {
-	text-align:center;
+	text-align:right;
 	padding:4px;
 }
 #standings-container table thead {
@@ -1933,7 +1938,7 @@ background: #40444d !important;
 }
 /* TH tags */
 #standings-container table th {
-    padding: 6px 4px 15px;
+    padding: 15px;
     font-size: 14px;
     font-weight: 500;
     color: #ffffff;
@@ -1954,7 +1959,7 @@ background: #40444d !important;
 /* Use borders on table cells to simulate seing background */
 #standings-container table .even td, #standings-container table .odd td {
     background: #ffffff;
-    padding: 15px 4px;
+    padding: 15px;
     height: 14px;
 color: #333;
 }
@@ -1966,21 +1971,24 @@ color: #333;
 }
 
 /* Column Widths */
-#standings-container td.pos {width:36px;} /* 1st */
-#standings-container td.player {width:96px;} /* 2nd */
-#standings-container td.course {width: 156px;} /* 3rd */
-#standings-container td.points {width: 63px;} /* 4th */
-#standings-container td.wins {width: 43px;} /* 5th */
-#standings-container td.losses  {width: 68px;} /* 6th */
-#standings-container td.ties {width: auto;} /* Rest */
-/*#standings-container table tr td {width:36px;} /* 1st */
-/*#standings-container table tr td + td {width:96px;} /* 2nd */
-/*#standings-container table tr td + td + td {width: 156px;} /* 3rd */
-/*#standings-container table tr td + td + td + td {width: 63px;} /* 4th */
-/*#standings-container table tr td + td + td + td + td {width: 43px;} /* 5th */
-/*#standings-container table tr td + td + td + td + td + td  {width: 68px;} /* 6th */
-/*#standings-container table tr td + td + td + td + td + td + td {width: auto;} /* Rest */
+/*  #standings-container td.pos {width:36px;}  1st */
+/*  #standings-container td.player {width:96px;}  2nd */
+/*  #standings-container td.course {width: 156px;}  3rd */
+/*  #standings-container td.points {width: 63px;}  4th */
+/*  #standings-container td.wins {width: 43px;}  5th */
+/*  #standings-container td.losses  {width: 68px;}  6th */
+/*  #standings-container td.ties {width: auto;}  Rest */
 
+
+/*  #standings-container table tr td {width:36px;} 1st */
+/* #standings-container table tr td + td {width:96px;}  2nd */
+/* #standings-container table tr td + td + td {width: 156px;}  3rd */
+/* #standings-container table tr td + td + td + td {width: 63px;}  4th */
+/* #standings-container table tr td + td + td + td + td {width: 43px;}  5th */
+/* #standings-container table tr td + td + td + td + td + td  {width: 68px;}  6th */
+/* #standings-container table tr td + td + td + td + td + td + td {width: auto;}  Rest */
+
+/*
 #standings-container table .pos {
 	width: 5%;
 }
@@ -2012,6 +2020,8 @@ color: #333;
   {width:10%}
   #results td:nth-child(7)
   {width:10%}
+  
+*/
 
 /*
 #standings-container table .points {
@@ -2035,7 +2045,7 @@ color: #333;
 .playoffs-counter {
 position: absolute;
     right: 25px;
-    top: 230px;
+    bottom: -130px;
     width: 200px;
     height: 120px;
     padding: 37px 70px 0px 0px;
@@ -2054,6 +2064,7 @@ position: absolute;
 
 /* ========== record.jsp ========== */
 
+/*
 div.record-section {
 	float:left;
 	padding: 20px 20px;
@@ -2063,7 +2074,7 @@ div.record-section {
 	/*overflow:auto;*/
 	overflow-y:scroll;
 }
-
+*/
 div.record-section .match {
 	padding:10px 0;
 }
@@ -2089,7 +2100,7 @@ div.record-section .match {
 }
 
 .match p {
-	color:#FCF9B4;
+	color:#9dc227;
 	font-weight:bold;
 	margin-bottom:10px;
 }
@@ -3524,8 +3535,12 @@ padding-right: 25px;
 
 #profile table.messages tbody{
     width:100%;
-    height: 80px;
+    height: 118px !important;
     overflow-y: scroll;
+}
+
+#profile table.messages tbody td{
+    padding:10px;
 }
 
 #profile table.messages tbody td{
@@ -4223,9 +4238,9 @@ table#standings thead {
     color: #fff;
     text-align: center;
     font-size: 18px;
-    font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
     font-weight: normal;
 }
+
 #home-leaderboard a.squarebutton:hover{
 padding: 10px;
 }
@@ -4236,11 +4251,12 @@ form#leaderboard-form #division, form#leaderboard-form #division:focus, form#lea
     font-size: 15px;
     font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 }
+/*
 table#standings tbody {
   display: block;
-  max-height: 300px;
-  overflow-y: auto;
 }
+
+
 #home-leaderboard #standings
 tbody tr{
      display: table;
@@ -4253,6 +4269,7 @@ table#standings thead {
   width: 100%;
   table-layout: fixed;
 }
+*/
 .editerForm {
     padding: 20px;
 }
@@ -4359,10 +4376,12 @@ table#message tbody tr td:first-child {
 table#message tbody tr td a {
     color: #676768 !important;
 }
-table#message tr.even{
+table#message tr.even, table#message tr.odd{
     background: #fff;
-    height: 55px !important;
+    height:35px !important;
 }
+table#message tr.even td, table#message tr.odd td {padding:13px 10px}
+
 table#message tbody td input {
     width: 20px;
     height: 20px;
@@ -4487,7 +4506,7 @@ table.show-profile-info .buttonwrapper {
 
 .member-section .col-sm-4 .player-info .flu-box {
     background: #dedfdd;
-    padding: 30px 20px;
+    padding: 15px 10px 0px;
     text-align: center;
     min-height: 450px;
 
@@ -4500,9 +4519,9 @@ text-align: center;
 display: inline;
    /* word-break: break-word;*/
     width: 100px;
-    float: left;
+    display: inline-block;
     background: #dedfdd;
-    border: 1px solid #fff;
+    border: 3px solid #fff;
     text-align: center;
     padding: 6px 20px;
     border-radius: 25px;
@@ -5216,8 +5235,7 @@ form#matchForm .col-sm-8 .heading-golfer {
 
 .edituser-section .namecolw p.textAlign b {
     padding-left: 10px;
-    font-size: 18px;
-    vertical-align: super;
+    font-size: 18px; 
     font-weight: 100;
     color: #585858;
 }
@@ -5383,6 +5401,78 @@ div#schedule .buttonwrapper a {
    text-align: center;
 }
 
+
+.h2_text{font-family: 'Montserrat', sans-serif,  arial;font-size:29px;font-weight:800;}
+.home-green-bg-leadboard{ background: #9cb23b;
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;}
+#leader_rt_sc_div{max-height: 265px; overflow-y: scroll;min-height: 265px;}
+.lt-leader-mnht{min-height:378px}
+.members-listing-desc.player-info img{padding-left:0px; max-width:60px;border-radius:50%;border:4px solid #9db32c;}
+.player-info.members-listing-desc table.show-profile-info .buttonwrapper{ background:#efefee;color:#a0afc2 !important;}
+.playerINfotitle{font-size:16px;font-weight:600; color:#9db32c; text-align: center;}
+.overflowText{white-space: nowrap; width: 200px; overflow: hidden; text-overflow: ellipsis; margin: 0 auto;}
+
+.members-listing-desc  p.msg-link-btn{padding:1px 20px;}
+.memberBox-bg{background:#dedfdd;}
+.members-listing-desc  .flu-box{min-height:auto !important;}
+#members .search-col input[type="checkbox"] {visibility:hidden}
+
+.hd-title .selected-country p{text-align:center;}
+
+.leader-tab-info table{table-layout:fixed;width:100%}
+table#results tr td:nth-child(3){text-align:left;}
+table#results tr td:nth-child(1), .leader-tab-info tr th:nth-child(1){width:60px;text-align:right}
+table#results tr td:nth-child(2), .leader-tab-info tr th:nth-child(2){width:35px;text-align:right}
+#standings-container a{text-decoration:none}
+
+
+.chart-div-pInfo{  vertical-align:middle;  width: 70px; height: 70px; display: inline-block; position: relative;} .chart-div-pInfo span{ font-size:13px; color:#9db32c;  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:600; z-index: 2;} .circular-chart-pInfo { display: block; margin: 0px auto; max-width: 100%; max-height: 100%; stroke:#9db32c; position:relative;} .circlepinfo { fill:#fff; stroke-width: 2.8; stroke-linecap: round; animation: progress-pinfo 1s ease-out forwards; } @keyframes progress-pinfo { 0% { stroke-dasharray: 0 100; } }
+.chart-div-pInfo:before { content: ''; width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; border: 4px solid #e6e6e6; display: inline-block; border-radius: 50%; }
+
+#profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow{padding: 0; box-shadow: none !important; width: auto !important; height: auto !important; background: none !important; margin-top: 0px !important;}
+#profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow .subsection.p1{margin-top: 10px; margin-bottom: 10px;}
+#profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow .subsection.p1 .flu-box{ box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;}
+#profile .player-info.members-listing-desc.memberBox-bg.w-100.h-100.flu-box.shadow .subsection.p1 .flu-box p.overflowText, .sentMsgSection .flu-box p.overflowText{width:auto;overflow: auto;text-overflow: inherit;}
+
+#contact-content{position:relative;padding-bottom:120px;}
+.blackFooterLogo{bottom:0px;right:30px;}
+
+.winloss-sec i{display:inline-block;background-image:url(../../images/winloss-bg.png);background-repeat:no-repeat;width:37px;height:37px;transform:scale(.8);}
+.winloss-sec i.winBall{background-position:0px -1px;}
+.winloss-sec i.lossBall{background-position:0px -41px;}
+
+.sentMsgSection .flu-box{    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }
+.sentMsgSection .flu-box p.msg-link-btn , .sentMsgSection .flu-box p.pt-3{padding:0px !important;}
+
+.sentMsgSection .memberBox-bg{background: transparent; padding: 0px; text-align: center; margin: 0 auto; float: none;}
+.sentMsgSection .memberBox-bg div.left{float:none;}
+.sentMsgSection .memberBox-bg table.show-profile-info{width:100% !important;}
+.pgBtn{background: #dddddb;color: #777078 !important;display:inline-block; padding:10px 40px; border-radius:30px;}
+.del_btn_pg a{font-size: 14px; margin-top: 30px; background: #dddddb;color: #777078 !important;display:inline-block; padding:10px 40px; border-radius:30px;}
+#members .member-section .row .col-sm-4{margin-bottom:30px;}
+.abs_sup_span{position: absolute; top: 7px; right: 5px;}
+
+#members .members-listing-desc.player-info img {border-radius:0px;border:none;max-width:50px;}
+#members .buttonwrapper{background:transparent !important;}
+#members .show-profile-info a{background: #efefee;border-radius: 25px;padding:6px 20px;}
+#members .show-profile-info a.active-member{background: yellow;}
+
+#members .player-info h3{margin:5px 0;}
+#members  div.subsection{margin-top:0px;}
+#members   .member-section p.msg-link-btn{margin:5px 0px 0px 6px}
+.copyRtText{font-size: 15px; vertical-align: middle;}
+
+#user-court h2{
+	width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 @media(min-width: 1200px) and (max-width: 1372px){
 .member-section p.msg-link-btn{

@@ -60,9 +60,25 @@ function checkUserPass()
 
 <script type="text/javascript" src="scripts/intropage.js"></script>
 
+<style type="text/css">
+#enter-box{max-height:317px;min-height:317px !important; overflow-y:scroll !important;}
+#login-box{max-height:327px;min-height:327px !important;}
+#signup-city{max-height:287px;min-height:287px !important;overflow-y:scroll !important;}
+ 
+@media only screen and (min-width:992px){
+#footer{position:relative !important; bottom:0px;}
+div#main { height: 100%; min-height:730px; }
+}
+
+</style>
+
 <c:choose>
 	<c:when test="${ vRandom eq 3 }">
 		<link  rel="stylesheet" type="text/css" href="css/bg_white.css">
+		
+		<style type="text/css">
+			.tagline-p{ padding-top:330px; color:#FFFFFF; font-size:85px; line-height: 1; text-align: left !important; font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:80px; }
+		</style>
 	</c:when>
 	<c:otherwise>
 		<link  rel="stylesheet" type="text/css" href="css/bg_regular.css">
@@ -72,6 +88,7 @@ function checkUserPass()
    			 min-height: 100%;
    		 	margin: auto;
 			}
+			.tagline-p{ padding-top:330px; color:#FFFFFF; font-size:85px; line-height: 1; text-align: left !important; font-family:montserrat_exbold, Arial, sans-serif !important; font-weight:800;margin-left:80px; }
 		</style>
 	</c:otherwise>
 </c:choose>
@@ -101,14 +118,7 @@ function checkUserPass()
 		z-index:10000;
 	}
 
-	.tagline-p
-	{
-		font-family: "avantgardemediumbt", "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
-		color:#FFFFFF; 
-		 font-size: 80px;
-    	line-height: 80px;
-    	text-align: left !important;
-	}
+	
 </style>
 
 <script type="text/javascript">
@@ -119,7 +129,7 @@ function checkUserPass()
 
 		if(  vOuterHT > 30 )
 			vTglineHT	= vOuterHT - 30;
-		$(".tagline-p").css("padding-top", vTglineHT);
+		//$(".tagline-p").css("padding-top", vTglineHT);
 		
 		if ($.browser.msie) {
 			$(".check-txt").css({
@@ -272,11 +282,11 @@ function checkUserPass()
 		<div id="footer">
 		<div class="container">
 		<div class="row">
-		<div class="col-sm-8 text-left">
+		<div class="col-md-6 text-center text-lg-left">
 		<jsp:include page="/common/footer.jsp"/>
 		</div>
-		<div class="col-sm-4">
-		<span class="copyright">OPEN PLAY TENNIS, LLC &copy; 2018</span>
+		<div class="col-md-6">
+		<span class="copyright">Open Play Tennis Copyright  <span class="copyRtText"> &copy; </span>  2020. All rights reserved</span>
 		</div>
 		</div>
 		</div>

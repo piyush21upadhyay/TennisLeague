@@ -1,13 +1,25 @@
 @font-face {
-	font-family:Avant_Garde_Gothic_Demibold;
-	src: url(fonts/Avant_Garde_Gothic_Demibold.ttf);
-	src: local("Avant_Garde_Gothic_Demibold"), url(fonts/Avant_Garde_Gothic_Demibold.ttf);
+	font-family:montserrat_regular;
+	src: url(fonts/Montserrat-Regular.ttf);
+	src: local("Montserrat-Regular"), url(fonts/Montserrat-Regular.ttf);
 }
+@font-face {
+	font-family:montserrat_medium;
+	src: url(fonts/Montserrat-Medium.ttf);
+	src: local("Montserrat-Medium"), url(fonts/Montserrat-Medium.ttf);
+}
+@font-face {
+	font-family:montserrat_exbold;
+	src: url(fonts/Montserrat-ExtraBold.ttf);
+	src: local("Montserrat-ExtraBold"), url(fonts/Montserrat-ExtraBold.ttf);
+}
+/*
 @font-face {
 	font-family:avantgardemediumbt;
 	src: url(fonts/avantgardemediumbt.ttf);
 	src: local("avantgardemediumbt"), url(fonts/avantgardemediumbt.ttf);
 }
+*/
 textarea:focus, input:focus, [type=submit]:not(:disabled), button:not(:disabled){
     outline: none;
 }
@@ -51,6 +63,19 @@ input:-internal-autofill-selected {
 background-color: none !important;
 }
 body {
+	font-family: 'Montserrat', sans-serif,  arial;
+	background-color:  transparent !important;
+	height: 100%;
+	color: #444;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-style: normal !important;
+	-ms-zoom: 100%;
+}
+
+/*
+body {
 	font-family: "Avant_Garde_Gothic_Demibold", Arial, sans-serif;
 	background-color:  transparent !important;
 	height: 100%;
@@ -61,6 +86,7 @@ body {
 	font-style: normal !important;
 	-ms-zoom: 100%;
 }
+*/
 p {
 	padding: 0 0 16px 0;
 	line-height: 1.7em;
@@ -146,7 +172,7 @@ ol li {
 	margin: 20px auto;
 }
 .highlightGreen{
-color: #89c417;
+color: #9db32c;
 }
 #main, header, #logo, nav, #site_content, footer {
 	/* margin-left: auto; */
@@ -242,8 +268,9 @@ nav li a:hover {
 }
 .sidebar-menu {
     width: 500px;
-    margin: 0 50px 0 auto;
+    margin: 0 auto;
     display: none;
+     transform:translateX(10%);
 }
 .flt {
 	float:left;
@@ -259,7 +286,7 @@ ul#sidemenu-fixed {
     margin: 20px 0px;
 }
 .menubg {
-        background-color: rgba(255, 255, 255, 0.78);
+        background-color: rgba(255, 255, 255, 0.71);
     /*width: 500px !important;*/
     margin: 0 auto 100px;
     height: 100% !important;
@@ -290,7 +317,10 @@ ul#sidemenu-fixed {
     width: 373px;
     text-align: left;
     letter-spacing: 0;
-    border: 1px solid #000;
+    border: 1px solid #fbfbfb;
+    background: #bdbdc1;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #a79e9e;
 }
 
 .menu a:hover, .menu a:active, .menu li.current_page_item a, .menu li.current_page_item a:visited {
@@ -308,6 +338,7 @@ ul#sidemenu-fixed li a:after {
     display: inline;
     float: right;
     margin-right: 10px;
+    font-weight: 800;
 }
 
 ul#sidemenu-fixed li a.box-header:after {
@@ -663,7 +694,7 @@ div#btn_close_video:after {
 
 #footer a {
 color: #8c8c8c;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: normal;
 	padding:0 10px 0 10px;
 	line-height:40px;
@@ -755,3 +786,4 @@ p#login-bottom3 {
 form.signin fieldset {
     padding-right: 15px;
 }
+

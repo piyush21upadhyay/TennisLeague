@@ -28,12 +28,14 @@ import com.sageconsulting.model.Court;
 import com.sageconsulting.model.Match;
 import com.sageconsulting.model.MatchResult;
 import com.sageconsulting.model.MatchScore;
+import com.sageconsulting.model.Registration;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.BracketManager;
 import com.sageconsulting.service.ChampionManager;
 import com.sageconsulting.service.CourtManager;
 import com.sageconsulting.service.MatchManager;
+import com.sageconsulting.service.RegistrationManager;
 import com.sageconsulting.service.SeasonManager;
 import com.sageconsulting.util.UserStatsUtil;
 import com.sageconsulting.webapp.util.CustomCourtEditor;
@@ -51,6 +53,11 @@ public class ResultsController extends BaseFormController
     private BracketManager bracketManager;
     private ChampionManager championManager;
     private SeasonManager seasonManager;
+    private RegistrationManager registrationManager;
+
+    public void setRegistrationManager(RegistrationManager registrationManager) {
+		this.registrationManager = registrationManager;
+	}
   
     private transient MatchResult result = null;
     
@@ -260,6 +267,26 @@ public class ResultsController extends BaseFormController
             	view.addObject("isAdministrator", true);
             }
             
+         // get season name & tournament name
+            if(null != match.getGolfer1() && null != match.getGolfer1().getCurrentSeason()){
+    	        Long registrationId = match.getGolfer1().getCurrentSeason().getRegistrationId();
+    	        Registration registration = registrationManager.getRegistration(registrationId);
+    	        String seasonName = registration.getDisplayName().replace(registration.getSeasonName(), "");
+    	        view.addObject("tournamentName", registration.getSeasonName());
+    	        view.addObject("seasonName", seasonName);
+            }
+            
+			try {
+				int[] winningLoosingCount = fetchWinningLoosingCount(match);
+				if (winningLoosingCount != null
+						&& winningLoosingCount.length > 0) {
+					view.addObject("winningCount", winningLoosingCount[0]);
+					view.addObject("loosingCount", winningLoosingCount[1]);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+            
             return view;
         }
         else if (isSave(request))
@@ -414,7 +441,37 @@ public class ResultsController extends BaseFormController
         return super.onSubmit(request, response, command, errors);
     }
     
-    private boolean isDefaultWin(HttpServletRequest request)
+	private int[] fetchWinningLoosingCount(Match match) {
+		int[] winLooseCountArr = new int[2];
+
+		int winningCount = 0, lossingCount = 0;
+		if (match.getScore().getPlayer1set1() > match.getScore()
+				.getPlayer2set1())
+			winningCount++;
+		else
+			lossingCount++;
+
+		if (match.getScore().getPlayer1set2() > match.getScore()
+				.getPlayer2set2())
+			winningCount++;
+		else
+			lossingCount++;
+
+		if (match.getScore().getPlayer1set3() > 0
+				|| match.getScore().getPlayer2set3() > 0) {
+			if (match.getScore().getPlayer1set3() > match.getScore()
+					.getPlayer2set3())
+				winningCount++;
+			else
+				lossingCount++;
+		}
+
+		winLooseCountArr[0] = winningCount;
+		winLooseCountArr[1] = lossingCount;
+		return winLooseCountArr;
+	}
+
+	private boolean isDefaultWin(HttpServletRequest request)
     {
         String defaultWinParam = request.getParameter("defaultWin"); //$NON-NLS-1$
         return ((null != defaultWinParam) && defaultWinParam.equals("true")); //$NON-NLS-1$

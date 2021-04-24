@@ -108,6 +108,8 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("user", user); //$NON-NLS-1$
             view.addObject("matches", getNextMatches(user)); //$NON-NLS-1$
             view.addObject("currentRecord", getCurrentRecord(user)); //$NON-NLS-1$
+            view.addObject("currentwins", user.getCurrentWins()); //$NON-NLS-1$
+            view.addObject("currentLosses", user.getCurrentLosses()); //$NON-NLS-1$
             view.addObject("overallRecord", user.getOverallRecord()); //$NON-NLS-1$
             view.addObject("currentDivision", getCurrentDivision(user)); //$NON-NLS-1$
             view.addObject("seasonPosition", getSeasonPosition(user, request.getLocale())); //$NON-NLS-1$

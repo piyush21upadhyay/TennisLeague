@@ -449,7 +449,7 @@
 				
 				.textAlign {
 					width: 70px;
-				    height: 40px;
+				    height: 50px;
 				    margin-top: 17px;
 				    text-align: center;
 				}
@@ -472,6 +472,11 @@
 				    font-size: 20px;
 				    font-weight: normal;
 				}
+				
+				.ui-datepicker-header .ui-state-hover{background:none;border:0px;}
+				.ui-datepicker-header .ui-datepicker-next:hover {right:2px;top:2px;}
+				.ui-datepicker-header  .ui-datepicker-prev:hover {left:2px;top:2px;}
+				
 				.ui-datepicker .ui-datepicker-prev span {
 				    top: 200%;
 				    left: 20px;
@@ -481,19 +486,24 @@
 				    right: 20px;
 				}
 				.ui-state-default, .ui-widget-content .ui-state-default {
-				    background: none;
+				    background:#f1f1f1;
 				    border: none;
 				    /* padding: 11px; */
+				        display: inline-block;
+    				width: 25px;
+				    height: 25px;
+				    border-radius: 50px;
+				    line-height: 25px;
 				}
-				a.ui-state-default.ui-state-highlight.ui-state-active {
-				    background: #dedede;
-				    border-radius: 25px;
-				    width: 30px;
-				    height: 30px;
-				    padding: 5px 2px;
+				a.ui-state-default.ui-state-highlight.ui-state-active,
+				.ui-state-active, .ui-widget-content .ui-state-active
+				 {
+				    background: #9cb23b;
+				    color:#fff !important;
+				     
 				}
 				.ui-datepicker td {
-				    padding: 10px;
+				    padding: 5px;text-align:center;
 				}
 				.ui-state-disabled td {}
 				td.ui-datepicker-today {
@@ -523,9 +533,9 @@
 			    <p>
 			        <c:out value="${match.course.name}"/>
 			    </p>
-			    <p>
+			    <%-- <p>
 					<fmt:formatDate value="${match.played}" pattern="MMM dd, yyyy"/>
-				</p>
+				</p> --%>
 				<p>
 					<c:choose>
 						<c:when test="${match.result.tie}">
@@ -540,7 +550,7 @@
 						<c:otherwise>
 							<c:out value="${match.result.winner.fullName}"/>
 							<fmt:message key="results.wins"/>
-							<%-- <c:out value="${match.result.winner.currentWins}"/>-<c:out value="${match.result.winner.currentLosses}"/> --%>
+							<c:out value="${winningCount}"/> - <c:out value="${loosingCount}"/>
 						</c:otherwise>
 					</c:choose>
 				</p>
@@ -591,8 +601,8 @@
 					<div class="card">
 					<div class="edituser-section">
 						<div class="namecolw">
-							<p class="textAlign"><img style="width: 50px;" src="<c:out value="${match.golfer1.icon}"/>"/><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></p>
-							<p class="textAlign"><img style="width: 50px;" src="<c:out value="${match.golfer2.icon}"/>"/><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></p>
+							<p class="textAlign "><img  class="align-middle" style="width: 50px;" src="<c:out value="${match.golfer1.icon}"/>"/><b><c:out value="${match.golfer1.displayName}"/> &nbsp;</b></p>
+							<p class="textAlign"><img  class="align-middle" style="width: 50px;" src="<c:out value="${match.golfer2.icon}"/>"/><b><c:out value="${match.golfer2.displayName}"/> &nbsp;</b></p>
 		 				</div>
 		 				
 		 				

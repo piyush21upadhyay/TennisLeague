@@ -214,7 +214,7 @@ public class CourtsController  extends BaseFormController
     private Long getCourtId(HttpServletRequest request)
     {
         Long id = null;
-        String strCourse = request.getParameter("id"); //$NON-NLS-1$
+        String strCourse = request.getParameter("courtId"); //$NON-NLS-1$
         if (null != strCourse)
         {
             try

@@ -39,6 +39,7 @@
 <c:if test="${not match.defaultWin}">
 	<div class="section">
 		<div class="left">
+			<c:set var="fromScheduleViewResultLink" value="true" scope="request"/>
 			<c:import url="/common/matchCard.jsp"/>
 		</div>
 	</div>

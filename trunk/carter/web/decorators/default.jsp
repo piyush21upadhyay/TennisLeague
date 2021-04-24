@@ -60,7 +60,7 @@
 </div>	
 	<div id="footer">
 		<jsp:include page="/common/footer.jsp"/>
-		<span class="copyright">OPEN PLAY TENNIS, LLC &copy; 2018</span>
+		<span class="copyright">Open Play Tennis Copyright <span class="copyRtText"> &copy; </span> 2020. All rights reserved</span>
 	</div>
 </div>
 </div>

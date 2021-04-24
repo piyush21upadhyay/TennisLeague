@@ -43,12 +43,13 @@
 	</div>
 </div>
 
-<div id="standings-container">
+<div class="leader-tab-info" id="standings-container">
 	<table cellspacing="0" cellpadding="0">
 		<thead>
 			<tr>
 				<th class="first pos"><fmt:message key="standings.position"/></th>
 				<th class="player"><fmt:message key="standings.player"/></th>
+				<th class="leaderboar_img"></th>
 				<th class="course"><fmt:message key="standings.court"/></th>
 				<th class="points"><fmt:message key="standings.points"/></th>
 				<th class="wins"><fmt:message key="standings.wins"/></th>
@@ -59,11 +60,10 @@
 	<div id="standings-scroller">
 	<display:table name="results" id="results" cellspacing="0" cellpadding="0" requestURI="">
 	    <display:column class="pos"><%=pageContext.getAttribute("results_rowNum")%></display:column>
-	    <display:column class="player" property="user.fullName" url="/profile.html" paramId="id" paramProperty="user.id"/>
 	    <display:column>
-		    <img style="width: 25px;" src="<c:out value="${results.user.icon}"/>" />
+		    <img class="align-middle rounded-circle" style="width: 25px;" src="<c:out value="${results.user.icon}"/>" />
 		</display:column>
-	    
+	    <display:column class="player" property="user.fullName" url="/profile.html" paramId="id" paramProperty="user.id"/>
 	    <display:column class="course" property="user.homeCourtText" /><!-- url="/coursedetails.html" paramId="id" paramProperty="user.homeCourse.id"/> -->
 	    <display:column class="points" property="points" />
 	    <display:column class="wins" property="wins" />

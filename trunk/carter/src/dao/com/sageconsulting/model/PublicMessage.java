@@ -23,6 +23,7 @@ public class PublicMessage extends BaseObject
     private Long id;
     private Integer version;
     private User poster;
+    private String msgTo;
     private String subject;
     private String message;
     private Timestamp date;
@@ -52,8 +53,8 @@ public class PublicMessage extends BaseObject
     {
         return this.poster;
     }
-
-    /**
+    
+	/**
      * @hibernate.property column="subject" not-null="true" length="60"
      */
     public String getSubject()
@@ -62,6 +63,17 @@ public class PublicMessage extends BaseObject
     }
 
     /**
+     * @hibernate.property column="msgTo" not-null="true"
+     */
+    public String getMsgTo() {
+		return this.msgTo;
+	}
+
+	public void setMsgTo(String msgTo) {
+		this.msgTo = msgTo;
+	}
+
+	/**
      * @hibernate.property column="message" not-null="true" length="1000"
      */
     public String getMessage()
@@ -100,7 +112,11 @@ public class PublicMessage extends BaseObject
         this.poster = p;
     }
     
-    /**
+    public void setTo(String to) {
+		this.msgTo = to;
+	}
+
+	/**
      * @spring.validator type="required"
      */
     public void setSubject(String s)
