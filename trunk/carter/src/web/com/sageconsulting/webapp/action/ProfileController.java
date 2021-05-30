@@ -131,7 +131,7 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("homeCourt", homeCourt);
             //view.addObject("new_messages", Integer.valueOf(this.mailManager.getNumberNewMessages(user.getId()))); //$NON-NLS-1$
         }
-        else if(user == null)
+ else if (user == null && null != city && null != city.getId())
         {
         	List<Registration> openForRegistration = this.registrationManager.getOpenRegistrationsForCity(city.getId());
         	view.addObject("openRegistrationForVisitor", openForRegistration);
