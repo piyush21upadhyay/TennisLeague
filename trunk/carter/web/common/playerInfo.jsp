@@ -58,7 +58,9 @@
 						</c:otherwise>
 					</c:choose>
 					</strong></h4>
-					<h4>&nbsp;<c:out value="${player.address.city} , ${player.address.province}"/></h4>
+					<h4>&nbsp;
+					<c:out value="${player.address.city} , ${player.address.province}"/></h4>&nbsp;
+					<img src="images/guest.PNG" alt="" style="border: black"/> 
 				</div>
 			</c:if>
 		</c:otherwise>
@@ -67,7 +69,9 @@
 	
 	<div class="subsection p1">
 	<div class="flu-box">
-		<p class="overflowText"><fmt:message key="profile.homeCourt"/> <c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if></p>
+		<p class="overflowText" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><fmt:message key="profile.homeCourt"/> 
+			<c:if test="${not empty player}"><c:out value="${player.homeCourtText}"/></c:if>
+		</p>
 		<%-- <p><fmt:message key="profile.homeCourt"/> 
 			<c:if test="${not empty player}"><c:out value="${homeCourt}"/></c:if>
 		</p> --%>
