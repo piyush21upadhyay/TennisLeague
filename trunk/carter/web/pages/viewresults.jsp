@@ -15,7 +15,7 @@
 	   <%--  <p class="season">
 			<fmt:formatDate value="${match.played}" pattern="MMM dd, yyyy"/>
 		</p> --%>
-		<p class="division">
+		<p class="division" style="color: #fff">
 			<c:choose>
 				<c:when test="${match.defaultWin}">
 					<c:out value="${match.defaultWinner.fullName}"/> <fmt:message key="results.defaultWin"/>

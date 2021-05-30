@@ -10,6 +10,7 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#player1set1").focus();
+		$("#player1set1").select();
 		 $("#match-date-picker").datepicker({
 			maxDate: new Date(),
 		    onSelect: function(dateText) {
@@ -85,12 +86,12 @@
 			//alert(isOpponentRetired);
 				if(player1set1 == 0 &&  player2set1 == 0 && player1set2 == 0 && player2set2 == 0)
 				{
-					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 					return;
 				}
 				if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 6 || player2set3 > 6)
 				{
-					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 					return;
 				}
 			
@@ -101,7 +102,7 @@
 					isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup,showAlert);
 				else if(player1set2 > 0 || player2set2 > 0)
 				{
-					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 					return;
 				}
 				//alert(isValid);
@@ -116,7 +117,7 @@
 					isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup,showAlert);
 				else if(player1set3 > 0 || player2set3 > 0)
 				{
-					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+					cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 					return;
 				}
 				
@@ -147,7 +148,7 @@
 				{
 					if(player1set3 - player2set3 > 1)
 						{
-						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 						return;
 						}
 				}
@@ -155,7 +156,7 @@
 				{
 					if(player2set3 - player1set3 > 1)
 					{
-						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired. At least one game must be played to enter as Opponent Retired.",300);
+						cglAlert('Invalid Action',"Please enter a valid score for Opponent Retired.",300);
 						return;
 					}
 				} 
@@ -164,7 +165,7 @@
 			
 			if(player1set1 > 7 || player2set1 > 7 || player1set2 > 7 || player2set2 > 7 || player1set3 > 7 || player2set3 > 7)
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return;
 			}
 			
@@ -175,7 +176,7 @@
 				isValid = checkValidScores(player2set1,player1set1,player2set1sup,player1set1sup,showAlert);
 			else
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2Valid scores are:\n 6 6 6 6 6 6 7 7\n0 1 2 3 4 5 6",300);
 				return;
 			}
 			
@@ -190,7 +191,7 @@
 				isValid = checkValidScores(player2set2,player1set2,player2set2sup,player1set2sup,showAlert);
 			else
 			{
-				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return;
 			}
 			
@@ -210,7 +211,7 @@
 					isValid = checkValidScores(player2set3,player1set3,player2set3sup,player1set3sup,showAlert);
 				else
 				{
-					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 					return;
 				}
 				
@@ -265,7 +266,7 @@
 		if(player1score < 6)
 		{
 			if(doShowAlert)
-				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+				cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 			return false;
 		}
 		
@@ -274,19 +275,19 @@
 			if(player1tiescore < 7)
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid tie braker score. Tiebreaker is first to 7 by 2.",300);
+					cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
 				return false;
 			}
 			if(player1tiescore - player2tiescore < 2)
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid tie braker score. Tiebreaker is first to 7 by 2.",300);
+					cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
 				return false;
 			}
 			if(player1tiescore > 7 && (player1tiescore - player2tiescore > 2))
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid tie braker score. Tiebreaker is first to 7 by 2.",300);
+					cglAlert('Invalid Action',"Please enter a valid tie braker score.",300);
 				return false;
 			}
 			
@@ -296,7 +297,7 @@
 			if(player1tiescore != 0 || player2tiescore != 0)
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
@@ -306,7 +307,7 @@
 			if(player1score != 7 || player2score != 6)
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
@@ -316,7 +317,7 @@
 			if(player1score == 7 && player2score != 5)
 			{
 				if(doShowAlert)
-					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are: 6 - 0, 6 - 1, 6 - 2, 6 - 3, 6 - 4, 7 - 5, or 7 - 6.Tiebreaker is first to 7 by 2",300);
+					cglAlert('Invalid Action',"Please enter a valid score.Valid scores are:\n 6 6 6 6 6 6 7 7\n 0 1 2 3 4 5 6\n\nTiebreaker is first to 7 by 2",300);
 				return false;
 			}
 		}
