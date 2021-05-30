@@ -116,8 +116,10 @@ public class ProfileController extends ApplicationObjectSupport implements Contr
             view.addObject("seasonPoints", getSeasonPoints(user, request.getLocale())); //$NON-NLS-1$
             view.addObject("privateMessages", this.mailManager.getAllPrivateMessages(user.getId())); //$NON-NLS-1$
             
-            List<PublicMessage> allMessages = this.msgBoardManager.getAllPublicMessages(city.getId(), null, "");
-            view.addObject("publicMessages", allMessages);
+            if(null !=city && null !=city.getId()){
+            	List<PublicMessage> allMessages = this.msgBoardManager.getAllPublicMessages(city.getId(), null, "");
+            	view.addObject("publicMessages", allMessages);
+            }
             view.addObject("openRegistrations", this.getOpenRegistrations(user)); //$NON-NLS-1$
             view.addObject("registeredSeason", this.getOpenEntryRegistrations(user));
             view.addObject("seasonStarted", this.getCurrentSeasonStarted(user));
