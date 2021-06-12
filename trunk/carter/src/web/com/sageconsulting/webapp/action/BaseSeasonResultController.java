@@ -22,6 +22,7 @@ import com.sageconsulting.Constants;
 import com.sageconsulting.model.City;
 import com.sageconsulting.model.MatchCategory;
 import com.sageconsulting.model.Season;
+import com.sageconsulting.model.User;
 import com.sageconsulting.service.MatchCategoryManager;
 import com.sageconsulting.service.SeasonManager;
 
@@ -83,6 +84,7 @@ public abstract class BaseSeasonResultController extends BaseFormController
         sortList(seasons);
         view.addObject("seasons", seasons); //$NON-NLS-1$
         Season currentSeason = getCurrentSeason(request, seasons);
+        //setCurrentDivisionAsFirstSeason(seasons, currentSeason, super.getUserManager().getUserByUsername(request.getRemoteUser()));
         view.addObject("season", currentSeason); //$NON-NLS-1$
         view.addObject("submittedSeason", currentSeason);
         
@@ -94,7 +96,30 @@ public abstract class BaseSeasonResultController extends BaseFormController
     }
     
       
-    private void sortList(List<Season> seasons)
+    /**
+     * When logged in, your division should always comes first on Leaderboard and Playoffs screen
+     * 
+     * @param seasons
+     * @param currentSeason
+     * @param user 
+     */
+	private void setCurrentDivisionAsFirstSeason(List<Season> seasons,
+			Season currentSeason, User user) {
+		if (user != null && seasons != null && seasons.size() > 1) {
+			int searchIndex = 0;
+			for (int index = 0; index <= seasons.size(); index++) {
+				if (currentSeason.getId() == seasons.get(index).getId()) {
+					searchIndex = index;
+					break;
+				}
+			}
+			seasons.remove(searchIndex);
+			seasons.add(0, currentSeason);
+		}
+
+	}
+
+	private void sortList(List<Season> seasons)
     {
     	Collections.sort(seasons, new Comparator<Season>()
         {
