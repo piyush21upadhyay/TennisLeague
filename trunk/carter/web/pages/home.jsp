@@ -151,7 +151,8 @@
 		 	</div>
 		</div>
 	</c:when>
-	<c:when test="${not empty countdownMessage and seasonStarted ne 2}">
+	<%-- <c:when test="${not empty countdownMessage and seasonStarted ne 2 and seasonStarted ne 0}"> --%>
+	<c:when test="${not empty countdownMessage and seasonStarted ne 2 and countdownDays ne 0}">
 		<div id="header-home">
 			<div id="header-home-text">
 				<span class="count-down"><c:out value="${countdownMessage}"/></span>
@@ -326,15 +327,23 @@
 <div class="col-sm-12" style="padding:0px">
 	<!--image section start-->
 		<div id="birdie-challenge">
-			<a href="signup.html" class="greybtn">Sign Up Now</a>
+			<!-- <a href="signup.html" class="greybtn">Sign Up Now</a> -->
 			
 			<c:choose>
+				<c:when test="${not empty user and empty openRegistrations}">
+					<a href="#" class="greybtn" onclick="return false;">Working on your drop shot? You know Joe is.</a>
+				</c:when>
 				<c:when test="${empty user}">
+					<a href="signup.html" class="greybtn">Sign Up Now</a>
 					<a href="signup.html" class="greenBtn">Click Here</a>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${not empty openRegistrations and empty registeredSeason}">
-						<a href="registration.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
+						<!-- <a href="registration.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">Your athletic glory days are in front of you. <b>Register Now</b> for the New Season.&nbsp;</a> -->
+						<a href="registration.html" class="greybtn">Your athletic glory days are in front of you. <b>Register Now</b> for the New Season.&nbsp;</a>
+					</c:if>
+					<c:if test="${not empty openRegistrations and not empty registeredSeason}"> <!-- Tournament open for Sign Up|View for user signed in| Registered for season -->
+						<a href="#" class="greybtn" onclick="return false;">Start beating new people</a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>
