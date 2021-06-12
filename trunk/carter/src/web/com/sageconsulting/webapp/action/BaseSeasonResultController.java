@@ -84,7 +84,7 @@ public abstract class BaseSeasonResultController extends BaseFormController
         sortList(seasons);
         view.addObject("seasons", seasons); //$NON-NLS-1$
         Season currentSeason = getCurrentSeason(request, seasons);
-        //setCurrentDivisionAsFirstSeason(seasons, currentSeason, super.getUserManager().getUserByUsername(request.getRemoteUser()));
+        setCurrentDivisionAsFirstSeason(seasons, currentSeason, this.getUserManager().getUserByUsername(request.getRemoteUser()));
         view.addObject("season", currentSeason); //$NON-NLS-1$
         view.addObject("submittedSeason", currentSeason);
         
@@ -107,7 +107,7 @@ public abstract class BaseSeasonResultController extends BaseFormController
 			Season currentSeason, User user) {
 		if (user != null && seasons != null && seasons.size() > 1) {
 			int searchIndex = 0;
-			for (int index = 0; index <= seasons.size(); index++) {
+			for (int index = 0; index < seasons.size(); index++) {
 				if (currentSeason.getId() == seasons.get(index).getId()) {
 					searchIndex = index;
 					break;
