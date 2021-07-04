@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * @hibernate.class table="golf_match"
  */
-public class Match extends BaseObject implements Serializable
+public class Match extends BaseObject implements Serializable, Cloneable
 {
     private static final long serialVersionUID = 186763659815448139L;
 
@@ -139,6 +139,13 @@ public class Match extends BaseObject implements Serializable
     		this.result = new MatchResult(this);
     	}
         return this.result;
+    }
+    
+    public MatchResult getMatchResult(Match match){
+    	if(null != match){
+    		return new MatchResult(match);
+    	}
+    	return null;
     }
     
     public boolean isDefaultWin()
@@ -276,6 +283,10 @@ public class Match extends BaseObject implements Serializable
             append("id", this.id).toString()*/; //$NON-NLS-1$
 			return null;
             
+    }
+    
+    public Object clone()throws CloneNotSupportedException{  
+    	return super.clone();  
     }
 
 }

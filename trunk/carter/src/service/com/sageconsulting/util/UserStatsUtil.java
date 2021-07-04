@@ -64,6 +64,78 @@ public class UserStatsUtil
         saveUser(userManager, user2);
     }
     
+    /**
+     * Update the users won/loss/tie info for the match edit by admin.
+     * @param match The match that was just played.
+     */
+    public static void updateUserStats(UserManager userManager, Match match, User oldMatchWinner)
+    {
+        User user1;
+        User user2;
+        
+        if (match.isDefaultWin())
+        {
+            user1 = match.getDefaultWinner();
+            user2 = getDefaultLoser(match);
+           // User oldMatchWinner = savedMatch.getDefaultWinner();
+            //User oldMatchLoser = getDefaultLoser(savedMatch);
+            if(!user1.getId().equals(oldMatchWinner.getId())){
+            	updateWins(user1);
+            	decreaseLosses(user1);
+            	updateLosses(user2);
+            	decreaseWins(user2);
+            }
+            
+            
+        }
+        else
+        {
+            user1 = match.getMatchResult(match).getWinner();
+            user2 = match.getMatchResult(match).getLoser();
+            //User oldMatchWinner = savedMatch.getResult().getWinner();
+            if (match.getMatchResult(match).isTie())
+            {
+                user1 = match.getGolfer1();
+                user2 = match.getGolfer2();
+                updateTies(user1);
+                updateTies(user2);
+            }
+            else
+            {
+            	if(!user1.getId().equals(oldMatchWinner.getId())){
+                	updateWins(user1);
+                	decreaseLosses(user1);
+                	updateLosses(user2);
+                	decreaseWins(user2);
+                }
+            	
+                //updateWins(user1);
+                //updateLosses(user2);
+            }
+            updateLowScore(user1, match);
+            updateLowScore(user2, match);
+        }
+        
+        saveUser(userManager, user1);
+        saveUser(userManager, user2);
+    }
+    
+    private static void decreaseLosses(User user)
+    {
+        int losses = user.getCurrentLosses().intValue() - 1;
+        user.setCurrentLosses(Integer.valueOf(losses));
+        losses = user.getTotalLosses().intValue() - 1;
+        user.setTotalLosses(Integer.valueOf(losses));
+    }
+    
+    private static void decreaseWins(User user)
+    {
+        int wins = user.getCurrentWins().intValue() - 1;
+        user.setCurrentWins(Integer.valueOf(wins));
+        wins = user.getTotalWins().intValue() - 1;
+        user.setTotalWins(Integer.valueOf(wins));
+    }
+    
     private static User getDefaultLoser(Match match)
     {
         if (match.getDefaultWinner().equals(match.getGolfer1()))

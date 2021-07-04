@@ -17,6 +17,8 @@ public interface MatchDao extends Dao
 {
 
     public Match getMatch(Long id);
+    
+    public Match getMatchById(Long id);
 
     public List<Match> getMatchesForGolfer(Long golferid);
     

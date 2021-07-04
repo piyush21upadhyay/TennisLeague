@@ -68,7 +68,8 @@ public class UserDaoHibernate extends BaseDaoHibernate implements UserDao, UserD
         {
             this.log.debug("user's id: " + user.getId()); //$NON-NLS-1$
         }
-
+        // added clear on-07/04/21
+        getHibernateTemplate().clear();
         getHibernateTemplate().saveOrUpdate(user);
         // necessary to throw a DataIntegrityViolation and catch it in UserManager
         getHibernateTemplate().flush();

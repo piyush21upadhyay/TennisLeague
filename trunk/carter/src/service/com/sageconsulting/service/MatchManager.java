@@ -16,6 +16,8 @@ import com.sageconsulting.model.Match;
 public interface MatchManager
 {
     public Match getMatch(Long id);
+    
+    public Match getMatchById(Long id);
 
     public List<Match> getMatchesForGolfer(Long golferid);
     

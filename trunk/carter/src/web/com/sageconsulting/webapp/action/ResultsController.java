@@ -334,6 +334,11 @@ public class ResultsController extends BaseFormController
             
 			//System.out.println("Match: "+match.getId());
             List<BracketEntry> bracketEntry=this.bracketManager.getRound(match);
+            //Akash & Piyush : for admin edit of score
+            //Match newUiEntity = (Match)match.clone();
+           // Match savedMatch = this.matchManager.getMatchById(getMatchId(request));
+            Match newUiEntity = null;
+            Match savedMatch = null;
             
             if (bracketEntry.size()>0)
             {
@@ -387,6 +392,8 @@ public class ResultsController extends BaseFormController
             		champion.setHomeCourt(this.courtManager.getCourt(winner.getCourtId()));
             		/**Code commenting on behalf of Akash and Piyush to fix last playoff match Save issue Ends***/
             		//champion.setHandicap(winner.getHandicap());
+            		 newUiEntity = (Match)match.clone();
+                     savedMatch = this.matchManager.getMatchById(getMatchId(request));
             		this.championManager.saveChampion(champion);
             		winner.setIcon("images/champion.png");
             		this.getUserManager().updateChampionIcon(winner);
@@ -402,13 +409,23 @@ public class ResultsController extends BaseFormController
             }*/
             /***Changes for opponent retired ends*****/
             
-            this.matchManager.saveMatch(match);
+           if(null == newUiEntity){
+        	   newUiEntity = (Match)match.clone();
+               savedMatch = this.matchManager.getMatchById(getMatchId(request));
+           }
+            
+            this.matchManager.saveMatch(newUiEntity);
             
             // If the match is part of a post season bracket, move the winner
             // to the next position in the bracket.
-            updateBracket(match);
+            updateBracket(newUiEntity);
             
-            UserStatsUtil.updateUserStats(this.getUserManager(), match);
+            boolean isAdminEdit = isAdministratorEdit(request);
+            if(!isAdminEdit)
+            	UserStatsUtil.updateUserStats(this.getUserManager(), newUiEntity);
+            else
+            	UserStatsUtil.updateUserStats(this.getUserManager(), newUiEntity, savedMatch.getMatchResult(savedMatch).getWinner());
+            
             if(isAdministratorEdit(request))
             {
             	String adminRedirectView = "redirect:record.html?id=" + this.getCurrentUser(request).getId().toString();

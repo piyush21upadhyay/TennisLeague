@@ -105,7 +105,7 @@ public abstract class BaseSeasonResultController extends BaseFormController
      */
 	private void setCurrentDivisionAsFirstSeason(List<Season> seasons,
 			Season currentSeason, User user) {
-		if (user != null && seasons != null && seasons.size() > 1) {
+		if (null != currentSeason && user != null && seasons != null && seasons.size() > 1) {
 			int searchIndex = 0;
 			for (int index = 0; index < seasons.size(); index++) {
 				if (currentSeason.getId() == seasons.get(index).getId()) {

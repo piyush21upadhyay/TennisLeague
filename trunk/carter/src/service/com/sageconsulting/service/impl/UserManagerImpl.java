@@ -8,11 +8,14 @@
  */
 package com.sageconsulting.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.acegisecurity.userdetails.UsernameNotFoundException;
 
 import com.sageconsulting.dao.UserDao;
+import com.sageconsulting.model.Role;
 import com.sageconsulting.model.User;
 import com.sageconsulting.service.UserExistsException;
 import com.sageconsulting.service.UserManager;
@@ -66,11 +69,17 @@ public class UserManagerImpl extends BaseManager implements UserManager
         }
         try
         {
+        	Set<Role> roles = user.getRoles();
+        	user.setRoles(new HashSet<Role>());
+        	user.getRoles().addAll(roles);
             this.userDao.saveUser(user);
         }
         catch (DataIntegrityViolationException e)
         {
             throw new UserExistsException("User '" + user.getUsername() + "' already exists!"); //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        catch(Exception e){
+        	e.printStackTrace();
         }
     }
 

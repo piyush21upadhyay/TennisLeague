@@ -24,6 +24,7 @@ public class MatchDaoHibernate extends BaseDaoHibernate implements MatchDao
 
     public void saveMatch(Match match)
     {
+    	getHibernateTemplate().clear();
         getHibernateTemplate().saveOrUpdate(match);
         // necessary to throw a DataIntegrityViolation
         getHibernateTemplate().flush();
@@ -89,4 +90,11 @@ public class MatchDaoHibernate extends BaseDaoHibernate implements MatchDao
         List<Match> matches = getHibernateTemplate().find(sb.toString(), new Object[] { mon, sun });
         return matches;
     }
+
+	@Override
+	public Match getMatchById(Long id) {
+		Match match = (Match) getHibernateTemplate().get(Match.class, id);
+        getHibernateTemplate().refresh(match);
+        return match;
+	}
 }
