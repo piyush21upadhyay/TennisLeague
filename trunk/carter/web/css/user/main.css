@@ -1410,7 +1410,7 @@ table#standings caption {
 	margin:10px 0px;
 }
 .subsection.register-btn {
-    background: #9eb43a;
+    /*background: #9eb43a;*/
     position: absolute;
     bottom: 30px;
     right: 40px;

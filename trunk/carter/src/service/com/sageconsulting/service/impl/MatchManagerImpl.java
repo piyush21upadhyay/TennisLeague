@@ -31,6 +31,11 @@ public class MatchManagerImpl extends BaseManager implements MatchManager
     {
         return getMatchDao().getMatch(id);
     }
+    
+    public Match getMatchById(Long id)
+    {
+        return getMatchDao().getMatchById(id);
+    }
 
     public List<Match> getMatchesForGolfer(Long golferid)
     {
