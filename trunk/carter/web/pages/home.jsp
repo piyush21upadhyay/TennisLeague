@@ -352,7 +352,7 @@
 			<%-- <c:if test="${empty user}">
 				<a href="signup.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">&nbsp;</a>
 			</c:if> --%>
-	    	<div class="left-msg">
+	    	<%-- <div class="left-msg">
 		    	<c:choose>
 		    		<c:when test="${not empty countdownDate}">Opens for Season</c:when>
 					<c:otherwise>&nbsp;</c:otherwise>
@@ -365,7 +365,7 @@
 		    		</c:when>
 					<c:otherwise>&nbsp;</c:otherwise>
 				</c:choose>
-			</div>
+			</div> --%>
 	    </div>
 	<!--image section end-->
 </div>
