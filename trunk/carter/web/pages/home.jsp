@@ -342,8 +342,11 @@
 						<!-- <a href="registration.html" style="position: absolute;width: 100%;height: 100%;top: 0px;right: 0px;left: 0px;">Your athletic glory days are in front of you. <b>Register Now</b> for the New Season.&nbsp;</a> -->
 						<a href="registration.html" class="greybtn">Your athletic glory days are in front of you. <b>Register Now</b> for the New Season.&nbsp;</a>
 					</c:if>
-					<c:if test="${not empty openRegistrations and not empty registeredSeason}"> <!-- Tournament open for Sign Up|View for user signed in| Registered for season -->
+					<c:if test="${not empty openRegistrations and not empty registeredSeason and empty playOffCountdownDays}"> <!-- Tournament open for Sign Up|View for user signed in| Registered for season -->
 						<a href="#" class="greybtn" onclick="return false;">Start beating new people</a>
+					</c:if>
+					<c:if test="${not empty openRegistrations and not empty registeredSeason and not empty playOffCountdownDays}"> <!-- Tournament in Play|View for user signed in|-->
+						<a href="#" class="greybtn" onclick="return false;">Game On</a>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

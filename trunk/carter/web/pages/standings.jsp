@@ -103,10 +103,10 @@
 	</display:table>
 	</div>
 </div>
-<c:if test="${not empty playoffCounter and playoffStarted eq 0}">
+<%-- <c:if test="${not empty playoffCounter and playoffStarted eq 0}">
 <div class="playoffs-counter">
 	<div class="playoffs-counter-number"><c:out value="${playoffCounter}"/></div>
 </div>
-</c:if>
+</c:if> --%>
 
 </c:if>
