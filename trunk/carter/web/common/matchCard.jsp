@@ -232,9 +232,9 @@
               </div>
               
               <c:choose>
-				<c:when test="${match.defaultWin}">
+				<%-- <c:when test="${match.defaultWin}">
 					<c:choose>
-						<c:when test="${user.id == match.result.winner.id}">
+						<c:when test="${user.id == match.result.winner.id or currIdOfUser == match.result.winner.id}">
 							<div class="score-list">
               					<p><fmt:message key="record.defaultWin"/></p>
               				</div>
@@ -245,7 +245,7 @@
               				</div>
               			</c:otherwise>
               		</c:choose>
-              	</c:when>
+              	</c:when> --%>
               	<c:when test="${match.bye}">
 					<div class="score-list">
               			<p><fmt:message key="record.byeWin"/></p>
@@ -388,16 +388,26 @@
               </div>
               </c:otherwise>
              </c:choose>
-             
-             <div class="retiredWin">
-             
-           		<c:if test="${match.opponentRetiredWin}">
-                    <fmt:message key="results.opponentRetired"/>
-                </c:if>
-             
-             </div>
-              
-             </div> 
+
+			<div class="retiredWin">
+				<c:if test="${match.opponentRetiredWin}">
+					<fmt:message key="results.opponentRetired" />
+				</c:if>
+
+				<c:if test="${match.defaultWin}">
+					<c:choose>
+						<c:when
+							test="${user.id == match.result.winner.id or currIdOfUser == match.result.winner.id}">
+							<fmt:message key="record.defaultWin" />
+						</c:when>
+						<c:otherwise>
+							<fmt:message key="record.defaultLoss" />
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+			</div>
+
+		</div> 
              </div> 
           </div>
       </div>

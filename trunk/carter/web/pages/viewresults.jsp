@@ -36,7 +36,7 @@
 	<div class="clear"></div>
 </div>
 
-<c:if test="${not match.defaultWin}">
+<%-- <c:if test="${not match.defaultWin}"> --%>
 	<div class="section">
 		<div class="left">
 			<c:set var="fromScheduleViewResultLink" value="true" scope="request"/>
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-</c:if>
+<%-- </c:if> --%>
 	
 <div class="section">
 	<div id="view-back">
