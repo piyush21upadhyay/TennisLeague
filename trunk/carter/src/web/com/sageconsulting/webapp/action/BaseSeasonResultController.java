@@ -8,6 +8,7 @@
  */
 package com.sageconsulting.webapp.action;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -20,11 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sageconsulting.Constants;
 import com.sageconsulting.model.City;
-import com.sageconsulting.model.MatchCategory;
 import com.sageconsulting.model.Season;
 import com.sageconsulting.model.User;
-import com.sageconsulting.service.MatchCategoryManager;
 import com.sageconsulting.service.SeasonManager;
+import com.sageconsulting.util.GenderComparator;
+import com.sageconsulting.util.PlayingRatingsComparator;
+import com.sageconsulting.util.SeasonChainedComparator;
+import com.sageconsulting.util.SortSeason;
 
 /**
  * This base class for the PlayoffsController and the StandingsController
@@ -32,7 +35,9 @@ import com.sageconsulting.service.SeasonManager;
  */
 public abstract class BaseSeasonResultController extends BaseFormController
 {
-    private SeasonManager seasonManager;
+    private static final String WOMEN_S = "Women's";
+	private static final String MEN_S = "Men's";
+	private SeasonManager seasonManager;
         
     public void setSeasonManager(SeasonManager mgr)
     {
@@ -83,8 +88,8 @@ public abstract class BaseSeasonResultController extends BaseFormController
         List<Season> seasons = getSeasonList(city);
         sortList(seasons);
         view.addObject("seasons", seasons); //$NON-NLS-1$
+        setCurrentDivisionAsFirstSeason(seasons, this.getUserManager().getUserByUsername(request.getRemoteUser()));
         Season currentSeason = getCurrentSeason(request, seasons);
-        setCurrentDivisionAsFirstSeason(seasons, currentSeason, this.getUserManager().getUserByUsername(request.getRemoteUser()));
         view.addObject("season", currentSeason); //$NON-NLS-1$
         view.addObject("submittedSeason", currentSeason);
         
@@ -103,20 +108,44 @@ public abstract class BaseSeasonResultController extends BaseFormController
      * @param currentSeason
      * @param user 
      */
-	private void setCurrentDivisionAsFirstSeason(List<Season> seasons,
-			Season currentSeason, User user) {
-		if (user != null && seasons != null && seasons.size() > 1) {
+	private void setCurrentDivisionAsFirstSeason(List<Season> seasons, User user) {
+		if (user != null && user.getCurrentSeason() != null && seasons != null
+				&& seasons.size() > 1) {
+			sortSeasonsBasedOnGenderAndRating(seasons, user.getMale());
 			int searchIndex = 0;
 			for (int index = 0; index < seasons.size(); index++) {
-				if (currentSeason.getId() == seasons.get(index).getId()) {
+				if (user.getCurrentSeason().getId() == seasons.get(index)
+						.getId()) {
 					searchIndex = index;
 					break;
 				}
 			}
 			seasons.remove(searchIndex);
-			seasons.add(0, currentSeason);
+			seasons.add(0, user.getCurrentSeason());
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	private void sortSeasonsBasedOnGenderAndRating(List<Season> seasons, boolean isMale) {
+		List<SortSeason> sortSeasons = new ArrayList<SortSeason>();
+		for (Season season : seasons) {
+			String seasonName = season.getName();
+			String[] parts = seasonName.split(" ");
+			
+			double rating = Double.parseDouble(parts[parts.length - 1]);
+			String playingPref = parts[parts.length - 2];
+			String gender = parts[parts.length - 3];
+			int seasonNameIndex = (seasonName.indexOf(MEN_S) != -1) ? seasonName.indexOf(MEN_S)
+					: seasonName.indexOf(WOMEN_S);
+			String actualName = season.getName().substring(0, seasonNameIndex);
+			
+			sortSeasons.add(new SortSeason(actualName, gender, playingPref, rating));
+		}
+		System.out.println("before Sorting of Seasons::"+sortSeasons.toString());
+		Collections.sort(sortSeasons,
+				new SeasonChainedComparator(new GenderComparator(isMale), new PlayingRatingsComparator()));
+		System.out.println("After Sorted Seasons::"+sortSeasons.toString());
 	}
 
 	private void sortList(List<Season> seasons)
