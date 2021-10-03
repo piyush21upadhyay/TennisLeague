@@ -10,7 +10,9 @@ package com.sageconsulting.webapp.action;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +56,7 @@ public class ResultsController extends BaseFormController
     private ChampionManager championManager;
     private SeasonManager seasonManager;
     private RegistrationManager registrationManager;
+    private Map<Long,Match> matchMap = new HashMap<Long, Match>();
 
     public void setRegistrationManager(RegistrationManager registrationManager) {
 		this.registrationManager = registrationManager;
@@ -196,6 +199,7 @@ public class ResultsController extends BaseFormController
         User currentUser = getCurrentUser(request);
         Match match = (Match)getCommand(request);
         
+        
         // Don't allow user not involved with the match to post scores.
         if ((currentUser == null) ||
         	(!currentUser.equals(match.getGolfer1()) && !currentUser.equals(match.getGolfer2())))
@@ -205,17 +209,20 @@ public class ResultsController extends BaseFormController
         }
         
         ModelAndView view = super.showForm(request, response, errors);
+        boolean isAdminEdit = isAdministratorEdit(request);
         if (null == match.getCourse())
         {
             updateCourseInfo(view, currentUser);
         }
-        else if(isAdministratorEdit(request))
+        else if(isAdminEdit)
         {
             view.addObject("Allcourse", this.courtManager.getCourts());
         	view.addObject("courseList", match.getCourse());
         	view.addObject("isAdministrator", true);
         }
-        
+        if(isAdminEdit){
+        	matchMap.put(match.getId(), match);
+        }
         view.addObject(ENTER_SCORES, Boolean.TRUE);
         view.addObject("user", currentUser); //$NON-NLS-1$
         return view;
@@ -225,6 +232,7 @@ public class ResultsController extends BaseFormController
     public ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command,
         BindException errors) throws Exception
     {
+        
         if (isDefaultVictory(request))
         {
             Match match = (Match)command;
@@ -400,6 +408,10 @@ public class ResultsController extends BaseFormController
             	
             	match.getScore().setOpponentRetired(currUser.getId().compareTo(p1UserId)==0?p2UserId:p1UserId);
             }*/
+            
+            //change for admin score edit
+            Match oldMatchScore = matchMap.get(match.getId());
+            
             /***Changes for opponent retired ends*****/
             
             this.matchManager.saveMatch(match);
@@ -408,8 +420,14 @@ public class ResultsController extends BaseFormController
             // to the next position in the bracket.
             updateBracket(match);
             
-            UserStatsUtil.updateUserStats(this.getUserManager(), match);
-            if(isAdministratorEdit(request))
+            boolean isAdmitEdit = isAdministratorEdit(request);
+            if(!isAdmitEdit){
+            	UserStatsUtil.updateUserStats(this.getUserManager(), match);
+            }else if(null != oldMatchScore && null != oldMatchScore.getResult() 
+            		&& null != oldMatchScore.getResult().getWinner()){
+            	UserStatsUtil.updateUserStats(this.getUserManager(), match, oldMatchScore.getResult().getWinner());
+            }
+            if(isAdmitEdit)
             {
             	String adminRedirectView = "redirect:record.html?id=" + this.getCurrentUser(request).getId().toString();
             	super.setSuccessView(adminRedirectView);
