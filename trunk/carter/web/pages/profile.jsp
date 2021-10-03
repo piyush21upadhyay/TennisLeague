@@ -174,8 +174,9 @@
 		<c:choose>
 			<c:when test="${ not empty openRegistrationForVisitor }">
 				<div style="position: relative">
+					<div class="heading-golfer"><h4>Registration is now open for the next season of Open Play Tennis! with (ball boys optional)</h4></div>
 			   		<a title="Go to Payment page" href="signup.html">
-			   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner.png"/>" alt="register" />
+			   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner2.png"/>" alt="register" />
 			   		</a>
 			   		<div class="subsection register-btn">
 						<c:set var="url"><c:url value="/signup.html"/></c:set>
@@ -186,8 +187,9 @@
 			<c:otherwise>
 				<div class="regbanner">
 			    	<div>
+			    		<div class="heading-golfer"><h4>Get your own player ProfilePage & communicate with other Open Play Tennis members For Free</h4></div>
 			    		<a title="Go to Signup page" href="signup.html">
-			    			<img class="tee-off-img" src="<c:url value="images/get-profile-pg.png"/>" alt="sign up" />
+			    			<img class="tee-off-img" src="<c:url value="images/get-profile.png"/>" alt="sign up" />
 			    			  	<div class="subsection">
 						<c:set var="url"><c:url value="/signup.html"/></c:set>
 						<carter:button page="${url}" key="profile.signup"/>
@@ -223,15 +225,16 @@
 	<c:choose>
 		<c:when test="${not empty openRegistrations and empty registeredSeason}">
 			<c:if test="${isCurrentUser}">
-			<div style="position: relative">
-		   		<a title="Go to Payment page" href="registration.html">
-		   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner.png"/>" alt="register" />
-		   		</a>
-		   		<div class="subsection register-btn">
-					<c:set var="url"><c:url value="/registration.html"/></c:set>
-					<carter:button page="${url}" key="profile.registration"/>
-		    	</div>
-		   	</div>
+				<div style="position: relative">
+					<div class="heading-golfer"><h4>Registration is now open for the next season of Open Play Tennis! with (ball boys optional)</h4></div>
+			   		<a title="Go to Payment page" href="registration.html">
+			   			<img class="tee-off-img" src="<c:url value="images/teeOffBanner2.png"/>" alt="register" />
+			   		</a>
+			   		<div class="subsection register-btn">
+						<c:set var="url"><c:url value="/registration.html"/></c:set>
+						<carter:button page="${url}" key="profile.registration"/>
+			    	</div>
+			   	</div>
 		   	</c:if>
      	</c:when>
      	<c:when test="${not empty seasonStarted and !seasonStarted}">
