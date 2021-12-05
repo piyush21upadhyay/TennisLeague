@@ -420,9 +420,10 @@
 								<a href="#" class="dm-link-class" onclick="return false;">
 								<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/></a>
 			    			</display:column> --%>
-			    			<display:column titleKey="home.subject" maxLength="25" url="/home.html" paramId="msg" paramProperty="id" style="whitespace: nowrap;" class="dm-link-class">
+			    			<%-- commented below due to display of subject two times --%>
+			    			<%-- <display:column titleKey="home.subject" maxLength="25" url="/home.html" paramId="msg" paramProperty="id" style="whitespace: nowrap;" class="dm-link-class">
 									<input type="hidden" value="<c:out value='${publicMessages.id}'/>"/><c:out value="${publicMessages.subject}"/>
-			    			</display:column>
+			    			</display:column> --%>
 						    <display:column property="date" titleKey="home.date" url="/home.html" paramId="msg" paramProperty="id" decorator="com.sageconsulting.webapp.decorators.MessageDateColumnDecorator"/>
 			
 						    <display:setProperty name="basic.empty.showtable" value="false"/>

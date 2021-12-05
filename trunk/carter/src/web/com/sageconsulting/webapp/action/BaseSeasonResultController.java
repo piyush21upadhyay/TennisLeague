@@ -88,7 +88,9 @@ public abstract class BaseSeasonResultController extends BaseFormController
         List<Season> seasons = getSeasonList(city);
         sortList(seasons);
         view.addObject("seasons", seasons); //$NON-NLS-1$
-        setCurrentDivisionAsFirstSeason(seasons, this.getUserManager().getUserByUsername(request.getRemoteUser()));
+        if(null != request.getRemoteUser()){
+        	setCurrentDivisionAsFirstSeason(seasons, this.getUserManager().getUserByUsername(request.getRemoteUser()));
+        }
         Season currentSeason = getCurrentSeason(request, seasons);
         view.addObject("season", currentSeason); //$NON-NLS-1$
         view.addObject("submittedSeason", currentSeason);
