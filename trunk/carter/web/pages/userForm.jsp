@@ -140,47 +140,103 @@
 		
 		</div>
 		<div style="clear:both"></div>
-		<div class=" floating-label-wrap floating-checkbox">
-  		<label  class="anchor1"><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
-		  <ul class="">
-		   <li><form:checkbox path="playingPreference" value="Singles" id="singles"/>
-			<label class="checkboxlabel"><fmt:message key="userForm.singles"/></label>
-			</li>
-			<li>
-			<form:checkbox path="playingPreference" value="Doubles" id="doubles"/>
-			<label class="checkboxlabel"><fmt:message key="userForm.doubles"/></label>
-			</li>
-			<li>
-			<form:checkbox path="playingPreference" value="Mixeddoubles" id="mixedDoubles"/>
-			<label class="checkboxlabel"><fmt:message key="userForm.mixedDoubles"/></label>
-			</li>  
-		  </ul>
-	</div>
-
-
-			<div class="styled-input">
-			 <label><fmt:message key="userForm.openToChallenges"/></label>
-		 <form:select path="openToChallenges" id="openToChallenges" cssClass="openToChallenges" onchange="showOppSkillLevelOptions()">
-			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
-			<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
-		</form:select>
-		</div>
-		<div class="styled-input">				
-	     <label><fmt:message key="userForm.onlyOpenToSameGender"/></label>
-		 <form:select path="onlyOpenToSameGender" id="onlyOpenToSameGender" cssClass="onlyOpenToSameGender">
-			<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
-			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
-		</form:select>
-		</div>
-		<div id="opponentSkillLevelDiv" class="radio-section">
-		<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label> 
-				<ul>
-				<li><form:radiobutton path="opponentSkillLevel" value="onlyMyRating" /> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label></li>
-				<li><form:radiobutton path="opponentSkillLevel" value="within0.5Rating"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label></li>
-				<li><form:radiobutton path="opponentSkillLevel" value="anyRating"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label></li>
-		        <li><form:radiobutton path="opponentSkillLevel" value="onlyPlayUp"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label></li>
-				</ul>
-
+		
+		<div class="section signup-section ">
+			<fieldset>
+				<legend><fmt:message key="userForm.appearance"/><label for="firsticon">(<fmt:message key="userForm.icon"/>)</label></legend>
+				
+				<div class="signup-icon">
+					<div><img src="images/icon-1.png" alt="ballHoppers"/></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-1.png" id="firsticon"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-2.png" alt="singlesRacquet" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-2.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-3.png" alt="tennisBall" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-3.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-4.png" alt="racquets" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-4.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-5.png" alt="footwear" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-5.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-6.png" alt="tennisShot" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-6.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-7.png" alt="tennisBalls" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-7.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-8.png" alt="manPlaying"/></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-8.png" /></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-9.png" alt="girlPlaying" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-9.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-10.png" alt="girlPlaying2" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-10.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-11.png" alt="girlPlaying3" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-11.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-12.png" alt="girlPlaying4" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-12.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-13.png" alt="girlPlaying5" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-13.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-14.png" alt="girlPlaying6" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-14.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-15.png" alt="footwear2"/></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-15.png" /></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-16.png" alt="singlesRacquet1" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-16.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-17.png" alt="girlPlaying7" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-17.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-18.png" alt="girlPlaying8" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-18.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-19.png" alt="girlPlaying9" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-19.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-20.png" alt="racket" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-20.png"/></div>
+				</div>
+				<div class="signup-icon">
+					<div><img src="images/icon-21.png" alt="playingIcon" /></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-21.png"/></div>
+				</div>
+				
+				<c:if test="${(isAdministrator) && userId ne adminId }">
+				<div class="signup-icon">
+					<div><img src="images/icon-6.png" alt="trophy" width="40" height="40"/></div>
+					<div class="icon-input"><form:radiobutton path="icon" value="images/icon-7.png"/></div>
+				</div>
+				</c:if>
+			</fieldset>
 		</div>
 	</fieldset>
 
@@ -360,6 +416,49 @@
 				</c:forEach>
 			</form:select>
 			</div>
+			
+			<div class=" floating-label-wrap floating-checkbox">
+  		<label  class="anchor1"><fmt:message key="userForm.playingPreference"/><span class="mandatory">*</span></label>
+		  <ul class="">
+		   <li><form:checkbox path="playingPreference" value="Singles" id="singles"/>
+			<label class="checkboxlabel"><fmt:message key="userForm.singles"/></label>
+			</li>
+			<li>
+			<form:checkbox path="playingPreference" value="Doubles" id="doubles"/>
+			<label class="checkboxlabel"><fmt:message key="userForm.doubles"/></label>
+			</li>
+			<li>
+			<form:checkbox path="playingPreference" value="Mixeddoubles" id="mixedDoubles"/>
+			<label class="checkboxlabel"><fmt:message key="userForm.mixedDoubles"/></label>
+			</li>  
+		  </ul>
+	</div>
+
+
+			<div class="styled-input">
+			 <label><fmt:message key="userForm.openToChallenges"/></label>
+		 <form:select path="openToChallenges" id="openToChallenges" cssClass="openToChallenges" onchange="showOppSkillLevelOptions()">
+			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+			<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+		</form:select>
+		</div>
+		<div class="styled-input">				
+	     <label><fmt:message key="userForm.onlyOpenToSameGender"/></label>
+		 <form:select path="onlyOpenToSameGender" id="onlyOpenToSameGender" cssClass="onlyOpenToSameGender">
+			<form:option value="yes"><fmt:message key="userForm.yes"/></form:option>
+			<form:option value="no"><fmt:message key="userForm.no"/></form:option>
+		</form:select>
+		</div>
+		<div id="opponentSkillLevelDiv" class="radio-section">
+		<label for="opponentSkillLevel"><fmt:message key="userForm.opponentSkillLevel"/><span class="mandatory">*</span></label> 
+				<ul>
+				<li><form:radiobutton path="opponentSkillLevel" value="onlyMyRating" /> <label class="radiolabel" for="userForm.skillLevel1"><fmt:message key="userForm.skillLevel1"/></label></li>
+				<li><form:radiobutton path="opponentSkillLevel" value="within0.5Rating"/> <label class="radiolabel" for="userForm.skillLevel2"><fmt:message key="userForm.skillLevel2"/></label></li>
+				<li><form:radiobutton path="opponentSkillLevel" value="anyRating"/> <label class="radiolabel" for="userForm.skillLevel3"><fmt:message key="userForm.skillLevel3"/></label></li>
+		        <li><form:radiobutton path="opponentSkillLevel" value="onlyPlayUp"/> <label class="radiolabel" for="userForm.skillLevel4"><fmt:message key="userForm.skillLevel4"/></label></li>
+				</ul>
+
+		</div>
 		</fieldset>
 	<!--fourth-->
 
@@ -367,47 +466,7 @@
       
       <!--end fourth section-->
 </div>
-<div class="section signup-section ">
-	<fieldset>
-		<legend><fmt:message key="userForm.appearance"/><label for="firsticon">(<fmt:message key="userForm.icon"/>)</label></legend>
-		
-		<div class="signup-icon">
-			<div><img src="images/icon-1.png" alt="ballHoppers"/></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-1.png" id="firsticon"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-2.png" alt="singlesRacquet" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-2.png"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-3.png" alt="tennisBall" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-3.png"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-4.png" alt="racquets" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-4.png"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-5.png" alt="footwear" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-5.png"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-6.png" alt="tennisShot" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-6.png"/></div>
-		</div>
-		<div class="signup-icon">
-			<div><img src="images/icon-7.png" alt="tennisBalls" /></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-7.png"/></div>
-		</div>
-		
-		<c:if test="${(isAdministrator) && userId ne adminId }">
-		<div class="signup-icon">
-			<div><img src="images/icon-6.png" alt="trophy" width="40" height="40"/></div>
-			<div class="icon-input"><form:radiobutton path="icon" value="images/icon-7.png"/></div>
-		</div>
-		</c:if>
-	</fieldset>
-</div>
+
 
 <c:choose>
     <c:when test="${isAdministrator}">
