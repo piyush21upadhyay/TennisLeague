@@ -11,7 +11,9 @@ package com.sageconsulting.webapp.action;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,11 +88,12 @@ public abstract class BaseSeasonResultController extends BaseFormController
         view.addObject("city", city); //$NON-NLS-1$
 
         List<Season> seasons = getSeasonList(city);
-        sortList(seasons);
-        view.addObject("seasons", seasons); //$NON-NLS-1$
+        //sortList(seasons);
+        //view.addObject("seasons", seasons); //$NON-NLS-1$
         if(null != request.getRemoteUser()){
         	setCurrentDivisionAsFirstSeason(seasons, this.getUserManager().getUserByUsername(request.getRemoteUser()));
         }
+        view.addObject("seasons", seasons); 
         Season currentSeason = getCurrentSeason(request, seasons);
         view.addObject("season", currentSeason); //$NON-NLS-1$
         view.addObject("submittedSeason", currentSeason);
@@ -111,9 +114,9 @@ public abstract class BaseSeasonResultController extends BaseFormController
      * @param user 
      */
 	private void setCurrentDivisionAsFirstSeason(List<Season> seasons, User user) {
+		sortSeasonsBasedOnGenderAndRating(seasons, user.getMale());
 		if (user != null && user.getCurrentSeason() != null && seasons != null
 				&& seasons.size() > 1) {
-			sortSeasonsBasedOnGenderAndRating(seasons, user.getMale());
 			int searchIndex = 0;
 			for (int index = 0; index < seasons.size(); index++) {
 				if (user.getCurrentSeason().getId() == seasons.get(index)
@@ -129,25 +132,56 @@ public abstract class BaseSeasonResultController extends BaseFormController
 	}
 
 	@SuppressWarnings("unchecked")
-	private void sortSeasonsBasedOnGenderAndRating(List<Season> seasons, boolean isMale) {
+	private void sortSeasonsBasedOnGenderAndRating(List<Season> seasons,
+			boolean isMale) {
 		List<SortSeason> sortSeasons = new ArrayList<SortSeason>();
-		for (Season season : seasons) {
-			String seasonName = season.getName();
-			String[] parts = seasonName.split(" ");
+		Map<Long, Season> seasonWRTSeasonId=new HashMap<Long, Season>();
+		if (seasons != null && seasons.size() > 1) {
+			for (Season season : seasons) {
+				String seasonName = season.getName();
+				String[] parts = seasonName.split(" ");
+
+				double rating = Double.parseDouble(parts[parts.length - 1]);
+				String playingPref = parts[parts.length - 2];
+				String gender = parts[parts.length - 3];
+				int seasonNameIndex = (seasonName.indexOf(MEN_S) != -1) ? seasonName
+						.indexOf(MEN_S) : seasonName.indexOf(WOMEN_S);
+				String actualName = season.getName().substring(0,
+						seasonNameIndex);
+
+				sortSeasons.add(new SortSeason(actualName, gender, playingPref,
+						rating, season.getId()));
+				
+				seasonWRTSeasonId.put(season.getId(), season);
+			}
+			System.out.println("before Sorting of Seasons::"
+					+ sortSeasons.toString());
+			Collections.sort(sortSeasons, new SeasonChainedComparator(
+					new GenderComparator(isMale),
+					new PlayingRatingsComparator()));
 			
-			double rating = Double.parseDouble(parts[parts.length - 1]);
-			String playingPref = parts[parts.length - 2];
-			String gender = parts[parts.length - 3];
-			int seasonNameIndex = (seasonName.indexOf(MEN_S) != -1) ? seasonName.indexOf(MEN_S)
-					: seasonName.indexOf(WOMEN_S);
-			String actualName = season.getName().substring(0, seasonNameIndex);
-			
-			sortSeasons.add(new SortSeason(actualName, gender, playingPref, rating));
+			Collections.copy(seasons, orderSeasons(sortSeasons, seasonWRTSeasonId));
+			System.out.println("After Sorted Seasons::"
+					+ sortSeasons.toString());
 		}
-		System.out.println("before Sorting of Seasons::"+sortSeasons.toString());
-		Collections.sort(sortSeasons,
-				new SeasonChainedComparator(new GenderComparator(isMale), new PlayingRatingsComparator()));
-		System.out.println("After Sorted Seasons::"+sortSeasons.toString());
+	}
+
+	private List<Season> orderSeasons(List<SortSeason> sortSeasons,
+			Map<Long, Season> seasonWRTSeasonId) {
+		List<Season> orderedSeasons = new ArrayList<Season>();
+		for(int i=0; i<sortSeasons.size();i++){
+			orderedSeasons.add(seasonWRTSeasonId.get(sortSeasons.get(i).getSeasonId()));
+		}
+		return orderedSeasons;
+		
+		/*int index = 0;
+		for (SortSeason sortSeason : sortSeasons) {
+			originalSeasonObj.clear();
+			originalSeasonObj.add(index,
+					seasonWRTSeasonId.get(sortSeason.getSeasonId()));
+			index++;
+		}
+		return originalSeasonObj;*/
 	}
 
 	private void sortList(List<Season> seasons)

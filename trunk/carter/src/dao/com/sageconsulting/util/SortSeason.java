@@ -6,13 +6,16 @@ public class SortSeason {
 	String gender;
 	String playingPref;
 	double rating;
+	private Long seasonId;
 
-	public SortSeason(String name, String gender, String playingPref, double rating) {
+	public SortSeason(String name, String gender, String playingPref,
+			double rating, Long seasonId) {
 		super();
 		this.name = name;
 		this.gender = gender;
 		this.playingPref = playingPref;
 		this.rating = rating;
+		this.seasonId = seasonId;
 	}
 
 	public String getName() {
@@ -47,10 +50,19 @@ public class SortSeason {
 		this.rating = rating;
 	}
 
+	public Long getSeasonId() {
+		return seasonId;
+	}
+
+	public void setSeasonId(Long seasonId) {
+		this.seasonId = seasonId;
+	}
+
 	@Override
 	public String toString() {
-		return "SortSeason [name=" + name + ", gender=" + gender + ", playingPref=" + playingPref + ", rating=" + rating
-				+ "]";
+		return "SortSeason [name=" + name + ", gender=" + gender
+				+ ", playingPref=" + playingPref + ", rating=" + rating
+				+ ", seasonId=" + seasonId + "]";
 	}
 
 }
