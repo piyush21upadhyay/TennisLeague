@@ -265,22 +265,30 @@ public class BracketUtility
                 {
                 	if(result1.getWins() == result2.getWins())
                 	{
-                		if(result1.getLosses() == result2.getLosses())
+                		// Akash : Changing (commenting below if condition) to handle scenario when number of wins are 0 for both players,need to decide on the  basis of % of games on
+                		//if (result1.getWins() > 0 && result2.getWins() > 0) {
+                			Double percentageOfGamesWonByPlayer1 = Double.valueOf(result1.getUser().getGamesWonPercentage());
+                			Double percentageOfGamesWonByPlayer2 = Double.valueOf(result2.getUser().getGamesWonPercentage());
+                			if(!percentageOfGamesWonByPlayer1.equals(percentageOfGamesWonByPlayer2))
+                				return (percentageOfGamesWonByPlayer2.compareTo(percentageOfGamesWonByPlayer1));
+                		//}
+                		
+                		
+                		// logic to handle 0 wins/points, atleast played a match
+                		if(result1.getPoints() == 0 && result2.getPoints() == 0
+                				&& result1.getWins() == 0 && result2.getWins() == 0)
                 		{
-                			if(result1.getTies() == result2.getTies())
-                			{
-                				/*if(result1.getUser().getHandicap() == result2.getUser().getHandicap())
-                            		return 0;
-                            	else if(result1.getUser().getHandicap() > result2.getUser().getHandicap())
-                        			return 1;*/
-                            	
-                            	return -1;
-                			}
-                			else if(result1.getTies() > result2.getTies())
-                    			return 1;
-                    		return -1;
+                			if(result1.getLosses() == 0 && result2.getLosses() > 0)
+                				return 1;
+                			if(result2.getLosses() == 0 && result1.getLosses() > 0)
+                				return -1;
                 		}
-                		else if(result1.getLosses() > result2.getLosses())
+                		
+            			if(result1.getLosses() == result2.getLosses()) //wins are equal but not 0
+            			{
+                           	return -1;
+            			}
+            			else if(result1.getLosses() > result2.getLosses())
                 			return 1;
                 		return -1;
                 	}
